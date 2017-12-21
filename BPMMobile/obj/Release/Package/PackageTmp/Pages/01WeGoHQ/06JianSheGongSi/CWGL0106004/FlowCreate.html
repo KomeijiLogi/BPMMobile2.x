@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">借款人</label>
+               <input type="text" id="fname" name="fname" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fdate">借款日期</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">所属部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjkje">借款金额<i style="color:red;">*</i></label>
+                <input type="number" id="fjkje" name="fjkje" placeholder="请填写借款金额"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjkje_ds">大写金额<i style="color:red;">*</i></label>
+                <input type="text" id="fjkje_ds" name="fjkje_ds" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="">借款用途<i style="color:red;">*</i></label>
+                <textarea rows="4" id="fjkyt" name="fjkyt" placeholder="请输入借款用途"></textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>  
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+
+
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\06建设公司\\CWGL财务管理', '建设公司借款申请');
+            prepMsg();
+            getBPMParam();
+        });
+
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+       
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+                     
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+          
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+              
+            }
+
+        });
+
+
+       
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '   <Requests>';
+            xml = xml + '   <Params>';
+            xml = xml + '       <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>建设公司借款申请</ProcessName>';
+            xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '      <Owner></Owner>';
+            xml = xml + '    </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.借款人);
+                $("#fdept").val(item.所属部门);
+                $("#fcompany").val(item.所属公司);
+            }).fail(function (e) {
+
+            });
+        }
+
+        function tapEvent() {
+
+            $("#fjkje").on('input', function () {
+                var fjkje = parseFloat($(this).val());
+                var fjkje_ds = atoc(fjkje);
+                $("#fjkje_ds").val(fjkje_ds);
+            });
+        }
+
+        function Save() {
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val();
+            var fdept = $("#fdept").val();
+            var fcompany = $("#fcompany").val();
+            var fjkje = $("#fjkje").val();
+            var fjkje_ds = $("#fjkje_ds").val();
+            var fjkyt = $("#fjkyt").val();
+
+            if (!fjkje) {
+                mui.toast('请填写借款金额');
+                return;
+            }
+            if (!fjkyt) {
+                mui.toast('请填写借款用途');
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '   <XForm>';
+                    xml = xml + '         <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '       <ProcessName>建设公司借款申请</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '            <DraftGuid></DraftGuid>';
+                    xml = xml + '             <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '            <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '             <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    xml = xml + '       <FormData>';
+
+                    xml = xml + '  <建设公司_借款申请>';
+                    xml = xml + '  <借款人>' + fname + '</借款人>';
+                    xml = xml + '   <借款日期>' + fdate + '</借款日期>';
+                    xml = xml + '   <所属部门>' + fdept + '</所属部门>';
+                    xml = xml + '  <所属公司>' + fcompany + '</所属公司>';
+                    xml = xml + '   <借款金额>' + fjkje + '</借款金额>';
+                    xml = xml + '   <大写金额>' + fjkje_ds + '</大写金额>';
+                    xml = xml + '   <借款用途>' + fjkyt + '</借款用途>';
+                    xml = xml + ' </建设公司_借款申请>';
+                    
+
+                    xml = xml + '        </FormData>';
+                    xml = xml + '       </XForm>';
+
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fno">员工编码<i style="color:red;">*</i></label>
+                <input type="text" id="fno" name="fno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frmfs">任免方式<i style="color:red;">*</i></label>
+                <input type="text" id="frmfs" name="frmfs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_jt">所属集团</label>
+                <input type="text" id="fdc_jt" name="fdc_jt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_gs">所属公司</label>
+                <input type="text" id="fdc_gs" name="fdc_gs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_bm_name">所在部门</label>
+                <input type="text" id="fdc_bm_name" name="fdc_bm_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxrzw_name">现任职位</label>
+                <input type="text" id="fxrzw_name" name="fxrzw_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzwlevel">现任职务层级</label>
+                <input type="text" id="fyzwlevel" name="fyzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_rzzq">任职日期</label>
+                <input type="date" id="fdc_rzzq" name="fdc_rzzq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_jt">拟任集团</label>
+                <input type="text" id="fdr_jt" name="fdr_jt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_gs">拟任公司</label>
+                <input type="text" id="fdr_gs" name="fdr_gs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_bm_name">拟任部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdr_bm_name" name="fdr_bm_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fnrzw_name">拟任职位<i style="color:red;">*</i></label>
+                <input type="text" id="fnrzw_name" name="fnrzw_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxzwlevel">拟任职务层级</label>
+                <input type="text" id="fxzwlevel" name="fxzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_rzzq">拟任职日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdr_rzzq" name="fdr_rzzq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>员工信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsex">性别</label>
+                <input type="text" id="fsex" name="fsex" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbirth">出生日期</label>
+                <input type="text" id="fbirth" name="fbirth" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fmz">民族</label>
+                <input type="text" id="fmz" name="fmz" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzzmm">政治面貌</label>
+                <input type="text" id="fzzmm" name="fzzmm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjg">籍贯</label>
+                <input type="text" id="fjg" name="fjg" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzgxl">最高学历</label>
+                <input type="text" id="fzgxl" name="fzgxl" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbyyx">毕业院校</label>
+                <input type="text" id="fbyyx" name="fbyyx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzy">专业</label>
+                <input type="text" id="fzy" name="fzy" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbytime">毕业时间</label>
+                <input type="date" id="fbytime" name="fbytime" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgzdate">参加工作日期</label>
+                <input type="date" id="fgzdate" name="fgzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frzdate">入威高日期</label>
+                <input type="date" id="frzdate" name="frzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhfs">上年考核分数<i style="color:red;">*</i></label>
+                <input type="number" id="fkhfs" name="fkhfs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhdj">上年考核等级<i style="color:red;">*</i></label>
+                <input type="text" id="fkhdj" name="fkhdj" readonly="readonly" />
+            </div>
+           
+            <input type="hidden" id="fdc_gs_sx" name="fdc_gs_sx" value="" />
+            <input type="hidden" id="fdc_gs_fzrno" name="fdc_gs_fzrno" value="" />
+            <input type="hidden" id="fdc_bm_no" name="fdc_bm_no" value="" />
+            <input type="hidden" id="fdc_bm_fzrno" name="fdc_bm_fzrno" value="" />
+            <input type="hidden" id="fxrzw_no" name="fxrzw_no" value="" />
+            <input type="hidden" id="fdr_gs_sx" name="fdr_gs_sx" value="" />
+            <input type="hidden" id="fdr_gs_fzrno" name="fdr_gs_fzrno" value="" />
+            <input type="hidden" id="fdr_bm_no" name="fdr_bm_no" value="" />
+            <input type="hidden" id="fdr_bm_fzrno" name="fdr_bm_fzrno" value="" />
+            <input type="hidden" id="fnrzw_no" name="fnrzw_no" value="" />
+            <input type="hidden" id="fjsjz_no" name="fjsjz_no" value="" />
+            <input type="hidden" id="foper" name="foper" value="" />
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            
+            <div class="mui-input-row itemtitle">
+                <label>任免理由<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row" style="height:auto;">
+                <textarea rows="5" id="frmly" name="frmly" readonly="readonly" class="mui-col-xs-12"></textarea>
+            </div>
+
+            <div class="mui-input-row itemtitle">
+                <label>工作经历</label>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;display:none;">
+                添加申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+           
+            <div class="mui-input-row" id="csd">
+                <label>加签</label>
+                <div class="mui-switch mui-switch-blue" id="csswitch">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="signbody">
+                <div class="mui-input-row" id="signPerDiv">
+                    <label>加签人</label>
+                    <span class="mui-navigate-right"></span>
+                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签模式</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="sxsl">
+                            <a class="mui-navigate-right" id="sxsa">
+                                顺序加签
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="pxsl">
+                            <a class="mui-navigate-right" id="pxsa">
+                                平行加签
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签回转</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                            <a class="mui-navigate-right" id="hdbjda">
+                                回到本节点
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="jrxjdl">
+                            <a class="mui-navigate-right" id="jrxjda">
+                                进入下一节点
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:3.25rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mui-btn-row" id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row" id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+            <!--<button class="mui-btn mui-btn-warning" type="button" style="width:25%;" id="refusebt" onclick="Refilled()">退回重填</button>-->
+        </div>
+        <div class="mui-btn-row" id="readD">
+            <button class="mui-btn mui-btn-primary" type="button" id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+   </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value="" />
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row" id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getTaskMsg();
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+
+        });
+        mui('#csswitch').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#signbody').css('display', 'block');
+                } else {
+
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '退回某步', 'callBackId': 'callback3' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);  
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                } else {
+                    stepId = url.split("pid=")[1];
+                }
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            itemidArr = new Array();
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                console.log(data);
+                var item = data.FormDataSet.BPM_HR_RCGBRM_A[0];
+                $("#taskId").val(item.TaskID);
+                $("#fbillno").val(item.fbillno);
+                $("#stepId").val(stepId);
+                $("#fno").val(item.fno);
+                $("#fname").val(item.fname);
+                $("#fdate").val(FormatterTimeYMS(item.fdate));
+                $("#frmfs").val(item.frmfs);
+                $("#fdc_jt").val(item.fdc_jt);
+                $("#fdc_gs").val(item.fdc_gs);
+                $("#fdc_bm_name").val(item.fdc_bm_name);
+                $("#fxrzw_name").val(item.fxrzw_name);
+                $("#fyzwlevel").val(item.fyzwlevel);
+                $("#fdc_rzzq").val(FormatterTimeYMS( item.fdc_rzzq));
+                $("#fdr_jt").val(item.fdr_jt);
+                $("#fdr_gs").val(item.fdr_gs);
+                $("#fdr_bm_name").val(item.fdr_bm_name);
+                $("#fnrzw_name").val(item.fnrzw_name);
+                $("#fxzwlevel").val(item.fxzwlevel);
+                $("#fdr_rzzq").val(FormatterTimeYMS(item.fdr_rzzq));
+                $("#fsex").val(item.fsex);
+                $("#fbirth").val(FormatterTimeYMS(item.fbirth));
+                $("#fmz").val(item.fmz);
+                $("#fzzmm").val(item.fzzmm);
+                $("#fjg").val(item.fjg);
+                $("#fzgxl").val(item.fzgxl);
+                $("#fbyyx").val(item.fbyyx);
+                $("#fzy").val(item.fzy);
+                $("#fbytime").val(FormatterTimeYMS(item.fbytime));
+                $("#fgzdate").val(FormatterTimeYMS(item.fgzdate));
+                $("#frzdate").val(FormatterTimeYMS(item.frzdate));
+                $("#fkhfs").val(item.fkhfs);
+                $("#fkhdj").val(item.fkhdj);
+
+                $("#frmly").val(item.frmly);
+
+                console.log($("#frmly").val());
+
+
+                $("#fdc_gs_sx").val(item.fdc_gs_sx);
+                $("#fdc_gs_fzrno").val(item.fdc_gs_fzrno);
+                $("#fdc_bm_no").val(item.fdc_bm_no);
+                $("#fdc_bm_fzrno").val(item.fdc_bm_fzrno);
+                $("#fxrzw_no").val(item.fxrzw_no);
+                $("#fdr_gs_sx").val(item.fdr_gs_sx);
+                $("#fdr_gs_fzrno").val(item.fdr_gs_fzrno);
+                $("#fdr_bm_no").val(item.fdr_bm_no);
+                $("#fdr_bm_fzrno").val(item.fdr_bm_fzrno);
+                $("#fnrzw_no").val(item.fnrzw_no);
+                $("#fjsjz_no").val(item.fjsjz_no);
+                $("#foper").val(item.foper);
+
+                var item_c = data.FormDataSet.BPM_HR_RCGBRM_B;
+                for (var i = 0; i < item_c.length; i++) {
+                    itemidArr.push(item_c[i].itemid);
+                    var li = '  <div id="mx" class="mui-card">';
+                    li = li + '    <div class="mui-input-row itemtitle">';
+                    li = li + '       <label>明细列表项</label>';
+                    li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '       <label for="fstarttime">起始日期<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="date" id="fstarttime" name="fstarttime" readonly="readonly" value="' + FormatterTimeYMS(item_c[i].fstarttime) + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '       <label for="fendtime">终止日期<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="date" id="fendtime" name="fendtime" readonly="readonly" value="' + FormatterTimeYMS(item_c[i].fendtime) + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '       <label for="fgsmc">公司名称<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="text" id="fgsmc" name="fgsmc" readonly="readonly" value="' + item_c[i].fgsmc + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '        <label for="frzbm">任职部门<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="frzbm" name="frzbm" readonly="reaodnly" value="' + item_c[i].frzbm + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '         <label for="frzzw">担任职位<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="frzzw" name="frzzw" readonly="readonly" value="' + item_c[i].frzzw + '"/>';
+                    li = li + '    </div>';
+                    li = li + ' </div>';
+                    $("#mxlist").append(li);
+                }
+
+                if (item.ffj != null && item.ffj != "") {
+                    var fjtmp = (String)(item.ffj);
+
+                    fjArray = fjtmp.split(";");
+
+
+                    //console.log("fjArray:" + fjArray);
+
+                    //请求附件详细信息
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/bpm/GetAttachmentsInfo',
+                        //dataType:'json',
+                        data: { 'fileIds': fjArray },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        },
+                        success: function (data, status) {
+                            if (status == "success") {
+
+                                console.log(data);
+
+                                for (var i = 0; i < data.length; i++) {
+
+                                    var name = data[i].Name;
+                                    var type = (data[i].Ext).replace(".", "");
+                                    var size = String(data[i].Size);
+
+                                    var time = String(data[i].LastUpdate).replace("T", " ");
+                                    var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                    var attach = attachItem(name, type, size, time, downurl);
+                                    attachArray.push(attach);
+
+
+
+                                    var li = '<div class="pic-preview smallyulan success">';
+                                    li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                    //类型判断
+                                    if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                        //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                    } else {
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                    }
+
+                                    li = li + ' </div>';
+                                    li = li + '</div>';
+                                    $(".upload-img-list").append(li);
+
+
+                                    $(".imgdiv").each(function () {
+
+                                        $(this).parent().find(".del.none").hide();
+
+                                    });
+
+                                    watch();
+
+
+                                }
+
+                                $(".imgdiv").on('tap', function () {
+                                    console.log($(this)[0].id);
+                                    XuntongJSBridge.call('showFile', {
+                                        'fileName': attachArray[$(this)[0].id].name,
+                                        'fileExt': attachArray[$(this)[0].id].type,
+                                        'fileTime': attachArray[$(this)[0].id].time,
+                                        'fileSize': attachArray[$(this)[0].id].size,
+                                        'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                    }, function (result) {
+                                        //alert(JSON.stringify(result));
+                                    });
+                                });
+
+
+                            }
+
+                        }, error: function (e) {
+                            console.log(e);
+
+                        }, complete: function () {
+
+                        }
+
+                    });
+
+                }
+
+                for (var i = 0; i < data.Steps.length; i++) {
+
+                    if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                        data.Steps[i].FinishAt = "";
+                    }
+                    var time = FormatterTime(data.Steps[i].FinishAt);
+
+                    var stepName = data.Steps[i].NodeName;
+                    if (data.Steps[i].NodeName == "sysInform") {
+                        stepName = "知会";
+                    } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                        stepName = "任务操作";
+                    } else if (data.Steps[i].NodeName == "开始") {
+                        stepName = "开始";
+                    }
+
+                    var stepAction = locationAction(data.Steps[i].SelAction);
+                    if (data.Steps[i].SelAction == "sysInform") {
+                        stepAction = "发起知会";
+                    } else if (data.Steps[i].SelAction == "Submit") {
+                        stepAction = "已阅";
+                    } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                        stepAction = "待处理";
+                    } else if (data.Steps[i].SelAction == "sysReject") {
+                        stepAction = "拒绝";
+                    } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                        stepAction = "退回重填";
+                    }
+
+
+                    var contents = data.Steps[i].Comments;
+                    if (contents == null) {
+                        contents = "无";
+                    }
+                    //判断是否是加签
+                    if (data.Steps[i].IsConsignStep == false) {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    } else {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    }
+                    $("#signff").append(li);
+                }
+
+                if ($('#myPhone').val() == "") {
+                    var myPhone = String(BPMOU).split("/");
+                    $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                }
+                var NodeName;
+                //判断流程本节点是否结束，处理者是否为当前用户,
+                //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                for (var i = 0; i < data.Steps.length; i++) {
+                    //debugger;
+
+                    if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                        if (stepId.indexOf(data.Steps[i].StepID) != -1) {
+
+                            NodeName = data.Steps[i].NodeName;
+
+                        }
+
+                    }
+
+                }
+
+                if (NodeName == "开始") {
+                    //$("#createD").css("display", "block");
+                    $("#csd").css("display", "none");
+                    mui.alert('暂不提供移动端发起，请移步bpm发起');
+
+                } else if (NodeName == "sysInform") {
+                    $("#readD").css("display", "block");
+                    $("#csd").css("display", "none");
+
+                } else {
+                    if (typeof (NodeName) != "undefined") {
+                        $("#approvalD").css("display", "block");
+                    }
+                }
+            }).fail(function (e) {
+
+            });
+        }
+
+        function Save() {
+
+
+        }
+        function hasRead() {
+
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+
+            var fno = $("#fno").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val();
+            var frmfs = $("#frmfs").val();
+            var fdc_jt = $("#fdc_jt").val();
+            var fdc_gs = $("#fdc_gs").val();
+            var fdc_bm_name = $("#fdc_bm_name").val();
+            var fxrzw_name = $("#fxrzw_name").val();
+            var fyzwlevel = $("#fyzwlevel").val();
+            var fdc_rzzq = $("#fdc_rzzq").val();
+            var fdr_jt = $("#fdr_jt").val();
+            var fdr_gs = $("#fdr_gs").val();
+            var fdr_bm_name = $("#fdr_bm_name").val();
+            var fnrzw_name = $("#fnrzw_name").val();
+            var fxzwlevel = $("#fxzwlevel").val();
+            var fdr_rzzq = $("#fdr_rzzq").val();
+            var fsex = $("#fsex").val();
+            var fbirth = $("#fbirth").val();
+            var fmz = $("#fmz").val();
+            var fzzmm = $("#fzzmm").val();
+            var fjg = $("#fjg").val();
+            var fzgxl = $("#fzgxl").val();
+            var fbyyx = $("#fbyyx").val();
+            var fzy = $("#fzy").val();
+            var fbytime = $("#fbytime").val();
+            var fgzdate = $("#fgzdate").val();
+            var frzdate = $("#frzdate").val();
+            var fkhfs = $("#fkhfs").val();
+            var fkhdj = $("#fkhdj").val();
+            var frmly = $("#frmly").val();
+            var fdc_gs_sx = $("#fdc_gs_sx").val();
+            var fdc_gs_fzrno = $("#fdc_gs_fzrno").val();
+            var fdc_bm_no = $("#fdc_bm_no").val();
+            var fdc_bm_fzrno = $("#fdc_bm_fzrno").val();
+            var fxrzw_no = $("#fxrzw_no").val();
+            var fdr_gs_sx = $("#fdr_gs_sx").val();
+            var fdr_gs_fzrno = $("#fdr_gs_fzrno").val();
+            var fdr_bm_no = $("#fdr_bm_no").val();
+            var fdr_bm_fzrno = $("#fdr_bm_fzrno").val();
+            var fnrzw_no = $("#fnrzw_no").val();
+            var fjsjz_no = $("#fjsjz_no").val();
+            var foper = $("#foper").val();
+
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fstarttime = $(this).find("#fstarttime").val();
+                var fendtime = $(this).find("#fendtime").val();
+                var fgsmc = $(this).find("#fgsmc").val();
+                var frzbm = $(this).find("#frzbm").val();
+                var frzzw = $(this).find("#frzzw").val();
+
+                var mx = mxItem(fstarttime, fendtime, fgsmc, frzbm, frzzw);
+                mxlistArr.push(mx);
+            });
+
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + ' <BPM_HR_RCGBRM_A>';
+                    xml = xml + ' <fno>' + fno + '</fno>';
+                    xml = xml + '  <fname>' + fname + '</fname>';
+                    xml = xml + '  <fdate>' + fdate + '</fdate>';
+                    xml = xml + '  <frmfs>' + frmfs + '</frmfs>';
+                    xml = xml + ' <fdc_jt>' + fdc_jt + '</fdc_jt>';
+                    xml = xml + ' <fdc_gs>' + fdc_gs + '</fdc_gs>';
+                    xml = xml + '  <fdc_bm_name>' + fdc_bm_name + '</fdc_bm_name>';
+                    xml = xml + '  <fxrzw_name>' + fxrzw_name + '</fxrzw_name>';
+                    xml = xml + ' <fyzwlevel>' + fyzwlevel + '</fyzwlevel>';
+                    xml = xml + ' <fdc_rzzq>' + fdc_rzzq + '</fdc_rzzq>';
+                    xml = xml + ' <fdr_jt>' + fdr_jt + '</fdr_jt>';
+                    xml = xml + ' <fdr_gs>' + fdr_gs + '</fdr_gs>';
+                    xml = xml + '   <fdr_bm_name>' + fdr_bm_name + '</fdr_bm_name>';
+                    xml = xml + '  <fnrzw_name>' + fnrzw_name + '</fnrzw_name>';
+                    xml = xml + ' <fxzwlevel>' + fxzwlevel + '</fxzwlevel>';
+                    xml = xml + ' <fdr_rzzq>' + fdr_rzzq + '</fdr_rzzq>';
+                    xml = xml + ' <fsex>' + fsex + '</fsex>';
+                    xml = xml + '  <fbirth>' + fbirth + '</fbirth>';
+                    xml = xml + '<fmz>' + fmz + '</fmz>';
+                    xml = xml + ' <fzzmm>' + fzzmm + '</fzzmm>';
+                    xml = xml + '  <fjg>' + fjg + '</fjg>';
+                    xml = xml + ' <fzgxl>' + fzgxl + '</fzgxl>';
+                    xml = xml + '  <fbyyx>' + fbyyx + '</fbyyx>';
+                    xml = xml + '  <fzy>' + fzy + '</fzy>';
+                    xml = xml + '   <fbytime>' + fbytime + '</fbytime>';
+                    xml = xml + '  <fgzdate>' + fgzdate + '</fgzdate>';
+                    xml = xml + '  <frzdate>' + frzdate + '</frzdate>';
+                    xml = xml + '  <fkhfs>' + fkhfs + '</fkhfs>';
+                    xml = xml + '  <fkhdj>' + fkhdj + '</fkhdj>';
+                    xml = xml + '  <frmly>' + frmly + '</frmly>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <ffj>' + fjArray.toString().replace(",",";") + '</ffj>';
+                    } else {
+                        xml = xml + '  <ffj></ffj>';
+                    }
+
+                    xml = xml + '  <fdc_gs_sx>' + fdc_gs_sx + '</fdc_gs_sx>';
+                    xml = xml + '  <fdc_gs_fzrno>' + fdc_gs_fzrno + '</fdc_gs_fzrno>';
+                    xml = xml + ' <fdc_bm_no>' + fdc_bm_no + '</fdc_bm_no>';
+                    xml = xml + '  <fdc_bm_fzrno>' + fdc_bm_fzrno + '</fdc_bm_fzrno>';
+                    xml = xml + '  <fxrzw_no>' + fxrzw_no + '</fxrzw_no>';
+                    xml = xml + ' <fdr_gs_sx>' + fdr_gs_sx + '</fdr_gs_sx>';
+                    xml = xml + ' <fdr_gs_fzrno>' + fdr_gs_fzrno + '</fdr_gs_fzrno>';
+                    xml = xml + '   <fdr_bm_no>' + fdr_bm_no + '</fdr_bm_no>';
+                    xml = xml + ' <fdr_bm_fzrno>' + fdr_gs_fzrno + '</fdr_bm_fzrno>';
+                    xml = xml + '  <fnrzw_no>' + fnrzw_no + '</fnrzw_no>';
+                    xml = xml + ' <fjsjz_no>' + fjsjz_no + '</fjsjz_no>';
+                    xml = xml + '  <foper>' + foper + '</foper>';
+                    xml = xml + '</BPM_HR_RCGBRM_A>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+
+                        xml = xml + '  <BPM_HR_RCGBRM_B>';
+                        xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '   <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                        xml = xml + ' <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '  <fstarttime>' + mxlistArr[i].fstarttime + '</fstarttime>';
+                        xml = xml + '  <fendtime>' + mxlistArr[i].fendtime + '</fendtime>';
+                        xml = xml + '   <fgsmc>' + mxlistArr[i].fgsmc + '</fgsmc>';
+                        xml = xml + '   <frzbm>' + mxlistArr[i].frzbm + '</frzbm>';
+                        xml = xml + '     <frzzw>' + mxlistArr[i].frzzw + '</frzzw>';
+                        xml = xml + '    </BPM_HR_RCGBRM_B>';
+                    }
+                   
+
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function AgreeOrConSign() {
+
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+            var comment = $("#signSuggest").val();
+
+            var fno = $("#fno").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val();
+            var frmfs = $("#frmfs").val();
+            var fdc_jt = $("#fdc_jt").val();
+            var fdc_gs = $("#fdc_gs").val();
+            var fdc_bm_name = $("#fdc_bm_name").val();
+            var fxrzw_name = $("#fxrzw_name").val();
+            var fyzwlevel = $("#fyzwlevel").val();
+            var fdc_rzzq = $("#fdc_rzzq").val();
+            var fdr_jt = $("#fdr_jt").val();
+            var fdr_gs = $("#fdr_gs").val();
+            var fdr_bm_name = $("#fdr_bm_name").val();
+            var fnrzw_name = $("#fnrzw_name").val();
+            var fxzwlevel = $("#fxzwlevel").val();
+            var fdr_rzzq = $("#fdr_rzzq").val();
+            var fsex = $("#fsex").val();
+            var fbirth = $("#fbirth").val();
+            var fmz = $("#fmz").val();
+            var fzzmm = $("#fzzmm").val();
+            var fjg = $("#fjg").val();
+            var fzgxl = $("#fzgxl").val();
+            var fbyyx = $("#fbyyx").val();
+            var fzy = $("#fzy").val();
+            var fbytime = $("#fbytime").val();
+            var fgzdate = $("#fgzdate").val();
+            var frzdate = $("#frzdate").val();
+            var fkhfs = $("#fkhfs").val();
+            var fkhdj = $("#fkhdj").val();
+            var frmly = $("#frmly").val();
+            var fdc_gs_sx = $("#fdc_gs_sx").val();
+            var fdc_gs_fzrno = $("#fdc_gs_fzrno").val();
+            var fdc_bm_no = $("#fdc_bm_no").val();
+            var fdc_bm_fzrno = $("#fdc_bm_fzrno").val();
+            var fxrzw_no = $("#fxrzw_no").val();
+            var fdr_gs_sx = $("#fdr_gs_sx").val();
+            var fdr_gs_fzrno = $("#fdr_gs_fzrno").val();
+            var fdr_bm_no = $("#fdr_bm_no").val();
+            var fdr_bm_fzrno = $("#fdr_bm_fzrno").val();
+            var fnrzw_no = $("#fnrzw_no").val();
+            var fjsjz_no = $("#fjsjz_no").val();
+            var foper = $("#foper").val();
+
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fstarttime = $(this).find("#fstarttime").val();
+                var fendtime = $(this).find("#fendtime").val();
+                var fgsmc = $(this).find("#fgsmc").val();
+                var frzbm = $(this).find("#frzbm").val();
+                var frzzw = $(this).find("#frzzw").val();
+
+                var mx = mxItem(fstarttime, fendtime, fgsmc, frzbm, frzzw);
+                mxlistArr.push(mx);
+            });
+            var consignFlag = false;
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+            //加签if分支
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+                consignFlag = true;
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }
+                }).done(function (data, status) {
+                    //alert(status);
+                    if (status == "success") {
+
+
+                        for (var i = 0; i < data.data.length; i++) {
+                            consignUserId.push(data.data[i].phone);
+                        }
+                        $('#consignUser').val(consignUserId);
+                        consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+
+
+                        var xml = '<?xml version="1.0"?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '<Header>';
+                        xml = xml + '<Method>Process</Method>';
+                        xml = xml + '<PID>' + pid + '</PID>';
+                        xml = xml + '<Action>同意</Action>';
+                        xml = xml + '<Comment>' + comment + '</Comment>';
+
+                        //加签差异部分
+                        xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
+                        xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                        xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                        xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+
+                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '</Header>';
+                        xml = xml + '<FormData>';
+
+                        xml = xml + ' <BPM_HR_RCGBRM_A>';
+                        xml = xml + ' <fno>' + fno + '</fno>';
+                        xml = xml + '  <fname>' + fname + '</fname>';
+                        xml = xml + '  <fdate>' + fdate + '</fdate>';
+                        xml = xml + '  <frmfs>' + frmfs + '</frmfs>';
+                        xml = xml + ' <fdc_jt>' + fdc_jt + '</fdc_jt>';
+                        xml = xml + ' <fdc_gs>' + fdc_gs + '</fdc_gs>';
+                        xml = xml + '  <fdc_bm_name>' + fdc_bm_name + '</fdc_bm_name>';
+                        xml = xml + '  <fxrzw_name>' + fxrzw_name + '</fxrzw_name>';
+                        xml = xml + ' <fyzwlevel>' + fyzwlevel + '</fyzwlevel>';
+                        xml = xml + ' <fdc_rzzq>' + fdc_rzzq + '</fdc_rzzq>';
+                        xml = xml + ' <fdr_jt>' + fdr_jt + '</fdr_jt>';
+                        xml = xml + ' <fdr_gs>' + fdr_gs + '</fdr_gs>';
+                        xml = xml + '   <fdr_bm_name>' + fdr_bm_name + '</fdr_bm_name>';
+                        xml = xml + '  <fnrzw_name>' + fnrzw_name + '</fnrzw_name>';
+                        xml = xml + ' <fxzwlevel>' + fxzwlevel + '</fxzwlevel>';
+                        xml = xml + ' <fdr_rzzq>' + fdr_rzzq + '</fdr_rzzq>';
+                        xml = xml + ' <fsex>' + fsex + '</fsex>';
+                        xml = xml + '  <fbirth>' + fbirth + '</fbirth>';
+                        xml = xml + '<fmz>' + fmz + '</fmz>';
+                        xml = xml + ' <fzzmm>' + fzzmm + '</fzzmm>';
+                        xml = xml + '  <fjg>' + fjg + '</fjg>';
+                        xml = xml + ' <fzgxl>' + fzgxl + '</fzgxl>';
+                        xml = xml + '  <fbyyx>' + fbyyx + '</fbyyx>';
+                        xml = xml + '  <fzy>' + fzy + '</fzy>';
+                        xml = xml + '   <fbytime>' + fbytime + '</fbytime>';
+                        xml = xml + '  <fgzdate>' + fgzdate + '</fgzdate>';
+                        xml = xml + '  <frzdate>' + frzdate + '</frzdate>';
+                        xml = xml + '  <fkhfs>' + fkhfs + '</fkhfs>';
+                        xml = xml + '  <fkhdj>' + fkhdj + '</fkhdj>';
+                        xml = xml + '  <frmly>' + frmly + '</frmly>';
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                        } else {
+                            xml = xml + '  <ffj></ffj>';
+                        }
+
+                        xml = xml + '  <fdc_gs_sx>' + fdc_gs_sx + '</fdc_gs_sx>';
+                        xml = xml + '  <fdc_gs_fzrno>' + fdc_gs_fzrno + '</fdc_gs_fzrno>';
+                        xml = xml + ' <fdc_bm_no>' + fdc_bm_no + '</fdc_bm_no>';
+                        xml = xml + '  <fdc_bm_fzrno>' + fdc_bm_fzrno + '</fdc_bm_fzrno>';
+                        xml = xml + '  <fxrzw_no>' + fxrzw_no + '</fxrzw_no>';
+                        xml = xml + ' <fdr_gs_sx>' + fdr_gs_sx + '</fdr_gs_sx>';
+                        xml = xml + ' <fdr_gs_fzrno>' + fdr_gs_fzrno + '</fdr_gs_fzrno>';
+                        xml = xml + '   <fdr_bm_no>' + fdr_bm_no + '</fdr_bm_no>';
+                        xml = xml + ' <fdr_bm_fzrno>' + fdr_gs_fzrno + '</fdr_bm_fzrno>';
+                        xml = xml + '  <fnrzw_no>' + fnrzw_no + '</fnrzw_no>';
+                        xml = xml + ' <fjsjz_no>' + fjsjz_no + '</fjsjz_no>';
+                        xml = xml + '  <foper>' + foper + '</foper>';
+                        xml = xml + '</BPM_HR_RCGBRM_A>';
+
+                        for (var i = 0; i < mxlistArr.length; i++) {
+
+                            xml = xml + '  <BPM_HR_RCGBRM_B>';
+                            xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '   <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                            xml = xml + ' <fentryno>' + (i + 1) + '</fentryno>';
+                            xml = xml + '  <fstarttime>' + mxlistArr[i].fstarttime + '</fstarttime>';
+                            xml = xml + '  <fendtime>' + mxlistArr[i].fendtime + '</fendtime>';
+                            xml = xml + '   <fgsmc>' + mxlistArr[i].fgsmc + '</fgsmc>';
+                            xml = xml + '   <frzbm>' + mxlistArr[i].frzbm + '</frzbm>';
+                            xml = xml + '     <frzzw>' + mxlistArr[i].frzzw + '</frzzw>';
+                            xml = xml + '    </BPM_HR_RCGBRM_B>';
+                        }
+
+
+                        xml = xml + ' </FormData>';
+                        xml = xml + '</XForm>';
+                        PostXml(xml);
+                    }
+                }).fail(function (e) {
+
+                    });
+            } else {
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + '<Header>';
+                xml = xml + '<Method>Process</Method>';
+                xml = xml + '<PID>' + pid + '</PID>';
+                xml = xml + '<Action>同意</Action>';
+                xml = xml + '<Comment>' + comment + '</Comment>';
+
+              
+                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '</Header>';
+                xml = xml + '<FormData>';
+
+                xml = xml + ' <BPM_HR_RCGBRM_A>';
+                xml = xml + ' <fno>' + fno + '</fno>';
+                xml = xml + '  <fname>' + fname + '</fname>';
+                xml = xml + '  <fdate>' + fdate + '</fdate>';
+                xml = xml + '  <frmfs>' + frmfs + '</frmfs>';
+                xml = xml + ' <fdc_jt>' + fdc_jt + '</fdc_jt>';
+                xml = xml + ' <fdc_gs>' + fdc_gs + '</fdc_gs>';
+                xml = xml + '  <fdc_bm_name>' + fdc_bm_name + '</fdc_bm_name>';
+                xml = xml + '  <fxrzw_name>' + fxrzw_name + '</fxrzw_name>';
+                xml = xml + ' <fyzwlevel>' + fyzwlevel + '</fyzwlevel>';
+                xml = xml + ' <fdc_rzzq>' + fdc_rzzq + '</fdc_rzzq>';
+                xml = xml + ' <fdr_jt>' + fdr_jt + '</fdr_jt>';
+                xml = xml + ' <fdr_gs>' + fdr_gs + '</fdr_gs>';
+                xml = xml + '   <fdr_bm_name>' + fdr_bm_name + '</fdr_bm_name>';
+                xml = xml + '  <fnrzw_name>' + fnrzw_name + '</fnrzw_name>';
+                xml = xml + ' <fxzwlevel>' + fxzwlevel + '</fxzwlevel>';
+                xml = xml + ' <fdr_rzzq>' + fdr_rzzq + '</fdr_rzzq>';
+                xml = xml + ' <fsex>' + fsex + '</fsex>';
+                xml = xml + '  <fbirth>' + fbirth + '</fbirth>';
+                xml = xml + '<fmz>' + fmz + '</fmz>';
+                xml = xml + ' <fzzmm>' + fzzmm + '</fzzmm>';
+                xml = xml + '  <fjg>' + fjg + '</fjg>';
+                xml = xml + ' <fzgxl>' + fzgxl + '</fzgxl>';
+                xml = xml + '  <fbyyx>' + fbyyx + '</fbyyx>';
+                xml = xml + '  <fzy>' + fzy + '</fzy>';
+                xml = xml + '   <fbytime>' + fbytime + '</fbytime>';
+                xml = xml + '  <fgzdate>' + fgzdate + '</fgzdate>';
+                xml = xml + '  <frzdate>' + frzdate + '</frzdate>';
+                xml = xml + '  <fkhfs>' + fkhfs + '</fkhfs>';
+                xml = xml + '  <fkhdj>' + fkhdj + '</fkhdj>';
+                xml = xml + '  <frmly>' + frmly + '</frmly>';
+                if (fjArray.length != 0) {
+                    xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                } else {
+                    xml = xml + '  <ffj></ffj>';
+                }
+
+                xml = xml + '  <fdc_gs_sx>' + fdc_gs_sx + '</fdc_gs_sx>';
+                xml = xml + '  <fdc_gs_fzrno>' + fdc_gs_fzrno + '</fdc_gs_fzrno>';
+                xml = xml + ' <fdc_bm_no>' + fdc_bm_no + '</fdc_bm_no>';
+                xml = xml + '  <fdc_bm_fzrno>' + fdc_bm_fzrno + '</fdc_bm_fzrno>';
+                xml = xml + '  <fxrzw_no>' + fxrzw_no + '</fxrzw_no>';
+                xml = xml + ' <fdr_gs_sx>' + fdr_gs_sx + '</fdr_gs_sx>';
+                xml = xml + ' <fdr_gs_fzrno>' + fdr_gs_fzrno + '</fdr_gs_fzrno>';
+                xml = xml + '   <fdr_bm_no>' + fdr_bm_no + '</fdr_bm_no>';
+                xml = xml + ' <fdr_bm_fzrno>' + fdr_gs_fzrno + '</fdr_bm_fzrno>';
+                xml = xml + '  <fnrzw_no>' + fnrzw_no + '</fnrzw_no>';
+                xml = xml + ' <fjsjz_no>' + fjsjz_no + '</fjsjz_no>';
+                xml = xml + '  <foper>' + foper + '</foper>';
+                xml = xml + '</BPM_HR_RCGBRM_A>';
+
+                for (var i = 0; i < mxlistArr.length; i++) {
+
+                    xml = xml + '  <BPM_HR_RCGBRM_B>';
+                    xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                    xml = xml + '   <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                    xml = xml + ' <fentryno>' + (i + 1) + '</fentryno>';
+                    xml = xml + '  <fstarttime>' + mxlistArr[i].fstarttime + '</fstarttime>';
+                    xml = xml + '  <fendtime>' + mxlistArr[i].fendtime + '</fendtime>';
+                    xml = xml + '   <fgsmc>' + mxlistArr[i].fgsmc + '</fgsmc>';
+                    xml = xml + '   <frzbm>' + mxlistArr[i].frzbm + '</frzbm>';
+                    xml = xml + '     <frzzw>' + mxlistArr[i].frzzw + '</frzzw>';
+                    xml = xml + '    </BPM_HR_RCGBRM_B>';
+                }
+
+
+                xml = xml + ' </FormData>';
+                xml = xml + '</XForm>';
+                PostXml(xml);
+            }
+        }
+
+        function mxItem(fstarttime, fendtime, fgsmc, frzbm, frzzw) {
+            var mx = new Object;
+            mx.fstarttime = fstarttime;
+            mx.fendtime = fendtime;
+            mx.fgsmc = fgsmc;
+            mx.frzbm = frzbm;
+            mx.frzzw = frzzw;
+            return mx;
+
+        }
+    </script>
+</body>
+</html>

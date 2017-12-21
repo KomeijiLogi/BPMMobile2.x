@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgs">提报公司</label>
+                <input type="text" id="fgs" name="fgs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">产品生产公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcpmc">产品名称<i style="color:red;">*</i></label>
+                <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fggxh">规格型号</label>
+                <input type="text" id="fggxh" name="fggxh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdw">单位</label>
+                <input type="text" id="fdw" name="fdw" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fph">批号<i style="color:red;">*</i></label>
+                <input type="text" id="fph" name="fph" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fmjph">灭菌批号</label>
+                <input type="text" id="fmjph" name="fmjph" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fwtms">质量问题描述<i style="color:red;">*</i></label>
+                <textarea id="fwtms" name="fwtms" rows="4" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fkh">客户<i style="color:red;">*</i></label>
+                <input type="text" id="fkh" name="fkh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftsrq">客户投诉日期</label>
+                <input type="date" id="ftsrq" name="ftsrq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdh">客户电话</label>
+                <input type="tel" id="fdh" name="fdh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fpcje">客户要求赔偿金额</label>
+                <input type="number" id="fpcje" name="fpcje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_zm">是否有院方材料证明</label>
+                <input type="text" id="fif_zm" name="fif_zm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_yp">是否有样品</label>
+                <input type="text" id="fif_yp" name="fif_yp" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyprq">收到样品日期</label>
+                <input type="date" id="fyprq" name="fyprq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgzlx">质量故障类型</label>
+                <input type="text" id="fgzlx" name="fgzlx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_sb">院方是否上报不良事件<i style="color:red;">*</i></label>
+                <input type="text" id="fif_sb" name="fif_sb" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fclyq">客户处理要求</label>
+                <textarea id="fclyq" name="fclyq" rows="4" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fgzfx">故障原因分析<i style="color:red;">*</i></label>
+                <textarea id="fgzfx" name="fgzfx" rows="4" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fjzcs">纠正措施<i style="color:red;">*</i></label>
+                <textarea id="fjzcs" name="fjzcs" rows="4" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbm">纠正措施部门</label>
+                <input type="text" id="fbm" name="fbm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffzr">纠正措施负责人<i style="color:red;">*</i></label>
+                <input type="text" id="ffzr" name="ffzr" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzr">纠正措施验证人</label>
+                <input type="text" id="fyzr" name="fyzr" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwcrq">纠正措施计划完成日期<i style="color:red;">*</i></label>
+                <input type="date" id="fwcrq" name="fwcrq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzrq">纠正措施计划验证日期<i style="color:red;">*</i></label>
+                <input type="date" id="fyzrq" name="fyzrq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwtfl">问题分类<i style="color:red;">*</i></label>
+                <input type="text" id="fwtfl" name="fwtfl" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_zdsg">是否重大质量事故<i style="color:red;">*</i></label>
+                <input type="text" id="fif_zdsg" name="fif_zdsg" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图纸附件-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">添加附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图纸按钮  -->
+                        <span class="upload-addbtn" id="addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:3rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value="" />
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            _init._preAskOrDone();
+
+        });
+
+    </script>
+</body>
+</html>

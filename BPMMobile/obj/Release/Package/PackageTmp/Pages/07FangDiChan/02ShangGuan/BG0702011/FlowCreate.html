@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        html, body {
+            font-size: 20px;
+            background-color: white;
+            height: 100%;
+            overflow: auto;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>请示人</label>
+                <input type="text" class="" id="fname" name="fname" readonly="readonly" />
+            </div> 
+            <div class="mui-input-row" style="display:none;">
+                <label>请示部门</label>
+                <input type="text" class="" id="fdept" name="fdept" readonly="readonly" />
+            </div> 
+            <div class="mui-input-row">
+                <label>请示日期<i style="color:red;">*</i></label>
+                <input type="date" class="" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>联系方式<i style="color:red;">*</i></label>
+                <input type="tel" class="mui-input-clear" id="ftel" name="ftel" placeholder="请输入联系方式" />
+            </div>
+            <div class="mui-input-row">
+                <label>商户名称<i style="color:red;">*</i></label>
+                <input type="text" class="mui-input-clear" id="fshmc" name="fshmc" placeholder="请输入商户名称"/>
+            </div>           
+            <div class="mui-input-row">
+                <label>商户状态<i style="color:red;">*</i></label>
+                <input type="text" id="fshzt" name="fshzt" placeholder="请选择商户状态" readonly="readonly"/>
+            </div>
+             <div class="mui-input-row">
+                <label>店铺号<i style="color:red;">*</i></label>
+                <input type="text" class="mui-input-clear" id="fdph" name="fdph" placeholder="请输入店铺号"/>
+            </div>
+             <div class="mui-input-row">
+                <label>商户联系人<i style="color:red;">*</i></label>
+                <input type="text" class="mui-input-clear" id="fshlxr" name="fshlxr" placeholder="请输入商户联系人" />
+            </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fccyy">撤场原因描述<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fccyy" name="fccyy" placeholder="请输入撤场原因描述"></textarea>
+             </div>
+             <div class="mui-input-row">
+                <label>撤场时间<i style="color:red;">*</i></label>
+                <input type="date" id="fccrq" name="fccrq" />
+            </div>
+            <div class="mui-input-row">
+                <label>所属项目<i style="color:red;">*</i></label>
+                <input type="text" id="fssxm" name="fssxm" placeholder="请选择所属项目" readonly="readonly"/>
+            </div>
+              
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+           </div>
+       </form>  
+        
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司商户撤场申请');
+            getBPMParam();
+            prepMsg();
+            watch();
+            upload();
+           
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                 'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                    
+                    var msg = JSON.parse(localStorage.getItem('BPM_SGGSSHCCSQSPBMsg'));
+                    $("#fname").val(msg.fname);
+                    $("#fdept").val(msg.fdept);
+                    $("#fdate").val(msg.fdate);
+                    $("#ftel").val(msg.ftel);
+                    $("#fshmc").val(msg.fshmc);
+                    $("#fdph").val(msg.fdph);
+                    
+                    $("#fshzt").val(msg.fshzt);
+                    $("#fshlxr").val(msg.fshlxr);
+                    $("#fccyy").val(msg.fccyy);
+                    $("#fccrq").val(msg.fccrq);
+                    $("#fssxm").val(msg.fssxm);
+                    
+                } else {
+                    
+                }
+            }
+
+        }
+
+
+        function tapEvent() {
+
+            var fshztdata = [
+                {
+                    value: "htdqcc",
+                    text: "合同到期撤场"
+                },
+                {
+                    value: "htwdqcc",
+                    text: "合同未到期撤场"
+                }
+            ];
+            $("#fshzt").on('tap', showPicker('fshzt', fshztdata));
+
+            var fssxmdata = [
+                {
+                    value: "wggc",
+                    text: "威高广场"
+                },
+                {
+                    value: "sgc",
+                    text:"时光城"
+                }
+            ];
+            $("#fssxm").on('tap', showPicker('fssxm', fssxmdata));
+
+        }
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+
+
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+        var fjArray = new Array();
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var ftel = $("#ftel").val();
+            var fshmc = $("#fshmc").val();            
+            var fdph = $("#fdph").val();
+            var fshzt = $("#fshzt").val();
+            var fshlxr = $("#fshlxr").val();
+            var fccyy = $("#fccyy").val();
+            var fccrq = $("#fccrq").val() + " 00:00:00";;
+            var fssxm = $("#fssxm").val();
+            if (!fssxm) {
+                mui.toast('请选择所属项目');
+                return;
+            }
+            if (!fdph) {
+                mui.toast('请输入店铺号');
+                return;
+            }
+            if (!ftel || ftel == "") {
+                mui.toast("请输入联系电话");
+                return;
+            }
+            if (!fshmc || fshmc == "") {
+                mui.toast("请输入商户名称");
+                return;
+            }
+            if (!fshzt || fshzt == "") {
+                mui.toast("请选择商户状态");
+                return;
+            }
+            if (!fshlxr || fshlxr == "") {
+                mui.toast("请输入商户联系人");
+                return;
+            }
+
+            if (!fccyy || fccyy == "") {
+                mui.toast("请输入撤场原因");
+                return;
+            }
+            if (!$("#fccrq").val() || fccrq == "") {
+                mui.toast("请选择撤场时间");
+                return;
+            }
+            
+           
+
+            if (fjArray.toString() == null ||fjArray.toString() == "") {
+                mui.toast("请上传附件");
+               return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + ' <Header>';
+                    xml = xml + '<Method>Post</Method>';
+                   
+                    xml = xml + '<ProcessName>盛祥商管公司商户撤场申请</ProcessName>';
+                    xml = xml + ' <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<BPM_SGGSSHCCSQSPB>';
+                    xml = xml + '<fbillno>自动生成</fbillno>';
+                    xml = xml + '<fname>' + fname + '</fname>';
+                    xml = xml + '<fdept>' + fdept + '</fdept>';
+                    xml = xml + '<fdate>' + fdate + '</fdate>';
+                    xml = xml + '<ftel>' + ftel + '</ftel>';
+                    xml = xml + '<fshmc>' + fshmc + '</fshmc>';
+                    xml = xml + '<fshzt>' + fshzt + '</fshzt>';
+                    xml = xml + '<fdph>' + fdph + '</fdph>';
+                    xml = xml + '<fshlxr>' + fshlxr + '</fshlxr>';
+                    xml = xml + '<fccyy>' + fccyy + '</fccyy>';
+                    xml = xml + '<fccrq>' + fccrq + '</fccrq>';
+                    xml = xml + '<fssxm>' + fssxm + '</fssxm>';
+
+                    xml = xml + '<fccwpqd>0</fccwpqd>';
+                    xml = xml + '<fccfzrwts>0</fccfzrwts>';
+                    xml = xml + '<fyybyj>0</fyybyj>';
+                    xml = xml + '<fzsbyj></fzsbyj>';
+                    xml = xml + '<fhfwc>0</fhfwc>';
+                    xml = xml + '<fwdwc>0</fwdwc>';
+                    xml = xml + '<fgcbyj></fgcbyj>';
+                    xml = xml + '<fqmzkjq>0</fqmzkjq>';
+                    xml = xml + '<fwhsh>0</fwhsh>';
+                    xml = xml + '<fcwbyj></fcwbyj>';
+                    xml = xml + '<fwdzswc>0</fwdzswc>';
+                    xml = xml + '<ftgbyj></ftgbyj>';
+                    xml = xml + '<ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                    xml = xml + '</BPM_SGGSSHCCSQSPB>';
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fgroup">所属集团</label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式"  />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxm_name_no">项目名称及编号<i style="color:red;">*</i></label>
+                <input type="text" id="fxm_name_no" name="fxm_name_no" placeholder="请输入项目名称及编号" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="flx">类型<i style="color:red;">*</i></label>
+                <input type="text" id="flx" name="flx" placeholder="请选择类型" readonly="readonly"/>
+            </div>
+            <div class="mui-input-group" id="bglx" style="display:none;">
+                <div class="mui-input-row">
+                    <label>变更类型</label>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjdbg">进度变更</label>
+                    <input id="fjdbg" name="fjdbg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="ffybg">费用变更</label>
+                    <input id="ffybg" name="ffybg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fmcbg">名称变更</label>
+                    <input id="fmcbg" name="fmcbg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjsbg">技术变更</label>
+                    <input id="fjsbg" name="fjsbg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="frybg">人员变更</label>
+                    <input id="frybg" name="frybg" value="" type="checkbox" />
+                </div>
+            </div>
+            <div class="mui-input-row" id="fybgfdl"  style="display:none;">
+                <label for="ffybgfdl">费用变更浮动率（%）</label>
+                <input type="number" id="ffybgfdl" name="ffybgfdl" placeholder="请输入费用变更浮动率" readonly="readonly" onclick="ifFybgfdl()"/>
+            </div>
+            <div class="mui-input-row" id="bgnrms"  style="display:none;">
+                <label for="fbgnr">变更内容描述<i style="color:red;">*</i></label>
+                <textarea id="fbgnr" name="fbgnr" rows="8" placeholder="请填写变更内容描述"></textarea>
+            </div>
+            <div class="mui-input-row" id="yx"  style="display:none;">
+                <label for="fyx">对项目其他方面的影响<i style="color:red;">*</i></label>
+                <textarea id="fyx" name="fyx" rows="8" placeholder="请填写对项目其他方面的影响"></textarea>
+            </div>
+            <div class="mui-input-row" id="jhzfy"  style="display:none;">
+                <label for="fjhzfy">项目计划总费用</label>
+                <input type="number" id="fjhzfy" name="fjhzfy" placeholder="请输入项目计划总费用" />
+            </div>
+            <div class="mui-input-row" id="jzmqfy"  style="display:none;">
+                <label for="fjzmqfy">项目截止目前费用</label>
+                <input type="number" id="fjzmqfy" name="fjzmqfy" placeholder="请输入项目截止目前费用" />
+            </div>
+            <div class="mui-input-row" id="jzqk"  style="display:none;">
+                <label for="fjzqk">项目现阶段进展情况<i style="color:red;">*</i></label>
+                <textarea id="fjzqk" name="fjzqk" rows="8" placeholder="请填写项目现阶段进展情况"></textarea>
+            </div>
+            <div class="mui-input-row" id="zzyy"  style="display:none;">
+                <label for="fzzyy">项目暂停或终止原因<i style="color:red;">*</i></label>
+                <textarea id="fzzyy" name="fzzyy" rows="8" placeholder="请填写项目暂停或终止原因"></textarea>
+            </div>
+           
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()" style="width:100%;">提交</button>
+    </div>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\01跨产业集团\\YF研发', '集团公司研发项目变更、终止申请');
+            prepMsg();
+            upload();
+            watch();
+            getBPMParam();
+        });
+        mui('.mui-checkbox').on('change', 'input', function () {
+            var value = this.checked ? "1" : "0";
+            $(this).val(value);
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+                $("#ffybgfdl").val("0");
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function ifFybgfdl() {
+            var fybg = $("#ffybg").val();
+            if (fybg == '1') {
+                $("#ffybgfdl").removeAttr("readonly");
+
+            } else {
+                $("#ffybgfdl").attr("readonly", "true");
+
+            }
+
+        }
+        function changeLx() {
+            var lx = $("#flx").val();
+            if (lx == "项目变更") {
+                $("#bglx").css("display", "block");
+                $("#fybgfdl").css("display", "block");
+                $("#bgnrms").css("display", "block");
+                $("#yx").css("display", "block");
+                $("#jhzfy").css("display", "none");
+                $("#jzmqfy").css("display", "none");
+                $("#jzqk").css("display", "none");
+                $("#zzyy").css("display", "none");
+            } else if (lx == "项目终止") {
+                $("#jhzfy").css("display", "block");
+                $("#jzmqfy").css("display", "block");
+                $("#jzqk").css("display", "block");
+                $("#zzyy").css("display", "block");
+                $("#bglx").css("display", "none");
+                $("#fybgfdl").css("display", "none");
+                $("#bgnrms").css("display", "none");
+                $("#yx").css("display", "none");
+
+            } else {
+                $("#bglx").css("display", "none");
+                $("#fybgfdl").css("display", "none");
+                $("#bgnrms").css("display", "none");
+                $("#yx").css("display", "none");
+                $("#jhzfy").css("display", "none");
+                $("#jzmqfy").css("display", "none");
+                $("#jzqk").css("display", "none");
+                $("#zzyy").css("display", "none");
+            }
+        }
+
+        function prepMsg() {
+            //tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+            var flxdata = [
+                {
+                    value: "xmzz",
+                    text: "项目终止"
+                },
+                {
+                    value: "xmbg",
+                    text: "项目变更"
+                }
+            ];
+            var element = document.getElementById("flx");
+            var picker = new mui.PopPicker();
+            picker.setData(flxdata);
+            element.addEventListener('tap', function () {
+                picker.show(function (items) {
+                    element.value = items[0].text;
+                    changeLx();
+                });
+            }, false);
+        }
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+            $("#fgroup").val(fareaStr[fareaStr.length - 4]);
+            $("#fcompany").val(fareaStr[fareaStr.length - 3]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var ftel = $("#ftel").val();
+            var fxm_name_no = $("#fxm_name_no").val();
+            var flx = $("#flx").val();
+            var fjdbg = $("#fjdbg").val();
+            var ffybg = $("#ffybg").val();
+            var fmcbg = $("#fmcbg").val();
+            var fjsbg = $("#fjsbg").val();
+            var frybg = $("#frybg").val();
+            var ffybgfdl = $("#ffybgfdl").val();
+            var fbgnr = $("#fbgnr").val();
+            var fyx = $("#fyx").val();
+            var fjhzfy = $("#fjhzfy").val();
+            var fjzmqfy = $("#fjzmqfy").val();
+            var fjzqk = $("#fjzqk").val();
+            var fzzyy = $("#fzzyy").val();
+            var fflag_zz = 'true';
+            var fflag_bg = 'true';
+            if (!ftel || ftel == '') {
+                mui.toast('请输入联系方式');
+                return;
+            }
+            if (!fxm_name_no || fxm_name_no == '') {
+                mui.toast('请输入项目名称及编号');
+                return;
+            }
+            if (!flx || flx == '') {
+                mui.toast('请选择类型');
+                return;
+            }
+            if (flx == '项目终止') {
+                if (!fjhzfy || fjhzfy == '') {
+                    mui.toast('请输入项目计划总费用');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fjzmqfy || fjzmqfy == '') {
+                    mui.toast('请输入项目截止目前费用');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fjzqk || fjzqk == '') {
+                    mui.toast('请输入项目现阶段进展情况');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fzzyy || fzzyy == '') {
+                    mui.toast('请输入项目暂停或终止原因');
+                    fflag_zz = 'false';
+                    return;
+                }
+            }
+            if (fflag_zz == 'false') {
+                return;
+            }
+            if (flx == '项目变更') {
+                if (!fbgnr || fbgnr == '') {
+                    mui.toast('请输入变更内容描述');
+                    fflag_bg = 'false';
+                    return;
+                }
+                if (!fyx || fyx == '') {
+                    mui.toast('请输入对项目其他方面影响');
+                    fflag_bg = 'false';
+                    return;
+                }
+                
+            }
+            if (fflag_bg == 'false') {
+                return;
+            }
+            if (fjArray.toString() == null || fjArray.toString() == "") {
+                mui.toast("请上传附件");
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>集团公司研发项目变更、终止申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + ' <BPM_WGJTYFXMBGJZZSQ>';
+                    xml = xml + '   <fbillno>自动生成</fbillno>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fdept>' + fdept + '</fdept>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '   <ftel>' + ftel + '</ftel>';
+                    xml = xml + '   <fxm_name_no>' + fxm_name_no + '</fxm_name_no>';
+                    xml = xml + '   <flx>' + flx + '</flx>';
+                    xml = xml + '   <fjdbg>' + fjdbg + '</fjdbg>';
+                    xml = xml + '   <ffybg>' + ffybg + '</ffybg>';
+                    xml = xml + '  <fmcbg>' + fmcbg + '</fmcbg>';
+                    xml = xml + '   <fjsbg>' + fjsbg + '</fjsbg>';
+                    xml = xml + '   <frybg>' + frybg + '</frybg>';
+                    xml = xml + '    <ffybgfdl>' + ffybgfdl + '</ffybgfdl>';
+                    xml = xml + '   <fbgnr>' + fbgnr + '</fbgnr>';
+                    xml = xml + '   <fyx>' + fyx + '</fyx>';
+                    if (flx == '项目变更') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                        } else {
+                            xml = xml + '  <ffj></ffj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <ffj></ffj>'
+
+                    }
+                    xml = xml + '  <fjhzfy>' + fjhzfy + '</fjhzfy>';
+                    xml = xml + '  <fjzmqfy>' + fjzmqfy + '</fjzmqfy>';
+                    xml = xml + '  <fjzqk>' + fjzqk + '</fjzqk>';
+                    xml = xml + '  <fzzyy>' + fzzyy + '</fzzyy>';
+                    if (flx == '项目终止') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                        } else {
+                            xml = xml + '  <fj></fj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <fj></fj>'
+                    }
+
+
+                    xml = xml + ' </BPM_WGJTYFXMBGJZZSQ>';
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

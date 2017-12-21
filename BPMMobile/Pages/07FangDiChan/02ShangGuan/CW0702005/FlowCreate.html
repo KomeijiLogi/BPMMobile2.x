@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly"/>
+            </div> 
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" required placeholder="请填写联系方式"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                 <label for="fshmc">商户名称<i style="color:red;">*</i></label>
+                 <textarea rows="3" id="fshmc" name="fshmc" required placeholder="请填写商户名称"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdph">店铺号<i style="color:red;">*</i></label>
+                <input type="text" id="fdph" name="fdph" required placeholder="请填写店铺号"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fckbh">仓库编号<i style="color:red;">*</i></label>
+                <input type="text" id="fckbh" name="fckbh" placeholder="请填写仓库编号"/>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\07房地产集团\\02商管公司\\CW财务', '盛祥商管公司仓库押金退还申请');
+            prepMsg();
+            upload();
+            watch();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+          
+            $("#fdate").val(getNowFormatDate(2));
+        }
+
+
+        function Save() {
+            
+            var fareaStr = String(BPMOU).split("/");
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";;
+            var ftel = $("#ftel").val();
+            var fshmc = $("#fshmc").val();
+            var fdph = $("#fdph").val();
+            var fckbh = $("#fckbh").val();
+
+            if (!ftel || ftel=='') {
+                mui.toast('请填写联系方式');
+                return;
+            }
+            if (!fshmc || fshmc == '') {
+                mui.toast('请填写商户名称');
+                return;
+            }
+            if (!fdph || fdph == '') {
+                mui.toast('请填写店铺号');
+                return;
+            }
+            if (!fckbh || fckbh == '') {
+                mui.toast('请填写仓库编号');
+                return;
+            }
+
+            if (fjArray.length == 0) {
+                mui.toast('请上传附件');
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '  <Header>';
+                    xml = xml + '       <Method>Post</Method>';
+                    xml = xml + '        <ProcessName>盛祥商管公司仓库押金退还申请</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '         <DraftGuid></DraftGuid>';
+                    xml = xml + '         <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '         <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '          <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '      </Header>';
+                    xml = xml + '      <FormData>';
+                    xml = xml + '          <BPM_SXSGCKYJTHSQ>';
+                    xml = xml + '             <fbillno>自动生成</fbillno>';
+                    xml = xml + '             <fname>' + fname + '</fname>';
+                    xml = xml + '              <fdept>' + fdept + '</fdept>';
+                    xml = xml + '             <fdate>' + fdate + '</fdate>';
+                    xml = xml + '            <ftel>' + ftel + '</ftel>';
+                    xml = xml + '             <fshmc>' + fshmc + '</fshmc>';
+                    xml = xml + '              <fdph>' + fdph + '</fdph>';
+                    xml = xml + '              <fckbh>' + fckbh + '</fckbh>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '              <ffj>' + fjArray.toString().replace(',',';') + '</ffj>';
+                    } else {
+                        xml = xml + '              <ffj></ffj>';
+                    }
+                  
+                    xml = xml + '          </BPM_SXSGCKYJTHSQ>';
+                    xml = xml + '       </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

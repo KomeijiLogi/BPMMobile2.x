@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/vue.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper"> 
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row" v-for="item in items" v-show="item.show">
+               <label >{{item.name}}<i style="color:red;" v-show="item.spanShow">*</i></label>
+               <input v-bind:type="item.type" v-bind:id="item.id" v-bind:readonly="item.readonly" v-bind:name="item.id" v-bind:placeholder="item.placeholder" />
+           </div>
+            <div class="mui-input-row" style="height:auto;" v-for="textmsg in textmsgs" v-show="textmsg.show">
+                <label>{{textmsg.name}}<i style="color:red;" v-show="textmsg.spanShow">*</i></label>
+                <textarea v-bind:rows="textmsg.rows" v-bind:id="textmsg.id" v-bind:name="textmsg.id" v-bind:readonly="textmsg.readonly"  v-bind:placeholder="textmsg.placeholder" > 
+                </textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+
+    </div>
+    <script>
+        mui.init();
+
+        var v = new Vue({
+            el: '#wrapper',
+            data: {
+                items: [
+                    {
+                        name: '提报人',
+                        id: 'fname',
+                        type: 'text',
+                        readonly: true,
+                        show: true,
+                        placeholder: '请填写提报人',
+                        spanShow: false
+                    },
+                    {
+                        name: '提报部门',
+                        id: 'fdept',
+                        type: 'text',
+                        readonly: true,
+                        show: false,
+                        placeholder: '请填写提报部门',
+                        spanShow: false
+
+                    },
+                    {
+                        name: '提报时间',
+                        id: 'fdate',
+                        type: 'date',
+                        readonly: false,
+                        show: true,
+                        placeholder: '请选中提报时间',
+                        spanShow: false
+
+                    },
+                    {
+                        name: '金额(元)',
+                        id: 'fje',
+                        type: 'number',
+                        readonly: false,
+                        show: true,
+                        placeholder: '请填写金额(元)',
+                        spanShow: true
+
+                    },
+                    {
+                        name: '收据编号',
+                        id: 'fsjbh',
+                        type: 'text',
+                        readonly: false,
+                        show: true,
+                        placeholder: '请填写收据编号',
+                        spanShow: true
+
+                    },
+                    {
+                        name: '商户名称',
+                        id: 'fshmc',
+                        type: 'text',
+                        readonly: false,
+                        show: true,
+                        placeholder: '请填写商户名称',
+                        spanShow: true
+
+                    }
+
+                ],
+                textmsgs: [
+
+                    {
+                        name: '备注内容',
+                        id: 'fbz',
+                        rows: '3',
+                        readonly: false,
+                        show: true,
+                        placeholder: '请填写备注内容',
+                        spanShow: true
+
+                    }
+                ]
+            },
+            methods: {
+
+                prepMsg: function () {
+                    var context = this;
+                    console.log(context);
+                    $("#fdate").val(getNowFormatDate(2));
+                }
+            }
+
+        });
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\CW财务', '盛祥商管公司网银充值提报');
+            getBPMParam();
+            v.prepMsg();
+          
+        });
+
+
+       
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fje = $("#fje").val();
+            var fsjbh = $("#fsjbh").val();
+            var fshmc = $("#fshmc").val();
+            var fbz = $("#fbz").val();
+
+            if (!fje||fje==''){
+                mui.toast('请填写金额');
+                $("#fje").focus();
+                return;
+            }
+            if (!fsjbh || fsjbh == '') {
+                mui.toast('请填写收据编号');
+                $("#fsjbh").focus();
+                return;
+
+            }
+            if (!fshmc || fshmc == '') {
+                mui.toast('请填写商户名称');
+                $("#fshmc").focus();
+                return;
+            }
+            if (!fbz || fbz == '') {
+                mui.toast('请填写备注内容');
+                $("#fbz").focus();
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '     <XForm>';
+                    xml = xml + '      <Header>';
+                    xml = xml + '         <Method>Post</Method>';
+                    xml = xml + '        <ProcessName>盛祥商管公司网银充值提报</ProcessName>';
+                    xml = xml + '        <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '       <DraftGuid></DraftGuid>';
+                    xml = xml + '     <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '       <Action>提交</Action>';
+                    xml = xml + '         <Comment></Comment>';
+                    xml = xml + '      <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '         </Header>';
+                    xml = xml + '        <FormData>';
+                    xml = xml + '            <BPM_SXSGNYFWYCZLZ>';
+                    xml = xml + '               <fbillno>自动生成</fbillno>';
+                    xml = xml + '               <fname>' + fname + '</fname>';
+                    xml = xml + '                <fdept>' + fdept + '</fdept>';
+                    xml = xml + '                <fdate>' + fdate + '</fdate>';
+                    xml = xml + '               <fje>' + fje + '</fje>';
+                    xml = xml + '               <fsjbh>' + fsjbh + '</fsjbh>';
+                    xml = xml + '               <fshmc>' + fshmc + '</fshmc>';
+                    xml = xml + '               <fbz>' + fbz + '</fbz>';
+                   xml = xml + '           </BPM_SXSGNYFWYCZLZ>';
+                   xml = xml + '        </FormData>';
+                   xml = xml + '    </XForm>';
+                   PostXml(xml);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

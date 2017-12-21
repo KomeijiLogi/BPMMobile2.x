@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" >
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>报销人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>报销日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="adjla">
+                <div class="mui-input-group">
+
+                    <div class="mui-input-row">
+                        <label>费用申请单</label>
+                        <input type="text" id="fsqdh" name="fsqdh" readonly="readonly" class="hrefin" />
+                        <input type="hidden" id="fsqdID" name="fsqdID" readonly="readonly" />
+                    </div>
+
+                </div>
+
+                <div class="mui-input-row">
+                    <label>申请金额(元)</label>
+                    <input type="number" id="fsqje" name="fsqje" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label>借款金额(元)</label>
+                    <input type="number" id="fjkje" name="fjkje" readonly="readonly" />
+                </div>
+                <div class="mui-input-group" id="bxlist">
+
+
+                </div>
+            </div>
+
+            <div class="mui-input-row">
+                <label>合计申请(元)</label>
+                <input type="number" id="fsqtotal" name="fsqtotal" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>合计报销(元)</label>
+                <input type="number" id="ftotal" name="ftotal" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>大写金额</label>
+                <input type="text" id="ftotal_dx" name="ftotal_dx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>单据数<i style="color:red;">*</i></label>
+                <input type="text" id="fdjs" name="fdjs" />
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

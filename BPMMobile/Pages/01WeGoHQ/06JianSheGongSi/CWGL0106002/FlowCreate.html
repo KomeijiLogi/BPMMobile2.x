@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fhkyt">汇款用途<i style="color:red;">*</i></label>
+                <input type="text" id="fhkyt" name="fhkyt" placeholder="请填写汇款用途" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhkfs">汇款方式</label>
+                <input type="text" id="fhkfs" name="fhkfs" placeholder="请填写汇款方式" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhkjedx">汇款金额（大写）元<i style="color:red;">*</i></label>
+                <input type="text" id="fhkjedx" name="fhkjedx" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhkjexx">汇款金额（小写）元<i style="color:red;">*</i></label>
+                <input type="number" id="fhkjexx" name="fhkjexx" placeholder="请输入汇款金额"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fskdwmc">收款单位名称<i style="color:red;">*</i></label>
+                <input type="text" id="fskdwmc" name="fskdwmc" placeholder="请输入收款单位名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhhmc">开户行名称<i style="color:red;">*</i></label>
+                <input type="text" id="fkhhmc" name="fkhhmc" placeholder="请输入开户行名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhhzh">开户行账号<i style="color:red;">*</i></label>
+                <input type="text" id="fkhhzh" name="fkhhzh" placeholder="请输入开户行账号" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fifjj">是否加急</label>
+                <input type="hidden" id="fifjj" name="fifjj" readonly="readonly" value="否" />
+                <div class="mui-switch mui-switch-mini mui-switch-blue" id="fifjj_d">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fhkzt">汇款状态（是否完成）</label>
+                <input type="hidden" id="fhkzt" name="fhkzt" readonly="readonly" value="未完成" />
+                <div class="mui-switch mui-switch-mini mui-switch-blue mui-disabled" id="fhkzt_d">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+           
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\06建设公司\\CWGL财务管理', '建设公司汇款申请');
+
+            getBPMParam();
+            upload();
+            _init._preCreate();
+        });
+
+
+    </script>
+</body>
+</html>

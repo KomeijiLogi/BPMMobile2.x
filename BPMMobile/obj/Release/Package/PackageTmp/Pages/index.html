@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   
+    <link rel="stylesheet" href="../Content/mui.min.css" />
+    <link rel="stylesheet" href="../Content/loading.css"/>
+    <title></title>
+	<meta charset="utf-8" />
+   
+    <style>
+        html, body {
+            font-size: 20px;
+            background-color: white;
+            height: 100%;
+            overflow: auto;
+        }
+
+
+        .items {
+            font-size: 1.2rem;
+            text-align: center;
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .flowslist {
+            margin-top: 0.7rem;
+        }
+
+        .flowsitem {
+            font-size: 0.7rem;
+            padding-left: 1rem;
+        }
+
+        .accroditem {
+            color: black;
+            padding-left: 0rem;
+        }
+
+        .mui-table-view-cell:after {
+            left: 0%;
+        }
+        #badgeicon {
+           position:absolute;
+           /*right:1.7rem;*/
+           top:0.7rem;
+           z-index:998;
+           float:right;
+
+        }
+        @media screen and (max-height: 568px) {
+            #badgeicon {
+                position: absolute;
+                right:0.2rem;
+                top: 0.7rem;
+                z-index: 998;
+                float: right;
+            }
+        }
+       
+    </style>
+
+
+</head>
+<body>
+
+
+
+    <div class="mui-content" style="z-index:1;opacity:0.3;" >
+        <ul class="mui-table-view mui-grid-view">
+            <li class="mui-table-view-cell mui-media items">
+                <a href="/Pages/UndoFlow.html">
+
+                 
+                   <img src="../../Content/images/1.png" class="mui-media-object" style="width:2rem;height:2rem;" />
+                   <span class="mui-badge mui-badge-danger" id="badgeicon" style="display:none;">0</span> 
+                   <div class="mui-media-body">待办</div>
+                   
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media items">
+                <a href="/Pages/AskFlow.html">
+                    <img src="../../Content/images/2.png" class="mui-media-object" style="width:2rem;height:2rem;" />
+                    <div class="mui-media-body">申请</div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media items">
+                <a href="/Pages/DoneFlow.html">
+                    <img src="../../Content/images/3.png" class="mui-media-object" style="width:2rem;height:2rem;" />
+                    <div class="mui-media-body">已办</div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media items">
+                <a href="/Pages/DraftFlow.html">
+                    <img src="../../Content/images/4.png" class="mui-media-object" style="width:2rem;height:2rem;" />
+                    <div class="mui-media-body">草稿</div>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="mui-table-view flowslist">
+            <li class="mui-table-view-cell mui-collapse flowsitem  mui-active" id="canCreateListTotal">
+                <a class="mui-navigate-right" href="#">
+                    我要发起
+                    <span class="mui-badge mui-badge-primary" id="badgeCreate">0</span>
+                </a>
+                <div class="mui-collapse-content" id="canCreateList">
+                    <ul class="mui-table-view" id="createFL" >
+                        
+                    </ul>
+                   
+                   
+
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div  id="loadingAnimate" class="box">
+        <div class="loader">
+            <div class="loading">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../Scripts/vue.min.js"></script>
+    <script>
+
+          mui.init();
+
+
+          $(document).ready(function () {
+
+              //var width = document.body.clientWidth / 3.3;
+              var width = document.body.clientWidth / 3.3;
+              //$('.items').css('width', width + 'px');
+              $('.items').css('width', '25%');
+              getMsg();
+             
+          });
+
+          XuntongJSBridge.call('setWebViewTitle', { 'title': '流程审批' });
+          XuntongJSBridge.call('createPop', {
+                'popTitle': '',
+                'popTitleCallBackId': '1',
+                'items': [{'text':'刷新','callBackId':'callback1'}],
+                'menuList': [
+                   'openWithBrowser'
+                ],
+
+           }, function (result) {
+                if (result.success == true || result.success == 'true') {
+                    var callBackId = result.data ? result.data.callBackId : '';
+                    if (callBackId == 'callback1') {
+                       
+                        window.location.reload();
+
+                    } else if (callBackId == 'callback2') {
+
+                    } else {
+
+                    }
+                }
+
+          });
+
+          //前端获取ticket
+          function getUrlParam(name) {
+
+              var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+
+              var r;
+              if (window.location.search != null && window.location.search!="") {
+                  
+                  r = window.location.search.substr(1).match(reg);
+
+                  if (r != null) {
+                     
+                      return unescape(r[2]);
+                  }
+              } else {
+                  var ticket = localStorage.getItem('ticket');                  
+                  return ticket;
+              }
+
+             
+              return null;
+          }
+
+         
+          function getMsg() {
+
+              var ticket = getUrlParam('ticket');
+
+              //var ticket = 'bb7fac6be611893d1f912d68edae129b';
+
+             localStorage.clear();
+
+             localStorage.setItem('ticket', ticket);
+
+             
+             $.ajax({
+                 type: "get",
+                 url: "/api/bpm/GetCanCreateProcess",
+                 data: {},
+                 beforeSend: function (XHR) {
+                     XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                 },
+                 success: function (data, status) {
+
+                     if (status == "success") {
+
+                         $('#badgeCreate').text(data.length);
+                         //console.log(data);
+                         if (data.length == 0) {
+                             mui.toast('暂无移动端可发起流程');
+                         } else {
+                             console.log(data);
+
+                             //var groupArr = new Array();
+                             //for (var n = 0; n < data.length; n++){
+                             //    groupArr.push(data[n].Group);
+                             //}
+                             //groupArr = removeDuplicatedItem(groupArr);
+
+                             //for (var j = 0; j < groupArr.length;j++){
+                             //    var li = '   <li class="mui-table-view-cell  flowsitem mui-collapse mui-active">';
+                             //    li = li + '    <a class="mui-navigate-right" href="#">';
+                             //    li = li + groupArr[j];                                              
+                             //    li = li + '    </a>';
+                             //    li = li + '    <div class="mui-collapse-content" id="canCreateList">';
+                             //    li = li + '       <ul class="mui-table-view" id="createFL">';
+                             //    li = li + '       </ul>';            
+                             //    li = li + '    </div>';
+                             //    li = li + '   </li>';
+                             //    $(".flowslist").append(li);  
+                             //}
+
+
+                             for (var i = 0; i < data.length; i++) {
+
+                                 var li = '   <li class="mui-table-view-cell mui-media accroditem">';
+                                 li = li + '          <a href="' + data[i].CreatePage + '?version=' + data[i].Version + '" style="padding-left:0rem;">';
+                                 li = li + '          <img class="mui-media-object mui-pull-left" src="' + data[i].Icon + '">';
+                                 li = li + '          <div class="mui-media-body"> ';
+                                 li = li + '                ' + data[i].DisplayName + '';
+                                 li = li + '                <p class="mui-ellipsis">' + data[i].Description + '</p> ';
+                                 li = li + '           </div> ';
+                                 li = li + '          </a> ';
+                                 li = li + '   </li> ';
+                                 //$(".mui-navigate-right:contains('" + data[i].Group + "')").parent().find('ul').prepend(li);
+                                 //console.log($(".mui-navigate-right:contains('" + data[i].Group + "')").parent().find('ul'));
+                                 $(li).prependTo("#createFL");
+                             }
+
+
+                         }
+
+
+
+                     }
+                 },
+                 error: function (e) { },
+                 complete: function () {
+                     $("#loadingAnimate").css('display', "none");
+                     $(".mui-content").css('opacity', '1');
+                 }
+
+             });
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetMyTaskCount",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+
+                    if (status == "success") {
+                        $("#badgeicon").text(data);
+                        $("#badgeicon").css('display', 'block');
+                    }
+                },
+                error: function (e) {  },
+                complete: function () {  }
+
+            })
+
+          }
+
+     
+    </script>
+
+</body>
+</html>

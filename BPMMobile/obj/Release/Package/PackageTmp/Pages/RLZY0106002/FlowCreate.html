@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <!--<script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>-->
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <!--<link rel="stylesheet" href="../../Content/upload.css" />-->
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">所属部门</label>
+                <input type="text" id="fdept" name="fdept"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgw">岗位<i style="color:red;">*</i></label>
+                <input type="text" id="fgw" name="fgw" placeholder="请填写岗位"/>
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fksdate">考核开始时间<i style="color:red;">*</i></label>
+                <input type="date" id="fksdate" name="fksdate"/>
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fjsdate">考核结束时间<i style="color:red;">*</i></label>
+                <input type="date" id="fjsdate" name="fjsdate"/>
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fbmygdb">部门员工代表<i style="color:red;">*</i></label>
+                <input type="hidden" id="fbmygdbno" name="fbmygdbno"/>
+                <input type="text" id="fbmygdb" name="fbmygdb" readonly="readonly" placeholder="请选择部门员工代表"/>
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fywbmdb">业务部门代表<i style="color:red;">*</i></label>
+                <input type="hidden" id="fywbmdbno" name="fywbmdbno"/>
+                <input type="text" id="fywbmdb" name="fywbmdb" readonly="readonly" placeholder="请选择业务部门代表"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fzwpj">自我评价<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fzwpj" name="fzwpj" placeholder="请填写自我评价"></textarea>
+            </div>
+           
+        </form>
+    </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\01威高集团总部\\06建设公司\\RLZY人力资源', '建设公司行管（销售）人员试用期转正申请');
+            prepMsg();
+            
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+        function tapEvent() {
+
+            $("#fbmygdb").on('tap', function () {
+                XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
+
+                    if (typeof (result) == "string") {
+                        result = JSON.parse(result);
+                    }
+
+                    var chosenNameArr = new Array();
+                    var chosenOpenIdArr=new Array(); 
+                    if (result.success == true || result.success == "true"){
+                        for (var i = 0; i < result.data.persons.length; i++) {
+                            chosenNameArr.push(result.data.persons[i].personName);
+                            chosenOpenIdArr.push((String)(result.data.persons[i].openId));
+                            
+                        }
+                        $("#fbmygdb").val(chosenNameArr);
+                        var chosenUserIdArr = new Array();
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/bpm/PostAccount",
+                            data: { "ids": chosenOpenIdArr },
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                            }, success: function (data, status) {
+
+                                if (status == "success") {
+
+
+                                    for (var i = 0; i < data.data.length; i++) {
+                                        chosenUserIdArr.push(data.data[i].phone);
+                                    }
+                                    $("#fbmygdbno").val(chosenUserIdArr);
+                                    
+                                }
+                            }, error: function (e) {
+                            }, complete: function () {
+                            }
+                        });
+                    }
+                });
+
+            });
+
+
+            $("#fywbmdb").on('tap', function () {
+                XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
+
+                    if (typeof (result) == "string") {
+                        result = JSON.parse(result);
+                    }
+
+                    var chosenNameArr = new Array();
+                    var chosenOpenIdArr = new Array();
+                   
+                    if (result.success == true || result.success == "true") {
+                        for (var i = 0; i < result.data.persons.length; i++) {
+                            chosenNameArr.push(result.data.persons[i].personName);
+                            chosenOpenIdArr.push((String)(result.data.persons[i].openId));
+                            
+                        }
+                        
+                        $("#fywbmdb").val(chosenNameArr);
+                        var chosenUserIdArr = new Array();
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/bpm/PostAccount",
+                            data: { "ids": chosenOpenIdArr },
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                            }, success: function (data, status) {
+
+                                if (status == "success") {
+
+
+                                    for (var i = 0; i < data.data.length; i++) {
+                                        chosenUserIdArr.push(data.data[i].phone);
+                                    }
+                                    $("#fywbmdbno").val(chosenUserIdArr);
+
+                                }
+                            }, error: function (e) {
+                            }, complete: function () {
+                            }
+                        });
+                    }
+                });
+
+            });
+        }
+
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var fgw = $("#fgw").val();
+            var fksdate = $("#fksdate").val() + " 00:00:00";
+            var fjsdate = $("#fjsdate").val() + " 00:00:00";
+            var fbmygdb = $("#fbmygdb").val();
+            var fbmygdbno = $("#fbmygdbno").val();
+            var fywbmdb = $("#fywbmdb").val();
+            var fywbmdbno = $("#fywbmdbno").val();
+            var fzwpj = $("#fzwpj").val();
+            
+            if (!fgw||fgw==''){
+                mui.toast('请填写岗位');
+                return false;
+            }
+            if (!$("#fksdate").val() || $("#fksdate").val() == '') {
+                mui.toast('请填写考核开始日期');
+                return false;
+            }
+            if (!$("#fjsdate").val() || $("#fjsdate").val() == '') {
+                mui.toast('请填写考核结束日期');
+                return false;
+            }
+            if (!fbmygdb || fbmygdb == '') {
+                mui.toast('请选择部门员工代表');
+                return false;
+            }
+            if (!fywbmdb || fywbmdb == '') {
+                mui.toast('请选择业务部门代表');
+                return false;
+            }
+            if (!fzwpj || fzwpj == '') {
+                mui.toast('请填写自我评价');
+                return false;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '  <XForm>';
+                    xml = xml + '     <Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '         <ProcessName>建设公司行管（销售）人员试用期转正申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '          <建设公司_行管人员_转正申请>';
+                    xml = xml + '              <单号>自动生成</单号>';
+                    xml = xml + '             <申请人>' + fname + '</申请人>';
+                    xml = xml + '               <申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '               <所属部门>' + fdept + '</所属部门>';
+                    xml = xml + '               <岗位>' + fgw + '</岗位>';
+                    xml = xml + '               <考评期开始>' + fksdate + '</考评期开始>';
+                    xml = xml + '               <考评期结束>' + fjsdate + '</考评期结束>';
+                    xml = xml + '              <部门员工>' + fbmygdb + '</部门员工>';
+                    xml = xml + '              <部门员工号>' + fbmygdbno + '</部门员工号>';
+                    xml = xml + '              <业务部门>' + fywbmdb + '</业务部门>';
+                    xml = xml + '              <业务部门工号>' + fywbmdbno + '</业务部门工号>';
+                    xml = xml + '               <自我评价>' + fzwpj + '</自我评价>';
+                    xml = xml + '               <部门员工代表意见></部门员工代表意见>';
+                    xml = xml + '                <业务部门代表意见></业务部门代表意见>';
+                    xml = xml + '                <员工突出方面></员工突出方面>';
+                    xml = xml + '               <员工发展方向></员工发展方向>';
+                    xml = xml + '               <员工改善提升点></员工改善提升点>';
+                    xml = xml + '               <考评意见按期转正></考评意见按期转正>';
+                    xml = xml + '              <延长月数></延长月数>';
+                    xml = xml + '              <延长到期日期></延长到期日期>';
+                    xml = xml + '                <年薪></年薪>';
+                    xml = xml + '               <月工基本工资></月工基本工资>';
+                    xml = xml + '               <年绩效工资></年绩效工资>';
+                    xml = xml + '           </建设公司_行管人员_转正申请>';
+                    xml = xml + '        </FormData>';
+                    xml = xml + '    </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

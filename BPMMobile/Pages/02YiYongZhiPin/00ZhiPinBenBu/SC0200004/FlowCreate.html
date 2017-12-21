@@ -1,0 +1,595 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fddbh">订单编号</label>
+                <input type="text" id="fddbh" name="fddbh" placeholder="请填写订单编号" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhmc">客户名称</label>
+                <input type="text" id="fkhmc" name="fkhmc" placeholder="请填写客户名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyqdate">要求日期</label>
+                <input type="date" id="fyqdate" name="fyqdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fddlb">订单类别</label>
+                <input type="text" id="fddlb" name="fddlb" readonly="readonly" placeholder="请选择订单类别" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwglx">外工类型</label>
+                <input type="text" id="fwglx" name="fwglx" readonly="readonly" placeholder="请选择外工类型" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fkhyq">客户要求</label>
+                <textarea rows="8" id="fkhyq" name="fkhyq" placeholder="请填写客户要求"></textarea>
+            </div>
+            <!--提交人附件-->
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <ul class="mui-table-view flowslist">
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        外贸部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_wmb">评审意见</label>
+                            <textarea id="fshyj_wmb" name="fshyj_wmb" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_wmb">责任人签名</label>
+                            <input type="text" id="fzrrqm_wmb" name="fzrrqm_wmb" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_wmb">日期</label>
+                            <input type="date" id="fqhdate_wmb" name="fqhdate_wmb" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        综合计划部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_zhjh">评审意见</label>
+                            <textarea id="fshyj_zhjh" name="fshyj_zhjh" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_zhjh">责任人签名</label>
+                            <input type="text" id="fzrrqm_zhjh" name="fzrrqm_zhjh" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_zhjh">日期</label>
+                            <input type="date" id="fqhdate_zhjh" name="fqhdate_zhjh" readonly="readonly" />
+                        </div>
+                        <!--综合计划附件-->
+                        <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                            <div class="border border-t upload-img" style="top:0rem;">
+                                <!--上传图片-->
+                                <div class="clearfix upload-btn" id="children-bg">
+                                    <label class="label">图片</label>
+                                    <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                    <!--上传图片按钮  -->
+                                    <span class="upload-addbtn" style="display:none;">
+                                        <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file_zhjh" style="opacity:0;">
+                                    </span>
+                                </div>
+                                <div class="upload-img-list-zhjh"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        技术部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_jsb">评审意见</label>
+                            <textarea id="fshyj_jsb" name="fshyj_jsb" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_jsb">责任人签名</label>
+                            <input type="text" id="fzrrqm_jsb" name="fzrrqm_jsb" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_jsb">日期</label>
+                            <input type="date" id="fqhdate_jsb" name="fqhdate_jsb" readonly="readonly" />
+                        </div>
+                        <!--技术部附件-->
+                        <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                            <div class="border border-t upload-img" style="top:0rem;">
+                                <!--上传图片-->
+                                <div class="clearfix upload-btn" id="children-bg">
+                                    <label class="label">图片</label>
+                                    <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                    <!--上传图片按钮  -->
+                                    <span class="upload-addbtn" style="display:none;">
+                                        <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file_jsb" style="opacity:0;">
+                                    </span>
+                                </div>
+                                <div class="upload-img-list-jsb"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        质量保证部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_zlbzb">评审意见</label>
+                            <textarea id="fshyj_zlbzb" name="fshyj_zlbzb" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_zlbzb">责任人签名</label>
+                            <input type="text" id="fzrrqm_zlbzb" name="fzrrqm_zlbzb" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_zlbzb">日期</label>
+                            <input type="date" id="fqhdate_zlbzb" name="fqhdate_zlbzb" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        国内采购部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_gncgb">评审意见</label>
+                            <textarea id="fshyj_gncgb" name="fshyj_gncgb" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_gncgb">责任人签名</label>
+                            <input type="text" id="fzrrqm_gncgb" name="fzrrqm_gncgb" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_gncgb">日期</label>
+                            <input type="date" id="fqhdate_gncgb" name="fqhdate_gncgb" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        车间主任
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_cjzr">评审意见</label>
+                            <textarea id="fshyj_cjzr" name="fshyj_cjzr" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_cjzr">责任人签名</label>
+                            <input type="text" id="fzrrqm_cjzr" name="fzrrqm_cjzr" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_cjzr">日期</label>
+                            <input type="date" id="fqhdate_cjzr" name="fqhdate_cjzr" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        生产部经理
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_scbjl">评审意见</label>
+                            <textarea id="fshyj_scbjl" name="fshyj_scbjl" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_scbjl">责任人签名</label>
+                            <input type="text" id="fzrrqm_scbjl" name="fzrrqm_scbjl" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_scbjl">日期</label>
+                            <input type="date" id="fqhdate_scbjl" name="fqhdate_scbjl" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        财务部
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label for="fzsl">总数量</label>
+                            <input type="number" id="fzsl" name="fzsl" placeholder="请填写总数量 " readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzje">总金额</label>
+                            <input type="number" id="fzje" name="fzje" placeholder="请填写总金额" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmlr">毛利润</label>
+                            <input type="number" id="fmlr" name="fmlr" placeholder="请填写毛利润" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fjlr">净利润</label>
+                            <input type="number" id="fjlr" name="fjlr" placeholder="请填写净利润" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_cwb">责任人签名</label>
+                            <input type="text" id="fzrrqm_cwb" name="fzrrqm_cwb" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_cwb">日期</label>
+                            <input type="date" id="fqhdate_cwb" name="fqhdate_cwb" readonly="readonly" />
+                        </div>
+                        <!--财务附件-->
+                        <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                            <div class="border border-t upload-img" style="top:0rem;">
+                                <!--上传图片-->
+                                <div class="clearfix upload-btn" id="children-bg">
+                                    <label class="label">图片</label>
+                                    <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                    <!--上传图片按钮  -->
+                                    <span class="upload-addbtn" style="display:none;">
+                                        <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file_cwb" style="opacity:0;">
+                                    </span>
+                                </div>
+                                <div class="upload-img-list-cwb"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        生产副总
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_scfz">评审意见</label>
+                            <textarea id="fshyj_scfz" name="fshyj_scfz" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_scfz">责任人签名</label>
+                            <input type="text" id="fzrrqm_scfz" name="fzrrqm_scfz" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_scfz">日期</label>
+                            <input type="date" id="fqhdate_scfz" name="fqhdate_scfz" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        总经理
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshyj_zjl">评审意见</label>
+                            <textarea id="fshyj_zjl" name="fshyj_zjl" rows="8" placeholder="请填写评审意见" readonly="readonly"></textarea>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzrrqm_zjl">责任人签名</label>
+                            <input type="text" id="fzrrqm_zjl" name="fzrrqm_zjl" placeholder="请填写责任人签名" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqhdate_zjl">日期</label>
+                            <input type="date" id="fqhdate_zjl" name="fqhdate_zjl" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+
+            getBPMParam();
+
+            getVersion('\\02医用制品集团\\00医用制品集团本部\\SC生产', '富森公司外加工订单评审');
+
+            prepMsg();
+
+
+            upload();
+
+
+
+        });
+
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function tapEvent() {
+            var fddlbdata = [
+                {
+                    value: 'fhxdd',
+                    text:'缝合线订单'
+                },
+                {
+                    value: 'sszdd',
+                    text: '手术针订单'
+                }
+
+            ];
+
+            showPicker('fddlb', fddlbdata);
+            var fwglxdata = [
+                {
+                    value: 'qwg',
+                    text: '全外工'
+                },
+                {
+                    value: 'bwg',
+                    text: '半外工'
+                }
+
+            ];
+
+            showPicker('fwglx', fwglxdata);
+
+        }
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+            $("#fyqdate").val(getNowFormatDate(2));
+        }
+
+
+        function Save() {
+
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fddbh = $("#fddbh").val();
+            var fkhmc = $("#fkhmc").val();
+            var fyqdate = $("#fyqdate").val();
+            var fddlb = $("#fddlb").val();
+            var fwglx = $("#fwglx").val();
+            var fkhyq = $("#fkhyq").val();
+            //todo:附件
+
+            //外贸部
+            var fshyj_wmb = $("#fshyj_wmb").val();
+            var fzrrqm_wmb = $("#fzrrqm_wmb").val();
+            var fqhdate_wmb = $("#fqhdate_wmb").val() + " 00:00:00";
+
+            //综合计划
+            var fshyj_zhjh = $("#fshyj_zhjh").val();
+            var fzrrqm_zhjh = $("#fzrrqm_zhjh").val();
+            var fqhdate_zhjh = $("#fqhdate_zhjh").val() + " 00:00:00";
+            //todo:综合计划附件
+
+            //技术部
+            var fshyj_jsb = $("#fshyj_jsb").val();
+            var fzrrqm_jsb = $("#fzrrqm_jsb").val();
+            var fqhdate_jsb = $("#fqhdate_jsb").val() + " 00:00:00";
+            //todo:技术部附件
+
+            //质量保证部
+            var fshyj_zlbzb = $("#fshyj_zlbzb").val();
+            var fzrrqm_zlbzb = $("#fzrrqm_zlbzb").val();
+            var fqhdate_zlbzb = $("#fqhdate_zlbzb").val() + " 00:00:00";
+
+            //国内采购部
+            var fshyj_gncgb = $("#fshyj_gncgb").val();
+            var fzrrqm_gncgb = $("#fzrrqm_gncgb").val();
+            var fqhdate_gncgb = $("#fqhdate_gncgb").val() + " 00:00:00";
+
+            //车间主任
+            var fshyj_fhxcj = $("#fshyj_cjzr").val();
+            var fzrrqm_fhxcj = $("#fzrrqm_cjzr").val();
+            var fqhdate_fhxcj = $("#fqhdate_cjzr").val() + " 00:00:00";
+
+
+            //生产部经理
+            var fshyj_scbjl = $("#fshyj_scbjl").val();
+            var fzrrqm_scbjl = $("#fzrrqm_scbjl").val();
+            var fqhdate_scbjl = $("#fqhdate_scbjl").val() + " 00:00:00";
+
+            //财务部
+            var fzsl = $("#fzsl").val();
+            var fzje = $("#fzje").val();
+            var fmlr = $("#fmlr").val();
+            var fjlr = $("#fjlr").val();
+            var fzrrqm_cwb = $("#fzrrqm_cwb").val();
+            var fqhdate_cwb = $("#fqhdate_cwb").val() + " 00:00:00";
+
+            //生产副总
+            var fshyj_scfz = $("#fshyj_scfz").val();
+            var fzrrqm_scfz = $("#fzrrqm_scfz").val();
+            var fqhdate_scfz = $("#fqhdate_scfz").val() + " 00:00:00";
+
+            //总经理
+            var fshyj_zjl = $("#fshyj_zjl").val();
+            var fzrrqm_zjl = $("#fzrrqm_zjl").val();
+            var fqhdate_zjl = $("#fqhdate_zjl").val() + " 00:00:00";
+
+            //校验部分
+            if (!fddlb || fddlb==''){
+                mui.toast('请选择订单类别');
+                return false;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>富森公司外加工订单评审</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + ' <富森公司外加工订单评审表>';
+                    xml = xml + '  <fbillno>自动生成</fbillno>';
+                    xml = xml + '    <TaskID></TaskID>';
+                    xml = xml + '<提报人>' + fname + '</提报人>';
+                    xml = xml + '   <日期>' + fdate + '</日期>';
+                    xml = xml + '   <订单编号>' + fddbh + '</订单编号>';
+                    xml = xml + '   <客户名称>' + fkhmc + '</客户名称>';
+                    xml = xml + '   <要求交期>' + fyqdate + '</要求交期>';
+                    xml = xml + '    <订单类别>' + fddlb + '</订单类别>';
+                    xml = xml + '    <外工类型>' + fwglx + '</外工类型>';
+                    xml = xml + '   <客户要求>' + fkhyq + '</客户要求>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+                        xml = xml + '      <附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                    } else {
+                        xml = xml + '   <附件></附件>';
+                    }
+
+
+                    xml = xml + '   <财务附件></财务附件>';
+                    xml = xml + '   <外贸部评审意见></外贸部评审意见>';
+                    xml = xml + '   <外贸部评签字></外贸部评签字>';
+                    xml = xml + '    <外贸部评审时间></外贸部评审时间>';
+                    xml = xml + '   <综合计划评审意见></综合计划评审意见>';
+                    xml = xml + '  <综合计划评签字></综合计划评签字>';
+                    xml = xml + '    <综合计划评评审时间></综合计划评评审时间>';
+                    xml = xml + '   <综合计划部附件></综合计划部附件>';
+                    xml = xml + '  <技术部评审意见></技术部评审意见>';
+                    xml = xml + '   <技术部评审签字></技术部评审签字>';
+                    xml = xml + '   <技术部评审时间></技术部评审时间>';
+                    xml = xml + '   <技术部附件></技术部附件>';
+                    xml = xml + '    <质量保证部评审意见></质量保证部评审意见>';
+                    xml = xml + '   <质量保证部评审签字></质量保证部评审签字>';
+                    xml = xml + '   <质量保证部评审时间></质量保证部评审时间>';
+                    xml = xml + '   <国内采购部评审意见></国内采购部评审意见>';
+                    xml = xml + '    <国内采购部评审签字></国内采购部评审签字>';
+                    xml = xml + '   <国内采购部评审时间></国内采购部评审时间>';
+                    xml = xml + '  <车间主任评审意见></车间主任评审意见>';
+                    xml = xml + '  <车间主任签字></车间主任签字>';
+                    xml = xml + '   <车间主任评审时间></车间主任评审时间>';
+                    xml = xml + '   <生产部经理评审意见></生产部经理评审意见>';
+                    xml = xml + '  <生产部经理评审签字></生产部经理评审签字>';
+                    xml = xml + '   <生产部经理评审时间></生产部经理评审时间>';
+                    xml = xml + '  <财务部总数量></财务部总数量>';
+                    xml = xml + ' <财务部总金额></财务部总金额>';
+                    xml = xml + '  <财务部评审签字></财务部评审签字>';
+                    xml = xml + '   <财务部评审时间></财务部评审时间>';
+                    xml = xml + '   <财务部毛利润></财务部毛利润>';
+                    xml = xml + '   <财务部总静利润></财务部总静利润>';
+                    xml = xml + '   <生产副总评审意见></生产副总评审意见>';
+                    xml = xml + '   <生产副总评审签字></生产副总评审签字>';
+                    xml = xml + '   <生产副总评审时间></生产副总评审时间>';
+                    xml = xml + '    <总经理评审意见></总经理评审意见>';
+                    xml = xml + '   <总经理评审签字></总经理评审签字>';
+                    xml = xml + '   <总经理评审时间></总经理评审时间>';
+                    xml = xml + '   </富森公司外加工订单评审表>';
+
+                    xml = xml + '  </FormData >';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        //判断是否是PC端，如果是则显示上传文件部分插件，如果是移动端那么默认隐藏
+        function isPCSet() {
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Android") != -1 || userAgent.indexOf("iPad") != -1 || userAgent.indexOf("iPhone") != -1) {
+                return;
+            } else {
+
+
+            }
+
+        }
+    </script>
+</body>
+</html>

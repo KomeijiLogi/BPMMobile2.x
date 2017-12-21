@@ -1,0 +1,400 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2; display:none;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fno">员工编码<i style="color:red;">*</i></label>
+                <input type="text" id="fno" name="fno" readonly="readonly" placeholder="请选择员工" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frmfs">任免方式<i style="color:red;">*</i></label>
+                <input type="text" id="frmfs" name="frmfs" readonly="readonly" placeholder="请选择任免方式" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_jt">所属集团</label>
+                <input type="text" id="fdc_jt" name="fdc_jt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_gs">所属公司</label>
+                <input type="text" id="fdc_gs" name="fdc_gs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_bm_name">所在部门</label>
+                <input type="text" id="fdc_bm_name" name="fdc_bm_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxrzw_name">现任职位</label>
+                <input type="text" id="fxrzw_name" name="fxrzw_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzwlevel">现任职务层级</label>
+                <input type="text" id="fyzwlevel" name="fyzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_rzzq">任职日期</label>
+                <input type="date" id="fdc_rzzq" name="fdc_rzzq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_jt">拟任集团</label>
+                <input type="text" id="fdr_jt" name="fdr_jt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_gs">拟任公司</label>
+                <input type="text" id="fdr_gs" name="fdr_gs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_bm_name">拟任部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdr_bm_name" name="fdr_bm_name" readonly="readonly" placeholder="请选择拟任部门" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fnrzw_name">拟任职位<i style="color:red;">*</i></label>
+                <input type="text" id="fnrzw_name" name="fnrzw_name" readonly="readonly" placeholder="请选择拟任职位" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxzwlevel">拟任职务层级</label>
+                <input type="text" id="fxzwlevel" name="fxzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_rzzq">拟任职日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdr_rzzq" name="fdr_rzzq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>员工信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsex">性别</label>
+                <input type="text" id="fsex" name="fsex" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbirth">出生日期</label>
+                <input type="text" id="fbirth" name="fbirth" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fmz">民族</label>
+                <input type="text" id="fmz" name="fmz" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzzmm">政治面貌</label>
+                <input type="text" id="fzzmm" name="fzzmm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjg">籍贯</label>
+                <input type="text" id="fjg" name="fjg" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzgxl">最高学历</label>
+                <input type="text" id="fzgxl" name="fzgxl" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbyyx">毕业院校</label>
+                <input type="text" id="fbyyx" name="fbyyx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzy">专业</label>
+                <input type="text" id="fzy" name="fzy" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbytime">毕业时间</label>
+                <input type="date" id="fbytime" name="fbytime" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgzdate">参加工作日期</label>
+                <input type="date" id="fgzdate" name="fgzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frzdate">入威高日期</label>
+                <input type="date" id="frzdate" name="frzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhfs">上年考核分数<i style="color:red;">*</i></label>
+                <input type="number" id="fkhfs" name="fkhfs" placeholder="请填写上年考核分数" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhdj">上年考核等级<i style="color:red;">*</i></label>
+                <input type="text" id="fkhdj" name="fkhdj" placeholder="请填写上年考核等级" />
+            </div>
+           
+            <input type="hidden" id="fdc_gs_sx" name="fdc_gs_sx" value="" />
+            <input type="hidden" id="fdc_gs_fzrno" name="fdc_gs_fzrno" value="" />
+            <input type="hidden" id="fdc_bm_no" name="fdc_bm_no" value="" />
+            <input type="hidden" id="fdc_bm_fzrno" name="fdc_bm_fzrno" value="" />
+            <input type="hidden" id="fxrzw_no" name="fxrzw_no" value="" />
+            <input type="hidden" id="fdr_gs_sx" name="fdr_gs_sx" value="" />
+            <input type="hidden" id="fdr_gs_fzrno" name="fdr_gs_fzrno" value="" />
+            <input type="hidden" id="fdr_bm_no" name="fdr_bm_no" value="" />
+            <input type="hidden" id="fdr_bm_fzrno" name="fdr_bm_fzrno" value="" />
+            <input type="hidden" id="fnrzw_no" name="fnrzw_no" value="" />
+            <input type="hidden" id="fjsjz_no" name="fjsjz_no" value="" />
+            <input type="hidden" id="foper" name="foper" value="" />
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>任免理由<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row" style="height:auto;">
+                <textarea rows="5" id="frmly" name="frmly" placeholder="请填写任免理由" class="mui-col-xs-12"></textarea>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>工作经历</label>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+           
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+    <div id="search" style="display:block;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenDepart()">取消</a>
+            <h1 class="mui-title">选择</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="dept_list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\01跨产业集团\\RL人力', '集团公司日常干部任免申请');
+            prepMsg();
+            getBPMParam();
+            upload();
+            watch();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fapplyman").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function showDepart() {
+
+        }
+        function hiddenDepart() {
+
+        }
+
+        function prepMsg() {
+            $("#fdate").val(getNowFormatDate(2));
+
+            tapEvent();
+           
+        }
+
+        function tapEvent() {
+            $("input[type='search']").on('change', function (data) {
+
+                var searchVal = $(this).val();
+                console.log(searchVal);
+                if (!searchVal || searchVal == '') {
+                    $("#dept_list").empty();
+                    return;
+                }
+                var xml = '<?xml version= "1.0" ?>';
+                xml = xml + '      <Requests>';
+                xml = xml + '     <Params>';
+                xml = xml + '         <DataSource>PS</DataSource>';
+                xml = xml + '         <ID>erpcloud_公用_获取组织信息</ID>';
+                xml = xml + '         <Type>1</Type>';
+                xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                xml = xml + '        <ProcedureName>erpcloud_公用_获取组织信息</ProcedureName>';
+                xml = xml + '        <Filter>';
+                xml = xml + '            <fdepartname>' + searchVal + '</fdepartname>';
+                xml = xml + '        </Filter>';
+                xml = xml + '      </Params>';
+                xml = xml + '   </Requests>';
+                var initMainMsg = $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/DataProvider",
+                    data: { '': xml },
+
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                    }
+                }).done(function (data) {
+
+                    var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                    console.log(provideData);
+                    var departInfoArr = provideData.Tables[0].Rows;
+                    for (var i = 0; i < departInfoArr.length;i++){
+                        var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                        li = li + '<input type="radio" name="radio" data-deptId="' + departInfoArr[i].DEPTID + '" ';
+                        li = li + 'data-fssgroup="' + departInfoArr[i].所属产业集团 + '" data-fsscompany="' + departInfoArr[i].所属公司 + '" ';
+                        li = li + 'data-ffzrname="' + departInfoArr[i].负责人 + '" data=ffzrno="' + departInfoArr[i].负责人编码 + '"';
+                        li = li + 'data-flj="' + departInfoArr[i].部门全路径 + '" data-fdeptname="' + departInfoArr[i].部门名称 + '"';
+                        li = li + 'data-fdepttype="' + departInfoArr[i].部门类型 + '"';
+                        li = li + '/>' + departInfoArr[i].部门名称 + '&nbsp' + departInfoArr[i].所属公司;
+                        li = li + '</li>';
+                        $("#dept_list").append(li);  
+                    }
+                    var header = document.querySelector('header.mui-bar');
+                    var list = document.getElementById('list');
+                    var done = document.getElementById('done');
+                    //calc hieght
+                    list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                    //create
+                    window.indexedList = new mui.IndexedList(list);
+                    //done event
+                    done.addEventListener('tap', function () {
+                        var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+                        var checkedValues = [];
+                        var checkedElements = [];
+                        checkboxArray.forEach(function (box) {
+                            if (box.checked) {
+                                checkedValues.push(box.parentNode.innerText);
+                                console.log(box);
+
+                            }
+                        });
+                        if (checkedValues.length > 0) {
+                        } else {
+
+                        }
+                    }, false);
+                    mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                        var count = list.querySelectorAll('input[type="radio"]:checked').length;
+                        var value = count ? "完成(" + count + ")" : "完成";
+                        done.innerHTML = value;
+                        if (count) {
+                            if (done.classList.contains("mui-disabled")) {
+                                done.classList.remove("mui-disabled");
+                            }
+                        } else {
+                            if (!done.classList.contains("mui-disabled")) {
+                                done.classList.add("mui-disabled");
+                            }
+                        }
+                    });
+                }).fail(function () {
+
+                });
+            });
+        }
+    </script>
+</body>
+</html>

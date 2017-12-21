@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">申请人</label>
+               <input type="text" id="fname" name="fname" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="text" id="ftel" name="ftel" placeholder="请填写联系方式"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="flx">租赁场地类型<i style="color:red;">*</i></label>
+                <input type="text" id="flx" name="flx" readonly="readonly" placeholder="请选择租赁场地类型"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fwz">场地位置<i style="color:red;">*</i></label>
+                <input type="text" id="fwz" name="fwz" placeholder="请填写场地位置"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzlf">场地租赁方<i style="color:red;">*</i></label>
+                <input type="text" id="fzlf" name="fzlf" placeholder="请填写场地租赁方"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="ffzr">负责人及联系方式<i style="color:red;">*</i></label>
+                <textarea rows="3" id="ffzr" name="ffzr" placeholder="请填写负责人及联系方式"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="flxr">联系人及联系方式<i style="color:red;">*</i></label>
+                <textarea rows="3" id="flxr" name="flxr" placeholder="请填写联系人及联系方式"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzlsj_ks">租赁开始时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fzlsj_ks" name="fzlsj_ks"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzlsj_js">租赁结束时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fzlsj_js" name="fzlsj_js"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzlfy">场地租赁费(元)<i style="color:red;">*</i></label>
+                <input type="number" id="fzlfy" name="fzlfy" placeholder="请填写场地租赁费"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fyj">场地押金(元)<i style="color:red;">*</i></label>
+                <input type="number" id="fyj" name="fyj" placeholder="请填写场地押金"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fnr">场地申请内容<i style="color:red;">*</i></label>
+                <textarea rows="5" id="fnr" name="fnr" placeholder="请填写场地申请内容"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fsm">其他条件说明<i style="color:red;">*</i></label>
+                <textarea rows="5" id="fsm" name="fsm" placeholder="请填写其他条件说明"></textarea>
+            </div>
+             <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                 <div class="border border-t upload-img" style="top:0rem;">
+                     
+                     <div class="clearfix upload-btn" id="children-bg">
+                         <label class="label">附件<i style="color:red;">*</i></label>
+                         <span class="tips" id="imageCount">已添加0张</span>
+                         
+                         <span class="upload-addbtn">
+                             <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                         </span>
+
+                     </div>
+                     <div class="upload-img-list"></div>
+                 </div>
+            </div>
+
+        </form>
+    </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onClick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '兴源文化创意公司场地短期租赁申请');
+            prepMsg();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+        function tapEvent() {
+
+            var flxdata = [
+                {
+                    value: '',
+                    text:'儒学讲堂'
+                },
+                {
+                    value: '',
+                    text:'外广场'
+                },
+                {
+                    value: '',
+                    text:'艺术宫'
+                },
+                {
+                    value: '',
+                    text:'空置店铺'
+                }
+            ];
+            showPicker('flx', flxdata);
+
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+            
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var ftel = $("#ftel").val();
+            var flx = $("#flx").val();
+            var fwz = $("#fwz").val();
+            var fzlf = $("#fzlf").val();
+            var ffzr = $("#ffzr").val();
+            var flxr = $("#flxr").val();
+            var fzlsj_ks = $("#fzlsj_ks").val().replace("T"," ");
+            var fzlsj_js = $("#fzlsj_js").val().replace("T", " ");
+            var fzlfy = $("#fzlfy").val();
+            var fyj = $("#fyj").val();
+            var fnr = $("#fnr").val();
+            var fsm = $("#fsm").val();
+
+            //console.log(fzlsj_ks);
+
+            if (!ftel || ftel=='') {
+                mui.toast('请填写联系方式');
+                return;
+            }
+            if (!flx || flx == '') {
+                mui.toast('请选择租赁场地类型');
+                return;
+            }
+            if (!fwz || fwz == '') {
+                mui.toast('请填写场地位置');
+                return;
+            }
+            if (!fzlf || fzlf == '') {
+                mui.toast('请填写场地租赁方');
+                return;
+            }
+            if (!ffzr || ffzr == '') {
+                mui.toast('请填写负责人及联系方式');
+                return;
+            }
+            if (!flxr || flxr == '') {
+                mui.toast('请填写联系人及联系方式');
+                return;
+            }
+            if (!$("#fzlsj_ks").val() || $("#fzlsj_ks").val() == '') {
+                mui.toast('请填写租赁开始时间');
+                return;
+            }
+            if (!$("#fzlsj_js").val() || $("#fzlsj_js").val() == '') {
+                mui.toast('请填写租赁结束时间');
+                return;
+            }
+            if (!fzlfy || fzlfy == '') {
+                mui.toast('请填写场地租赁费');
+                return;
+
+            }
+            if (!fyj || fyj == '') {
+                mui.toast('请填写场地押金');
+                return;
+            }
+            if (!fnr || fnr == '') {
+                mui.toast('请填写场地申请内容');
+                return;
+            }
+            if (!fsm || fsm == '') {
+                mui.toast('请填写其他条件说明');
+                return;
+            }
+
+            if (fjArray.length == 0) {
+                mui.toast('请上传附件');
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '      <Header>';
+                    xml = xml + '          <Method>Post</Method>';
+                    xml = xml + '           <ProcessName>兴源文化创意公司场地短期租赁申请</ProcessName>';
+                    xml = xml + '          <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '           <DraftGuid></DraftGuid>';
+                    xml = xml + '            <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '           <Action>提交</Action>';
+                    xml = xml + '            <Comment></Comment>';
+                    xml = xml + '            <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+
+
+                    xml = xml + '     <FormData>';
+                    xml = xml + '       <BPM_MSCCDSQSPB>';
+                    xml = xml + '          <fbillno>自动生成</fbillno>';
+                    xml = xml + '           <fname>' + fname + '</fname>';
+                    xml = xml + '          <fdept>' + fdept + '</fdept>';
+                    xml = xml + '          <fdate>' + fdate + '</fdate>';
+                    xml = xml + '         <ftel>' + ftel + '</ftel>';
+                    xml = xml + '         <flx>' + flx + '</flx>';
+                    xml = xml + '          <fwz>' + fwz + '</fwz>';
+                    xml = xml + '          <fzlf>' + fzlf + '</fzlf>';
+                    xml = xml + '          <ffzr>' + ffzr + '</ffzr>';
+                    xml = xml + '           <flxr>' + flxr + '</flxr>';
+                    xml = xml + '          <fzlsj_ks>' + fzlsj_ks + '</fzlsj_ks>';
+                    xml = xml + '          <fzlsj_js>' + fzlsj_js + '</fzlsj_js>';
+                    xml = xml + '           <fzlfy>' + fzlfy + '</fzlfy>';
+                    xml = xml + '           <fyj>' + fyj + '</fyj>';
+                    xml = xml + '          <fnr>' + fnr + '</fnr>';
+                    xml = xml + '          <fsm>' + fsm + '</fsm>';
+
+                    if (fjArray.length != 0) {
+                        xml = xml + '          <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                    } else {
+                        xml = xml + '          <ffj></ffj>';
+                    }
+                   
+                    xml = xml + '      </BPM_MSCCDSQSPB>';
+                    xml = xml + '     </FormData>';
+                    xml = xml + '    </XForm>';
+
+                    PostXml(xml);
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>

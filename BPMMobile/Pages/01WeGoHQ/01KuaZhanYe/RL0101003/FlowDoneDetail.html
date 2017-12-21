@@ -1,0 +1,598 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-input-row">
+                <label for="fno">员工编号</label>
+                <input type="text" id="fno" name="fno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdzlx_name">调转类型<i style="color:red;">*</i></label>
+                <input type="text" id="fdzlx_name" name="fdzlx_name" readonly="readonly" data-foper="" data-fdzlxno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fiscw">是否财务</label>
+                <input type="hidden" id="fiscw" name="fiscw" value="否" />
+                <div class="mui-switch mui-switch-blue mui-disabled" id="fiscwd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>员工信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsex">性别</label>
+                <input type="text" id="fsex" name="fsex" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbirth">出生日期</label>
+                <input type="text" id="fbirth" name="fbirth" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fidno">身份证号</label>
+                <input type="text" id="fidno" name="fidno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frzdate">入职威高</label>
+                <input type="date" id="frzdate" name="frzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frxdwdate">入调出公司</label>
+                <input type="date" id="frxdwdate" name="frxdwdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxl">最高学历</label>
+                <input type="text" id="fxl" name="fxl" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbxfs">保险缴纳</label>
+                <input type="text" id="fbxfs" name="fbxfs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgzdate">工资发至<i style="color:red;">*</i></label>
+                <input type="date" id="fgzdate" name="fgzdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsbdate">社保交至<i style="color:red;">*</i></label>
+                <input type="date" id="fsbdate" name="fsbdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjjr_name">交接人<i style="color:red;">*</i></label>
+                <input type="text" id="fjjr_name" name="fjjr_name" readonly="readonly" data-fjjrno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="faddr">家庭住址</label>
+                <input type="text" id="faddr" name="faddr" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>调转信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_jt_name">调出产业集团</label>
+                <input type="text" id="fdc_jt_name" name="fdc_jt_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_gs_name">调出公司</label>
+                <input type="text" id="fdc_gs_name" name="fdc_gs_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_bm_name">调出部门</label>
+                <input type="text" id="fdc_bm_name" name="fdc_bm_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzw_name">原职位</label>
+                <input type="text" id="fyzw_name" name="fyzw_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyzwlevel">原职务层级</label>
+                <input type="text" id="fyzwlevel" name="fyzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdcdate">调出日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdcdate" name="fdcdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdc_gs_jlname">调出公司负责人<i style="color:red;">*</i></label>
+                <input type="text" id="fdc_gs_jlname" name="fdc_gs_jlname" readonly="readonly" data-fdcgsjlno="" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fdc_gs_lj">调出公司路径</label>
+                <textarea id="fdc_gs_lj" name="fdc_gs_lj" readonly="readonly" rows="3"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_jt_name">调入产业集团</label>
+                <input type="text" id="fdr_jt_name" name="fdr_jt_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_gs_name">调入公司</label>
+                <input type="text" id="fdr_gs_name" name="fdr_gs_name" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_bm_name">调入部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdr_bm_name" name="fdr_bm_name" readonly="readonly" data-fdrbmno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fnrzw_name">拟任职位<i style="color:red;">*</i></label>
+                <input type="text" id="fnrzw_name" name="fnrzw_name" readonly="readonly" data-fnrzwno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fnrzwlevel">拟任职务层级</label>
+                <input type="text" id="fnrzwlevel" name="fnrzwlevel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdrdate">调入日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdrdate" name="fdrdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdr_gs_jlname">调入公司负责人</label>
+                <input type="text" id="fdr_gs_jlname" name="fdr_gs_jlname" readonly="readonly" data-fdrgsjlno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdrbmfzrname">调入部门直接上级<i style="color:red;">*</i></label>
+                <input type="text" id="fdrbmfzrname" name="fdrbmfzrname" readonly="readonly" data-fdrbmfzrno="" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fdr_gs_lj">调入公司路径</label>
+                <textarea id="fdr_gs_lj" name="fdr_gs_lj" readonly="readonly" rows="3"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fworkplace">调入公司工作地点</label>
+                <input type="text" id="fworkplace" name="fworkplace" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>交接信息</label>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>公司任职部门</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fbm_1">1、经办工作</label>
+                    <input type="text" id="fbm_1" name="fbm_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fbm_2">2、资料、文件</label>
+                    <input type="text" id="fbm_2" name="fbm_2" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fbm_3">3、设备、仪器</label>
+                    <input type="text" id="fbm_3" name="fbm_3" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fbm_4">4、其他交接事项</label>
+                    <input type="text" id="fbm_4" name="fbm_4" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>公司行政办公室</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxz_1">1、领用办公用品</label>
+                    <input type="text" id="fxz_1" name="fxz_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxz_2">2、桌、椅、锁等用品</label>
+                    <input type="text" id="fxz_2" name="fxz_2" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxz_3">3、印章、公司相关证件</label>
+                    <input type="text" id="fxz_3" name="fxz_3" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxz_4">4、其他交接事项</label>
+                    <input type="text" id="fxz_4" name="fxz_4" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>信息化推进部</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxx_1">1、企业邮箱变更</label>
+                    <input type="text" id="fxx_1" name="fxx_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxx_2">2、ERP用户变更</label>
+                    <input type="text" id="fxx_2" name="fxx_2" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxx_3">3、云办公账号变更</label>
+                    <input type="text" id="fxx_3" name="fxx_3" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxx_4">4、BPM账号变更</label>
+                    <input type="text" id="fxx_4" name="fxx_4" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxx_5">5、IP地址填写</label>
+                    <input type="text" id="fxx_5" name="fxx_5" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>公司财务部</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcw_1">1、欠款货款、担保责任结清</label>
+                    <input type="text" id="fcw_1" name="fcw_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcw_2">2、服装扣款、费用报销处理</label>
+                    <input type="text" id="fcw_2" name="fcw_2" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>公司人力资源部</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="frl_1">1、工资发放情况</label>
+                    <input type="text" id="frl_1" name="frl_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="frl_2">2、社保缴纳情况</label>
+                    <input type="text" id="frl_2" name="frl_2" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-card mui-input-group">
+                <div class="mui-input-row itemtitle">
+                    <label>后勤服务总公司</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fhq_1">1、宿舍交接、公司住房</label>
+                    <input type="text" id="fhq_1" name="fhq_1" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fhq_2">2、饭卡出入证、车辆通行证</label>
+                    <input type="text" id="fhq_2" name="fhq_2" readonly="readonly" />
+                </div>
+            </div>
+            <input type="hidden" id="fdzlx_no" name="fdzlx_no" value="" />
+            <input type="hidden" id="fdc_gs_bmlx" name="fdc_gs_bmlx" value="" />
+            <input type="hidden" id="fdr_gs_bmlx" name="fdr_gs_bmlx" value="" />
+            <input type="hidden" id="foper" name="foper" value="" />
+            <input type="hidden" id="fdr_bm_no" name="fdr_bm_no" value="" />
+            <input type="hidden" id="fnrzw_no" name="fnrzw_no" value="" />
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getTaskMsg();
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+            itemidArr = new Array();
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                console.log(data);
+                var item = data.FormDataSet.BPM_HR_YGDZ_XG[0];
+                $("#fno").val(item.fno);
+                $("#fname").val(item.fname);
+                $("#fdate").val(FormatterTimeYMS(item.fdate));
+                $("#fdzlx_name").val(item.fdzlx_name);
+                $("#fiscw").val(item.fiscw);
+                if (item.fiscw == '是') {
+                    $("#fiscwd").addClass('mui-active');
+                }
+                $("#fsex").val(item.fsex);
+                $("#fbirth").val(item.fbirth);
+                $("#fidno").val(item.fidno);
+                $("#ftel").val(item.ftel);
+                $("#frzdate").val(FormatterTimeYMS(item.frzdate));
+                $("#frxdwdate").val(FormatterTimeYMS(item.frxdwdate));
+                $("#fxl").val(item.fxl);
+                $("#fbxfs").val(item.fbxfs);
+                $("#fgzdate").val(FormatterTimeYMS(item.fgzdate));
+                $("#fsbdate").val(FormatterTimeYMS(item.fsbdate));
+                $("#fjjr_name").val(item.fjjr_name);
+                document.getElementById('fjjr_name').dataset.fjjrno = item.fjjr_no;
+                $("#faddr").val(item.faddr);
+                $("#fdc_jt_name").val(item.fdc_jt_name);
+                $("#fdc_gs_name").val(item.fdc_gs_name);
+                $("#fdc_bm_name").val(item.fdc_bm_name);
+                $("#fyzw_name").val(item.fyzw_name);
+                $("#fyzwlevel").val(item.fyzwlevel);
+                $("#fdcdate").val(FormatterTimeYMS(item.fdcdate));
+                $("#fdc_gs_jlname").val(item.fdc_gs_jlname);
+                $("#fdc_gs_lj").val(item.fdc_gs_lj);
+                document.getElementById('fdc_gs_jlname').dataset.fdcgsjlno = item.fdc_gs_jlno;
+                $("#fdr_jt_name").val(item.fdr_jt_name);
+                $("#fdr_gs_name").val(item.fdr_gs_name);
+                $("#fdr_bm_name").val(item.fdr_bm_name);
+                $("#fnrzw_name").val(item.fnrzw_name);
+                $("#fnrzwlevel").val(item.fnrzwlevel);
+                $("#fdrdate").val(FormatterTimeYMS(item.fdrdate));
+                $("#fdr_gs_jlname").val(item.fdr_gs_jlname);
+                $("#fdrbmfzrname").val(item.fdrbmfzrname);
+                document.getElementById('fdrbmfzrname').dataset.fdrbmfzrno = item.fdrbmfzrno;
+                document.getElementById("fdr_gs_jlname").dataset.fdrgsjlno = item.fdrgsjlno;
+                $("#fdr_gs_lj").val(item.fdr_gs_lj);
+                $("#fworkplace").val(item.fworkplace);
+                $("#fbm_1").val(item.fbm_1);
+                $("#fxz_1").val(item.fxz_1);
+                $("#fbm_2").val(item.fbm_2);
+                $("#fxz_2").val(item.fxz_2);
+                $("#fbm_3").val(item.fbm_3);
+                $("#fxz_3").val(item.fxz_3);
+                $("#fbm_4").val(item.fbm_4);
+                $("#fxz_4").val(item.fxz_4);
+                $("#fxx_1").val(item.fxx_1);
+                $("#fcw_1").val(item.fcw_1);
+                $("#fxx_2").val(item.fxx_2);
+                $("#fcw_2").val(item.fcw_2);
+                $("#fxx_3").val(item.fxx_3);
+                $("#frl_1").val(item.frl_1);
+                $("#fxx_4").val(item.fxx_4);
+                $("#frl_2").val(item.frl_2);
+                $("#fxx_5").val(item.fxx_5);
+                $("#fhq_1").val(item.fhq_1);
+                $("#fhq_2").val(item.fhq_2);
+                document.getElementById('fdzlx_name').dataset.fdzlxno = item.fdzlx_no;
+                $("#fdc_gs_bmlx").val(item.fdc_gs_bmlx);
+                $("#fdr_gs_bmlx").val(item.fdr_gs_bmlx);
+                $("#fdr_bm_no").val(item.fdr_bm_no);
+                $("#fnrzw_no").val(item.fnrzw_no);
+                $("#foper").val(item.foper);
+
+                for (var i = 0; i < data.Steps.length; i++) {
+
+                    if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                        data.Steps[i].FinishAt = "";
+                    }
+                    var time = FormatterTime(data.Steps[i].FinishAt);
+
+                    var stepName = data.Steps[i].NodeName;
+                    if (data.Steps[i].NodeName == "sysInform") {
+                        stepName = "知会";
+                    } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                        stepName = "任务操作";
+                    } else if (data.Steps[i].NodeName == "开始") {
+                        stepName = "开始";
+                    }
+
+                    var stepAction = locationAction(data.Steps[i].SelAction);
+                    if (data.Steps[i].SelAction == "sysInform") {
+                        stepAction = "发起知会";
+                    } else if (data.Steps[i].SelAction == "Submit") {
+                        stepAction = "已阅";
+                    } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                        stepAction = "待处理";
+                    } else if (data.Steps[i].SelAction == "sysReject") {
+                        stepAction = "拒绝";
+                    } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                        stepAction = "退回重填";
+                    }
+
+
+                    var contents = data.Steps[i].Comments;
+                    if (contents == null) {
+                        contents = "无";
+                    }
+                    //判断是否是加签
+                    if (data.Steps[i].IsConsignStep == false) {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    } else {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    }
+                    $("#signff").append(li);
+                }
+            }).fail(function (e) {
+
+            });
+
+        }
+    </script>
+</body>
+</html>

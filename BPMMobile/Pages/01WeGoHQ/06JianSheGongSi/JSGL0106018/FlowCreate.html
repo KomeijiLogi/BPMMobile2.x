@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">报销人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+                <input type="hidden" id="fno" name="fno"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报销日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftbfsqd">投标费申请单</label>
+                <input type="text" id="ftbfsqd" name="ftbfsqd" readonly="readonly" placeholder="请选择申请单"/>
+                <input type="hidden" id="ftbfsqd_taskid" name="ftbfsqd_taskid"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqje">申请金额</label>
+                <input type="number" id="fsqje" name="fsqje" readonly="readonly" placeholder="自动带出"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjkje">借款金额</label>
+                <input type="number" id="fjkje" name="fjkje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                 <label for="fxmmc">项目名称</label>
+                <input type="text" id="fxmmc" name="fxmmc" readonly="readonly" placeholder="自动带出"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzbdw">招标单位</label>
+                <input type="text" id="fzbdw" name="fzbdw" readonly="readonly" placeholder="自动带出"/>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;display:none;">
+                招投标费用报销明细(元)
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">票据<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_sqje">申请金额(合计)</label>
+                <input type="number" id="ftotal_sqje" name="ftotal_sqje" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_bxje">报销金额(合计)</label>
+                <input type="number" id="ftotal_bxje" name="ftotal_bxje" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_bxje_dx">大写金额</label>
+                <input type="text" id="ftotal_bxje_dx" name="ftotal_bxje_dx" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdjs">单据数<i style="color:red;">*</i></label>
+                <input type="number" id="fdjs" name="fdjs" placeholder="请填写单据数"/>
+            </div>
+
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+
+    <div id="search" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenCard()">取消</a>
+            <h1 class="mui-title">选择费用申请单</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索费用申请单">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="exp_list"></ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+ 
+            getVersion('\\01威高集团总部\\06建设公司\\建设管理平台', '建设公司投标费报销');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

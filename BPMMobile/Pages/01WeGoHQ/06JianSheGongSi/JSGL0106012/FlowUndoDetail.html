@@ -1,0 +1,1863 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+                <input type="hidden" id="fno" name="fno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            
+            <div class="mui-input-row">
+                <label for="fif_jk">是否借款<i style="color:red;">*</i></label>
+                <input type="hidden" id="fif_jk" name="fif_jk" readonly="readonly" value="否" />
+                <div class="mui-switch mui-switch-mini mui-disabled" id="fif_jkd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_cl">申请差旅费<i style="color:red;">*</i></label>
+                <input type="hidden" id="fif_cl" name="fif_cl" readonly="readonly" value="否" />
+                <div class="mui-switch mui-switch-mini mui-disabled" id="fif_cld">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbz">备注</label>
+                <input type="text" id="fbz" name="fbz" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle" id="sqmx" style="margin-bottom:0.2rem;">
+                <label>申请明细</label>
+            </div>
+            <div class="mui-input-group mui-text-center">
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>费用项目</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label>有效天数<i style="color:red;">*</i></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label>分项标准<i style="color:red;">*</i></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label>申请金额<i style="color:red;">*</i></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>培训费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_pxf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>长途交通费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_ctjtf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>住宿费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fd_zsf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fbz_zsf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_zsf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>餐费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fd_cf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fbz_cf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_cf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>市内交通费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fd_snjtf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fbz_snjtf"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_snjtf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <label>其他差旅费</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fje_qtclf"></label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label>合计</label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="fbz_total"></label>
+                    </div>
+                    <div class="mui-col-xs-3">
+                        <label contenteditable="false" id="ftotal"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcbz">超标准情况%</label>
+                <input type="text" id="fcbz" name="fcbz" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fcxry">参训人员<i style="color:red;">*</i></label>
+                <textarea rows="4" id="fcxry" name="fcxry" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fkczy">课程摘要<i style="color:red;">*</i></label>
+                <textarea rows="4" id="fkczy" name="fkczy" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fpxmd">培训目的<i style="color:red;">*</i></label>
+                <textarea rows="4" id="fpxmd" name="fpxmd" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row itemtitle" id="kcmx" style="margin-bottom:0.2rem;">
+                <label>课程明细</label>
+            </div>
+            <div id="mxlist_course">
+
+            </div>
+            <!--<a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_course" style="margin-top:0.5rem;display:none;">
+                添加报销明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>-->
+            <div class="mui-input-row itemtitle" id="clmx" style="margin-bottom:0.2rem;display:none;">
+                <label>差旅明细</label>
+            </div>
+            <div id="mxlist_travel">
+
+            </div>
+            <!--<a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_travel" style="margin-top:0.5rem;display:none;">
+                添加报销明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>-->
+            <div class="mui-card" id="fjkcard" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label>借款申请单</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjktotal">借款金额<i style="color:red;">*</i></label>
+                    <input type="number" id="fjktotal" name="fjktotal" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjktotal_dx">大写金额<i style="color:red;">*</i></label>
+                    <input type="text" id="fjktotal_dx" name="fjktotal_dx" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjkbillno">借款单号</label>
+                    <input type="text" id="fjkbillno" name="fjkbillno" readonly="readonly" />
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fjkremark">借款事由</label>
+                    <textarea rows="4" id="fjkremark" name="fjkremark" readonly="readonly"></textarea>
+                </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            </div>
+
+            <div class="mui-input-row" id="csd">
+                <label>加签</label>
+                <div class="mui-switch mui-switch-blue" id="csswitch">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="signbody">
+                <div class="mui-input-row" id="signPerDiv">
+                    <label>加签人</label>
+                    <span class="mui-navigate-right"></span>
+                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签模式</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="sxsl">
+                            <a class="mui-navigate-right" id="sxsa">
+                                顺序加签
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="pxsl">
+                            <a class="mui-navigate-right" id="pxsa">
+                                平行加签
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签回转</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                            <a class="mui-navigate-right" id="hdbjda">
+                                回到本节点
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="jrxjdl">
+                            <a class="mui-navigate-right" id="jrxjda">
+                                进入下一节点
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:3.75rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                            <!--<li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mui-btn-row" id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row" id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+            <!--<button class="mui-btn mui-btn-warning" type="button" style="width:25%;height:2.5rem;font-size:0.8rem;" id="refusebt" onclick="Refilled()">退回重填</button>-->
+        </div>
+        <div class="mui-btn-row" id="readD">
+            <button class="mui-btn mui-btn-primary" type="button" id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value="" />
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row" id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getTaskMsg();
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+
+        });
+        mui('#csswitch').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#signbody').css('display', 'block');
+                } else {
+
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+
+
+        mui("#fif_jkd").each(function () {
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fjkcard").css("display", "block");
+                    $("#fif_jk").val('是');
+                } else {
+                    $("#fjkcard").css("display", "none");
+                    $('#fif_jk').val('否');
+                }
+            });
+        });
+
+        mui('#fif_cld').each(function () {
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fif_cl").val('是');
+
+                } else {
+                    $('#fif_cl').val('否');
+                }
+            });
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '退回某步', 'callBackId': 'callback3' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+        var itemidArr_cl = new Array();
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                } else {
+                    stepId = url.split("pid=")[1];
+                }
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            itemidArr = new Array();
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                console.log(data);
+                var item = data.FormDataSet.建设公司_培训费申请_主表[0];
+                $("#stepId").val(stepId);
+                $("#taskId").val(item.TaskID);
+                $("#fbillno").val(item.fbillno);
+
+                $("#fcompany").val(item.公司名称);
+                $("#fdept").val(item.部门名称);
+                $("#fname").val(item.申请人);
+                $("#fno").val(item.申请人工号);
+                $("#fdate").val(FormatterTimeYMS(item.申请日期));
+                $("#fif_jk").val(item.是否借款);
+                $("#fbz").val(item.备注);
+                if (item.是否借款 == '是') {
+                    $("#fif_jkd").addClass('mui-active');
+                    $("#fjktotal").val(item.借款金额);
+                    $("#fjktotal_dx").val(item.大写金额_借款单);
+                    $("#fjkbillno").val(item.借款单号);
+                    $("#fjkremark").val(item.借款事由);
+                    $("#fjkcard").css("display", "block");
+                }
+                $("#fif_cl").val(item.是否申请差旅费);
+                if (item.是否申请差旅费 == '是') {
+                    $('#fif_cld').addClass('mui-active');
+                    $('#clmx').css("display", "block");
+                }
+
+                $("#fcxry").val(item.参加培训人员);
+                $("#fje_pxf").text(item.申请金额_培训费);
+                $("#fje_ctjtf").text(item.申请金额_长途交通费);
+                $("#fd_zsf").text(item.有效天数_住宿费);
+                $("#fbz_zsf").text(item.分项标准合计_住宿费);
+                $("#fje_zsf").text(item.申请金额_住宿费);
+                $("#fkczy").val(item.课程摘要);
+                $("#fpxmd").val(item.培训目的);
+                $("#fd_cf").text(item.有效天数_餐费);
+                $("#fbz_cf").text(item.分项标准合计_餐费);
+                $("#fje_cf").text(item.申请金额_餐费);
+                $("#fd_snjtf").text(item.有效天数_市内交通费);
+                $("#fbz_snjtf").text(item.分项标准合计_市内交通费);
+                $("#fje_snjtf").text(item.申请金额_市内交通费);
+                $("#fje_qtclf").text(item.申请金额_其他差旅费);
+                $("#fbz_total").text(item.合计_分项标准);
+                $("#ftotal").text(item.合计_申请金额);
+                var cbz = (item.合计_申请金额 - item.申请金额_培训费 - item.申请金额_长途交通费 - item.合计_分项标准) / item.合计_分项标准 * 100;
+                if (cbz <= 0) {
+                    $("#fcbz").val("未超标");
+                } else {
+                    cbz = cbz.toFixed(2);
+                    $("#fcbz").val(cbz);
+
+                }
+                if (item.是否申请差旅费 == '是') {
+                    var item_cl = data.FormDataSet.建设公司_培训费申请_子表出差;
+                    for (var i = 0; i < item_cl.length; i++) {
+                        itemidArr_cl.push(item_cl[i].itemid);
+                        var li = '  <div id="mx_cl" class="mui-card">';
+                        li = li + '    <div class="mui-input-row itemtitle">';
+                        li = li + '       <label>明细列表项</label>';
+                        li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '       <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                        li = li + '       <input type="text" id="fzwjb" name="fzwjb" readonly="readonly" value="' + item_cl[i].职务级别 + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fsdate">出差开始<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="date" id="fsdate" name="fsdate" readonly="readonly" value="' + FormatterTimeYMS(item_cl[i].出差时间开始) + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fedate">出差结束<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="date" id="fedate" name="fedate" readonly="readonly" value="' + FormatterTimeYMS(item_cl[i].出差时间结束) + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fjtgj">交通工具<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fjtgj" name="fjtgj" readonly="readonly" value="' + item_cl[i].交通工具 + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fsheng">出差地点省<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fsheng" name="fsheng" readonly="readonly" value="' + item_cl[i].出差地点省 + '"/>';
+                        li = li + '        <input type="hidden" id="fshengid" name="fshengid" readonly="readonly" value="' + item_cl[i].出差地点省ID + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fshi">出差地点市<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fshi" name="fshi" readonly="readonly" value="' + item_cl[i].出差地点市 + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fdqlb">地区类别<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fdqlb" name="fdqlb" readonly="readonly" value="' + item_cl[i].出差地区类别 + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fccrs">出差人数<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fccrs" name="fccrs" readonly="readonly" value="' + item_cl[i].出差人数 + '"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fday">出差天数<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fday" name="fday" readonly="readonly" value="' + item_cl[i].出差天数 + '"/>';
+                        li = li + '    </div>';
+
+                        li = li + '</div>';
+                        $("#mxlist_travel").append(li);
+                    }
+                }
+
+                var item_kc = data.FormDataSet.建设公司_培训费申请_子表培训;
+                for (var i = 0; i < item_kc.length; i++) {
+                    itemidArr.push(item_kc[i].itemid);
+                    var li = '  <div id="mx_kc" class="mui-card">';
+                    li = li + '    <div class="mui-input-row itemtitle">';
+                    li = li + '       <label>明细列表项</label>';
+                    li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '        <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fzwjb" name="fzwjb" readonly="readonly" value="' + item_kc[i].职务级别 + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '         <label for="fsdate">培训开始<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="date" id="fsdate" name="fsdate" readonly="readonly" value="' + FormatterTimeYMS(item_kc[i].培训时间开始) + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '         <label for="fedate">培训结束<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="date" id="fedate" name="fedate" readonly="readonly" value="' + FormatterTimeYMS(item_kc[i].培训时间结束) + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '         <label for="fpxjg">机构名称<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="fpxjg" name="fpxjg" readonly="readonly" value="' + item_kc[i].培训机构名称 + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '         <label for="fpxdd">培训地点<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="fpxdd" name="fpxdd" readonly="readonly" value="' + item_kc[i].培训地点 + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '          <label for="fkcmc">课程名称<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fkcmc" name="fkcmc" readonly="readonly" value="' + item_kc[i].课程名称 + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '          <label for="fpxjs">培训讲师<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fpxjs" name="fpxjs" readonly="readonly" value="' + item_kc[i].培训讲师 + '"/>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '          <label for="fif_zs">有无证书<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fif_zs" name="fif_zs" readonly="readonly" value="' + item_kc[i].有无证书 + '"/>';
+                    li = li + '    </div>';
+                    li = li + ' </div>';
+                    $("#mxlist_course").append(li);
+                }
+
+                if (item.附件 != null && item.附件 != "") {
+                    var fjtmp = (String)(item.附件);
+
+                    fjArray = fjtmp.split(";");
+
+
+                    //console.log("fjArray:" + fjArray);
+
+                    //请求附件详细信息
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/bpm/GetAttachmentsInfo',
+                        //dataType:'json',
+                        data: { 'fileIds': fjArray },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        },
+                        success: function (data, status) {
+                            if (status == "success") {
+
+                                console.log(data);
+
+                                for (var i = 0; i < data.length; i++) {
+
+                                    var name = data[i].Name;
+                                    var type = (data[i].Ext).replace(".", "");
+                                    var size = String(data[i].Size);
+
+                                    var time = String(data[i].LastUpdate).replace("T", " ");
+                                    var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                    var attach = attachItem(name, type, size, time, downurl);
+                                    attachArray.push(attach);
+
+
+
+                                    var li = '<div class="pic-preview smallyulan success">';
+                                    li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                    //类型判断
+                                    if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                        //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                    } else {
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                    }
+
+                                    li = li + ' </div>';
+                                    li = li + '</div>';
+                                    $(".upload-img-list").append(li);
+
+
+                                    $(".imgdiv").each(function () {
+
+                                        $(this).parent().find(".del.none").hide();
+
+                                    });
+
+                                    watch();
+
+
+                                }
+
+                                $(".imgdiv").on('tap', function () {
+                                    console.log($(this)[0].id);
+                                    XuntongJSBridge.call('showFile', {
+                                        'fileName': attachArray[$(this)[0].id].name,
+                                        'fileExt': attachArray[$(this)[0].id].type,
+                                        'fileTime': attachArray[$(this)[0].id].time,
+                                        'fileSize': attachArray[$(this)[0].id].size,
+                                        'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                    }, function (result) {
+                                        //alert(JSON.stringify(result));
+                                    });
+                                });
+
+
+                            }
+
+                        }, error: function (e) {
+                            console.log(e);
+
+                        }, complete: function () {
+
+                        }
+
+                    });
+
+                }
+
+                for (var i = 0; i < data.Steps.length; i++) {
+
+                    if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                        data.Steps[i].FinishAt = "";
+                    }
+                    var time = FormatterTime(data.Steps[i].FinishAt);
+
+                    var stepName = data.Steps[i].NodeName;
+                    if (data.Steps[i].NodeName == "sysInform") {
+                        stepName = "知会";
+                    } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                        stepName = "任务操作";
+                    } else if (data.Steps[i].NodeName == "开始") {
+                        stepName = "开始";
+                    }
+
+                    var stepAction = locationAction(data.Steps[i].SelAction);
+                    if (data.Steps[i].SelAction == "sysInform") {
+                        stepAction = "发起知会";
+                    } else if (data.Steps[i].SelAction == "Submit") {
+                        stepAction = "已阅";
+                    } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                        stepAction = "待处理";
+                    } else if (data.Steps[i].SelAction == "sysReject") {
+                        stepAction = "拒绝";
+                    } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                        stepAction = "退回重填";
+                    }
+
+
+                    var contents = data.Steps[i].Comments;
+                    if (contents == null) {
+                        contents = "无";
+                    }
+                    //判断是否是加签
+                    if (data.Steps[i].IsConsignStep == false) {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    } else {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    }
+                    $("#signff").append(li);
+                }
+
+
+                if ($('#myPhone').val() == "") {
+                    var myPhone = String(BPMOU).split("/");
+                    $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                }
+                var NodeName;
+                //判断流程本节点是否结束，处理者是否为当前用户,
+                //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                for (var i = 0; i < data.Steps.length; i++) {
+                    //debugger;
+
+                    if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                        if (stepId.indexOf(data.Steps[i].StepID) != -1) {
+
+                            NodeName = data.Steps[i].NodeName;
+
+                        }
+
+                    }
+
+                }
+
+                if (NodeName == "开始") {
+                    //$("#createD").css("display", "block");
+                    $("#csd").css("display", "none");
+                    //$(".upload-addbtn").css("display", "block");
+                    //upload();
+                    //watch();
+                    mui.alert("暂不支持发起功能");
+                } else if (NodeName == "sysInform") {
+                    $("#readD").css("display", "block");
+                    $("#csd").css("display", "none");
+
+                } else {
+                    if (typeof (NodeName) != "undefined") {
+                        $("#approvalD").css("display", "block");
+                    }
+                }
+
+            }).fail(function (e) {
+
+            });
+        }
+
+        function Save() {
+            var taskId = $("#taskId").val();
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fcllb = $("#fcllb").val();
+            var fif_jk = $("#fif_jk").val();
+            var fif_cl = $("#fif_cl").val();
+            var fcxry = $("#fcxry").val();
+            var fje_pxf = $("#fje_pxf").text();
+            var fje_ctjtf = $("#fje_ctjtf").text();
+            var fd_zsf = $("#fd_zsf").text();
+            var fbz_zsf = $("#fbz_zsf").text();
+            var fje_zsf = $("#fje_zsf").text();
+            var fcbz = $("#fcbz").val();
+            var fpxmd = $("#fpxmd").val();
+            var fd_cf = $("#fd_cf").text();
+            var fbz_cf = $("#fbz_cf").text();
+            var fje_cf = $("#fje_cf").text();
+            var fd_snjtf = $("#fd_snjtf").text();
+            var fbz_snjtf = $("#fbz_snjtf").text();
+            var fje_snjtf = $("#fje_snjtf").text();
+            var fzhjh = $("#fzhjh").val();
+            var fje_qtclf = $("#fje_qtclf").text();
+            var fbz_total = $("#fbz_total").text();
+            var ftotal = $("#ftotal").text();
+            var ftotal_dx = atoc(ftotal);
+            var fjktotal = $("#fjktotal").val();
+            var fjktotal_dx = atoc(fjktotal);
+            var fjkbillno = $("#fjkbillno").val();
+            var fjkremark = $("#fjkremark").val();
+
+            if (fif_cl=='是') {
+
+                if (!fje_ctjtf || fje_ctjtf == '') {
+                    mui.toast('请填写长途交通费');
+                    return null;
+                }
+                if (!fd_zsf || fd_zsf == '') {
+                    mui.toast('请填写住宿费有效天数');
+                    return null;
+                }
+                if (!fbz_zsf || fbz_zsf == '') {
+                    mui.toast('请填写住宿费标准');
+                    return null;
+                }
+                if (!fje_zsf || fje_zsf == '') {
+                    mui.toast('请填写住宿费');
+                    return null;
+                }
+                if (!fd_cf || fd_cf == '') {
+                    mui.toast('请填写餐费有效天数');
+                    return null;
+                }
+                if (!fbz_cf || fbz_cf == '') {
+                    mui.toast('请填写餐费标准');
+                    return null;
+                }
+                if (!fje_cf || fje_cf == '') {
+                    mui.toast('请填写餐费');
+                    return null;
+                }
+                if (!fd_snjtf || fd_snjtf == '') {
+                    mui.toast('请填写市内交通费有效天数');
+                    return null;
+                }
+                if (!fbz_snjtf || fbz_snjtf == '') {
+                    mui.toast('请填写市内交通费标准');
+                    return null;
+                }
+                if (!fje_snjtf || fje_snjtf == '') {
+                    mui.toast('请填写市内交通费');
+                    return null;
+                }
+                if (!fje_qtclf || fje_qtclf == '') {
+                    mui.toast('请填写其他差旅费');
+                    return null;
+                }
+
+
+            }
+
+            if (!fje_pxf || fje_pxf == '') {
+                mui.toast('请填写培训费');
+                return null;
+            }
+            if (!fcxry || fcxry == '') {
+                mui.toast('请填写参训人员');
+                return null;
+            }
+            if (!fpxmd || fpxmd == '') {
+                mui.toast('请填写培训目的');
+                return null;
+            }
+            if (!fzhjh || fzhjh == '') {
+                mui.toast('请填写转化计划');
+                return null;
+            }
+
+
+            if (fif_jk=='是') {
+                if (!fjktotal || fjktotal == '') {
+                    mui.toast('请填写借款金额');
+                    return null;
+                }
+            }
+
+            var mxflag=false;
+            var mxlistArr_course = new Array();
+            $("#mxlist_course").find("#mx_kc").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fpxjg = $(this).find("#fpxjg").val();
+                var fpxdd = $(this).find("#fpxdd").val();
+                var fkcmc = $(this).find("#fkcmc").val();
+                var fpxjs = $(this).find("#fpxjs").val();
+                var fif_zs = $(this).find("#fif_zs").val();
+                if (mxItem_course(fzwjb, fsdate, fedate, fpxjg, fpxdd, fkcmc, fpxjs, fif_zs) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = mxItem_course(fzwjb, fsdate, fedate, fpxjg, fpxdd, fkcmc, fpxjs, fif_zs);
+                mxlistArr_course.push(mx);
+            });
+
+            var mxlistArr_travel = new Array();
+            $("#mxlist_travel").find("#mx_cl").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fcity = $(this).find("#fcity").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+                if (mxItem_travel(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday) == null) {
+                    mxflag = true;
+                    return;
+                }
+
+                var mx = mxItem_travel(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday);
+                mxlistArr_travel.push(mx);
+            });
+
+            if (mxflag) {
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '   <Header>';
+                    xml = xml + '    <Method>Process</Method>';
+                    xml = xml + '   <PID>' + pid + '</PID>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '    <Comment></Comment>';
+                    xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '  </Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '<BPM_FDCBX_PXFYSQ_A>';
+                    xml = xml + '  <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '    <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '    <fdept>' + fdept + '</fdept>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                    xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '   <fif_cl>' + fif_cl + '</fif_cl>';
+                    xml = xml + '   <fcxry>' + fcxry + '</fcxry>';
+                    xml = xml + '   <fje_pxf>' + fje_pxf + '</fje_pxf>';
+                    xml = xml + '     <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                    xml = xml + '    <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                    xml = xml + '    <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                    xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                    xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                    xml = xml + '   <fpxmd>' + fpxmd + '</fpxmd>';
+                    xml = xml + '   <fd_cf>' + fd_cf + '</fd_cf>';
+                    xml = xml + '   <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                    xml = xml + '  <fje_cf>' + fje_cf + '</fje_cf>';
+                    xml = xml + '    <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                    xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                    xml = xml + '   <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                    xml = xml + '   <fzhjh>' + fzhjh + '</fzhjh>';
+                    xml = xml + '   <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                    xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                    xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '     <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '     <fjkremark>' + fjkremark + '</fjkremark>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '    <fj>' + fjArray.toString().replace(",",";") + '</fj>';
+                    } else {
+                        xml = xml + '    <fj></fj>';
+                    }
+
+                    xml = xml + ' </BPM_FDCBX_PXFYSQ_A>';
+
+                    for (var i = 0; i < mxlistArr_course.length;i++){
+
+                        xml = xml + '    <BPM_FDCBX_PXFYSQ_B1>';
+                        xml = xml + '        <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '       <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '      <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '      <fzwjb>' + mxlistArr_course[i].fzwjb + '</fzwjb>';
+                        xml = xml + '     <fsdate>' + mxlistArr_course[i].fsdate + '</fsdate>';
+                        xml = xml + '      <fedate>' + mxlistArr_course[i].fedate + '</fedate>';
+                        xml = xml + '      <fpxjg>' + mxlistArr_course[i].fpxjg + '</fpxjg>';
+                        xml = xml + '      <fpxdd>' + mxlistArr_course[i].fpxdd + '</fpxdd>';
+                        xml = xml + '      <fkcmc>' + mxlistArr_course[i].fkcmc + '</fkcmc>';
+                        xml = xml + '      <fpxjs>' + mxlistArr_course[i].fpxjs + '</fpxjs>';
+                        xml = xml + '       <fif_zs>' + mxlistArr_course[i].fif_zs + '</fif_zs>';
+                        xml = xml + '    </BPM_FDCBX_PXFYSQ_B1>';
+                    }
+
+                    if (fif_cl == '是') {
+                        for (var j = 0; j < mxlistArr_travel.length;j++){
+                            xml = xml + '    <BPM_FDCBX_PXFYSQ_B2>';
+                            xml = xml + '      <RelationRowGuid>'+(i+1)+j+'</RelationRowGuid>';
+                            xml = xml + '     <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '       <fentryno>' + (j + 1) + '</fentryno>';
+                            xml = xml + '       <fzwjb>' + mxlistArr_travel[j].fzwjb + '</fzwjb>';
+                            xml = xml + '      <fsdate>' + mxlistArr_travel[j].fsdate + '</fsdate>';
+                            xml = xml + '      <fedate>' + mxlistArr_travel[j].fedate + '</fedate>';
+                            xml = xml + '      <fjtgj>' + mxlistArr_travel[j].fjtgj + '</fjtgj>';
+                            xml = xml + '      <fcity>' + mxlistArr_travel[j].fcity + '</fcity>';
+                            xml = xml + '       <fdqlb>' + mxlistArr_travel[j].fdqlb + '</fdqlb>';
+                            xml = xml + '      <fccrs>' + mxlistArr_travel[j].fccrs + '</fccrs>';
+                            xml = xml + '       <fday>' + mxlistArr_travel[j].fday + '</fday>';
+                            xml = xml + '    </BPM_FDCBX_PXFYSQ_B2>';
+                        }
+
+
+                    } else {
+                        xml = xml + ' <BPM_FDCBX_PXFYSQ_B2>';
+                        xml = xml + ' <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + ' <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + ' <fentryno>1</fentryno>';
+                        xml = xml + ' <fzwjb></fzwjb>';
+                        xml = xml + ' <fsdate></fsdate>';
+                        xml = xml + ' <fedate></fedate>';
+                        xml = xml + ' <fjtgj></fjtgj>';
+                        xml = xml + ' <fcity></fcity>';
+                        xml = xml + ' <fdqlb></fdqlb>';
+                        xml = xml + ' <fccrs></fccrs>';
+                        xml = xml + ' <fday></fday>';
+                        xml = xml + ' </BPM_FDCBX_PXFYSQ_B2>';
+
+                    }
+
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function hasRead() {
+            var taskId = $("#taskId").val();
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fif_jk = $("#fif_jk").val();
+            var fif_cl = $("#fif_cl").val();
+            var fbz = $("#fbz").val();
+            var fcxry = $("#fcxry").val();
+            var fje_pxf = $("#fje_pxf").text();
+            var fje_ctjtf = $("#fje_ctjtf").text();
+            var fd_zsf = $("#fd_zsf").text();
+            var fbz_zsf = $("#fbz_zsf").text();
+            var fje_zsf = $("#fje_zsf").text();
+            var fkczy = $("#fkczy").val();
+            var fpxmd = $("#fpxmd").val();
+            var fd_cf = $("#fd_cf").text();
+            var fbz_cf = $("#fbz_cf").text();
+            var fje_cf = $("#fje_cf").text();
+            var fd_snjtf = $("#fd_snjtf").text();
+            var fbz_snjtf = $("#fbz_snjtf").text();
+            var fje_snjtf = $("#fje_snjtf").text();
+            var fje_qtclf = $("#fje_qtclf").text();
+            var fbz_total = $("#fbz_total").text();
+            var ftotal = $("#ftotal").text();
+            var ftotal_dx = atoc(ftotal);
+            var fjktotal = $("#fjktotal").val();
+            var fjktotal_dx = atoc(fjktotal);
+            var fjkbillno = $("#fjkbillno").val();
+            var fjkremark = $("#fjkremark").val();
+
+            var mxlistArr_course = new Array();
+            $("#mxlist_course").find("#mx_kc").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fpxjg = $(this).find("#fpxjg").val();
+                var fpxdd = $(this).find("#fpxdd").val();
+                var fkcmc = $(this).find("#fkcmc").val();
+                var fpxjs = $(this).find("#fpxjs").val();
+                var fif_zs = $(this).find("#fif_zs").val();
+
+                var mx = mxItem_course(fzwjb, fsdate, fedate, fpxjg, fpxdd, fkcmc, fpxjs, fif_zs);
+                mxlistArr_course.push(mx);
+            });
+
+            var mxlistArr_travel = new Array();
+            $("#mxlist_travel").find("#mx_cl").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fsheng = $(this).find("#fsheng").val();
+                var fshengid = $(this).find("#fshengid").val();
+                var fshi = $(this).find("#fshi").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+
+
+                var mx = mxItem_travel(fzwjb, fsdate, fedate, fjtgj, fsheng, fshengid, fshi, fdqlb, fccrs, fday);
+                mxlistArr_travel.push(mx);
+            });
+
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '<建设公司_培训费申请_主表>';
+                    xml = xml + '   <申请人>' + fname + '</申请人>';
+                    xml = xml + '   <申请人工号>' + fno + '</申请人工号>';
+                    xml = xml + '   <申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '    <公司名称>' + fcompany + '</公司名称>';
+                    xml = xml + '    <部门名称>' + fdept + '</部门名称>';
+                    xml = xml + '   <是否借款>' + fif_jk + '</是否借款>';
+                    xml = xml + '   <是否申请差旅费>' + fif_cl + '</是否申请差旅费>';
+                    xml = xml + '   <备注>' + fbz + '</备注>';
+                    xml = xml + '   <参加培训人员>' + fcxry + '</参加培训人员>';
+                    xml = xml + '   <申请金额_培训费>' + fje_pxf + '</申请金额_培训费>';
+                    xml = xml + '     <申请金额_长途交通费>' + fje_ctjtf + '</申请金额_长途交通费>';
+                    xml = xml + '    <有效天数_住宿费>' + fd_zsf + '</有效天数_住宿费>';
+                    xml = xml + '    <分项标准合计_住宿费>' + fbz_zsf + '</分项标准合计_住宿费>';
+                    xml = xml + '   <申请金额_住宿费>' + fje_zsf + '</申请金额_住宿费>';
+                    xml = xml + '   <课程摘要>' + fkczy + '</课程摘要>';
+                    xml = xml + '   <有效天数_餐费>' + fd_cf + '</有效天数_餐费>';
+                    xml = xml + '   <分项标准合计_餐费>' + fbz_cf + '</分项标准合计_餐费>';
+                    xml = xml + '  <申请金额_餐费>' + fje_cf + '</申请金额_餐费>';
+                    xml = xml + '    <有效天数_市内交通费>' + fd_snjtf + '</有效天数_市内交通费>';
+                    xml = xml + '   <分项标准合计_市内交通费>' + fbz_snjtf + '</分项标准合计_市内交通费>';
+                    xml = xml + '   <申请金额_市内交通费>' + fje_snjtf + '</申请金额_市内交通费>';
+                    xml = xml + '   <培训目的>' + fpxmd + '</培训目的>';
+                    xml = xml + '   <申请金额_其他差旅费>' + fje_qtclf + '</申请金额_其他差旅费>';
+                    xml = xml + '   <合计_分项标准>' + fbz_total + '</合计_分项标准>';
+                    xml = xml + '   <合计_申请金额>' + ftotal + '</合计_申请金额>';
+                    xml = xml + '   <大写金额>' + ftotal_dx + '</大写金额>';
+                    xml = xml + '   <借款金额>' + fjktotal + '</借款金额>';
+                    xml = xml + '   <大写金额_借款单>' + fjktotal_dx + '</大写金额_借款单>';
+                    xml = xml + '     <借款单号>' + fjkbillno + '</借款单号>';
+                    xml = xml + '     <借款事由>' + fjkremark + '</借款事由>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '    <附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                    } else {
+                        xml = xml + '    <附件></附件>';
+                    }
+
+                    xml = xml + ' </建设公司_培训费申请_主表>';
+
+                    for (var i = 0; i < mxlistArr_course.length; i++) {
+
+                        xml = xml + '    <建设公司_培训费申请_子表培训>';
+                        xml = xml + '        <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                        xml = xml + '      <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '      <职务级别>' + mxlistArr_course[i].fzwjb + '</职务级别>';
+                        xml = xml + '     <培训时间开始>' + mxlistArr_course[i].fsdate + '</培训时间开始>';
+                        xml = xml + '      <培训时间结束>' + mxlistArr_course[i].fedate + '</培训时间结束>';
+                        xml = xml + '      <培训机构名称>' + mxlistArr_course[i].fpxjg + '</培训机构名称>';
+                        xml = xml + '      <培训地点>' + mxlistArr_course[i].fpxdd + '</培训地点>';
+                        xml = xml + '      <课程名称>' + mxlistArr_course[i].fkcmc + '</课程名称>';
+                        xml = xml + '      <培训讲师>' + mxlistArr_course[i].fpxjs + '</培训讲师>';
+                        xml = xml + '       <有无证书>' + mxlistArr_course[i].fif_zs + '</有无证书>';
+                        xml = xml + '    </建设公司_培训费申请_子表培训>';
+                    }
+
+                    if (fif_cl == '是') {
+                        for (var j = 0; j < mxlistArr_travel.length; j++) {
+                            xml = xml + '    <建设公司_培训费申请_子表出差>';
+                            xml = xml + '      <RelationRowGuid>' + (i + 1) + j + '</RelationRowGuid>';
+                            xml = xml + '     <RowPrimaryKeys>itemid=' + itemidArr_cl[j] + '</RowPrimaryKeys>';
+                            xml = xml + '       <序号>' + (j + 1) + '</序号>';
+                            xml = xml + '       <职务级别>' + mxlistArr_travel[j].fzwjb + '</职务级别>';
+                            xml = xml + '      <出差时间开始>' + mxlistArr_travel[j].fsdate + '</出差时间开始>';
+                            xml = xml + '      <出差时间结束>' + mxlistArr_travel[j].fedate + '</出差时间结束>';
+                            xml = xml + '      <交通工具>' + mxlistArr_travel[j].fjtgj + '</交通工具>';
+                            xml = xml + '      <出差地点省>' + mxlistArr_travel[j].fsheng + '</出差地点省>';
+                            xml = xml + '      <出差地点市>' + mxlistArr_travel[j].fshi + '</出差地点市>';
+                            xml = xml + '      <出差地点省ID>' + mxlistArr_travel[j].fshengid + '</出差地点省ID>';
+                            xml = xml + '       <出差地区类别>' + mxlistArr_travel[j].fdqlb + '</出差地区类别>';
+                            xml = xml + '      <出差人数>' + mxlistArr_travel[j].fccrs + '</出差人数>';
+                            xml = xml + '       <出差天数>' + mxlistArr_travel[j].fday + '</出差天数>';
+                            xml = xml + '    </建设公司_培训费申请_子表出差>';
+                        }
+
+
+                    } else {
+                        xml = xml + ' <建设公司_培训费申请_子表出差>';
+                        xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + ' <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + ' <序号>1</序号>';
+                        xml = xml + ' <职务级别></职务级别>';
+                        xml = xml + ' <出差时间开始></出差时间开始>';
+                        xml = xml + ' <出差时间结束></出差时间结束>';
+                        xml = xml + ' <交通工具></交通工具>';
+                        xml = xml + ' <出差地点省></出差地点省>';
+                        xml = xml + ' <出差地点市></出差地点市>';
+                        xml = xml + ' <出差地点省ID></出差地点省ID>';
+                        xml = xml + ' <出差地区类别></出差地区类别>';
+                        xml = xml + ' <出差人数></出差人数>';
+                        xml = xml + ' <出差天数></出差天数>';
+                        xml = xml + ' </建设公司_培训费申请_子表出差>';
+
+                    }
+
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function AgreeOrConSign() {
+
+            var taskId = $("#taskId").val();
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+            var comment = $("#signSuggest").val();
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fif_jk = $("#fif_jk").val();
+            var fif_cl = $("#fif_cl").val();
+            var fcxry = $("#fcxry").val();
+            var fje_pxf = $("#fje_pxf").text();
+            var fje_ctjtf = $("#fje_ctjtf").text();
+            var fd_zsf = $("#fd_zsf").text();
+            var fbz_zsf = $("#fbz_zsf").text();
+            var fje_zsf = $("#fje_zsf").text();
+            var fkczy = $("#fkczy").val();
+            var fpxmd = $("#fpxmd").val();
+            var fd_cf = $("#fd_cf").text();
+            var fbz_cf = $("#fbz_cf").text();
+            var fje_cf = $("#fje_cf").text();
+            var fd_snjtf = $("#fd_snjtf").text();
+            var fbz_snjtf = $("#fbz_snjtf").text();
+            var fje_snjtf = $("#fje_snjtf").text();
+            var fje_qtclf = $("#fje_qtclf").text();
+            var fbz_total = $("#fbz_total").text();
+            var ftotal = $("#ftotal").text();
+            var ftotal_dx = atoc(ftotal);
+            var fjktotal = $("#fjktotal").val();
+            var fjktotal_dx = atoc(fjktotal);
+            var fjkbillno = $("#fjkbillno").val();
+            var fjkremark = $("#fjkremark").val();
+
+            var mxlistArr_course = new Array();
+            $("#mxlist_course").find("#mx_kc").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fpxjg = $(this).find("#fpxjg").val();
+                var fpxdd = $(this).find("#fpxdd").val();
+                var fkcmc = $(this).find("#fkcmc").val();
+                var fpxjs = $(this).find("#fpxjs").val();
+                var fif_zs = $(this).find("#fif_zs").val();
+
+                var mx = mxItem_course(fzwjb, fsdate, fedate, fpxjg, fpxdd, fkcmc, fpxjs, fif_zs);
+                mxlistArr_course.push(mx);
+            });
+
+            var mxlistArr_travel = new Array();
+            $("#mxlist_travel").find("#mx_cl").each(function () {
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + ' 00:00:00';
+                var fedate = $(this).find("#fedate").val() + ' 00:00:00';
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fsheng = $(this).find("#fsheng").val();
+                var fshengid = $(this).find("#fshengid").val();
+                var fshi = $(this).find("#fshi").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+
+
+                var mx = mxItem_travel(fzwjb, fsdate, fedate, fjtgj, fsheng, fshengid, fshi, fdqlb, fccrs, fday);
+                mxlistArr_travel.push(mx);
+            });
+            var consignFlag = false;
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+            //加签if分支
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+                consignFlag = true;
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }
+                }).done(function (data, status) {
+                    //alert(status);
+                    if (status == "success") {
+
+
+                        for (var i = 0; i < data.data.length; i++) {
+                            consignUserId.push(data.data[i].phone);
+                        }
+                        $('#consignUser').val(consignUserId);
+                        consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+
+
+                        var xml = '<?xml version="1.0"?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '<Header>';
+                        xml = xml + '<Method>Process</Method>';
+                        xml = xml + '<PID>' + pid + '</PID>';
+                        xml = xml + '<Action>同意</Action>';
+                        xml = xml + '<Comment>' + comment + '</Comment>';
+
+                        //加签差异部分
+                        xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
+                        xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                        xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                        xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+
+                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '</Header>';
+                        xml = xml + '<FormData>';
+
+                        xml = xml + '<建设公司_培训费申请_主表>';
+                        xml = xml + '   <申请人>' + fname + '</申请人>';
+                        xml = xml + '   <申请人工号>' + fno + '</申请人工号>';
+                        xml = xml + '   <申请日期>' + fdate + '</申请日期>';
+                        xml = xml + '    <公司名称>' + fcompany + '</公司名称>';
+                        xml = xml + '    <部门名称>' + fdept + '</部门名称>';
+                        xml = xml + '   <是否借款>' + fif_jk + '</是否借款>';
+                        xml = xml + '   <是否申请差旅费>' + fif_cl + '</是否申请差旅费>';
+                        xml = xml + '   <备注>' + fbz + '</备注>';
+                        xml = xml + '   <参加培训人员>' + fcxry + '</参加培训人员>';
+                        xml = xml + '   <申请金额_培训费>' + fje_pxf + '</申请金额_培训费>';
+                        xml = xml + '     <申请金额_长途交通费>' + fje_ctjtf + '</申请金额_长途交通费>';
+                        xml = xml + '    <有效天数_住宿费>' + fd_zsf + '</有效天数_住宿费>';
+                        xml = xml + '    <分项标准合计_住宿费>' + fbz_zsf + '</分项标准合计_住宿费>';
+                        xml = xml + '   <申请金额_住宿费>' + fje_zsf + '</申请金额_住宿费>';
+                        xml = xml + '   <课程摘要>' + fkczy + '</课程摘要>';
+                        xml = xml + '   <有效天数_餐费>' + fd_cf + '</有效天数_餐费>';
+                        xml = xml + '   <分项标准合计_餐费>' + fbz_cf + '</分项标准合计_餐费>';
+                        xml = xml + '  <申请金额_餐费>' + fje_cf + '</申请金额_餐费>';
+                        xml = xml + '    <有效天数_市内交通费>' + fd_snjtf + '</有效天数_市内交通费>';
+                        xml = xml + '   <分项标准合计_市内交通费>' + fbz_snjtf + '</分项标准合计_市内交通费>';
+                        xml = xml + '   <申请金额_市内交通费>' + fje_snjtf + '</申请金额_市内交通费>';
+                        xml = xml + '   <培训目的>' + fpxmd + '</培训目的>';
+                        xml = xml + '   <申请金额_其他差旅费>' + fje_qtclf + '</申请金额_其他差旅费>';
+                        xml = xml + '   <合计_分项标准>' + fbz_total + '</合计_分项标准>';
+                        xml = xml + '   <合计_申请金额>' + ftotal + '</合计_申请金额>';
+                        xml = xml + '   <大写金额>' + ftotal_dx + '</大写金额>';
+                        xml = xml + '   <借款金额>' + fjktotal + '</借款金额>';
+                        xml = xml + '   <大写金额_借款单>' + fjktotal_dx + '</大写金额_借款单>';
+                        xml = xml + '     <借款单号>' + fjkbillno + '</借款单号>';
+                        xml = xml + '     <借款事由>' + fjkremark + '</借款事由>';
+                        if (fjArray.length != 0) {
+                            xml = xml + '    <附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                        } else {
+                            xml = xml + '    <附件></附件>';
+                        }
+
+                        xml = xml + ' </建设公司_培训费申请_主表>';
+
+                        for (var i = 0; i < mxlistArr_course.length; i++) {
+
+                            xml = xml + '    <建设公司_培训费申请_子表培训>';
+                            xml = xml + '        <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                            xml = xml + '      <fentryno>' + (i + 1) + '</fentryno>';
+                            xml = xml + '      <职务级别>' + mxlistArr_course[i].fzwjb + '</职务级别>';
+                            xml = xml + '     <培训时间开始>' + mxlistArr_course[i].fsdate + '</培训时间开始>';
+                            xml = xml + '      <培训时间结束>' + mxlistArr_course[i].fedate + '</培训时间结束>';
+                            xml = xml + '      <培训机构名称>' + mxlistArr_course[i].fpxjg + '</培训机构名称>';
+                            xml = xml + '      <培训地点>' + mxlistArr_course[i].fpxdd + '</培训地点>';
+                            xml = xml + '      <课程名称>' + mxlistArr_course[i].fkcmc + '</课程名称>';
+                            xml = xml + '      <培训讲师>' + mxlistArr_course[i].fpxjs + '</培训讲师>';
+                            xml = xml + '       <有无证书>' + mxlistArr_course[i].fif_zs + '</有无证书>';
+                            xml = xml + '    </建设公司_培训费申请_子表培训>';
+                        }
+
+                        if (fif_cl == '是') {
+                            for (var j = 0; j < mxlistArr_travel.length; j++) {
+                                xml = xml + '    <建设公司_培训费申请_子表出差>';
+                                xml = xml + '      <RelationRowGuid>' + (i + 1) + j + '</RelationRowGuid>';
+                                xml = xml + '     <RowPrimaryKeys>itemid=' + itemidArr_cl[j] + '</RowPrimaryKeys>';
+                                xml = xml + '       <序号>' + (j + 1) + '</序号>';
+                                xml = xml + '       <职务级别>' + mxlistArr_travel[j].fzwjb + '</职务级别>';
+                                xml = xml + '      <出差时间开始>' + mxlistArr_travel[j].fsdate + '</出差时间开始>';
+                                xml = xml + '      <出差时间结束>' + mxlistArr_travel[j].fedate + '</出差时间结束>';
+                                xml = xml + '      <交通工具>' + mxlistArr_travel[j].fjtgj + '</交通工具>';
+                                xml = xml + '      <出差地点省>' + mxlistArr_travel[j].fsheng + '</出差地点省>';
+                                xml = xml + '      <出差地点市>' + mxlistArr_travel[j].fshi + '</出差地点市>';
+                                xml = xml + '      <出差地点省ID>' + mxlistArr_travel[j].fshengid + '</出差地点省ID>';
+                                xml = xml + '       <出差地区类别>' + mxlistArr_travel[j].fdqlb + '</出差地区类别>';
+                                xml = xml + '      <出差人数>' + mxlistArr_travel[j].fccrs + '</出差人数>';
+                                xml = xml + '       <出差天数>' + mxlistArr_travel[j].fday + '</出差天数>';
+                                xml = xml + '    </建设公司_培训费申请_子表出差>';
+                            }
+
+
+                        } else {
+                            xml = xml + ' <建设公司_培训费申请_子表出差>';
+                            xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + ' <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + ' <序号>1</序号>';
+                            xml = xml + ' <职务级别></职务级别>';
+                            xml = xml + ' <出差时间开始></出差时间开始>';
+                            xml = xml + ' <出差时间结束></出差时间结束>';
+                            xml = xml + ' <交通工具></交通工具>';
+                            xml = xml + ' <出差地点省></出差地点省>';
+                            xml = xml + ' <出差地点市></出差地点市>';
+                            xml = xml + ' <出差地点省ID></出差地点省ID>';
+                            xml = xml + ' <出差地区类别></出差地区类别>';
+                            xml = xml + ' <出差人数></出差人数>';
+                            xml = xml + ' <出差天数></出差天数>';
+                            xml = xml + ' </建设公司_培训费申请_子表出差>';
+
+                        }
+
+                        xml = xml + '  </FormData>';
+                        xml = xml + '</XForm>';
+                        PostXml(xml);
+                    }
+                }).fail(function (e) {
+
+                });
+            } else {
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + '<Header>';
+                xml = xml + '<Method>Process</Method>';
+                xml = xml + '<PID>' + pid + '</PID>';
+                xml = xml + '<Action>同意</Action>';
+                xml = xml + '<Comment>' + comment + '</Comment>';
+
+
+
+                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '</Header>';
+                xml = xml + '<FormData>';
+
+                xml = xml + '<建设公司_培训费申请_主表>';
+                xml = xml + '   <申请人>' + fname + '</申请人>';
+                xml = xml + '   <申请人工号>' + fno + '</申请人工号>';
+                xml = xml + '   <申请日期>' + fdate + '</申请日期>';
+                xml = xml + '    <公司名称>' + fcompany + '</公司名称>';
+                xml = xml + '    <部门名称>' + fdept + '</部门名称>';
+                xml = xml + '   <是否借款>' + fif_jk + '</是否借款>';
+                xml = xml + '   <是否申请差旅费>' + fif_cl + '</是否申请差旅费>';
+                xml = xml + '   <备注>' + fbz + '</备注>';
+                xml = xml + '   <参加培训人员>' + fcxry + '</参加培训人员>';
+                xml = xml + '   <申请金额_培训费>' + fje_pxf + '</申请金额_培训费>';
+                xml = xml + '     <申请金额_长途交通费>' + fje_ctjtf + '</申请金额_长途交通费>';
+                xml = xml + '    <有效天数_住宿费>' + fd_zsf + '</有效天数_住宿费>';
+                xml = xml + '    <分项标准合计_住宿费>' + fbz_zsf + '</分项标准合计_住宿费>';
+                xml = xml + '   <申请金额_住宿费>' + fje_zsf + '</申请金额_住宿费>';
+                xml = xml + '   <课程摘要>' + fkczy + '</课程摘要>';
+                xml = xml + '   <有效天数_餐费>' + fd_cf + '</有效天数_餐费>';
+                xml = xml + '   <分项标准合计_餐费>' + fbz_cf + '</分项标准合计_餐费>';
+                xml = xml + '  <申请金额_餐费>' + fje_cf + '</申请金额_餐费>';
+                xml = xml + '    <有效天数_市内交通费>' + fd_snjtf + '</有效天数_市内交通费>';
+                xml = xml + '   <分项标准合计_市内交通费>' + fbz_snjtf + '</分项标准合计_市内交通费>';
+                xml = xml + '   <申请金额_市内交通费>' + fje_snjtf + '</申请金额_市内交通费>';
+                xml = xml + '   <培训目的>' + fpxmd + '</培训目的>';
+                xml = xml + '   <申请金额_其他差旅费>' + fje_qtclf + '</申请金额_其他差旅费>';
+                xml = xml + '   <合计_分项标准>' + fbz_total + '</合计_分项标准>';
+                xml = xml + '   <合计_申请金额>' + ftotal + '</合计_申请金额>';
+                xml = xml + '   <大写金额>' + ftotal_dx + '</大写金额>';
+                xml = xml + '   <借款金额>' + fjktotal + '</借款金额>';
+                xml = xml + '   <大写金额_借款单>' + fjktotal_dx + '</大写金额_借款单>';
+                xml = xml + '     <借款单号>' + fjkbillno + '</借款单号>';
+                xml = xml + '     <借款事由>' + fjkremark + '</借款事由>';
+                if (fjArray.length != 0) {
+                    xml = xml + '    <附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                } else {
+                    xml = xml + '    <附件></附件>';
+                }
+
+                xml = xml + ' </建设公司_培训费申请_主表>';
+
+                for (var i = 0; i < mxlistArr_course.length; i++) {
+
+                    xml = xml + '    <建设公司_培训费申请_子表培训>';
+                    xml = xml + '        <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                    xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                    xml = xml + '      <fentryno>' + (i + 1) + '</fentryno>';
+                    xml = xml + '      <职务级别>' + mxlistArr_course[i].fzwjb + '</职务级别>';
+                    xml = xml + '     <培训时间开始>' + mxlistArr_course[i].fsdate + '</培训时间开始>';
+                    xml = xml + '      <培训时间结束>' + mxlistArr_course[i].fedate + '</培训时间结束>';
+                    xml = xml + '      <培训机构名称>' + mxlistArr_course[i].fpxjg + '</培训机构名称>';
+                    xml = xml + '      <培训地点>' + mxlistArr_course[i].fpxdd + '</培训地点>';
+                    xml = xml + '      <课程名称>' + mxlistArr_course[i].fkcmc + '</课程名称>';
+                    xml = xml + '      <培训讲师>' + mxlistArr_course[i].fpxjs + '</培训讲师>';
+                    xml = xml + '       <有无证书>' + mxlistArr_course[i].fif_zs + '</有无证书>';
+                    xml = xml + '    </建设公司_培训费申请_子表培训>';
+                }
+
+                if (fif_cl == '是') {
+                    for (var j = 0; j < mxlistArr_travel.length; j++) {
+                        xml = xml + '    <建设公司_培训费申请_子表出差>';
+                        xml = xml + '      <RelationRowGuid>' + (i + 1) + j + '</RelationRowGuid>';
+                        xml = xml + '     <RowPrimaryKeys>itemid=' + itemidArr_cl[j] + '</RowPrimaryKeys>';
+                        xml = xml + '       <序号>' + (j + 1) + '</序号>';
+                        xml = xml + '       <职务级别>' + mxlistArr_travel[j].fzwjb + '</职务级别>';
+                        xml = xml + '      <出差时间开始>' + mxlistArr_travel[j].fsdate + '</出差时间开始>';
+                        xml = xml + '      <出差时间结束>' + mxlistArr_travel[j].fedate + '</出差时间结束>';
+                        xml = xml + '      <交通工具>' + mxlistArr_travel[j].fjtgj + '</交通工具>';
+                        xml = xml + '      <出差地点省>' + mxlistArr_travel[j].fsheng + '</出差地点省>';
+                        xml = xml + '      <出差地点市>' + mxlistArr_travel[j].fshi + '</出差地点市>';
+                        xml = xml + '      <出差地点省ID>' + mxlistArr_travel[j].fshengid + '</出差地点省ID>';
+                        xml = xml + '       <出差地区类别>' + mxlistArr_travel[j].fdqlb + '</出差地区类别>';
+                        xml = xml + '      <出差人数>' + mxlistArr_travel[j].fccrs + '</出差人数>';
+                        xml = xml + '       <出差天数>' + mxlistArr_travel[j].fday + '</出差天数>';
+                        xml = xml + '    </建设公司_培训费申请_子表出差>';
+                    }
+
+
+                } else {
+                    xml = xml + ' <建设公司_培训费申请_子表出差>';
+                    xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                    xml = xml + ' <RowPrimaryKeys></RowPrimaryKeys>';
+                    xml = xml + ' <序号>1</序号>';
+                    xml = xml + ' <职务级别></职务级别>';
+                    xml = xml + ' <出差时间开始></出差时间开始>';
+                    xml = xml + ' <出差时间结束></出差时间结束>';
+                    xml = xml + ' <交通工具></交通工具>';
+                    xml = xml + ' <出差地点省></出差地点省>';
+                    xml = xml + ' <出差地点市></出差地点市>';
+                    xml = xml + ' <出差地点省ID></出差地点省ID>';
+                    xml = xml + ' <出差地区类别></出差地区类别>';
+                    xml = xml + ' <出差人数></出差人数>';
+                    xml = xml + ' <出差天数></出差天数>';
+                    xml = xml + ' </建设公司_培训费申请_子表出差>';
+
+                }
+
+                xml = xml + '  </FormData>';
+                xml = xml + '</XForm>';
+                PostXml(xml);
+
+            }
+
+        }
+
+        function mxItem_course(fzwjb, fsdate, fedate, fpxjg, fpxdd, fkcmc, fpxjs, fif_zs) {
+            var mx = new Object;
+            mx.fzwjb = fzwjb;
+            mx.fsdate = fsdate;
+            mx.fedate = fedate;
+            mx.fpxjg = fpxjg;
+            mx.fpxdd = fpxdd;
+            mx.fkcmc = fkcmc;
+            mx.fpxjs = fpxjs;
+            mx.fif_zs = fif_zs;
+            if (!fzwjb || fzwjb == '') {
+                mui.toast('请选择职位级别');
+                return null;
+            }
+            if (!fsdate || fsdate == ' 00:00:00') {
+                mui.toast('请选择开始时间');
+                return null;
+            }
+            if (!fedate || fedate == ' 00:00:00') {
+                mui.toast('请选择结束时间');
+                return null;
+            }
+            if (!fpxjg || fpxjg == '') {
+                mui.toast('请填写培训机构名称');
+                return null;
+            }
+            if (!fpxdd || fpxdd == '') {
+                mui.toast('请填写培训地点');
+                return null;
+            }
+            if (!fkcmc || fkcmc == '') {
+                mui.toast('请填写课程名称');
+                return null;
+            }
+            if (!fpxjs || fpxjs == '') {
+                mui.toast('请填写培训讲师');
+                return null;
+            }
+            if (!fif_zs || fif_zs == '') {
+                mui.toast('请选择有无证书');
+                return null;
+            }
+            return mx;
+        }
+
+        function mxItem_travel(fzwjb, fsdate, fedate, fjtgj, fsheng, fshengid, fshi,  fdqlb, fccrs, fday) {
+            var mx = new Object;
+            mx.fzwjb = fzwjb;
+            mx.fsdate = fsdate;
+            mx.fedate = fedate;
+            mx.fjtgj = fjtgj;
+            mx.fsheng = fsheng;
+            mx.fshengid = fshengid;
+            mx.fshi = fshi;
+            mx.fdqlb = fdqlb;
+            mx.fccrs = fccrs;
+            mx.fday = fday;
+            if (!fzwjb || fzwjb=='') {
+                mui.toast('请选择职位级别');
+                return null;
+            }
+            if (!fsdate || fsdate == ' 00:00:00') {
+                mui.toast('请选择开始时间');
+                return null;
+            }
+            if (!fedate || fedate == ' 00:00:00') {
+                mui.toast('请选择结束时间');
+                return null;
+            }
+            if (!fjtgj || fjtgj == '') {
+                mui.toast('请选择交通工具');
+                return null;
+            }
+            if (!fsheng || fsheng == '') {
+                mui.toast('请选择出差省');
+                return null;
+            }
+            if (!fshi || fshi == '') {
+                mui.toast('请选择出差市');
+                return null;
+            }
+
+            if (!fccrs || fccrs == '') {
+                mui.toast('请填写出差人数');
+                return null;
+            }
+            if (!fday || fday == '') {
+                mui.toast('请填写出差天数');
+                return null;
+            }
+            return mx;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1570 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta charset="utf-8" />
+    <title>差旅费报销</title>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/calendar-selector.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/city.data.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/maintanse.css" />
+    <link rel="stylesheet" href="../../../../Content/city-selector.css" />
+    <link rel="stylesheet" href="../../../../Content/calendar-selector.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    
+</head>
+<body>
+
+
+    <!--<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+        <aside id="offCanvasSide" class="mui-off-canvas-left">
+            <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+
+                    <div class="content">
+
+                        <p style="margin: 10px 15px;">
+                            <button id="offCanvasHide" type="button" class="mui-btn mui-btn-primary mui-btn-block" style="padding: 5px 20px;">关闭说明</button>
+                        </p>-->
+    <div class="mui-card extra_content" id="#expense_detail">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-collapse mui-active">
+                <a href="#" class="mui-navigate-right">差旅费和区间交通费用标准</a>
+                <div class="mui-collapse-content">
+                    <form>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-2 illustration_context">人员</div>
+                            <div class="mui-col-xs-2 illustration_context">飞机</div>
+                            <div class="mui-col-xs-2 illustration_context">高铁(动车)</div>
+                            <div class="mui-col-xs-2 illustration_context">火车</div>
+                            <div class="mui-col-xs-2 illustration_context">轮船</div>
+                            <div class="mui-col-xs-2 illustration_context">长途汽车</div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-2 illustration_context">一级</div>
+                            <div class="mui-col-xs-2 illustration_context">经济舱</div>
+                            <div class="mui-col-xs-2 illustration_context">二等座</div>
+                            <div class="mui-col-xs-2 illustration_context">硬卧/硬座</div>
+                            <div class="mui-col-xs-2 illustration_context">三等舱</div>
+                            <div class="mui-col-xs-2 illustration_context">实报</div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-2 illustration_context">二级</div>
+                            <div class="mui-col-xs-2 illustration_context"></div>
+                            <div class="mui-col-xs-2 illustration_context">二等座</div>
+                            <div class="mui-col-xs-2 illustration_context">硬卧/硬座</div>
+                            <div class="mui-col-xs-2 illustration_context">四等舱</div>
+                            <div class="mui-col-xs-2 illustration_context">实报</div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-2 illustration_context">三级</div>
+                            <div class="mui-col-xs-2 illustration_context"></div>
+                            <div class="mui-col-xs-2 illustration_context">二等座</div>
+                            <div class="mui-col-xs-2 illustration_context">硬卧/硬座</div>
+                            <div class="mui-col-xs-2 illustration_context">四等舱</div>
+                            <div class="mui-col-xs-2 illustration_context">实报</div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-2 illustration_context">四级</div>
+                            <div class="mui-col-xs-2 illustration_context"></div>
+                            <div class="mui-col-xs-2 illustration_context">二等座</div>
+                            <div class="mui-col-xs-2 illustration_context">硬卧/硬座</div>
+                            <div class="mui-col-xs-2 illustration_context">四等舱</div>
+                            <div class="mui-col-xs-2 illustration_context">实报</div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-2 illustration_context">五级</div>
+                            <div class="mui-col-xs-2 illustration_context"></div>
+                            <div class="mui-col-xs-2 illustration_context">二等座</div>
+                            <div class="mui-col-xs-2 illustration_context">硬卧/硬座</div>
+                            <div class="mui-col-xs-2 illustration_context">四等舱</div>
+                            <div class="mui-col-xs-2 illustration_context">实报</div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                1.常驻地为：新疆、云南、广西、贵州、广东、海南、福建、甘肃、四川、重庆、青海地区的人员可乘坐飞机；2.其他人员从公司出发到以上地区出差可按照上述地区人员标准乘坐飞机。3.其他常驻地的人员，乘坐飞机则按照火车票、轮船票的票价予以报销差旅费；
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+                <a href="#" class="mui-navigate-right">住宿费标准</a>
+                <div class="mui-collapse-content">
+                    <form>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                人员/标准
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                一类城市
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                二类城市
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                一级
+                            </div>
+                            <div class="mui-col-xs-8 illustration_context">
+                                280元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                二级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                180元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                160元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                三级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                140元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                120元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                四级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                120元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                100元/天
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                五级
+                            </div>
+                            <div class="mui-col-xs-8 illustration_context">
+                                男50元/天，女80元/天
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                审批同意指定的全国连锁酒店住宿，标准不得超过150元/天；同一地区有两名以上常住人员，必须按照公司《201406号市场房屋租赁规定》租房，否则不予报销住宿费。
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                外围市场租房标准
+                            </div>
+                            <div class="mui-col-xs-8 illustration_context">
+                                8000元/年
+                            </div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                具体租房标准见《201406号市场房屋租赁规定》
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+                <a href="#" class="mui-navigate-right">市内交通费</a>
+                <div class="mui-collapse-content">
+                    <form>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                人员/标准
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                一类城市
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                二类城市
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                一级
+                            </div>
+                            <div class="mui-col-xs-8 illustration_context">
+                                60元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                二级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                60元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                50元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-4 illustration_context">
+                                三级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                50元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                40元/天
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                四级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                40元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                30元/天
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                配备办公用车的销售干部由公司由公司统一采购油卡，发往各市场，销售干部不再报销市内交通费；
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                五级
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                15元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                10元/天
+                            </div>
+                        </div>
+                        <div class="mui-row">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                护理团队业务员上市场一年以后取消市内交通补助，其他人员继续享受以上标准
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">
+                <a href="#" class="mui-navigate-right">餐饮费标准</a>
+                <div class="mui-collapse-content">
+                    <form>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                类型/标准
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                一类地区
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                二类地区
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                不固定出差地的人员
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                30元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                25元/天
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                含5元的水电补助及物业费用
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-4 illustration_context">
+                                办事处统一食宿的人员
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                700元/人/月
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                600元/人/月
+                            </div>
+                        </div>
+                        <div class="mui-row bottomborder">
+                            <div class="mui-col-xs-12 illustration_context_extra">
+                                含5元的水电补助及物业费用
+                            </div>
+                        </div>
+                        <div class="mui-row ">
+                            <div class="mui-col-xs-4 illustration_context">
+                                报销住宿费及租房的人员
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+                                20元/天
+                            </div>
+                            <div class="mui-col-xs-4 illustration_context">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--</div>
+            </div>
+        </div>
+    </aside>-->
+    <!--<div class="mui-inner-wrap">
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">-->
+    <!--<div id="form_guide_extra" class="mui-btn-row">
+
+        <button id="seekexd" name="seekexp" class="mui-btn mui-btn-yellow show_button" onclick="showdetail()">查看费用标准参考</button>
+    </div>-->
+    <div id="form_main">
+        <div id="personal_info" class="mui-card">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right mui-row" href="#"><h5 class="mui-col-xs-7">报销人</h5><h5 class="mui-col-xs-5" id="fname"></h5></a>
+                    <div class="mui-collapse-content">
+                        <form class="mui-input-group">
+                            <div class="mui-input-row">
+                                <label for="fjob">职务</label>
+                                <input type="text" id="fjob" name="fjob" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fgrade">级别</label>
+                                <input type="text" id="fgrade" name="fgrade" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fsex">性别</label>
+                                <input type="text" id="fsex" name="fsex" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fcompany">公司名称</label>
+                                <input type="text" id="fcompany" name="fcompany" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fmarket">销售分公司</label>
+                                <input type="text" id="fmarket" name="fmarket" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fregion">大区</label>
+                                <input type="text" id="fregion" name="fregion" readonly="readonly" value="" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="foffice">办事处</label>
+                                <input type="text" id="foffice" name="foffice" readonly="readonly" value="" />
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right mui-row" href="#"><h5 class="mui-col-xs-7">报销日期</h5><h5 class="mui-col-xs-5" id="freimbursedate2"></h5></a>
+                    <div class="mui-collapse-content">
+                        <form class="mui-input-group">
+                            <div class="mui-input-row">
+                                <label for="freimbursedate">本次日期</label>
+                                <input type="date" id="freimbursedate" name="freimbursedate" value="2017-06-13" readonly="readonly" />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="freimburselast">上次日期</label>
+                                <input type="date" id="freimburselast" name="freimburselast" value="2017-05-04" readonly="readonly" />
+                            </div>
+                            <div class="mui-input-row" id="cwdate">
+                                <label for="freimbursepend">财务审核日期</label>
+                                <input type="date" id="freimbursepend" name="freimbursepend" value="2017-06-19" readonly="readonly" />
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <li class="mui-input-row">
+                    <label for="fbusinessday">出差天数</label>
+                    <input type="number" id="fbusinessday" name="fbusinessday" value="0" readonly="readonly" />
+                </li>
+
+                <li class="mui-input-row">
+                    <label for="freimbursecannumber">可报销次数</label>
+                    <input type="number" id="freimbursecannumber" name="freimbursecannumber" value="0" readonly="readonly" />
+                </li>
+
+                <li class="mui-input-row">
+                    <label for="freimburseusenumber">本单次数</label>
+                    <input type="number" id="freimburseusenumber" name="freimburseusenumber" value="0" readonly="readonly" />
+                </li>
+                <li class="mui-input-row">
+                    <label for="fbxhj">报销合计</label>
+                    <input type="text" id="fbxhj" name="fbxhj" value="0" readonly="readonly" />
+                </li>
+                <li class="mui-input-row">
+                    <label for="fcwsh">财务审核</label>
+                    <input type="text" id="fcwsh" name="fcwsh" value="0" readonly="readonly" />
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <input type="hidden" id="fbm" name="fbm" value="" />
+    <input type="hidden" id="fno" name="fno" value="" />
+
+    <input type="hidden" id="fbsczrno" name="fbsczrno" value="" />
+    <input type="hidden" id="fbsczrsp" name="fbsczrsp" value="" />
+    <input type="hidden" id="fdqjlno" name="fdqjlno" value="" />
+    <input type="hidden" id="fdqjlsp" name="fdqjlsp" value="" />
+    <input type="hidden" id="ffgszjlno" name="ffgszjlno" value="" />
+    <input type="hidden" id="ffgszjlsp" name="ffgszjlsp" value="" />
+    <input type="hidden" id="fxsfzno" name="fxsfzno" value="" />
+    <input type="hidden" id="fxsfzsp" name="fxsfzsp" value="" />
+    <input type="hidden" id="fzjlno" name="fzjlno" value="" />
+    <input type="hidden" id="fzjlsp" name="fzjlsp" value="" />
+    <input type="hidden" id="fsckjno" name="fsckjno" value="" />
+    <input type="hidden" id="fsckjsp" name="fsckjsp" value="" />
+    <input type="hidden" id="fzgkjno" name="fzgkjno" value="" />
+    <input type="hidden" id="fzgkjsp" name="fzgkjsp" value="" />
+    <input type="hidden" id="fzjlzlno" name="fzjlzlno" value="" />
+    <input type="hidden" id="fzjlzlsp" name="fzjlzlsp" value="" />
+
+    <div class="mui-input-row mui-card" style="height:7rem;overflow:scroll;" id="uploaddiv">
+        <div class="border border-t upload-img" style="top:0rem;">
+            <!--上传图片-->
+            <div class="clearfix upload-btn" id="children-bg">
+                <label class="label">附件</label>
+                <span class="tips" id="imageCount"><!--已添加0张--></span>
+                <!--上传图片按钮  -->
+                <span class="upload-addbtn" style="display:none;">
+                    <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                </span>
+
+            </div>
+            <div class="upload-img-list"></div>
+        </div>
+    </div>
+
+
+    <!--<div id="form_guide_project">
+        <a id="button_tjmx" name="button_tjmx" class="mui-btn mui-btn-royal mui-btn-block mui-btn-outlined" href="#tjmx">
+            添加费用明细
+            <span class="mui-icon mui-icon-plusempty"></span>
+        </a>
+    </div>-->
+    <div id="form_secondary">
+
+
+    </div>
+    <div class="mui-table-view mui-card">
+        <div class="mui-table-view-cell  mui-collapse mui-active">
+            <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                历史签核意见
+            </a>
+            <div class="mui-collapse-content">
+
+                <!--流程列表-->
+                <div class="list">
+                    <ul id="signff">
+                        <!--<li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+    <div class="mui-btn-row post_div" id="commit_div">
+
+        <button class="mui-btn mui-btn-success hidden_button" type="button" id="hidden_button" onclick="hiddendetail()">返回主页面</button>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getBPMParam();
+            initMsg();
+
+            watch();
+
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '查看费用标准','callBackId':'callback3'}
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    if (isSafari()) {
+                        iosfresh();
+                    } else {
+                        history.go(0);
+                    }
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+                } else if (callBackId == 'callback3') {
+                    showdetail();
+                }
+            }
+        })
+
+
+        var city_auto_focus_flag = 0;
+        var anchor_context = '';
+
+        function deleteItem(context) {
+            //console.log($(context).parent().parent().parent());
+            $(context).parent().parent().parent().parent().parent().remove();
+        }
+        function showdetail() {
+            $("#form_main").css("display", "none");
+            $("#form_secondary").css("display", "none");
+            $("#form_guide_project").css("display", "none");
+            $(".post_button").css("display", "none");
+            $("#form_guide_extra").css("display", "none");
+            $("#uploaddiv").css("display","none");
+            $(".hidden_button").css("display", "block");
+            $(".extra_content").css("display","block");
+        }
+
+        function hiddendetail() {
+            $("#form_main").css("display", "block");
+            $("#form_secondary").css("display", "block");
+            $("#form_guide_project").css("display", "block");
+            $(".post_button").css("display", "block");
+            $("#uploaddiv").css("display", "block");
+            $("#form_guide_extra").css("display", "block");
+            $(".hidden_button").css("display", "none");
+            $(".extra_content").css("display", "none");
+
+        }
+    </script>
+
+    <script>
+
+        function initMsg() {
+            var url = window.location.href;
+
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+
+                    if (status == "success") {
+
+                        console.log(data);
+
+                        var item_a = data.FormDataSet.BPM_ZPJT_SCCLVFBX_A[0];
+                        $("#taskId").val(item_a.TaskID);
+                        $("#fname").text(item_a.fname);
+                        $("#fno").val(item_a.fuser_no);
+                        $("#fbm").val(item_a.fbm);
+
+                        $("#fjob").val(item_a.fzw);
+                        $("#fgrade").val(item_a.fjb);
+                        $("#fsex").val(item_a.fxb);
+                        $("#fcompany").val(item_a.fcompany);
+                        $("#fmarket").val(item_a.ffcompany);
+                        $("#fregion").val(item_a.fdq);
+                        $("#foffice").val(item_a.fbsq);
+
+                        $("#fbusinessday").val(item_a.fbcbxts);
+                        $("#freimbursecannumber").val(item_a.fkbxcs);
+                        $("#fbxhj").val(item_a.fhj_bx);
+                        $("#fcwsh").val(item_a.fhj_cwsh);
+                        $("#freimburseusenumber").val(item_a.fcftb);
+                        $("#freimbursedate").val(FormatterTimeYMS(item_a.fdate));
+                        $("#freimbursedate2").text(FormatterTimeYMS(item_a.fdate));
+                        $("#fbsczrno").val(item_a.办事处主任工号);
+                        $("#fbsczrsp").val(item_a.办事处主任审批);
+                        $("#fdqjlno").val(item_a.大区经理工号);
+                        $("#fdqjlsp").val(item_a.大区经理审批);
+                        $("#ffgszjlno").val(item_a.分公司总经理工号);
+                        $("#ffgszjlsp").val(item_a.分公司总经理审批);
+                        $("#fxsfzno").val(item_a.销售副总工号);
+                        $("#fxsfzsp").val(item_a.销售副总审批);
+                        $("#fzjlno").val(item_a.总经理工号);
+                        $("#fzjlsp").val(item_a.总经理审批);
+                        $("#fsckjno").val(item_a.市场会计工号);
+                        $("#fsckjsp").val(item_a.市场会计审批);
+                        $("#fzgkjno").val(item_a.主管会计工号);
+                        $("#fzgkjsp").val(item_a.主管会计审批);
+                        $("#fzjlzlno").val(item_a.总经理助理工号);
+                        $("#fzjlzlsp").val(item_a.总经理助理审批);
+                        $("#freimburselast").val(FormatterTimeYMS(item_a.fscbxdate));
+
+                        var item_b = data.FormDataSet.BPM_ZPJT_SCCLVFBX_B;
+                        for (var i = 0; i < item_b.length; i++){
+                            if (item_b[i].fjtgj == null) {
+                                item_b[i].fjtgj ="";
+                            }
+                            if (item_b[i].fbz == null) {
+                                item_b[i].fbz = "";
+                            }
+                            if (item_b[i].ffyxm == '住宿费') {
+                                var li = '<form class="mui-card" id="sc-form">';
+                                li = li + '     <div class="sc-bg">';
+                                li = li + '<ul class="mui-table-view">';
+                                li = li + '<li class="mui-table-view-cell mui-collapse mui-active">';
+                                li = li + ' <a href="#" class="mui-navigate-right mui-row">';
+                                li = li + '<h5 class="mui-col-xs-4">' + item_b[i].ffyxm + '</h5>';
+                                //li = li + '<button type="button" class="mui-btn mui-btn-link " onclick="deleteItem(this)">删除</button>';
+                                li = li + '<h5 id= "ffy" name= "ffy" class="mui-col-xs-4"> <span class="mui-badge mui-badge-primary">' + item_b[i].fbxje + '</span></h5 >';
+                                li = li + '</a> ';
+
+                                li = li + '<div class="mui-collapse-content">';
+
+                                li = li + '                <input type="hidden" id="ffyxm" name="ffyxm" value="' + item_b[i].ffyxm + '"/>';
+
+                                li = li + '           <div id="sc-row-1" class="mui-card-header mui-row" >';
+                                li = li + '             <div class="mui-col-xs-4 mui-text-center" id="departure" style="display:none;">';
+                                li = li + '                  <p>出发地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="kscitymid" name="kscitymid" value="' + item_b[i].kscitymid + '"/>';
+                                li = li + '                  <input type="hidden" id="departure_province" name="departure_province" value="' + item_b[i].cfdd_pro + '"/>';
+                                li = li + '                  <span id="departure_city" class="mdcity" onclick="showcity(0,this)">' + item_b[i].cfdd_city + '</span>';
+                                li = li + '             </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="transport_div" style="display:none;">';
+                                li = li + '                 <span class="mui-icon mui-icon-pengyouquan" id="change_transpotation"></span>';
+                                li = li + '                 <p id="transpotation">' + item_b[i].fjtgj + '</p>';
+                                li = li + '            </div>';
+                                li = li + '            <div class="mui-col-xs-12 mui-text-center" id="destination">';
+                                li = li + '                <p>目的地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="citymid" name="citymid" value="' + item_b[i].citymid + '"/>';
+                                li = li + '                <input type="hidden" id="destination_province" name="destination_province" value="' + item_b[i].dddd_pro + '"/>';
+                                li = li + '                <span id="destination_city" class="mdcity" onclick="showcity(1,this)">' + item_b[i].dddd_city + '</span>';
+                                li = li + '           </div>';
+                                li = li + '          </div>';
+                                li = li + '         <div id="sc-row-2" class="mui-card-content mui-row bottomborder">';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fstartdate" name="fstartdate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fksdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-2 mui-text-center">';
+                                li = li + '                <input type="text" value="至"/>';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fenddate" name="fenddate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fjsdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-4" class="mui-card-content mui-row bottomborder">';
+                                li = li + '              <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                 <p>天数</p>';
+                                li = li + '                <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_b[i].fccts + '"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                <p>报销金额</p>';
+                                li = li + '               <input type="number" id="fsubmit_expense" name="fsubmit_expense" value="' + item_b[i].fbxje + '" class="bxje" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>会计审核</p>';
+                                li = li + '               <input type="number" id="faccountant_expense" name="faccountant_expense" value="' + item_b[i].fkjshje + '" readonly="readonly"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>财务审核</p>';
+                                li = li + '               <input type="number" id="ffinance_expense" name="ffinance_expense" value="' + item_b[i].fcwshje + '" readonly="readonly"/>';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-6" class="mui-card-content  mui-row bottomborder">';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">费用标准</p>';
+                                li = li + '                 <input id="fstandard" name="fstandard" type="number" value="' + item_b[i].fccbzhj + '" class="mui-text-center" placeholder="待填"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">地区类别</p>';
+                                li = li + '                 <input id="farea" class="mui-text-center" type="text" value="' + item_b[i].fdqlb + '"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj"></p>';
+                                if (item_b[i].fistp == "是") {
+                                    li = li + ' <label id= "fspecially"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "是" /></label> ';
+                                } else {
+                                    li = li + ' <label id= "fspecially" class="label_tp"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "否" /></label> ';
+                                }
+                                li = li + '                 <label id="fspecially" class="label_tp">特批<input type="hidden" id="ftp" name="ftp" value="否"/></label>';
+                                li = li + '              </div>';
+                                li = li + '      </div>';
+
+                                li = li + '       <div id="sc-row-7" class="mui-card-footer mui-row bottom_border">';
+                                li = li + '               <p>备注</p>';
+                                li = li + '              <input type="text" id="fbz" name="fbz" value="' + item_b[i].fbz + '" />';
+                                li = li + '      </div>';
+
+                                li = li + '</div>';
+                                li = li + '</li>';
+                                li = li + '</ul>';
+
+                                li = li + '    </div>';
+                                li = li + '  </form>';
+
+
+                                $("#form_secondary").append(li);
+                            } else if (item_b[i].ffyxm == '市内交通费') {
+                                var li = '<form class="mui-card" id="sc-form">';
+                                li = li + '     <div class="sc-bg">';
+                                li = li + '<ul class="mui-table-view">';
+                                li = li + '<li class="mui-table-view-cell mui-collapse mui-active">';
+                                li = li + ' <a href="#" class="mui-navigate-right mui-row">';
+                                li = li + '<h5 class="mui-col-xs-4">' + item_b[i].ffyxm + '</h5>';
+                                //li = li + '<button type="button" class="mui-btn mui-btn-link " onclick="deleteItem(this)">删除</button>';
+                                li = li + '<h5 id= "ffy" name= "ffy" class="mui-col-xs-4"> <span class="mui-badge mui-badge-primary">' + item_b[i].fbxje + '</span></h5 >';
+                                li = li + '</a> ';
+
+                                li = li + '<div class="mui-collapse-content">';
+
+                                li = li + '                <input type="hidden" id="ffyxm" name="ffyxm" value="' + item_b[i].ffyxm + '"/>';
+
+                                li = li + '           <div id="sc-row-1" class="mui-card-header mui-row" >';
+                                li = li + '             <div class="mui-col-xs-4 mui-text-center" id="departure" style="display:none;">';
+                                li = li + '                  <p>出发地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="kscitymid" name="kscitymid" value="' + item_b[i].kscitymid + '"/>';
+                                li = li + '                  <input type="hidden" id="departure_province" name="departure_province" value="' + item_b[i].cfdd_pro + '"/>';
+                                li = li + '                  <span id="departure_city" class="mdcity" onclick="showcity(0,this)">' + item_b[i].cfdd_city + '</span>';
+                                li = li + '             </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="transport_div" style="display:none;">';
+                                li = li + '                 <span class="mui-icon mui-icon-pengyouquan" id="change_transpotation"></span>';
+                                li = li + '                 <p id="transpotation">' + item_b[i].fjtgj + '</p>';
+                                li = li + '            </div>';
+                                li = li + '            <div class="mui-col-xs-12 mui-text-center" id="destination">';
+                                li = li + '                <p>目的地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="citymid" name="citymid" value="' + item_b[i].citymid + '"/>';
+                                li = li + '                <input type="hidden" id="destination_province" name="destination_province" value="' + item_b[i].dddd_pro + '"/>';
+                                li = li + '                <span id="destination_city" class="mdcity" onclick="showcity(1,this)">' + item_b[i].dddd_city + '</span>';
+                                li = li + '           </div>';
+                                li = li + '          </div>';
+                                li = li + '         <div id="sc-row-2" class="mui-card-content mui-row bottomborder">';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fstartdate" name="fstartdate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fksdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-2 mui-text-center">';
+                                li = li + '                <input type="text" value="至"/>';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fenddate" name="fenddate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fjsdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-4" class="mui-card-content mui-row bottomborder">';
+                                li = li + '              <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                 <p>天数</p>';
+                                li = li + '                <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_b[i].fccts + '"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                <p>报销金额</p>';
+                                li = li + '               <input type="number" id="fsubmit_expense" name="fsubmit_expense" value="' + item_b[i].fbxje + '" class="bxje" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>会计审核</p>';
+                                li = li + '               <input type="number" id="faccountant_expense" name="faccountant_expense" value="' + item_b[i].fkjshje + '" readonly="readonly"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>财务审核</p>';
+                                li = li + '               <input type="number" id="ffinance_expense" name="ffinance_expense" value="' + item_b[i].fcwshje + '" readonly="readonly"/>';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-6" class="mui-card-content  mui-row bottomborder">';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">费用标准</p>';
+                                li = li + '                 <input id="fstandard" name="fstandard" type="number" value="' + item_b[i].fccbzhj + '" class="mui-text-center" placeholder="待填"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">地区类别</p>';
+                                li = li + '                 <input id="farea" class="mui-text-center" type="text" value="' + item_b[i].fdqlb + '"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj"></p>';
+                                if (item_b[i].fistp == "是") {
+                                    li = li + ' <label id= "fspecially"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "是" /></label> ';
+                                } else {
+                                    li = li + ' <label id= "fspecially" class="label_tp"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "否" /></label> ';
+                                }
+                                li = li + '                 <label id="fspecially" class="label_tp">特批<input type="hidden" id="ftp" name="ftp" value="否"/></label>';
+                                li = li + '              </div>';
+                                li = li + '      </div>';
+
+                                li = li + '       <div id="sc-row-7" class="mui-card-footer mui-row bottom_border">';
+                                li = li + '               <p>备注</p>';
+                                li = li + '              <input type="text" id="fbz" name="fbz" value="' + item_b[i].fbz + '" />';
+                                li = li + '      </div>';
+
+                                li = li + '</div>';
+                                li = li + '</li>';
+                                li = li + '</ul>';
+
+                                li = li + '    </div>';
+                                li = li + '  </form>';
+
+
+                                $("#form_secondary").append(li);
+                            } else if (item_b[i].ffyxm == '餐补费') {
+                                var li = '<form class="mui-card" id="sc-form">';
+                                li = li + '     <div class="sc-bg">';
+                                li = li + '<ul class="mui-table-view">';
+                                li = li + '<li class="mui-table-view-cell mui-collapse mui-active">';
+                                li = li + ' <a href="#" class="mui-navigate-right mui-row">';
+                                li = li + '<h5 class="mui-col-xs-4">' + item_b[i].ffyxm + '</h5>';
+                                //li = li + '<button type="button" class="mui-btn mui-btn-link " onclick="deleteItem(this)">删除</button>';
+                                li = li + '<h5 id= "ffy" name= "ffy" class="mui-col-xs-4"> <span class="mui-badge mui-badge-primary">' + item_b[i].fbxje + '</span></h5 >';
+                                li = li + '</a> ';
+
+                                li = li + '<div class="mui-collapse-content">';
+
+                                li = li + '                <input type="hidden" id="ffyxm" name="ffyxm" value="' + item_b[i].ffyxm + '"/>';
+
+                                li = li + '           <div id="sc-row-1" class="mui-card-header mui-row" >';
+                                li = li + '             <div class="mui-col-xs-4 mui-text-center" id="departure" style="display:none;">';
+                                li = li + '                  <p>出发地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="kscitymid" name="kscitymid" value="' + item_b[i].kscitymid + '"/>';
+                                li = li + '                  <input type="hidden" id="departure_province" name="departure_province" value="' + item_b[i].cfdd_pro + '"/>';
+                                li = li + '                  <span id="departure_city" class="mdcity" onclick="showcity(0,this)">' + item_b[i].cfdd_city + '</span>';
+                                li = li + '             </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="transport_div" style="display:none;">';
+                                li = li + '                 <span class="mui-icon mui-icon-pengyouquan" id="change_transpotation"></span>';
+                                li = li + '                 <p id="transpotation">' + item_b[i].fjtgj + '</p>';
+                                li = li + '            </div>';
+                                li = li + '            <div class="mui-col-xs-12 mui-text-center" id="destination">';
+                                li = li + '                <p>目的地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="citymid" name="citymid" value="' + item_b[i].citymid + '"/>';
+                                li = li + '                <input type="hidden" id="destination_province" name="destination_province" value="' + item_b[i].dddd_pro + '"/>';
+                                li = li + '                <span id="destination_city" class="mdcity" onclick="showcity(1,this)">' + item_b[i].dddd_city + '</span>';
+                                li = li + '           </div>';
+                                li = li + '          </div>';
+                                li = li + '         <div id="sc-row-2" class="mui-card-content mui-row bottomborder">';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fstartdate" name="fstartdate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fksdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-2 mui-text-center">';
+                                li = li + '                <input type="text" value="至"/>';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-5 mui-text-center">';
+                                li = li + '               <input type="text" id="fenddate" name="fenddate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fjsdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-4" class="mui-card-content mui-row bottomborder">';
+                                li = li + '              <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                 <p>天数</p>';
+                                li = li + '                <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_b[i].fccts + '"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                <p>报销金额</p>';
+                                li = li + '               <input type="number" id="fsubmit_expense" name="fsubmit_expense" value="' + item_b[i].fbxje + '" class="bxje" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>会计审核</p>';
+                                li = li + '               <input type="number" id="faccountant_expense" name="faccountant_expense" value="' + item_b[i].fkjshje + '" readonly="readonly"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>财务审核</p>';
+                                li = li + '               <input type="number" id="ffinance_expense" name="ffinance_expense" value="' + item_b[i].fcwshje + '" readonly="readonly"/>';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-6" class="mui-card-content  mui-row bottomborder">';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">费用标准</p>';
+                                li = li + '                 <input id="fstandard" name="fstandard" type="number" value="' + item_b[i].fccbzhj + '" class="mui-text-center" placeholder="待填"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">地区类别</p>';
+                                li = li + '                 <input id="farea" class="mui-text-center" type="text" value="' + item_b[i].fdqlb + '"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj"></p>';
+                                if (item_b[i].fistp == "是") {
+                                    li = li + ' <label id= "fspecially"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "是" /></label> ';
+                                } else {
+                                    li = li + ' <label id= "fspecially" class="label_tp"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "否" /></label> ';
+                                }
+                                li = li + '                 <label id="fspecially" class="label_tp">特批<input type="hidden" id="ftp" name="ftp" value="否"/></label>';
+                                li = li + '              </div>';
+                                li = li + '      </div>';
+
+                                li = li + '       <div id="sc-row-7" class="mui-card-footer mui-row bottom_border">';
+                                li = li + '               <p>备注</p>';
+                                li = li + '              <input type="text" id="fbz" name="fbz" value="' + item_b[i].fbz + '" />';
+                                li = li + '      </div>';
+
+                                li = li + '</div>';
+                                li = li + '</li>';
+                                li = li + '</ul>';
+
+                                li = li + '    </div>';
+                                li = li + '  </form>';
+
+
+                                $("#form_secondary").append(li);
+                            } else if (item_b[i].ffyxm == '车船费') {
+                                var li = '<form class="mui-card" id="sc-form">';
+                                li = li + '     <div class="sc-bg">';
+                                li = li + '<ul class="mui-table-view">';
+                                li = li + '<li class="mui-table-view-cell mui-collapse mui-active">';
+                                li = li + ' <a href="#" class="mui-navigate-right mui-row">';
+                                li = li + '<h5 class="mui-col-xs-4">' + item_b[i].ffyxm + '</h5>';
+                                //li = li + '<button type="button" class="mui-btn mui-btn-link " onclick="deleteItem(this)">删除</button>';
+                                li = li + '<h5 id= "ffy" name= "ffy" class="mui-col-xs-4"> <span class="mui-badge mui-badge-primary">' + item_b[i].fbxje + '</span></h5 >';
+                                li = li + '</a> ';
+
+                                li = li + '<div class="mui-collapse-content">';
+
+                                li = li + '                <input type="hidden" id="ffyxm" name="ffyxm" value="' + item_b[i].ffyxm + '"/>';
+
+                                li = li + '           <div id="sc-row-1" class="mui-card-header mui-row" >';
+                                li = li + '             <div class="mui-col-xs-4 mui-text-center" id="departure">';
+                                li = li + '                  <p>出发地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="kscitymid" name="kscitymid" value="' + item_b[i].kscitymid + '"/>';
+                                li = li + '                  <input type="hidden" id="departure_province" name="departure_province" value="' + item_b[i].cfdd_pro + '"/>';
+                                li = li + '                  <span id="departure_city" class="mdcity" onclick="showcity(0,this)">' + item_b[i].cfdd_city + '</span>';
+                                li = li + '             </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="transport_div">';
+                                li = li + '                 <span class="mui-icon mui-icon-pengyouquan" id="change_transpotation"></span>';
+                                li = li + '                 <p id="transpotation">' + item_b[i].fjtgj + '</p>';
+                                li = li + '            </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="destination">';
+                                li = li + '                <p>目的地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="citymid" name="citymid" value="' + item_b[i].citymid + '"/>';
+                                li = li + '                <input type="hidden" id="destination_province" name="destination_province" value="' + item_b[i].dddd_pro + '"/>';
+                                li = li + '                <span id="destination_city" class="mdcity" onclick="showcity(1,this)">' + item_b[i].dddd_city + '</span>';
+                                li = li + '           </div>';
+                                li = li + '          </div>';
+                                li = li + '         <div id="sc-row-2" class="mui-card-content mui-row bottomborder">';
+                                li = li + '             <div class="mui-col-xs-6 mui-text-center">';
+                                li = li + '               <input type="text" id="fstartdate" name="fstartdate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fksdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-6 mui-text-center">';
+                                li = li + '               <input type="text" id="fenddate" name="fenddate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fjsdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-4" class="mui-card-content mui-row bottomborder">';
+                                li = li + '              <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                 <p>天数</p>';
+                                li = li + '                <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_b[i].fccts + '"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                <p>报销金额</p>';
+                                li = li + '               <input type="number" id="fsubmit_expense" name="fsubmit_expense" value="' + item_b[i].fbxje + '" class="bxje" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>会计审核</p>';
+                                li = li + '               <input type="number" id="faccountant_expense" name="faccountant_expense" value="' + item_b[i].fkjshje + '" readonly="readonly"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>财务审核</p>';
+                                li = li + '               <input type="number" id="ffinance_expense" name="ffinance_expense" value="' + item_b[i].fcwshje + '" readonly="readonly"/>';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-6" class="mui-card-content  mui-row bottomborder">';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">费用标准</p>';
+                                li = li + '                 <input id="fstandard" name="fstandard" type="number" value="' + item_b[i].fccbzhj + '" class="mui-text-center" placeholder="待填"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">地区类别</p>';
+                                li = li + '                 <input id="farea" class="mui-text-center" type="text" value="' + item_b[i].fdqlb + '"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj"></p>';
+                                if (item_b[i].fistp == "是") {
+                                    li = li + ' <label id= "fspecially"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "是" /></label> ';
+                                } else {
+                                    li = li + ' <label id= "fspecially" class="label_tp"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "否" /></label> ';
+                                }
+                                li = li + '                 <label id="fspecially" class="label_tp">特批<input type="hidden" id="ftp" name="ftp" value="否"/></label>';
+                                li = li + '              </div>';
+                                li = li + '      </div>';
+
+                                li = li + '       <div id="sc-row-7" class="mui-card-footer mui-row bottom_border">';
+                                li = li + '               <p>备注</p>';
+                                li = li + '              <input type="text" id="fbz" name="fbz" value="' + item_b[i].fbz + '" />';
+                                li = li + '      </div>';
+
+                                li = li + '</div>';
+                                li = li + '</li>';
+                                li = li + '</ul>';
+
+                                li = li + '    </div>';
+                                li = li + '  </form>';
+
+
+                                $("#form_secondary").append(li);
+                            } else if (item_b[i].ffyxm == '飞机费') {
+                                var li = '<form class="mui-card" id="sc-form">';
+                                li = li + '     <div class="sc-bg">';
+                                li = li + '<ul class="mui-table-view">';
+                                li = li + '<li class="mui-table-view-cell mui-collapse mui-active">';
+                                li = li + ' <a href="#" class="mui-navigate-right mui-row">';
+                                li = li + '<h5 class="mui-col-xs-4">' + item_b[i].ffyxm + '</h5>';
+                                //li = li + '<button type="button" class="mui-btn mui-btn-link " onclick="deleteItem(this)">删除</button>';
+                                li = li + '<h5 id= "ffy" name= "ffy" class="mui-col-xs-4"> <span class="mui-badge mui-badge-primary">' + item_b[i].fbxje + '</span></h5 >';
+                                li = li + '</a> ';
+
+                                li = li + '<div class="mui-collapse-content">';
+
+                                li = li + '                <input type="hidden" id="ffyxm" name="ffyxm" value="' + item_b[i].ffyxm + '"/>';
+
+                                li = li + '           <div id="sc-row-1" class="mui-card-header mui-row" >';
+                                li = li + '             <div class="mui-col-xs-4 mui-text-center" id="departure">';
+                                li = li + '                  <p>出发地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="kscitymid" name="kscitymid" value="' + item_b[i].kscitymid + '"/>';
+                                li = li + '                  <input type="hidden" id="departure_province" name="departure_province" value="' + item_b[i].cfdd_pro + '"/>';
+                                li = li + '                  <span id="departure_city" class="mdcity" onclick="showcity(0,this)">' + item_b[i].cfdd_city + '</span>';
+                                li = li + '             </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="transport_div">';
+                                li = li + '                 <span class="mui-icon mui-icon-pengyouquan" id="change_transpotation"></span>';
+                                li = li + '                 <p id="transpotation">' + item_b[i].fjtgj + '</p>';
+                                li = li + '            </div>';
+                                li = li + '            <div class="mui-col-xs-4 mui-text-center" id="destination">';
+                                li = li + '                <p>目的地<i>*</i></p>';
+                                li = li + '                <input type="hidden" id="citymid" name="citymid" value="' + item_b[i].citymid + '"/>';
+                                li = li + '                <input type="hidden" id="destination_province" name="destination_province" value="' + item_b[i].dddd_pro + '"/>';
+                                li = li + '                <span id="destination_city" class="mdcity" onclick="showcity(1,this)">' + item_b[i].dddd_city + '</span>';
+                                li = li + '           </div>';
+                                li = li + '          </div>';
+                                li = li + '         <div id="sc-row-2" class="mui-card-content mui-row bottomborder">';
+                                li = li + '             <div class="mui-col-xs-6 mui-text-center">';
+                                li = li + '               <input type="text" id="fstartdate" name="fstartdate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fksdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+
+                                li = li + '             <div class="mui-col-xs-6 mui-text-center">';
+                                li = li + '               <input type="text" id="fenddate" name="fenddate" readonly="readonly" value="' + FormatterTimeYMS(item_b[i].fjsdate) + '" class="mdate" />';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-4" class="mui-card-content mui-row bottomborder">';
+                                li = li + '              <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                 <p>天数</p>';
+                                li = li + '                <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_b[i].fccts + '"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '                <p>报销金额</p>';
+                                li = li + '               <input type="number" id="fsubmit_expense" name="fsubmit_expense" value="' + item_b[i].fbxje + '" class="bxje" />';
+                                li = li + '             </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>会计审核</p>';
+                                li = li + '               <input type="number" id="faccountant_expense" name="faccountant_expense" value="' + item_b[i].fkjshje + '" readonly="readonly"/>';
+                                li = li + '              </div>';
+                                li = li + '             <div class="mui-col-xs-3 mui-text-center">';
+                                li = li + '               <p>财务审核</p>';
+                                li = li + '               <input type="number" id="ffinance_expense" name="ffinance_expense" value="' + item_b[i].fcwshje + '" readonly="readonly"/>';
+                                li = li + '             </div>';
+                                li = li + '       </div>';
+                                li = li + '       <div id="sc-row-6" class="mui-card-content  mui-row bottomborder">';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">费用标准</p>';
+                                li = li + '                 <input id="fstandard" name="fstandard" type="number" value="' + item_b[i].fccbzhj + '" class="mui-text-center" placeholder="待填"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj">地区类别</p>';
+                                li = li + '                 <input id="farea" class="mui-text-center" type="text" value="' + item_b[i].fdqlb + '"/>';
+                                li = li + '              </div>';
+                                li = li + '               <div class="mui-col-xs-4 mui-text-center">';
+                                li = li + '                 <p class="p_adj"></p>';
+                                if (item_b[i].fistp == "是") {
+                                    li = li + ' <label id= "fspecially"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "是" /></label> ';
+                                } else {
+                                    li = li + ' <label id= "fspecially" class="label_tp"> 特批 <input type= "hidden" id= "ftp" name= "ftp" value= "否" /></label> ';
+                                }
+                                li = li + '                 <label id="fspecially" class="label_tp">特批<input type="hidden" id="ftp" name="ftp" value="否"/></label>';
+                                li = li + '              </div>';
+                                li = li + '      </div>';
+
+                                li = li + '       <div id="sc-row-7" class="mui-card-footer mui-row bottom_border">';
+                                li = li + '               <p>备注</p>';
+                                li = li + '              <input type="text" id="fbz" name="fbz" value="' + item_b[i].fbz + '" />';
+                                li = li + '      </div>';
+
+                                li = li + '</div>';
+                                li = li + '</li>';
+                                li = li + '</ul>';
+
+                                li = li + '    </div>';
+                                li = li + '  </form>';
+
+
+                                $("#form_secondary").append(li);
+                            }
+
+
+
+                        }
+
+                        if (item_a.fj != null && item_a.fj != "") {
+                            var fjtmp = (String)(item_a.fj);
+
+                            fjArray = fjtmp.split(";");
+
+
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+
+                                            var time = String(data[i].LastUpdate).replace("T", " ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+
+                                            });
+
+
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div style="font-size:0.65rem;">';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span style="font-size:0.65rem !important;">' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div style="font-size:0.65rem;">';
+                                li = li + '        <div class="flowmsg signadd">加签<span style="font-size:0.65rem !important;">' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+                    }
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+
+
+
+
+
+
+        var item = {
+            itemid: 0,
+            fentyrno: 0,
+            ffyxm: '',               //费用项目
+            ffykm: '2241.01.02.05',     //费用科目
+            fksdate: '',                //开始日期
+            fjsdate: '',                //结束日期
+            cfdd_pro: '',               //出发省份
+            cfdd_city: '',              //出发城市
+            dddd_pro: '',               //目的省份
+            dddd_city: '',              //目的城市
+            citymid: '',                //目的地城市所属省份的id
+            fdd: '',                    //地址（县）
+            fdqlb: '',                  //地区类别
+            fccts: 0,                   //出差天数
+            fjtgj: '',                  //交通工具
+            fccbz: '',                  //费用标准
+            fbxje: '',                  //报销金额
+            fkjshje: '',                //会计审核金额
+            fcwshje: '',                //财务审核金额
+            fbz: '',                    //备注
+            kscitymid: 0,               //出发地所属省份的id
+            fccbzhj: 0,
+            fistp: '',                  //是否特批
+            fzt: ''
+        }
+        function expenseItem(item) {
+            console.log(item);
+            if (!item.ffyxm || item.ffyxm == '') {
+                mui.toast('请填写费用项目');
+                return null;
+            }
+            if (!item.fksdate || item.fksdate == '') {
+                mui.toast('请填写开始日期');
+                return null;
+            }
+            if (!item.fjsdate || item.fjsdate == '') {
+                mui.toast('请填写结束日期');
+                return null;
+            }
+            if (!item.cfdd_pro || item.cfdd_pro == '') {
+                mui.toast('获取出发地省份错误');
+                return null;
+            }
+            if (!item.cfdd_city || item.cfdd_city == '') {
+
+                mui.toast('请选择出发地城市');
+                return null;
+            }
+            if (!item.dddd_pro || item.dddd_pro == '') {
+                mui.toast('获取目的地省份错误');
+                return null;
+            }
+            if (!item.dddd_city || item.dddd_city == '') {
+                mui.toast('请选择目的地城市');
+                return null;
+            }
+            return item;
+
+        }
+
+
+
+
+    </script>
+    <!--<script>
+        //侧滑容器父节点
+        var offCanvasWrapper = mui('#offCanvasWrapper');
+        //主界面容器
+        var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+        //菜单容器
+        var offCanvasSide = document.getElementById("offCanvasSide");
+
+        //移动效果是否为整体移动
+        var moveTogether = false;
+        //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+        var classList = offCanvasWrapper[0].classList;
+        //变换侧滑动画移动效果；
+        (function () {
+
+            offCanvasSide.classList.remove('mui-transitioning');
+            offCanvasSide.setAttribute('style', '');
+            classList.remove('mui-slide-in');
+            classList.remove('mui-scalable');
+            moveTogether = true;
+            //整体滑动时，侧滑菜单在inner-wrap内
+            offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+            offCanvasWrapper.offCanvas().refresh();
+
+        })();
+        //菜单界面，‘关闭侧滑菜单’按钮的点击事件
+        document.getElementById('offCanvasHide').addEventListener('tap', function () {
+            offCanvasWrapper.offCanvas('close');
+        });
+        //主界面和侧滑菜单界面均支持区域滚动；
+        mui('#offCanvasSideScroll').scroll();
+        mui('#offCanvasContentScroll').scroll();
+
+        mui('body').on('tap', 'a', function () {
+
+            document.location.href = this.href;
+        });
+        mui('body').on('tap', 'span', function () {
+            this.click();
+        });
+        mui('body').on('tap', 'a', function () {
+            this.click();
+            //document.location.href = this.href;
+        });
+        mui('body').on('tap', 'div', function () {
+            this.click();
+        });
+        mui('body').on('scroll', 'div', function () {
+
+        });
+    </script>-->
+</body>
+
+
+
+</html>

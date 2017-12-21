@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请单位<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" placeholder="请选择申请单位" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flxfs">联系方式</label>
+                <input type="tel" id="flxfs" name="flxfs" value="" placeholder="请填写联系方式" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjsdw">建设单位（甲方）<i style="color:red;">*</i></label>
+                <input type="text" id="fjsdw" name="fjsdw" value="" placeholder="请输入建设单位" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsgdw">施工单位（乙方）<i style="color:red;">*</i></label>
+                <input type="text" id="fsgdw" name="fsgdw" value="" placeholder="请输入施工单位" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcbm">工程编码<i style="color:red;">*</i></label>
+                <input type="text" id="fgcbm" name="fgcbm" value="" placeholder="请输入工程编码" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcmc">工程名称<i style="color:red;">*</i></label>
+                <input type="text" id="fgcmc" name="fgcmc" value="" placeholder="请填写工程名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcdd">工程地点<i style="color:red;">*</i></label>
+                <input type="text" id="fgcdd" name="fgcdd" value="" placeholder="请输入工程地点"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsdate">开工日期<i style="color:red;">*</i></label>
+                <input type="date" id="fsdate" name="fsdate" value="" placeholder="请输入开工日期" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fedate">竣工日期<i style="color:red;">*</i></label>
+                <input type="date" id="fedate" name="fedate" value="" placeholder="请输入竣工日期" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fjgnr">竣工内容<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fjgnr" name="fjgnr" placeholder="请输入竣工内容"></textarea>
+            </div>            
+            <div class="mui-input-row">
+                <label for="fbz">备注</label>
+                <textarea rows="3" id="fbz" name="fbz" placeholder="请输入备注"></textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\JJGC基建工程', '建设公司工程竣工自检申请');
+            upload();
+            getBPMParam();
+            watch();
+
+            prepMsg();
+
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+            $("#fsgdw").val('威海威高建设有限公司');
+
+
+
+
+        }
+
+
+        function tapEvent() {
+           
+            var fdeptdata = [
+                {
+                    value: "mc",
+                    text: "门窗分公司"
+                },
+                {
+                    value: "lh",
+                    text: "绿化配套分公司"
+                },
+                {
+                    value: "xsb",
+                    text: "销售部"
+                }
+
+            ];
+
+            showPicker('fdept', fdeptdata);
+          
+
+        }
+
+
+        function Save() {
+
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var flxfs = $("#flxfs").val();
+            var fjsdw = $("#fjsdw").val();
+            var fsgdw = $("#fsgdw").val();
+            var fgcbm = $("#fgcbm").val();
+            var fgcmc = $("#fgcmc").val();
+            var fgcdd = $("#fgcdd").val();
+            var fsdate = $("#fsdate").val() + " 00:00:00";
+            var fedate = $("#fedate").val() + " 00:00:00";
+            var fjgnr = $("#fjgnr").val();
+            var fbz = $("#fbz").val();
+
+
+
+            if (!fdept) {
+                mui.toast("请选择申请单位");
+                return;
+            }
+            if (!fjsdw) {
+                mui.toast("请输入建设单位");
+                return;
+            }
+            if (!fgcbm) {
+                mui.toast("请填写工程编码");
+                return;
+            }
+            if (!fgcmc) {
+                mui.toast("请输入工程名称");
+                return;
+            }
+            if (!fgcdd) {
+                mui.toast("请填写工程地点");
+                return;
+            }
+            if (!$("#fsdate").val()) {
+                mui.toast("请填写开工日期");
+                return;
+            }
+            if (!$("#fedate").val()) {
+                mui.toast("请填写竣工日期");
+                return;
+            }
+            if (!fjgnr) {
+                mui.toast("请填写竣工内容");
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>建设公司工程竣工自检申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + ' </Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_工程竣工自检申请_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<申请单位>' + fdept + '</申请单位>';
+                    xml = xml + '<联系方式>' + flxfs + '</联系方式>';
+                    xml = xml + '<建设单位>' + fjsdw + '</建设单位>';
+                    xml = xml + '<施工单位>' + fsgdw + '</施工单位>';
+                    xml = xml + '<工程编码>' + fgcbm + '</工程编码>';
+                    xml = xml + '<工程名称>' + fgcmc + '</工程名称>';
+                    xml = xml + '<工程地点>' + fgcdd + '</工程地点>';
+                    xml = xml + '<开工日期>' + fsdate + '</开工日期>';
+                    xml = xml + '<竣工日期>' + fedate + '</竣工日期>';
+                    xml = xml + '<竣工内容>' + fjgnr + '</竣工内容>';                    
+                    xml = xml + '<检查日期></检查日期>';
+                    xml = xml + '<检查结果></检查结果>';
+                    xml = xml + '<不合格原因></不合格原因>';
+                    xml = xml + '<不合格照片></不合格照片>';
+                    xml = xml + '<整改要求></整改要求>';
+                    xml = xml + '<限期整改日期></限期整改日期>';
+                    xml = xml + '<整改完成日期></整改完成日期>';
+                    xml = xml + '<是否整改完成></是否整改完成>';
+                    xml = xml + '<是否超期></是否超期>';
+                    xml = xml + '<整改完成情况></整改完成情况>';
+                    xml = xml + '<整改后照片></整改后照片>';
+                    xml = xml + '<超期原因></超期原因>';
+                    xml = xml + '<备注>' + fbz + '</备注>';
+                    xml = xml + '</建设公司_工程竣工自检申请_主表>';
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    //alert(xml);
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/vue.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="wrapper" class="mui-content" v-bind:style="wrapper">
+        <form class="mui-input-group" v-bind:style="form">
+            <div class="mui-input-row">
+                <label for="fcompany">{{fcompany}}</label>
+                <input type="text" id="fcompany" name="fcompany" v-bind:readonly="isReadonly" ref="fcompany" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">{{fdept}}</label>
+                <input type="text" id="fdept" name="fdept" v-bind:readonly="isReadonly" ref="fdept"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">{{fname}}</label>
+                <input type="text" id="fname" name="fname" v-bind:readonly="isReadonly" ref="fname"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">{{fdate}}<i v-bind:style="i">*</i></label>
+                <input type="date" id="fdate" name="fdate" v-bind:readonly="isReadonly" ref="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcllb">{{fcllb}}<i v-bind:style="i">*</i></label>
+                <input type="text" id="fcllb" name="fcllb" v-bind:readonly="isReadonly" ref="fcllb"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_jk">{{fif_jk}}<i v-bind:style="i">*</i></label>
+                <input type="hidden" id="fif_jk" name="fif_jk" v-bind:readonly="isReadonly" ref="fif_jk"/>
+                <div class="mui-switch mui-switch-mini mui-switch-blue mui-disabled" id="fif_jkd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fremark">{{fremark}}</label>
+                <textarea id="fremark" name="fremark" rows="3" v-bind:readonly="isReadonly" ref="fremark"></textarea>
+            </div>
+            <div class="mui-card mui-input-group" id="fjkcard" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label>{{fjkcard}}</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjktotal">{{fjktotal}}<i v-bind:style="i">*</i></label>
+                    <input type="number" id="fjktotal" name="fjktotal" v-bind:readonly="isReadonly" ref="fjktotal"/>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjkbillno">{{fjkbillno}}</label>
+                    <input type="text" id="fjkbillno" name="fjkbillno"  v-bind:readonly="isReadonly" ref="fjkbillno"/>
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fjkremark">{{fjkremark}}</label>
+                    <textarea rows="7" id="fjkremark" name="fjkremark" v-bind:readonly="isReadonly" ref="fjkremark"></textarea>
+                </div>
+               
+            </div>
+            <div id="mxlist">
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" v-bind:style="tjmx">
+                添加出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-card">
+                <div class="mui-input-row itemtitle">
+                    <label>差旅费明细</label>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>费用项目</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>有效天数<i v-bind:style="i">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>分项标准<i v-bind:style="i">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>申请金额<i v-bind:style="i">*</i></h5>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{ctjtf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_ctjtf" name="fje_ctjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_ctjtf"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{zsf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_zsf" name="fd_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_zsf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_zsf" name="fbz_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_zsf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_zsf" name="fje_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_zsf"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{cf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_cf" name="fd_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_cf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_cf" name="fbz_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_cf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_cf" name="fje_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_cf"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{snjtf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_snjtf" name="fd_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_snjtf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_snjtf" name="fbz_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_snjtf"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_snjtf" name="fje_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_snjtf"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{qtclf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 ">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_qtclf" name="fje_qtclf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_qtclf"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine col-div-adjust-forInput">
+                        <h5 class="h5-adjust-forInput">合计</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_total" name="fbz_total" v-bind:readonly="isReadonly" class="mui-text-center" value="0" ref="fbz_total"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="ftotal" name="ftotal" v-bind:readonly="isReadonly" class="mui-text-center" value="0" ref="ftotal"/>
+                    </div>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcbz">{{fcbz}}<i v-bind:style="i">*</i></label>
+                    <input type="number" id="fcbz" name="fcbz" v-bind:readonly="isReadonly" value="0.00" ref="fcbz"/>
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fccrw">{{fccrw}}<i v-bind:style="i">*</i></label>
+                    <textarea rows="8" id="fccrw" name="fccrw" v-bind:readonly="isReadonly" ref="fccrw"></textarea>
+                </div>
+            </div>
+
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                           
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value=""/>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            v.getTaskMsg();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+        });
+
+       var v= new Vue({
+            el: '#wrapper',
+            data: {
+                wrapper: {
+                    'background-color':'white'
+                },
+                form: {
+                    'left': '0rem',
+                    'right': '0rem',
+                    'margin-bottom': '1rem',
+                    'padding-bottom':'4rem'
+                },
+                i: {
+                    'color':'red'
+                },
+                tjmx: {
+                    'margin-top': '0.5rem',
+                    'display':'none'
+                },
+                isReadonly: true,    
+                fcompany:'公司名称',
+                fname: '申请人',
+                fdept: '部门名称',
+                fdate:'申请日期',
+                fcllb:'差旅类别',
+                fif_jk: '是否借款',
+                fremark: '备注',
+                fjkcard: '借款申请单',
+                fjktotal: '借款金额',
+                fjkbillno: '借款单号',
+                fjkremark:'借款事由',
+                fccrw: '出差任务内容',
+                fcbz: '超标准情况%',
+                ctjtf: '长途交通费',
+                zsf: '住宿费',
+                cf: '餐费',
+                snjtf: '市内交通费',
+                qtclf:'其他差旅费'
+
+            },
+            methods: {
+                getTaskMsg: function () {
+                    var context = this;
+
+                    var url = window.location.href;
+                    if (url != null && url.indexOf("tid") != -1) {
+
+                        taskId = url.split("tid=")[1];
+
+
+                    } else {
+                        mui.toast("网络异常,请稍后重试");
+                        history.go(-1);
+
+                    }
+                    itemidArr = new Array();
+                    $.ajax({
+                        type: "get",
+                        url: "/api/bpm/GetTaskData",
+                        data: { 'taskId': taskId },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        }
+                    }).done(function (data) {
+                        console.log(data);
+                        var item = data.FormDataSet.BPM_FDCBX_CLFYSQ_A[0];
+                        context.$refs.fcompany.value = item.fcompany;
+                        context.$refs.fdept.value = item.fdept;
+                        context.$refs.fname.value = item.fname;
+                        context.$refs.fdate.value = FormatterTimeYMS(item.fdate);
+                        context.$refs.fcllb.value = item.fcllb;
+                        context.$refs.fif_jk.value = item.fif_jk;
+                        if (item.fif_jk == '是') {
+                            $('#fif_jkd').addClass('mui-active');
+                            $('#fjkcard').css("display", "block");
+                            context.$refs.fjktotal.value = item.fjktotal;
+                            context.$refs.fjkbillno.value = item.fjkbillno;
+                            context.$refs.fjkremark.value = item.fjkremark;
+                        }
+
+                        context.$refs.fremark.value = item.fremark;
+                        context.$refs.fje_ctjtf.value = item.fje_ctjtf;
+                        context.$refs.fccrw.value = item.fccrw;
+                        context.$refs.fd_zsf.value = item.fd_zsf;
+                        context.$refs.fbz_zsf.value = item.fbz_zsf;
+                        context.$refs.fje_zsf.value = item.fje_zsf;
+                        context.$refs.fcbz.value = item.fcbz;
+                        context.$refs.fd_cf.value = item.fd_cf;
+                        context.$refs.fbz_cf.value = item.fbz_cf;
+                        context.$refs.fje_cf.value = item.fje_cf;
+                        context.$refs.fd_snjtf.value = item.fd_snjtf;
+                        context.$refs.fbz_snjtf.value = item.fbz_snjtf;
+                        context.$refs.fje_snjtf.value = item.fje_snjtf;
+                        context.$refs.fje_qtclf.value = item.fje_qtclf;
+                        context.$refs.fbz_total.value = item.fbz_total;
+                        context.$refs.ftotal.value = item.ftotal;
+
+                        var item_c = data.FormDataSet.BPM_FDCBX_CLFYSQ_B;
+
+                        for (var i = 0; i < item_c.length; i++){
+                            itemidArr.push(item_c[i].itemid);
+                            var li = ' <div class="mui-card" id="mx">';
+                            li = li + '   <div class="mui-input-row itemtitle">';
+                            li = li + '       <label>明细列表项</label>';
+                            li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '    </div>';
+                            li = li + '     <div class="mui-input-row">';
+                            li = li + '        <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="text" id="fzwjb" name="fzwjb"  readonly="readonly" value="' + item_c[i].fzwjb + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fsdate">开始时间<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="date" id="fsdate" name="fsdate" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].fsdate) + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fedate">结束时间<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="date" id="fedate" name="fedate" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].fedate) + '"/>';
+                            li = li + '   </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '     <label for="fjtgj">交通工具<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fjtgj" name="fjtgj" readonly="readonly" value="' + item_c[i].fjtgj + '" />';
+                            li = li + '  </div>';
+                            li = li + '  <div class="mui-input-row">';
+                            li = li + '      <label for="fcity">出差地点<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fcity" name="fcity" readonly="readonly" value="' + item_c[i].fcity + '" />';
+                            li = li + '    </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '      <label for="fdqlb">地区类别<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fdqlb" name="fdqlb" readonly="readonly"  value="' + item_c[i].fdqlb + '"/>';
+                            li = li + '   </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '      <label for="fccrs">出差人数<i style="color:red;">*</i></label>';
+                            li = li + '     <input type="number" id="fccrs" name="fccrs" readonly="readonly" value="' + item_c[i].fccrs + '" />';
+                            li = li + '   </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fday">出差天数<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_c[i].fday + '"/>';
+                            li = li + '   </div>';
+                            li = li + '  </div>';
+                            $("#mxlist").append(li);
+                        }
+                       
+
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+
+                    }).fail(function (e) {
+
+                    });
+                }
+            }
+
+        });
+
+
+        
+    </script>
+</body>
+</html>

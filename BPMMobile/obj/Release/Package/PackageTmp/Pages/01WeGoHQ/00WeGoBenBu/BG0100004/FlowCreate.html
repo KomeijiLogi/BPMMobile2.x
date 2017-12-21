@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fdrafter">起草人</label>
+                <input type="text" id="fdrafter" name="fdrafter" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdraftdepartment">起草部门</label>
+                <input type="text" id="fdraftdepartment" name="fdraftdepartment" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdraftdate">起草日期</label>
+                <input type="date" id="fdraftdate" name="fdraftdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fposition">起草人职位</label>
+                <input type="text" id="fposition" name="fposition" placeholder="请输入起草人职位" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffiletitle">文件标题<i style="color:red;">*</i></label>
+                <input type="text" id="ffiletitle" name="ffiletitle" placeholder="请输入文件标题" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffilenumber">文件编号</label>
+                <input type="text" id="ffilenumber" name="ffilenumber" placeholder="请输入文件编号" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif">是否总裁审批</label>
+                <input type="hidden" id="fif" name="fif" readonly="readonly" value="否" />
+                <div class="mui-switch mui-switch-mini mui-switch-blue" id="fif_d">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsecretdegree">密级</label>
+                <input type="text" id="fsecretdegree" name="fsecretdegree" placeholder="请选择密级" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="furgencydegree">紧急程度</label>
+                <input type="text" id="furgencydegree" name="furgencydegree" placeholder="请选择紧急程度" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fimportancedegree">重要程度</label>
+                <input type="text" id="fimportancedegree" name="fimportancedegree" placeholder="请选择重要程度" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbfw">发布范围<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fbfw" name="fbfw" placeholder="请输入发布范围"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()" style="width:100%;">提交</button>
+    </div>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\00威高集团本部\\BG办公管理', '集团总部管理制度发文申请');
+            prepMsg();
+            upload();
+            watch();
+            //getBPMParam();
+        });
+        mui('#fif_d').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#fif').val('是');
+                } else {
+
+                    $('#fif').val('否');
+                }
+
+            });
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fdrafter").val(result.data.name);
+                $("#fposition").val('主办、主管');
+                $("#fsecretdegree").val('一般');
+                $("#furgencydegree").val('一般');
+                $("#fimportancedegree").val('一般');
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+
+        function prepMsg() {
+            $("#fdraftdate").val(getNowFormatDate(2));
+            tapEvent();
+
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+
+                        var fareaStr = String(BPMOU).split("/");
+                        //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+                        $("#fdraftdepartment").val(fareaStr[fareaStr.length - 2]);
+                        return BPMOU;
+                    } else {
+                        return "";
+                    }
+                },
+                error: function (e) {
+                    return e;
+                },
+
+                complete: function () {
+                    return BPMOU;
+                }
+
+            });
+            
+        }
+        function tapEvent() {
+            var fifdata = [
+                {
+                    value: "yes",
+                    text: "是"
+                },
+                {
+                    value: "no",
+                    text: "否"
+                }
+            ];
+            showPicker('fif', fifdata);
+            var fsecretdegreedata = [
+                {
+                    value: "yb",
+                    text: "一般"
+                },
+                {
+                    value: "mm",
+                    text: "秘密"
+                },
+                {
+                    value: "jm",
+                    text: "机密"
+                },
+                {
+                    value: "juemi",
+                    text: "绝密"
+                }
+            ];
+            showPicker('fsecretdegree', fsecretdegreedata);
+            var furgencydegreedata = [
+                {
+                    value: "yb",
+                    text: "一般"
+                },
+                {
+                    value: "jjj",
+                    text: "较紧急"
+                },
+                {
+                    value: "jj",
+                    text: "紧急"
+                },
+                {
+                    value: "hjj",
+                    text: "很紧急"
+                },
+                {
+                    value: "fcjj",
+                    text: "非常紧急"
+                }
+            ];
+            showPicker('furgencydegree', furgencydegreedata);
+            var fimportancedegreedata = [
+                {
+                    value: "yb",
+                    text: "一般"
+                },
+                {
+                    value: "jzy",
+                    text: "较重要"
+                },
+                {
+                    value: "zy",
+                    text: "重要"
+                },
+                {
+                    value: "hzy",
+                    text: "很重要"
+                },
+                {
+                    value: "fczy",
+                    text: "非常重要"
+                }
+            ];
+            showPicker('fimportancedegree', fimportancedegreedata);
+
+        }
+
+        function Save() {
+           
+
+
+            var fdrafter = $("#fdrafter").val();
+            var fdraftdepartment = $("#fdraftdepartment").val();
+            var fdraftdate = $("#fdraftdate").val() + " 00:00:00";
+            var ffiletitle = $("#ffiletitle").val();
+            var ffilenumber = $("#ffilenumber").val();
+            var fif = $("#fif").val();
+            var fsecretdegree = $("#fsecretdegree").val();
+            var furgencydegree = $("#furgencydegree").val();
+            var fimportancedegree = $("#fimportancedegree").val();
+            var fbfw = $("#fbfw").val();
+            if (!ffiletitle) {
+                mui.toast('请输入文件标题');
+                return;
+            }
+            if (!fbfw) {
+                mui.toast('请输入发布范围');
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>集团总部管理制度发文申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + ' <BPM_SystemPublish>';
+                    xml = xml + '   <fbillno>自动生成</fbillno>';
+                    xml = xml + '   <fdrafter>' + fdrafter + '</fdrafter>';
+                    xml = xml + '   <fdraftdepartment>' + fdraftdepartment + '</fdraftdepartment>';
+                    xml = xml + '    <fdraftdate>' + fdraftdate + '</fdraftdate>';
+                    xml = xml + '   <fposition>主办、主管</fposition>';
+                    xml = xml + '   <ffiletitle>' + ffiletitle + '</ffiletitle>';
+                    xml = xml + '   <ffilenumber>' + ffilenumber + '</ffilenumber>';
+                    xml = xml + '   <fif>' + fif + '</fif>';
+                    xml = xml + '   <fsecretdegree>' + fsecretdegree + '</fsecretdegree>';
+                    xml = xml + '   <furgencydegree>' + furgencydegree + '</furgencydegree>';
+                    xml = xml + '   <fimportancedegree>' + fimportancedegree + '</fimportancedegree>';
+                    xml = xml + '  <fbfw>' + fbfw + '</fbfw>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <fattachment>' + fjArray.toString().replace(",", ";") + '</fattachment>';
+                    } else {
+                        xml = xml + '  <fattachment></fattachment>'
+                    }
+
+                    xml = xml + ' </BPM_SystemPublish>';
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

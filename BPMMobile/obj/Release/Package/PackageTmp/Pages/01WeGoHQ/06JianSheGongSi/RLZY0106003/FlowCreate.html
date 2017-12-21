@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fnumber">员工编号</label>
+                <input type="text" id="fnumber" name="fnumber" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请时间</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjt">所属集团</label>
+                <input type="text" id="fjt" name="fjt" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcom">所属公司</label>
+                <input type="text" id="fcom" name="fcom" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">所在部门</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwork">现任职位</label>
+                <input type="text" id="fwork" name="fwork" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsex">性别</label>
+                <input type="text" id="fsex" name="fsex" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbir">出生日期</label>
+                <input type="date" id="fbir" name="fbir" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fidnum">身份证号</label>
+                <input type="text" id="fidnum" name="fidnum" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="number" id="ftel" name="ftel" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxl">最高学历</label>
+                <input type="text" id="fxl" name="fxl" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fschool">毕业院校</label>
+                <input type="text" id="fschool" name="fschool" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzy">专业</label>
+                <input type="text" id="fzy" name="fzy" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbysj">毕业时间</label>
+                <input type="date" id="fbysj" name="fbysj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fjrwgsj">加入威高时间</label>
+                <input type="date" id="fjrwgsj" name="fjrwgsj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fdasz">档案所在机构</label>
+                <input type="text" id="fdasz" name="fdasz" value="" placeholder="请输入档案所在机构" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fsbsz">社保所在机构<i style="color:red;">*</i></label>
+                <input type="text" id="fsbsz" name="fsbsz" value="" placeholder="请输入社保所在机构" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fsbjzrq">社保缴至日期<i style="color:red;">*</i></label>
+                <input type="date" id="fsbjzrq" name="fsbjzrq" value="" placeholder="请输入社保缴至日期"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzzrq">转正日期<i style="color:red;">*</i></label>
+                <input type="date" id="fzzrq" name="fzzrq" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzzwork">转正后职位<i style="color:red;">*</i></label>
+                <input type="text" id="fzzwork" name="fzzwork" value="" readonly="readonly"/>
+            </div>
+           <div class="mui-input-row" style="display:none;">
+                <label for="fdeptid">部门编码<i style="color:red;">*</i></label>
+                <input type="text" id="fdeptid" name="fdeptid" value="" readonly="readonly" />
+            </div>
+
+
+        </form>
+        <div class="mui-btn-row"  id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+         mui.init();
+
+         mui.ready(function () {
+             getVersion('\\01威高集团总部\\06建设公司\\RLZY人力资源', '建设公司行管（销售）人员转正参保申请');
+             upload();
+             getBPMParam();
+             watch();
+            
+             prepMsg();
+
+         });
+
+         XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+         XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+             if (typeof (result) == "string") {
+                 result = JSON.parse(result);
+             }
+
+             if (result.success == true || result.success == "true") {
+                 $("#fname").val(result.data.name);
+                 $("#fnumber").val(result.data.userName);
+                 var xml = '<?xml version= "1.0" ?>';
+                 xml = xml + '      <Requests>';
+                 xml = xml + '     <Params>';
+                 xml = xml + '         <DataSource>PS</DataSource>';
+                 xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+                 xml = xml + '         <Type>1</Type>';
+                 xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                 xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+                 xml = xml + '        <Filter>';
+                 xml = xml + '            <fno>' + result.data.userName + '</fno>';
+                 xml = xml + '        </Filter>';
+                 xml = xml + '      </Params>';
+                 xml = xml + '   </Requests>';
+
+                 $.ajax({
+                     type: "POST",
+                     url: "/api/bpm/DataProvider",
+                     data: { '': xml },
+
+                     beforeSend: function (XHR) {
+                         XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                     },
+                     success: function (data, status) {
+
+                         if (status == "success" || data.success == "true" || data.success == true) {
+
+                             var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                             //console.log(provideData);
+                             var personInfoObject = provideData.Tables[0].Rows[0];
+                             var personObject = ({
+                                 name: personInfoObject.NAME,             //姓名
+                                 account: personInfoObject.EMPLID,        //工号
+                                 descript: personInfoObject.DEPT_DESCR,   //所在组织简约描述
+                                 status: personInfoObject.DESCR1,          //状况 1-良好，2-特殊
+                                 wedding: personInfoObject.DESCR2,         //婚姻状况
+                                 residence: personInfoObject.DESCR4,       //户口状况
+                                 nation: personInfoObject.DESCR50,         //民族
+                                 deptdescript: personInfoObject.DESCR254,  //所在组织详细描述
+                                 email: personInfoObject.EMAIL_ADDR,       //个人邮箱
+                                 fzjsj: personInfoObject.FDEPZR,           //直接上级
+                                 fzjsjno: personInfoObject.FDEPZRNUMBER,   //直接上级工号
+                                 fzgsj: personInfoObject.FZR,              //最高上级 
+                                 fzgsjno: personInfoObject.FZRNUMBER,      //最高上级工号
+                                 fjoindate: personInfoObject.HPS_JOINWG_DT, //加入威高时间
+                                 school: personInfoObject.HPS_VALUE01,      //毕业院校
+                                 profession: personInfoObject.HPS_VALUE02,  //所学专业
+                                 address: personInfoObject.HPS_VALUE03,     //家庭住址
+                                 degree: personInfoObject.JPM_DESCR90,      //学历学位
+                                 sex: personInfoObject.SEX,                 //性别 M/F
+                                 fdeptname: personInfoObject.fdeptname,     //所属部门
+                                 fgslj: personInfoObject.fgslj,             //所属部门详细路径
+                                 fsscompany: personInfoObject.fsscompany,   //所属公司
+                                 fssgroup: personInfoObject.fssgroup,       //所属组织
+                                 fzwlevel: personInfoObject.fzwlevel,       //职位级别
+                                 minzu: personInfoObject.minzu,              //民族
+                                 jiguan: personInfoObject.jiguan,            //籍贯
+                                 zhiwei: personInfoObject.zhiwei,             //职位 
+                                 birthday: FormatterTime_Y_M_S(personInfoObject.BIRTHDATE.year, personInfoObject.BIRTHDATE.month, personInfoObject.BIRTHDATE.day),    //出生日期
+                                 id: personInfoObject.NATIONAL_ID,             //身份证号 
+                                 tel: personInfoObject.PHONE,                  //联系电话
+                                 gradate: FormatterTime_Y_M_S(personInfoObject.HPS_DATE01.year, personInfoObject.HPS_DATE01.month, personInfoObject.HPS_DATE01.day),      //毕业时间
+                                 depno: personInfoObject.DEPTID                 //部门编码        
+                             });
+                             console.log(personObject);
+                             $("#fjt").val(personObject.fssgroup);
+                             $("#fcom").val(personObject.fsscompany);
+                             $("#fdept").val(personObject.fdeptname);
+                             $("#fwork").val(personObject.zhiwei);
+                             $("#fsex").val(personObject.sex);
+                             $("#fbir").val(personObject.birthday);
+                             $("#fidnum").val(personObject.id);
+                             $("#ftel").val(personObject.tel);
+                             $("#fxl").val(personObject.degree);
+                             $("#fschool").val(personObject.school);
+                             $("#fzy").val(personObject.profession);
+                             $("#fbysj").val(personObject.gradate);
+                             $("#fjrwgsj").val(personObject.fjoindate);
+                             $("#fdeptid").val(personObject.depno);
+
+                         }
+                     }, error: function (e) {
+
+                     }, complete: function () {
+
+                     }
+                 });
+             }
+
+
+
+         });
+
+         XuntongJSBridge.call('createPop', {
+             'popTitle': '',
+             'popTitleCallBackId': '1',
+             'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+             'menuList': [
+                 'openWithBrowser'
+             ],
+
+         }, function (result) {
+             if (result.success == true || result.success == 'true') {
+                 var callBackId = result.data ? result.data.callBackId : '';
+                 if (callBackId == 'callback1') {
+                     window.location.reload();
+                     //location.reload();
+                 } else if (callBackId == 'callback2') {
+
+                 } else {
+
+                 }
+             }
+
+         });
+        
+
+         function prepMsg() {
+             tapEvent();
+             $("#fdate").val(getNowFormatDate(2));
+
+           
+         }
+
+
+         function tapEvent() {
+             
+
+         }
+
+
+         function Save() {
+             //var fareaStr = String(BPMOU).split("/");
+             //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+             //$("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+
+             var fnumber = $("#fnumber").val();
+             var fname = $("#fname").val();
+             var fdate = $("#fdate").val() + " 00:00:00";
+             var fjt = $("#fjt").val();
+             var fcom = $("#fcom").val();
+             var fdept = $("#fdept").val();
+             var fwork = $("#fwork").val();
+             var fsex = $("#fsex").val();
+             var fbir = $("#fbir").val();
+             var fidnum = $("#fidnum").val();
+             var ftel = $("#ftel").val();
+             var fxl = $("#fxl").val();
+             var fschool = $("#fschool").val();
+             var fzy = $("#fzy").val();
+             var fbysj = $("#fbysj").val();
+             var fjrwgsj = $("#fjrwgsj").val();
+             var fdasz = $("#fdasz").val();
+             var fsbsz = $("#fsbsz").val();
+             var fsbjzrq = $("#fsbjzrq").val();
+             var fzzrq = $("#fzzrq").val();
+             var fzzwork = $("#fzzwork").val();
+             var fdeptid = $("#fdeptid").val();
+
+
+
+
+
+             if (!fsbsz || fsbsz == "") {
+                 mui.toast("请输入社保所在机构");
+                 return;
+             }
+             if (!fsbjzrq || fsbjzrq == "") {
+                 mui.toast("请输入社保缴至日期");
+                 return;
+             }
+             
+             var btnArry = ["取消", "确定"];
+             mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                 if (e.index == 1) {
+                     var xml = '<?xml version="1.0"?>';
+                     xml = xml + '<XForm>';
+                     xml = xml + '<Header>';
+                     xml = xml + '<Method>Post</Method>';
+                     xml = xml + '<ProcessName>建设公司行管（销售）人员转正参保申请</ProcessName>';
+                     xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                     xml = xml + '<DraftGuid></DraftGuid>';
+                     xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                     xml = xml + '<Action>提交</Action>';
+                     xml = xml + '<Comment></Comment>';
+                     xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                     xml = xml + ' </Header>';
+                     xml = xml + '<FormData>';
+                     xml = xml + '<建设公司_行管人员_转正参保>';
+                     xml = xml + '<单号>自动生成</单号>';
+                     xml = xml + '<员工编号>' + fnumber + '</员工编号>';
+                     xml = xml + '<员工姓名>' + fname + '</员工姓名>';
+                     xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                     xml = xml + '<所属集团>' + fjt + '</所属集团>';
+                     xml = xml + '<所属公司>' + fcom + '</所属公司>';
+                     xml = xml + '<所在部门>' + fdept + '</所在部门>';
+                     xml = xml + '<现任职位>' + fwork + '</现任职位>';
+                     xml = xml + '<性别>' + fsex + '</性别>';
+                     xml = xml + '<出生日期>' + fbir + '</出生日期>';
+                     xml = xml + '<身份证号>' + fidnum + '</身份证号>';
+                     xml = xml + '<联系方式>' + ftel + '</联系方式>';
+                     xml = xml + '<最高学历>' + fxl + '</最高学历>';
+                     xml = xml + '<毕业院校>' + fschool + '</毕业院校>';
+                     xml = xml + '<专业>' + fzy + '</专业>';
+                     xml = xml + '<毕业时间>' + fbysj + '</毕业时间>';
+                     xml = xml + '<加入威高时间>' + fjrwgsj + '</加入威高时间>';
+                     xml = xml + '<档案所在机构>' + fdasz + '</档案所在机构>';
+                     xml = xml + '<社保所在机构>' + fsbsz + '</社保所在机构>';
+                     xml = xml + '<社保缴至日期>' + fsbjzrq + '</社保缴至日期>'; 
+                     xml = xml + '<转正日期>' + fzzrq + '</转正日期>';                   
+                     xml = xml + '<转正后职位>' + fzzwork + '</转正后职位>';                   
+                     xml = xml + '<部门编码>' + fdeptid + '</部门编码>';                   
+
+                     xml = xml + '</建设公司_行管人员_转正参保>';
+                     xml = xml + '</FormData>';
+                     xml = xml + '</XForm>';
+                     PostXml(xml);
+                 }
+             });
+         }
+    </script>
+
+</body>
+</html>

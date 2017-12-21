@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fxzdkmc">新增档口名称<i style="color:red;">*</i></label>
+                <input type="text" id="fxzdkmc" name="fxzdkmc" placeholder="请填写新增档口名称"/>
+            </div> 
+            <div class="mui-input-row">
+                <label for="fkysj">开业时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fkysj" name="fkysj"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fcpdkmc">撤铺档口名称<i style="color:red;">*</i></label>
+                <input type="text" id="fcpdkmc" name="fcpdkmc" placeholder="请填写撤铺档口名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcpsj">撤铺时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fcpsj" name="fcpsj"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fbz">备注</label>
+                <textarea rows="3" id="fbz" name="fbz" placeholder="请填写备注"></textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司美食广场新增档口账号申请');
+            getBPMParam();
+            prepMsg();
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fxzdkmc = $("#fxzdkmc").val();
+            var fkysj = $("#fkysj").val() ;
+            var fcpdkmc = $("#fcpdkmc").val();
+            var fcpsj = $("#fcpsj").val() ;
+            var fbz = $("#fbz").val();
+
+            if (!fxzdkmc || fxzdkmc == '') {
+                mui.toast('请填写新增档口名称');
+                $("#fxzdkmc").focus();
+                return;
+            }
+            if (!$("#fkysj").val() || $("#fkysj").val() == '') {
+                mui.toast('请选择新增档口开业时间');
+                $("#fkysj").focus();
+                return;
+            }
+            if (!fcpdkmc || fcpdkmc == '') {
+                mui.toast('请填写撤铺档口名称');
+                $("#fcpdkmc").focus();
+                return;
+            }
+            if (!$("#fcpsj").val() || $("#fcpsj").val() == '') {
+                mui.toast('请选择撤铺档口撤铺时间');
+                $("#fcpsj").focus();
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '    <XForm>';
+                    xml = xml + '     <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '       <ProcessName>盛祥商管公司美食广场新增档口账号申请</ProcessName>';
+                    xml = xml + '       <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '       <DraftGuid></DraftGuid>';
+                    xml = xml + '       <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '       <Action>提交</Action>';
+                    xml = xml + '      <Comment></Comment>';
+                    xml = xml + '      <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '      </Header>';
+                    xml = xml + '      <FormData>';
+                    xml = xml + '         <BPM_SGMSGCXZDKZHSQ>';
+                    xml = xml + '            <fbillno>自动生成</fbillno>';
+                    xml = xml + '             <fdept>' + fdept + '</fdept>';
+                    xml = xml + '            <fname>' + fname + '</fname>';
+                    xml = xml + '            <fdate>' + fdate + '</fdate>';
+                    xml = xml + '         <fxzdkmc>' + fxzdkmc + '</fxzdkmc>';
+                    xml = xml + '          <fkysj>' + fkysj + '</fkysj>';
+                    xml = xml + '         <fcpdkmc>' + fcpdkmc + '</fcpdkmc>';
+                    xml = xml + '         <fcpsj>' + fcpsj + '</fcpsj>';
+                    xml = xml + '          <fbz>'+fbz+'</fbz>';
+                    xml = xml + '      </BPM_SGMSGCXZDKZHSQ>';
+                    xml = xml + '     </FormData>';
+                    xml = xml + '    </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

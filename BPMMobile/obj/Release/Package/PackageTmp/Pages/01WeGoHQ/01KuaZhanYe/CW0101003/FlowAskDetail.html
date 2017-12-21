@@ -1,0 +1,875 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fcompany">提报单位</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftibaoren">提报人</label>
+                <input type="text" id="ftibaoren" name="ftibaoren" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcreatetime">提报日期</label>
+                <input type="date" id="fcreatetime" name="fcreatetime" readonly="readonly" />
+            </div>
+            <!--提报人附件-->
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">添加附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;" id="addbtn_tjr">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <ul class="mui-table-view flowslist">
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        经营活动资金收支计划
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount1">预算数据</label>
+                            <input type="number" id="fysamount1" name="fysamount1" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount1">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount1" name="fmonthamount1" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount1">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount1" name="fgroupmonthplanamount1" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount1">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount1" name="fgroupmonthamount1" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshenpi1">审批意见</label>
+                            <textarea id="fshenpi1" name="fshenpi1" rows="8" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        经营活动的资金收入为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount2">预算数据</label>
+                            <input type="number" id="fysamount2" name="fysamount2" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount2">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount2" name="fmonthamount2" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount2">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount2" name="fgroupmonthplanamount2" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount2">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount2" name="fgroupmonthamount2" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        经营活动的资金支付为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount3">预算数据</label>
+                            <input type="number" id="fysamount3" name="fysamount3" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount3">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount3" name="fmonthamount3" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount3">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount3" name="fgroupmonthplanamount3" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount3">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount3" name="fgroupmonthamount3" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        其中：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount4">预算数据</label>
+                            <input type="number" id="fysamount4" name="fysamount4" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount4">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount4" name="fmonthamount4" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount4">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount4" name="fgroupmonthplanamount4" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount4">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount4" name="fgroupmonthamount4" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        研发费用支出为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount5">预算数据</label>
+                            <input type="number" id="fysamount5" name="fysamount5" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount5">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount5" name="fmonthamount5" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount5">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount5" name="fgroupmonthplanamount5" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount5">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount5" name="fgroupmonthamount5" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        投资活动资金收支计划
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount6">预算数据</label>
+                            <input type="number" id="fysamount6" name="fysamount6" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount6">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount6" name="fmonthamount6" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount6">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount6" name="fgroupmonthplanamount6" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount6">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount6" name="fgroupmonthamount6" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshenpi2">审批意见</label>
+                            <textarea id="fshenpi2" name="fshenpi2" rows="8" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        投资活动的资金收入为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount7">预算数据</label>
+                            <input type="number" id="fysamount7" name="fysamount7" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount7">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount7" name="fmonthamount7" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount7">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount7" name="fgroupmonthplanamount7" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount7">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount7" name="fgroupmonthamount7" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        投资活动的资金支付为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount8">预算数据</label>
+                            <input type="number" id="fysamount8" name="fysamount8" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount8">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount8" name="fmonthamount8" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount8">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount8" name="fgroupmonthplanamount8" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount8">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount8" name="fgroupmonthamount8" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        筹资活动资金收支计划
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount9">预算数据</label>
+                            <input type="number" id="fysamount9" name="fysamount9" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount9">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount9" name="fmonthamount9" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount9">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount9" name="fgroupmonthplanamount9" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount9">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount9" name="fgroupmonthamount9" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshenpi3">审批意见</label>
+                            <textarea id="fshenpi3" name="fshenpi3" rows="8" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        筹资活动的资金收入为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount10">预算数据</label>
+                            <input type="number" id="fysamount10" name="fysamount10" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount10">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount10" name="fmonthamount10" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount10">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount10" name="fgroupmonthplanamount10" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount10">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount10" name="fgroupmonthamount10" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        筹资活动的资金支付为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount11">预算数据</label>
+                            <input type="number" id="fysamount11" name="fysamount11" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount11">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount11" name="fmonthamount11" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount11">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount11" name="fgroupmonthplanamount11" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount11">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount11" name="fgroupmonthamount11" readonly="readonly" />
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        本月现金净增加额为：
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount12">预算数据</label>
+                            <input type="number" id="fysamount12" name="fysamount12" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount12">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount12" name="fmonthamount12" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount12">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount12" name="fgroupmonthplanamount12" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount12">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount12" name="fgroupmonthamount12" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshenpi4">审批意见</label>
+                            <textarea id="fshenpi4" name="fshenpi4" rows="8" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        月初货币资金余额
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount13">预算数据</label>
+                            <input type="number" id="fysamount13" name="fysamount13" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount13">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount13" name="fmonthamount13" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount13">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount13" name="fgroupmonthplanamount13" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount13">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount13" name="fgroupmonthamount13" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fshenpi5">审批意见</label>
+                            <textarea id="fshenpi5" name="fshenpi5" rows="8" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        月末货币资金余额
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fysamount14">预算数据</label>
+                            <input type="number" id="fysamount14" name="fysamount14" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fmonthamount14">子公司提报月度计划</label>
+                            <input type="number" id="fmonthamount14" name="fmonthamount14" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthplanamount14">产业集团审核月度计划</label>
+                            <input type="number" id="fgroupmonthplanamount14" name="fgroupmonthplanamount14" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fgroupmonthamount14">产业集团审核金额</label>
+                            <input type="number" id="fgroupmonthamount14" name="fgroupmonthamount14" readonly="readonly" />
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fnote">备注</label>
+                <textarea id="fnote" name="fnote" rows="8" readonly="readonly"></textarea>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                            <!--<li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getTaskMsg();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+
+                    var item = data.FormDataSet.BPM_OA_money[0];
+                    $("#taskId").val(item.TaskID);
+                    $("#fcompany").val(item.fcompany);
+                    $("#ftibaoren").val(item.ftibaoren);
+                    $("#fcreatetime").val(FormatterTimeYMS(item.fcreatetime));
+                    $("#fysamount1").val(item.fysamount1);
+                    $("#fmonthamount1").val(item.fmonthamount1);
+                    $("#fgroupmonthplanamount1").val(item.fgroupmonthplanamount1);
+                    $("#fgroupmonthamount1").val(item.fgroupmonthamount1);
+                    $("#fshenpi1").val(item.fshenpi1);
+
+                    $("#fysamount2").val(item.fysamount2);
+                    $("#fmonthamount2").val(item.fmonthamount2);
+                    $("#fgroupmonthplanamount2").val(item.fgroupmonthplanamount2);
+                    $("#fgroupmonthamount2").val(item.fgroupmonthamount2);
+
+                    $("#fysamount3").val(item.fysamount3);
+                    $("#fmonthamount3").val(item.fmonthamount3);
+                    $("#fgroupmonthplanamount3").val(item.fgroupmonthplanamount3);
+                    $("#fgroupmonthamount3").val(item.fgroupmonthamount3);
+
+                    $("#fysamount4").val(item.fysamount4);
+                    $("#fmonthamount4").val(item.fmonthamount4);
+                    $("#fgroupmonthplanamount4").val(item.fgroupmonthplanamount4);
+                    $("#fgroupmonthamount4").val(item.fgroupmonthamount4);
+
+                    $("#fysamount5").val(item.fysamount5);
+                    $("#fmonthamount5").val(item.fmonthamount5);
+                    $("#fgroupmonthplanamount5").val(item.fgroupmonthplanamount5);
+                    $("#fgroupmonthamount5").val(item.fgroupmonthamount5);
+
+                    $("#fysamount6").val(item.fysamount6);
+                    $("#fmonthamount6").val(item.fmonthamount6);
+                    $("#fgroupmonthplanamount6").val(item.fgroupmonthplanamount6);
+                    $("#fgroupmonthamount6").val(item.fgroupmonthamount6);
+                    $("#fshenpi2").val(item.fshenpi2);
+
+                    $("#fysamount7").val(item.fysamount7);
+                    $("#fmonthamount7").val(item.fmonthamount7);
+                    $("#fgroupmonthplanamount7").val(item.fgroupmonthplanamount7);
+                    $("#fgroupmonthamount7").val(item.fgroupmonthamount7);
+
+                    $("#fysamount8").val(item.fysamount8);
+                    $("#fmonthamount8").val(item.fmonthamount8);
+                    $("#fgroupmonthplanamount8").val(item.fgroupmonthplanamount8);
+                    $("#fgroupmonthamount8").val(item.fgroupmonthamount8);
+
+                    $("#fysamount9").val(item.fysamount9);
+                    $("#fmonthamount9").val(item.fmonthamount9);
+                    $("#fgroupmonthplanamount9").val(item.fgroupmonthplanamount9);
+                    $("#fgroupmonthamount9").val(item.fgroupmonthamount9);
+                    $("#fshenpi3").val(item.fshenpi3);
+
+                    $("#fysamount10").val(item.fysamount10);
+                    $("#fmonthamount10").val(item.fmonthamount10);
+                    $("#fgroupmonthplanamount10").val(item.fgroupmonthplanamount10);
+                    $("#fgroupmonthamount10").val(item.fgroupmonthamount10);
+
+                    $("#fysamount11").val(item.fysamount11);
+                    $("#fmonthamount11").val(item.fmonthamount11);
+                    $("#fgroupmonthplanamount11").val(item.fgroupmonthplanamount11);
+                    $("#fgroupmonthamount11").val(item.fgroupmonthamount11);
+
+                    $("#fysamount12").val(item.fysamount12);
+                    $("#fmonthamount12").val(item.fmonthamount12);
+                    $("#fgroupmonthplanamount12").val(item.fgroupmonthplanamount12);
+                    $("#fgroupmonthamount12").val(item.fgroupmonthamount12);
+                    $("#fshenpi4").val(item.fshenpi4);
+
+                    $("#fysamount13").val(item.fysamount13);
+                    $("#fmonthamount13").val(item.fmonthamount13);
+                    $("#fgroupmonthplanamount13").val(item.fgroupmonthplanamount13);
+                    $("#fgroupmonthamount13").val(item.fgroupmonthamount13);
+                    $("#fshenpi5").val(item.fshenpi5);
+
+                    $("#fysamount14").val(item.fysamount14);
+                    $("#fmonthamount14").val(item.fmonthamount14);
+                    $("#fgroupmonthplanamount14").val(item.fgroupmonthplanamount14);
+                    $("#fgroupmonthamount14").val(item.fgroupmonthamount14);
+
+                    $("#fnote").val(item.fnote);
+
+                    if (item.fattachment != null && item.attachment != "") {
+                        var fjtmp = (String)(item.fattachment);
+
+                        fjArray = fjtmp.split(";");
+
+
+                        //console.log("fjArray:" + fjArray);
+
+                        //请求附件详细信息
+                        $.ajax({
+                            type: 'POST',
+                            url: '/api/bpm/GetAttachmentsInfo',
+                            //dataType:'json',
+                            data: { 'fileIds': fjArray },
+
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                            },
+                            success: function (data, status) {
+                                if (status == "success") {
+
+                                    console.log(data);
+
+                                    for (var i = 0; i < data.length; i++) {
+
+                                        var name = data[i].Name;
+                                        var type = (data[i].Ext).replace(".", "");
+                                        var size = String(data[i].Size);
+
+                                        var time = String(data[i].LastUpdate).replace("T", " ");
+                                        var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                        var attach = attachItem(name, type, size, time, downurl);
+                                        attachArray.push(attach);
+
+
+
+                                        var li = '<div class="pic-preview smallyulan success">';
+                                        li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                        //类型判断
+                                        if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                            //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                        } else {
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                        }
+
+                                        li = li + ' </div>';
+                                        li = li + '</div>';
+                                        $(".upload-img-list").append(li);
+
+
+                                        $(".imgdiv").each(function () {
+
+                                            $(this).parent().find(".del.none").hide();
+
+                                        });
+
+
+
+
+                                    }
+                                    $(".imgdiv").off('tap');
+                                    $(".imgdiv").on('tap', function () {
+                                        console.log($(this)[0].id);
+                                        XuntongJSBridge.call('showFile', {
+                                            'fileName': attachArray[$(this)[0].id].name,
+                                            'fileExt': attachArray[$(this)[0].id].type,
+                                            'fileTime': attachArray[$(this)[0].id].time,
+                                            'fileSize': attachArray[$(this)[0].id].size,
+                                            'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                        }, function (result) {
+                                            //alert(JSON.stringify(result));
+                                        });
+                                    });
+
+
+                                }
+
+                            }, error: function (e) {
+                                console.log(e);
+
+                            }, complete: function () {
+
+                            }
+
+                        });
+
+                    }
+
+                    for (var i = 0; i < data.Steps.length; i++) {
+
+                        if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                            data.Steps[i].FinishAt = "";
+                        }
+                        var time = FormatterTime(data.Steps[i].FinishAt);
+
+                        var stepName = data.Steps[i].NodeName;
+                        if (data.Steps[i].NodeName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.Steps[i].NodeName == "开始") {
+                            stepName = "开始";
+                        }
+
+                        var stepAction = locationAction(data.Steps[i].SelAction);
+                        if (data.Steps[i].SelAction == "sysInform") {
+                            stepAction = "发起知会";
+                        } else if (data.Steps[i].SelAction == "Submit") {
+                            stepAction = "已阅";
+                        } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                            stepAction = "待处理";
+                        } else if (data.Steps[i].SelAction == "sysReject") {
+                            stepAction = "拒绝";
+                        } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                            stepAction = "退回重填";
+                        }
+
+
+                        var contents = data.Steps[i].Comments;
+                        if (contents == null) {
+                            contents = "无";
+                        }
+                        //判断是否是加签
+                        if (data.Steps[i].IsConsignStep == false) {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        } else {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        }
+                        $("#signff").append(li);
+                    }
+
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>

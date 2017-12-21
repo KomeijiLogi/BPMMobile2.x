@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">提报人</label>
+               <input type="text" id="fname" name="fname" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报时间</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">提报单位<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" placeholder="请选择提报单位"/>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                   <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                        <label for="fxm">姓名<i style="color:red;">*</i></label>
+                        <input type="text" id="fxm" name="fxm" placeholder="请填写姓名"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fzw">职务<i style="color:red;">*</i></label>
+                        <input type="text" id="fzw" name="fzw" placeholder="请填写职务"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fyhtqx">原合同期限<i style="color:red;">*</i></label>
+                        <input type="text" id="fyhtqx" name="fyhtqx" placeholder="请填写原合同期限"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fxqcs">续签次数<i style="color:red;">*</i></label>
+                        <input type="number" id="fxqcs" name="fxqcs" placeholder="请填写续签次数"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fif_xq">是否续签<i style="color:red;">*</i></label>
+                        <input type="text" id="fif_xq" name="fif_xq" readonly="readonly" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fbcxqnx">本次续签年限<i style="color:red;">*</i></label>
+                        <input type="text" id="fbcxqnx" name="fbcxqnx" readonly="readonly" placeholder="请选择本次续签年限"/>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+         <div class="mui-btn-row" id="SaveD">
+             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+         </div>
+    </div>     
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\06建设公司\\RLZY人力资源', '建设公司员工劳动合同续签申请');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

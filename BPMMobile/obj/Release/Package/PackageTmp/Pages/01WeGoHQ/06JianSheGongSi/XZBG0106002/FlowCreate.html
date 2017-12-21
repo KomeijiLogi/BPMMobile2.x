@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="tel" id="ftel" name="ftel"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsylb">使用类别<i style="color:red;">*</i></label>
+                <input type="text" id="fsylb" name="fsylb" readonly="readonly" placeholder="请选择使用类别"/>
+            </div>
+           
+            <div id="mxlist" style="padding-bottom:2rem;">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:1rem;">
+                添加明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+    </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\01威高集团总部\\06建设公司\\XZBG行政办公', '建设公司印章使用申请');
+            prepMsg();
+            
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+        }
+
+        function tapEvent() {
+
+            var fsylbdata = [
+                {
+                    value: 'gz',
+                    text:'盖章'
+                },
+                {
+                    value: 'jc',
+                    text:'借出'
+                }
+            ];
+            var tmpfsylb = $("#fsylb").val();
+            var element = document.getElementById('fsylb');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fsylbdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    if (!(element.value == tmpfsylb)) {
+                        $("#mxlist").empty();
+                    } 
+                    
+                });
+
+            }, false);
+
+            var fyzmcdata = [
+                {
+                    value: 'jsgsgz',
+                    text:'建设公司公章'
+                },
+                {
+                    value: 'jsgsfrz',
+                    text:'建设公司法人章'
+                },
+                {
+                    value: 'jsgsjgz',
+                    text:'建设公司竣工章'
+                },
+                {
+                    value: 'jcgsgz',
+                    text:'建材公司公章'
+                },
+                {
+                    value: 'jcgsfrz',
+                    text:'建材公司法人章'
+                }
+
+            ];
+
+
+            var fyzlbdata = [
+                {
+                    value: 'gz',
+                    text:'公章'
+                },
+                {
+                    value: 'frz',
+                    text:'法人章'
+                },
+                {
+                    value: 'jgz',
+                    text:'竣工章'
+                }
+
+            ];
+          
+            var fjflag = false;
+            var picUrl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx';
+            $("#tjmx").on('tap', function () {
+                var fsylb = $("#fsylb").val();
+                if (fsylb == '' || !fsylb) {
+                    mui.toast('请先选择使用列表');
+                    return false;
+                } else if (String(fsylb).indexOf('盖章') != -1) {
+
+                    //$("#mxlist").empty();
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fyzmc">印章名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fyzmc" name="fyzmc" readonly="readonly" placeholder="请选择印章名称"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fyzlb">印章类别<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fyzlb" name="fyzlb" readonly="readonly" placeholder="请选择印章类别"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgzdate">盖章日期<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="date" id="fgzdate" name="fgzdate" />';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgzsl">盖章数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fgzsl" name="fgzsl" />';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fwjmc">文件名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fwjmc" name="fwjmc" />';
+                    li = li + '   </div>';
+
+                    li = li + '  <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">';
+                    li = li + '     <div class="border border-t upload-img" style="top:0rem;">';
+                    li = li + '         <div class="clearfix upload-btn" id="children-bg">';
+                    li = li + '            <label class="label">图片</label>';
+                    li = li + '            <span class="tips" id="imageCount"><!--已添加0张--></span>';
+                    li = li + '            <span class="upload-addbtn">';
+                    li = li + '                 <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">';
+                    li = li + '            </span>';
+                    li = li + '          </div>';
+                    li = li + '          <div class="upload-img-list"  id="aimlist"></div>';
+                    li = li + '         </div>';
+                    li = li + '     </div>';
+                    li = li + '</div>';
+
+                    $("#mxlist").append(li);
+                   
+                    showPickerByZepto('#mxlist','#fyzmc', fyzmcdata);
+                    showPickerByZepto('#mxlist', '#fyzlb', fyzlbdata);
+                   
+                    document.getElementById('tjmx').scrollIntoView();
+
+                } else if (String(fsylb).indexOf('借出') != -1) {
+
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fyzmc">印章名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fyzmc" name="fyzmc" readonly="readonly" placeholder="请选择印章名称"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fyzlb">印章类别<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fyzlb" name="fyzlb" readonly="readonly" placeholder="请选择印章类别"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fytms">用途描述<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fytms" name="fytms"  placeholder="请填写用途描述"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjydate">借用日期<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="date" id="fjydate" name="fjydate"  placeholder="请填写用途描述"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row" style="height:2.75rem;">';
+                    li = li + '        <label for="fsjghdate">实际归还日期<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="date" id="fsjghdate" name="fsjghdate"  placeholder="请填写实际归还日期"/>';
+                    li = li + '   </div>';
+                    li = li + '</div>';
+
+                    $("#mxlist").append(li);
+                    showPickerByZepto('#mxlist', '#fyzmc', fyzmcdata);
+                    showPickerByZepto('#mxlist', '#fyzlb', fyzlbdata);
+                    document.getElementById('tjmx').scrollIntoView();
+                } 
+
+               
+            });
+
+
+        }
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var ftel = $("#ftel").val();
+            var fsylb = $("#fsylb").val();
+
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '      <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '          <ProcessName>建设公司印章使用申请</ProcessName>';
+                    xml = xml + '          <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '          <DraftGuid></DraftGuid>';
+                    xml = xml + '          <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '           <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '          <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    if (fsylb == '盖章') {
+
+
+                    } else if (fsylb == '借出') {
+
+
+                    }
+
+                    xml = xml + '    </FormData>';
+                    xml = xml + '</XForm>';
+                }
+            });
+            
+
+
+        }
+
+        function gzItem(fyzmc,fyzlb,fgzdate,fgzsl,fwjmc,fjArray) {
+
+            var gz = new Object;
+            gz.fyzmc = fyzmc;
+            gz.fyzlb = fyzlb;
+            gz.fgzdate = fgzdate;
+            gz.fgzsl = fgzsl;
+            gz.fwjmc = fwjmc;
+            gz.fjArray = fjArray;
+            if (!fyzmc || fyzmc == '') {
+                mui.toast('请选择印章名称');
+                return null;
+            }
+            if (!fyzlb || fyzlb == '') {
+                mui.toast('请选择印章类别');
+                return null;
+            }
+            if (!fgzdate || fgzdate == '') {
+                mui.toast('请填写盖章日期');
+                return null;
+            }
+            if (!fgzsl || fgzsl == '') {
+                mui.toast('请填写盖章数量');
+                return null;
+            }
+            if (!fjArray || fjArray == '') {
+                mui.toast('请上传备件');
+                return null;
+            }
+            return gz;
+
+        }
+
+        function jcItem(fyzmc, fyzlb, fytms, fjydate, fsjghdate) {
+            var jc = new Object;
+            jc.fyzmc = fyzmc;
+            jc.fyzlb = fyzlb;
+            jc.fytms = fytms;
+            jc.fjydate = fjydate;
+            jc.fsjghdate = fsjghdate;
+            if (!fyzmc || fyzmc == '') {
+                mui.toast('请选择印章名称 ');
+                return null;
+            }
+            if (!fyzlb || fyzlb == '') {
+                mui.toast('请选择印章类别');
+                return null;
+            }
+            if (!fytms || fytms == '') {
+                mui.toast('请填写用途说明');
+                return null;
+            }
+            if (!fjydate || fjydate == '') {
+                mui.toast('请填写借用日期');
+                return null;
+            }
+
+            return jc;
+        }
+
+      
+       
+    </script>
+</body>
+</html>

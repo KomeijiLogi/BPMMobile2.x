@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+             <div class="mui-input-row">
+                 <label for="fname">发起人<i style="color:red;">*</i></label>
+                 <input type="text" id="fname" name="fname" readonly="readonly"/>
+             </div>    
+             <div class="mui-input-row" style="display:none;">
+                 <label for="fdept">发起部门<i style="color:red;">*</i></label>
+                 <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="fdate">发起日期<i style="color:red;">*</i></label>
+                 <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+             </div>
+                           
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fmd">活动目的<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fmd" name="fmd" placeholder="请输入"readonly="readonly"></textarea>
+             </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fmc">活动名称<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fmc" name="fmc" placeholder="请输入"readonly="readonly"></textarea>
+             </div>
+             
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fxs">活动形式<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fxs" name="fxs" placeholder="请输入"readonly="readonly"></textarea>
+             </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fyq">活动具体要求<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fyq" name="fyq" placeholder="请输入"readonly="readonly"></textarea>
+             </div>
+              <div class="mui-input-row">
+                 <label for="fwcsj">完成时间要求<i style="color:red;">*</i></label>
+                 <input type="date" id="fwcsj" name="fwcsj" readonly="readonly"/>
+             </div>
+           <!-- <div class="mui-input-row bgc">
+                <label>申请明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="mxlist" style="padding-bottom:2rem;">
+
+            </div>-->
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"></span>
+                         
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                            <!--<li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getTaskMsg();
+           
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' },
+                {'text':'重新发起','callBackId':'callback3'}
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else if (callBackId=='callback3') {                    
+
+                    var msg = JSON.stringify({
+
+                        "fname": $("#fname").val(),
+                        "fdept": $("#fdept").val(),
+                        "fdate": $("#fdate").val(), 
+
+                        "fmd": $("#fmd").val(),
+                        "fmc":$("#fmc").val(),
+                        "fxs": $("#fxs").val(),
+                        "fyq": $("#fyq").val(),
+                        "fwcsj": $("#fwcsj").val()
+                        
+                      //  "fsqmx": fsqmx
+                        
+                    });
+                    localStorage.setItem("BPM_SGZSXCYHDSPMsg", msg);
+                    setTimeout("window.location.href = '/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowCreate.html?reset=true'", 1000);
+                }
+            }
+
+        });
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+                    var item = data.FormDataSet.BPM_SGZSXCYHDSP[0];
+                    $("#taskId").val(item.TaskID);
+                    $("#fname").val(item.fname);
+                    $("#fdept").val(item.fdept);
+                    $("#fdate").val(FormatterTimeYMS(item.fdate));
+                  
+                    
+                    $("#fmd").val(item.fmd);
+                    $("#fmc").val(item.fmc);
+                    $("#fxs").val(item.fxs);
+                    $("#fyq").val(item.fyq);
+                    $("#fwcsj").val(FormatterTimeYMS(item.fwcsj));
+
+
+                    if (item.fj != null && item.fj != "") {
+                        var fjtmp = (String)(item.fj);
+                        fjArray = fjtmp.split(";");
+                        //console.log("fjArray:" + fjArray);
+                        //请求附件详细信息
+                        $.ajax({
+                            type: 'POST',
+                            url: '/api/bpm/GetAttachmentsInfo',
+                            //dataType:'json',
+                            data: { 'fileIds': fjArray },
+
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                            },
+                            success: function (data, status) {
+                                if (status == "success") {
+
+                                    console.log(data);
+
+                                    for (var i = 0; i < data.length; i++) {
+
+                                        var name = data[i].Name;
+                                        var type = (data[i].Ext).replace(".", "");
+                                        var size = String(data[i].Size);
+
+                                        var time = String(data[i].LastUpdate).replace("T", " ");
+                                        var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                        var attach = attachItem(name, type, size, time, downurl);
+                                        attachArray.push(attach);
+
+
+
+                                        var li = '<div class="pic-preview smallyulan success">';
+                                        li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                        //类型判断
+                                        if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                            //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                        } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/txt@2x.png"/></div>';
+
+                                        } else {
+                                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/unkown@2x.png"/></div>';
+                                        }
+
+                                        li = li + ' </div>';
+                                        li = li + '</div>';
+                                        $(".upload-img-list").append(li);
+
+
+                                        $(".imgdiv").each(function () {
+
+                                            $(this).parent().find(".del.none").hide();
+
+                                        });
+
+
+
+
+                                    }
+
+                                    $(".imgdiv").on('tap', function () {
+                                        console.log($(this)[0].id);
+                                        XuntongJSBridge.call('showFile', {
+                                            'fileName': attachArray[$(this)[0].id].name,
+                                            'fileExt': attachArray[$(this)[0].id].type,
+                                            'fileTime': attachArray[$(this)[0].id].time,
+                                            'fileSize': attachArray[$(this)[0].id].size,
+                                            'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                        }, function (result) {
+                                            //alert(JSON.stringify(result));
+                                        });
+                                    });
+
+
+                                }
+
+                            }, error: function (e) {
+                                console.log(e);
+
+                            }, complete: function () {
+
+                            }
+
+                        });
+
+                    }
+
+                   
+                    for (var i = 0; i < data.Steps.length; i++) {
+
+                        if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                            data.Steps[i].FinishAt = "";
+                        }
+                        var time = FormatterTime(data.Steps[i].FinishAt);
+
+                        var stepName = data.Steps[i].NodeName;
+                        if (data.Steps[i].NodeName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.Steps[i].NodeName == "开始") {
+                            stepName = "开始";
+                        }
+
+                        var stepAction = locationAction(data.Steps[i].SelAction);
+                        if (data.Steps[i].SelAction == "sysInform") {
+                            stepAction = "发起知会";
+                        } else if (data.Steps[i].SelAction == "Submit") {
+                            stepAction = "已阅";
+                        } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                            stepAction = "待处理";
+                        } else if (data.Steps[i].SelAction == "sysReject") {
+                            stepAction = "拒绝";
+                        } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                            stepAction = "退回重填";
+                        }
+
+
+                        var contents = data.Steps[i].Comments;
+                        if (contents == null) {
+                            contents = "无";
+                        }
+                        //判断是否是加签
+                        if (data.Steps[i].IsConsignStep == false) {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        } else {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        }
+                        $("#signff").append(li);
+                    }
+
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>

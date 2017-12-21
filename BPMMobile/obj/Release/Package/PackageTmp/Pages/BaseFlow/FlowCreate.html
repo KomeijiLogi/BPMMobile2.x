@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+	<meta charset="utf-8" />
+    
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;">
+           
+            <div class="mui-input-row">
+
+                <label>标题<i style="color:red;">*</i></label>
+                <input type="text" class="mui-input-clear" placeholder="请输入标题" id="flowTitle" name="flowTitle" />
+            </div>
+            <div class="mui-input-row">
+                
+                <label>提交人</label>
+                <input type="text" placeholder="提交人信息" class="" id="flowPerson" name="flowPerson" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+
+                <label>时间</label>
+                <input type="datetime" placeholder="时间信息" class="" id="flowTime" name="flowTime" readonly="readonly"/>
+            </div>
+
+            
+
+            <div class="mui-input-row" style="margin: 0.5rem 0.25rem;height:5.25rem;">
+
+                <label>事由<i style="color:red;">*</i></label>
+                <textarea rows="5" id="flowCause" name="flowCause" style="overflow:auto;"></textarea>
+            </div>
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+
+    <script type="text/javascript">
+
+        mui.init();
+
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\00威高集团本部\\XX信息管理','洁瑞APP审批');
+            $('#flowTime').val(getNowFormatDate());
+            upload();
+            watch();
+            getBPMParam();
+            
+            selectPic();
+
+            preMsg();
+           
+        });
+       
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+
+            //alert(JSON.stringify(result));
+            if (typeof (result) == "string") {
+                result = JSON.stringify(result);
+            }
+            if (result.success == true || result.success == "true") {
+                $('#flowPerson').val(result.data.name + result.data.userName);
+                $('#flowPerId').val(result.data.userName);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                 'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                  
+                    
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var hour = date.getHours();
+            if (hour >= 0 && hour <= 9) {
+                hour = "0" + hour;
+            }
+            var minute = date.getMinutes();
+            if (minute >= 0 && minute <= 9) {
+                minute = "0" + minute;
+            }
+            var currentdate = month + seperator1 + strDate
+                    + " " + hour + seperator2 + minute
+            ;
+            return currentdate;
+        }
+
+
+
+       
+
+        var fjArray = new Array();
+
+        var BPMOU;
+        function getBPMParam() {
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+                    }
+                },
+                error: function (e) {
+                },
+
+                complete: function () { }
+
+            });
+
+        }
+        function preMsg() {
+            var url = window.location.href;
+
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                    var msg = JSON.parse(localStorage.getItem('BPM_JRAPPMsg'));
+                    $("#flowTitle").val(msg.fname);
+                    $("#flowCause").val(msg.fsy);
+                   
+                } else {
+                  
+                }
+
+                
+            } 
+           
+            
+
+        }
+
+
+
+
+        function Save() {
+            var flowTitle = $("#flowTitle").val();
+            var flowPerId = $("#flowPerId").val();
+            var flowCause = $("#flowCause").val();
+
+            if (flowTitle == null || flowTitle == "") {
+                mui.toast("标题不能为空");
+                return;
+            }
+            if (flowCause == null || flowCause =="") {
+                mui.toast("事由不能为空");
+                return
+            }
+
+            //TODO:附件部分添加
+
+            //alert(fjArray.toString().replace(",", ";"));
+
+
+            var xml = '<?xml version="1.0"?>';   
+            xml = xml + '<XForm>';
+            xml = xml + ' <Header>';
+            xml = xml + '   <Method>Post</Method>';
+            xml = xml + '   <ProcessName>洁瑞APP审批</ProcessName>';
+            xml = xml + '   <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '   <DraftGuid></DraftGuid>';
+            xml = xml + '   <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';          
+            xml = xml + '   <Action>提交</Action>';
+            xml = xml + '   <Comment></Comment>';
+            xml = xml + '   <InviteIndicateUsers></InviteIndicateUsers>';
+            xml = xml + ' </Header>';
+            xml = xml + ' <FormData>';
+            xml = xml + '   <BPM_JRAPP>';
+            xml = xml + '      <fbt>' + flowTitle + '</fbt>';
+            xml = xml + '      <fsy>' + flowCause + '</fsy>';
+            if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                xml = xml + '      <fj>' + fjArray.toString().replace(",",";")+ '</fj>';
+            } else {
+
+                xml = xml + '      <fj></fj>';
+            }
+           
+            xml = xml + '   </BPM_JRAPP>';
+            xml = xml + ' </FormData>';
+            xml = xml + '</XForm>';
+
+            
+
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/PostProcess",
+                data: {'':xml},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                    
+                },
+                success: function (data, status) {
+
+                    if (status == "success") {
+                        //console.log(data);
+                        mui.toast("提交给" + data.Recipients[0].Recipient.DisplayName);
+                        setTimeout("window.location.href = '/Pages/index.html?ticket="+localStorage.getItem('ticket')+"'", 2000);
+                       
+                    } else {
+                        mui.toast("提交失败!请稍后重试");
+                    }
+                },
+                error: function (e) {
+                    //console.log(e);  
+                    
+                },
+                complete: function () { }
+
+            });
+
+
+
+
+        }
+
+
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+
+
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+        
+
+
+
+        function selectPic() {
+
+            var photos = new Array();
+            var photoNew = 0;
+            var photoCount = $('.upload-img-list >div').size();
+            var photoOld = 0;
+            $(".upload-img-list div").each(function () {
+                var FileName;
+                var FileType;
+                if (data.photoInfo[photoNew] != null) {
+                    FileName = data.photoInfo[photoNew].id;       //图片ID     
+                    FileType = data.photoInfo[photoNew].type;
+                    photoNew++;
+
+                    if (FileName) {
+                        photos.push({ 'FileName': FileName, 'FileType': FileType });
+                    }
+
+                } else {
+                    if (photoOld == 0) {
+
+                        photoOld = photoCount - photoNew;
+
+                    }
+
+                    else {
+                        if ($(this).hasClass("del")) {
+                            FileName = $(this).parent().parent().find("input[name=filepath]").val();
+                            FileType = $(this).parent().parent().find("input[name=filetype]").val();
+                            photoOld--;
+                        } else if ($(this).hasClass("success")) {
+                            FileName = $(this).find("input[name=filepath]").val();
+                            FileType = $(this).find("input[name=filetype]").val();
+                            photoOld--;
+                        }
+
+
+                        //if (FileName) {
+                        //    photos.push({ 'FileName': FileName, 'FileType': FileType });
+                        //}
+                    }
+
+                }
+
+            });
+
+        }
+
+        function isSafari() {
+
+            if (navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPhone") != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function iosfresh() {
+
+
+            if ($('body').hasClass("no-cache")) {
+                document.body.style.display = "none";
+                window.location.reload();
+
+            }
+
+
+        }
+        function forbiddenCache() {
+            if (isSafari()) {
+                $('body').addClass("no-cache");
+               
+            }
+
+        }
+    </script> 
+</body>
+</html>

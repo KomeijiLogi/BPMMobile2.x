@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">检验人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">检验部门</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">检验日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftype">产品类型</label>
+                <input type="text" id="ftype" name="ftype" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcmc">工程名称</label>
+                <input type="text" id="fgcmc" name="fgcmc" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsccj">生产车间</label>
+                <input type="text" id="fsccj" name="fsccj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcpsl">产成品数量</label>
+                <input type="text" id="fcpsl" name="fcpsl" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgg">规格型号</label>
+                <input type="text" id="fgg" name="fgg" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fccsl">抽捡数量</label>
+                <input type="text" id="fcjsl" name="fcjsl" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="frate">合格率(%)</label>
+                <input type="text" id="frate" name="frate" value="" readonly="readonly" />
+            </div>
+
+            <table style="width: 100%;">
+                <tr style="font-size:17px;text-align : center;height:20px;">
+                    <td style="width: 25%">检查项目</td>
+                    <td style="width: 25%">检测标准</td>
+                    <td style="width: 25%">检测方法</td>
+                    <td style="width: 25%">检测结果</td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">外形尺寸（对角线尺寸）</td>
+                    <td style="width: 25%;"><p onclick="getDetail1()">宽度和高度……</p></td>
+                    <td style="width: 25%;">5m卷尺</td>
+                    <td style="width: 25%;"><input type="text" id="ftest1" name="ftest1" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">密封条镶嵌</td>
+                    <td style="width: 25%;"><p onclick="getDetail2()">交角对严……</p></td>
+                    <td style="width: 25%;">目测</td>
+                    <td style="width: 25%;"><input type="text" id="ftest2" name="ftest2" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">防水处理</td>
+                    <td style="width: 25%;"><p onclick="getDetail3()">各构件……</p></td>
+                    <td style="width: 25%;">目测</td>
+                    <td style="width: 25%;"><input type="text" id="ftest3" name="ftest3" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">相邻构件装配同一平面高低差</td>
+                    <td style="width: 25%;"><p>≤0.3mm</p></td>
+                    <td style="width: 25%;">量具</td>
+                    <td style="width: 25%;"><input type="text" id="ftest4" name="ftest4" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">相邻两构件装配间隙</td>
+                    <td style="width: 25%;"><p>≤0.2mm</p></td>
+                    <td style="width: 25%;">塞尺</td>
+                    <td style="width: 25%;"><input type="text" id="ftest5" name="ftest5" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">框扇搭接量</td>
+                    <td style="width: 25%;"><p onclick="getDetail4()">平开塑钢……</p></td>
+                    <td style="width: 25%;">卷尺</td>
+                    <td style="width: 25%;"><input type="text" id="ftest6" name="ftest6" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">门窗外观</td>
+                    <td style="width: 25%;"><p onclick="getDetail5()">擦伤不大于……</p></td>
+                    <td style="width: 25%;">目测、卷尺</td>
+                    <td style="width: 25%;"><input type="text" id="ftest7" name="ftest7" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">附件安装</td>
+                    <td style="width: 25%;"><p onclick="getDetail6()">位置准确……</p></td>
+                    <td style="width: 25%;">目测、拉力计</td>
+                    <td style="width: 25%;"><input type="text" id="ftest8" name="ftest8" value="" readonly="readonly" /></td>
+                </tr>
+                <tr style="font-size:12px;text-align : center;height:25px;">
+                    <td style="width: 25%;">门窗扇玻璃安装</td>
+                    <td style="width: 25%;"><p onclick="getDetail7()">打胶顺直……</p></td>
+                    <td style="width: 25%;">目测</td>
+                    <td style="width: 25%;"><input type="text" id="ftest9" name="ftest9" value="" readonly="readonly" /></td>
+                </tr>
+            </table>
+
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse">
+                <a class="mui-navigate-right"  style="background-color:#00a0ea;color:white;font-size:0.75rem;" href="#bottom">
+
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+
+            getTaskMsg();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+       });
+
+
+
+        //详细检测方法
+        function getDetail1() {
+            //var getId = $(this).id;
+            mui.alert('宽度和高度≤2000mm±1.0mm宽度和高度＞2000mm±2.0mm对角线≤2000mm±2.0mm对角线＞2000mm±3.0mm');
+
+        }
+        function getDetail2() {
+            //var getId = $(this).id;
+            mui.alert('交角对严，粘结牢固，顺直无脱落');
+
+        }
+        function getDetail3() {
+            //var getId = $(this).id;
+            mui.alert('各构件连接处防水胶密封严密');
+
+        }
+        function getDetail4() {
+            //var getId = $(this).id;
+            mui.alert('平开塑钢门窗、木门窗=8±1mm，铝合金平开门窗=5.5±1mm');
+
+        }
+        function getDetail5() {
+            //var getId = $(this).id;
+            mui.alert('擦伤不大于氧化膜厚度，面积小于10mm2，划伤总数小于4处，长度小于15mm。无铝屑、毛刺、油斑，无胶济外溢');
+
+        }
+        function getDetail6() {
+            //var getId = $(this).id;
+            mui.alert('位置准确齐全牢固，开启灵活');
+
+        }
+        function getDetail7() {
+            //var getId = $(this).id;
+            mui.alert('打胶顺直，无毛刺，无空鼓');
+
+        }
+
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+                    var item = data.FormDataSet.建设公司_出厂检验_记录备案[0];
+                    $("#taskId").val(item.TaskID);
+                    $("#fname").val(item.检验人);
+                    $("#fdept").val(item.检验部门);
+                    $("#fdate").val(FormatterTimeYMS(item.检验日期));
+                    $("#ftype").val(item.产品类型);
+                    $("#fgcmc").val(item.工程名称);
+                    $("#fsccj").val(item.生产车间);
+                    $("#fcpsl").val(item.成品数量);
+                    $("#fgg").val(item.规格型号);
+                    $("#fcjsl").val(item.抽检数量);
+                    $("#frate").val(item.合格率);
+                    $("#ftest1").val(item.检测结果1);
+                    $("#ftest2").val(item.检测结果2);
+                    $("#ftest3").val(item.检测结果3);
+                    $("#ftest4").val(item.检测结果4);
+                    $("#ftest5").val(item.检测结果5);
+                    $("#ftest6").val(item.检测结果6);
+                    $("#ftest7").val(item.检测结果7);
+                    $("#ftest8").val(item.检测结果8);
+                    $("#ftest9").val(item.检测结果9);
+                    $("#stepId").val(stepId);
+                    $("#fbillno").val(item.单号);
+
+
+                    for (var i = 0; i < data.Steps.length; i++) {
+
+                        if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                            data.Steps[i].FinishAt = "";
+                        }
+                        var time = FormatterTime(data.Steps[i].FinishAt);
+
+                        var stepName = data.Steps[i].NodeName;
+                        if (data.Steps[i].NodeName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.Steps[i].NodeName == "开始") {
+                            stepName = "开始";
+                        }
+
+                        var stepAction = locationAction(data.Steps[i].SelAction);
+                        if (data.Steps[i].SelAction == "sysInform") {
+                            stepAction = "发起知会";
+                        } else if (data.Steps[i].SelAction == "Submit") {
+                            stepAction = "已阅";
+                        } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                            stepAction = "待处理";
+                        } else if (data.Steps[i].SelAction == "sysReject") {
+                            stepAction = "拒绝";
+                        } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                            stepAction = "退回重填";
+                        }
+
+
+                        var contents = data.Steps[i].Comments;
+                        if (contents == null) {
+                            contents = "无";
+                        }
+                        //判断是否是加签
+                        if (data.Steps[i].IsConsignStep == false) {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        } else {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        }
+                        $("#signff").append(li);
+                    }
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+    </script>
+    <a name="bottom"></a>
+</body>
+</html>

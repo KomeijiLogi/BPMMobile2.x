@@ -1,0 +1,576 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请时间</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fcom">所属公司</label>
+                <input type="text" id="fcom" name="fcom" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">所属部门</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="number" id="ftel" name="ftel" value=""  />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label>证件借用申请明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="bllist">
+
+            </div>
+
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\XZBG行政办公', '建设公司证件借用申请');
+            getBPMParam();
+            prepMsg();
+          
+
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+          
+        }
+        function tapEvent() {
+            var fzjlbdata = [
+                {
+                    value: "yj",
+                    text: "原件"
+                },
+                {
+                    value: "fyj",
+                    text: "复印件"
+                }
+            ];
+
+            var fzjmcdata = [
+                {
+                    value: "yyzzzb",
+                    text: "营业执照正本"
+                },
+                {
+                    value: "yyzzfb",
+                    text: "营业执照副本"
+                },
+                {
+                    value: "zxbzqr",
+                    text: "威海市企业执行标准确认证书"
+                },
+                {
+                    value: "fwfcfh",
+                    text: "房屋分层分户平面图"
+                },
+                {
+                    value: "jgxydm",
+                    text: "机构信用代码证"
+                },
+                {
+                    value: "shfrxy",
+                    text: "荣成市社会法人信用报告（复印件）"
+                },
+                {
+                    value: "qyxybg",
+                    text: "企业信用报告"
+                },
+                {
+                    value: "wgjsgs",
+                    text: "威高建设公司章程复印件"
+                },
+                {
+                    value: "cspsxk",
+                    text: "城市排水许可证"
+                },
+                {
+                    value: "xxjnhbbg",
+                    text: "新型节能环保门窗生产项目变更报告"
+                },
+                {
+                    value: "xxjnhbxm",
+                    text: "新型节能环保门窗生产项目"
+                },
+                {
+                    value: "yyzzfb",
+                    text: "建设项目竣工环境保护验收监测报告表"
+                },
+                {
+                    value: "hpysbg",
+                    text: "环评验收报告"
+                },
+                {
+                    value: "wsjcbg",
+                    text: "（污水）检测报告"
+                },
+                {
+                    value: "gltxsh",
+                    text: "管理体系审核报告"
+                },
+                {
+                    value: "yyzzfb",
+                    text: "金属门窗二级资质、幕墙三级资质证书（副本）"
+                },
+                {
+                    value: "jzmqzb",
+                    text: "建筑幕墙工程专业承包贰级资质（正本）"
+                },
+                {
+                    value: "jzmqfb",
+                    text: "建筑幕墙工程专业承包贰级资质（副本）"
+                },
+                {
+                    value: "mcsczb",
+                    text: "门窗安全生产许可证（正本）"
+                },
+                {
+                    value: "mcscfb",
+                    text: "门窗安全生产许可证（副本）"
+                },
+                {
+                    value: "jsmcsc",
+                    text: "金属门窗生产加工项目抗震设防要求的审核意见"
+                },
+                {
+                    value: "bzjsfw",
+                    text: "威海市企业标准技术服务确认证书"
+                },
+                {
+                    value: "lhjjnzb",
+                    text: "平开铝合金窗节能认定证书正本"
+                },
+                {
+                    value: "lhjjnfb",
+                    text: "平开铝合金窗节能认定证书副本"
+                },
+                {
+                    value: "sljnzb",
+                    text: "平开塑料窗节能认定证书正本"
+                },
+                {
+                    value: "sljnfb",
+                    text: "平开塑料窗节能认定证书副本"
+                },
+                {
+                    value: "mczzfb",
+                    text: "建筑门窗行业资格证书（建筑门窗产品）副本"
+                },
+                {
+                    value: "mcazfb",
+                    text: "建筑门窗行业资格证书（建筑门窗产品）副本"
+                },
+                {
+                    value: "xtyfmc3",
+                    text: "关于增补山东省系统门窗研发企业的通知（3家）"
+                },
+                {
+                    value: "xtyfmc3",
+                    text: "关于增补山东省系统门窗研发企业的通知（4家）"
+                },
+                {
+                    value: "npkslc",
+                    text: "室外用内平开塑料窗（检测报告）"
+                },
+                {
+                    value: "pklhjc",
+                    text: "平开铝合金窗（隔热型材）"
+                },
+                {
+                    value: "lmfhpk",
+                    text: "铝木复合平开下悬窗"
+                },
+                {
+                    value: "sjzzzb",
+                    text: "三级资质证书（正本）"
+                },
+                {
+                    value: "sjzzfb",
+                    text: "三级资质证书（副本）"
+                },
+                {
+                    value: "aqsczb",
+                    text: "安全生产许可证（正本）"
+                },
+                {
+                    value: "aqscfb",
+                    text: "安全生产许可证（副本）"
+                },
+                {
+                    value: "aqscxzjds",
+                    text: "安全生产许可证行政许可决定书"
+                },
+                {
+                    value: "sgzcbzb",
+                    text: "建筑工程施工总承包叁级（正本）"
+                },
+                {
+                    value: "sgzcbfb",
+                    text: "建筑工程施工总承包叁级（副本）"
+                },
+                {
+                    value: "jcyyzb",
+                    text: "建材营业执照（正本）"
+                },
+                {
+                    value: "jcyyfb",
+                    text: "建材营业执照（副本）"
+                },
+                {
+                    value: "jcdsh",
+                    text: "建材董事会决议书"
+                },
+                {
+                    value: "jcgdjds",
+                    text: "建材股东决定书"
+                },
+            ];
+
+
+            $("#addItem").on('tap', function () {
+
+
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fzjmc">证件名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fzjmc" name="fzjmc" value="" placeholder="请选择证件名称"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fzjlb">证件类别<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fzjlb" name="fzjlb" value="" placeholder="请选择证件类别"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fnum">份数<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fnum" name="fnum" value="" placeholder="请输入份数"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fytms">用途描述<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fytms" name="fytms" value="" placeholder="请输入用途描述"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjyrq">借用日期<i style="color:red;">*</i></label>';
+                li = li + '        <input type="date" id="fjyrq" name="fjyrq" value="" placeholder="请输入借用日期"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '        <label for="fsjghrq">实际归还日期<i style="color:red;">*</i></label>';
+                li = li + '        <input type="date" id="fsjghrq" name="fsjghrq" value="" readonly="readonly"/>';
+                li = li + '   </div>';
+
+
+
+
+
+                $("#bllist").append(li);
+
+
+                var picker = new mui.PopPicker ();
+
+                picker.setData(fzjlbdata);
+
+                $("#bllist").find("#fzjlb").each(function () {
+
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+                        picker.show(function (items) {
+                            self.value = (items[0].text);
+                        });
+                    });
+
+                });
+
+
+                var picker1 = new mui.PopPicker();
+
+                picker1.setData(fzjmcdata);
+
+                $("#bllist").find("#fzjmc").each(function () {
+
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+                        picker1.show(function (items) {
+                            self.value = (items[0].text);
+                        });
+                    });
+
+                });
+
+
+
+            });
+
+
+
+
+        }
+
+
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fcom").val(fareaStr[fareaStr.length - 3]);
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fcom = $("#fcom").val();
+            var fdept = $("#fdept").val();
+            var ftel = $("#ftel").val();
+
+            var mxflag = false;
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fzjmc = $(this).find("#fzjmc").val();
+                var fzjlb = $(this).find("#fzjlb").val();
+                var fnum = $(this).find("#fnum").val();
+                var fytms = $(this).find("#fytms").val();
+                var fjyrq = $(this).find("#fjyrq").val() + " 00:00:00";
+                var fsjghrq = $(this).find("#fsjghrq").val();
+
+
+                if (!fzjmc || fzjmc == "") {
+
+                    mui.toast("请选择证件名称");
+                    mxflag = true;
+                    return;
+                }
+
+                if (!fzjlb || fzjlb == "") {
+
+                    mui.toast("请选择证件类别");
+
+                    mxflag = true;
+                    return;
+                }
+                if (!fnum || fnum == "") {
+
+                    mui.toast("请输入份数");
+                    mxflag = true;
+                    return;
+                }
+                if (!fytms || fytms == "") {
+
+                    mui.toast("请输入用途描述");
+                    mxflag = true;
+                    return;
+
+                }
+               
+                if (!$(this).find("#fjyrq").val() || $(this).find("#fjyrq").val() == "") {
+                    mui.toast("请输入借用日期");
+                    mxflag = true;
+                    return;
+                }
+
+                
+
+                //if (BlItem(fwxdd, fwlno, fwlname, fgg, fdw, fsl, fwxyy, fshfs, ffycd) == null) {
+                //    return;
+                //}
+                var bl = new Object;
+                bl.fzjmc = fzjmc;
+                bl.fzjlb = fzjlb;
+                bl.fnum = fnum;
+                bl.fytms = fytms;
+                bl.fjyrq = fjyrq;
+                bl.fsjghrq = fsjghrq;
+
+               // var bl = BlItem(fwxdd, fwlno, fwlname, fgg, fdw, fsl, fwxyy, fshfs, ffycd);
+                bllistArr.push(bl);
+            });
+
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + ' <ProcessName>建设公司证件借用申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>'+ version +'</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_证件借用_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<所属公司>' + fcom + '</所属公司>';
+                    xml = xml + '<所属部门>' + fdept + '</所属部门>';
+                    xml = xml + '<联系电话>' + ftel + '</联系电话>';
+                    xml = xml + '</建设公司_证件借用_主表>';
+                    for (var i = 0; i < bllistArr.length; i++) {
+
+                        xml = xml + '<建设公司_证件借用_子表>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (i + 1) + '</序号>';
+                        xml = xml + '<证件名称>' + bllistArr[i].fzjmc + '</证件名称>';
+                        xml = xml + '<证件类别>' + bllistArr[i].fzjlb + '</证件类别>';
+                        xml = xml + '<份数>' + bllistArr[i].fnum + '</份数>';
+                        xml = xml + '<用途描述>' + bllistArr[i].fytms + '</用途描述>';
+                        xml = xml + '<借用日期>' + bllistArr[i].fjyrq + '</借用日期>';
+                        xml = xml + '<实际归还日期>' + bllistArr[i].fsjghrq + '</实际归还日期>';
+                        xml = xml + '</建设公司_证件借用_子表>';
+
+                    }
+
+                    xml = xml + '             </FormData>';
+                    xml = xml + '         </XForm>';
+                    PostXml(xml);
+
+                }
+            });
+
+
+        }
+        //function BlItem(fwxdd, fwlno, fwlname, fgg, fdw, fsl, fwxyy, fshfs, ffycd) {
+
+
+
+        //    if (!fwxdd || fwxdd == "") {
+
+        //        mui.toast("请输入维修地点");
+        //        return null;
+        //    }
+
+        //    if (!fwlno || fwlno == "") {
+
+        //        mui.toast("请输入物料编码");
+        //        return null;
+        //    }
+        //    if (!fwlname || fwlname == "") {
+
+        //        mui.toast("请输入物料名称");
+        //        return null;
+        //    }
+        //    if (!fgg || fgg == "") {
+
+        //        mui.toast("请输入规格");
+        //        return null;
+
+        //    }
+        //    if (!fdw || fdw == "") {
+        //        mui.toast("请输入单位");
+        //        return null;
+        //    }
+        //    if (!fsl || fsl == "") {
+        //        mui.toast("请输入数量");
+        //        return null;
+        //    }
+        //    if (!fwxyy || fwxyy == "") {
+        //        mui.toast("请输入维修原因");
+        //        return null;
+        //    }
+        //    if (!fshfs || fshfs == "") {
+
+        //        mui.toast("请选择送货方式")
+        //        return null;
+        //    }
+        //    if (!ffycd || ffycd == "") {
+
+        //        mui.toast("请输入费用承担方");
+        //        return null;
+        //    }
+
+        //}
+    </script>
+    <a name="bottom"></a>
+</body>
+</html>

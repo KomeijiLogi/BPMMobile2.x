@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" value="" />
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row bgc" style="height:2.25rem;">
+                <label>本月工作总结</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addzj"></span>
+            </div>
+            <div class="mui-input-row">
+                <label for="fn_zj">总结年份</label>
+                <input type="text" id="fn_zj" name="fn_zj" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fy_zj">总结月份</label>
+                <input type="text" id="fy_zj" name="fy_zj" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbz_zj">备注</label>
+                <input type="text" id="fbz_zj" name="fbz_zj" value="" />
+            </div>
+            <div class="mui-input-group" id="zjlist">
+
+            </div>
+            <div class="mui-input-row bgc" style="height:2.25rem;">
+                <label>下月工作计划</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addjh"></span>
+            </div>
+            <div class="mui-input-row">
+                <label for="fn_zj">总结年份</label>
+                <input type="text" id="fn_jh" name="fn_jh" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fy_zj">总结月份</label>
+                <input type="text" id="fy_jh" name="fy_jh" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbz_zj">备注</label>
+                <input type="text" id="fbz_jh" name="fbz_jh" value="" />
+            </div>
+            <div class="mui-input-group" id="jhlist">
+
+            </div>     
+
+        </form>   
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <input type="hidden" id="ftbrno" name="ftbrno" />
+    <input type="hidden" id="ftjdate" name="ftjdate" />
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\98门户', '商管月工作汇报_流程');
+            getBPMParam();
+            prepMsg();
+            upload();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+                $("#ftbrno").val(result.data.userName);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+            var date = new Date();
+            $("#fn_zj").val(date.getFullYear());
+            $("#fy_zj").val(date.getMonth() + 1);
+            $("#fn_jh").val(date.getFullYear());
+            $("#fy_jh").val(date.getMonth() + 2);
+
+           
+            
+        }
+
+
+        function tapEvent() {
+            var date = new Date();
+            var monthdata = [
+                {
+                    value: "1",
+                    text: "1月"
+                },
+                {
+                    value: "2",
+                    text: "2月"
+                },
+                {
+                    value: "3",
+                    text: "3月"
+                },
+                {
+                    value: "4",
+                    text: "4月"
+                },
+                {
+                    value: "5",
+                    text: "5月"
+                },
+                {
+                    value: "6",
+                    text: "6月"
+                },
+                {
+                    value: "7",
+                    text: "7月"
+                },
+                {
+                    value: "8",
+                    text: "8月"
+                },
+                {
+                    value: "9",
+                    text: "9月"
+                },
+                {
+                    value: "10",
+                    text: "10月"
+                },
+                {
+                    value: "11",
+                    text: "11月"
+                },
+                {
+                    value: "12",
+                    text: "12月"
+                }
+            ];
+            var datedata = [
+                {
+                    value: date.getFullYear() - 2 + "",
+                    text: date.getFullYear() - 2 + "年",
+                    children: monthdata
+
+                },
+                {
+                    value: date.getFullYear()-1 +"",
+                    text: date.getFullYear()-1 +"年",
+                    children: monthdata
+
+                },
+                {
+                    value: date.getFullYear() + "",
+                    text: date.getFullYear()  + "年",
+                    children: monthdata
+                },
+                {
+                    value: date.getFullYear() + 1 + "",
+                    text: date.getFullYear() + 1 + "年",
+                    children: monthdata
+                },
+                {
+                    value: date.getFullYear() + 2 + "",
+                    text: date.getFullYear() + 2 + "年",
+                    children: monthdata
+                }
+            ];
+
+
+            var datePicker = new mui.PopPicker({
+                layer: 2
+            });
+            datePicker.setData(datedata);
+            $("#fn_zj").on('tap', function () {
+                datePicker.show(function (items) {
+                    $("#fn_zj").val(items[0].value);
+                    $("#fy_zj").val(items[1].value);
+                });
+
+            });
+
+            $("#fy_zj").on('tap', function () {
+                datePicker.show(function (items) {
+                    $("#fn_zj").val(items[0].value);
+                    $("#fy_zj").val(items[1].value);
+                });
+
+            });
+            $("#fn_jh").on('tap', function () {
+                datePicker.show(function (items) {
+                    $("#fn_jh").val(items[0].value);
+                    $("#fy_jh").val(items[1].value);
+                });
+
+            });
+
+            $("#fy_jh").on('tap', function () {
+                datePicker.show(function (items) {
+                    $("#fn_jh").val(items[0].value);
+                    $("#fy_jh").val(items[1].value);
+                });
+
+            });
+
+            $("#addzj").on('tap', function () {
+
+                var li = '<div id="zj" class="mui-card">';
+                li = li + '   <div class="mui-input-row itemtitle">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.75rem;">';
+                li = li + '        <label for="frw_zj">工作任务</label>';
+                li = li + '        <textarea id="frw_zj" name="frw_zj" placeholder="请填写工作任务" rows="5"></textarea>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.75rem;">';
+                li = li + '        <label for="fmb_zj">目标</label>';
+                li = li + '        <textarea  id="fmb_zj" name="fmb_zj" placeholder="请填写目标" rows="5"></textarea>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.75rem;">';
+                li = li + '        <label for="fjg_zj">完成结果</label>';
+                li = li + '        <textarea id="fjg_zj" name="fjg_zj" placeholder="请填写完成结果" rows="5"></textarea>';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#zjlist").append(li);
+            });
+
+            $("#addjh").on('tap', function () {
+                var li = '<div id="jh" class="mui-card">';
+                li = li + '   <div class="mui-input-row itemtitle">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.75rem;">';
+                li = li + '        <label for="frw_jh">工作任务</label>';
+                li = li + '        <textarea id="frw_jh" name="frw_jh" placeholder="请填写工作任务" rows="5"></textarea>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.75rem;">';
+                li = li + '        <label for="fmb_jh">目标</label>';
+                li = li + '        <textarea id="fmb_jh" name="fmb_jh" placeholder="请填写目标" rows="5"></textarea>';
+                li = li + '   </div>';
+               
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fzrr">责任人</label>';
+                li = li + '        <input type="text" id="fzrr" name="fzrr" placeholder="请填写责任人"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fksrq">开始时间</label>';
+                li = li + '        <input type="date" id="fksrq" name="fksrq" placeholder=""/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjsrq">完成时间</label>';
+                li = li + '        <input type="date" id="fjsrq" name="fjsrq" placeholder=""/>';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#jhlist").append(li);
+            });
+        }
+
+        function Save() {
+
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var ftel = $("#ftel").val();
+            var fn_zj = $("#fn_zj").val();
+            var fy_zj = $("#fy_zj").val();
+            var fbz_zj = $("#fbz_zj").val();
+            var fn_jh = $("#fn_jh").val();
+            var fy_jh = $("#fy_jh").val();
+            var fbz_jh = $("#fbz_jh").val();
+            var ftbrno = $("#ftbrno").val();
+
+            var zjlistArr = new Array();
+            $("#zjlist").find("#zj").each(function () {
+
+                var frw_zj = $(this).find("#frw_zj").val();
+                var fmb_zj = $(this).find("#fmb_zj").val();
+                var fjg_zj = $(this).find("#fjg_zj").val();
+                var zj = ZjItem(frw_zj, fmb_zj, fjg_zj);
+                zjlistArr.push(zj);
+            });
+
+            var jhlistArr = new Array();
+            $("#jhlist").find("#jh").each(function () {
+                var frw_jh = $(this).find("#frw_jh").val();
+                var fmb_jh = $(this).find("#fmb_jh").val();
+                var fzrr = $(this).find("#fzrr").val();
+                var fksrq = $(this).find("#fksrq").val();
+                var fjsrq = $(this).find("#fjsrq").val();
+                var jh = JhItem(frw_jh, fmb_jh, fzrr, fksrq, fjsrq);
+                jhlistArr.push(jh);
+            });
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var date = new Date();
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+                    var dayOW = new Array("星期7", "星期1", "星期2", "星期3", "星期4", "星期5", "星期6")[date.getDay()];
+                    var ftjdate = year + "年" + month + "月" + day + "日" + hour + "时" + minute + "分" + second + "秒" + dayOW;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>商管月工作汇报_流程</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<BPM_SGGSYBTBB>';
+                    xml = xml + '<fbillno>自动生成</fbillno>';
+                    xml = xml + '<fname>' + fname + '</fname>';
+                    xml = xml + ' <fdept>' + fdept + '</fdept>';
+                    xml = xml + '<fdate>' + fdate + '</fdate>';
+                    xml = xml + '<ftel>' + ftel + '</ftel>';
+                    xml = xml + '<fn_zj>' + fn_zj + '</fn_zj>';
+                    xml = xml + '<fy_zj>' + fy_zj + '</fy_zj>';
+                    xml = xml + '<fbz_zj>' + fbz_zj + '</fbz_zj>';
+                    xml = xml + '<fn_jh>' + fn_jh + '</fn_jh>';
+                    xml = xml + '<fy_jh>' + fy_jh + '</fy_jh>';
+                    xml = xml + '<fbz_jh>' + fbz_jh + '</fbz_jh>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '<ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                    } else {
+                        xml = xml + '<ffj></ffj>';
+                    }
+                   
+                    xml = xml + '<ftbrno>' + ftbrno + '</ftbrno>';
+                    xml = xml + '<ftjrq>' + ftjdate + '</ftjrq>';
+                    xml = xml + '<fxygzjh></fxygzjh>';
+                    xml = xml + ' <fbygzzj></fbygzzj>';
+                    xml = xml + '</BPM_SGGSYBTBB>';
+                    for (var i = 0; i < zjlistArr.length; i++) {
+                        xml = xml + '<BPM_SGGSYBTBB_B>';
+                        xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '<RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<entryno>' + (i + 1) + '</entryno>';
+                        xml = xml + '<frw_zj>' + zjlistArr[i].frw_zj + '</frw_zj>';
+                        xml = xml + '<fmb_zj>' + zjlistArr[i].fmb_zj + '</fmb_zj>';
+                        xml = xml + '<fjg_zj>' + zjlistArr[i].fjg_zj + '</fjg_zj>';
+                        xml = xml + '</BPM_SGGSYBTBB_B>';
+                    }
+                    for (var i = 0; i < jhlistArr.length; i++) {
+                        xml = xml + '<BPM_SGGSYBTBB_C>';
+                        xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '<RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<entryno>' + (i + 1) + '</entryno>';
+                        xml = xml + '<frw>' + jhlistArr[i].frw_jh + '</frw>';
+                        xml = xml + ' <fmb>' + jhlistArr[i].fmb_jh + '</fmb>';
+                        xml = xml + '  <fzrr>' + jhlistArr[i].fzrr + '</fzrr>';
+                        xml = xml + '   <fksrq>' + jhlistArr[i].fksrq + '</fksrq>';
+                        xml = xml + '    <fjsrq>' + jhlistArr[i].fjsrq + '</fjsrq>';
+                        xml = xml + '</BPM_SGGSYBTBB_C>';
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+        function ZjItem(frw_zj, fmb_zj, fjg_zj) {
+
+            var zj = new Object;
+            zj.frw_zj = frw_zj;
+            zj.fmb_zj = fmb_zj;
+            zj.fjg_zj = fjg_zj;
+            return zj;
+        }
+        function JhItem(frw_jh, fmb_jh, fzrr, fksrq, fjsrq) {
+
+            var jh = new Object;
+            jh.frw_jh = frw_jh;
+            jh.fmb_jh = fmb_jh;
+            jh.fzrr = fzrr;
+            jh.fksrq = fksrq;
+            jh.fjsrq = fjsrq;
+            return jh;
+        }
+    </script>
+</body>
+</html>

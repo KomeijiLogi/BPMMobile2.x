@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label for="fsqrsszz">申请人所属组织</label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjt">拟调整岗位所属集团</label>
+                <input type="text" id="fjt" name="fjt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgs">拟调整岗位所属公司</label>
+                <input type="text" id="fgs" name="fgs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbm_name">拟调整岗位所在部门</label>
+                <input type="text" id="fbm_name" name="fbm_name" readonly="readonly" placeholder="请选择拟调整岗位所在部门" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgw_name">拟调整岗位名称</label>
+                <input type="text" id="fgw_name" name="fgw_name" readonly="readonly" placeholder="请选择拟调整岗位名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgwstatus">岗位状态</label>
+                <input type="text" id="fgwstatus" name="fgwstatus" readonly="readonly" placeholder="请选择岗位状态"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbgsl">变更编制数</label>
+                <input type="text" id="fbgsl" name="fbgsl" readonly="readonly" placeholder="请选择变更编制数"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzw_name">职务</label>
+                <input type="text" id="fzw_name" name="fzw_name" readonly="readonly" placeholder="请选择职务"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzwlb">职位类别</label>
+                <input type="text" id="fzwlb" name="fzwlb" readonly="readonly" placeholder="请选择职位类别"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fyrylb">原人员类别</label>
+                <input type="text" id="fyrylb" name="fyrylb" readonly="readonly" placeholder="请选择原人员类别" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzjsj">拟调整岗位直接上级</label>
+                <input type="text" id="fzjsj" name="fzjsj" placeholder="请选择拟调整岗位直接上级" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbmjl">拟调整岗位所在部门部门经理</label>
+                <input type="text" id="fbmjl" name="fbmjl" placeholder="请选择拟调整岗位所在部门部门经理" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffgld">拟调整岗位所在部门分管领导</label>
+                <input type="text" id="ffgld" name="ffgld" placeholder="请选择拟调整岗位所在部门分管领导" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="ftzly">调整理由</label>
+                <textarea rows="8" id="ftzly" name="ftzly" placeholder="请填写调整理由"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <input type="hidden" id="fzjsjno" name="fzjsjno" />
+            <input type="hidden" id="fbmjlno" name="fbmjlno" />
+            <input type="hidden" id="ffgldno" name="ffgldno" />
+            <input type="hidden" id="fgs_sx" name="fgs_sx" />
+            <input type="hidden" id="fbm_no" name="fbm_no" />
+            <input type="hidden" id="fgw_no" name="fgw_no" />
+            <input type="hidden" id="fzw_no" name="fzw_no" />
+            <input type="hidden" id="fzwlb_no" name="fzwlb_no" />
+            <input type="hidden" id="fyrylb_no" name="fyrylb_no" />
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>  
+
+    <div id="search" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenPosition()">取消</a>
+            <h1 class="mui-title">选择</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="pos_list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\01跨产业集团\\RL人力', '集团公司岗位设立与编制调整申请');
+            prepMsg();
+            getBPMParam();
+            upload();
+            watch();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            alert(JSON.stringify(result));
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fapplyman").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+        $("#fzjsj").on("click", function () {
+            XuntongJSBridge.call('selectPerson', {
+            'pType':'1'},function(result){
+                alert(JSON.stringify(result));
+                if (typeof (result) == "string") {
+                    result = JSON.parse(result);
+                }
+
+                if (result.success == true || result.success == "true") {
+                    $("#fzjsj").val(result.data.persons.personName);
+
+                }
+
+            });
+        })
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '<Requests>';
+            xml = xml + '    <Params>';
+            xml = xml + '      <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>集团公司岗位设立与编制调整申请</ProcessName>';
+            xml = xml + '       <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '         <Owner></Owner>';
+            xml = xml + '      </Params>';
+            xml = xml + '    </Requests>';
+            var initHeaderMsg = $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fno").val(item.fno);
+                $("#fname").val(item.fname);
+                $("#foper").val(item.foper);
+                $("#fzzyy_no").val(item.fzzyy_no);
+            }).fail(function (e) {
+
+            });
+            initHeaderMsg.then(function () {
+                var fno = $("#fno").val();
+                var xml = '<?xml version= "1.0" ?>';
+                xml = xml + '      <Requests>';
+                xml = xml + '     <Params>';
+                xml = xml + '         <DataSource>PS</DataSource>';
+                xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+                xml = xml + '         <Type>1</Type>';
+                xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+                xml = xml + '        <Filter>';
+                xml = xml + '            <fno>' + fno + '</fno>';
+                xml = xml + '        </Filter>';
+                xml = xml + '      </Params>';
+                xml = xml + '   </Requests>';
+                var initMainMsg = $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/DataProvider",
+                    data: { '': xml },
+
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                    }
+                }).done(function (data) {
+
+                    var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                    console.log(provideData);
+                    var personInfoObject = provideData.Tables[0].Rows[0];
+                    $("#fjt").val(personInfoObject.fssgroup);
+                    $("#fgs").val(personInfoObject.fsscompany);
+                    $("#fbm").val(personInfoObject.fdeptname);
+                    $("#fxzzw").val(personInfoObject.zhiwei);
+                    if (personInfoObject.SEX == 'M') {
+                        $("#fsex").val('男');
+                    } else {
+                        $("#fsex").val('女');
+                    }
+                    var birth_year = personInfoObject.BIRTHDATE.year;
+                    var birth_month = personInfoObject.BIRTHDATE.month;
+                    var birth_day = personInfoObject.BIRTHDATE.day;
+                    $("#fbirth").val(FormatterTime_Y_M_S(birth_year, birth_month, birth_day));
+                    $("#fidno").val(personInfoObject.NATIONAL_ID);
+                    $("#ftel").val(personInfoObject.PHONE);
+                    $("#fzgxl").val(personInfoObject.JPM_DESCR90);
+                    $("#fbyyx").val(personInfoObject.HPS_VALUE01);
+                    $("#fzy").val(personInfoObject.HPS_VALUE02);
+
+                    var grat_year = personInfoObject.HPS_DATE01.year;
+                    var grat_month = personInfoObject.HPS_DATE01.month;
+                    var grat_day = personInfoObject.HPS_DATE01.day;
+                    $("#fbytime").val(FormatterTime_Y_M_S(grat_year, grat_month, grat_day));
+                    $("#fhkxz").val(personInfoObject.DESCR4);
+
+                    var job_year = personInfoObject.START_DT_CHN.year;
+                    var job_month = personInfoObject.START_DT_CHN.month;
+                    var job_day = personInfoObject.START_DT_CHN.day;
+                    $("#fgzdate").val(FormatterTime_Y_M_S(job_year, job_month, job_day));
+                    $("#faddr").val(personInfoObject.HPS_VALUE03);
+                    $("#fdepid").val(personInfoObject.DEPTID);
+                    $("#fgscj").val(personInfoObject.SSGSTYPE);
+                }).fail(function (e) {
+
+                });
+                initMainMsg.then(function () {
+                    var fdepid = $("#fdepid").val();
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '      <Requests>';
+                    xml = xml + '     <Params>';
+                    xml = xml + '         <DataSource>PS</DataSource>';
+                    xml = xml + '         <ID>erpcloud_公用_获取PS职位</ID>';
+                    xml = xml + '         <Type>1</Type>';
+                    xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                    xml = xml + '        <ProcedureName>erpcloud_公用_获取PS职位</ProcedureName>';
+                    xml = xml + '        <Filter>';
+                    xml = xml + '            <depId>' + fdepid + '</depId>';
+                    xml = xml + '        </Filter>';
+                    xml = xml + '      </Params>';
+                    xml = xml + '   </Requests>';
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/DataProvider",
+                        data: { '': xml },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        }
+                    }).done(function (data) {
+
+                        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                        console.log(provideData);
+                        var positionArr = provideData.Tables[0].Rows;
+                        for (var i = 0; i < positionArr.length; i++) {
+                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                            li = li + '<input type="hidden" id="pos_nbr" name="pos_nbr" value="' + positionArr[i].POSITION_NBR + '"/>';
+                            li = li + '<input type="hidden" id="pos_nbr_descr" name="pos_nbr_descr" value="' + positionArr[i].POSITION_NBR_DESCR + '"/>';
+                            li = li + '<input type="radio" name="radio" />' + positionArr[i].POSITION_NBR + '&nbsp' + positionArr[i].POSITION_NBR_DESCR;
+                            li = li + '</li>';
+                            $("#pos_list").append(li);
+                        }
+                        var header = document.querySelector('header.mui-bar');
+                        var list = document.getElementById('list');
+                        var done = document.getElementById('done');
+                        //calc hieght
+                        list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                        //create
+                        window.indexedList = new mui.IndexedList(list);
+                        //done event
+                        done.addEventListener('tap', function () {
+                            var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+                            var checkedValues = [];
+                            var checkedElements = [];
+                            checkboxArray.forEach(function (box) {
+                                if (box.checked) {
+                                    checkedValues.push(box.parentNode.innerText);
+                                    var checkelement = ({
+
+                                        pos_nbr: $(box).parent().find('#pos_nbr').val(),
+                                        pos_nbr_descr: $(box).parent().find('#pos_nbr_descr').val()
+
+                                    });
+                                    checkedElements.push(checkelement);
+                                }
+                            });
+                            if (checkedValues.length > 0) {
+                                hiddenPosition();
+                                $("#fzzzw_name").val(checkedElements[checkedElements.length - 1].pos_nbr_descr);
+                                $("#fzzzw_no").val(checkedElements[checkedElements.length - 1].pos_nbr);
+                            } else {
+
+                            }
+                        }, false);
+                        mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                            var count = list.querySelectorAll('input[type="radio"]:checked').length;
+                            var value = count ? "完成(" + count + ")" : "完成";
+                            done.innerHTML = value;
+                            if (count) {
+                                if (done.classList.contains("mui-disabled")) {
+                                    done.classList.remove("mui-disabled");
+                                }
+                            } else {
+                                if (!done.classList.contains("mui-disabled")) {
+                                    done.classList.add("mui-disabled");
+                                }
+                            }
+                        });
+                    }).fail(function (e) {
+
+                    });
+                });
+            });
+
+
+        }
+    </script>
+</body>
+</html>

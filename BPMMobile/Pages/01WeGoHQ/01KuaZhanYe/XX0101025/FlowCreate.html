@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fno">员工编号</label>
+               <input type="text" id="fno" name="fno" readonly="readonly"/>
+           </div>  
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>  
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgroup">所属集团</label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">所属部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzhiwei">职位</label>
+                <input type="text" id="fzhiwei" name="fzhiwei" placeholder="请填写职位"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fmail">邮箱地址</label>
+                <input type="email" id="fmail" name="fmail" placeholder="请填写邮箱地址"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fremark">备注说明</label>
+                <input type="text" id="fremark" name="fremark" placeholder="请填写备注说明"/>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>角色权限</label>
+            </div>
+           <div id="mxlist_jsqx">
+
+           </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_jsqx" style="margin-top:0.5rem;">
+                添加角色权限
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row itemtitle">
+                <label>数据权限</label>
+            </div>
+            <div id="mxlist_sjqx">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_sjqx" style="margin-top:0.5rem;">
+                添加数据权限
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>   
+
+    <div id="search" style="display:none;z-index:3;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenOrg()">取消</a>
+            <h1 class="mui-title">选择组织</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索组织">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="org_list"></ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="search" style="display:none;z-index:2;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenSalary()">取消</a>
+            <h1 class="mui-title">选择薪资组</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索薪资组">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="salary_list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\01跨产业集团\\RL人力', '集团公司PS系统权限申请');
+            prepMsg();
+            getBPMParam();
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fapplyman").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+           
+            
+        }
+
+        function tapEvent() {
+
+            var roleData = [
+                {
+                    value: '01',
+                    text: '人事模块',
+                    children: [
+                        {
+                            value: '',
+                            text:'人事模块综合（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '人事模块综合（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '人事基本信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '人事基本信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '其他基本信息（操作）权限（医用制品专用）'
+                        },
+                        {
+                            value: '',
+                            text: '合同信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '合同信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '绩效信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '绩效信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '培训信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '培训信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '人事档案（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '人事档案（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '任职资格信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '任职资格信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '入职操作权限（医用制品专用）'
+                        },
+                        {
+                            value: '',
+                            text: '招聘（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '福利人群信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '福利人群信息（查看）权限'
+                        }
+
+                    ]
+                },
+                {
+                    value: '02',
+                    text: '组织模块',
+                    children: [
+                        {
+                            value: '',
+                            text:'组织模块综合（操作）权限（集团统一）'
+                        },
+                        {
+                            value: '',
+                            text: '组织模块综合（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '编制信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '编制信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '职位信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '职位信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '职务职位库（操作）权限（集团统一）'
+                        },
+                        {
+                            value: '',
+                            text: '职务职位库（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '组织架构（操作）权限（集团）'
+                        },
+                        {
+                            value: '',
+                            text: '组织架构（查看）权限'
+                        }
+                    ]
+                },
+                {
+                    value: '03',
+                    text: '薪酬模块',
+                    children: [
+                        {
+                            value: '',
+                            text:'薪资模块综合（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资模块综合（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资数据（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资数据（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '考勤数据（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '考勤数据（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '社保信息（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '社保信息（查看）权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资报表运行权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资计算权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资检查权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资支付权限'
+                        },
+                        {
+                            value: '',
+                            text: '高新人员薪资报表运行权限'
+                        },
+                        {
+                            value: '',
+                            text: '薪资系统管理员（集团统一）'
+                        }
+                    ]
+                },
+                {
+                    value: '04',
+                    text: '计件工资模块',
+                    children: [
+                        {
+                            value:'',
+                            text:'计件工资日常管理（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '计件工资工序物料（操作）权限'
+                        },
+                        {
+                            value: '',
+                            text: '计件工资报表（查看）权限（集团统一）'
+                        },
+                        {
+                            value: '',
+                            text: '计件工资工时类型（操作）权限（集团统一）'
+                        },
+                        {
+                            value: '',
+                            text: '每日报工数据刷新进程（操作）权限（集团统一）'
+                        }
+                    ]
+                },
+                {
+                    value: '05',
+                    text: '自助功能',
+                    children: [
+                        {
+                            value: '',
+                            text:'经理自助权限'
+                        },
+                        {
+                            value: '',
+                            text: '员工自助权限'
+                        }
+                    ]
+                }
+            ];
+
+            var i = 0;
+            $("#tjmx_jsqx").on('tap', function () {
+
+                var li = '  <div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fgnmk">功能模块</label>';
+                li = li + '       <input type="text" id="fgnmk" name="fgnmk" readonly="readonly" placeholder="请选择功能模块"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fjs">角色</label>';
+                li = li + '       <input type="text" id="fjs" name="fjs" readonly="readonly" placeholder="请选择角色"/>';
+                li = li + '    </div>';
+           
+                li = li + '      <div class="mui-input-row mui-radio">';
+                li = li + '         <label>新增</label>';
+                li = li + '         <input type="radio" id="fxz" name="radio_role'+i+'" data-flag="0"/>';
+                li = li + '      </div>';
+                li = li + '      <div class="mui-input-row mui-radio">';
+                li = li + '         <label>修改</label>';
+                li = li + '         <input type="radio" id="fxg" name="radio_role'+i+'" data-flag="0"/>';
+                li = li + '       </div>';
+               
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fsqly">申请理由</label>';
+                li = li + '       <input type="text" id="fsqly" name="fsqly" placeholder="请填写申请理由"/>';
+                li = li + '    </div>';
+                li = li + '</div>';
+                i++;
+                $("#mxlist_jsqx").append(li);
+
+                var picker = new mui.PopPicker({
+                    layer:2
+                });
+
+
+                picker.setData(roleData);
+
+                $("#mxlist_jsqx").find("#fgnmk").each(function () {
+
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+
+                        picker.show(function (items) {
+                            self.value = (items[0].text);
+                            $(self).parent().parent().find("#fjs").val(items[1].text);
+                        });
+                    });
+                });
+                $("#mxlist_jsqx").find("#fjs").each(function () {
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+                        picker.show(function (items) {
+                            self.value = items[1].text;
+                            $(self).parent().parent().find("#fgnmk").val(items[0].text);
+                        });
+
+                    });
+
+                });
+                $("#mxlist_jsqx").find('.mui-radio').each(function () {
+
+                    var self = this;
+
+                    $(self).on('change', function () {
+                      
+                        if ($(self).find('input[type="radio"]').is(':checked')) {
+
+                            $(self).parent().find('input[type="radio"]').each(function () {
+
+                               
+                                this.dataset.flag = '0';
+                            });
+
+                            self.lastChild.previousSibling.dataset.flag = '1';
+                            
+                        }
+
+                    });
+
+                });
+
+            });
+            var i = 0;
+            $("#tjmx_sjqx").on('tap', function () {
+
+                var li = '  <div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fzzno">组织代码</label>';
+                li = li + '       <input type="text" id="fzzno" name="fzzno" readonly="readonly"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fzz">组织名称</label>';
+                li = li + '       <input type="text" id="fzz" name="fzz" readonly="readonly" placeholder="请选择组织名称"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fxzzno">薪资组代码</label>';
+                li = li + '       <input type="text" id="fxzzno" name="fxzzno" readonly="readonly"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fxzz">薪资组名称</label>';
+                li = li + '       <input type="text" id="fxzz" name="fxzz" readonly="readonly" placeholder="请选择薪资组名称"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row mui-radio">';
+                li = li + '       <label>新增</label>';
+                li = li + '       <input type="radio" id="fxz" name="radio_data'+i+'" data-flag="0"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row mui-radio">';
+                li = li + '       <label>修改</label>';
+                li = li + '       <input type="radio" id="fxg" name="radio_data'+i+'" data-flag="0"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fsqly">申请理由</label>';
+                li = li + '        <input type="text" id="fsqly" name="fsqly" placeholder="请填写申请理由"/>';
+                li = li + '    </div>';
+                li = li + '</div>';
+                i++;
+                $("#mxlist_sjqx").append(li);
+
+                $("#mxlist_sjqx").find('.mui-radio').each(function () {
+
+                    var self = this;
+
+                    $(self).on('change', function () {
+
+                        if ($(self).find('input[type="radio"]').is(':checked')) {
+
+                            $(self).parent().find('input[type="radio"]').each(function () {
+
+
+                                this.dataset.flag = '0';
+                            });
+
+                            self.lastChild.previousSibling.dataset.flag = '1';
+
+                        }
+
+                    });
+
+                });
+
+
+
+
+            });
+            
+        }
+
+
+
+        function Save() {
+
+
+        }
+    </script>
+
+</body>
+</html>

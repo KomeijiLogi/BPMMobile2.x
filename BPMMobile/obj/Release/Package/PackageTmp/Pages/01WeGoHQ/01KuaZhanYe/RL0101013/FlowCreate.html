@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fno">员工编号</label>
+                <input type="text" id="fno" name="fno" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">员工姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fssjt">所属集团</label>
+                <input type="text" id="fssjt" name="fssjt" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">所属部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="dzw">职位<i style="color:red;">*</i></label>
+                <input type="text" id="dzw" name="dzw" placeholder="请填写职位"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqlx">申请类型<i style="color:red;">*</i></label>
+                <input type="text" id="fsqlx" name="fsqlx" readonly="readonly" placeholder="请选择申请类型"/>
+            </div>
+            <div id="rolePermission">
+                <div class="mui-input-row itemtitle">
+                    <label>角色权限</label>
+                </div>
+                <div id="mxlist_rolePermission">
+                    <div id="mx" class="mui-card">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div> 
+                        <div class="mui-input-row">
+                            <label>功能模块</label>
+                            <input type="text" value="功能模块" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fjs">角色</label>
+                            <input type="text" id="fjs" name="fjs" readonly="readonly"/>
+                        </div>
+                        
+                        <div class="mui-input-row mui-radio">
+                            <label>变更</label>
+                            <input type="radio" id="fjslx_bg" name="fjslx" value="变更"/>
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label>新增</label>
+                            <input type="radio" id="fjslx_xz" name="fjslx" value="新增"/>
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fjs_sqly">申请理由</label>
+                            <textarea rows="4" id="fjs_sqly" name="fjs_sqly" placeholder="请填写申请理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_rolePermission" style="margin-top:0.5rem;">
+                    添加申请明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+            <div id="dataPermission">
+                <div class="mui-input-row itemtitle">
+                    <label>数据权限</label>
+                </div>
+                <div id="mxlist_dataPermission">
+                    <div id="mx" class="mui-card">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div> 
+                        <div class="mui-input-row">
+                            <label for="fzzdm">组织代码</label>
+                            <input type="text" id="fzzdm" name="fzzdm" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzzmc">组织名称<i style="color:red;">*</i></label>
+                            <input type="text" id="fzzmc" name="fzzmc" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsj">数据<i style="color:red;">*</i></label>
+                            <input type="text" id="fsj" name="fsj" readonly="readonly"/>
+                        </div>
+                       
+                        <div class="mui-input-row mui-radio">
+                            <label>变更</label>
+                            <input type="radio" id="fsjlx_bg" name="fsjlx" value="变更" />
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label>新增</label>
+                            <input type="radio" id="fsjlx_xz" name="fsjlx" value="新增" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fsj_sqly">申请理由</label>
+                            <textarea rows="4" id="fsj_sqly" name="fsj_sqly" placeholder="请填写申请理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_dataPermission" style="margin-top:0.5rem;">
+                    添加申请明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+            <div id="systemGolive">
+                <div class="mui-input-row itemtitle">
+                    <label>系统上线</label>
+                </div>
+                <div id="mxlist_systemGolive">
+                    <div id="mx" class="mui-card">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div> 
+                        <div class="mui-input-row">
+                            <label for="fzzdm">组织代码</label>
+                            <input type="text" id="fzzdm" name="fzzdm" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzzmc">组织名称<i style="color:red;">*</i></label>
+                            <input type="text" id="fzzmc" name="fzzmc" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="frylx">上线人员类型<i style="color:red;">*</i></label>
+                            <input type="text" id="frylx" name="frylx" readonly="readonly"/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsxrs">上线人数<i style="color:red;">*</i></label>
+                            <input type="number" id="fsxrs" name="fsxrs" placeholder="请填写上线人数"/>
+                        </div> 
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fsqly">申请理由</label>
+                            <textarea rows="4" id="fsqly" name="fsqly" placeholder="请填写申请理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_systemGolive" style="margin-top:0.5rem;">
+                    添加申请明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\01跨产业集团\\RL人力', '集团公司考勤系统日常运维提报');
+            prepMsg();
+            getBPMParam();
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fapplyman").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+
+        }
+
+        function tapEvent() {
+
+        }
+        function Save() {
+
+        }
+    </script>
+</body>
+</html>

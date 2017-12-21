@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">报审人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">报审部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报审日期</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fwymc">租赁物业名称<i style="color:red;">*</i></label>
+                <input type="text" id="fwymc" name="fwymc" readonly="readonly" placeholder="请选择租赁物业名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fqw">租赁区位<i style="color:red;">*</i></label>
+                <input type="text" id="fqw" name="fqw" placeholder="请填写租赁区位"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flc">楼层<i style="color:red;">*</i></label>
+                <input type="text" id="flc" name="flc" placeholder="请填写楼层"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fwzbh">位置编号<i style="color:red;">*</i></label>
+                <input type="text" id="fwzbh" name="fwzbh" placeholder="请填写位置编号"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fmj">面积(m2)<i style="color:red;">*</i></label>
+                <input type="text" id="fmj" name="fmj" placeholder="请填写面积"/>
+            </div>
+             <div class="mui-input-row" style="color:white;background-color:#5191FD;">
+                 <label>商户资料</label>
+             </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fppmc">品牌名称(经营名称)<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fppmc" name="fppmc" placeholder="请填写品牌名称(经营名称)"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjyyt">经营业态<i style="color:red;">*</i></label>
+                <input type="text" id="fjyyt" name="fjyyt" placeholder="请填写经营业态"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjyxz">经营性质<i style="color:red;">*</i></label>
+                <input type="text" id="fjyxz" name="fjyxz" placeholder="请填写经营性质"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgsmc">公司名称<i style="color:red;">*</i></label>
+                <input type="text" id="fgsmc" name="fgsmc" placeholder="请填写公司名称"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="flxrjzw">联系人及职务<i style="color:red;">*</i></label>
+                <textarea rows="3" id="flxrjzw" name="flxrjzw" placeholder="请填写联系人及职务"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="flxdh">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="flxdh" name="flxdh" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row" style="color:white;background-color:#5191FD;">
+                <label>租赁条件</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fqx">租赁期限(年)<i style="color:red;">*</i></label>
+                <input type="number" id="fqx" name="fqx" placeholder="请填写租赁期限"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzxmzq">装修免租期(天)<i style="color:red;">*</i></label>
+                <input type="number" id="fzxmzq" name="fzxmzq" placeholder="请填写装修免租期(天)"/>
+            </div>
+            <div class="mui-input-row" style="color:white;background-color:#5191FD;">
+                <label>基本条件</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="fhzxs">合作形式<i style="color:red;">*</i></label>
+                <input type="text" id="fhzxs" name="fhzxs" placeholder="请选择合作形式" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                 <label for="fwyf">物业费(元/月/平方米)<i style="color:red;">*</i></label>
+                 <input type="number" id="fwyf" name="fwyf" placeholder="请填写物业费"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzxglf">装修管理费(元/平方米)<i style="color:red;">*</i></label>
+                <input type="number" id="fzxglf" name="fzxglf" placeholder="请填写装修管理费"/>
+            </div>
+            <div id="mxlist_jbtj">
+               
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_jbtj" style="margin-top:0.5rem;">
+                添加基本条件
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row" style="color:white;background-color:#5191FD;">
+                <label>年度收益测算</label>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="flybzj">履约保证金(元)<i style="color:red;">*</i></label>
+                <input type="number" id="flybzj" name="flybzj" placeholder="请填写履约保证金"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fkysj">开业时间<i style="color:red;">*</i></label>
+                <input type="date" id="fkysj" name="fkysj"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fkybzj">开业保证金<i style="color:red;">*</i></label>
+                <input type="number" id="fkybzj" name="fkybzj" placeholder="请填写开业保证金"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fzjwyfzf">租金物业费支付</label>
+                <input type="text" id="fzjwyfzf" name="fzjwyfzf" placeholder="请选择租金物业费支付形式" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fif_syxtd">统一使用威高广场收银系统</label>
+                <input type="hidden" id="fif_syxt" name="fif_syxt" value="不使用"/>
+                <div class="mui-switch mui-switch-mini mui-switch-blue " id="fif_syxtd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fjs">接受威高储值卡消费及手续费<i style="color:red;">*</i></label>
+                <input type="text" id="fjs" name="fjs" readonly="readonly" placeholder="请选择比例"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="ftsxq">特殊工程条件需求<i style="color:red;">*</i></label>
+                <textarea rows="7" id="ftsxq" name="ftsxq" placeholder="请填写特殊需求"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;"> 
+                <label for="fqttk">其它补充条款<i style="color:red;">*</i></label>
+                <textarea rows="7" id="fqttk" name="fqttk" placeholder="请填写其它条款"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div id="mxlist_ndsycs">
+            </div> 
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_ndsycs" style="margin-top:0.5rem;">
+                年度收益测算 
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+    </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onClick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理','盛祥商管公司租赁协议评审');
+            prepMsg();
+            upload();
+            watch();
+        });
+
+        mui('#fif_syxtd').each(function () {
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fif_syxt").val("使用");
+
+                } else {
+                    $("#fif_syxt").val("不使用");
+
+                }
+
+            });
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+
+        function tapEvent() {
+
+            var fwymcdata = [
+                {
+                    value: '',
+                    text: '威高广场'
+                },
+                {
+                    value: '',
+                    text: '时光城'
+                },
+                {
+                    value: '',
+                    text:'民俗邨'
+                },
+                {
+                    value: '',
+                    text:'好邻居'
+                }
+
+            ];
+           
+            var element = document.getElementById('fwymc');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fwymcdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    if (element.value == '民俗邨') {
+                        $("#fif_syxtd").parent().css("display", "none");
+                        $("#fjs").parent().css("display", "none");
+                    }
+                });
+
+            }, false);
+
+            var fhzxsdata = [
+                {
+                    value: '',
+                    text:'基本租金'
+                },
+                {
+                    value: '',
+                    text:'抽成租金'
+                },
+                {
+                    value: '',
+                    text:'两者取其高'
+                }
+            ];
+
+            showPicker('fhzxs', fhzxsdata);
+
+            var fzjwyfzfdata = [
+
+                {
+                    value: '',
+                    text:'年付'
+                },
+                {
+                    value: '',
+                    text:'半年付'
+                },
+                {
+                    value: '',
+                    text:'季付'
+                },
+                {
+                    value: '',
+                    text:'月付'
+                }
+            ];
+
+            showPicker('fzjwyfzf', fzjwyfzfdata);
+
+            var fjsdata = [
+
+                {
+                    value: '',
+                    text:'0.78%'
+                },
+                {
+                    value: '',
+                    text:'2%'
+                },
+                {
+                    value: '',
+                    text:'3%'
+                },
+                {
+                    value: '',
+                    text:'5%'
+                }
+            ];
+
+            showPicker('fjs', fjsdata);
+
+            $("#tjmx_jbtj").on('tap', function () {
+
+                var li = ' <div class="mui-card" id="mx_jbtj">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '      <label>明细列表项</label>';
+                li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '      <label for="fnd">年度</label>';
+                li = li + '      <input type="number" id="fnd" name="fnd" readonly="readonly" />';
+                li = li + '  </div>';
+                li = li + '    <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '       <label for="fjbzj">基本租金(元/月/m2)<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fjbzj" name="fjbzj" placeholder="请填写基本租金" required="required"/>';
+                li = li + '     </div>';
+                li = li + '   <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '        <label for="fcczj">抽成租金(按营业额*%)<i style="color:red;">*</i></label>';
+                li = li + '       <input type="number" id="fcczj" name="fcczj" placeholder="请填写抽成租金" required="required"/>';
+                li = li + '  </div>';
+                li = li + '   <div class="mui-input-row" style="height:auto;">';
+                li = li + '        <label for="fbz">备注</label>';
+                li = li + '       <textarea rows="3" id="fbz" name="fbz" placeholder="请填写备注"></textarea>';
+                li = li + '   </div>';
+                li = li + '  </div>';
+
+                $("#mxlist_jbtj").append(li);
+                document.getElementById('tjmx_jbtj').scrollIntoView();
+                calcYear("#mxlist_jbtj", "#fnd");
+            });
+
+            $("#tjmx_ndsycs").on('tap', function () {
+
+                var li = ' <div class="mui-card" id="mx_ndsycs">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '      <label>明细列表项</label>';
+                li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '      <label for="fyear">年度</label>';
+                li = li + '      <input type="number" id="fyear" name="fyear" readonly="readonly"  />';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '       <label for="fnzzj">年总租金(元)<i style="color:red;">*</i></label>';
+                li = li + '       <input type="number" id="fnzzj" name="fnzzj" placeholder="请填写年总租金" required="required"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '        <label for="fnzwyf">年总物业费(元)<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fnzwyf" name="fnzwyf" placeholder="请填写年总物业费" required="required"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fhj">合计<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fhj" name="fhj" readonly="readonly"/>';
+                li = li + '    </div>';
+                li = li + '</div>';
+                $("#mxlist_ndsycs").append(li);
+                document.getElementById('tjmx_ndsycs').scrollIntoView();
+                calcMoney();
+
+                calcYear("#mxlist_ndsycs", "#fyear");
+            });
+        }
+
+        //自动处理年份
+        function calcYear(parentId,id) {
+            var year = 1;
+            $(parentId).find(id).each(function () {
+
+                $(this).val(year);
+                year++;
+            });
+
+        }
+
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    calcYear("#mxlist_jbtj", "#fnd");
+                    calcYear("#mxlist_ndsycs","#fyear");
+                }
+            });
+
+        }
+
+        //计算合计
+        function calcMoney() {
+
+            var total = 0;
+            $("#mxlist_ndsycs").find("#fnzzj,#fnzwyf").each(function () {
+
+
+                $(this).on('input', function () {
+                    var fnzzj = parseFloat($(this).parent().parent().find("#fnzzj").val());
+                    if (!fnzzj || fnzzj == '' || isNaN(fnzzj)) {
+                        fnzzj = 0;
+                    }
+                    var fnzwyf = parseFloat($(this).parent().parent().find("#fnzwyf").val());
+                    if (!fnzwyf || fnzwyf == '' || isNaN(fnzwyf)) {
+                        fnzwyf = 0;
+                    }
+                    total = fnzzj + fnzwyf;
+                    $(this).parent().parent().find("#fhj").val(total);
+                });
+
+            });
+
+        }
+
+        function mxItem_jbtj(fnd, fjbzj, fcczj, fbz) {
+
+            var mx = new Object;
+            mx.fnd = fnd;
+            mx.fjbzj = fjbzj;
+            mx.fcczj = fcczj;
+            mx.fbz = fbz;
+            if (!fjbzj || fjbzj=='') {
+                mui.toast('请填写基本租金');
+                return null;
+            }
+            if (!fcczj || fcczj == '') {
+                mui.toast('请填写抽成租金');
+                return null;
+            }
+            return mx;
+        }
+
+
+        function mxItem_ndsycs(fyear, fnzzj, fnzwyf, fhj) {
+
+            var mx = new Object;
+            mx.fyear = fyear;
+            mx.fnzzj = fnzzj;
+            mx.fnzwyf = fnzwyf;
+            mx.fhj = fhj;
+            if (!fnzzj || fnzzj == '') {
+                mui.toast('请填写年总租金');
+                return null;
+            }
+            if (!fnzwyf || fnzwyf == '') {
+                mui.toast('请填写年总物业费');
+                return null;
+            }
+            return mx;
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fwymc = $("#fwymc").val();
+            var fqw = $("#fqw").val();
+            var flc = $("#flc").val();
+            var fwzbh = $("#fwzbh").val();
+            var fmj = $("#fmj").val();
+            var fppmc = $("#fppmc").val();
+            var fjyyt = $("#fjyyt").val();
+            var fjyxz = $("#fjyxz").val();
+            var fgsmc = $("#fgsmc").val();
+            var flxrjzw = $("#flxrjzw").val();
+            var flxdh = $("#flxdh").val();
+            var fqx = $("#fqx").val();
+            var fzxmzq = $("#fzxmzq").val();
+            var fhzxs = $("#fhzxs").val();
+            var fwyf = $("#fwyf").val();
+            var fzxglf = $("#fzxglf").val();
+            var flybzj = $("#flybzj").val();
+            var fkysj = $("#fkysj").val() + " 00:00:00";
+            var fkybzj = $("#fkybzj").val();
+            var fzjwyfzf = $("#fzjwyfzf").val();
+            var fif_syxt = $("#fif_syxt").val();
+            var fjs = $("#fjs").val();
+            var ftsxq = $("#ftsxq").val();
+            var fqttk = $("#fqttk").val();
+
+            if (!fwymc || fwymc == '') {
+                mui.toast('请选择租赁物业名称');
+                return;
+            }
+            if (!fqw || fqw == '') {
+                mui.toast('请填写租赁区位');
+                return;
+            }
+            if (!flc || flc == '') {
+                mui.toast('请填写楼层');
+                return;
+            }
+            if (!fwzbh || fwzbh == '') {
+                mui.toast('请填写位置编号');
+                return;
+            }
+            if (!fmj || fmj == '') {
+                mui.toast('请填写面积');
+                return;
+            }
+            if (!fppmc || fppmc == '') {
+                mui.toast('请填写品牌名称');
+                return;
+            }
+            if (!fjyyt || fjyyt == '') {
+                mui.toast('请填写经营业态');
+                return;
+            }
+            if (!fjyxz || fjyxz == '') {
+                mui.toast('请填写经营性质');
+                return;
+            }
+            if (!fgsmc || fgsmc == '') {
+                mui.toast('请填写公司名称');
+                return;
+            }
+            if (!flxrjzw || flxrjzw == '') {
+                mui.toast('请填写联系人及职务');
+                return;
+            }
+            if (!flxdh || flxdh == '') {
+                mui.toast('请填写联系电话');
+                return;
+            }
+            if (!fqx || fqx == '') {
+                mui.toast('请填写租赁期限');
+                return;
+            }
+            if (!fzxmzq || fzxmzq == '') {
+                mui.toast('请填写装修免租期');
+                return;
+            }
+            if (!fhzxs || fhzxs == '') {
+                mui.toast('请选择合作形式');
+                return;
+            }
+            if (!fwyf || fwyf == '') {
+                mui.toast('请填写物业费');
+                return;
+            }
+            if (!fzxglf || fzxglf == '') {
+                mui.toast('请填写装修管理费');
+                return;
+            }
+            if (!flybzj || flybzj == '') {
+                mui.toast('请填写履约保证金');
+                return;
+            }
+            if (!$("#fkysj").val() || $("#fkysj").val() == '') {
+                mui.toast('请填写开业时间');
+                return;
+            }
+            if (!fkybzj || fkybzj == '') {
+                mui.toast('请填写开业保证金');
+                return;
+            }
+            if (!fzjwyfzf || fzjwyfzf == '') {
+                mui.toast('请选择租金物业费支付形式');
+                return;
+            }
+            if (!fjs || fjs == '') {
+                mui.toast('请选择可接受威高储值卡消费及手续费比例');
+                return;
+            }
+            if (!ftsxq || ftsxq == '') {
+                mui.toast('请填写特殊工程条件需求');
+                return;
+            }
+            if (!fqttk || fqttk == '') {
+                mui.toast('请填写其它补充条款');
+                return;
+            }
+
+            if (fjArray.length == 0) {
+                mui.toast('请上传附件');
+                return;
+            }
+
+            var mxflag = false;
+
+            var mxlistArr_jbtj = new Array();
+            $("#mxlist_jbtj").find("#mx_jbtj").each(function () {
+
+                var fnd = $(this).find("#fnd").val();
+                var fjbzj = $(this).find("#fjbzj").val();
+                var fcczj = $(this).find("#fcczj").val();
+                var fbz = $(this).find("#fbz").val();
+                if (mxItem_jbtj(fnd, fjbzj, fcczj, fbz) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx_jbtj = mxItem_jbtj(fnd, fjbzj, fcczj, fbz);
+                mxlistArr_jbtj.push(mx_jbtj);
+            });
+
+            var mxlistArr_ndsycs = new Array();
+            $("#mxlist_ndsycs").find("#mx_ndsycs").each(function () {
+
+                var fyear = $(this).find("#fyear").val();
+                var fnzzj = $(this).find("#fnzzj").val();
+                var fnzwyf = $(this).find("#fnzwyf").val();
+                var fhj = $(this).find("#fhj").val();
+                if (mxItem_ndsycs(fyear, fnzzj, fnzwyf, fhj) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx_ndsycs = mxItem_ndsycs(fyear, fnzzj, fnzwyf, fhj);
+                mxlistArr_ndsycs.push(mx_ndsycs);
+            });
+
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>盛祥商管公司租赁协议评审</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '     <BPM_SGZLPS>';
+                    xml = xml + '        <fbillno>自动生成</fbillno>';
+                    xml = xml + '          <fname>' + fname + '</fname>';
+                    xml = xml + '         <fdept>' + fdept + '</fdept>';
+                    xml = xml + '         <fdate>' + fdate + '</fdate>';
+                    xml = xml + '          <fwymc>' + fwymc + '</fwymc>';
+                    xml = xml + '          <fqw>' + fqw + '</fqw>';
+                    xml = xml + '          <flc>' + flc + '</flc>';
+                    xml = xml + '          <fwzbh>' + fwzbh + '</fwzbh>';
+                    xml = xml + '           <fmj>' + fmj + '</fmj>';
+                    xml = xml + '          <fppmc>' + fppmc + '</fppmc>';
+                    xml = xml + '         <fjyyt>' + fjyyt + '</fjyyt>';
+                    xml = xml + '          <fjyxz>' + fjyxz + '</fjyxz>';
+                    xml = xml + '          <fgsmc>' + fgsmc + '</fgsmc>';
+                    xml = xml + '          <flxrjzw>' + flxrjzw + '</flxrjzw>';
+                    xml = xml + '          <flxdh>' + flxdh + '</flxdh>';
+                    xml = xml + '          <fqx>' + fqx + '</fqx>';
+                    xml = xml + '           <fzxmzq>' + fzxmzq + '</fzxmzq>';
+                    xml = xml + '           <fhzxs>' + fhzxs + '</fhzxs>';
+                    xml = xml + '           <fwyf>' + fwyf + '</fwyf>';
+                    xml = xml + '           <fzxglf>' + fzxglf + '</fzxglf>';
+                    xml = xml + '           <flybzj>' + flybzj + '</flybzj>';
+                    xml = xml + '           <fkysj>' + fkysj + '</fkysj>';
+                    xml = xml + '           <fkybzj>' + fkybzj + '</fkybzj>';
+                    xml = xml + '          <fzjwyfzf>' + fzjwyfzf + '</fzjwyfzf>';
+                    xml = xml + '           <fif_syxt>' + fif_syxt + '</fif_syxt>';
+                    xml = xml + '          <fjs>' + fjs + '</fjs>';
+
+                    xml = xml + '          <fzjwyfzffs>' + fzjwyfzf+'</fzjwyfzffs>';
+                    xml = xml + '          <fqt></fqt>';
+
+                    xml = xml + '          <ftsxq>' + ftsxq + '</ftsxq>';
+                    xml = xml + '          <fqttk>' + fqttk + '</fqttk>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '          <ffj>' + fjArray.toString().replace(",",";") + '</ffj>';
+                    } else {
+                        xml = xml + '          <ffj></ffj>';
+                    }
+                    
+                    xml = xml + '      </BPM_SGZLPS>';
+
+                    for (var i = 0; i < mxlistArr_jbtj.length;i++){
+                        xml = xml + '            <BPM_SGZLPS_B1>';
+                        xml = xml + '            <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '              <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '               <fnd>' + mxlistArr_jbtj[i].fnd + '</fnd>';
+                        xml = xml + '               <fjbzj>' + mxlistArr_jbtj[i].fjbzj + '</fjbzj>';
+                        xml = xml + '              <fcczj>' + mxlistArr_jbtj[i].fcczj + '</fcczj>';
+                        xml = xml + '              <fbz>' + mxlistArr_jbtj[i].fbz + '</fbz>';
+                        xml = xml + '          </BPM_SGZLPS_B1>';
+                    }
+                    for (var j = 0; j < mxlistArr_ndsycs.length;j++){
+                        xml = xml + '          <BPM_SGZLPS_B2>';
+                        xml = xml + '              <RelationRowGuid>'+(i+1)+j+'</RelationRowGuid>';
+                        xml = xml + '             <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '              <fyear>' + mxlistArr_ndsycs[j].fyear + '</fyear>';
+                        xml = xml + '             <fnzzj>' + mxlistArr_ndsycs[j].fnzzj + '</fnzzj>';
+                        xml = xml + '           <fnzwyf>' + mxlistArr_ndsycs[j].fnzwyf + '</fnzwyf>';
+                        xml = xml + '              <fhj>' + mxlistArr_ndsycs[j].fhj + '</fhj>';
+                        xml = xml + '           </BPM_SGZLPS_B2>';
+
+                    }
+                    
+                    xml = xml + ' </FormData>';
+                    xml = xml + ' </XForm> ';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

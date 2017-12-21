@@ -1,0 +1,77 @@
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\bin\Debug\YUN.dll.config
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\bin\Debug\YUN.dll
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\bin\Debug\YUN.pdb
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\bin\Debug\Newtonsoft.Json.dll
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\bin\Debug\Newtonsoft.Json.xml
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\obj\Debug\YUN.dll
+C:\Users\wang\OneDrive\开发项目\YUN\YUN\obj\Debug\YUN.pdb
+F:\YUN\YUN\bin\Debug\YUN.dll.config
+F:\YUN\YUN\bin\Debug\YUN.dll
+F:\YUN\YUN\bin\Debug\YUN.pdb
+F:\YUN\YUN\bin\Debug\Newtonsoft.Json.dll
+F:\YUN\YUN\bin\Debug\Newtonsoft.Json.xml
+F:\YUN\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+F:\YUN\YUN\obj\Debug\YUN.dll
+F:\YUN\YUN\obj\Debug\YUN.pdb
+D:\working\YUN\YUN\bin\Debug\YUN.dll.config
+D:\working\YUN\YUN\bin\Debug\YUN.dll
+D:\working\YUN\YUN\bin\Debug\YUN.pdb
+D:\working\YUN\YUN\bin\Debug\Newtonsoft.Json.dll
+D:\working\YUN\YUN\bin\Debug\Newtonsoft.Json.xml
+D:\working\YUN\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+D:\working\YUN\YUN\obj\Debug\YUN.dll
+D:\working\YUN\YUN\obj\Debug\YUN.pdb
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Debug\YUN.dll.config
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Debug\YUN.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Debug\YUN.pdb
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Debug\Newtonsoft.Json.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Debug\Newtonsoft.Json.xml
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Debug\YUN.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Debug\YUN.pdb
+D:\售后管理系统\YUN\bin\Debug\YUN.dll.config
+D:\售后管理系统\YUN\bin\Debug\YUN.dll
+D:\售后管理系统\YUN\bin\Debug\YUN.pdb
+D:\售后管理系统\YUN\bin\Debug\Newtonsoft.Json.dll
+D:\售后管理系统\YUN\bin\Debug\Newtonsoft.Json.xml
+D:\售后管理系统\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+D:\售后管理系统\YUN\obj\Debug\YUN.dll
+D:\售后管理系统\YUN\obj\Debug\YUN.pdb
+E:\售后管理系统\YUN\bin\Debug\YUN.dll.config
+E:\售后管理系统\YUN\bin\Debug\YUN.dll
+E:\售后管理系统\YUN\bin\Debug\YUN.pdb
+E:\售后管理系统\YUN\bin\Debug\Newtonsoft.Json.dll
+E:\售后管理系统\YUN\bin\Debug\Newtonsoft.Json.xml
+E:\售后管理系统\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+E:\售后管理系统\YUN\obj\Debug\YUN.dll
+E:\售后管理系统\YUN\obj\Debug\YUN.pdb
+E:\BPMMobile\YUN\bin\Debug\YUN.dll.config
+E:\BPMMobile\YUN\bin\Debug\YUN.dll
+E:\BPMMobile\YUN\bin\Debug\YUN.pdb
+E:\BPMMobile\YUN\bin\Debug\Newtonsoft.Json.xml
+E:\BPMMobile\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+E:\BPMMobile\YUN\obj\Debug\YUN.dll
+E:\BPMMobile\YUN\obj\Debug\YUN.pdb
+E:\BPMMobile\YUN\bin\Debug\Newtonsoft.Json.dll
+E:\BPMMobile\YUN\bin\Debug\BouncyCastle.Crypto.dll
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.dll.config
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.dll
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.pdb
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.csproj.CoreCompileInputs.cache
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.dll
+D:\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.pdb
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.dll.config
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.dll
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\bin\Debug\YUN.pdb
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.csproj.CoreCompileInputs.cache
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.dll
+E:\新建文件夹\新建文件夹\BPMMobile-master\BPMMobile-master\BPMMobile\YUN\obj\Debug\YUN.pdb
+D:\Documents\BPMMobile\YUN\bin\Debug\YUN.dll.config
+D:\Documents\BPMMobile\YUN\bin\Debug\YUN.dll
+D:\Documents\BPMMobile\YUN\bin\Debug\YUN.pdb
+D:\Documents\BPMMobile\YUN\obj\Debug\YUN.csproj.CoreCompileInputs.cache
+D:\Documents\BPMMobile\YUN\obj\Debug\YUN.dll
+D:\Documents\BPMMobile\YUN\obj\Debug\YUN.pdb

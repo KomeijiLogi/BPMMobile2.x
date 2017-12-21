@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <input type="hidden" id="fno" name="fno" />
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzdfs">招待方式<i style="color:red;">*</i></label>
+                <input type="text" id="fzdfs" name="fzdfs" placeholder="请选择招待方式" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif">是否借款</label>
+                <input type="hidden" id="fif" name="fif" readonly="readonly" value="否" />
+                <div class="mui-switch mui-switch-mini mui-switch-blue" id="fif_d">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:6.75rem;">
+                <label for="fremark">备注</label>
+                <textarea rows="5" id="fremark" name="fremark" placeholder="请填写备注"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal">总计</label>
+                <input type="text" id="ftotal" name="ftotal" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_dx">大写金额</label>
+                <input type="text" id="ftotal_dx" name="ftotal_dx" readonly="readonly" />
+            </div>
+            <div id="mxlist">
+            </div>
+            <div class="mui-input-group" id="fjksq" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label style="width:100%">借款申请单</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjkje">借款金额</label>
+                    <input type="number" id="fjkje" name="fjkje" placeholder="请输入借款金额"/>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjkje_dx">大写金额</label>
+                    <input type="text" id="fjkje_dx" name="fjkje_dx" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjksy">借款事由</label>
+                    <input type="text" id="fjksy" name="fjksy" placeholder="请输入借款事由"/>
+                </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                    添加招待费申请明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+
+</form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\建设平台管理', '建设公司招待费申请');
+
+            prepMsg();
+        });
+        mui('#fif_d').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#fif').val('是');
+                    $("#fjksq").css("display", "block");
+
+                } else {
+                    $('#fif').val('否');
+                    $("#fjksq").css("display", "none");
+
+                }
+
+            });
+        });
+        $("#fjkje").on("input", function () {
+            var fjkje = $("#fjkje").val();
+            var value = atoc(fjkje);
+            $("#fjkje_dx").val(value);
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+
+                BPMOU = data.Position[0].FullName;
+                console.log(BPMOU);
+                var fareaStr = String(BPMOU).split("/");
+                //$("#fcompany").val(fareaStr[4]);
+                //$("#fdept").val(fareaStr[fareaStr.length - 2]);
+                //$("#fno").val(fareaStr[5]);
+            }).fail(function (e) {
+
+            });
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '   <Requests>';
+            xml = xml + '   <Params>';
+            xml = xml + '       <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>建设公司招待费申请</ProcessName>';
+            xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '      <Owner></Owner>';
+            xml = xml + '    </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.申请人);
+                $("#fno").val(item.申请人工号);
+                $("#fdept").val(item.部门名称);
+                $("#fcompany").val(item.公司名称);
+
+            }).fail(function (e) {
+
+            });
+        }
+        var fzdfsdata = [
+            {
+                value: '',
+                text:'公司内部招待'
+            },
+            {
+                value: '',
+                text:'公司外部招待'
+            }
+
+        ];
+
+        function tapEvent() {
+
+            showPicker('fzdfs', fzdfsdata);
+            $("#tjmx").on('tap', function () {
+                var li = '  <div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fzdrs">招待人数<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fzdrs" name="fzdrs" placeholder="请填写招待人数"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row" style="height:3.25rem;">';
+                li = li + '        <label for="fzdbz">单人招待标准<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fzdbz" name="fzdbz" placeholder="请填写单人招待标准"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '         <label for="fje">申请金额</label>';
+                li = li + '         <input type="text" id="fje" name="fje" readonly="readonly" value="0"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fzdcs">招待城市<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fzdcs" name="fzdcs" placeholder="请填写招待城市"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fzddd">招待地点</label>';
+                li = li + '        <input type="text" id="fzddd" name="fzddd" placeholder="请填写招待地点"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '         <label for="fms">事件描述及预期实现目标<i style="color:red;">*</i></label>';
+                li = li + '         <input type="text"  id="fms" name="fms" placeholder="请填写事件描述及预期实现目标"/>';
+                li = li + '    </div>';
+                li = li + ' </div>';
+                $("#mxlist").append(li);
+                document.getElementById('tjmx').scrollIntoView();
+
+                $("#mxlist").find("#fzdrs").each(function () {
+                    $(this).off('input');
+                    $(this).on('input', function () {
+                        var fzdrs = $(this).parent().parent().find("#fzdrs").val();
+                        var fzdbz = $(this).parent().parent().find("#fzdbz").val();
+                        var fje = 0;
+                        if (!(!fzdbz || fzdbz == '')) {
+
+                            fje = parseFloat(fzdrs) * parseFloat(fzdbz);
+                        }
+                        $(this).parent().parent().find("#fje").val(fje);
+                        calcTotal();
+                    });
+                });
+
+                $("#mxlist").find("#fzdbz").each(function () {
+                    $(this).off('input');
+                    $(this).on('input', function () {
+
+                        var fzdbz = $(this).parent().parent().find("#fzdbz").val();
+                        var fzdrs = $(this).parent().parent().find("#fzdrs").val();
+                        var fje = 0;
+                        if (!(!fzdrs || fzdrs == '')) {
+
+                            fje = parseFloat(fzdrs) * parseFloat(fzdbz);
+                        }
+                        $(this).parent().parent().find("#fje").val(fje);
+                        calcTotal();
+                    });
+                });
+
+
+            });
+        }
+
+
+        function calcTotal() {
+            var total = 0;
+            $("#mxlist").find("#fje").each(function () {
+                if (!(isNaN($(this).val()))) {
+                    total += parseFloat($(this).val());
+                }
+            });
+            $("#ftotal").val(total);
+            var value = atoc(total);
+            $("#ftotal_dx").val(value);
+        }
+
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    calcTotal();
+                }
+            });
+        }
+
+
+        function Save() {
+
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fno = $("#fno").val();
+           
+           
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fzdfs = $("#fzdfs").val();
+            var fif = $("#fif").val();
+            var fremark = $("#fremark").val();
+            var ftotal = $("#ftotal").val();
+            var ftotal_dx = $("#ftotal_dx").val();
+            var fjkje = $("#fjkje").val();
+            var fjkje_dx = $("#fjkje_dx").val();
+            var fjksy = $("#fjksy").val();
+
+            if (!fzdfs || fzdfs == '') {
+                mui.toast('请选择招待方式');
+                return;
+            }
+
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fzdrs = $(this).find("#fzdrs").val();
+                var fzdbz = $(this).find("#fzdbz").val();
+                var fje = $(this).find("#fje").val();
+                var fzdcs = $(this).find("#fzdcs").val();
+                var fzddd = $(this).find("#fzddd").val();
+                var fms = $(this).find("#fms").val();
+                if (mxItem(fzdrs, fzdbz, fje, fzdcs, fzddd, fms) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = mxItem(fzdrs, fzdbz, fje, fzdcs, fzddd, fms);
+                mxlistArr.push(mx);
+
+            });
+
+            if (mxflag) {
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>建设公司招待费申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+
+                    xml = xml + '          <建设公司_招待费申请_主表>';
+                    xml = xml + '             <单号>自动生成</单号>';
+                    xml = xml + '          <申请人>' + fname + '</申请人>';
+                    xml = xml + '          <申请人工号>' + fno + '</申请人工号>';
+                    xml = xml + '        <申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '             <部门名称>' + fdept+ '</部门名称>';
+                    xml = xml + '            <公司名称>' + fcompany + '</公司名称>';
+                    xml = xml + '         <招待方式>' + fzdfs + '</招待方式>';
+                    xml = xml + '         <是否借款>' + fif + '</是否借款>';
+                    xml = xml + '          <备注>' + fremark + '</备注>';
+                    xml = xml + '          <合计申请金额>' + ftotal + '</合计申请金额>';
+                    xml = xml + '          <大写金额>' + ftotal_dx + '</大写金额>';
+                    xml = xml + '          <借款金额>' + fjkje + '</借款金额>';
+                    xml = xml + '          <大写金额_借款单>' + fjkje_dx + '</大写金额_借款单>';
+                    xml = xml + '          <借款单号>自动生成</借款单号>';
+                    xml = xml + '          <借款事由>' + fjksy + '</借款事由>';
+                    xml = xml + '      </建设公司_招待费申请_主表>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+                        xml = xml + '       <建设公司_招待费申请_子表>';
+                        xml = xml + '          <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '          <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '          <序号>' + (i + 1) + '</序号>';
+                        xml = xml + '          <招待人数>' + mxlistArr[i].fzdrs + '</招待人数>';
+                        xml = xml + '         <单人招待标准>' + mxlistArr[i].fzdbz + '</单人招待标准>';
+                        xml = xml + '          <申请金额>' + mxlistArr[i].fje + '</申请金额>';
+                        xml = xml + '          <招待城市>' + mxlistArr[i].fzdcs + '</招待城市>';
+                        xml = xml + '          <招待地点>' + mxlistArr[i].fzddd + '</招待地点>';
+                        xml = xml + '           <事件描述>' + mxlistArr[i].fms + '</事件描述>';
+                        xml = xml + '       </建设公司_招待费申请_子表>';
+                    }
+
+
+                    xml = xml + '   </FormData>';
+                    xml = xml + '  </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function mxItem(fzdrs, fzdbz, fje, fzdcs, fzddd, fms) {
+            var mx = new Object;
+            mx.fzdrs = fzdrs;
+            mx.fzdbz = fzdbz;
+            mx.fje = fje;
+            mx.fzdcs = fzdcs;
+            mx.fzddd = fzddd;
+            mx.fms = fms;
+            if (!fzdrs || fzdrs==''){
+                mui.toast('请填写招待人数');
+                return null;
+            }
+            if (!fzdbz || fzdbz == '') {
+                mui.toast('请填写单人招待标准');
+                return null;
+            }
+            if (!fzdcs || fzdcs == '') {
+                mui.toast('请填写招待城市');
+                return null;
+            }
+            if (!fms) {
+                mui.toast('请填写事件描述及预期实现目标');
+                return null;
+            }
+            return mx;
+        }
+    </script>
+</body>
+</html>

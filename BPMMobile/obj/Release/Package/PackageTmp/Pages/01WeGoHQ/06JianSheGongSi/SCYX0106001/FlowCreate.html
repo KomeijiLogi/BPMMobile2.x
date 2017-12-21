@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flxfs">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="flxfs" name="flxfs" value="" placeholder="请填写联系方式" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwtlb">问题类别<i style="color:red;">*</i></label>
+                <input type="text" id="fwtlb" name="fwtlb" value="" placeholder="请选择问题类别" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffzzgdw">负责整改单位<i style="color:red;">*</i></label>
+                <input type="text" id="ffzzgdw" name="ffzzgdw" value="" placeholder="请选择负责整改单位" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcmc">工程名称<i style="color:red;">*</i></label>
+                <input type="text" id="fgcmc" name="fgcmc" value="" placeholder="请填写工程名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxslx">销售类型<i style="color:red;">*</i></label>
+                <input type="text" id="fxslx" name="fxslx" value="" placeholder="请选择销售类型" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fwtms">问题描述<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fwtms" name="fwtms" placeholder="请输入问题描述"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fzgyq">整改要求<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fzgyq" name="fzgyq" placeholder="请输入整改要求"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">整改前照片<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" id="addbtn_before">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fxqdate">限期整改日期<i style="color:red;">*</i></label>
+                <input type="date" id="fxqdate" name="fxqdate" value="" placeholder="请输入限期整改日期" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="fbz">备注</label>
+                <textarea rows="3" id="fbz" name="fbz" placeholder="请输入备注"></textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\SCYX市场营销', '建设公司市场问题反馈');
+            upload();
+            getBPMParam();
+            watch();
+
+            prepMsg();
+
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+
+                        var fareaStr = String(BPMOU).split("/");
+                        //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+                        $("#fdept").val(fareaStr[fareaStr.length - 2]);
+                        return BPMOU;
+                    } else {
+                        return "";
+                    }
+                },
+                error: function (e) {
+                    return e;
+                },
+
+                complete: function () {
+                    return BPMOU;
+                }
+
+            });
+
+        }
+
+
+        function tapEvent() {
+            var fwtlbdata = [
+                {
+                    value: "zl",
+                    text: "质量"
+                },
+                {
+                    value: "jd",
+                    text: "进度"
+                }
+            ];
+
+            showPicker('fwtlb', fwtlbdata);
+            var ffzzgdwdata = [
+                {
+                    value: "mc",
+                    text: "门窗分公司"
+                },
+                {
+                    value: "lh",
+                    text: "绿化配套分公司"
+                }
+            ];
+
+            showPicker('ffzzgdw', ffzzgdwdata);
+            var fxslxdata = [
+                {
+                    value: "jz",
+                    text: "家装"
+                },
+                {
+                    value: "gc",
+                    text: "工程"
+                }
+            ];
+
+            showPicker('fxslx', fxslxdata);
+
+        }
+
+
+        function Save() {
+            
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var flxfs = $("#flxfs").val();
+            var fwtlb = $("#fwtlb").val();
+            var ffzzgdw = $("#ffzzgdw").val();
+            var fgcmc = $("#fgcmc").val();
+            var fxslx = $("#fxslx").val();
+            var fwtms = $("#fwtms").val();
+            var fzgyq = $("#fzgyq").val();
+            var fxqdate = $("#fxqdate").val();
+            var fbz = $("#fbz").val();
+
+
+            if (!flxfs) {
+                mui.toast("请填写联系方式");
+                return;
+            }
+            if (!fwtlb) {
+                mui.toast("请选择问题类别");
+                return;
+            }
+            if (!ffzzgdw) {
+                mui.toast("请选择负责整改单位");
+                return;
+            }
+            if (!fgcmc) {
+                mui.toast("请填写工程名称");
+                return;
+            }
+            if (!fxslx) {
+                mui.toast("请选择销售类型");
+                return;
+            }
+            if (!fwtms) {
+                mui.toast("请填写问题描述");
+                return;
+            }
+            if (!fzgyq) {
+                mui.toast("请填写整改要求");
+                return;
+            }
+            if (fjArray.toString() == null || fjArray.toString() == "") {
+                mui.toast("请上传整改前照片");
+                return;
+            }
+            if (!fxqdate) {
+                mui.toast("请填写限期整改日期");
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>建设公司市场问题反馈</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + ' </Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_市场问题反馈>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<提报人>' + fname + '</提报人>';
+                    xml = xml + '<提报部门>' + fdept + '</提报部门>';
+                    xml = xml + '<提报日期>' + fdate + '</提报日期>';
+                    xml = xml + '<联系方式>' + flxfs + '</联系方式>';
+                    xml = xml + '<问题类别>' + fwtlb + '</问题类别>';
+                    xml = xml + '<负责整改单位>' + ffzzgdw + '</负责整改单位>';
+                    xml = xml + '<工程名称>' + fgcmc + '</工程名称>';
+                    xml = xml + '<销售类型>' + fxslx + '</销售类型>';
+                    xml = xml + '<问题描述>' + fwtms + '</问题描述>';
+                    xml = xml + '<整改要求>' + fzgyq + '</整改要求>';
+                    xml = xml + '<整改前照片>' + fjArray.toString().replace(",", ";") + '</整改前照片>';
+                    xml = xml + '<限期整改日期>' + fxqdate + '</限期整改日期>';
+                    xml = xml + '<是否整改完成></是否整改完成>';
+                    xml = xml + '<整改完成情况></整改完成情况>';
+                    xml = xml + '<整改完成日期></整改完成日期>';
+                    xml = xml + '<整改后照片></整改后照片>';
+                    xml = xml + '<是否超期></是否超期>';
+                    xml = xml + '<超期原因></超期原因>';
+                    xml = xml + '<备注>' + fbz + '</备注>';
+                    xml = xml + '</建设公司_市场问题反馈>';
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    //alert(xml);
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

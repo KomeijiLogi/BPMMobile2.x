@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+  
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" class="" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label>所属区域</label>
+                <input type="text" class="mui-input-clear" id="farea" name="farea" />
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期</label>
+                <input type="date" class="" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>联系电话</label>
+                <input type="tel" class="mui-input-clear" id="ftel" name="ftel" placeholder="请输入联系电话" />
+            </div>
+            <div class="mui-input-row">
+                <label>样品类型<i style="color:red;">*</i></label>
+                <input type="text" id="fyplx" name="fyplx" placeholder="请选择样品类型" readonly="readonly">
+            </div>
+            <div class="mui-input-row">
+                <label>客户编码</label>
+                <input type="text" id="fcusno" name="fcusno" placeholder="请输入客户编码" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label>客户名称</label>
+                <textarea rows="5" id="fcusname" name="fcusname"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:5.25rem;">
+                <label>申请说明</label>
+                <textarea rows="8" id="fremark" name="fremark"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>样品申请明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addProduct"></span>
+            </div>
+            <div id="yplist" class="mui-input-group" style="padding-bottom:2rem;">
+
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+       
+    </div>
+
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            getVersion('\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理', '洁瑞公司样品申请');
+            getBPMParam();
+            prepMsg();
+            watch();
+            upload();
+           
+        });
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                   
+                    var msg = JSON.parse(localStorage.getItem('BPM_JRYPSQMsg'));
+                    $("#fname").val(msg.fname);
+                    $("#farea").val(msg.farea);
+                    $("#fdate").val(msg.fdate);
+                    $("#ftel").val(msg.ftel);
+                    $("#fyplx").val(msg.fyplx);
+                    $("#fcusno").val(msg.fcusno);
+                    $("#fcusname").val(msg.fcusname);
+                    $("#fremark").val(msg.fremark);
+                    for (var i = 0; i < msg.fyplx.length; i++) {
+                        var fypmxItem = JSON.parse(msg.fyplx[i]);
+                        var li = ' <div id="yp" class="mui-card adjla">';
+                        li = li + '   <div class="mui-input-row bgc">';
+                        li = li + '        <label>明细列表项</label> ';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteProduct(this)"></span>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label> 产品编码 <i style= "color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwlno" name="fwlno" value="' + fypmxItem.fwlno + '" />';
+                        li = li + '   </div >';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>产品名称</label>';
+                        li = li + '        <input type="text" id="fwlname" name="fwlname" value="' + fypmxItem.fwlname + '" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '       <label>规格型号<i style="color:red;">*</i></label>';
+                        li = li + '       <input type="text" id="fggxh" name="fggxh" value="' + fypmxItem.fggxh + '" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>数量<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fsl" name="fsl" value="' + fypmxItem.fsl + '" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                        li = li + '        <label>备注说明</label>';
+                        li = li + '        <textarea rows="8" id="fremark" name="fremark">' + fypmxItem.fremark + '</textarea>';
+                        li = li + '   </div>';
+                        li = li + '</div>';
+
+                        $("#yplist").append(li);
+
+                    }
+                } else {
+                   
+                }
+            }
+
+        }
+        function tapEvent() {
+
+            //样品类型
+            var fyplxdata = [
+                {
+                    value: "fhx",
+                    text: "缝合线"
+                },
+                {
+                    value: "fl",
+                    text: "敷料"
+                }
+            ];
+
+           showPicker('fyplx', fyplxdata);
+
+            $("#addProduct").on('tap', function () {
+                var li = ' <div id="yp" class="mui-card adjla">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteProduct(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label> 产品编码 <i style= "color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlno" name="fwlno" value="" />';
+                li = li + '   </div >';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label>产品名称</label>';
+                li = li + '        <input type="text" id="fwlname" name="fwlname" value="" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '       <label>规格型号<i style="color:red;">*</i></label>';
+                li = li + '       <input type="text" id="fggxh" name="fggxh" value="" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label>数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fsl" name="fsl" value="" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                li = li + '        <label>备注说明</label>';
+                li = li + '        <textarea rows="5" id="fremark" name="fremark"></textarea>';
+                li = li + '   </div>';
+                li = li + '</div>';
+
+                $("#yplist").append(li);
+            });
+
+
+        }
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+               'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+      
+
+        //删除产品明细列表项 
+        function deleteProduct(context) {
+
+            $(context).parent().parent().remove();
+
+
+          
+        }
+        //定义样品函数
+        function Ypitem(fwlno, fwlname, fggxh, fsl, fremark) {
+            var yp = new Object;
+            yp.fwlno = fwlno;
+            yp.fwlname = fwlname;
+            yp.fggxh = fggxh;
+            yp.fsl = fsl;
+            yp.fremark = fremark;
+
+
+            if (!fwlno || fwlno == "") {
+                mui.toast("请输入产品编码");
+                return null;
+            }
+            if (!fggxh || fggxh == "") {
+                mui.toast("请输入规格型号");
+                return null;
+            }
+            if (!fsl || fsl == "") {
+                mui.toast("请输入数量");
+                return null;
+            }
+            return yp;
+        }
+
+        var fjArray = new Array();
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#farea").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var farea = $("#farea").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var ftel = $("#ftel").val();
+            var fyplx = $("#fyplx").val();
+            var fcusno = $("#fcusno").val();
+            var fcusname = $("#fcusname").val();
+            var fremark = $("#fremark").val();
+            if (!fyplx || fyplx=="") {
+                mui.toast("请选择样品类型");
+                return;
+            }
+            var mxflag = false;
+            var yplistArr = new Array();
+            $("#yplist").find("#yp").each(function () {
+
+                var fwlno = $(this).find("#fwlno").val();
+                var fwlname = $(this).find("#fwlname").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var fsl = $(this).find("#fsl").val();
+                var fremark = $(this).find("#fremark").val();
+                if (Ypitem(fwlno, fwlname, fggxh, fsl, fremark) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var yp = Ypitem(fwlno, fwlname, fggxh, fsl, fremark);
+                yplistArr.push(yp);
+            });
+            if (mxflag == true) {
+                return false;
+            }
+            var btnArry = ["取消", "确定"];
+
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + ' <Header>';
+                    xml = xml + '  <Method>Post</Method>';
+                    //xml = xml + '  <ProcessName>XS0205002_洁瑞医用制品公司样品申请_流程</ProcessName>';
+                    xml = xml + '  <ProcessName>洁瑞公司样品申请</ProcessName>';
+                    xml = xml + '  <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '  <DraftGuid></DraftGuid>';
+                    xml = xml + '   <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '   <Comment></Comment>';
+                    xml = xml + '   <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '   </Header>';
+                    xml = xml + '           <FormData>';
+                    xml = xml + '<BPM_JRYPSQ_A>';
+                    xml = xml + ' <fbillno>自动生成</fbillno>';
+                    xml = xml + '<fname>' + fname + '</fname>';
+                    xml = xml + '<farea>' + farea + '</farea>';
+                    xml = xml + '<fdate>' + fdate + '</fdate>';
+                    xml = xml + '<ftel>' + ftel + '</ftel>';
+                    xml = xml + '<fyplx>' + fyplx + '</fyplx>';
+                    xml = xml + '<fcusno>' + fcusno + '</fcusno>';
+                    xml = xml + '<fcusname>' + fcusname + '</fcusname>';
+                    xml = xml + '<fremark>' + fremark + '</fremark>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+
+                        xml = xml + '      <fj></fj>';
+                    }
+                    xml = xml + '</BPM_JRYPSQ_A>';
+                   
+                    for (var i = 0; i < yplistArr.length; i++) {
+                        xml = xml + '<BPM_JRYPSQ_B>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '  <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '  <fwlno>' + yplistArr[i].fwlno + '</fwlno>';
+                        xml = xml + '  <fwlname>' + yplistArr[i].fwlname + '</fwlname>';
+                        xml = xml + '  <fggxh>' + yplistArr[i].fggxh + '</fggxh>';
+                        xml = xml + '  <fsl>' + yplistArr[i].fsl + '</fsl>';
+                        xml = xml + '  <fremark>' + yplistArr[i].fremark + '</fremark>';
+                        xml = xml + '</BPM_JRYPSQ_B>';
+                    }
+                    xml = xml + '             </FormData>';
+                    xml = xml + '         </XForm>';
+
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+
+
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+        
+    </script>
+</body>
+</html>

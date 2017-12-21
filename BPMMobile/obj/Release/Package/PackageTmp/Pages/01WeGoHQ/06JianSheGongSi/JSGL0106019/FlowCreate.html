@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">报销人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+                <input type="hidden" id="fno" name="fno" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报销日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal">合计</label>
+                <input type="number" id="ftotal" name="ftotal" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_ds">大写金额</label>
+                <input type="text" id="ftotal_ds" name="ftotal_ds" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdjs">单据数<i style="color:red;">*</i></label>
+                <input type="number" id="fdjs" name="fdjs" placeholder="请填写单据数"/>
+            </div>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加费用报销明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\06建设公司\\建设管理平台', '建设公司其他费用报销（通用）');
+            prepMsg();
+            getBPMParam();
+            upload();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+
+        });
+
+
+
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '   <Requests>';
+            xml = xml + '   <Params>';
+            xml = xml + '       <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>建设公司其他费用报销（通用）</ProcessName>';
+            xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '      <Owner></Owner>';
+            xml = xml + '    </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.报销人);
+                $("#fno").val(item.报销人工号);
+                $("#fdept").val(item.部门名称);
+                $("#fcompany").val(item.公司名称);
+            }).fail(function (e) {
+
+            });
+        }
+
+        function tapEvent() {
+
+            $("#tjmx").on('tap', function () {
+                var li = '<div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fbxje">报销金额<i style="color:red;">*</i></label>';
+                li = li + '       <input type="number" id="fbxje" name="fbxje" placeholder="请填写报销金额"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row" style="height:auto;">';
+                li = li + '       <label for="ffysm">费用说明<i style="color:red;">*</i></label>';
+                li = li + '       <textarea id="ffysm" name="ffysm" placeholder="请填写费用说明" rows="3"></textarea>';
+                li = li + '    </div>';
+                li = li + '</div>';
+                $("#mxlist").append(li);
+                $("#mxlist").find("#fbxje").each(function () {
+                    $(this).off('input');
+                    $(this).on('input', function () {
+                        calcPrice();
+                    });
+                });
+            });
+
+        }
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    calcPrice();
+                }
+            });
+        }
+
+        function calcPrice() {
+
+            var total = 0;
+            $("#mxlist").find("#fbxje").each(function () {
+                var fbxje = parseFloat($(this).val());
+                total = (parseFloat(total) + fbxje).toFixed(2);
+                $("#ftotal").val(total);
+                $("#ftotal_ds").val(atoc(total));
+            });
+        }
+
+        function mxItem(fbxje,ffysm) {
+
+            var mx = new Object;
+            mx.fbxje = fbxje;
+            mx.ffysm = ffysm;
+            if (!fbxje) {
+                mui.toast('请填写报销金额');
+                return null;
+            }
+            if (!ffysm) {
+                mui.toast('请填写费用说明');
+                return null;
+            }
+            return mx;
+        }
+
+
+        function Save() {
+
+            var fname = $("#fname").val();
+            var fno = $("#fno").val();
+            var fdate = $("#fdate").val();
+            var fdept = $("#fdept").val();
+            var fcompany = $("#fcompany").val();
+            var ftotal = $("#ftotal").val();
+            var ftotal_ds = $("#ftotal_ds").val();
+            var fdjs = $("#fdjs").val();
+            if (!fdjs) {
+                mui.toast('请填写单据数');
+                return;
+            }
+            if (fjArray.length == 0) {
+                mui.toast('请上传票据');
+                return;
+            }
+            var mxflag = false;
+            var mxlistArr = new Array();
+
+            $("#mxlist").find("#mx").each(function () {
+
+                var fbxje = $(this).find("#fbxje").val();
+                var ffysm = $(this).find("#ffysm").val();
+
+                if (mxItem(fbxje, ffysm) == null) {
+                    mxflag = true;
+                    return;
+                }
+
+                var mx = mxItem(fbxje, ffysm);
+                mxlistArr.push(mx);
+            });
+
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '   <XForm>';
+                    xml = xml + '         <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '       <ProcessName>建设公司其他费用报销（通用）</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '            <DraftGuid></DraftGuid>';
+                    xml = xml + '             <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '            <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '             <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    xml = xml + '       <FormData>';
+
+                    xml = xml + '    <建设公司_其他费用报销通用_主表>';
+                    xml = xml + '     <单号>自动生成</单号>';
+                    xml = xml + '      <报销人>' + fname + '</报销人>';
+                    xml = xml + '     <报销人工号>' + fno + '</报销人工号>';
+                    xml = xml + '      <报销日期>' + fdate + '</报销日期>';
+                    xml = xml + '     <部门名称>' + fdept + '</部门名称>';
+                    xml = xml + '       <公司名称>' + fcompany + '</公司名称>';
+                    xml = xml + '      <合计报销金额>' + ftotal + '</合计报销金额>';
+                    xml = xml + '       <大写金额>' + ftotal_ds + '</大写金额>';
+                    xml = xml + '      <单据数>' + fdjs + '</单据数>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '      <上传票据>' + fjArray.toString().replace(",",";") + '</上传票据>';
+                    } else {
+                        xml = xml + '      <上传票据></上传票据>';
+                    }
+                   
+                    xml = xml + '    </建设公司_其他费用报销通用_主表>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+
+                        xml = xml + ' <建设公司_其他费用报销通用_子表>';
+                        xml = xml + ' <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '<RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '  <序号>' + (i + 1) + '</序号>';
+                        xml = xml + '  <报销金额>' + mxlistArr[i].fbxje + '</报销金额>';
+                        xml = xml + '   <备注说明>' + mxlistArr[i].ffysm + '</备注说明>';
+                        xml = xml + ' </建设公司_其他费用报销通用_子表>';
+                    }
+                    xml = xml + '        </FormData>';
+                    xml = xml + '       </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

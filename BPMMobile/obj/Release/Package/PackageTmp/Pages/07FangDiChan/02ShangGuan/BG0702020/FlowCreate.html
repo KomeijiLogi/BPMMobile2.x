@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row" style="display:none;">
+               <label for="fdept">报修部门</label>
+               <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fname">报修人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报修日期</label>
+                <input type="datetime-local" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fwz">具体位置<i style="color:red;">*</i></label>
+                <input type="text" id="fwz" name="fwz" readonly="readonly" placeholder="请选择具体位置"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fwzmx">位置明细<i style="color:red;">*</i></label>
+                <input type="text" id="fwzmx" name="fwzmx" placeholder="请填写位置明细"/>
+            </div>
+            <div class="mui-input-row" style="display:none;height:3.25rem;">
+                <label for="fmc">商户/业主名称</label>
+                <input type="text" id="fmc" name="fmc" placeholder="请填写商户业主名称"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fnr">报修内容<i style="color:red;">*</i></label>
+                <textarea rows="4" id="fnr" name="fnr" placeholder="请填写报修内容"></textarea>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fxz">报修性质<i style="color:red;">*</i></label>
+                <input type="text" id="fxz" name="fxz" readonly="readonly" placeholder="请选择报修性质"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="ffl">维修分类<i style="color:red;">*</i></label>
+                <input type="text" id="ffl" name="ffl" readonly="readonly" placeholder="请选择维修分类"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fry">维修人员<i style="color:red;">*</i></label>
+                <input type="text" id="fry" name="fry" readonly="readonly" placeholder="请选择维修人员"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fjg_rg">人工费用<i style="color:red;">*</i></label>
+                <input type="number" id="fjg_rg" name="fjg_rg" placeholder="请填写人工费用"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fjg_cl">材料费用<i style="color:red;">*</i></label>
+                <input type="number" id="fjg_cl" name="fjg_cl" placeholder="请填写材料费用"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fjg_hj">合计</label>
+                <input type="text" id="fjg_hj" name="fjg_hj" readonly="readonly" value="0"/>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司报修申请');
+            getBPMParam();
+            prepMsg();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(4));
+            tapEvent_tb();
+        }
+        function tapEvent_tb() {
+            var fwzdata = [
+                {
+                    value: '',
+                    text:'公区位置'
+                },
+                {
+                    value: '',
+                    text: '商户/业主名称'
+                }
+
+            ];
+            var element = document.getElementById('fwz');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fwzdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    if (items[0].text == '公区位置') {
+                        $("#fwzmx").parent().css("display", "block");
+                        $("#fmc").parent().css("display", "none");
+                    } else if (items[0].text == '商户/业主名称') {
+                        $("#fwzmx").parent().css("display", "none");
+                        $("#fmc").parent().css("display", "block");
+                    } else {
+
+                    }
+                });
+
+            }, false);
+
+
+            $("#fjg_rg,#fjg_cl").on('input', function () {
+                var fjg_rg;
+                var fjg_cl;
+                var total = 0;
+                if (isNaN($(fjg_rg).val())) {
+                    fjg_rg = 0;
+                } else {
+                    fjg_rg = parseFloat($(fjg_rg).val());
+                }
+
+                if (isNaN($(fjg_cl).val())) {
+                    fjg_cl = 0;
+                } else {
+                    fjg_cl = parseFloat($(fjg_cl).val());
+                }
+                total = fjg_rg + fjg_cl;
+                $("#fjg_hj").val(total);
+            });
+        }
+        function tapEvent_gc() {
+            var fxzdata = [
+                {
+                    value: '',
+                    text: '有偿维修'
+                },
+                {
+                    value: '',
+                    text: '无偿维修'
+                }
+
+            ];
+            var element = document.getElementById('fxz');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fxzdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    if (items[0].text == '有偿维修') {
+                        $("#fjg_rg").parent().css("display", "block");
+                        $("#fjg_cl").parent().css("display", "block");
+                        $("#fjg_hj").parent().css("display", "block");
+                    } else if (items[0].text == '无偿维修') {
+                        $("#fjg_rg").parent().css("display", "none");
+                        $("#fjg_cl").parent().css("display", "none");
+                        $("#fjg_hj").parent().css("display", "none");
+                    } else {
+
+                    }
+                });
+
+            }, false);
+            getRYMSg();
+
+
+            
+        }
+       
+        function getRYMSg() {
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + ' <Requests>';
+           
+            xml = xml + '       <Params>';
+            xml = xml + '           <DataSource>BPM_WEGO</DataSource>';
+            xml = xml + '           <ID>BPM_SGBXSQ_ZL</ID>';
+            xml = xml + '            <Type>1</Type>';
+            xml = xml + '           <Method>GetUserDataTable</Method>';
+            xml = xml + '           <TableName>BPM_SGBXSQ_ZL</TableName>';
+            xml = xml + '           <OrderBy></OrderBy>';
+            xml = xml + '       </Params>';
+            xml = xml + '    </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var rydata = provideData.Tables[0].Rows;
+
+                var frydata;
+                var ry_qd_arr = new Array();
+                var ry_ks_arr = new Array();
+                var ry_rd_arr = new Array();
+                var ry_zw_arr = new Array();
+                var ry_qt_arr = new Array();
+
+                for (var i = 0; i < rydata.length; i++){
+                    var ry = ({
+                        value: rydata[i].id,
+                        text: rydata[i].fname
+
+                    });
+
+                    if (rydata[i].fclass == '强电专业') {
+                        ry_qd_arr.push(ry);
+                    } else if (rydata[i].fclass == '空水专业'){                        
+                        ry_ks_arr.push(ry);
+                    } else if (rydata[i].fclass == '弱电专业') {
+                        ry_rd_arr.push(ry);
+                    } else if (rydata[i].fclass == '综维专业') {
+                        ry_zw_arr.push(ry);
+                    } else if (rydata[i].fclass == '其他') {
+                        ry_qt_arr.push(ry);
+                    } 
+
+
+                }
+                frydata = [
+
+                    {
+                        value: '',
+                        text: '强电专业',
+                        children: ry_qd_arr
+                    },
+                    {
+                        value: '',
+                        text: '空水专业',
+                        children: ry_ks_arr
+                    },
+                    {
+                        value: '',
+                        text: '弱电专业',
+                        children: ry_rd_arr
+                    },
+                    {
+                        value: '',
+                        text: '综维专业',
+                        children: ry_zw_arr
+                    },
+                    {
+                        value: '',
+                        text: '其他',
+                        children: ry_qt_arr
+                    }
+                ];
+               
+
+                var picker = new mui.PopPicker({
+                    layer: 2
+                });
+
+                picker.setData(frydata);
+
+                $("#ffl,#fry").on('tap', function () {
+                    picker.show(function (items) {
+                        $("#ffl").val(items[0].text);
+                        $("#fry").val(items[1].text);
+                    });
+
+                });
+            }).fail(function (e) {
+
+            });
+        }
+
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val();
+            var fwz = $("#fwz").val();
+            var fwzmx = $("#fwzmx").val();
+            var fmc = $("#fmc").val();
+            var fnr = $("#fnr").val();
+
+            var fxz = $("#fxz").val();
+            var ffl = $("#ffl").val();
+            var fry = $("#fry").val();
+            var fjg_rg = $("#fjg_rg").val();
+            var fjg_cl = $("#fjg_cl").val();
+            var fjg_hj = $("#fjg_hj").val();
+            var fhg_dx = atoc(fjg_hj);
+
+            if (!fwz || fwz==''){
+                mui.toast('请选择具体位置');
+                return;
+            }
+            if (fwz == '公区位置' && (!fwzmx || fwzmx == '')) {
+                mui.toast('请填写位置明细');
+                $("#fwzmx").focus();
+                return;
+            }
+            if (fwz == '商户/业主名称' && (!fmc || fmc == '')) {
+                mui.toast('请填写商户业主名称');
+                $("#fmc").focus();
+                return;
+            }
+            if (!fnr || fnr == '') {
+                mui.toast('请填写报修内容');
+                $("#fnr").focus();
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '    <Header>';
+                    xml = xml + '       <Method>Post</Method>';
+                    xml = xml + '        <ProcessName>盛祥商管公司报修申请</ProcessName>';
+                    xml = xml + '        <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '        <DraftGuid></DraftGuid>';
+                    xml = xml + '        <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '       <Action>提交</Action>';
+                    xml = xml + '        <Comment></Comment>';
+                    xml = xml + '        <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    xml = xml + '      <FormData>';
+                    xml = xml + '          <BPM_SGBXSQ>';
+                    xml = xml + '             <fbillno>自动生成</fbillno>';
+                    xml = xml + '             <fdept>' + fdept + '</fdept>';
+                    xml = xml + '            <fname>' + fname + '</fname>';
+                    xml = xml + '            <fdate>' + fdate + '</fdate>';
+                    xml = xml + '            <fwz>' + fwz + '</fwz>';
+                    xml = xml + '            <fwzmx>' + fwzmx + '</fwzmx>';
+                    xml = xml + '            <fmc>' + fmc + '</fmc>';
+                    xml = xml + '            <fnr>' + fnr + '</fnr>';
+                    xml = xml + '            <fxz></fxz>';
+                    xml = xml + '            <ffl></ffl>';
+                    xml = xml + '            <fry></fry>';
+                    xml = xml + '            <fjg_rg></fjg_rg>';
+                    xml = xml + '            <fjg_cl></fjg_cl>';
+                    xml = xml + '            <fjg_hj>0</fjg_hj>';
+                    xml = xml + '           <fhg_dx>零元整</fhg_dx>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '            <ffj>' + fjArray.toString().replace(",",";") + '</ffj>';
+                    } else {
+                        xml = xml + '            <ffj></ffj>';
+                    }
+                   
+                    xml = xml + '            <TaskID></TaskID>';
+                    xml = xml + '         </BPM_SGBXSQ>';
+                    xml = xml + '      </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

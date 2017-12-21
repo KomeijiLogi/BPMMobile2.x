@@ -1,0 +1,1353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="dept" style="display:block">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="group" style="display:block">
+                <label for="fgroup">所属集团</label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="company" style="display:block">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxm_name_no">项目名称及编号<i style="color:red;">*</i></label>
+                <input type="text" id="fxm_name_no" name="fxm_name_no" placeholder="请输入项目名称及编号" readonly="readonly" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="flx">类型<i style="color:red;">*</i></label>
+                <input type="text" id="flx" name="flx" placeholder="请选择类型" readonly="readonly" />
+            </div>
+            <div class="mui-input-group" id="bglx" style="display:none;">
+                <div class="mui-input-row">
+                    <label>变更类型<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjdbg">进度变更</label>
+                    <input id="fjdbg" name="fjdbg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled"">
+                    <label for="ffybg">费用变更</label>
+                    <input id="ffybg" name="ffybg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled"">
+                    <label for="fmcbg">名称变更</label>
+                    <input id="fmcbg" name="fmcbg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled"">
+                    <label for="fjsbg">技术变更</label>
+                    <input id="fjsbg" name="fjsbg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled"">
+                    <label for="frybg">人员变更</label>
+                    <input id="frybg" name="frybg" value="" type="checkbox" disabled="disabled" />
+                </div>
+            </div>
+            <div class="mui-input-row" id="fybgfdl" style="display:none;">
+                <label for="ffybgfdl">费用变更浮动率（%）</label>
+                <input type="number" id="ffybgfdl" name="ffybgfdl" placeholder="请输入费用变更浮动率" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="bgnrms" style="display:none;">
+                <label for="fbgnr">变更内容描述<i style="color:red;">*</i></label>
+                <textarea id="fbgnr" name="fbgnr" rows="8" placeholder="请填写变更内容描述" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" id="yx" style="display:none;">
+                <label for="fyx">对项目其他方面的影响<i style="color:red;">*</i></label>
+                <textarea id="fyx" name="fyx" rows="8" placeholder="请填写对项目其他方面的影响" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" id="jhzfy" style="display:none;">
+                <label for="fjhzfy">项目计划总费用</label>
+                <input type="number" id="fjhzfy" name="fjhzfy" placeholder="请输入项目计划总费用" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="jzmqfy" style="display:none;">
+                <label for="fjzmqfy">项目截止目前费用</label>
+                <input type="number" id="fjzmqfy" name="fjzmqfy" placeholder="请输入项目截止目前费用" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="jzqk" style="display:none;">
+                <label for="fjzqk">项目现阶段进展情况<i style="color:red;">*</i></label>
+                <textarea id="fjzqk" name="fjzqk" rows="8" placeholder="请填写项目现阶段进展情况" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" id="zzyy" style="display:none;">
+                <label for="fzzyy">项目暂停或终止原因<i style="color:red;">*</i></label>
+                <textarea id="fzzyy" name="fzzyy" rows="8" placeholder="请填写项目暂停或终止原因" readonly="readonly"></textarea>
+            </div>
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn" style="display:none">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" id="csd">
+                <label>加签</label>
+                <div class="mui-switch mui-switch-blue" id="csswitch">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="signbody">
+                <div class="mui-input-row" id="signPerDiv">
+                    <label>加签人</label>
+                    <span class="mui-navigate-right"></span>
+                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签模式</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="sxsl">
+                            <a class="mui-navigate-right" id="sxsa">
+                                顺序加签
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="pxsl">
+                            <a class="mui-navigate-right" id="pxsa">
+                                平行加签
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签回转</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                            <a class="mui-navigate-right" id="hdbjda">
+                                回到本节点
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="jrxjdl">
+                            <a class="mui-navigate-right" id="jrxjda">
+                                进入下一节点
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+            <div class="mui-table-view" style="margin-bottom:3.25rem;">
+                <div class="mui-table-view-cell  mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                        历史签核意见
+                    </a>
+                    <div class="mui-collapse-content">
+                        <!--流程列表-->
+                        <div class="list">
+                            <ul id="signff"></ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <div class="mui-btn-row" id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row" id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+            <!--<button class="mui-btn mui-btn-yellow" type="button" style="width:25%;" id="refusebt" onclick="Refilled()">退回重填</button>-->
+        </div>
+        <div class="mui-btn-row" id="readD">
+            <button class="mui-btn mui-btn-primary" type="button" id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row" id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getTaskMsg();
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+            watch();
+
+        });
+
+        mui('#csswitch').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#signbody').css('display', 'block');
+                } else {
+
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '退回某步', 'callBackId': 'callback3' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback3') {
+                 getRecedableToSteps();
+
+                }
+            }
+
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+
+
+
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                } else {
+                    stepId = url.split("pid=")[1];
+                }
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            itemidArr = new Array();
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    //console.log(data);
+                    if (status == "success") {
+                        console.log(data);
+
+                        var item = data.FormDataSet.BPM_WGJTYFXMBGJZZSQ[0];
+                        $("#taskId").val(item.TaskID);
+                        $("#stepId").val(stepId);
+                        $("#fbillno").val(item.fbillno);
+                        $("#fname").val(item.fname);
+                        $("#fdept").val(item.fdept);
+                        $("#fdate").val(FormatterTimeYMS(item.fdate));
+                        $("#fgroup").val(item.fgroup);
+                        $("#fcompany").val(item.fcompany);
+                        $("#ftel").val(item.ftel);
+                        $("#fxm_name_no").val(item.fxm_name_no);
+                        $("#flx").val(item.flx);
+                        $("#fjdbg").val(item.fjdbg);
+                        $("#ffybg").val(item.ffybg);
+                        $("#fmcbg").val(item.fmcbg);
+                        $("#fjsbg").val(item.fjsbg);
+                        $("#frybg").val(item.frybg);
+                        $("#ffybgfdl").val(item.ffybgfdl);
+                        $("#fbgnr").val(item.fbgnr);
+                        $("#fyx").val(item.fyx);
+                        $("#fjhzfy").val(item.fjhzfy);
+                        $("#fjzmqfy").val(item.fjzmqfy);
+                        $("#fjzqk").val(item.fjzqk);
+                        $("#fzzyy").val(item.fzzyy);
+
+                        $("#fjdbg,#ffybg,#fmcbg,#fjsbg,#frybg").each(function () {
+                            //console.log($(this));
+                            if ($(this).val() == "1") {
+
+                                $(this).attr("checked", "checked");
+                            }
+
+                        });
+                        if (item.flx == "项目变更") {
+                            $("#bglx").css("display", "block");
+                            $("#fybgfdl").css("display", "block");
+                            $("#bgnrms").css("display", "block");
+                            $("#yx").css("display", "block");
+                            $("#jhzfy").css("display", "none");
+                            $("#jzmqfy").css("display", "none");
+                            $("#jzqk").css("display", "none");
+                            $("#zzyy").css("display", "none");
+                            if (item.ffj != null && item.ffj != "") {
+                                var fjtmp = (String)(item.ffj);
+
+                                fjArray = fjtmp.split(";");
+
+
+                                //console.log("fjArray:" + fjArray);
+
+                                //请求附件详细信息
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/api/bpm/GetAttachmentsInfo',
+                                    //dataType:'json',
+                                    data: { 'fileIds': fjArray },
+
+                                    beforeSend: function (XHR) {
+                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                    },
+                                    success: function (data, status) {
+                                        if (status == "success") {
+
+                                            console.log(data);
+
+                                            for (var i = 0; i < data.length; i++) {
+
+                                                var name = data[i].Name;
+                                                var type = (data[i].Ext).replace(".", "");
+                                                var size = String(data[i].Size);
+
+                                                var time = String(data[i].LastUpdate).replace("T", " ");
+                                                var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                                var attach = attachItem(name, type, size, time, downurl);
+                                                attachArray.push(attach);
+
+
+
+                                                var li = '<div class="pic-preview smallyulan success">';
+                                                li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                                //类型判断
+                                                if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                    //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                                } else {
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                                }
+
+                                                li = li + ' </div>';
+                                                li = li + '</div>';
+                                                $(".upload-img-list").append(li);
+
+
+                                                $(".imgdiv").each(function () {
+
+                                                    $(this).parent().find(".del.none").hide();
+
+                                                });
+
+                                                watch();
+
+
+                                            }
+
+                                            $(".imgdiv").on('tap', function () {
+                                                console.log($(this)[0].id);
+                                                XuntongJSBridge.call('showFile', {
+                                                    'fileName': attachArray[$(this)[0].id].name,
+                                                    'fileExt': attachArray[$(this)[0].id].type,
+                                                    'fileTime': attachArray[$(this)[0].id].time,
+                                                    'fileSize': attachArray[$(this)[0].id].size,
+                                                    'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                                }, function (result) {
+                                                    //alert(JSON.stringify(result));
+                                                });
+                                            });
+
+
+                                        }
+
+                                    }, error: function (e) {
+                                        console.log(e);
+
+                                    }, complete: function () {
+
+                                    }
+
+                                });
+
+                            }
+                        } else if (item.flx == "项目终止") {
+                            $("#jhzfy").css("display", "block");
+                            $("#jzmqfy").css("display", "block");
+                            $("#jzqk").css("display", "block");
+                            $("#zzyy").css("display", "block");
+                            $("#bglx").css("display", "none");
+                            $("#fybgfdl").css("display", "none");
+                            $("#bgnrms").css("display", "none");
+                            $("#yx").css("display", "none");
+                            if (item.fj != null && item.fj != "") {
+                                var fjtmp = (String)(item.fj);
+
+                                fjArray = fjtmp.split(";");
+
+
+                                //console.log("fjArray:" + fjArray);
+
+                                //请求附件详细信息
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/api/bpm/GetAttachmentsInfo',
+                                    //dataType:'json',
+                                    data: { 'fileIds': fjArray },
+
+                                    beforeSend: function (XHR) {
+                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                    },
+                                    success: function (data, status) {
+                                        if (status == "success") {
+
+                                            console.log(data);
+
+                                            for (var i = 0; i < data.length; i++) {
+
+                                                var name = data[i].Name;
+                                                var type = (data[i].Ext).replace(".", "");
+                                                var size = String(data[i].Size);
+
+                                                var time = String(data[i].LastUpdate).replace("T", " ");
+                                                var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                                var attach = attachItem(name, type, size, time, downurl);
+                                                attachArray.push(attach);
+
+
+
+                                                var li = '<div class="pic-preview smallyulan success">';
+                                                li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                                //类型判断
+                                                if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                    //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                                } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                                } else {
+                                                    li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                                }
+
+                                                li = li + ' </div>';
+                                                li = li + '</div>';
+                                                $(".upload-img-list").append(li);
+
+
+                                                $(".imgdiv").each(function () {
+
+                                                    $(this).parent().find(".del.none").hide();
+
+                                                });
+
+                                                watch();
+
+
+                                            }
+
+                                            $(".imgdiv").on('tap', function () {
+                                                console.log($(this)[0].id);
+                                                XuntongJSBridge.call('showFile', {
+                                                    'fileName': attachArray[$(this)[0].id].name,
+                                                    'fileExt': attachArray[$(this)[0].id].type,
+                                                    'fileTime': attachArray[$(this)[0].id].time,
+                                                    'fileSize': attachArray[$(this)[0].id].size,
+                                                    'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                                }, function (result) {
+                                                    //alert(JSON.stringify(result));
+                                                });
+                                            });
+
+
+                                        }
+
+                                    }, error: function (e) {
+                                        console.log(e);
+
+                                    }, complete: function () {
+
+                                    }
+
+                                });
+
+                            }
+                        }
+
+
+
+
+
+                        if ($('#myPhone').val() == "") {
+                            var myPhone = String(BPMOU).split("/");
+                            $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                        }
+                        var NodeName;
+                        //判断流程本节点是否结束，处理者是否为当前用户,
+                        //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                        for (var i = 0; i < data.Steps.length; i++) {
+                            //debugger;
+
+                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                                if (stepId.indexOf(data.Steps[i].StepID) != -1) {
+
+                                    NodeName = data.Steps[i].NodeName;
+
+                                }
+
+                            }
+
+                        }
+                        if (NodeName == "开始") {
+                            $("#readD").css("display", "none");
+                            $("#csd").css("display", "none");
+                            $("#createD").css("display", "block");
+                            $("#approvalD").css("display", "none");
+                            $(".upload-addbtn").css("display", "block");
+                            $("#dept,#group,#company").css("display", "none");
+                            $("#ftel,#fxm_name_no,#fbgnr,#fjhzfy,#fjzmqfy,#fyx,#fjzqk,#fzzyy").removeAttr("readonly");
+                            $("#fjdbg,#ffybg,#fmcbg,#fjsbg,#frybg").removeAttr("disabled");
+                            var flxdata = [
+                                {
+                                    value: "xmzz",
+                                    text: "项目终止"
+                                },
+                                {
+                                    value: "xmbg",
+                                    text: "项目变更"
+                                }
+                            ];
+                            var element = document.getElementById("flx");
+                            var picker = new mui.PopPicker();
+                            picker.setData(flxdata);
+                            element.addEventListener('tap', function () {
+                                picker.show(function (items) {
+                                    element.value = items[0].text;
+                                    changeLx();
+                                });
+                            }, false);
+                            mui('.mui-checkbox').on('change', 'input', function () {
+                                var value = this.checked ? "1" : "0";
+                                $(this).val(value);
+                            });
+                            $("#ffybgfdl").on('click', function () {
+                                var fybg = $("#ffybg").val();
+                                if (fybg == "1") {
+                                    $("#ffybgfdl").removeAttr("readonly");
+
+                                } else {
+                                    $("#ffybgfdl").attr("readonly", "true");
+                                    $("#ffybgfdl").val("");
+                                }
+                            });
+
+
+                        } else if (NodeName == "sysInform") {
+                            $("#readD").css("display", "block");
+                            $("#csd").css("display", "none");
+                            $("#createD").css("display", "none");
+                            $("#approvalD").css("display", "none");
+
+                        } else {
+                            if (typeof (NodeName) != "undefined") {
+                                $("#approvalD").css("display", "block");
+                                $("#readD").css("display", "none");
+                                $("#csd").css("display", "block");
+                                $("#createD").css("display", "none");
+                            }
+                        }
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+                    }
+                }, error: function () {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+        function changeLx() {
+            var lx = $("#flx").val();
+            if (lx == "项目变更") {
+                $("#bglx").css("display", "block");
+                $("#fybgfdl").css("display", "block");
+                $("#bgnrms").css("display", "block");
+                $("#yx").css("display", "block");
+                $("#jhzfy").css("display", "none");
+                $("#jzmqfy").css("display", "none");
+                $("#jzqk").css("display", "none");
+                $("#zzyy").css("display", "none");
+            } else if (lx == "项目终止") {
+                $("#jhzfy").css("display", "block");
+                $("#jzmqfy").css("display", "block");
+                $("#jzqk").css("display", "block");
+                $("#zzyy").css("display", "block");
+                $("#bglx").css("display", "none");
+                $("#fybgfdl").css("display", "none");
+                $("#bgnrms").css("display", "none");
+                $("#yx").css("display", "none");
+
+            } else {
+                $("#bglx").css("display", "none");
+                $("#fybgfdl").css("display", "none");
+                $("#bgnrms").css("display", "none");
+                $("#yx").css("display", "none");
+                $("#jhzfy").css("display", "none");
+                $("#jzmqfy").css("display", "none");
+                $("#jzqk").css("display", "none");
+                $("#zzyy").css("display", "none");
+            }
+        }
+
+        function Save() {
+
+            var pid = $("#stepId").val()
+            var fbillno = $("#fbillno").val();
+            var taskId = $("#taskId").val();
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+            $("#fgroup").val(fareaStr[fareaStr.length - 4]);
+            $("#fcompany").val(fareaStr[fareaStr.length - 3]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var ftel = $("#ftel").val();
+            var fxm_name_no = $("#fxm_name_no").val();
+            var flx = $("#flx").val();
+            var fjdbg = $("#fjdbg").val();
+            var ffybg = $("#ffybg").val();
+            var fmcbg = $("#fmcbg").val();
+            var fjsbg = $("#fjsbg").val();
+            var frybg = $("#frybg").val();
+            var ffybgfdl = $("#ffybgfdl").val();
+            var fbgnr = $("#fbgnr").val();
+            var fyx = $("#fyx").val();
+            var fjhzfy = $("#fjhzfy").val();
+            var fjzmqfy = $("#fjzmqfy").val();
+            var fjzqk = $("#fjzqk").val();
+            var fzzyy = $("#fzzyy").val();
+            var fflag_zz = 'true';
+            var fflag_bg = 'true';
+            if (!ftel || ftel == '') {
+                mui.toast('请输入联系方式');
+                return;
+            }
+            if (!fxm_name_no || fxm_name_no == '') {
+                mui.toast('请输入项目名称及编号');
+                return;
+            }
+            if (!flx || flx == '') {
+                mui.toast('请选择类型');
+                return;
+            }
+            if (flx == '项目终止') {
+                if (!fjhzfy || fjhzfy == '') {
+                    mui.toast('请输入项目计划总费用');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fjzmqfy || fjzmqfy == '') {
+                    mui.toast('请输入项目截止目前费用');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fjzqk || fjzqk == '') {
+                    mui.toast('请输入项目现阶段进展情况');
+                    fflag_zz = 'false';
+                    return;
+                }
+                if (!fzzyy || fzzyy == '') {
+                    mui.toast('请输入项目暂停或终止原因');
+                    fflag_zz = 'false';
+                    return;
+                }
+            }
+            if (fflag_zz == 'false') {
+                return;
+            }
+            if (flx == '项目变更') {
+                if (!fbgnr || fbgnr == '') {
+                    mui.toast('请输入变更内容描述');
+                    fflag_bg = 'false';
+                    return;
+                }
+                if (!fyx || fyx == '') {
+                    mui.toast('请输入对项目其他方面影响');
+                    fflag_bg = 'false';
+                    return;
+                }
+
+            }
+            if (fflag_bg == 'false') {
+                return;
+            }
+            if (fjArray.toString() == null || fjArray.toString() == "") {
+                mui.toast("请上传附件");
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '     <XForm>';
+                    xml = xml + '   <Header>';
+                    xml = xml + '    <Method>Process</Method>';
+                    xml = xml + '   <PID>' + pid + '</PID>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '    <Comment></Comment>';
+                    xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '  </Header>';
+                    xml = xml + '         <FormData>';
+                    xml = xml + ' <BPM_WGJTYFXMBGJZZSQ>';
+                    xml = xml + '   <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fdept>' + fdept + '</fdept>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '   <ftel>' + ftel + '</ftel>';
+                    xml = xml + '   <fxm_name_no>' + fxm_name_no + '</fxm_name_no>';
+                    xml = xml + '   <flx>' + flx + '</flx>';
+                    xml = xml + '   <fjdbg>' + fjdbg + '</fjdbg>';
+                    xml = xml + '   <ffybg>' + ffybg + '</ffybg>';
+                    xml = xml + '  <fmcbg>' + fmcbg + '</fmcbg>';
+                    xml = xml + '   <fjsbg>' + fjsbg + '</fjsbg>';
+                    xml = xml + '   <frybg>' + frybg + '</frybg>';
+                    xml = xml + '    <ffybgfdl>' + ffybgfdl + '</ffybgfdl>';
+                    xml = xml + '   <fbgnr>' + fbgnr + '</fbgnr>';
+                    xml = xml + '   <fyx>' + fyx + '</fyx>';
+                    if (flx == '项目变更') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                        } else {
+                            xml = xml + '  <ffj></ffj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <ffj></ffj>'
+
+                    }
+                    xml = xml + '  <fjhzfy>' + fjhzfy + '</fjhzfy>';
+                    xml = xml + '  <fjzmqfy>' + fjzmqfy + '</fjzmqfy>';
+                    xml = xml + '  <fjzqk>' + fjzqk + '</fjzqk>';
+                    xml = xml + '  <fzzyy>' + fzzyy + '</fzzyy>';
+                    if (flx == '项目终止') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                        } else {
+                            xml = xml + '  <fj></fj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <fj></fj>'
+                    }
+
+
+                    xml = xml + ' </BPM_WGJTYFXMBGJZZSQ>';
+
+                    xml = xml + '  </FormData >';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function AgreeOrConSign() {
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+            var comment = $("#signSuggest").val();
+            var pid = $("#stepId").val()
+            var fbillno = $("#fbillno").val();
+            var taskId = $("#taskId").val();
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var ftel = $("#ftel").val();
+            var fxm_name_no = $("#fxm_name_no").val();
+            var flx = $("#flx").val();
+            var fjdbg = $("#fjdbg").val();
+            var ffybg = $("#ffybg").val();
+            var fmcbg = $("#fmcbg").val();
+            var fjsbg = $("#fjsbg").val();
+            var frybg = $("#frybg").val();
+            var ffybgfdl = $("#ffybgfdl").val();
+            var fbgnr = $("#fbgnr").val();
+            var fyx = $("#fyx").val();
+            var fjhzfy = $("#fjhzfy").val();
+            var fjzmqfy = $("#fjzmqfy").val();
+            var fjzqk = $("#fjzqk").val();
+            var fzzyy = $("#fzzyy").val();
+
+            //加签分支
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }, success: function (data, status) {
+
+                        if (status == "success") {
+
+
+
+                            for (var i = 0; i < data.data.length; i++) {
+                                consignUserId.push(data.data[i].phone);
+                            }
+                            $('#consignUser').val(consignUserId);
+                            consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+
+                            var xml = '<?xml version="1.0"?>';
+                            xml = xml + '<XForm>';
+                            xml = xml + '<Header>';
+                            xml = xml + '<Method>Process</Method>';
+                            xml = xml + '<PID>' + pid + '</PID>';
+                            xml = xml + '<Action>同意</Action>';
+                            xml = xml + '<Comment>' + comment + '</Comment>';
+                            //加签差异xml部分
+                            xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
+                            xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                            xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                            xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+
+
+                            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                            xml = xml + '</Header>';
+                            xml = xml + '<FormData>';
+                            xml = xml + ' <BPM_WGJTYFXMBGJZZSQ>';
+                            xml = xml + '   <fbillno>' + fbillno + '</fbillno>';
+                            xml = xml + '   <fname>' + fname + '</fname>';
+                            xml = xml + '   <fdept>' + fdept + '</fdept>';
+                            xml = xml + '    <fdate>' + fdate + '</fdate>';
+                            xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                            xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                            xml = xml + '   <ftel>' + ftel + '</ftel>';
+                            xml = xml + '   <fxm_name_no>' + fxm_name_no + '</fxm_name_no>';
+                            xml = xml + '   <flx>' + flx + '</flx>';
+                            xml = xml + '   <fjdbg>' + fjdbg + '</fjdbg>';
+                            xml = xml + '   <ffybg>' + ffybg + '</ffybg>';
+                            xml = xml + '  <fmcbg>' + fmcbg + '</fmcbg>';
+                            xml = xml + '   <fjsbg>' + fjsbg + '</fjsbg>';
+                            xml = xml + '   <frybg>' + frybg + '</frybg>';
+                            xml = xml + '    <ffybgfdl>' + ffybgfdl + '</ffybgfdl>';
+                            xml = xml + '   <fbgnr>' + fbgnr + '</fbgnr>';
+                            xml = xml + '   <fyx>' + fyx + '</fyx>';
+                            if (flx == '项目变更') {
+                                if (fjArray.length != 0) {
+                                    xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                                } else {
+                                    xml = xml + '  <ffj></ffj>'
+                                }
+
+                            } else {
+                                xml = xml + '  <ffj></ffj>'
+
+                            }
+                            xml = xml + '  <fjhzfy>' + fjhzfy + '</fjhzfy>';
+                            xml = xml + '  <fjzmqfy>' + fjzmqfy + '</fjzmqfy>';
+                            xml = xml + '  <fjzqk>' + fjzqk + '</fjzqk>';
+                            xml = xml + '  <fzzyy>' + fzzyy + '</fzzyy>';
+                            if (flx == '项目终止') {
+                                if (fjArray.length != 0) {
+                                    xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                                } else {
+                                    xml = xml + '  <fj></fj>'
+                                }
+
+                            } else {
+                                xml = xml + '  <fj></fj>'
+                            }
+
+
+                            xml = xml + ' </BPM_WGJTYFXMBGJZZSQ>';
+
+                            xml = xml + '  </FormData>';
+                            xml = xml + '</XForm >';
+                            PostXml(xml);
+                        }
+                    }, error: function (e) {
+
+                    }, complete: function () {
+
+                    }
+                });
+                //不加签分支
+            } else {
+
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + '<Header>';
+                xml = xml + '<Method>Process</Method>';
+                xml = xml + '<PID>' + pid + '</PID>';
+                xml = xml + '<Action>同意</Action>';
+                xml = xml + '<Comment>' + comment + '</Comment>';
+
+
+                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '</Header>';
+                xml = xml + '<FormData>';
+                xml = xml + ' <BPM_WGJTYFXMBGJZZSQ>';
+                xml = xml + '   <fbillno>' + fbillno + '</fbillno>';
+                xml = xml + '   <fname>' + fname + '</fname>';
+                xml = xml + '   <fdept>' + fdept + '</fdept>';
+                xml = xml + '    <fdate>' + fdate + '</fdate>';
+                xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                xml = xml + '   <ftel>' + ftel + '</ftel>';
+                xml = xml + '   <fxm_name_no>' + fxm_name_no + '</fxm_name_no>';
+                xml = xml + '   <flx>' + flx + '</flx>';
+                xml = xml + '   <fjdbg>' + fjdbg + '</fjdbg>';
+                xml = xml + '   <ffybg>' + ffybg + '</ffybg>';
+                xml = xml + '  <fmcbg>' + fmcbg + '</fmcbg>';
+                xml = xml + '   <fjsbg>' + fjsbg + '</fjsbg>';
+                xml = xml + '   <frybg>' + frybg + '</frybg>';
+                xml = xml + '    <ffybgfdl>' + ffybgfdl + '</ffybgfdl>';
+                xml = xml + '   <fbgnr>' + fbgnr + '</fbgnr>';
+                xml = xml + '   <fyx>' + fyx + '</fyx>';
+                if (flx == '项目变更') {
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                    } else {
+                        xml = xml + '  <ffj></ffj>'
+                    }
+
+                } else {
+                    xml = xml + '  <ffj></ffj>'
+
+                }
+                xml = xml + '  <fjhzfy>' + fjhzfy + '</fjhzfy>';
+                xml = xml + '  <fjzmqfy>' + fjzmqfy + '</fjzmqfy>';
+                xml = xml + '  <fjzqk>' + fjzqk + '</fjzqk>';
+                xml = xml + '  <fzzyy>' + fzzyy + '</fzzyy>';
+                if (flx == '项目终止') {
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '  <fj></fj>'
+                    }
+
+                } else {
+                    xml = xml + '  <fj></fj>'
+                }
+
+
+                xml = xml + ' </BPM_WGJTYFXMBGJZZSQ>';
+
+                xml = xml + '  </FormData>';
+                xml = xml + '</XForm >';
+                PostXml(xml);
+            }
+           
+        }
+
+        function hasRead() {
+            var pid = $("#stepId").val()
+            var fbillno = $("#fbillno").val();
+            var taskId = $("#taskId").val();
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var ftel = $("#ftel").val();
+            var fxm_name_no = $("#fxm_name_no").val();
+            var flx = $("#flx").val();
+            var fjdbg = $("#fjdbg").val();
+            var ffybg = $("#ffybg").val();
+            var fmcbg = $("#fmcbg").val();
+            var fjsbg = $("#fjsbg").val();
+            var frybg = $("#frybg").val();
+            var ffybgfdl = $("#ffybgfdl").val();
+            var fbgnr = $("#fbgnr").val();
+            var fyx = $("#fyx").val();
+            var fjhzfy = $("#fjhzfy").val();
+            var fjzmqfy = $("#fjzmqfy").val();
+            var fjzqk = $("#fjzqk").val();
+            var fzzyy = $("#fzzyy").val();
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + ' <BPM_WGJTYFXMBGJZZSQ>';
+                    xml = xml + '   <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fdept>' + fdept + '</fdept>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '   <ftel>' + ftel + '</ftel>';
+                    xml = xml + '   <fxm_name_no>' + fxm_name_no + '</fxm_name_no>';
+                    xml = xml + '   <flx>' + flx + '</flx>';
+                    xml = xml + '   <fjdbg>' + fjdbg + '</fjdbg>';
+                    xml = xml + '   <ffybg>' + ffybg + '</ffybg>';
+                    xml = xml + '  <fmcbg>' + fmcbg + '</fmcbg>';
+                    xml = xml + '   <fjsbg>' + fjsbg + '</fjsbg>';
+                    xml = xml + '   <frybg>' + frybg + '</frybg>';
+                    xml = xml + '    <ffybgfdl>' + ffybgfdl + '</ffybgfdl>';
+                    xml = xml + '   <fbgnr>' + fbgnr + '</fbgnr>';
+                    xml = xml + '   <fyx>' + fyx + '</fyx>';
+                    if (flx == '项目变更') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                        } else {
+                            xml = xml + '  <ffj></ffj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <ffj></ffj>'
+
+                    }
+                    xml = xml + '  <fjhzfy>' + fjhzfy + '</fjhzfy>';
+                    xml = xml + '  <fjzmqfy>' + fjzmqfy + '</fjzmqfy>';
+                    xml = xml + '  <fjzqk>' + fjzqk + '</fjzqk>';
+                    xml = xml + '  <fzzyy>' + fzzyy + '</fzzyy>';
+                    if (flx == '项目终止') {
+                        if (fjArray.length != 0) {
+                            xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                        } else {
+                            xml = xml + '  <fj></fj>'
+                        }
+
+                    } else {
+                        xml = xml + '  <fj></fj>'
+                    }
+
+
+                    xml = xml + ' </BPM_WGJTYFXMBGJZZSQ>';
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

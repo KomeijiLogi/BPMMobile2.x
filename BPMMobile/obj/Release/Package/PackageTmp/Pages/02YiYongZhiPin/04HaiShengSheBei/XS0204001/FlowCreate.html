@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">发起人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">所在部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">发起日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqlx">申请类型<i style="color:red;">*</i></label>
+                <input type="text" id="fsqlx" name="fsqlx" readonly="readonly" placeholder="请选择申请类型"/>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                        <label for="fddbh">订单编号<i style="color:red;">*</i></label>
+                        <input type="text" id="fddbh" name="fddbh" placeholder="请填写订单编号"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcpname">产品名称<i style="color:red;">*</i></label>
+                        <input type="text" id="fcpname" name="fcpname" placeholder="请填写产品名称"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fggxh">规格型号<i style="color:red;">*</i></label>
+                        <input type="text" id="fggxh" name="fggxh" placeholder="请填写规格型号"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="funit">单位<i style="color:red;">*</i></label>
+                        <input type="text" id="funit" name="funit" placeholder="请填写单位"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsl">数量<i style="color:red;">*</i></label>
+                        <input type="number" id="fsl" name="fsl" placeholder="请填写数量"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fjhrq">交货日期<i style="color:red;">*</i></label>
+                        <input type="date" id="fjhrq" name="fjhrq" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fywy">业务员</label>
+                        <input type="text" id="fywy" name="fywy" placeholder="请填写业务员"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fkhmc">客户名称</label>
+                        <input type="text" id="fkhmc" name="fkhmc" placeholder="请填写客户名称"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhsdj">含税单价</label>
+                        <input type="number" id="fhsdj" name="fhsdj" placeholder="请填写含税单价"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fxsjg">销售价格<i style="color:red;">*</i></label>
+                        <input type="number" id="fxsjg" name="fxsjg" placeholder="请填写销售价格"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="ffkfs">付款方式<i style="color:red;">*</i></label>
+                        <input type="text" id="ffkfs" name="ffkfs" placeholder="请填写付款方式"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fyf_date">研发确认时间<i style="color:red;">*</i></label>
+                        <input type="date" id="fyf_date" name="fyf_date" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcg_date">采购确认时间<i style="color:red;">*</i></label>
+                        <input type="date" id="fcg_date" name="fcg_date" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsc_date">生产确认时间<i style="color:red;">*</i></label>
+                        <input type="date" id="fsc_date" name="fsc_date" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row itemtitle2">
+                        <label>产品配置</label>
+                    </div>
+                    <div class="mui-row">
+                        <textarea id="fcppz" name="fcppz" rows="5" placeholder="请填写产品配置"></textarea>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加订单明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\04海盛设备公司\\XS销售', '海盛公司销售订单评审');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

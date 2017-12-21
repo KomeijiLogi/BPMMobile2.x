@@ -1,0 +1,860 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <!--提交人附件-->
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="tel" id="ftel" name="ftel" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgroup">样品编号</label>
+                <input type="text" id="fgroup" name="fgroup" placeholder="请选择产业集团" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">申请投资公司</label>
+                <input type="text" id="fcompany" name="fcompany" placeholder="请填写申请投资公司" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftzlx">项目投资类型</label>
+                <input type="text" id="ftzlx" name="ftzlx" readonly="readonly" placeholder="请选择项目投资类型" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftzname">投资项目名称</label>
+                <input type="text" id="ftzname" name="ftzname" placeholder="请填写投资项目名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_ys">是否列入预算</label>
+                <input type="text" id="fif_ys" name="fif_ys" readonly="readonly" placeholder="请选择是否列入预算" />
+            </div>
+
+            <ul class="mui-table-view flowslist">
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        非IT类投资申请信息
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ftzxmbh">投资项目编号</label>
+                            <input type="text" id="ftzxmbh" name="ftzxmbh" placeholder="请输入投资项目编号" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fyyglbbh">运营管理部分配编号</label>
+                            <input type="text" id="fyyglbbh" name="fyyglbbh" placeholder="请输入运营管理部分配编号" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fyfbh">研发项目编号</label>
+                            <input type="text" id="fyfbh" name="fyfbh" placeholder="请输入研发项目编号" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftzxz">投资性质</label>
+                            <input type="text" id="ftzxz" name="ftzxz" placeholder="请选择投资性质" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fqdfs">设备取得方式</label>
+                            <input type="text" id="fqdfs" name="fqdfs" placeholder="请选择设备取得方式" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ftzms">投资项目描述</label>
+                            <textarea id="ftzms" name="ftzms" rows="8" placeholder="请填写投资项目描述"></textarea>
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ftzdy">项目投资动因</label>
+                            <textarea id="ftzdy" name="ftzdy" rows="8" placeholder="请填写项目投资动因"></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        财务信息
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ftz_td">土地投资</label>
+                            <input type="number" id="ftz_td" name="ftz_td" placeholder="请填写土地投资金额" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_jzw">建筑物投资</label>
+                            <input type="number" id="ftz_jzw" name="ftz_jzw" placeholder="请填写建筑物投资金额" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_jq">机器设备投资</label>
+                            <input type="number" id="ftz_jq" name="ftz_jq" placeholder="请填写机器设备投资金额" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_ys">运输费用</label>
+                            <input type="number" id="ftz_ys" name="ftz_ys" placeholder="请填写运输费用" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_az">安装费用</label>
+                            <input type="number" id="ftz_az" name="ftz_az" placeholder="请填写安装费用" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_qt">其他投资</label>
+                            <input type="number" id="ftz_qt" name="ftz_qt" placeholder="请填写其他投资" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_fd">预计投资浮动金额</label>
+                            <input type="number" id="ftz_fd" name="ftz_fd" placeholder="请填写预计投资浮动金额" onchange="calTotal()" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_total">总投资金额</label>
+                            <input type="number" id="ftz_total" name="ftz_total" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="ftz_unit">金额单位</label>
+                            <input type="text" id="ftz_unit" name="ftz_unit" placeholder="请选择金额单位" readonly="readonly" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhsq_js">项目投资回收期(含建设期)</label>
+                            <input type="number" id="fhsq_js" name="fhsq_js" placeholder="请填写项目投资回收期指标" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhsq">项目投资回收期(不含建设期)</label>
+                            <input type="number" id="fhsq" name="fhsq" placeholder="请填写项目投资回收期（不含建设期）指标" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsyl">项目投资内部收益率</label>
+                            <input type="number" id="fsyl" name="fsyl" placeholder="请填写项目投资内部收益率" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fjxz">项目净现值</label>
+                            <input type="number" id="fjxz" name="fjxz" placeholder="请填写项目净现值" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fzczj">自筹资金预算</label>
+                            <input type="number" id="fzczj" name="fzczj" placeholder="请填写自筹资金预算" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fwczj">需外部筹资金额</label>
+                            <input type="number" id="fwczj" name="fwczj" placeholder="请填写需外部筹资金额" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fyczj">已筹资金金额</label>
+                            <input type="number" id="fyczj" name="fyczj" placeholder="请填写已筹资金金额" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fxczj">尚需筹资金金额</label>
+                            <input type="number" id="fxczj" name="fxczj" placeholder="请填写尚需筹资金金额" />
+                        </div>
+
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        业务信息
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fcn">产能（每小时）</label>
+                            <input type="text" id="fcn" name="fcn" placeholder="请填写每小时产能" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fldxs">流道形式及型号</label>
+                            <input type="text" id="fldxs" name="fldxs" placeholder="请填写流道形式及型号" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fgl">功率（千瓦时）</label>
+                            <input type="text" id="fgl" name="fgl" placeholder="请填写功率" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fsysm">使用寿命</label>
+                            <input type="text" id="fsysm" name="fsysm" placeholder="请填写使用寿命" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fhgl">产出合格率（%）</label>
+                            <input type="text" id="fhgl" name="fhgl" placeholder="请填写合格率" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fcszq">成型周期、腔数</label>
+                            <input type="text" id="fcszq" name="fcszq" placeholder="请填写成型周期、腔数" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fssb">附属设备及费用情况</label>
+                            <input type="text" id="fssb" name="fssb" placeholder="请填写附属设备及费用情况" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fmjcz">模具材质</label>
+                            <input type="text" id="fmjcz" name="fmjcz" placeholder="请填写模具材质" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fcjgz">涉及车间改造及费用情况</label>
+                            <input type="text" id="fcjgz" name="fcjgz" placeholder="请填写车间改造及费用情况" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fgyspx">工艺适配性</label>
+                            <input type="text" id="fgyspx" name="fgyspx" placeholder="请填写工艺适配性" />
+                        </div>
+
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        集团评审委员会意见汇总
+                    </a>
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="fjtpsyjhz">评审意见</label>
+                            <textarea id="fjtpsyjhz" name="fjtpsyjhz" rows="8" placeholder="请填写评审意见"></textarea>
+                        </div>
+                        <!--评审委员会附件-->
+                        <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                            <div class="border border-t upload-img" style="top:0rem;">
+                                <!--上传图片-->
+                                <div class="clearfix upload-btn" id="children-bg">
+                                    <label class="label">评审委员会附件</label>
+                                    <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                    <!--上传图片按钮  -->
+                                    <span class="upload-addbtn">
+                                        <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file_wyh" style="opacity:0;">
+                                    </span>
+                                </div>
+                                <div class="upload-img-list-wyh"></div>
+                            </div>
+                        </div>
+                        <!--董事会评审意见-->
+                        <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                            <div class="border border-t upload-img" style="top:0rem;">
+                                <!--上传图片-->
+                                <div class="clearfix upload-btn" id="children-bg">
+                                    <label class="label">董事会评审意见</label>
+                                    <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                    <!--上传图片按钮  -->
+                                    <span class="upload-addbtn">
+                                        <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file_dsh" style="opacity:0;">
+                                    </span>
+                                </div>
+                                <div class="upload-img-list-dsh"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="mui-input-row" id="ssd">
+                <label>签核意见</label>
+                <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+
+            getBPMParam();
+
+            getVersion('\\01威高集团总部\\01跨产业集团\\CW财务', '集团公司投资会签');
+
+            prepMsg();
+
+
+            upload();
+
+
+
+        });
+
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function calTotal() {
+            var tz_td = parseFloat($("#ftz_td").val());
+            var tz_jzw = parseFloat($("#ftz_jzw").val());
+            var tz_jq = parseFloat($("#ftz_jq").val());
+            var tz_ys = parseFloat($("#ftz_ys").val());
+            var tz_az = parseFloat($("#ftz_az").val());
+            var tz_qt = parseFloat($("#ftz_qt").val());
+            var tz_fd = parseFloat($("#ftz_fd").val());
+            var tz_total;
+            if (!tz_td || tz_td == '') {
+                tz_td = 0;
+            }
+            if (!tz_jzw || tz_jzw == '') {
+                tz_jzw = 0;
+            }
+            if (!tz_jq || tz_jq == '') {
+                tz_jq = 0;
+            }
+            if (!tz_ys || tz_ys == '') {
+                tz_ys = 0;
+            }
+            if (!tz_az || tz_az == '') {
+                tz_az = 0;
+            }
+            if (!tz_qt || tz_qt == '') {
+                tz_qt = 0;
+            }
+            if (!tz_fd || tz_fd == '') {
+                tz_fd = 0;
+            }
+            tz_total = tz_td + tz_jzw + tz_jq + tz_ys + tz_az + tz_qt + tz_fd;
+            $("#ftz_total").val(tz_total);
+
+        }
+        function tapEvent() {
+            var fgroupdata = [
+                {
+                    value: 'wgjtzb',
+                    text:'威高集团总部'
+                },
+                {
+                    value: 'jrkg',
+                    text: '金融控股集团'
+                },
+                {
+                    value: 'yyzp',
+                    text: '医用制品集团'
+                },
+                {
+                    value: 'gkcl',
+                    text: '骨科材料集团'
+                },
+                {
+                    value: 'xyjh',
+                    text: '血液净化集团'
+                },
+                {
+                    value: 'yyjt',
+                    text: '药业集团'
+                },
+                {
+                    value: 'swkj',
+                    text: '生物科技集团'
+                },
+                {
+                    value: 'xnhc',
+                    text: '心内耗材集团'
+                },
+                {
+                    value: 'ylsy',
+                    text: '医疗商业集团'
+                },
+                {
+                    value: 'fdc',
+                    text: '房地产集团'
+                }
+
+            ];
+
+            showPicker('fgroup', fgroupdata);
+
+            var ftzlxdata = [
+                {
+                    value: 'xzscx',
+                    text: '新增生产线'
+                },
+                {
+                    value: 'xzscsb',
+                    text: '新增生产设备'
+                },
+                {
+                    value: 'gxgz',
+                    text: '更新改造'
+                },
+                {
+                    value: 'xzyfsb',
+                    text: '新增研发设备'
+                },
+                {
+                    value: 'zjjfj',
+                    text: '质检及辅机'
+                },
+                {
+                    value: 'xzbg',
+                    text: '行政办公'
+                }
+
+            ];
+
+            showPicker('ftzlx', ftzlxdata);
+            var fif_ysdata = [
+                {
+                    value: 'ysw',
+                    text: '预算外'
+                },
+                {
+                    value: 'ysn',
+                    text: '预算内'
+                }
+
+            ];
+
+            showPicker('fif_ys', fif_ysdata);
+
+            var ftzxzdata = [
+                {
+                    value: 'cctz',
+                    text: '初次投资'
+                },
+                {
+                    value: 'zbtz',
+                    text: '增补投资'
+                }
+
+            ];
+
+            showPicker('ftzxz', ftzxzdata);
+
+            var fqdfsdata = [
+                {
+                    value: 'gm',
+                    text: '购买'
+                },
+                {
+                    value: 'zl',
+                    text: '租赁'
+                },
+                {
+                    value: 'syxysb',
+                    text: '使用现有设备'
+                }
+
+            ];
+
+            showPicker('fqdfs', fqdfsdata);
+
+            var ftz_unitdata = [
+                {
+                    value: 'y',
+                    text: '元'
+                },
+                {
+                    value: 'wy',
+                    text: '万元'
+                }
+
+            ];
+
+            showPicker('ftz_unit', ftz_unitdata);
+
+        }
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+
+        function Save() {
+
+
+            var fname = $("#fname").val();
+            var ftel = $("#ftel").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var ftzlx = $("#ftzlx").val();
+            var ftzname = $("#ftzname").val();
+            var fif_ys = $("#fif_ys").val();
+            var ftzxmbh = $("#ftzxmbh").val();
+            var fyyglbbh = $("#fyyglbbh").val();
+            var fyfbh = $("#fyfbh").val();
+            var ftzxz = $("#ftzxz").val();
+            var fqdfs = $("#fqdfs").val();
+            var ftzms = $("#ftzms").val();
+            var ftzdy = $("#ftzdy").val();
+            var ftz_td = $("#ftz_td").val();
+            var fhsq_js = $("#fhsq_js").val();
+            var ftz_jzw = $("#ftz_jzw").val();
+            var fhsq = $("#fhsq").val();
+            var ftz_jq = $("#ftz_jq").val();
+            var fsyl = $("#fsyl").val();
+            var ftz_ys = $("#ftz_ys").val();
+            var fjxz = $("#fjxz").val();
+            var ftz_az = $("#ftz_az").val();
+            var ftz_qt = $("#ftz_qt").val();
+            var fzczj = $("#fzczj").val();
+            var ftz_fd = $("#ftz_fd").val();
+            var fwczj = $("#fwczj").val();
+            var ftz_total = $("#ftz_total").val();
+            var fyczj = $("#fyczj").val();
+            var ftz_unit = $("#ftz_unit").val();
+            var fxczj = $("#fxczj").val();
+            var fcn = $("#fcn").val();
+            var fldxs = $("#fldxs").val();
+            var fgl = $("#fgl").val();
+            var fsysm = $("#fsysm").val();
+            var fhgl = $("#fhgl").val();
+            var fcszq = $("#fcszq").val();
+            var fssb = $("#fssb").val();
+            var fmjcz = $("#fmjcz").val();
+            var fcjgz = $("#fcjgz").val();
+            var fgyspx = $("#fgyspx").val();
+            var fjtpsyjhz = $("#fjtpsyjhz").val();
+            var comment = $("#signSuggest").val();
+
+            //校验部分
+            if (!ftel || ftel == '') {
+                mui.toast('请输入联系电话');
+                return false;
+            }
+            if (!fgroup || fgroup == '') {
+                mui.toast('请选择所属产业集团');
+                return false;
+            }
+            if (!fcompany || fcompany == '') {
+                mui.toast('请输入申请投资公司');
+                return false;
+            }
+            if (!ftzlx || ftzlx == '') {
+                mui.toast('请选择项目投资类型');
+                return false;
+            }
+            if (!ftzname || ftzname == '') {
+                mui.toast('请输入投资项目名称');
+                return false;
+            }
+            if (!fif_ys || fif_ys == '') {
+                mui.toast('请选择是否列入预算');
+                return false;
+            }
+            if (!ftzxmbh || ftzxmbh == '') {
+                mui.toast('请输入投资项目编号');
+                return false;
+            }
+            if (!fyyglbbh || fyyglbbh == '') {
+                mui.toast('请输入运营管理部编号');
+                return false;
+            }
+            if (!fyfbh || fyfbh == '') {
+                mui.toast('请输入研发编号');
+                return false;
+            }
+            if (!ftzxz || ftzxz == '') {
+                mui.toast('请选择投资性质');
+                return false;
+            }
+            if (!fqdfs || fqdfs == '') {
+                mui.toast('请选择取得方式');
+                return false;
+            }
+            if (!ftzms || ftzms == '') {
+                mui.toast('请输入投资描述');
+                return false;
+            }
+            if (!ftzdy || ftzdy == '') {
+                mui.toast('请输入投资动因');
+                return false;
+            }
+            if (!ftz_td || ftz_td == '') {
+                mui.toast('请输入土地投资金额');
+                return false;
+            }
+            if (!ftz_jzw || ftz_jzw == '') {
+                mui.toast('请输入建筑物投资金额');
+                return false;
+            }
+            if (!ftz_jq || ftz_jq == '') {
+                mui.toast('请输入机器设备投资');
+                return false;
+            }
+            if (!ftz_ys || ftz_ys == '') {
+                mui.toast('请输入运输费用');
+                return false;
+            }
+            if (!ftz_az || ftz_az == '') {
+                mui.toast('请输入安装费用');
+                return false;
+            }
+            if (!ftz_qt || ftz_qt == '') {
+                mui.toast('请输入其他投资金额');
+                return false;
+            }
+            if (!ftz_fd || ftz_fd == '') {
+                mui.toast('请输入预计投资浮动金额');
+                return false;
+            }
+            if (!ftz_total || ftz_total == '') {
+                mui.toast('请输入投资总金额');
+                return false;
+            }
+            if (!ftz_unit || ftz_unit == '') {
+                mui.toast('请选择金额单位');
+                return false;
+            }
+            if (!fhsq_js || fhsq_js == '') {
+                mui.toast('请输入项目投资回收期指标');
+                return false;
+            }
+            if (!fhsq || fhsq == '') {
+                mui.toast('请输入项目投资回收期（不含建设期）指标');
+                return false;
+            }
+            if (!fsyl || fsyl == '') {
+                mui.toast('请输入项目投资内部收益率');
+                return false;
+            }
+            if (!fjxz || fjxz == '') {
+                mui.toast('请输入项目净现值');
+                return false;
+            }
+            if (!fzczj || fzczj == '') {
+                mui.toast('请输入自筹资金预算');
+                return false;
+            }
+            if (!fwczj || fwczj == '') {
+                mui.toast('请输入需外部筹资金额');
+                return false;
+            }
+            if (!fyczj || fyczj == '') {
+                mui.toast('请输入已筹资金金额');
+                return false;
+            }
+            if (!fxczj || fxczj == '') {
+                mui.toast('请输入尚筹资金金额');
+                return false;
+            }
+            if (!fcn || fcn == '') {
+                mui.toast('请输入产能（每小时）');
+                return false;
+            }
+            if (!fgl || fgl == '') {
+                mui.toast('请输入功率（千瓦时）');
+                return false;
+            }
+            if (!fhgl || fhgl == '') {
+                mui.toast('请输入产出合格率（%）');
+                return false;
+            }
+            if (!fssb || fssb == '') {
+                mui.toast('请输入附属设备及费用情况');
+                return false;
+            }
+            if (!fcjgz || fcjgz == '') {
+                mui.toast('请输入涉及车间改造及费用情况');
+                return false;
+            }
+            if (!fldxs || fldxs == '') {
+                mui.toast('请输入流道形式及型号');
+                return false;
+            }
+            if (!fsysm || fsysm==''){
+                mui.toast('请输入使用寿命');
+                return false;
+            }
+            if (!fcszq || fcszq == '') {
+                mui.toast('请输入成型周期、腔数');
+                return false;
+            }
+            if (!fmjcz || fmjcz == '') {
+                mui.toast('请输入模具材质');
+                return false;
+            }
+            if (!fgyspx || fgyspx == '') {
+                mui.toast('请输入工艺适配性');
+                return false;
+            }
+            if (!comment || comment == '') {
+                mui.toast('请输入签核意见');
+                return false;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>集团公司投资会签</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + ' <集团公司_投资会签_主表>';
+                    xml = xml + '  <fbillno>自动生成</fbillno>';
+                    xml = xml + '    <TaskID></TaskID>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '   <fj></fj>';
+                    }
+                    xml = xml + '<fname>' + fname + '</fname>';
+                    xml = xml + '<ftel>' + ftel + '</ftel>';
+                    xml = xml + '   <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '   <ftzlx>' + ftzlx + '</ftzlx>';
+                    xml = xml + '    <ftzname>' + ftzname + '</ftzname>';
+                    xml = xml + '    <fif_ys>' + fif_ys + '</fif_ys>';
+
+                    xml = xml + '   <TaskID_集团公司投资申请></TaskID_集团公司投资申请>';
+                    xml = xml + '    <fxmfzrxm></fxmfzrxm>';
+                    xml = xml + '    <fxmjsdd></fxmjsdd>';
+                    xml = xml + '    <ffzrlxdh></ffzrlxdh>';
+                    xml = xml + '    <fsqsfs></fsqsfs>';
+                    xml = xml + '    <fsmsfs></fsmsfs>';
+                    xml = xml + '    <ffasfs></ffasfs>';
+                    xml = xml + '    <fxmnrmd></fxmnrmd>';
+                    xml = xml + '    <fghfs></fghfs>';
+                    xml = xml + '    <fxmsp></fxmsp>';
+                    xml = xml + '    <fssfs></fssfs>';
+                    xml = xml + '    <fsjsly></fsjsly>';
+                    xml = xml + '    <frhhe></frhhe>';
+                    xml = xml + '    <frjsm></frjsm>';
+                    xml = xml + '    <fyjje></fyjje>';
+                    xml = xml + '    <fyjsm></fyjsm>';
+                    xml = xml + '    <fzxje></fzxje>';
+                    xml = xml + '    <fzxsm></fzxsm>';
+                    xml = xml + '    <fywje></fywje>';
+                    xml = xml + '    <fywsm></fywsm>';
+                    xml = xml + '    <fqtje></fqtje>';
+                    xml = xml + '    <fqtsm></fqtsm>';
+                    xml = xml + '    <fzjje>0</fzjje>';
+                    xml = xml + '    <fxyfx></fxyfx>';
+
+                    xml = xml + '    <ftzxmbh>' + ftzxmbh + '</ftzxmbh>';
+                    xml = xml + '    <fyyglbbh>' + fyyglbbh + '</fyyglbbh>';
+                    xml = xml + '    <fyfbh>' + fyfbh + '</fyfbh>';
+                    xml = xml + '    <ftzxz>' + ftzxz + '</ftzxz>';
+                    xml = xml + '    <fqdfs>' + fqdfs + '</fqdfs>';
+                    xml = xml + '    <ftzms>' + ftzms + '</ftzms>';
+                    xml = xml + '    <ftzdy>' + ftzdy + '</ftzdy>';
+                    xml = xml + '    <ftz_td>' + ftz_td + '</ftz_td>';
+                    xml = xml + '    <fhsq_js>' + fhsq_js + '</fhsq_js>';
+                    xml = xml + '    <ftz_jzw>' + ftz_jzw + '</ftz_jzw>';
+                    xml = xml + '    <fhsq>' + fhsq + '</fhsq>';
+                    xml = xml + '    <ftz_jq>' + ftz_jq + '</ftz_jq>';
+                    xml = xml + '    <fsyl>' + fsyl + '</fsyl>';
+                    xml = xml + '    <ftz_ys>' + ftz_ys + '</ftz_ys>';
+                    xml = xml + '    <fjxz>' + fjxz + '</fjxz>';
+                    xml = xml + '    <ftz_az>' + ftz_az + '</ftz_az>';
+                    xml = xml + '    <ftz_qt>' + ftz_qt + '</ftz_qt>';
+                    xml = xml + '    <fzczj>' + fzczj + '</fzczj>';
+                    xml = xml + '    <ftz_fd>' + ftz_fd + '</ftz_fd>';
+                    xml = xml + '    <fwczj>' + fwczj + '</fwczj>';
+                    xml = xml + '    <ftz_total>' + ftz_total + '</ftz_total>';
+                    xml = xml + '    <fyczj>' + fyczj + '</fyczj>';
+                    xml = xml + '    <ftz_unit>' + ftz_unit + '</ftz_unit>';
+                    xml = xml + '    <fxczj>' + fxczj + '</fxczj>';
+                    xml = xml + '    <fcn>' + fcn + '</fcn>';
+                    xml = xml + '    <fldxs>' + fldxs + '</fldxs>';
+                    xml = xml + '    <fgl>' + fgl + '</fgl>';
+                    xml = xml + '    <fsysm>' + fsysm + '</fsysm>';
+                    xml = xml + '    <fhgl>' + fhgl + '</fhgl>';
+                    xml = xml + '    <fcszq>' + fcszq + '</fcszq>';
+                    xml = xml + '    <fssb>' + fssb + '</fssb>';
+                    xml = xml + '    <fmjcz>' + fmjcz + '</fmjcz>';
+                    xml = xml + '    <fcjgz>' + fcjgz + '</fcjgz>';
+                    xml = xml + '    <fgyspx>' + fgyspx + '</fgyspx>';
+                    xml = xml + '    <fjtpsyjhz>' + fjtpsyjhz + '</fjtpsyjhz>';
+
+                    //多附件
+                    xml = xml + '    <fpswyhyj></fpswyhyj>';
+                    xml = xml + '    <fdshpsyj></fdshpsyj>';
+                    xml = xml + '   </集团公司_投资会签_主表>';
+
+                    xml = xml + '  </FormData >';
+                    xml = xml + '</XForm >';
+                    alert(xml);
+                    PostXml(xml);
+                }
+            });
+        }
+
+        //判断是否是PC端，如果是则显示上传文件部分插件，如果是移动端那么默认隐藏
+        function isPCSet() {
+            var userAgent = navigator.userAgent;
+            if (userAgent.indexOf("Android") != -1 || userAgent.indexOf("iPad") != -1 || userAgent.indexOf("iPhone") != -1) {
+                return;
+            } else {
+
+
+            }
+
+        }
+    </script>
+</body>
+</html>

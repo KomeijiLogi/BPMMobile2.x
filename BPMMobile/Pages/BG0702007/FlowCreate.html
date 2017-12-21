@@ -1,0 +1,760 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+       <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">申请人<i style="color:red;">*</i></label>
+               <input type="text" id="fname" name="fname" readonly="readonly" />
+           </div>
+           <div class="mui-input-row" style="display:none;">
+               <label for="fdept">申请部门</label>
+               <input type="text" id="fdept" name="fdept" readonly="readonly" />
+           </div>
+           <div class="mui-input-row">
+               <label for="fdate">申请日期</label>
+               <input type="text" id="fdate" name="fdate" readonly="readonly" />
+           </div>
+           <div class="mui-input-row">
+               <label for="fphone">联系电话<i style="color:red;">*</i></label>
+               <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式" />
+           </div>
+           <div class="mui-input-row">
+               <label for="fzw">职务/岗位 </label>
+               <input type="text" id="fzw" name="fzw" placeholder="请输入职务/岗位"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fsqly">申请理由<i style="color:red;">*</i></label>
+               <input type="text" id="fsqly" name="fsqly" placeholder="请选择申请理由" readonly="readonly"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fgzlx">工装类型<i style="color:red;">*</i></label>
+               <input type="text" id="fgzlx" name="fgzlx" placeholder="请选择工装类型" readonly="readonly"/>
+           </div>
+           <div class="mui-input-row bgc">
+               <label>申请明细</label>
+               <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span>
+           </div>
+           <div class="mui-input-group" id="mxlist" style="padding-bottom:2rem;">
+
+           </div>
+
+           <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+               <div class="border border-t upload-img" style="top:0rem;">
+                   <!--上传图片-->
+                   <div class="clearfix upload-btn" id="children-bg">
+                       <label class="label">附件</label>
+                       <span class="tips" id="imageCount"><!--已添加0张--></span>
+                       <!--上传图片按钮  -->
+                       <span class="upload-addbtn">
+                           <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                       </span>
+
+                   </div>
+                   <div class="upload-img-list"></div>
+               </div>
+           </div>
+       </form>    
+    </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司工装制作申请'); 
+            getBPMParam();
+            prepMsg();
+           
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                   
+                    var msg = JSON.parse(localStorage.getItem('BPM_SGGSGZZZSQBMsg'));
+                    $("#fname").val(msg.fname);
+                    $("#fdept").val(msg.fdept);
+                    $("#fdate").val(msg.fdate);
+                    $("#ftel").val(msg.ftel);
+                    $("#fzw").val(msg.fzw);
+                    $("#fsqly").val(msg.fsqly);
+                    $("#fgzlx").val(msg.fgzlx);
+                    var fsqlydata = [
+                        {
+                            value: "xrz/zz",
+                            text: "新入职/转正"
+                        },
+                        {
+                            value: "gh",
+                            text: "更换"
+                        },
+                        {
+                            value: "bc",
+                            text: "补充"
+                        }
+                    ];
+                    showPicker('fsqly', fsqlydata);
+
+                    var fgzlxdata = [
+                        {
+                            value: "bp",
+                            text: "标配"
+                        },
+                        {
+                            value: "fbp",
+                            text: "非标配"
+                        }
+                    ];
+                    showPicker('fgzlx', fgzlxdata);
+
+                    var fksdata = [
+                        {
+                            value: "male",
+                            text: "男款"
+                        },
+                        {
+                            value: "female",
+                            text: "女款"
+                        }
+                    ];
+
+                    var fjjdata = [
+                        {
+                            value: "summer",
+                            text: "夏装 "
+                        },
+                        {
+                            value: "springAndAutumn",
+                            text: "春秋装"
+                        }
+                    ];
+
+                    var fbzcmdata = [
+                        {
+                            value: "35",
+                            text: "35"
+                        },
+                        {
+                            value: "36",
+                            text: "36"
+                        },
+                        {
+                            value: "37",
+                            text: "37"
+                        },
+                        {
+                            value: "38",
+                            text: "38"
+                        },
+                        {
+                            value: "39",
+                            text: "39"
+                        },
+                        {
+                            value: "40",
+                            text: "40"
+                        },
+                        {
+                            value: "41",
+                            text: "41"
+                        },
+                        {
+                            value: "42",
+                            text: "42"
+                        },
+
+                        {
+                            value: "43",
+                            text: "43"
+                        },
+                        {
+                            value: "44",
+                            text: "44"
+                        },
+                        {
+                            value: "45",
+                            text: "45"
+                        }
+                    ];
+
+                    var fxsdata = [
+                        {
+                            value: "lt",
+                            text: "量体",
+                            children: [
+                                {
+                                    value: "0",
+                                    text: "请在备注里标明尺码"
+                                }
+                            ]
+                        },
+                        {
+                            value: "bzcm",
+                            text: "标准尺码",
+                            children: fbzcmdata
+                        }
+                    ];
+
+                    for (var i = 0; i < msg.fsqmx.length; i++) {
+                        var fsqmxItem = JSON.parse(msg.fsqmx[i]);
+                        var li = '<div id="mx" class="mui-card">';
+                        li = li + '   <div class="mui-input-row itemtitle">';
+                        li = li + '        <label>明细列表项</label> ';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fks">款式<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fks" name="fks" readonly="readonly" placeholder="请选择款式"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fjj">季节<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fjj" name="fjj" readonly="readonly" placeholder="请选择季节" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="flx">类型<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="flx" name="flx" readonly="readonly" placeholder="请选择类型" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fsl">数量<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fsl" name="fsl"  placeholder="请输入数量"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fsyr">使用人<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fsyr" name="fsyr"  placeholder="请输入使用人"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fxs">形式<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fxs" name="fxs"  placeholder="请选择形式" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fbzcm">标准尺码<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fbzcm" name="fbzcm"  placeholder="请选择标准尺码" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:2.25rem;">';
+                        li = li + '        <label for="fyqsj">要求到货日期<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="date" id="fyqsj" name="fyqsj"  placeholder="请选择要求日期" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:3.75rem;">';
+                        li = li + '        <label for="fbz">备注<i style="color:red;">*</i></label>';
+                        li = li + '        <textarea rows="3" id="fbz" name="fbz" placeholder="请输入备注"></textarea>';
+                        li = li + '   </div>';
+                        li = li + '</div>';
+                        $("#mxlist").append(li);
+
+                        showPickerByZepto("#mxlist", "#fks", fksdata);
+                        showPickerByZepto("#mxlist", "#fjj", fjjdata);
+
+
+                        var picker = new mui.PopPicker(
+                            {
+                                layer: 2
+                            }
+                        );
+                        picker.setData(fxsdata);
+
+                        $("#mxlist").find("#fxs").each(function () {
+
+                            var self = this;
+                            $(this).on('tap', function () {
+
+                                picker.show(function (items) {
+                                    self.value = (items[0].text);
+                                    $(self).parent().parent().find("#fbzcm").val(items[1].value);
+                                });
+                            });
+                        });
+
+                        $("#mxlist").find("#fbzcm").each(function () {
+
+                            var self = this;
+                            $(this).on('tap', function () {
+                                var self = this;
+                                $(this).on('tap', function () {
+
+                                    picker.show(function (items) {
+                                        self.value = (items[1].value);
+                                        $(self).parent().parent().find("#fxs").val(items[0].text);
+                                    });
+                                });
+
+                            });
+
+                        });
+                    }
+                } else {
+                  
+                }
+            }
+        }
+
+        function tapEvent() {
+
+            var fsqlydata = [
+                {
+                    value: "xrz/zz",
+                    text:"新入职/转正"
+                },
+                {
+                    value: "gh",
+                    text:"更换"
+                },
+                {
+                    value: "bc",
+                    text:"补充"
+                }
+            ];
+            showPicker('fsqly', fsqlydata);
+
+            var fgzlxdata = [
+                {
+                    value: "bp",
+                    text:"标配"
+                },
+                {
+                    value: "fbp",
+                    text: "非标配"
+                }
+            ];
+            showPicker('fgzlx', fgzlxdata);
+
+            var fksdata = [
+                {
+                    value: "male",
+                    text:"男款"
+                },
+                {
+                    value: "female",
+                    text:"女款"
+                }
+            ];
+
+            var fjjdata = [
+                {
+                    value: "summer",
+                    text:"夏装 "
+                },
+                {
+                    value: "springAndAutumn",
+                    text:"春秋装"
+                }
+            ];
+
+            var fbzcmdata = [
+                {
+                    value: "35",
+                    text: "35"
+                },
+                {
+                    value: "36",
+                    text: "36"
+                },
+                {
+                    value: "37",
+                    text: "37"
+                },
+                {
+                    value: "38",
+                    text: "38"
+                },
+                {
+                    value: "39",
+                    text: "39"
+                },
+                {
+                    value: "40",
+                    text: "40"
+                },
+                {
+                    value: "41",
+                    text: "41"
+                },
+                {
+                    value: "42",
+                    text: "42"
+                },
+
+                {
+                    value: "43",
+                    text: "43"
+                },
+                {
+                    value: "44",
+                    text: "44"
+                },
+                {
+                    value: "45",
+                    text: "45"
+                }
+            ];
+
+            var fxsdata = [
+                {
+                    value: "lt",
+                    text: "量体",
+                    children: [
+                        {
+                            value: "0",
+                            text:"请在备注里标明尺码"
+                        }
+                    ]
+                },
+                {
+                    value: "bzcm",
+                    text: "标准尺码",
+                    children: fbzcmdata
+                }
+            ];
+
+            var flxdata = [
+
+                {
+                    value: '',
+                    text:'上衣'
+                },
+                {
+                    value: '',
+                    text: '裤子'
+                },
+                {
+                    value: '',
+                    text: '裙子'
+                },
+                {
+                    value: '',
+                    text: '衬衣'
+                },
+                {
+                    value: '',
+                    text: '领带'
+                },
+                {
+                    value: '',
+                    text: '大衣'
+                },
+                {
+                    value: '',
+                    text: '其他'
+                }
+            ];
+
+
+            $("#addItem").on('tap', function () {
+
+                var li = '<div id="mx" class="mui-card">';
+                li = li + '   <div class="mui-input-row itemtitle">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fks">款式<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fks" name="fks" readonly="readonly" placeholder="请选择款式" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjj">季节<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fjj" name="fjj" readonly="readonly" placeholder="请选择季节" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="flx">类型<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="flx" name="flx" readonly="readonly" placeholder="请选择类型" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fsl">数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fsl" name="fsl"  placeholder="请输入数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fsyr">使用人<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fsyr" name="fsyr"  placeholder="请输入使用人"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxs">形式<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxs" name="fxs"  placeholder="请选择形式" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fbzcm">标准尺码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fbzcm" name="fbzcm"  placeholder="请选择标准尺码" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:2.25rem;">';
+                li = li + '        <label for="fyqsj">要求到货日期<i style="color:red;">*</i></label>';
+                li = li + '        <input type="date" id="fyqsj" name="fyqsj"  placeholder="请选择要求日期" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:3.75rem;">';
+                li = li + '        <label for="fbz">备注<i style="color:red;">*</i></label>';
+                li = li + '        <textarea rows="3" id="fbz" name="fbz" placeholder="请输入备注"></textarea>';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#mxlist").append(li);
+
+                showPickerByZepto("#mxlist", "#fks", fksdata);
+                showPickerByZepto("#mxlist", "#fjj", fjjdata);
+                showPickerByZepto('#mxlist', '#flx', flxdata);
+
+                var picker = new mui.PopPicker(
+                    {
+                        layer: 2
+                    }
+                );
+                picker.setData(fxsdata);
+
+                $("#mxlist").find("#fxs").each(function () {
+
+                    var self = this;
+                    $(this).on('tap', function () {
+
+                        picker.show(function (items) {
+                            self.value = (items[0].text);
+                            $(self).parent().parent().find("#fbzcm").val(items[1].value);
+                        });
+                    });
+                });
+
+                $("#mxlist").find("#fbzcm").each(function () {
+
+                    var self = this;
+                    $(this).on('tap', function () {
+                        var self = this;
+                        $(this).on('tap', function () {
+
+                            picker.show(function (items) {
+                                self.value = (items[1].value);
+                                $(self).parent().parent().find("#fxs").val(items[0].text);
+                            });
+                        });
+
+                    });
+
+                });
+
+
+            });
+        }
+
+
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+
+            var ftel = $("#ftel").val();
+            var fzw = $("#fzw").val();
+            var fsqly = $("#fsqly").val();
+            var fgzlx = $("#fgzlx").val();
+
+            if (!ftel || ftel == "") {
+                mui.toast("请输入联系方式");
+                return;
+            }
+            if (!fsqly || fsqly == "") {
+                mui.toast("请选择申请理由");
+                return;
+            }
+
+            if (!fgzlx || fgzlx == "") {
+                mui.toast("请选择工装类型");
+                return;
+            }
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fks = $(this).find("#fks").val();
+                var fjj = $(this).find("#fjj").val();
+                var flx = $(this).find("#flx").val();
+                var fsl = $(this).find("#fsl").val();
+                var fsyr = $(this).find("#fsyr").val();
+                var fxs = $(this).find("#fxs").val();
+                var fbzcm = $(this).find("#fbzcm").val();
+                var fyqsj = $(this).find("#fyqsj").val() + " 00:00:00";
+                var fbz = $(this).find("#fbz").val();
+                if (MxItem(fks, fjj, flx, fsl, fsyr, fxs, fbzcm, fyqsj, fbz) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = MxItem(fks, fjj, flx, fsl, fsyr, fxs, fbzcm, fyqsj, fbz);
+                mxlistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+                var btnArry = ["取消", "确定"];
+                mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                    if (e.index == 1) {
+                        var xml = '<?xml version="1.0"?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '<Header>';
+                        xml = xml + '<Method>Post</Method>';
+                        xml = xml + '<ProcessName>盛祥商管公司工装制作申请</ProcessName>';
+                        xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                        xml = xml + '<DraftGuid></DraftGuid>';
+                        xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                        xml = xml + '<Action>提交</Action>';
+                        xml = xml + '<Comment></Comment>';
+                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '</Header>';
+                        xml = xml + '<FormData>';
+                        xml = xml + '<BPM_SGGSGZZZSQB_A>';
+                        xml = xml + '<fbillno>自动生成</fbillno>';
+                        xml = xml + ' <fname>' + fname + '</fname>';
+                        xml = xml + '<fdept>' + fdept + '</fdept>';
+                        xml = xml + '<fdate>' + fdate + '</fdate>';
+                        xml = xml + '<ftel>' + ftel + '</ftel>';
+                        xml = xml + ' <fzw>' + fzw + '</fzw>';
+                        xml = xml + '<fsqly>' + fsqly + '</fsqly>';
+                        xml = xml + '<fgzlx>' + fgzlx + '</fgzlx>';
+                        if (fjArray.toString() != null && fjArray.toString() != "") {
+                            xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                        } else {
+                            xml = xml + '      <fj></fj>';
+                        }
+                        xml = xml + ' </BPM_SGGSGZZZSQB_A>';
+                        for (var i = 0; i < mxlistArr.length; i++) {
+                            xml = xml + '<BPM_SGGSGZZZSQB_B>';
+                            xml = xml + ' <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '<RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<entryno>' + (i + 1) + '</entryno>';
+                            xml = xml + ' <fks>' + mxlistArr[i].fks + '</fks>';
+                            xml = xml + '<fjj>' + mxlistArr[i].fjj + '</fjj>';
+                            xml = xml + '<flx>' + mxlistArr[i].flx + '</flx>';
+                            xml = xml + '<fsl>' + mxlistArr[i].fsl + '</fsl>';
+                            xml = xml + '<fsyr>' + mxlistArr[i].fsyr + '</fsyr>';
+                            xml = xml + '<fxs>' + mxlistArr[i].fxs + '</fxs>';
+                            xml = xml + '<fbzcm>' + mxlistArr[i].fbzcm + '</fbzcm>';
+                            xml = xml + '<fyqsj>' + mxlistArr[i].fyqsj + '</fyqsj>';
+                            xml = xml + '<fbz>' + mxlistArr[i].fbz + '</fbz>';
+                            xml = xml + '</BPM_SGGSGZZZSQB_B>';
+                        }
+                        xml = xml + '</FormData>';
+                        xml = xml + '</XForm>';
+                        PostXml(xml);
+                    }
+                });
+
+        }
+
+
+        function MxItem(fks, fjj, flx, fsl, fsyr, fxs, fbzcm, fyqsj, fbz) {
+
+            var mx = new Object;
+            mx.fks = fks;
+            mx.fjj = fjj;
+            mx.flx = flx;
+            mx.fsl = fsl;
+            mx.fsyr = fsyr;
+            mx.fxs = fxs;
+            mx.fbzcm = fbzcm;
+            mx.fyqsj = fyqsj;
+            mx.fbz = fbz;
+            if (!fks||fks==""){
+                mui.toast("请选择款式");
+                return null;
+            }
+            if (!fjj || fjj == "") {
+                mui.toast("请选择季节");
+                return null;
+            }
+            if (!flx || flx == "") {
+                mui.toast("请选择类型");
+                return null;
+            }
+            if (!fsl || fsl == "") {
+                mui.toast("请填写数量");
+                return null;
+            }
+            if (!fsyr || fsyr == "") {
+                mui.toast("请填写使用人");
+                return null;
+            }
+            if (!fxs || fxs == "") {
+                mui.toast("请选择形式");
+                return null;
+            }
+            if (!fbzcm || fbzcm == "") {
+                mui.toast("请选择标准尺码");
+                return null;
+            }
+            if (!fyqsj || fyqsj == "") {
+                mui.toast("请选择要求日期");
+                return null;
+            }
+            if (!fbz || fbz == "") {
+                mui.toast("请填写备注");
+                return null;
+            }
+            return mx;
+        }
+
+    </script>
+</body>
+</html>

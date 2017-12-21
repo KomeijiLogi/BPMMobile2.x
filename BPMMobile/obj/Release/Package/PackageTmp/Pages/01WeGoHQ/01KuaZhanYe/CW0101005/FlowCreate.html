@@ -1,0 +1,749 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgroup">所属集团<i style="color:red;">*</i></label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly" placeholder="请选择所属集团"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所在公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" placeholder="请选择所在公司"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate"  readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fywlx">业务类型<i style="color:red;">*</i></label>
+                <input type="text" id="fywlx" name="fywlx" placeholder="请选择业务类型" readonly="readonly"/>
+            </div>
+
+            <div class="mui-input-row">
+                <label for="ferp">ERP系统<i style="color:red;">*</i></label>
+                <input type="text" id="ferp" name="ferp" placeholder="请选择ERP系统" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fmail">企业邮箱<i style="color:red;">*</i></label>
+                <input type="text" id="fmail" name="fmail" placeholder="请输入企业邮箱" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请输入联系电话" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcwgw">财务岗位<i style="color:red;">*</i></label>
+                <input type="text" id="fcwgw" name="fcwgw" placeholder="请选择财务岗位" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none" id="gwlx">
+                <label for="fgwlx">岗位类型</label>
+                <input type="text" id="fgwlx" name="fgwlx" placeholder="请选择岗位类型" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsysno">资金系统用户名</label>
+                <input type="text" id="fsysno" name="fsysno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkeyno">key编号</label>
+                <input type="text" id="fkeyno" name="fkeyno" placeholder="请输入key编号" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcwjl">财务经理<i style="color:red;">*</i></label>
+                <input type="text" id="fcwjl" name="fcwjl" placeholder="请选择财务经理" readonly="readonly"/>
+                <input type="text" hidden="hidden" id="fcwjlno" name="fcwjlno" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="fxqms">资金系统业务需求描述<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fxqms" name="fxqms" placeholder="请输入资金系统业务需求详细描述"></textarea>
+            </div>
+            <div class="mui-input-group" id="fgwml" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label style="width:100%">资金系统岗位目录<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjszdg">结算制单岗</label>
+                    <input id="fjszdg" name="fjszdg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjsshg">结算审核岗</label>
+                    <input id="fjsshg" name="fjsshg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fpjzdg">票据制单岗</label>
+                    <input id="fpjzdg" name="fpjzdg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fpjshg">票据审核岗</label>
+                    <input id="fpjshg" name="fpjshg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhzdg">资金计划制单岗</label>
+                    <input id="fzjjhzdg" name="fzjjhzdg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhshg">资金计划审核岗</label>
+                    <input id="fzjjhshg" name="fzjjhshg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhcxg">资金计划查询岗</label>
+                    <input id="fzjjhcxg" name="fzjjhcxg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjscxg">资金结算查询岗</label>
+                    <input id="fzjjscxg" name="fzjjscxg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjpjcxg">资金票据查询岗</label>
+                    <input id="fzjpjcxg" name="fzjpjcxg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fdwpjspg">单位票据审批岗</label>
+                    <input id="fdwpjspg" name="fdwpjspg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fdwfkspg">单位付款审批岗</label>
+                    <input id="fdwfkspg" name="fdwfkspg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fscfgsjs">市场分公司结算制单岗</label>
+                    <input id="fscfgsjs" name="fscfgsjs" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjtjhspg">集团计划审批岗岗</label>
+                    <input id="fjtjhspg" name="fjtjhspg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjtfkspg">集团付款审批岗</label>
+                    <input id="fjtfkspg" name="fjtfkspg" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fndzjyslr">年度资金预算录入</label>
+                    <input id="fndzjyslr" name="fndzjyslr" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fndzjyssh">年度资金预算审核</label>
+                    <input id="fndzjyssh" name="fndzjyssh" value="" type="checkbox" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="fgwmlx" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label style="width:100%">变更后岗位目录<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjszdg1">结算制单岗</label>
+                    <input id="fjszdg1" name="fjszdg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjsshg1">结算审核岗</label>
+                    <input id="fjsshg1" name="fjsshg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fpjzdg1">票据制单岗</label>
+                    <input id="fpjzdg1" name="fpjzdg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fpjshg1">票据审核岗</label>
+                    <input id="fpjshg1" name="fpjshg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhzdg1">资金计划制单岗</label>
+                    <input id="fzjjhzdg1" name="fzjjhzdg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhshg1">资金计划审核岗</label>
+                    <input id="fzjjhshg1" name="fzjjhshg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjhcxg1">资金计划查询岗</label>
+                    <input id="fzjjhcxg1" name="fzjjhcxg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjjscxg1">资金结算查询岗</label>
+                    <input id="fzjjscxg1" name="fzjjscxg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fzjpjcxg1">资金票据查询岗</label>
+                    <input id="fzjpjcxg1" name="fzjpjcxg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fdwpjspg1">单位票据审批岗</label>
+                    <input id="fdwpjspg1" name="fdwpjspg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fdwfkspg1">单位付款审批岗</label>
+                    <input id="fdwfkspg1" name="fdwfkspg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fscfgsjs1">市场分公司结算制单岗</label>
+                    <input id="fscfgsjs1" name="fscfgsjs1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjtjhspg1">集团计划审批岗岗</label>
+                    <input id="fjtjhspg1" name="fjtjhspg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fjtfkspg1">集团付款审批岗</label>
+                    <input id="fjtfkspg1" name="fjtfkspg1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fndzjyslr1">年度资金预算录入</label>
+                    <input id="fndzjyslr1" name="fndzjyslr1" value="" type="checkbox" />
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fndzjyssh1">年度资金预算审核</label>
+                    <input id="fndzjyssh1" name="fndzjyssh1" value="" type="checkbox" />
+                </div>
+            </div>
+       
+        </form>
+
+
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()" style="width:100%;">提交</button>
+    </div>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\01跨产业集团\\CW财务', '集团公司资金系统用户及权限申请');
+            prepMsg();
+            upload();
+            watch();
+            getBPMParam();
+        });
+        //mui('.mui-checkbox').on('change', 'input', function () {
+        //    var value = this.checked ? "1" : "0";
+        //    $(this).val(value);
+        //});
+        $("#fjszdg").on('change', function () {
+            var value = this.checked ? "结算制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fjsshg").on('change', function () {
+            var value = this.checked ? "结算审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fpjzdg").on('change', function () {
+            var value = this.checked ? "票据制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fpjshg").on('change', function () {
+            var value = this.checked ? "票据审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhzdg").on('change', function () {
+            var value = this.checked ? "资金计划制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhshg").on('change', function () {
+            var value = this.checked ? "资金计划审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhcxg").on('change', function () {
+            var value = this.checked ? "资金计划查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjscxg").on('change', function () {
+            var value = this.checked ? "资金结算查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjpjcxg").on('change', function () {
+            var value = this.checked ? "资金票据查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fdwpjspg").on('change', function () {
+            var value = this.checked ? "单位票据审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fdwfkspg").on('change', function () {
+            var value = this.checked ? "单位付款审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fscfgsjs").on('change', function () {
+            var value = this.checked ? "市场分公司结算制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fjtjhspg").on('change', function () {
+            var value = this.checked ? "集团计划审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fjtfkspg").on('change', function () {
+            var value = this.checked ? "集团付款审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fndzjyslr").on('change', function () {
+            var value = this.checked ? "年度资金预算录入" : "";
+            $(this).val(value);
+        });
+        $("#fndzjyssh").on('change', function () {
+            var value = this.checked ? "年度资金预算审核" : "";
+            $(this).val(value);
+        });
+
+
+        $("#fjszdg1").on('change', function () {
+            var value = this.checked ? "结算制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fjsshg1").on('change', function () {
+            var value = this.checked ? "结算审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fpjzdg1").on('change', function () {
+            var value = this.checked ? "票据制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fpjshg1").on('change', function () {
+            var value = this.checked ? "票据审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhzdg1").on('change', function () {
+            var value = this.checked ? "资金计划制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhshg1").on('change', function () {
+            var value = this.checked ? "资金计划审核岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjhcxg1").on('change', function () {
+            var value = this.checked ? "资金计划查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjjscxg1").on('change', function () {
+            var value = this.checked ? "资金结算查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fzjpjcxg1").on('change', function () {
+            var value = this.checked ? "资金票据查询岗" : "";
+            $(this).val(value);
+        });
+        $("#fdwpjspg1").on('change', function () {
+            var value = this.checked ? "单位票据审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fdwfkspg1").on('change', function () {
+            var value = this.checked ? "单位付款审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fscfgsjs1").on('change', function () {
+            var value = this.checked ? "市场分公司结算制单岗" : "";
+            $(this).val(value);
+        });
+        $("#fjtjhspg1").on('change', function () {
+            var value = this.checked ? "集团计划审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fjtfkspg1").on('change', function () {
+            var value = this.checked ? "集团付款审批岗" : "";
+            $(this).val(value);
+        });
+        $("#fndzjyslr1").on('change', function () {
+            var value = this.checked ? "年度资金预算录入" : "";
+            $(this).val(value);
+        });
+        $("#fndzjyssh1").on('change', function () {
+            var value = this.checked ? "年度资金预算审核" : "";
+            $(this).val(value);
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+        $("#fcwjl").on("click", function () {
+            XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
+                if (typeof (result) == "string") {
+                    var result = JSON.stringify(result);
+                }
+                //result = JSON.parse(result);
+
+                if (result.success == true || result.success == "true") {
+                    $("#fcwjl").val(result.data.persons[0].personName);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/PostAccount",
+                        data: { "ids": result.data.persons[0].openId },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                        }
+                    }).done(function (data) {
+                        console.log(JSON.stringify(data));
+                        $("#fcwjlno").val(data.data[0].phone);
+                    }).fail(function (e) {
+                        console.log(e);
+                    });
+                }
+
+            });
+
+        });
+        $("#fcompany").on("click", function () {
+            XuntongJSBridge.call('selectDepts', {
+
+                'isMulti':false,
+
+                'blacklist':[''],
+
+                'whitelist':['']
+
+            }, function (result) {
+
+                if (typeof (result) == "string") {
+                    var result = JSON.stringify(result);
+                }
+
+
+                if (result.success == true || result.success == "true") {
+                    $("#fcompany").val(result.data.persons[0].name);
+
+                }
+            });
+        })
+        function changeYwlx() {
+            var ywlx = $("#fywlx").val();
+            if (ywlx == "新增权限") {
+                $("#fgwml").css("display", "block");
+                $("#fgwmlx").css("display", "none");
+                $("#gwlx").css("display", "none");
+
+            } else if (ywlx == "变更权限") {
+                $("#fgwml").css("display", "block");
+                $("#fgwmlx").css("display", "block");
+                $("#gwlx").css("display", "block");
+
+            } else {
+                $("#fgwml").css("display", "none");
+                $("#fgwmlx").css("display", "none");
+                $("#gwlx").css("display", "none");
+
+            }
+        }
+        function prepMsg() {
+            //tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+            var fgroupdata = [
+                {
+                    value: "wgjtzb",
+                    text: "威高集团总部"
+                },
+                {
+                    value: "yyzpjt",
+                    text: "医用制品集团"
+                },
+                {
+                    value: "ylzbjt",
+                    text: "医疗装备集团"
+                },
+                {
+                    value: "gkcljt",
+                    text: "骨科材料集团"
+                },
+                {
+                    value: "xyjhjt",
+                    text: "血液净化集团"
+                },
+                {
+                    value: "fdcjt",
+                    text: "房地产集团"
+                },
+                {
+                    value: "xnhcjt",
+                    text: "心内耗材集团"
+                },
+                {
+                    value: "ylsyjt",
+                    text: "医疗商业集团"
+                }
+            ];
+            showPicker('fgroup', fgroupdata);
+
+            var ferpdata = [
+                {
+                    value: "eas",
+                    text: "金蝶EAS"
+                },
+                {
+                    value: "k3",
+                    text: "金蝶K3"
+                }
+            ];
+            showPicker('ferp', ferpdata);
+
+            var fgwlxdata = [
+                {
+                    value: "yygw",
+                    text: "原有岗位"
+                },
+                {
+                    value: "bghgw",
+                    text: "变更后岗位"
+                }
+            ];
+            showPicker('fgwlx', fgwlxdata);
+
+            var fcwgwdata = [
+                {
+                    value: "cny",
+                    text: "出纳员"
+                },
+                {
+                    value: "sccn",
+                    text: "市场出纳"
+                },
+                {
+                    value: "sckj",
+                    text: "市场会计"
+                },
+                {
+                    value: "xskj",
+                    text: "销售会计"
+                },
+                {
+                    value: "cbkj",
+                    text: "成本会计"
+                },
+                {
+                    value: "fykj",
+                    text: "费用会计"
+                },
+                {
+                    value: "cgkj",
+                    text: "采购会计"
+                },
+                {
+                    value: "zhkj",
+                    text: "综合会计"
+                },
+                {
+                    value: "cwjl",
+                    text: "财务经理"
+                },
+                {
+                    value: "cwzj",
+                    text: "财务总监"
+                }
+            ];
+            showPicker('fcwgw', fcwgwdata);
+
+            var fywlxdata = [
+                {
+                    value: "xzqx",
+                    text: "新增权限"
+                },
+                {
+                    value: "bgqx",
+                    text: "变更权限"
+                },
+                {
+                    value: "zjjhkf",
+                    text: "资金计划开放"
+                },
+                {
+                    value: "zhjs",
+                    text: "账号解锁"
+                }
+            ];
+            var element = document.getElementById("fywlx");
+            var picker = new mui.PopPicker();
+            picker.setData(fywlxdata);
+            element.addEventListener('tap', function () {
+                picker.show(function (items) {
+                    element.value = items[0].text;
+                    changeYwlx();
+                });
+            }, false);
+
+        }
+
+        function Save() {
+
+
+            var fname = $("#fname").val();
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fywlx = $("#fywlx").val();
+            var ferp = $("#ferp").val();
+            var fmail = $("#fmail").val();
+            var ftel = $("#ftel").val();
+            var fcwgw = $("#fcwgw").val();
+            var fgwlx = $("#fgwlx").val();
+            var fsysno = $("#fsysno").val();
+            var fkeyno = $("#fkeyno").val();
+            var fcwjl = $("#fcwjl").val();
+            var fcwjlno = $("#fcwjlno").val();
+            var fxqms = $("#fxqms").val();
+            var fgwml = $("#fjszdg").val() + "," + $("#fjsshg").val() + "," + $("#fpjzdg").val() + "," + $("#fpjshg").val() + "," + $("#fzjjhzdg").val() + "," + $("#fzjjhshg").val() + ","
+                + $("#fzjjhcxg").val() + "," + $("#fzjjscxg").val() + "," + $("#fzjpjcxg").val() + "," + $("#fdwpjspg").val() + "," + $("#fdwfkspg").val() + "," + $("#fscfgsjs").val() + ","
+                + $("#fjtjhspg").val() + "," + $("#fjtfkspg").val() + "," + $("#fndzjyslr").val() + "," + $("#fndzjyssh").val();
+            var fgwmlx = $("#fjszdg1").val() + "," + $("#fjsshg1").val() + "," + $("#fpjzdg1").val() + "," + $("#fpjshg1").val() + "," + $("#fzjjhzdg1").val() + "," + $("#fzjjhshg1").val() + ","
+                + $("#fzjjhcxg1").val() + "," + $("#fzjjscxg1").val() + "," + $("#fzjpjcxg1").val() + "," + $("#fdwpjspg1").val() + "," + $("#fdwfkspg1").val() + "," + $("#fscfgsjs1").val() + ","
+                + $("#fjtjhspg1").val() + "," + $("#fjtfkspg1").val() + "," + $("#fndzjyslr1").val() + "," + $("#fndzjyssh1").val();
+ 
+            if (!fgroup || fgroup == '') {
+                mui.toast('请选择所属集团');
+                return;
+            }
+            if (!fcompany || fcompany == '') {
+                mui.toast('请选择所在公司');
+                return;
+            }
+            if (!$("#fdate").val() || $("#fdate").val() == '') {
+                mui.toast('请输入申请日期');
+                return;
+            }
+            if (!fywlx || fywlx == '') {
+                mui.toast('请选择业务类型');
+                return;
+            }
+            if (!ferp || ferp == '') {
+                mui.toast('请选择ERP系统');
+                return;
+            }
+            if (!fmail || fmail == '') {
+                mui.toast('请输入企业邮箱');
+                return;
+            }
+            if (!ftel || ftel == '') {
+                mui.toast('请输入联系电话');
+                return;
+            }
+            if (!fcwgw || fcwgw == '') {
+                mui.toast('请选择财务岗位');
+                return;
+            }
+            if (!fcwjl || fcwjl == '') {
+                mui.toast('请选择财务经理');
+                return;
+            }
+            if (!fxqms || fxqms == '') {
+                mui.toast('请输入资金系统业务需求描述');
+                return;
+            }
+            if ((fywlx == '新增权限') && (!$("#fjszdg").val() || $("#fjszdg").val() == '') && (!$("#fjsshg").val() || $("#fjsshg").val() == '') && (!$("#fpjzdg").val() || $("#fpjzdg").val() == '') && (!$("#fpjshg").val() || $("#fpjshg").val() == '') && (!$("#fzjjhzdg").val() || $("#fzjjhzdg").val() == '') && (!$("#fzjjhshg").val() || $("#fzjjhshg").val() == '') && (!$("#fzjjhcxg").val() || $("#fzjjhcxg").val() == '') && (!$("#fzjjscxg").val() || $("#fzjjscxg").val() == '') && (!$("#fzjpjcxg").val() || $("#fzjpjcxg").val() == '') && (!$("#fdwpjspg").val() || $("#fdwpjspg").val() == '') && (!$("#fdwfkspg").val() || $("#fdwfkspg").val() == '') && (!$("#fscfgsjs").val() || $("#fscfgsjs").val() == '') && (!$("#fjtjhspg").val() || $("#fjtjhspg").val() == '') && (!$("#fjtfkspg").val() || $("#fjtfkspg").val() == '') && (!$("#fndzjyslr").val() || $("#fndzjyslr").val() == '') && (!$("#fndzjyssh").val() || $("#fndzjyssh").val() == '')) {
+                mui.toast('请选择资金系统岗位目录');
+                return;
+            }
+            if ((fywlx == '变更权限') && (!$("#fjszdg").val() || $("#fjszdg").val() == '') && (!$("#fjsshg").val() || $("#fjsshg").val() == '') && (!$("#fpjzdg").val() || $("#fpjzdg").val() == '') && (!$("#fpjshg").val() || $("#fpjshg").val() == '') && (!$("#fzjjhzdg").val() || $("#fzjjhzdg").val() == '') && (!$("#fzjjhshg").val() || $("#fzjjhshg").val() == '') && (!$("#fzjjhcxg").val() || $("#fzjjhcxg").val() == '') && (!$("#fzjjscxg").val() || $("#fzjjscxg").val() == '') && (!$("#fzjpjcxg").val() || $("#fzjpjcxg").val() == '') && (!$("#fdwpjspg").val() || $("#fdwpjspg").val() == '') && (!$("#fdwfkspg").val() || $("#fdwfkspg").val() == '') && (!$("#fscfgsjs").val() || $("#fscfgsjs").val() == '') && (!$("#fjtjhspg").val() || $("#fjtjhspg").val() == '') && (!$("#fjtfkspg").val() || $("#fjtfkspg").val() == '') && (!$("#fndzjyslr").val() || $("#fndzjyslr").val() == '') && (!$("#fndzjyssh").val() || $("#fndzjyssh").val() == '')) {
+                mui.toast('请选择资金系统岗位目录');
+                return;
+            }
+            if ((fywlx == '变更权限') && (!$("#fjszdg1").val() || $("#fjszdg1").val() == '') && (!$("#fjsshg1").val() || $("#fjsshg1").val() == '') && (!$("#fpjzdg1").val() || $("#fpjzdg1").val() == '') && (!$("#fpjshg1").val() || $("#fpjshg1").val() == '') && (!$("#fzjjhzdg1").val() || $("#fzjjhzdg1").val() == '') && (!$("#fzjjhshg1").val() || $("#fzjjhshg1").val() == '') && (!$("#fzjjhcxg1").val() || $("#fzjjhcxg1").val() == '') && (!$("#fzjjscxg1").val() || $("#fzjjscxg1").val() == '') && (!$("#fzjpjcxg1").val() || $("#fzjpjcxg1").val() == '') && (!$("#fdwpjspg1").val() || $("#fdwpjspg1").val() == '') && (!$("#fdwfkspg1").val() || $("#fdwfkspg1").val() == '') && (!$("#fscfgsjs1").val() || $("#fscfgsjs1").val() == '') && (!$("#fjtjhspg1").val() || $("#fjtjhspg1").val() == '') && (!$("#fjtfkspg1").val() || $("#fjtfkspg1").val() == '') && (!$("#fndzjyslr1").val() || $("#fndzjyslr1").val() == '') && (!$("#fndzjyssh1").val() || $("#fndzjyssh1").val() == '')) {
+                mui.toast('请选择变更后岗位目录');
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>集团公司资金系统用户及权限申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + ' <BPM_CWGSQXSQ>';
+                    xml = xml + '   <fbillno>自动生成</fbillno>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fywlx>' + fywlx + '</fywlx>';
+                    xml = xml + '   <ferp>' + ferp + '</ferp>';
+                    xml = xml + '   <fmail>' + fmail + '</fmail>';
+                    xml = xml + '   <ftel>' + ftel + '</ftel>';
+                    xml = xml + '   <fcwgw>' + fcwgw + '</fcwgw>';
+                    xml = xml + '   <fgwlx>' + fgwlx + '</fgwlx>';
+                    xml = xml + '   <fsysno>' + fsysno + '</fsysno>';
+                    xml = xml + '  <fkeyno>' + fkeyno + '</fkeyno>';
+                    xml = xml + '   <fcwjl>' + fcwjl + '</fcwjl>';
+                    xml = xml + '   <fxqms>' + fxqms + '</fxqms>';
+                    xml = xml + '    <fgwml>' + fgwml + '</fgwml>';
+                    xml = xml + '   <fgwmlx>' + fgwmlx + '</fgwmlx>';
+                    xml = xml + '   <fj>201411110077</fj>';
+                    xml = xml + '  <fcwjlno>' + fcwjlno + '</fcwjlno>';
+                  
+
+                    xml = xml + ' </BPM_CWGSQXSQ>';
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+                <input type="hidden" id="fno" name="fno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhtlb">特殊合同类别<i style="color:red;">*</i></label>
+                <input type="text" id="fhtlb" name="fhtlb" placeholder="请选择特殊合同类别" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                <input type="text" id="fkhmc" name="fkhmc" placeholder="请输入客户名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjhrq">交货日期<i style="color:red;">*</i></label>
+                <input type="date" id="fjhrq" name="fjhrq"  placeholder="请输入交货日期" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcpdl">产品大类<i style="color:red;">*</i></label>
+                <input type="text" id="fcpdl" name="fcpdl" placeholder="请选择产品大类" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcpmc">产品名称<i style="color:red;">*</i></label>
+                <input type="text" id="fcpmc" name="fcpmc" placeholder="请输入产品名称" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fggxh">规格型号</label>
+                <input type="text" id="fggxh" name="fggxh" placeholder="请输入规格型号" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbjbh">报价编号<i style="color:red;">*</i></label>
+                <input type="text" id="fbjbh" name="fbjbh" placeholder="请选择报价编号" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzzbj">最终报价</label>
+                <input type="number" id="fzzbj" name="fzzbj" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxsjg">销售价格（元）<i style="color:red;">*</i></label>
+                <input type="number" id="fxsjg" name="fxsjg" placeholder="请输入销售价格" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsl">数量<i style="color:red;">*</i></label>
+                <input type="number" id="fsl" name="fsl" placeholder="请输入数量" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhtcjfs">合同承接方式<i style="color:red;">*</i></label>
+                <input type="text" id="fhtcjfs" name="fhtcjfs" placeholder="请选择合同承接方式" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fqt">其他<i style="color:red;">*</i></label>
+                <input type="text" id="fqt" name="fqt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgkyq">顾客要求</label>
+                <input type="text" id="fgkyq" name="fgkyq" placeholder="请输入顾客要求" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwlsfqq">物料是否齐全<i style="color:red;">*</i></label>
+                <input type="text" id="fwlsfqq" name="fwlsfqq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsfmzjq">是否满足交期<i style="color:red;">*</i></label>
+                <input type="text" id="fsfmzjq" name="fsfmzjq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyjwcrq">预计完成日期<i style="color:red;">*</i></label>
+                <input type="date" id="fyjwcrq" name="fyjwcrq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图纸附件-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图纸按钮  -->
+                        <span class="upload-addbtn" id="addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+    <div id="search" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenExpense()">取消</a>
+            <h1 class="mui-title">医用材料核价申请清单</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索医用材料核价申请清单">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="exp_list"></ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\08医用材料公司\\FLSW法律事务', '医用材料公司特殊合同评审');
+            prepMsg();
+            getBPMParam();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+
+        function prepMsg() {
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+
+                        var fareaStr = String(BPMOU).split("/");
+                        //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+                        $("#fdept").val(fareaStr[fareaStr.length - 2]);
+                        $("#fno").val(fareaStr[fareaStr.length - 1]);
+                        return BPMOU;
+                    } else {
+                        return "";
+                    }
+                },
+                error: function (e) {
+                    return e;
+                },
+
+                complete: function () {
+                    return BPMOU;
+                }
+
+            });
+            initExpense();
+        }
+
+        function showExpense() {
+            initExpense();
+            $("#wrapper").css("display", "none");
+            $("#search").css("display", "block");
+            var header = document.querySelector('header.mui-bar');
+            var list = document.getElementById('list');
+            var done = document.getElementById('done');
+            //calc hieght
+            list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+            //create
+            window.indexedList = new mui.IndexedList(list);
+        }
+
+        function hiddenExpense() {
+            $("#wrapper").css("display", "block");
+            $("#search").css("display", "none");
+
+        }
+        function initExpense() {
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
+            xml = xml + '         <ID>erpcloud_公用_医用材料特殊合同评审</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_公用_医用材料特殊合同评审</ProcedureName>';
+            xml = xml + '      <Filter></Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+            var initExpenseAjax= $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var expenseArr = provideData.Tables[0].Rows;
+                for (var i = 0; i < expenseArr.length; i++) {
+
+                        var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                        li = li + '<input type="hidden" id="fbjbh" name="fbjbh" value="' + expenseArr[i].核价编号 + '"/>';
+                        li = li + '<input type="hidden" id="fzzbj" name="fzzbj" value="' + expenseArr[i].最终报价 + '"/>';
+
+
+                        li = li + '<input type="radio" name="radio" />' + expenseArr[i].申请人 + '&nbsp;产品名称:' + expenseArr[i].产品名称;
+                        li = li + '</li>';
+                        $("#exp_list").append(li);
+
+                }
+
+                var header = document.querySelector('header.mui-bar');
+                var list = document.getElementById('list');
+                var done = document.getElementById('done');
+                //calc hieght
+                list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                //create
+                window.indexedList = new mui.IndexedList(list);
+                //done event
+                done.addEventListener('tap', function () {
+                    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+                    var checkedValues = [];
+                    var checkedElements = [];
+                    checkboxArray.forEach(function (box) {
+                        if (box.checked) {
+                            checkedValues.push(box.parentNode.innerText);
+                            var checkele = ({
+                                fbjbh: $(box).parent().find("#fbjbh").val(),
+                                fzzbj: $(box).parent().find("#fzzbj").val(),
+
+
+
+                            })
+                            //console.log($(box).parent().find("#fsqdh").val());
+                            checkedElements.push(checkele);
+
+                        }
+                    });
+                    if (checkedValues.length > 0) {
+
+                        hiddenExpense();
+                        //if (checkedElements[checkedElements.length - 1].fbjbh = null || !checkedElements[checkedElements.length - 1].fbjbh) {
+                        //    $("#fbjbh").val("");
+                        //} else {
+                        //}
+                        //if (checkedElements[checkedElements.length - 1].fzzbj = null || !checkedElements[checkedElements.length - 1].fzzbj) {
+                        //    $("#fzzbj").val("");
+                        //} else {
+                        //}
+                        $("#fbjbh").val(checkedElements[checkedElements.length - 1].fbjbh);
+                        $("#fzzbj").val(checkedElements[checkedElements.length - 1].fzzbj);
+                    } else {
+
+                    }
+                }, false);
+                mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                    var count = list.querySelectorAll('input[type="radio"]:checked').length;
+                    var value = count ? "完成(" + count + ")" : "完成";
+                    done.innerHTML = value;
+                    if (count) {
+                        if (done.classList.contains("mui-disabled")) {
+                            done.classList.remove("mui-disabled");
+                        }
+                    } else {
+                        if (!done.classList.contains("mui-disabled")) {
+                            done.classList.add("mui-disabled");
+                        }
+                    }
+                });
+            }).fail(function (e) {
+
+             });
+
+
+
+        }
+
+        function tapEvent() {
+            var fhtlbdata = [
+                {
+                    value: "pxxq",
+                    text:"培训需求"
+                }, {
+                    value: "jq",
+                    text: "交期"
+                }, {
+                    value: "xsjg",
+                    text: "销售价格"
+                }, {
+                    value: "jsyq",
+                    text: "技术要求"
+                }
+            ];
+            showPicker("fhtlb", fhtlbdata);
+
+
+            var fcpdldata = [
+                {
+                    value: "wc",
+                    text: "卫材(103.01)"
+                }, {
+                    value: "bl",
+                    text: "包类(103.23)"
+                }, {
+                    value: "yjxb",
+                    text: "液基细胞(103.24)"
+                }, {
+                    value: "tjq",
+                    text: "调节器(103.09)"
+                }
+            ];
+            showPicker("fcpdl", fcpdldata);
+
+
+            var fcjfsdata = [
+                {
+                    value: "zght",
+                    text: "正规合同"
+                }, {
+                    value: "dhtz",
+                    text: "电话通知"
+                }, {
+                    value: "kttz",
+                    text: "口头通知"
+                }, {
+                    value: "wldd",
+                    text: "网络订单"
+                }, {
+                    value: "qt",
+                    text: "其他"
+                }
+            ];
+            var element = document.getElementById("fhtcjfs");
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fcjfsdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    changeCjfs();
+                });
+
+            }, false);
+         $("#fbjbh").on('tap', function () {
+            showExpense();
+         });
+           
+        }
+        function changeCjfs() {
+            var cjfs = $("#fhtcjfs").val();
+            if (cjfs == "其他") {
+                $("#fqt").removeAttr("readonly");
+                $("#fqt").attr("placeholder", "请输入其他");
+
+            } else {
+                $("#fqt").attr("readonly", "readonly");
+                $("#fqt").removeAttr("placeholder");
+            }
+        }
+
+
+        function Save() {
+
+            var fno = $("#fno").val();
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fhtlb = $("#fhtlb").val();
+            var fkhmc = $("#fkhmc").val();
+            var fjhrq = $("#fjhrq").val() + " 00:00:00";
+            var fcpdl = $("#fcpdl").val();
+            var fcpmc = $("#fcpmc").val();
+            var fggxh = $("#fggxh").val();
+            var fbjbh = $("#fbjbh").val();
+            var fzzbj = $("#fzzbj").val();
+            var fxsjg = $("#fxsjg").val();
+            var fsl = $("#fsl").val();
+            var fhtcjfs = $("#fhtcjfs").val();
+            var fqt = $("#fqt").val();
+            var fgkyq = $("#fgkyq").val();
+            var fwlsfqq = $("#fwlsfqq").val();
+            var fsfmzjq = $("#fsfmzjq").val();
+            var fyjwcrq = $("#fyjwcrq").val();
+            var fcj = $("#fxsjg").val() - $("#fzzbj").val();
+
+
+            if (!fhtlb) {
+                mui.toast('请选择特殊合同类别');
+                return;
+            }
+            if (!fkhmc) {
+                mui.toast('请输入客户名称');
+                return;
+            }
+            if (!$("#fjhrq").val()) {
+                mui.toast('请输入交货日期');
+                return;
+            }
+            if (!fcpdl) {
+                mui.toast('请选择产品大类');
+                return;
+            }
+            if (!fcpmc) {
+                mui.toast('请输入产品名称');
+                return;
+            }
+            if (!fbjbh) {
+                mui.toast('请选择报价编号');
+                return;
+            }
+            if (!fxsjg) {
+                mui.toast('请输入销售价格');
+                return;
+            }
+            if (!fsl) {
+                mui.toast('请输入数量');
+                return;
+            }
+            if (!fhtcjfs) {
+                mui.toast('请选择合同承接方式');
+                return;
+            }
+            if (fhtcjfs == "其他"){
+                if (!fqt) {
+                    mui.toast('请选择输入其他');
+                    return;
+                }
+            }
+            if (fjArray.length == 0) {
+                mui.toast('请上传附件');
+                return;
+            }
+          
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '    <Header>';
+                    xml = xml + '      <Method>Post</Method>';
+                    xml = xml + '      <ProcessName>医用材料公司特殊合同评审</ProcessName>';
+                    xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '      <DraftGuid></DraftGuid>';
+                    xml = xml + '       <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '       <Action>提交</Action>';
+                    xml = xml + '        <Comment></Comment>';
+                    xml = xml + '        <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '      </Header>';
+                    xml = xml + '     <FormData>';
+                    xml = xml + '         <医用材料公司_特殊合同评审表>';
+                    xml = xml + '            <单号>自动生成</单号>';
+                    xml = xml + '            <申请人编号>' + fno + '</申请人编号>';
+                    xml = xml + '            <申请人>' + fname + '</申请人>';
+                    xml = xml + '              <申请部门>' + fdept + '</申请部门>';
+                    xml = xml + '              <申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '              <特殊合同类别>' + fhtlb + '</特殊合同类别>';
+                    xml = xml + '               <客户名称>' + fkhmc + '</客户名称>';
+                    xml = xml + '              <交货日期>' + fjhrq + '</交货日期>';
+                    xml = xml + '              <产品大类>' + fcpdl + '</产品大类>';
+                    xml = xml + '              <产品名称>' + fcpmc + '</产品名称>';
+                    xml = xml + '              <规格型号>' + fggxh + '</规格型号>';
+                    xml = xml + '              <报价编号>' + fbjbh + '</报价编号>';
+                    xml = xml + '              <最终报价>' + fzzbj + '</最终报价>';
+                    xml = xml + '              <销售价格>' + fxsjg + '</销售价格>';
+                    xml = xml + '              <数量>' + fsl + '</数量>';
+                    xml = xml + '              <合同承接方式>' + fhtcjfs + '</合同承接方式>';
+                    xml = xml + '              <其他>' + fqt + '</其他>';
+                    xml = xml + '              <顾客要求>' + fgkyq + '</顾客要求>';
+                    xml = xml + '              <物料是否齐全>' + fwlsfqq + '</物料是否齐全>';
+                    xml = xml + '              <是否满足交期>' + fsfmzjq + '</是否满足交期>';
+                    xml = xml + '              <预计完成日期>' + fyjwcrq + '</预计完成日期>';
+                    xml = xml + '              <附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                    xml = xml + '              <差价>' + fcj + '</差价>';
+
+                    xml = xml + '           </医用材料公司_特殊合同评审表>';
+                    xml = xml + '      </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

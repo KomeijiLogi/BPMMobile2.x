@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <!--<label for="fdept">申请部门</label>-->
+                <input type="text" id="fdept" name="fdept" value="" style="display:none;" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请时间</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyear">年度<i style="color:red;">*</i></label>
+                <input type="number" id="fyear" name="fyear" value="" placeholder="请选择年度" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fmonth">计划付款月份<i style="color:red;">*</i></label>
+                <input type="number" id="fmonth" name="fmonth" value="" placeholder="请选择计划付款月份" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label>付款计划明细（单位:万元）</label>
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span></a>
+            </div>
+            <div class="mui-input-group" id="bllist">
+
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzjhfk">汇总计划付款金额</label>
+                <input type="number" id="fhzjhfk" name="fhzjhfk" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzjhyj">汇总计划约进货款</label>
+                <input type="number" id="fhzjhyj" name="fhzjhyj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzzmye">汇总账面余额</label>
+                <input type="number" id="fhzzmye" name="fhzzmye" value="" />
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzzgrk">汇总暂估入库</label>
+                <input type="number" id="fhzzgrk" name="fhzzgrk" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzhjzm">汇总合计账面余额</label>
+                <input type="number" id="fhzhjzm" name="fhzhjzm" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:2.75rem;">
+                <label for="fhzjhzm">汇总计划账面比对</label>
+                <input type="number" id="fhzjhzm" name="fhzjhzm" value="" readonly="readonly" />
+            </div>
+</form>
+           
+</div>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+ <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\SCGL生产管理', '建设公司库存不良物资提报');
+            getBPMParam();
+            prepMsg();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+         
+        }
+
+        function tapEvent() {
+            
+
+
+            $("#addItem").on('tap', function () {
+
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fgys">供应商名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fgys" name="fgys" value="" placeholder="请输入供应商名称"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjhfk">计划付款金额<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fjhfk" name="fjhfk" value=""  placeholder="请输入计划付款金额"  onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjhyj">计划约进货款<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fjhyj" name="fjhyj" value="" placeholder="请输入计划约进货款"  onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fzmye">账面余额<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fzmye" name="fzmye" value="" readonly="readonly" value="0"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fzgrk">暂估入库<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fzgrk" name="fzgrk" value="" readonly="readonly" value="0">';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fhjzmye">合计账面余额<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fhjzmye" name="fhjzmye" value=""  readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fjhzmbd">计划账面比对</label>';
+                li = li + '        <input type="number" id="fjhzmbd" name="fjhzmbd" value="" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fbz">备注</label>';
+                li = li + '        <input type="text" id="fbz" name="fbz" value="" placeholder="请输入备注" />';
+                li = li + '   </div>';
+
+                $("#bllist").append(li);
+               
+
+
+
+
+            });
+
+            var date = new Date();
+
+            var fyeardata = [
+                {
+                    value: "",
+                    text: date.getFullYear()
+                },
+                {
+                    value: "",
+                    text: date.getFullYear()+1
+                },
+                {
+                    value: "",
+                    text: date.getFullYear()+2
+                },
+                {
+                    value: "",
+                    text: date.getFullYear()+3
+                },
+                {
+                    value: "",
+                    text: date.getFullYear()+4
+                },
+                {
+                    value: "",
+                    text: date.getFullYear()+5
+                }
+            ];
+            showPicker('fyear', fyeardata);
+
+
+            var fmonthdata = [
+                {
+                    value: "1",
+                    text: "1"
+                },
+                {
+                    value: "2",
+                    text: "2"
+                },
+                {
+                    value: "3",
+                    text: "3"
+                },
+                {
+                    value: "4",
+                    text: "4"
+                },
+                {
+                    value: "5",
+                    text: "5"
+                },
+                {
+                    value: "6",
+                    text: "6"
+                },
+                {
+                    value: "7",
+                    text: "7"
+                },
+                {
+                    value: "8",
+                    text: "8"
+                },
+                {
+                    value: "9",
+                    text: "9"
+                },
+                {
+                    value: "10",
+                    text: "10"
+                },
+                {
+                    value: "11",
+                    text: "11"
+                },
+                {
+                    value: "12",
+                    text: "12"
+                }
+            ];
+
+            showPicker('fmonth', fmonthdata);
+
+        }
+
+        function calcPrice(context) {
+
+            var fjhfk = parseFloat( $(context).parent().parent().find("#fjhfk").val());
+            var fjhyj = parseFloat($(context).parent().parent().find("#fjhyj").val());
+            var fzgrk = parseFloat($(context).parent().parent().find("#fzgrk").val());
+            var fzmye = parseFloat($(context).parent().parent().find("#fzmye").val());
+            var fjhzmbd;
+            var fhjzmye;
+            if ( !fjhfk || fjhfk =="")
+            {
+                fjhfk = 0;
+            }
+            if (!fjhyj || fjhyj == "") {
+                fjhyj = 0;
+            }
+            if (!fzgrk || fzgrk == "") {
+                fzgrk = 0;
+            }
+
+            if (!fzmye ||fzmye==""){
+                fzmye = 0;
+            }
+            
+            fhjzmye = fzgrk + fzmye;
+            fjhzmbd = fhjzmye - fjhfk;
+            $(context).parent().parent().find("#fhjzmye").val(fhjzmye);
+            $(context).parent().parent().find("#fjhzmbd").val(fjhzmbd);
+
+            //触发计算总金额函数
+            amountPrice();
+        }
+
+        function amountPrice() {
+            var fhzjhfk = 0;
+            var fhzjhyj = 0;
+            var fhzzgrk = 0;
+            var fhzhjzm = 0;
+            var fhzjhzm = 0;
+            var fhzzmye = 0;
+
+            //计算汇总计划付款
+            $("#bllist").find("#bl").each(function () {
+                var fjhfktmp = parseFloat($(this).find("#fjhfk").val());
+                if ($(this).find("#fjhfk").val() == null || $(this).find("#fjhfk").val() == "") {
+                    fjhfktmp = 0;
+                }
+
+                if (fhzjhfk == 0) {
+                    fhzjhfk = fjhfktmp;
+                } else {
+                    fhzjhfk += fjhfktmp;
+                }
+            });
+
+            //计算汇总计划约进贷款
+            $("#bllist").find("#bl").each(function () {
+                var fjhyjtmp = parseFloat($(this).find("#fjhyj").val());
+                if ($(this).find("#fjhyj").val() == null || $(this).find("#fjhyj").val() == "") {
+                    fjhyjtmp = 0;
+                }
+                if (fhzjhyj == 0) {
+                    fhzjhyj = fjhyjtmp;
+                } else {
+                    fhzjhyj += fjhyjtmp;
+                }
+            });
+
+            //计算汇总暂估入库
+            $("#bllist").find("#bl").each(function () {
+                var fzgrktmp = parseFloat($(this).find("#fzgrk").val());
+                if ($(this).find("#fzgrk").val() == null || $(this).find("#fzgrk").val() == "") {
+                    fzgrktmp = 0;
+                }
+                if (fhzzgrk == 0) {
+                    fhzzgrk = fzgrktmp;
+                } else {
+                    fhzzgrk += fzgrktmp;
+                }
+            });
+            //计算合计账面余额
+            $("#bllist").find("#bl").each(function () {
+                var fhjzmyetmp = parseFloat($(this).find("#fhjzmye").val());
+                if ($(this).find("#fhjzmye").val() == null || $(this).find("#fhjzmye").val() == "") {
+                    fhjzmyetmp = 0;
+                }
+                if (fhzhjzm == 0) {
+                    fhzhjzm = fhjzmyetmp;
+                } else {
+                    fhzhjzm += fhjzmyetmp;
+                }
+            });
+
+            //计算计划账面比对
+            $("#bllist").find("#bl").each(function () {
+                var fjhzmbdtmp = parseFloat($(this).find("#fjhzmbd").val());
+                if ($(this).find("#fjhzmbd").val() == null || $(this).find("#fjhzmbd").val() == "") {
+                    fjhzmbdtmp = 0;
+                }
+                if (fhzjhzm == 0) {
+                    fhzjhzm = fjhzmbdtmp;
+                } else {
+                    fhzjhzm += fjhzmbdtmp;
+                }
+            });
+
+            //计算汇总账面余额
+            $("#bllist").find("#bl").each(function () {
+                var fzmyetmp = parseFloat($(this).find("#fzmye").val());
+                if ($(this).find("#fzmye").val() == null || $(this).find("#fzmye").val() == "") {
+                    fzmyetmp = 0;
+                }
+                if (fhzzmye == 0) {
+                    fhzzmye = fzmyetmp;
+                } else {
+                    fhzzmye += fzmyetmp;
+                }
+
+            });
+
+            $("#fhzjhfk").val(fhzjhfk);
+            $("#fhzjhyj").val(fhzjhyj);
+            $("#fhzzgrk").val(fhzzgrk);
+            $("#fhzhjzm").val(fhzhjzm);
+            $("#fhzjhzm").val(fhzjhzm);
+            $("#fhzzmye").val(fhzzmye);
+        }
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    amountPrice();
+                }
+            });
+
+
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fyear = $("#fyear").val();
+            var fmonth = $("#fmonth").val();
+            var fhzjhfk = $("#fhzjhfk").val();
+            var fhzjhyj = $("#fhzjhyj").val();
+            var fhzzmye = $("#fhzzmye").val();
+            var fhzzgrk = $("#fhzzgrk").val();
+            var fhzhjzm = $("#fhzhjzm").val();
+            var fhzjhzm = $("#fhzjhzm").val();
+            if (!fyear || fyear == "") {
+                mxflag = true;
+                mui.toast("请选择年度");
+                return;
+            }
+            if (!fmonth || fmonth == "") {
+                mxflag = true;
+                mui.toast("请选择月份");
+                return;
+
+            }
+            var mxflag = false;
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fgys = $(this).find("#fgys").val();
+                var fjhfk = $(this).find("#fjhfk").val();
+                var fjhyj = $(this).find("#fjhyj").val();
+                var fzmye = $(this).find("#fzmye").val();
+                var fzgrk = $(this).find("#fzgrk").val();
+                var fhjzmye = $(this).find("#fhjzmye").val();
+                var fjhzmbd = $(this).find("#fjhzmbd").val();
+                var fbz = $(this).find("#fbz").val();
+
+                
+                
+                if (!fgys || fgys == "") {
+                    mxflag = true;
+                    mui.toast("请输入供应商");
+                    return;
+                }
+                if (!fjhfk || fjhfk == "") {
+                    mxflag = true;
+                    mui.toast("请输入计划付款金额");
+                    return;
+
+                }
+                if (!fjhyj || fjhyj == "") {
+                    mxflag = true;
+                    mui.toast("请输入计划约进贷款");
+                    return;
+                }
+               
+                var bl = new Object;
+                bl.fgys = fgys;
+                bl.fjhfk = fjhfk;
+                bl.fjhyj = fjhyj;
+                bl.fzmye = fzmye;
+                bl.fzgrk = fzgrk;
+                bl.fhjzmye = fhjzmye;
+                bl.fjhzmbd = fjhzmbd;
+                bl.fbz = fbz;
+                bllistArr.push(bl);
+            });
+
+            if (mxflag) {
+                return;
+            }
+
+                var btnArry = ["取消", "确定"];
+                mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                    if (e.index == 1) {
+
+
+                        var xml = '<?xml version="1.0"?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '<Header>';
+                        xml = xml + '<Method>Post</Method>';
+                        xml = xml + ' <ProcessName>建设公司月度材料采购付款计划申请</ProcessName>';
+                        xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                        xml = xml + '<DraftGuid></DraftGuid>';
+                        xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                        xml = xml + '<Action>提交</Action>';
+                        xml = xml + '<Comment></Comment>';
+                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '</Header>';
+                        xml = xml + '<FormData>';
+                        xml = xml + '<建设公司_月度材料_主表>';
+                        xml = xml + '<单号>自动生成</单号>';
+                        xml = xml + '<申请人>' + fname + '</申请人>';
+                        xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                        xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                        xml = xml + '<年度>' + fyear + '</年度>';
+                        xml = xml + '<计划付款月份>' + fmonth + '</计划付款月份>';
+                        xml = xml + '<汇总计划付款金额>' + fhzjhfk + '</汇总计划付款金额>';
+                        //xml = xml + '<汇总计划约进贷款>' + fhzjhyj + '</汇总计划约进贷款>';
+                        xml = xml + '<汇总计划约进货款>' + fhzjhyj + '</汇总计划约进货款>';
+                        xml = xml + '<汇总账面余额>' + fhzzmye + '</汇总账面余额>';
+                        xml = xml + '<汇总暂估入库>' + fhzzgrk + '</汇总暂估入库>';
+                        xml = xml + '<汇总合计账面余额>' + fhzhjzm + '</汇总合计账面余额>';
+                        xml = xml + '<汇总计划账面比对>' + fhzjhzm + '</汇总计划账面比对>';
+                        //xml = xml + '<模板>201706120529</模板>';
+                        xml = xml + '<模板></模板>';
+                        xml = xml + '</建设公司_月度材料_主表>';
+                        for (var i = 0; i < bllistArr.length; i++) {
+
+                            xml = xml + '<建设公司_月度材料_子表>';
+                            xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (i + 1) + '</序号>';
+                            xml = xml + '<供应商名称>' + bllistArr[i].fgys + '</供应商名称>';
+                            xml = xml + '<计划付款金额>' + bllistArr[i].fjhfk + '</计划付款金额>';
+                            //xml = xml + '<计划约进贷款>' + bllistArr[i].fjhyj + '</计划约进贷款>';   
+                            xml = xml + '<计划约进货款>' + bllistArr[i].fjhyj + '</计划约进货款>';
+                            xml = xml + '<账面余额>' + bllistArr[i].fzmye + '</账面余额>';
+                            xml = xml + '<暂估入库>' + bllistArr[i].fzgrk + '</暂估入库>';
+                            xml = xml + '<合计账面余额>' + bllistArr[i].fhjzmye + '</合计账面余额>';
+                            xml = xml + ' <计划账面比对>' + bllistArr[i].fjhzmbd + '</计划账面比对>';
+                            xml = xml + '<备注>' + bllistArr[i].fbz + '</备注>';
+                            xml = xml + '</建设公司_月度材料_子表>';
+
+                        }
+
+                        xml = xml + '             </FormData>';
+                        xml = xml + '         </XForm>';
+                        //alert(xml);
+                        PostXml(xml);
+
+                    }
+                });
+
+
+            }
+
+
+        
+    </script>
+
+
+<a name="bottom"></a>
+</body>
+</html>

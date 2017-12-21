@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">申请人</label>
+               <input type="text" id="fname" name="fname" value="" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" value=""/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:2.25rem;">
+                <label for="fdhdate">需求到货日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdhdate" name="fdhdate" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcgbm">采购部门<i style="color:red;">*</i></label>
+                <input type="text" id="fcgbm" name="fcgbm" value="" placeholder="请选择采购部门" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:2.25rem;">
+                <label>采购明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="lxlist">
+
+            </div>           
+        </form>     
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\CGGL采购管理', '建设公司安质部零星采购申请');
+            getBPMParam();
+            prepMsg();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+            var url = window.location.href;
+            if (url != null && url != "") {
+                
+                if (String(url).indexOf("reset") != -1) {
+
+                    var msg = JSON.parse(localStorage.getItem('BPM_JSGSLXCGSQMsg'));
+
+                    $("#fname").val(msg.fname);
+                    $("#fdept").val(msg.fdept);
+                    $("#fdate").val(msg.fdate);
+                    $("#fdhdate").val(msg.fdhdate);
+                    $("#fcgbm").val(msg.fcgbm);
+
+                    for (var i = 0; i < msg.flxmx.length; i++) {
+
+                        var flxmxItem = JSON.parse(msg.flxmx[i]);
+                        var li = '<div id="lx" class="mui-card">';
+                        li = li + '   <div class="mui-input-row bgc">';
+                        li = li + '        <label>明细列表项</label> ';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fsyadd">使用地点<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fsyadd" name="fsyadd" placeholder="请填写使用地点" value="' + flxmxItem.fsyadd + '"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fwlname">物料名称<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwlname" name="fwlname" placeholder="请填写物料名称" value="' + flxmxItem.fwlname + '"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '         <label for="fgg">规格<i style="color:red;">*</i></label>';
+                        li = li + '         <input type="text" id="fgg" name="fgg" placeholder="请填写规格" value="' + flxmxItem.fgg + '"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '          <label for="fdw">单位<i style="color:red;">*</i></label>';
+                        li = li + '          <input type="text" id="fdw" name="fdw" placeholder="请填写单位" value="' + flxmxItem.fdw + '"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row"> ';
+                        li = li + '           <label for="fsl">数量<i style="color:red;">*</i></label>';
+                        li = li + '           <input type="number" id="fsl" name="fsl" placeholder="请填写数量" value="' + flxmxItem.fsl + '"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                        li = li + '           <label for="fyt">用途<i style="color:red;">*</i></label>';
+                        li = li + '           <textarea rows="5" id="fyt" name="fyt" placeholder="请填写用途">' + flxmxItem.fyt + '</textarea> ';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                        li = li + '            <label for="fbz">备注</label>';
+                        li = li + '            <textarea rows="5" id="fbz" name="fbz" placeholder="请填写备注">' + flxmxItem.fbz + '</textarea>';
+                        li = li + '   </div>';
+
+                        $("#lxlist").append(li);
+
+                    }
+                }
+            } else {
+                
+            }
+        }
+
+        function tapEvent() {
+
+            var fcgbmdata = [
+                {
+                    value: 'czb',
+                    text:'采招部'
+                },
+                {
+                    value: 'zhb',
+                    text:'综合部'
+                }
+
+            ];
+            showPicker('fcgbm', fcgbmdata);
+
+
+            $("#addItem").on('tap', function () {
+
+
+
+                var li = '<div id="lx" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fsyadd">使用地点<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fsyadd" name="fsyadd" placeholder="请填写使用地点"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwlname">物料名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlname" name="fwlname" placeholder="请填写物料名称"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '         <label for="fgg">规格<i style="color:red;">*</i></label>';
+                li = li + '         <input type="text" id="fgg" name="fgg" placeholder="请填写规格"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '          <label for="fdw">单位<i style="color:red;">*</i></label>';
+                li = li + '          <input type="number" id="fdw" name="fdw" placeholder="请填写单位"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row"> ';
+                li = li + '           <label for="fsl">数量<i style="color:red;">*</i></label>';
+                li = li + '           <input type="number" id="fsl" name="fsl" placeholder="请填写数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                li = li + '           <label for="fyt">用途<i style="color:red;">*</i></label>';
+                li = li + '           <textarea rows="5" id="fyt" name="fyt" placeholder="请填写用途"></textarea> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                li = li + '            <label for="fbz">备注</label>';
+                li = li + '            <textarea rows="5" id="fbz" name="fbz" placeholder="请填写备注"></textarea>';
+                li = li + '   </div>';
+
+                $("#lxlist").append(li);
+            });
+
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var fdhdate = $("#fdhdate").val() + " 00:00:00";
+            var fcgbm = $("#fcgbm").val();
+
+            if (!fdhdate || fdhdate == "") {
+                mui.toast("请填写需求到货日期");
+                return;
+            }
+            if (!fcgbm || fcgbm == "") {
+                mui.toast("请填写采购部门");
+                return;
+            }
+            if (!$("#fdhdate").val() || $("#fdhdate").val() == '') {
+                mui.toast('请填写到货日期');
+                return;
+            }
+            var mxflag = false;
+            var lxlistArr = new Array();
+            $("#lxlist").find("#lx").each(function () {
+
+                var fsyadd = $("#fsyadd").val();
+                var fwlname = $("#fwlname").val();
+                var fgg = $("#fgg").val();
+                var fdw = $("#fdw").val();
+                var fsl = $("#fsl").val();
+                var fyt = $("#fyt").val();
+                var fbz = $("#fbz").val();
+
+                if (LxItem(fsyadd, fwlname, fgg, fdw, fsl, fyt, fbz) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var lx = LxItem(fsyadd, fwlname, fgg, fdw, fsl, fyt, fbz);
+                lxlistArr.push(lx);
+
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>建设公司安质部零星采购申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_零星采购_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<需求到货日期>' + fdhdate + '</需求到货日期>';
+                    xml = xml + '<采购部门>' + fcgbm + '</采购部门>';
+                    xml = xml + '</建设公司_零星采购_主表>';
+                    for (var i = 0; i < lxlistArr.length; i++){
+                        xml = xml + ' <建设公司_零星采购_子表>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (i + 1) + '</序号>';
+                        xml = xml + '<使用地点>' + lxlistArr[i].fsyadd + '</使用地点>';
+                        xml = xml + '<物料名称>' + lxlistArr[i].fwlname + '</物料名称>';
+                        xml = xml + '<规格>' + lxlistArr[i].fgg + '</规格>';
+                        xml = xml + '<单位>' + lxlistArr[i].fdw + '</单位>';
+                        xml = xml + '<数量>' + lxlistArr[i].fsl + '</数量>';
+                        xml = xml + '<用途>' + lxlistArr[i].fyt + '</用途>';
+                        xml = xml + '<备注>' + lxlistArr[i].fbz + '</备注>';
+                        xml = xml + '</建设公司_零星采购_子表>';
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+
+        function LxItem(fsyadd,fwlname,fgg,fdw,fsl,fyt,fbz) {
+
+            var lx = new Object;
+            lx.fsyadd = fsyadd;
+            lx.fwlname = fwlname;
+            lx.fgg = fgg;
+            lx.fdw = fdw;
+            lx.fsl = fsl;
+            lx.fyt = fyt;
+            lx.fbz = fbz;
+            if (!fsyadd || fsyadd=="") {
+                mui.toast("请填写使用地点");
+                return null;
+            }
+            if (!fwlname || fwlname == "") {
+                mui.toast("请填写物料名称");
+                return null;
+            }
+            if (!fgg || fgg == "") {
+                mui.toast("请填写规格");
+                return null;
+            }
+            if (!fdw || fdw == "") {
+                mui.toast("请填写单位");
+                return null;
+            }
+            if (!fsl || fsl == "") {
+                mui.toast("请填写数量");
+                return null;
+            }
+            if (!fyt || fyt == '') {
+                mui.toast('请填写用途');
+                return null;
+            }
+            return lx;
+        }
+
+
+    </script>
+</body>
+</html>

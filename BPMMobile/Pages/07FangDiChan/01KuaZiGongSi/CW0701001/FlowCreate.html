@@ -1,0 +1,937 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .mui-row.mui-fullscreen > [class*="mui-col-"] {
+            height: 100%;
+        }
+
+        .mui-col-xs-3,
+        .mui-col-xs-9 {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .mui-segmented-control .mui-control-item {
+            line-height: 50px;
+            width: 100%;
+        }
+
+        .mui-control-content {
+            display: block;
+        }
+
+        .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;display:block;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                 <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcllb">差旅类别<i style="color:red;">*</i></label>
+                <input type="text" id="fcllb" name="fcllb" readonly="readonly" placeholder="请选择差旅类别"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_jk">是否借款<i style="color:red;">*</i></label>
+                <input type="hidden" id="fif_jk" name="fif_jk" readonly="readonly" value="否"/>
+                <div class="mui-switch mui-switch-mini mui-switch-blue " id="fif_jkd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fremark">备注</label>
+                <textarea rows="3" id="fremark" name="fremark"></textarea>
+            </div>
+            <div class="mui-card mui-input-group" id="fjkcard" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label>借款申请单</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjktotal">借款金额<i style="color:red;">*</i></label>
+                    <input type="number" id="fjktotal" name="fjktotal" placeholder="请填写借款金额" />
+                </div>
+
+                <div class="mui-input-row">
+                    <label for="fjkbillno">借款单号</label>
+                    <input type="text" id="fjkbillno" name="fjkbillno" readonly="readonly" />
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fjkremark">借款事由</label>
+                    <textarea rows="7" id="fjkremark" name="fjkremark"></textarea>
+                </div>
+            </div>
+            <div id="mxlist">
+                
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-card">
+                <div class="mui-input-row itemtitle">
+                    <label>差旅费明细</label>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>费用项目</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>有效天数<i style="color:red;">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>分项标准<i style="color:red;">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>申请金额<i style="color:red;">*</i></h5>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">长途交通费</h5>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_ctjtf" name="fje_ctjtf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">住宿费</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_zsf" name="fd_zsf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_zsf" name="fbz_zsf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_zsf" name="fje_zsf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">餐费</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_cf" name="fd_cf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_cf" name="fbz_cf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_cf" name="fje_cf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">市内交通费</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_snjtf" name="fd_snjtf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_snjtf" name="fbz_snjtf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_snjtf" name="fje_snjtf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">其他差旅费</h5>
+                    </div>
+                    <div class="mui-col-xs-3 ">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_qtclf" name="fje_qtclf" placeholder="待填" class="mui-text-center"/>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine col-div-adjust-forInput">
+                        <h5 class="h5-adjust-forInput">合计</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_total" name="fbz_total" readonly="readonly" class="mui-text-center" value="0"/>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="ftotal" name="ftotal" readonly="readonly" class="mui-text-center" value="0"/>
+                    </div>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcbz">超标准情况%</label>
+                    <input type="number" id="fcbz" name="fcbz" readonly="readonly" value="0.00"/>
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fccrw">出差任务内容<i style="color:red;">*</i></label>
+                    <textarea rows="8" id="fccrw" name="fccrw" placeholder="请填写出差任务内容"></textarea>
+                </div>
+            </div>
+            
+           
+        </form>
+   </div>
+
+    <div id="showCity" style="visibility:hidden;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="hiddenCity()"></a>
+            <h4 class="mui-title">城市选择</h4>
+        </header>
+        <div class="mui-row mui-fullscreen" style="margin-top:2rem;">
+            <div class="mui-col-xs-3">
+                <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+                </div>
+            </div>
+            <div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+            </div>
+        </div>
+    </div>
+
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\01跨子公司\\CW财务管理', '房地产集团差旅费申请');
+            prepMsg();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+
+
+        mui('#fif_jkd').each(function () {
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fjkcard").css("display", "block");
+                    $("#fif_jk").val('是');
+                } else {
+                    $("#fjkcard").css("display", "none");
+                    $("#fif_jk").val('否');
+                }
+
+            });
+        });
+        var cityData = new Array();
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                BPMOU = data.Position[0].FullName;
+
+                fareaStr = String(BPMOU).split("/");
+                $("#fcompany").val(fareaStr[4]);
+                $("#fdept").val(fareaStr[fareaStr.length - 2]);
+            }).fail(function (e) {
+
+            });
+
+
+
+
+
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '       <Params>';
+            xml = xml + '          <DataSource>BPM_EXPENSE</DataSource>';
+            xml = xml + '           <ID>sys_province</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataTable</Method>';
+            xml = xml + '      <TableName>sys_province</TableName>';
+            xml = xml + '          <OrderBy></OrderBy>';
+            xml = xml + '     </Params>';
+            xml = xml + '       <Params>';
+            xml = xml + '          <DataSource>BPM_EXPENSE</DataSource>';
+            xml = xml + '           <ID>sys_city_t</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataTable</Method>';
+            xml = xml + '      <TableName>sys_city_t</TableName>';
+            xml = xml + '          <OrderBy></OrderBy>';
+            xml = xml + '     </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                }
+            }).done(function (data) {
+                var provideData =  JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+
+                var children;
+                for (var i = 0; i < provideData.Tables[0].Rows.length; i++){
+                    var id_province = provideData.Tables[0].Rows[i].id;
+                    children = new Array();
+                    for (var j = 0; j < provideData.Tables[1].Rows.length; j++) {
+                        var id_city = provideData.Tables[1].Rows[j].id;
+                        if (id_province == id_city) {
+                            var city = ({
+                                value: provideData.Tables[1].Rows[j].cityid,
+                                text: provideData.Tables[1].Rows[j].cityname,
+                                type: provideData.Tables[1].Rows[j].citytype,
+                                id: provideData.Tables[1].Rows[j].id,
+                                province: provideData.Tables[0].Rows[i].provincename
+                            });
+                            children.push(city);
+                        } else if (id_city > 35 && id_province==35) {
+                            var city = ({
+                                value: provideData.Tables[1].Rows[j].cityid,
+                                text: provideData.Tables[1].Rows[j].cityname,
+                                type: provideData.Tables[1].Rows[j].citytype,
+                                id: provideData.Tables[1].Rows[j].id,
+                                province: provideData.Tables[0].Rows[i].provincename
+                            });
+                            children.push(city);
+                        }
+
+                    }
+
+
+                    var province_city = ({
+                        value: provideData.Tables[0].Rows[i].provinceid,
+                        text: provideData.Tables[0].Rows[i].provincename,
+                        children: children
+                    });
+                    cityData.push(province_city);
+                }
+
+               
+
+                //console.log(cityData);
+
+                var controls = document.getElementById("segmentedControls");
+                var contents = document.getElementById("segmentedControlContents");
+                var html = [];
+                var i = 0,
+                    j = 0,
+                    m = cityData.length, //左侧选项卡数量+1
+                    n = 21; //每个选项卡列表数量+1
+                for (; i < cityData.length; i++) {
+                    html.push('<a class="mui-control-item" data-index="' + (i) + '" href="#content' + (i + 1) + '">' + cityData[i].text + '</a>');
+                }
+                controls.innerHTML = html.join('');
+                html = [];
+                for (i = 0; i < cityData.length; i++) {
+                    html.push('<div id="content' + i + '" class="mui-control-content"><ul class="mui-table-view">');
+                    for (j = 0; j < cityData[i].children.length; j++) {
+
+                        html.push('<li class="mui-table-view-cell city-chosen">' + cityData[i].children[j].text + '<input type="hidden" id="citytype" name="citytype" value="' + cityData[i].children[j].type + '"/><input type="hidden" id="provincename" name="provincename" value="' + cityData[i].children[j].province + '"/></li>');
+                    }
+                    html.push('</ul></div>');
+                }
+                contents.innerHTML = html.join('');
+                //默认选中第一个
+                controls.querySelector('.mui-control-item').classList.add('mui-active');
+                //contents.querySelector('.mui-control-content').classList.add('mui-active');
+                (function () {
+                    var controlsElem = document.getElementById("segmentedControls");
+                    var contentsElem = document.getElementById("segmentedControlContents");
+                    var controlListElem = controlsElem.querySelectorAll('.mui-control-item');
+                    var contentListElem = contentsElem.querySelectorAll('.mui-control-content');
+                    var controlWrapperElem = controlsElem.parentNode;
+                    var controlWrapperHeight = controlWrapperElem.offsetHeight;
+                    var controlMaxScroll = controlWrapperElem.scrollHeight - controlWrapperHeight;//左侧类别最大可滚动高度
+
+                    var maxScroll = contentsElem.scrollHeight - contentsElem.offsetHeight;//右侧内容最大可滚动高度
+
+                    var controlHeight = controlListElem[0].offsetHeight;//左侧类别每一项的高度
+                    var controlTops = []; //存储control的scrollTop值
+                    var contentTops = [0]; //存储content的scrollTop值
+                    var length = contentListElem.length;
+                    for (var i = 0; i < length; i++) {
+                        controlTops.push(controlListElem[i].offsetTop + controlHeight);
+                    }
+                    for (var i = 1; i < length; i++) {
+                        var offsetTop = contentListElem[i].offsetTop;
+                        if (offsetTop + 100 >= maxScroll) {
+                            var height = Math.max(offsetTop + 100 - maxScroll, 100);
+                            var totalHeight = 0;
+                            var heights = [];
+                            for (var j = i; j < length; j++) {
+                                var offsetHeight = contentListElem[j].offsetHeight;
+                                totalHeight += offsetHeight;
+                                heights.push(totalHeight);
+                            }
+                            for (var m = 0, len = heights.length; m < len; m++) {
+                                contentTops.push(parseInt(maxScroll - (height - heights[m] / totalHeight * height)));
+                            }
+                            break;
+                        } else {
+                            contentTops.push(parseInt(offsetTop));
+                        }
+                    }
+                    contentsElem.addEventListener('scroll', function () {
+                        var scrollTop = contentsElem.scrollTop;
+                        for (var i = 0; i < length; i++) {
+                            var offsetTop = contentTops[i];
+                            var offset = Math.abs(offsetTop - scrollTop);
+                            //						console.log("i:"+i+",scrollTop:"+scrollTop+",offsetTop:"+offsetTop+",offset:"+offset);
+                            if (scrollTop < offsetTop) {
+                                if (scrollTop >= maxScroll) {
+                                    onScroll(length - 1);
+                                } else {
+                                    onScroll(i - 1);
+                                }
+                                break;
+                            } else if (offset < 20) {
+                                onScroll(i);
+                                break;
+                            } else if (scrollTop >= maxScroll) {
+                                onScroll(length - 1);
+                                break;
+                            }
+                        }
+                    });
+                    var lastIndex = 0;
+                    //监听content滚动
+                    var onScroll = function (index) {
+                        if (lastIndex !== index) {
+                            lastIndex = index;
+                            var lastActiveElem = controlsElem.querySelector('.mui-active');
+                            lastActiveElem && (lastActiveElem.classList.remove('mui-active'));
+                            var currentElem = controlsElem.querySelector('.mui-control-item:nth-child(' + (index + 1) + ')');
+                            currentElem.classList.add('mui-active');
+                            //简单处理左侧分类滚动，要么滚动到底，要么滚动到顶
+                            var controlScrollTop = controlWrapperElem.scrollTop;
+                            if (controlScrollTop + controlWrapperHeight < controlTops[index]) {
+                                controlWrapperElem.scrollTop = controlMaxScroll;
+                            } else if (controlScrollTop > controlTops[index] - controlHeight) {
+                                controlWrapperElem.scrollTop = 0;
+                            }
+                        }
+                    };
+                    //滚动到指定content
+                    var scrollTo = function (index) {
+                        contentsElem.scrollTop = contentTops[index];
+                    };
+                    mui(controlsElem).on('tap', '.mui-control-item', function (e) {
+                        scrollTo(this.getAttribute('data-index'));
+                        return false;
+                    });
+
+                    $('.city-chosen').on('tap', function () {
+                        //console.log($(this));
+                        $(cityContext).val($(this).text());
+                        $(cityContext).parent().parent().find("#fdqlb").val($(this)[0].children.citytype.value);
+                        hiddenCity();
+                        document.getElementById('tjmx').scrollIntoView();
+                    });
+                })();
+
+                }).fail(function (e) {
+                    
+            });
+
+        }
+
+        var cityContext;
+        function showCity(context) {
+            $("#wrapper").css("display", "none");
+            $("#showCity").css("visibility", "visible");
+            $("#SaveD").css("display", "none");
+            cityContext = context;
+        }
+
+        function hiddenCity() {
+            $("#wrapper").css("display", "block");
+            $("#showCity").css("visibility", "hidden");
+            $("#SaveD").css("display", "block");
+        }
+
+
+       
+        function tapEvent() {
+
+            var fcllbdata = [
+                {
+                    value: '',
+                    text:'国内'
+                },
+                {
+                    value: '',
+                    text:'国外'
+                }
+            ];
+            showPicker('fcllb', fcllbdata);
+
+            var fzwjbdata = [
+                {
+                    value: '',
+                    text:'高管以上'
+                },
+                {
+                    value: '',
+                    text:'部门经理'
+                },
+                {
+                    value: '',
+                    text:'一般员工'
+                }
+
+            ];
+
+            var fjtgjdata = [
+                {
+                    value: '',
+                    text:'飞机'
+                },
+                {
+                    value: '',
+                    text: '火车'
+                },
+                {
+                    value: '',
+                    text: '汽车'
+                },
+                {
+                    value: '',
+                    text: '轮船'
+                },
+                {
+                    value: '',
+                    text: '高铁'
+                },
+                {
+                    value: '',
+                    text: '其他'
+                }
+
+            ];
+
+            $("#tjmx").on('tap', function () {
+
+                var li = ' <div class="mui-card" id="mx">';
+                li = li + '   <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '     <div class="mui-input-row">';
+                li = li + '        <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fzwjb" name="fzwjb" placeholder="请选择职务级别" readonly="readonly"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fsdate">开始时间<i style="color:red;">*</i></label>';
+                li = li + '        <input type="date" id="fsdate" name="fsdate" />';
+                li = li + '    </div>';
+               li = li + '    <div class="mui-input-row">';
+               li = li + '       <label for="fedate">结束时间<i style="color:red;">*</i></label>';
+               li = li + '        <input type="date" id="fedate" name="fedate" />';
+               li = li + '   </div>';
+               li = li + '   <div class="mui-input-row">';
+               li = li + '     <label for="fjtgj">交通工具<i style="color:red;">*</i></label>';
+               li = li + '      <input type="text" id="fjtgj" name="fjtgj" readonly="readonly" placeholder="请选择交通工具" />';
+               li = li + '  </div>';
+               li = li + '  <div class="mui-input-row">';
+               li = li + '      <label for="fcity">出差地点<i style="color:red;">*</i></label>';
+               li = li + '      <input type="text" id="fcity" name="fcity" readonly="readonly" placeholder="请选择出差地点" />';
+               li = li + '    </div>';
+               li = li + '   <div class="mui-input-row">';
+               li = li + '      <label for="fdqlb">地区类别<i style="color:red;">*</i></label>';
+               li = li + '      <input type="text" id="fdqlb" name="fdqlb" readonly="readonly" />';
+               li = li + '   </div>';
+               li = li + '   <div class="mui-input-row">';
+               li = li + '      <label for="fccrs">出差人数<i style="color:red;">*</i></label>';
+               li = li + '     <input type="number" id="fccrs" name="fccrs" placeholder="请填写出差人数" />';
+               li = li + '   </div>';
+               li = li + '    <div class="mui-input-row">';
+               li = li + '        <label for="fday">出差天数<i style="color:red;">*</i></label>';
+               li = li + '        <input type="number" id="fday" name="fday" placeholder="请填写出差天数" />';
+               li = li + '   </div>';
+               li = li + '  </div>';
+               $("#mxlist").append(li);
+               showPickerByZepto('#mxlist', '#fzwjb', fzwjbdata);
+               showPickerByZepto('#mxlist', '#fjtgj', fjtgjdata);
+               $("#mxlist").find("#fcity").each(function () {
+                   $(this).on('tap', function () {
+                       showCity(this);
+                   });
+               });
+            }); 
+
+            $("#fbz_zsf,#fbz_cf,#fbz_snjtf").on('input', function () {
+                var fbz_zsf = parseFloat($("#fbz_zsf").val());
+                var fbz_cf = parseFloat($("#fbz_cf").val());
+                var fbz_snjtf = parseFloat($("#fbz_snjtf").val());
+                if (isNaN(fbz_zsf)) {
+                    fbz_zsf = 0;
+                }
+                if (isNaN(fbz_cf)) {
+                    fbz_cf = 0;
+                }
+                if (isNaN(fbz_snjtf)) {
+                    fbz_snjtf = 0;
+                }
+                var total = 0;
+                total = fbz_zsf + fbz_cf + fbz_snjtf;
+                $("#fbz_total").val(total);
+                calcPercent();
+            });
+            $("#fje_ctjtf,#fje_zsf,#fje_cf,#fje_snjtf,#fje_qtclf").on('input', function () {
+                var fje_ctjtf = parseFloat($("#fje_ctjtf").val());
+                var fje_zsf = parseFloat($("#fje_zsf").val());
+                var fje_cf = parseFloat($("#fje_cf").val());
+                var fje_snjtf = parseFloat($("#fje_snjtf").val());
+                var fje_qtclf = parseFloat( $("#fje_qtclf").val());
+
+                if (isNaN(fje_ctjtf)) {
+                    fje_ctjtf = 0;
+                }
+                if (isNaN(fje_zsf)) {
+                    fje_zsf = 0;
+                }
+                if (isNaN(fje_cf)) {
+                    fje_cf = 0;
+                }
+                if (isNaN(fje_snjtf)) {
+                    fje_snjtf = 0;
+                }
+                if (isNaN(fje_qtclf)) {
+                    fje_qtclf = 0;
+                }
+                var total = 0;
+                total = fje_ctjtf + fje_zsf + fje_cf + fje_snjtf + fje_qtclf;
+                $("#ftotal").val(total);
+                calcPercent();
+            });
+        }
+
+
+        function calcPercent() {
+            var fbz_total = parseFloat($("#fbz_total").val());
+            var ftotal = parseFloat($("#ftotal").val()) - parseFloat($("#fje_ctjtf").val());
+            var fover = (ftotal - fbz_total) < 0 ? 0 : (ftotal - fbz_total);
+            
+            var fcbz = 0.00;
+            if (ftotal > 0) {
+               
+                fcbz = ((fover / fbz_total)*100).toFixed(2);
+            }
+            $("#fcbz").val(fcbz);
+        }
+
+
+
+        function mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday) {
+            var mx = new Object;
+            mx.fzwjb = fzwjb;
+            mx.fsdate = fsdate;
+            mx.fedate = fedate;
+            mx.fjtgj = fjtgj;
+            mx.fcity = fcity;
+            mx.fdqlb = fdqlb;
+            mx.fccrs = fccrs;
+            mx.fday = fday;
+            if (!fzwjb || fzwjb==''){
+                mui.toast('请选择职务级别');
+                return null;
+            }
+            if (!String(fsdate).replace(" 00:00:00") || String(fsdate).replace(" 00:00:00") == '') {
+                mui.toast('请选择开始时间');
+                return null;
+            }
+            if (!String(fedate).replace(" 00:00:00") || String(fedate).replace(" 00:00:00") == '') {
+                mui.toast('请选择结束时间');
+                return null;
+            }
+            if (!fjtgj || fjtgj == '') {
+                mui.toast('请选择交通工具');
+                return null;
+            }
+            if (!fcity || fcity == '') {
+                mui.toast('请选择出差城市');
+                return null;
+            }
+            if (!fccrs || fccrs == '') {
+                mui.toast('请填写出差人数');
+                return null;
+            }
+            if (!fday || fday == '') {
+                mui.toast('请填写出差天数');
+                return null;
+            }
+            return mx;
+
+        }
+
+        function Save() {
+
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fcllb = $("#fcllb").val();
+            var fif_jk = $("#fif_jk").val();
+            var fremark = $("#fremark").val();
+            if (!fcllb || fcllb == '') {
+                mui.toast('请选择差旅类别');
+                return;
+            }
+            var fje_ctjtf = $("#fje_ctjtf").val();
+            var fccrw = $("#fccrw").val();
+            var fd_zsf = $("#fd_zsf").val();
+            var fbz_zsf = $("#fbz_zsf").val();
+            var fje_zsf = $("#fje_zsf").val();
+            var fcbz = $("#fcbz").val();
+            var fd_cf = $("#fd_cf").val();
+            var fbz_cf = $("#fbz_cf").val();
+            var fje_cf = $("#fje_cf").val();
+            var fd_snjtf = $("#fd_snjtf").val();
+            var fbz_snjtf = $("#fbz_snjtf").val();
+            var fje_snjtf = $("#fje_snjtf").val();
+            var fje_qtclf = $("#fje_qtclf").val();
+            var fbz_total = $("#fbz_total").val();
+            var ftotal = $("#ftotal").val();
+            var ftotal_dx = atoc(ftotal);
+            var fjktotal = $("#fjktotal").val();
+            var fjktotal_dx = atoc(fjktotal);
+            var fjkbillno = $("#fjkbillno").val();
+            var fjkremark = $("#fjkremark").val();
+
+            if (!fje_ctjtf || fje_ctjtf == '') {
+                mui.toast('请填写长途差旅费申请金额');
+                return;
+            }
+            if (!fccrw || fccrw == '') {
+                mui.toast('请填写出差任务内容');
+                return;
+            }
+            if (!fd_zsf || fd_zsf == '') {
+                mui.toast('请填写住宿费有效天数');
+                return;
+            }
+            if (!fbz_zsf || fbz_zsf == '') {
+                mui.toast('请填写住宿费标准');
+                return;
+            }
+            if (!fje_zsf || fje_zsf == '') {
+                mui.toast('请填写住宿费申请金额');
+                return;
+            }
+            if (!fd_cf || fd_cf == '') {
+                mui.toast('请填写餐费有效天数');
+                return;
+            }
+            if (!fbz_cf || fbz_cf == '') {
+                mui.toast('请填写餐费标准');
+                return;
+            }
+            if (!fje_cf || fje_cf == '') {
+                mui.toast('请填写餐费申请金额');
+                return;
+            }
+            if (!fd_snjtf || fd_snjtf == '') {
+                mui.toast('请填写市内交通费有效天数');
+                return;
+            }
+            if (!fbz_snjtf || fbz_snjtf == '') {
+                mui.toast('请填写市内交通费标准');
+                return;
+            }
+            if (!fje_snjtf || fje_snjtf == '') {
+                mui.toast('请填写市内交通费申请金额');
+                return;
+            }
+            if (!fje_qtclf || fje_qtclf == '') {
+                mui.toast('请填写其他差旅费申请金额');
+                return;
+            }
+            if (fif_jk=='是'){
+                if (!fjktotal || fjktotal == '') {
+                    mui.toast('请填写借款金额');
+                    return; 
+                } 
+            }
+
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + " 00:00:00";
+                var fedate = $(this).find("#fedate").val() + " 00:00:00";
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fcity = $(this).find("#fcity").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+                if (mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday);
+                mxlistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>房地产集团差旅费申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + ' <BPM_FDCBX_CLFYSQ_A>';
+                    xml = xml + '   <fbillno>自动生成</fbillno>';
+                    xml = xml + '   <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '  <fdept>' + fdept + '</fdept>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '   <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                    xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '   <fremark>' + fremark + '</fremark>';
+                    xml = xml + '   <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                    xml = xml + '   <fccrw>' + fccrw + '</fccrw>';
+                    xml = xml + '   <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                    xml = xml + '  <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                    xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                    xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                    xml = xml + '   <fd_cf>' + fd_cf + '</fd_cf>';
+                    xml = xml + '    <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                    xml = xml + '    <fje_cf>' + fje_cf + '</fje_cf>';
+                    xml = xml + '   <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                    xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                    xml = xml + '   <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                    xml = xml + '  <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                    xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                    xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '   <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '    <fjkremark>' + fjkremark + '</fjkremark>';
+                    xml = xml + ' </BPM_FDCBX_CLFYSQ_A>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+                        xml = xml + '   <BPM_FDCBX_CLFYSQ_B>';
+                        xml = xml + '    <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '   <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '    <fzwjb>' + mxlistArr[i].fzwjb + '</fzwjb>';
+                        xml = xml + '   <fsdate>' + mxlistArr[i].fsdate + '</fsdate>';
+                        xml = xml + '    <fedate>' + mxlistArr[i].fedate + '</fedate>';
+                        xml = xml + '     <fjtgj>' + mxlistArr[i].fjtgj + '</fjtgj>';
+                        xml = xml + '    <fcity>' + mxlistArr[i].fcity + '</fcity>';
+                        xml = xml + '    <fdqlb>' + mxlistArr[i].fdqlb + '</fdqlb>';
+                        xml = xml + '    <fccrs>' + mxlistArr[i].fccrs + '</fccrs>';
+                        xml = xml + '   <fday>' + mxlistArr[i].fday + '</fday>';
+                        xml = xml + '  </BPM_FDCBX_CLFYSQ_B>';
+                    }
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

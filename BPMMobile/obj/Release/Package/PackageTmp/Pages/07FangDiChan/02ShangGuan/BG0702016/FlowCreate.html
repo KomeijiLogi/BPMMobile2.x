@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">发起人</label>
+               <input type="text" id="fname" name="fname" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fdate">发起日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdkmc">档口名称<i style="color:red;">*</i></label>
+                <input type="text" id="fdkmc" name="fdkmc" placeholder="请填写档口名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdkh">档口号<i style="color:red;">*</i></label>
+                <input type="text" id="fdkh" name="fdkh" placeholder="请填写档口号"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flxr">档口联系人<i style="color:red;">*</i></label>
+                <input type="text" id="flxr" name="flxr" placeholder="请填写档口联系人"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fccrq">撤场日期<i style="color:red;">*</i></label>
+                <input type="date" id="fccrq" name="fccrq"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fccyy">撤场原因<i style="color:red;">*</i></label>
+                <textarea rows="5" id="fccyy" name="fccyy" placeholder="请填写撤场原因"></textarea>
+            </div>
+            <div class="mui-input-group">
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fqd">撤场物品清单</label>
+                    <input id="fqd" name="fqd" value="0" type="checkbox">
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fwts">撤场负责人委托书</label>
+                    <input id="fwts" name="fwts" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fcwg">储物柜</label>
+                    <input id="fcwg" name="fcwg" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fpyz">排烟罩</label>
+                    <input id="fpyz" name="fpyz" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fxdg">消毒柜</label>
+                    <input id="fxdg" name="fxdg" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="frsq">热水器</label>
+                    <input id="frsq" name="frsq" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fsc">双眼水槽</label>
+                    <input id="fsc" name="fsc" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fgyc">隔油池</label>
+                    <input id="fgyc" name="fgyc" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fkzj">筷子机</label>
+                    <input id="fkzj" name="fkzj" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fczh">抽纸盒</label>
+                    <input id="fczh" name="fczh" value="0" type="checkbox"/>
+                </div>
+                <div class="mui-input-row mui-checkbox">
+                    <label for="fsyj">收银机</label>
+                    <input id="fsyj" name="fsyj" value="0" type="checkbox"/>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+
+       
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司美食广场档口撤场工作申请');
+            prepMsg();
+            upload();
+            watch();
+            getBPMParam();
+        });
+        mui('.mui-checkbox').on('change', 'input', function () {
+            var value = this.checked ? "1" : "0";
+            $(this).val(value);
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+           
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+
+        function Save() {
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdkmc = $("#fdkmc").val();
+            var fdkh = $("#fdkh").val();
+            var flxr = $("#flxr").val();
+            var fccrq = $("#fccrq").val() + " 00:00:00";
+            var fccyy = $("#fccyy").val();
+            var fqd = $("#fqd").val();
+            var fwts = $("#fwts").val();
+            var fcwg = $("#fcwg").val();
+            var fpyz = $("#fpyz").val();
+            var fxdg = $("#fxdg").val();
+            var frsq = $("#frsq").val();
+            var fsc = $("#fsc").val();
+            var fgyc = $("#fgyc").val();
+            var fkzj = $("#fkzj").val();
+            var fczh = $("#fczh").val();
+            var fsyj = $("#fsyj").val();
+
+            if (!fdkmc || fdkmc == '') {
+                mui.toast('请填写档口名称');
+                return;
+            }
+            if (!fdkh || fdkh == '') {
+                mui.toast('请填写档口号');
+                return;
+            }
+            if (!flxr || flxr == '') {
+                mui.toast('请填写联系人');
+                return;
+            }
+            if (!$("#fccrq").val() || $("#fccrq").val() == '') {
+                mui.toast('请填写撤场日期');
+                return;
+            }
+            if (!fccyy) {
+                mui.toast('请填写撤场原因');
+                return;
+            }
+            if (fjArray.length == 0) {
+                mui.toast('请上传附件');
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>盛祥商管公司美食广场档口撤场工作申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + ' <BPM_MSGCDKCCGZD>';
+                    xml = xml + '   <fbillno>自动生成</fbillno>';
+                    xml = xml + '   <fname>' + fname + '</fname>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fdkmc>' + fdkmc + '</fdkmc>';
+                    xml = xml + '   <fdkh>' + fdkh + '</fdkh>';
+                    xml = xml + '   <flxr>' + flxr + '</flxr>';
+                    xml = xml + '   <fccrq>' + fccrq + '</fccrq>';
+                    xml = xml + '  <fccyy>' + fccyy + '</fccyy>';
+                    xml = xml + '   <fqd>' + fqd + '</fqd>';
+                    xml = xml + '   <fwts>' + fwts + '</fwts>';
+                    xml = xml + '   <fcwg>' + fcwg + '</fcwg>';
+                    xml = xml + '   <fpyz>' + fpyz + '</fpyz>';
+                    xml = xml + '  <fxdg>' + fxdg + '</fxdg>';
+                    xml = xml + '   <frsq>' + frsq + '</frsq>';
+                    xml = xml + '   <fsc>' + fsc + '</fsc>';
+                    xml = xml + '    <fgyc>' + fgyc + '</fgyc>';
+                    xml = xml + '   <fkzj>' + fkzj + '</fkzj>';
+                    xml = xml + '   <fczh>' + fczh + '</fczh>';
+                    xml = xml + '  <fsyj>' + fsyj + '</fsyj>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                    } else {
+                        xml = xml + '  <ffj></ffj>'
+                    }
+
+                    xml = xml + ' </BPM_MSGCDKCCGZD>';
+                    xml = xml + '  </FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

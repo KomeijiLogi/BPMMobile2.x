@@ -1,0 +1,2560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="All_PagingToolbar_afterPageText" xml:space="preserve">
+    <value>页，共{0}页</value>
+  </data>
+  <data name="All_PagingToolbar_beforePageText" xml:space="preserve">
+    <value>第</value>
+  </data>
+  <data name="All_PagingToolbar_displayMsg" xml:space="preserve">
+    <value>当前显示 {0} - {1} 项，共 {2} 项</value>
+  </data>
+  <data name="All_PagingToolbar_emptyMsg" xml:space="preserve">
+    <value>无显示项</value>
+  </data>
+  <data name="All_Aborted" xml:space="preserve">
+    <value>已撤销</value>
+  </data>
+  <data name="BPM_SelAction" xml:space="preserve">
+    <value>执行处理</value>
+  </data>
+  <data name="All_AdvSearch" xml:space="preserve">
+    <value>高级搜索</value>
+  </data>
+  <data name="All_Delegator" xml:space="preserve">
+    <value>代理人</value>
+  </data>
+  <data name="All_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="All_Approved" xml:space="preserve">
+    <value>已批准</value>
+  </data>
+  <data name="All_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="All_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="All_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="BPM_CurStep" xml:space="preserve">
+    <value>当前步骤</value>
+  </data>
+  <data name="All_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="All_Deleted" xml:space="preserve">
+    <value>已删除</value>
+  </data>
+  <data name="BPM_OpBtn_PickupShareTask" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="All_HRID" xml:space="preserve">
+    <value>员工编号</value>
+  </data>
+  <data name="All_ModifyDate" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="All_OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="All_Owner" xml:space="preserve">
+    <value>拥有人</value>
+  </data>
+  <data name="All_Handler" xml:space="preserve">
+    <value>处理人</value>
+  </data>
+  <data name="BPM_PostAt" xml:space="preserve">
+    <value>发起时间</value>
+  </data>
+  <data name="All_PostByAgent" xml:space="preserve">
+    <value>由{0}代填</value>
+  </data>
+  <data name="All_ProcessAt" xml:space="preserve">
+    <value>处理时间</value>
+  </data>
+  <data name="All_Running" xml:space="preserve">
+    <value>处理中</value>
+  </data>
+  <data name="All_ReceiveAt" xml:space="preserve">
+    <value>收到时间</value>
+  </data>
+  <data name="All_Rejected" xml:space="preserve">
+    <value>已拒绝</value>
+  </data>
+  <data name="All_Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="All_SN" xml:space="preserve">
+    <value>流水号</value>
+  </data>
+  <data name="All_StartBySystem" xml:space="preserve">
+    <value>系统启动</value>
+  </data>
+  <data name="All_Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="BPM_StepName" xml:space="preserve">
+    <value>步骤名</value>
+  </data>
+  <data name="BPM_TaskDesc" xml:space="preserve">
+    <value>摘要信息</value>
+  </data>
+  <data name="All_UnknownStatus" xml:space="preserve">
+    <value>未知状态</value>
+  </data>
+  <data name="BPM_ProcessName" xml:space="preserve">
+    <value>流程名</value>
+  </data>
+  <data name="Aspx_MINST_Caption" xml:space="preserve">
+    <value>手动安装组件</value>
+  </data>
+  <data name="Aspx_MINST_Help1" xml:space="preserve">
+    <value>XFormShell的安装需要一定的权限，如果安装失败，请与管理员联系。</value>
+  </data>
+  <data name="Aspx_MINST_HelpTitle" xml:space="preserve">
+    <value>我需要协助</value>
+  </data>
+  <data name="Aspx_MINST_Step1" xml:space="preserve">
+    <value>下载组件压缩包</value>
+  </data>
+  <data name="Aspx_MINST_Step1Desc" xml:space="preserve">
+    <value>下载XFormShell.zip</value>
+  </data>
+  <data name="Aspx_MINST_Step2" xml:space="preserve">
+    <value>解压文件</value>
+  </data>
+  <data name="Aspx_MINST_Step2Desc" xml:space="preserve">
+    <value>将下载的文件解压到一个文件夹下</value>
+  </data>
+  <data name="Aspx_MINST_Step3" xml:space="preserve">
+    <value>运行XFormShell.exe安装组件</value>
+  </data>
+  <data name="Aspx_MINST_Step3Desc" xml:space="preserve">
+    <value>双击XFormShell.exe执行安装（注意不能在解压包中直接运行XFormShell.exe）</value>
+  </data>
+  <data name="Aspx_MINST_StepTitle" xml:space="preserve">
+    <value>如何手动安装XFormShell组件</value>
+  </data>
+  <data name="Aspx_MINST_Warn1" xml:space="preserve">
+    <value>XFormShell是上海易正信息技术有限公司开发的浏览器插件，旨在提高网站应用交互友好性。</value>
+  </data>
+  <data name="Aspx_MINST_Warn2" xml:space="preserve">
+    <value>XFormShell目前包括如下功能：IE6自适应打印、按预设打页面打印等功能。</value>
+  </data>
+  <data name="Aspx_MINST_Warn4" xml:space="preserve">
+    <value>XFormShell只需安装一次，以后会自动升级。</value>
+  </data>
+  <data name="Aspx_MINST_WarnTitle" xml:space="preserve">
+    <value>安装提示</value>
+  </data>
+  <data name="Aspx_Post_MissForm" xml:space="preserve">
+    <value>流程的开始节步骤未指定表单，请与管理员联系。</value>
+  </data>
+  <data name="Aspx_PostResult_HasSentToOtherUsers" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}&lt;/br&gt;您提交的表单已传送给：{1}。{2}</value>
+  </data>
+  <data name="Aspx_PostResult_HasSentToOtherUsers1" xml:space="preserve">
+    <value>任务已传递给：{0}{1}</value>
+  </data>
+  <data name="Aspx_PostResult_InWaitingOtherUsers" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}&lt;/br&gt;正在等待以下人员处理：{1}。{2}</value>
+  </data>
+  <data name="Aspx_PostResult_InWaitingOtherUsers1" xml:space="preserve">
+    <value>正在等待以下人员处理：{0}{1}</value>
+  </data>
+  <data name="Aspx_PostResult_RecedeRestarted" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}&lt;/br&gt;您提交的表单已退回给：{1}。{2}</value>
+  </data>
+  <data name="Aspx_PostResult_RecedeRestarted1" xml:space="preserve">
+    <value>任务已退回给：{0}{1}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskFinishedApproved" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}&lt;/br&gt;流程已结束（承认）。{1}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskFinishedApproved1" xml:space="preserve">
+    <value>流程已结束（承认）{0}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskFinishedRejected" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}&lt;/br&gt;流程已结束（拒绝）。{1}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskFinishedRejected1" xml:space="preserve">
+    <value>流程已结束（拒绝）{0}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskInWaiting" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}。{1}</value>
+  </data>
+  <data name="Aspx_PostResult_TaskInWaiting1" xml:space="preserve">
+    <value>提交已成功{0}</value>
+  </data>
+  <data name="Aspx_Process_MissForm" xml:space="preserve">
+    <value>本步骤未指定表单，请与管理员联系。</value>
+  </data>
+  <data name="Aspx_Read_MissForm" xml:space="preserve">
+    <value>本流程没有可用的表单，请与管理员联系。</value>
+  </data>
+  <data name="All_WaitPick" xml:space="preserve">
+    <value>等待获取</value>
+  </data>
+  <data name="All_PagingToolbar_firstText" xml:space="preserve">
+    <value>第一页</value>
+  </data>
+  <data name="All_PagingToolbar_lastText" xml:space="preserve">
+    <value>最后页</value>
+  </data>
+  <data name="All_PagingToolbar_nextText" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="All_PagingToolbar_prevText" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="All_PagingToolbar_refreshText" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="All_AssignPermDlg_Title" xml:space="preserve">
+    <value>修改授权</value>
+  </data>
+  <data name="All_DelegationPost_SelUser" xml:space="preserve">
+    <value>选择用户-为谁填写表单</value>
+  </data>
+  <data name="All_ExcelExportButton_Text" xml:space="preserve">
+    <value>导出到Excel</value>
+  </data>
+  <data name="All_ExcelImportDlg_Title" xml:space="preserve">
+    <value>Excel导入</value>
+  </data>
+  <data name="All_Form_LoadFail_Msg" xml:space="preserve">
+    <value>装载表单数据失败！</value>
+  </data>
+  <data name="All_Form_Msg_CONNECT_FAILURE" xml:space="preserve">
+    <value>连击服务器失败</value>
+  </data>
+  <data name="All_Form_SubmitFail_Msg" xml:space="preserve">
+    <value>提交失败！</value>
+  </data>
+  <data name="All_Form_SubmitFail_Title" xml:space="preserve">
+    <value>提交失败</value>
+  </data>
+  <data name="All_Form_ValidtionFail_Msg" xml:space="preserve">
+    <value>输入有误，请检查输入信息！</value>
+  </data>
+  <data name="All_Form_ValidtionFail_Title" xml:space="preserve">
+    <value>验证失败</value>
+  </data>
+  <data name="All_FormApp_New" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="All_HandlingTime_LTOneM" xml:space="preserve">
+    <value>小于1分钟</value>
+  </data>
+  <data name="All_HandlingTime_NoCal" xml:space="preserve">
+    <value>无工作日历</value>
+  </data>
+  <data name="All_HandlingTime_UnitH" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="All_HandlingTime_UnitM" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="All_LoadModule_Failed_Msg" xml:space="preserve">
+    <value>加载包含文件失败</value>
+  </data>
+  <data name="All_LoadModule_Failed_Title" xml:space="preserve">
+    <value>模块装载失败</value>
+  </data>
+  <data name="All_Month1" xml:space="preserve">
+    <value>一月</value>
+  </data>
+  <data name="All_Month10" xml:space="preserve">
+    <value>十月</value>
+  </data>
+  <data name="All_Month11" xml:space="preserve">
+    <value>十一月</value>
+  </data>
+  <data name="All_Month12" xml:space="preserve">
+    <value>十二月</value>
+  </data>
+  <data name="All_Month2" xml:space="preserve">
+    <value>二月</value>
+  </data>
+  <data name="All_Month3" xml:space="preserve">
+    <value>三月</value>
+  </data>
+  <data name="All_Month4" xml:space="preserve">
+    <value>四月</value>
+  </data>
+  <data name="All_Month5" xml:space="preserve">
+    <value>五月</value>
+  </data>
+  <data name="All_Month6" xml:space="preserve">
+    <value>六月</value>
+  </data>
+  <data name="All_Month7" xml:space="preserve">
+    <value>七月</value>
+  </data>
+  <data name="All_Month8" xml:space="preserve">
+    <value>八月</value>
+  </data>
+  <data name="All_Month9" xml:space="preserve">
+    <value>九月</value>
+  </data>
+  <data name="All_OpenDraft_Title" xml:space="preserve">
+    <value>草稿-{0}</value>
+  </data>
+  <data name="All_OpenForRead_Title" xml:space="preserve">
+    <value>TaskID-{0}</value>
+  </data>
+  <data name="All_OpenProcess_Title" xml:space="preserve">
+    <value>TaskID-{0}</value>
+  </data>
+  <data name="All_OpenShareTask_Title" xml:space="preserve">
+    <value>TaskID-{0}</value>
+  </data>
+  <data name="All_PeriodType_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="All_PeriodType_Day" xml:space="preserve">
+    <value>某日</value>
+  </data>
+  <data name="All_PeriodType_Month" xml:space="preserve">
+    <value>按月</value>
+  </data>
+  <data name="All_PeriodType_Period" xml:space="preserve">
+    <value>某时间段</value>
+  </data>
+  <data name="All_PeriodType_Quator" xml:space="preserve">
+    <value>按季</value>
+  </data>
+  <data name="All_PeriodType_Year" xml:space="preserve">
+    <value>按年</value>
+  </data>
+  <data name="All_Post_Title" xml:space="preserve">
+    <value>发起-{0}</value>
+  </data>
+  <data name="All_SelProcessPromptText" xml:space="preserve">
+    <value>所有流程</value>
+  </data>
+  <data name="All_Quator1" xml:space="preserve">
+    <value>一季度</value>
+  </data>
+  <data name="All_Quator2" xml:space="preserve">
+    <value>二季度</value>
+  </data>
+  <data name="All_Quator3" xml:space="preserve">
+    <value>三季度</value>
+  </data>
+  <data name="All_Quator4" xml:space="preserve">
+    <value>四季度</value>
+  </data>
+  <data name="All_Reason" xml:space="preserve">
+    <value>原因：</value>
+  </data>
+  <data name="All_SelOUDlg_Title" xml:space="preserve">
+    <value>选择部门</value>
+  </data>
+  <data name="All_SelSIDDlg_Title" xml:space="preserve">
+    <value>选择授权对象</value>
+  </data>
+  <data name="All_SelUserDlg_Title" xml:space="preserve">
+    <value>选择用户</value>
+  </data>
+  <data name="All_Snapshot_Title" xml:space="preserve">
+    <value>表单快照-Ver:{0}.0</value>
+  </data>
+  <data name="All_URecAssignPerm_Wait" xml:space="preserve">
+    <value>正在执行授权...</value>
+  </data>
+  <data name="All_URecPublic_Fail_Msg" xml:space="preserve">
+    <value>{0}：公开失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="All_URecPublic_Fail_Title" xml:space="preserve">
+    <value>错误提示</value>
+  </data>
+  <data name="All_URecPublic_PublicTo" xml:space="preserve">
+    <value>{0}：已公开给{1}</value>
+  </data>
+  <data name="All_URecPublic_Success_Msg" xml:space="preserve">
+    <value>{0}项数据已公开给：{1}！</value>
+  </data>
+  <data name="All_URecPublic_Success_Title" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="All_URecPublic_Wait" xml:space="preserve">
+    <value>正在执行公开...</value>
+  </data>
+  <data name="All_VType_Password_Err" xml:space="preserve">
+    <value>二次输入的密码不一致，请重新输入！</value>
+  </data>
+  <data name="All_Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="All_Search_Clear" xml:space="preserve">
+    <value>清除搜索条件</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Comments1" xml:space="preserve">
+    <value>备注1</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Comments2" xml:space="preserve">
+    <value>备注2</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Date" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="BPMAdmin_AppLog_IP" xml:space="preserve">
+    <value>来自IP</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Op" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Result" xml:space="preserve">
+    <value>结果</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Result_Fail" xml:space="preserve">
+    <value>失败</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Result_Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="BPMAdmin_AppLog_UsedTime" xml:space="preserve">
+    <value>响应时间(秒)</value>
+  </data>
+  <data name="BPMAdmin_AppLog_User" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="All_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="All_None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="All_ReportAdvancedSearch" xml:space="preserve">
+    <value>设置统计范围</value>
+  </data>
+  <data name="All_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="BPM_IsTimeout" xml:space="preserve">
+    <value>是否超时</value>
+  </data>
+  <data name="BPM_OpBtn_Abort" xml:space="preserve">
+    <value>撤销</value>
+  </data>
+  <data name="BPM_OpBtn_ChangeOwner" xml:space="preserve">
+    <value>改变拥有人</value>
+  </data>
+  <data name="BPM_OpBtn_Continue" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="BPM_OpBtn_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="BPM_OpBtn_InviteIndicate" xml:space="preserve">
+    <value>邀请阅示</value>
+  </data>
+  <data name="BPM_OpBtn_Inform" xml:space="preserve">
+    <value>知会</value>
+  </data>
+  <data name="BPM_OpBtn_Jump" xml:space="preserve">
+    <value>调度</value>
+  </data>
+  <data name="BPM_OpBtn_More" xml:space="preserve">
+    <value>更多操作</value>
+  </data>
+  <data name="BPM_OpBtn_Public" xml:space="preserve">
+    <value>公开</value>
+  </data>
+  <data name="BPM_OpBtn_Reject" xml:space="preserve">
+    <value>拒绝</value>
+  </data>
+  <data name="BPM_OpBtn_ReturnToIniaiator" xml:space="preserve">
+    <value>退回重填</value>
+  </data>
+  <data name="BPM_OpBtn_Trace" xml:space="preserve">
+    <value>显示处理过程</value>
+  </data>
+  <data name="BPM_OpBtn_TraceChart" xml:space="preserve">
+    <value>在流程图中查看</value>
+  </data>
+  <data name="BPM_OpBtn_TraceDataList" xml:space="preserve">
+    <value>显示处理过程列表</value>
+  </data>
+  <data name="BPM_OpBtn_Transfer" xml:space="preserve">
+    <value>委托</value>
+  </data>
+  <data name="BPM_ProcessCount" xml:space="preserve">
+    <value>处理次数</value>
+  </data>
+  <data name="BPM_RemindTimes" xml:space="preserve">
+    <value>催办次数</value>
+  </data>
+  <data name="BPM_Search_SelProcess_PromptText" xml:space="preserve">
+    <value>选择流程...</value>
+  </data>
+  <data name="BPM_StepHandler" xml:space="preserve">
+    <value>实际处理人</value>
+  </data>
+  <data name="BPM_StepID" xml:space="preserve">
+    <value>步骤编号</value>
+  </data>
+  <data name="BPM_StepOwner" xml:space="preserve">
+    <value>步骤拥有人</value>
+  </data>
+  <data name="BPM_TaskID" xml:space="preserve">
+    <value>任务编号</value>
+  </data>
+  <data name="BPM_Timeout_Time" xml:space="preserve">
+    <value>超时时间</value>
+  </data>
+  <data name="BPM_UserTime_7X24" xml:space="preserve">
+    <value>耗时/总时长</value>
+  </data>
+  <data name="BPM_UserTime_Working" xml:space="preserve">
+    <value>耗时/工作时间</value>
+  </data>
+  <data name="BPM_UserTimeAvg_7X24" xml:space="preserve">
+    <value>平均耗时/全日制</value>
+  </data>
+  <data name="BPM_UserTimeAvg_Working" xml:space="preserve">
+    <value>平均耗时/工作时间</value>
+  </data>
+  <data name="BPM_UserTimeMax_7X24" xml:space="preserve">
+    <value>最大耗时/全日制</value>
+  </data>
+  <data name="BPM_UserTimeMax_Working" xml:space="preserve">
+    <value>最大耗时/工作时间</value>
+  </data>
+  <data name="BPMAdmin_HandlingTimeStep_Detail" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="BPMAdmin_Report_DetailLink" xml:space="preserve">
+    <value>显示明细</value>
+  </data>
+  <data name="BPMAdmin_Report_User" xml:space="preserve">
+    <value>员工</value>
+  </data>
+  <data name="BPM_OpBtn_Pickback" xml:space="preserve">
+    <value>取回</value>
+  </data>
+  <data name="All_Account" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="All_DisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="All_EMail" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="All_Employee" xml:space="preserve">
+    <value>员工</value>
+  </data>
+  <data name="All_LastActiveDate" xml:space="preserve">
+    <value>最近一次活动时间</value>
+  </data>
+  <data name="All_Operate" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="All_Phone" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="All_Report_Year" xml:space="preserve">
+    <value>年度：</value>
+  </data>
+  <data name="All_UpdateReport" xml:space="preserve">
+    <value>更新报表</value>
+  </data>
+  <data name="BPM_OpBtn_BatchApprove" xml:space="preserve">
+    <value>批量同意</value>
+  </data>
+  <data name="BPM_OpBtn_Share" xml:space="preserve">
+    <value>共享</value>
+  </data>
+  <data name="BPM_PostPanel_Delegate" xml:space="preserve">
+    <value>代填</value>
+  </data>
+  <data name="BPM_PostPanel_FlowChart" xml:space="preserve">
+    <value>流程图</value>
+  </data>
+  <data name="BPM_PostPanel_ProcessGrid_Title" xml:space="preserve">
+    <value>当前位置：{0}</value>
+  </data>
+  <data name="BPM_PostPanel_ProcessTree_Root" xml:space="preserve">
+    <value>根目录</value>
+  </data>
+  <data name="BPM_PostPanel_Tree_Title" xml:space="preserve">
+    <value>流程目录</value>
+  </data>
+  <data name="BPM_ProcessDesc_None" xml:space="preserve">
+    <value>暂无说明。</value>
+  </data>
+  <data name="BPMAdmin_OnlineUser_Msg" xml:space="preserve">
+    <value>所有在线用户数：{0}，您可以查看其中{1}位用户的信息</value>
+  </data>
+  <data name="BPMAdmin_ProcessUsage_Abort" xml:space="preserve">
+    <value>撤单</value>
+  </data>
+  <data name="BPMAdmin_ProcessUsage_Approve" xml:space="preserve">
+    <value>已批准</value>
+  </data>
+  <data name="BPMAdmin_ProcessUsage_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="BPMAdmin_ProcessUsage_Reject" xml:space="preserve">
+    <value>拒绝</value>
+  </data>
+  <data name="BPMAdmin_ProcessUsage_Running" xml:space="preserve">
+    <value>审批中</value>
+  </data>
+  <data name="BPMAdmin_RemindRate" xml:space="preserve">
+    <value>催办率</value>
+  </data>
+  <data name="BPMAdmin_SysUsers_SearchLab_Account" xml:space="preserve">
+    <value>用户账号</value>
+  </data>
+  <data name="BPMAdmin_Timeout_Rate" xml:space="preserve">
+    <value>超时率</value>
+  </data>
+  <data name="BPMAdmin_Timeout_RemindStepCount" xml:space="preserve">
+    <value>催办步骤数</value>
+  </data>
+  <data name="BPMAdmin_Timeout_SumRemindCount" xml:space="preserve">
+    <value>累计催办次数</value>
+  </data>
+  <data name="BPMAdmin_Timeout_TotalCount" xml:space="preserve">
+    <value>超时次数</value>
+  </data>
+  <data name="BPMAdmin_TimeoutStep_Detail" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="BPMAdmin_TimeoutUser_Detail" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="All_Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="All_CostCenter" xml:space="preserve">
+    <value>成本中心</value>
+  </data>
+  <data name="All_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="All_DeleteConfirm" xml:space="preserve">
+    <value>删除确认</value>
+  </data>
+  <data name="All_Dept" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="All_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="All_Index" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="All_MoveDown" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="All_MoveUp" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="All_MsgTitle_Error" xml:space="preserve">
+    <value>错误提示</value>
+  </data>
+  <data name="All_NB" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="All_OfficePhone" xml:space="preserve">
+    <value>办公室电话</value>
+  </data>
+  <data name="All_Org" xml:space="preserve">
+    <value>组织结构</value>
+  </data>
+  <data name="All_Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="All_Root" xml:space="preserve">
+    <value>根目录</value>
+  </data>
+  <data name="All_User" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="Aspx_Auto" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="Aspx_DynConsign" xml:space="preserve">
+    <value>加签</value>
+  </data>
+  <data name="Aspx_RecedeBack_Msg" xml:space="preserve">
+    <value>任务已退回给：</value>
+  </data>
+  <data name="Aspx_SysAct_Abort" xml:space="preserve">
+    <value>撤销申请</value>
+  </data>
+  <data name="Aspx_SysAct_Agent" xml:space="preserve">
+    <value>委托</value>
+  </data>
+  <data name="Aspx_SysAct_AssignOwner" xml:space="preserve">
+    <value>改变拥有人</value>
+  </data>
+  <data name="Aspx_SysAct_Continue" xml:space="preserve">
+    <value>恢复任务</value>
+  </data>
+  <data name="Aspx_SysAct_Delete" xml:space="preserve">
+    <value>删除任务</value>
+  </data>
+  <data name="Aspx_SysAct_DirectSend" xml:space="preserve">
+    <value>直送</value>
+  </data>
+  <data name="Aspx_SysAct_InviteIndicate" xml:space="preserve">
+    <value>邀请阅示</value>
+  </data>
+  <data name="Aspx_SysAct_Jump" xml:space="preserve">
+    <value>调度</value>
+  </data>
+  <data name="Aspx_SysAct_PickBackRestart" xml:space="preserve">
+    <value>提交人取回</value>
+  </data>
+  <data name="Aspx_SysAct_RecedeBack" xml:space="preserve">
+    <value>退回</value>
+  </data>
+  <data name="Aspx_SysAct_RecedeRestart" xml:space="preserve">
+    <value>退回重填</value>
+  </data>
+  <data name="Aspx_SysAct_Reject" xml:space="preserve">
+    <value>拒绝</value>
+  </data>
+  <data name="Aspx_SysAct_TimeoutJump" xml:space="preserve">
+    <value>超时跳转</value>
+  </data>
+  <data name="Aspx_SysIndicate" xml:space="preserve">
+    <value>会签</value>
+  </data>
+  <data name="Aspx_SysTaskOpt" xml:space="preserve">
+    <value>任务操作</value>
+  </data>
+  <data name="Aspx_UnknowCommand" xml:space="preserve">
+    <value>未知的命令：{0}</value>
+  </data>
+  <data name="Aspx_UserRecordPublic_Success" xml:space="preserve">
+    <value>授权成功！</value>
+  </data>
+  <data name="Aspx_WindowWillClose" xml:space="preserve">
+    <value>窗口将被关闭！</value>
+  </data>
+  <data name="BPM_FlowChartPanel_GetDefineAjaxFailDlg_Msg" xml:space="preserve">
+    <value>获得流程定义失败：{0}</value>
+  </data>
+  <data name="BPM_FlowChartPanel_GetDefineAjaxFailDlg_Title" xml:space="preserve">
+    <value>服务器错误</value>
+  </data>
+  <data name="BPM_FlowChartPanel_GetDefineFailDlg_Msg" xml:space="preserve">
+    <value>错误发生文件：{0}&lt;br/&gt;原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPM_FlowChartPanel_GetDefineFailDlg_Title" xml:space="preserve">
+    <value>获得流程定义失败</value>
+  </data>
+  <data name="BPM_FlowChartPanel_Waitting" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="BPM_ProcessComments" xml:space="preserve">
+    <value>处理意见</value>
+  </data>
+  <data name="BPM_StepState_ShareTaskNotGot" xml:space="preserve">
+    <value>共享任务-尚未获取</value>
+  </data>
+  <data name="All_LangPostfix" xml:space="preserve">
+    <value>_zh-CHS</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_Comments" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_CommentsDesc" xml:space="preserve">
+    <value>备注的开头是</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_DateDesc" xml:space="preserve">
+    <value>日期是</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_IP" xml:space="preserve">
+    <value>来自IP</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_IPDesc" xml:space="preserve">
+    <value>IP地址是</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_KeywordDesc" xml:space="preserve">
+    <value>包含以下关键字</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_User" xml:space="preserve">
+    <value>某用户</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_UserDesc" xml:space="preserve">
+    <value>用户账号是</value>
+  </data>
+  <data name="BPMDlg_Abort_ConfirmMsg" xml:space="preserve">
+    <value>请输入撤销理由：</value>
+  </data>
+  <data name="BPMDlg_Abort_ConfirmTitle" xml:space="preserve">
+    <value>撤销确认</value>
+  </data>
+  <data name="BPMDlg_Abort_ItemFail" xml:space="preserve">
+    <value>{0}：撤销失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Abort_ItemSuccess" xml:space="preserve">
+    <value>{0}：已撤销</value>
+  </data>
+  <data name="BPMDlg_Abort_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已撤销！</value>
+  </data>
+  <data name="BPMDlg_Abort_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Abort_Waiting" xml:space="preserve">
+    <value>正在撤销任务...</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_ItemFail" xml:space="preserve">
+    <value>{0}：改变拥有人失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_ItemSuccess" xml:space="preserve">
+    <value>{0}：拥有人已改变为{1}</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_NextStep" xml:space="preserve">
+    <value>下一步&gt;&gt;</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_SelStep" xml:space="preserve">
+    <value>选择要改变拥有人的步骤：</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务的拥有人已改变为：{1}！</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_Title1" xml:space="preserve">
+    <value>改变拥有人-{0}-Step1：选择要改变的步骤</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_Title2" xml:space="preserve">
+    <value>改变拥有人-{0}-Step2：选择新拥有人</value>
+  </data>
+  <data name="BPMDlg_AssignOwner_Waiting" xml:space="preserve">
+    <value>正在改变拥有人...</value>
+  </data>
+  <data name="BPMDlg_BatchApprove_ConfirmMsg" xml:space="preserve">
+    <value>您确定要同意选中的任务吗？</value>
+  </data>
+  <data name="BPMDlg_BatchApprove_ConfirmTitle" xml:space="preserve">
+    <value>操作确认</value>
+  </data>
+  <data name="BPMDlg_BatchApprove_ItemFail" xml:space="preserve">
+    <value>{0}：处理失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_BatchApprove_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_BatchApprove_Waiting" xml:space="preserve">
+    <value>正在执行批量同意...</value>
+  </data>
+  <data name="BPMDlg_Continue_ItemFail" xml:space="preserve">
+    <value>{0}：恢复失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Continue_ItemSuccess" xml:space="preserve">
+    <value>{0}：已恢复</value>
+  </data>
+  <data name="BPMDlg_Continue_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已恢复！</value>
+  </data>
+  <data name="BPMDlg_Continue_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Continue_Waiting" xml:space="preserve">
+    <value>正在恢复任务...</value>
+  </data>
+  <data name="BPMDlg_Delete_ConfirmMsg" xml:space="preserve">
+    <value>请输入删除理由：</value>
+  </data>
+  <data name="BPMDlg_Delete_ItemFail" xml:space="preserve">
+    <value>{0}：删除失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Delete_ItemSuccess" xml:space="preserve">
+    <value>{0}：已删除</value>
+  </data>
+  <data name="BPMDlg_Delete_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已删除！</value>
+  </data>
+  <data name="BPMDlg_Delete_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Delete_Waiting" xml:space="preserve">
+    <value>正在删除任务...</value>
+  </data>
+  <data name="BPMDlg_DeleteDraft_Confirm" xml:space="preserve">
+    <value>您确定要删除选中的草稿吗？</value>
+  </data>
+  <data name="BPMDlg_DeleteDraft_Waiting" xml:space="preserve">
+    <value>正在删除草稿...</value>
+  </data>
+  <data name="BPMDlg_InviteIndicate_ItemFail" xml:space="preserve">
+    <value>{0}：邀请失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_InviteIndicate_ItemSuccess" xml:space="preserve">
+    <value>{0}：已邀请以下人员阅示{1}</value>
+  </data>
+  <data name="BPMDlg_InviteIndicate_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已邀请以下人员阅示：{1}！</value>
+  </data>
+  <data name="BPMDlg_InviteIndicate_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_InviteIndicate_Waiting" xml:space="preserve">
+    <value>正在执行邀请...</value>
+  </data>
+  <data name="BPMDlg_Inform_ItemFail" xml:space="preserve">
+    <value>{0}：知会失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Inform_ItemSuccess" xml:space="preserve">
+    <value>{0}：已知会以下人员{1}</value>
+  </data>
+  <data name="BPMDlg_Inform_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已知会以下人员：{1}！</value>
+  </data>
+  <data name="BPMDlg_Inform_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Inform_Waiting" xml:space="preserve">
+    <value>正在操作...</value>
+  </data>
+  <data name="BPMDlg_Jump_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Jump_Title" xml:space="preserve">
+    <value>任务调度-{0}</value>
+  </data>
+  <data name="BPMDlg_Jump_Waiting" xml:space="preserve">
+    <value>正在执行调度...</value>
+  </data>
+  <data name="BPMDlg_JumpDlg_SubTitle_Src" xml:space="preserve">
+    <value>要执行调度的步骤</value>
+  </data>
+  <data name="BPMDlg_JumpDlg_SubTitle_Tag" xml:space="preserve">
+    <value>将选中步骤调度到</value>
+  </data>
+  <data name="BPMDlg_JumpDlg_Title" xml:space="preserve">
+    <value>任务调度</value>
+  </data>
+  <data name="BPMDlg_OrgUserPanel_SearchUser" xml:space="preserve">
+    <value>用户搜索</value>
+  </data>
+  <data name="BPMDlg_OrgUserPanel_SearchUserResult" xml:space="preserve">
+    <value>搜索"{0}"的结果</value>
+  </data>
+  <data name="BPMDlg_OrgUserPanel_TreeTitle" xml:space="preserve">
+    <value>选择部门</value>
+  </data>
+  <data name="BPMDlg_PartiDlg_GridCols_Delegator" xml:space="preserve">
+    <value>指定委托人</value>
+  </data>
+  <data name="BPMDlg_PartiDlg_Title" xml:space="preserve">
+    <value>指定委托人</value>
+  </data>
+  <data name="BPMDlg_PartiDlg_Topic" xml:space="preserve">
+    <value>可以选择一个或多个委托人&lt;br/&gt;多个委托人按顺序应用，当第一委托人外出时自动转发给第二委托人，依次类推。</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_ConfirmMsg" xml:space="preserve">
+    <value>请输入取回理由：</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_ItemFail" xml:space="preserve">
+    <value>{0}：取回失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_ItemSuccess" xml:space="preserve">
+    <value>{0}：已取回</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已取回！</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_Title" xml:space="preserve">
+    <value>取回重填</value>
+  </data>
+  <data name="BPMDlg_PickbackRestart_Waiting" xml:space="preserve">
+    <value>正在执行取回操作...</value>
+  </data>
+  <data name="BPMDlg_PickupShareTask_ItemFail" xml:space="preserve">
+    <value>{0}：获取失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_PickupShareTask_ItemSuccess" xml:space="preserve">
+    <value>{0}：获取成功</value>
+  </data>
+  <data name="BPMDlg_PickupShareTask_Waiting" xml:space="preserve">
+    <value>正在获取任务...</value>
+  </data>
+  <data name="BPMDlg_ProcessChartDlg_Title" xml:space="preserve">
+    <value>流程图-{0}</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_All" xml:space="preserve">
+    <value>所有流程</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_Cond" xml:space="preserve">
+    <value>附加条件</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_Exclude" xml:space="preserve">
+    <value>除以下流程外</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_Include" xml:space="preserve">
+    <value>仅以下流程</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_ProcessName" xml:space="preserve">
+    <value>流程名称</value>
+  </data>
+  <data name="BPMDlg_ProcessDefDlg_Title" xml:space="preserve">
+    <value>指定需要委托的流程</value>
+  </data>
+  <data name="BPMDlg_Public_ItemFail" xml:space="preserve">
+    <value>{0}：公开失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Public_ItemSuccess" xml:space="preserve">
+    <value>{0}：已公开给{1}</value>
+  </data>
+  <data name="BPMDlg_Public_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已公开给：{1}！</value>
+  </data>
+  <data name="BPMDlg_Public_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Public_Waiting" xml:space="preserve">
+    <value>正在执行公开...</value>
+  </data>
+  <data name="BPMDlg_PutbackShareTask_ItemFail" xml:space="preserve">
+    <value>{0}：放回共享失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_PutbackShareTask_ItemSuccess" xml:space="preserve">
+    <value>{0}：放回共享成功</value>
+  </data>
+  <data name="BPMDlg_PutbackShareTask_Waiting" xml:space="preserve">
+    <value>正在放回任务...</value>
+  </data>
+  <data name="BPMDlg_Reject_ConfirmMsg" xml:space="preserve">
+    <value>请输入拒绝理由：</value>
+  </data>
+  <data name="BPMDlg_Reject_ConfirmTitle" xml:space="preserve">
+    <value>拒绝确认</value>
+  </data>
+  <data name="BPMDlg_Reject_ItemFail" xml:space="preserve">
+    <value>{0}：处理失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Reject_ItemSuccess" xml:space="preserve">
+    <value>{0}：已拒绝</value>
+  </data>
+  <data name="BPMDlg_Reject_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已拒绝！</value>
+  </data>
+  <data name="BPMDlg_Reject_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Reject_Waiting" xml:space="preserve">
+    <value>正在执行拒绝...</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_ConfirmMsg" xml:space="preserve">
+    <value>请输入退回理由：</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_ItemFail" xml:space="preserve">
+    <value>{0}：退回失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_ItemSuccess" xml:space="preserve">
+    <value>{0}：已退回重填</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已退回给提交人！</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_Title" xml:space="preserve">
+    <value>退回重填</value>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_Waiting" xml:space="preserve">
+    <value>正在执行退回重填...</value>
+  </data>
+  <data name="BPMDlg_Sch_Initiator" xml:space="preserve">
+    <value>提交人</value>
+  </data>
+  <data name="BPMDlg_Sch_InitiatorDesc" xml:space="preserve">
+    <value>任务由此工号员工提交</value>
+  </data>
+  <data name="BPMDlg_Sch_Keyword" xml:space="preserve">
+    <value>关键字</value>
+  </data>
+  <data name="BPMDlg_Sch_PostDate" xml:space="preserve">
+    <value>提交日期</value>
+  </data>
+  <data name="BPMDlg_Sch_PostDateDesc" xml:space="preserve">
+    <value>提交日期是</value>
+  </data>
+  <data name="BPMDlg_Sch_ProcessName" xml:space="preserve">
+    <value>流程名</value>
+  </data>
+  <data name="BPMDlg_Sch_ProcessNameDesc" xml:space="preserve">
+    <value>流程名是</value>
+  </data>
+  <data name="BPMDlg_Sch_Recipient" xml:space="preserve">
+    <value>当前处理人</value>
+  </data>
+  <data name="BPMDlg_Sch_RecipientDesc" xml:space="preserve">
+    <value>任务正在由此账号员工处理</value>
+  </data>
+  <data name="BPMDlg_Sch_SN" xml:space="preserve">
+    <value>流水号</value>
+  </data>
+  <data name="BPMDlg_Sch_SNDesc" xml:space="preserve">
+    <value>流水号的开头是</value>
+  </data>
+  <data name="BPMDlg_Sch_TaskID" xml:space="preserve">
+    <value>任务编号</value>
+  </data>
+  <data name="BPMDlg_Sch_TaskIDDesc" xml:space="preserve">
+    <value>任务的TaskID是</value>
+  </data>
+  <data name="BPMDlg_Sch_TaskStatus" xml:space="preserve">
+    <value>任务状态</value>
+  </data>
+  <data name="BPMDlg_Sch_TaskStatusDesc" xml:space="preserve">
+    <value>任务的当前状态是</value>
+  </data>
+  <data name="BPMDlg_SchDlg_EmployeeDesc" xml:space="preserve">
+    <value>员工账号是</value>
+  </data>
+  <data name="BPMDlg_SchDlg_StepNameDesc" xml:space="preserve">
+    <value>步骤名是</value>
+  </data>
+  <data name="BPMDlg_SchDlgPNAP_Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="BPMDlg_SchDlgPNAP_DateDesc" xml:space="preserve">
+    <value>统计日期是</value>
+  </data>
+  <data name="BPMDlg_SchHistoryTask_KeywordDesc" xml:space="preserve">
+    <value>任务包含以下关键字</value>
+  </data>
+  <data name="BPMDlg_SelProcessingStep" xml:space="preserve">
+    <value>请选择步骤：</value>
+  </data>
+  <data name="BPMDlg_SelReturnStep" xml:space="preserve">
+    <value>请选择步骤：</value>
+  </data>
+  <data name="BPMDlg_SelSID_ErrSIDType" xml:space="preserve">
+    <value>错误的用户类型：{0}！</value>
+  </data>
+  <data name="BPMDlg_SelSID_GridCols_SIDs" xml:space="preserve">
+    <value>用户、组、部门</value>
+  </data>
+  <data name="BPMDlg_SelSID_TagPanelTitle" xml:space="preserve">
+    <value>当前选中对象</value>
+  </data>
+  <data name="BPMDlg_SelUser_TagPanelTitle" xml:space="preserve">
+    <value>当前选中用户</value>
+  </data>
+  <data name="BPMDlg_SubmitAuth_FailMsg" xml:space="preserve">
+    <value>输入密码有误，验证未通过！</value>
+  </data>
+  <data name="BPMDlg_SubmitAuth_Msg" xml:space="preserve">
+    <value>您选择了："{0}"&lt;br/&gt;执行本处理需要验证用户密码，请输入密码：</value>
+  </data>
+  <data name="BPMDlg_SubmitAuth_Title" xml:space="preserve">
+    <value>提交验证</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_Caption" xml:space="preserve">
+    <value>TaskID：{0} | 提交人：{1} | 状态：{2}&lt;div class='ver'&gt;版本:{3}&lt;/div&gt;</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_TabChart" xml:space="preserve">
+    <value>在流程图中查看</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_TabList" xml:space="preserve">
+    <value>以列表形式查看</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_Title" xml:space="preserve">
+    <value>任务处理过程-{0}</value>
+  </data>
+  <data name="BPMDlg_Transfer_ItemFail" xml:space="preserve">
+    <value>{0}：委托失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Transfer_ItemSuccess" xml:space="preserve">
+    <value>{0}：已委托给{1}</value>
+  </data>
+  <data name="BPMDlg_Transfer_NextStep" xml:space="preserve">
+    <value>下一步&gt;&gt;</value>
+  </data>
+  <data name="BPMDlg_Transfer_SelStep" xml:space="preserve">
+    <value>选择要委托的步骤：</value>
+  </data>
+  <data name="BPMDlg_Transfer_SelUserTitle" xml:space="preserve">
+    <value>选择委托人</value>
+  </data>
+  <data name="BPMDlg_Transfer_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已委托给：{1}！</value>
+  </data>
+  <data name="BPMDlg_Transfer_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Transfer_Title1" xml:space="preserve">
+    <value>任务委托-{0}-Step1：选择要委托的步骤</value>
+  </data>
+  <data name="BPMDlg_Transfer_Title2" xml:space="preserve">
+    <value>任务委托-{0}-Step2：选择委托人</value>
+  </data>
+  <data name="BPMDlg_Transfer_Waiting" xml:space="preserve">
+    <value>正在执行委托...</value>
+  </data>
+  <data name="BPM_FlashUpload_ImageType" xml:space="preserve">
+    <value>*.jpg;*.gif;*.png;*.bmp</value>
+  </data>
+  <data name="BPM_FlashUpload_ImageDesc" xml:space="preserve">
+    <value>图形文件</value>
+  </data>
+  <data name="BPM_FlashUpload_AllFileDesc" xml:space="preserve">
+    <value>所有文件</value>
+  </data>
+  <data name="BPM_FlashUpload_DeleteConfirm" xml:space="preserve">
+    <value>文件一旦删除将不可恢复！\n您确定要删除附件"{0}"吗?</value>
+  </data>
+  <data name="BPM_FlashUpload_QueueError_Default" xml:space="preserve">
+    <value>不能上传附件：{0}，错误号：{2}</value>
+  </data>
+  <data name="BPM_FlashUpload_QueueError_M100" xml:space="preserve">
+    <value>文件列队已满</value>
+  </data>
+  <data name="BPM_FlashUpload_QueueError_M110" xml:space="preserve">
+    <value>{0}文件大小超出限制！\n允许上传的最大文件是：{4}，\n此文件的大小：{1}。</value>
+  </data>
+  <data name="BPM_FlashUpload_QueueError_M120" xml:space="preserve">
+    <value>文件内容是空的</value>
+  </data>
+  <data name="BPM_FlashUpload_QueueError_M130" xml:space="preserve">
+    <value>文件格式不正确</value>
+  </data>
+  <data name="BPM_FlashUpload_UploadError_M200" xml:space="preserve">
+    <value>HTTP错误，上传失败：{0}！</value>
+  </data>
+  <data name="BPM_FlashUpload_UploadError_M220" xml:space="preserve">
+    <value>HTTP错误，上传失败：{0}！</value>
+  </data>
+  <data name="BPM_FlashUpload_UploadError_M240" xml:space="preserve">
+    <value>文件大小超出限制：{0}({1})！</value>
+  </data>
+  <data name="BPM_FlashUpload_UploadFail_Msg" xml:space="preserve">
+    <value>上传失败：{0}！\n原因：\n{1}</value>
+  </data>
+  <data name="BPM_FlashUpload_UploadFailHttp_Msg" xml:space="preserve">
+    <value>上传失败，错误号：{2}</value>
+  </data>
+  <data name="BPM_HisFormLink_DefaultText" xml:space="preserve">
+    <value>历史表单</value>
+  </data>
+  <data name="BPM_SubmitAuthDlg_DefaultMsg" xml:space="preserve">
+    <value>您确定要“{0}”吗？</value>
+  </data>
+  <data name="BPM_SubmitAuthDlg_Title" xml:space="preserve">
+    <value>提交验证</value>
+  </data>
+  <data name="BPMDlg_BrowserButton_HttpDlg_Title" xml:space="preserve">
+    <value>开窗查询</value>
+  </data>
+  <data name="BPMDlg_BrowserButton_JSDlg_Title" xml:space="preserve">
+    <value>开窗查询</value>
+  </data>
+  <data name="BPMDlg_DataBrowser_AjaxErrMsg" xml:space="preserve">
+    <value>开窗查询失败：{0}</value>
+  </data>
+  <data name="BPMDlg_DataBrowser_AjaxErrTitle" xml:space="preserve">
+    <value>服务器错误</value>
+  </data>
+  <data name="BPMDlg_DataBrowser_ErrMsg" xml:space="preserve">
+    <value>错误发生文件：{0}&lt;br/&gt;原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_DataBrowser_ErrTitle" xml:space="preserve">
+    <value>开窗查询失败</value>
+  </data>
+  <data name="BPMDlg_Excel_OpenFail_Msg" xml:space="preserve">
+    <value>打开Excel文件失败！可能是由于您没有安装Microsoft Excel。</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_Browser" xml:space="preserve">
+    <value>浏览...</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_FileType" xml:space="preserve">
+    <value>Excel 文件(*.xls;*.xlsx)|*.xls;*.xlsx</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_LabFile" xml:space="preserve">
+    <value>Excel文件:</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_LabSheet" xml:space="preserve">
+    <value>Sheet:</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_PromptText" xml:space="preserve">
+    <value>请选择Excel文件...</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_PromptTextSheet" xml:space="preserve">
+    <value>请选择sheet...</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_Title" xml:space="preserve">
+    <value>Excel导入</value>
+  </data>
+  <data name="BPMDlg_ExportExcel_CurPage" xml:space="preserve">
+    <value>当前页</value>
+  </data>
+  <data name="BPMDlg_ExportExcel_PageNumberOverSetting" xml:space="preserve">
+    <value>导出页数超限！管理员设定了最大导出页数为{0}</value>
+  </data>
+  <data name="BPMDlg_ExportExcel_Range" xml:space="preserve">
+    <value>页码范围</value>
+  </data>
+  <data name="BPMDlg_ExportExcel_Title" xml:space="preserve">
+    <value>导出到Excel</value>
+  </data>
+  <data name="BPMDlg_RecedeBack_CaptionText" xml:space="preserve">
+    <value>将任务退回到：</value>
+  </data>
+  <data name="BPMDlg_RecedeBack_Title" xml:space="preserve">
+    <value>退单</value>
+  </data>
+  <data name="BPMDlg_Sign_Msg" xml:space="preserve">
+    <value>{0} 您好：&lt;br/&gt;执行本处理需要验证用户密码，请输入密码：</value>
+  </data>
+  <data name="BPMDlg_Sign_NoAccount" xml:space="preserve">
+    <value>尚未指定签名用户！</value>
+  </data>
+  <data name="BPMDlg_Sign_PwdErr" xml:space="preserve">
+    <value>输入密码有误，验证未通过！</value>
+  </data>
+  <data name="BPMDlg_Sign_Title" xml:space="preserve">
+    <value>签名</value>
+  </data>
+  <data name="All_DateRange" xml:space="preserve">
+    <value>当前统计日期 : {0} ~ {1}</value>
+  </data>
+  <data name="All_Invalid" xml:space="preserve">
+    <value>无效</value>
+  </data>
+  <data name="All_IsValid" xml:space="preserve">
+    <value>是否有效</value>
+  </data>
+  <data name="All_Loading" xml:space="preserve">
+    <value>加载中...</value>
+  </data>
+  <data name="All_New" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="All_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="All_Valid" xml:space="preserve">
+    <value>有效</value>
+  </data>
+  <data name="BPM_ExcelReport_Loading" xml:space="preserve">
+    <value>正在加载报表...</value>
+  </data>
+  <data name="BPM_YReport_ChangeView" xml:space="preserve">
+    <value>切换视图</value>
+  </data>
+  <data name="BPM_YZReport_ChartRotation" xml:space="preserve">
+    <value>旋转角度</value>
+  </data>
+  <data name="BPM_YZReport_ChartType" xml:space="preserve">
+    <value>图形类别</value>
+  </data>
+  <data name="BPM_YZReport_ChartUpdate" xml:space="preserve">
+    <value>切换图形</value>
+  </data>
+  <data name="BPM_YZReport_GetDef_ErrMsg" xml:space="preserve">
+    <value>错误发生文件：{0}&lt;br/&gt;原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPM_YZReport_GetDef_ErrTitle" xml:space="preserve">
+    <value>获取报表定义失败</value>
+  </data>
+  <data name="BPM_YZReport_GetDef_HttpErrMsg" xml:space="preserve">
+    <value>获得报表定义失败：{0}</value>
+  </data>
+  <data name="BPM_YZReport_GetDef_HttpErrTitle" xml:space="preserve">
+    <value>服务器错误</value>
+  </data>
+  <data name="BPMDlg_AssignPerm_PermList_Allow" xml:space="preserve">
+    <value>允许</value>
+  </data>
+  <data name="BPMDlg_AssignPerm_PermList_Leadship" xml:space="preserve">
+    <value>授权领导</value>
+  </data>
+  <data name="BPMDlg_AssignPerm_PermList_Perm" xml:space="preserve">
+    <value>权限</value>
+  </data>
+  <data name="BPMDlg_AssignPerm_Title" xml:space="preserve">
+    <value>修改授权</value>
+  </data>
+  <data name="Building_Html" xml:space="preserve">
+    <value>本模块正在建设中...</value>
+  </data>
+  <data name="Building_Title" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Personal_ChgPwd_Title" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="Personal_NotifySetting_Title" xml:space="preserve">
+    <value>通知接收</value>
+  </data>
+  <data name="Personal_TaskRule_Delete_NoSelection" xml:space="preserve">
+    <value>请至少选择一个任务规则</value>
+  </data>
+  <data name="Personal_TaskRule_DeleteConfirm_Msg" xml:space="preserve">
+    <value>您确定要删除选中的任务规则吗？</value>
+  </data>
+  <data name="Personal_TaskRule_Edit" xml:space="preserve">
+    <value>编辑选中规则</value>
+  </data>
+  <data name="Personal_TaskRule_GridCols_RuleDspName" xml:space="preserve">
+    <value>规则（按顺序应用）</value>
+  </data>
+  <data name="Personal_TaskRule_New" xml:space="preserve">
+    <value>新建规则</value>
+  </data>
+  <data name="Personal_TaskRule_Processes" xml:space="preserve">
+    <value>流程为</value>
+  </data>
+  <data name="Personal_TaskRule_ProcessTypeAll" xml:space="preserve">
+    <value>所有流程</value>
+  </data>
+  <data name="Personal_TaskRule_ProcessTypeEmpty" xml:space="preserve">
+    <value>流程名(条件)列表</value>
+  </data>
+  <data name="Personal_TaskRule_ProcessTypeExclude" xml:space="preserve">
+    <value>除 {0} 流程外</value>
+  </data>
+  <data name="Personal_TaskRule_RuleType" xml:space="preserve">
+    <value>规则类型：</value>
+  </data>
+  <data name="Personal_TaskRule_RuleTypeAssistant" xml:space="preserve">
+    <value>秘书 - 直接将任务转发给代理人</value>
+  </data>
+  <data name="Personal_TaskRule_RuleTypeDelegation" xml:space="preserve">
+    <value>外出转发 - 外出时将任务转发给代理人</value>
+  </data>
+  <data name="Personal_TaskRule_Save_Fail_Msg" xml:space="preserve">
+    <value>保存规则失败！</value>
+  </data>
+  <data name="Personal_TaskRule_Save_Success_Msg" xml:space="preserve">
+    <value>规则已成功保存！</value>
+  </data>
+  <data name="Personal_TaskRule_Save_Success_Title" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="Personal_TaskRule_To" xml:space="preserve">
+    <value>转发给</value>
+  </data>
+  <data name="Personal_TaskRulePanel_Title" xml:space="preserve">
+    <value>任务规则</value>
+  </data>
+  <data name="All_Female" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="All_Male" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="Aspx_AccInfo_Account" xml:space="preserve">
+    <value>账号: </value>
+  </data>
+  <data name="Aspx_AccInfo_Birthday" xml:space="preserve">
+    <value>生日:</value>
+  </data>
+  <data name="Aspx_AccInfo_Caption" xml:space="preserve">
+    <value>账号信息</value>
+  </data>
+  <data name="Aspx_AccInfo_CostCenter" xml:space="preserve">
+    <value>成本中心:</value>
+  </data>
+  <data name="Aspx_AccInfo_DateHired" xml:space="preserve">
+    <value>入职日期:</value>
+  </data>
+  <data name="Aspx_AccInfo_Desc" xml:space="preserve">
+    <value>描述:</value>
+  </data>
+  <data name="Aspx_AccInfo_DisplayName" xml:space="preserve">
+    <value>全名:</value>
+  </data>
+  <data name="Aspx_AccInfo_EMail" xml:space="preserve">
+    <value>电子邮件:</value>
+  </data>
+  <data name="Aspx_AccInfo_Fail" xml:space="preserve">
+    <value>账号信息修改失败！</value>
+  </data>
+  <data name="Aspx_AccInfo_HomePhone" xml:space="preserve">
+    <value>家庭电话:</value>
+  </data>
+  <data name="Aspx_AccInfo_HRID" xml:space="preserve">
+    <value>雇员编号:</value>
+  </data>
+  <data name="Aspx_AccInfo_Mobile" xml:space="preserve">
+    <value>移动电话:</value>
+  </data>
+  <data name="Aspx_AccInfo_Office" xml:space="preserve">
+    <value>办公室:</value>
+  </data>
+  <data name="Aspx_AccInfo_Phone" xml:space="preserve">
+    <value>电话:</value>
+  </data>
+  <data name="Aspx_AccInfo_Sec" xml:space="preserve">
+    <value>性别:</value>
+  </data>
+  <data name="Aspx_AccInfo_Submit" xml:space="preserve">
+    <value>提交修改</value>
+  </data>
+  <data name="Aspx_AccInfo_Success" xml:space="preserve">
+    <value>账号信息已更新！</value>
+  </data>
+  <data name="Aspx_AccInfo_Website" xml:space="preserve">
+    <value>网站:</value>
+  </data>
+  <data name="Aspx_ChgNotify_Account" xml:space="preserve">
+    <value>账号: </value>
+  </data>
+  <data name="Aspx_ChgNotify_Caption" xml:space="preserve">
+    <value>通知接收设置</value>
+  </data>
+  <data name="Aspx_ChgNotify_Fail" xml:space="preserve">
+    <value>修改失败！</value>
+  </data>
+  <data name="Aspx_ChgNotify_Notify" xml:space="preserve">
+    <value>接收&lt;br/&gt;选中的通知:</value>
+  </data>
+  <data name="Aspx_ChgNotify_Submit" xml:space="preserve">
+    <value>提交修改</value>
+  </data>
+  <data name="Aspx_ChgNotify_Success" xml:space="preserve">
+    <value>修改成功！</value>
+  </data>
+  <data name="Aspx_ChgPwd_Account" xml:space="preserve">
+    <value>账&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;号:</value>
+  </data>
+  <data name="Aspx_ChgPwd_Caption" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="Aspx_ChgPwd_Fail" xml:space="preserve">
+    <value>密码修改失败！</value>
+  </data>
+  <data name="Aspx_ChgPwd_NewPwd" xml:space="preserve">
+    <value>新&amp;nbsp;&amp;nbsp;密&amp;nbsp;&amp;nbsp;码:</value>
+  </data>
+  <data name="Aspx_ChgPwd_NewPwdCfm" xml:space="preserve">
+    <value>确认密码:</value>
+  </data>
+  <data name="Aspx_ChgPwd_OrgPwd" xml:space="preserve">
+    <value>原&amp;nbsp;&amp;nbsp;密&amp;nbsp;&amp;nbsp;码:</value>
+  </data>
+  <data name="Aspx_ChgPwd_PwdDiff" xml:space="preserve">
+    <value>二次输入的密码不一致！</value>
+  </data>
+  <data name="Aspx_ChgPwd_Submit" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="Aspx_ChgPwd_Success" xml:space="preserve">
+    <value>密码修改成功！</value>
+  </data>
+  <data name="Aspx_Login_Account" xml:space="preserve">
+    <value>账号:</value>
+  </data>
+  <data name="Aspx_Login_BoxCaption" xml:space="preserve">
+    <value>用户登录</value>
+  </data>
+  <data name="Aspx_Login_BtnLogin" xml:space="preserve">
+    <value>登 录</value>
+  </data>
+  <data name="Aspx_Login_ForgotPwd" xml:space="preserve">
+    <value>忘记密码?</value>
+  </data>
+  <data name="Aspx_Login_Pwd" xml:space="preserve">
+    <value>密码:</value>
+  </data>
+  <data name="Aspx_Login_RegNewAccount" xml:space="preserve">
+    <value>用户注册</value>
+  </data>
+  <data name="Aspx_Login_Step2_BoxCaption" xml:space="preserve">
+    <value>用户登录</value>
+  </data>
+  <data name="Aspx_Login_Step2_Msg" xml:space="preserve">
+    <value>请点击左侧的 {0} 来选择您要登录的工作地点</value>
+  </data>
+  <data name="Aspx_Login_Step0_BoxCaption" xml:space="preserve">
+    <value>系统不符合要求</value>
+  </data>
+  <data name="Aspx_Login_Step0_Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="Aspx_Login_Step0_Download_More" xml:space="preserve">
+    <value>浏览更多版本</value>
+  </data>
+  <data name="Aspx_Login_Step0_DownloadBrowser" xml:space="preserve">
+    <value>下载 Microsoft Internet Explorer 8</value>
+  </data>
+  <data name="Aspx_Login_Step0_Msg" xml:space="preserve">
+    <value>很抱歉! 本系统需要 &lt;strong&gt; Internet Explorer 6、FireFox、Safari、Google&lt;/strong&gt; 及更高版本的浏览器才能使用, 您当前使用的是 &lt;strong id="spnBrowserName"&gt;---&lt;/strong&gt;, 您需要升级您的浏览器, 否则将无法使用本系统的所有功能.</value>
+  </data>
+  <data name="Aspx_Login_Step0_Skip" xml:space="preserve">
+    <value>跳过升级(不推荐)</value>
+  </data>
+  <data name="Aspx_Login_Step1_BoxCaption" xml:space="preserve">
+    <value>尚未安装必须的插件</value>
+  </data>
+  <data name="Aspx_Login_Step1_Ignore" xml:space="preserve">
+    <value>跳过(不推荐)</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_CheckAgain" xml:space="preserve">
+    <value>重新检测</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_CurStep" xml:space="preserve">
+    <value>当前状态: </value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_InstallFailed" xml:space="preserve">
+    <value>安装失败</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_InstallFinished" xml:space="preserve">
+    <value>我已安装完毕</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_Installing" xml:space="preserve">
+    <value>正在安装</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_InstallNow" xml:space="preserve">
+    <value>立即安装(推荐)</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_InstallSucceed" xml:space="preserve">
+    <value>安装成功</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_NotInstalled" xml:space="preserve">
+    <value>尚未安装</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_PlsWaiting" xml:space="preserve">
+    <value>请等待安装完成...</value>
+  </data>
+  <data name="Aspx_Login_Step1_Install_Retry" xml:space="preserve">
+    <value>重试</value>
+  </data>
+  <data name="Aspx_Login_Step1_Login_Continue" xml:space="preserve">
+    <value>继续登录</value>
+  </data>
+  <data name="Aspx_Login_Step1_Msg" xml:space="preserve">
+    <value>要想更好的使用本系统, 您需要安装系统插件, 安装过程非常快, 安装完毕后可能需要重新打开本页.</value>
+  </data>
+  <data name="Aspx_BrowserNameFirefox" xml:space="preserve">
+    <value>火狐浏览器</value>
+  </data>
+  <data name="Aspx_BrowserNameGoogle" xml:space="preserve">
+    <value>谷歌浏览器</value>
+  </data>
+  <data name="Aspx_BrowserNameOpera" xml:space="preserve">
+    <value>Opera 浏览器</value>
+  </data>
+  <data name="Aspx_BrowserNameOther" xml:space="preserve">
+    <value>其他浏览器</value>
+  </data>
+  <data name="Aspx_BrowserNameSafari" xml:space="preserve">
+    <value>Safari</value>
+  </data>
+  <data name="Aspx_DefaultPage_Title" xml:space="preserve">
+    <value>业务流程管理信息系统</value>
+  </data>
+  <data name="Aspx_Login_BrowserWarning" xml:space="preserve">
+    <value>系统检测到您的操作系统为 &lt;strong&gt;{0}({1}位)&lt;/strong&gt;, 您可以从下面的列表中找到对应的 &lt;strong&gt;简体中文(32位)&lt;/strong&gt; 浏览器.</value>
+  </data>
+  <data name="Aspx_Login_EnterAccountTip" xml:space="preserve">
+    <value>请输入您的账号</value>
+  </data>
+  <data name="Aspx_Login_EnterPwdTip" xml:space="preserve">
+    <value>请输入登录密码</value>
+  </data>
+  <data name="Aspx_Login_Fail" xml:space="preserve">
+    <value>账号或密码不正确</value>
+  </data>
+  <data name="Aspx_Login_HttpErr" xml:space="preserve">
+    <value>通讯错误</value>
+  </data>
+  <data name="Aspx_Login_PageExp" xml:space="preserve">
+    <value>系统错误，请与管理员联系</value>
+  </data>
+  <data name="Aspx_Login_SelPos" xml:space="preserve">
+    <value>请先选择一个工作地点来进行登录!</value>
+  </data>
+  <data name="Aspx_Login_SelPosTip" xml:space="preserve">
+    <value>请选择工作地点</value>
+  </data>
+  <data name="Aspx_Login_Success" xml:space="preserve">
+    <value>登录成功</value>
+  </data>
+  <data name="Aspx_Login_Title" xml:space="preserve">
+    <value>业务流程管理信息系统</value>
+  </data>
+  <data name="Aspx_Login_Unknow" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Aspx_Excel_IncorrectCellName" xml:space="preserve">
+    <value>单元格名称"{0}"不合法！</value>
+  </data>
+  <data name="BPM_SignTrace_CancelInvite_Msg" xml:space="preserve">
+    <value>您确定要取消邀请吗？</value>
+  </data>
+  <data name="BPM_SignTrace_CancelInvite_Title" xml:space="preserve">
+    <value>取消邀请确认</value>
+  </data>
+  <data name="BPM_SignTrace_CancelInvite_Waiting" xml:space="preserve">
+    <value>正在取消邀请...</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_ProcessTrace" xml:space="preserve">
+    <value>处理过程</value>
+  </data>
+  <data name="BPMDlg_TaskTrace_RunningSteps" xml:space="preserve">
+    <value>处理中的过程</value>
+  </data>
+  <data name="BPMModules_BPM" xml:space="preserve">
+    <value>流程管理</value>
+  </data>
+  <data name="BPMModules_BPM_Task" xml:space="preserve">
+    <value>任务管理</value>
+  </data>
+  <data name="BPMModules_BPM_Task_Cur" xml:space="preserve">
+    <value>当前任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_Cur_Share" xml:space="preserve">
+    <value>共享任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_Cur_Worklist" xml:space="preserve">
+    <value>待办任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_Drafts" xml:space="preserve">
+    <value>草稿箱</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His" xml:space="preserve">
+    <value>历史任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His_All" xml:space="preserve">
+    <value>所有可查看的任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His_MyPosted" xml:space="preserve">
+    <value>我发起的任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His_MyRequest" xml:space="preserve">
+    <value>我的申请</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His_DelegationRequest" xml:space="preserve">
+    <value>我代填的申请</value>
+  </data>
+  <data name="BPMModules_BPM_Task_His_MyProcessed" xml:space="preserve">
+    <value>我处理过的任务</value>
+  </data>
+  <data name="BPMModules_BPM_Task_Post" xml:space="preserve">
+    <value>发起任务</value>
+  </data>
+  <data name="BPMModules_Personal" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="BPMModules_Personal_Notify" xml:space="preserve">
+    <value>通知接收</value>
+  </data>
+  <data name="BPMModules_Personal_Password" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="BPMModules_Personal_TaskRule" xml:space="preserve">
+    <value>任务规则</value>
+  </data>
+  <data name="BPMModules_Personal_UserInfo" xml:space="preserve">
+    <value>账号信息</value>
+  </data>
+  <data name="BPMModules_RPT" xml:space="preserve">
+    <value>报表管理</value>
+  </data>
+  <data name="BPMModules_RPT_YZReportRoot" xml:space="preserve">
+    <value>其它报表</value>
+  </data>
+  <data name="BPMModules_SYS" xml:space="preserve">
+    <value>系统管理</value>
+  </data>
+  <data name="BPMModules_SYS_BPM" xml:space="preserve">
+    <value>流程管理</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_BPM" xml:space="preserve">
+    <value>流程管理</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Log" xml:space="preserve">
+    <value>系统日志</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Performance" xml:space="preserve">
+    <value>处理效率</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Performance_Detail" xml:space="preserve">
+    <value>明细列表</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Performance_Step" xml:space="preserve">
+    <value>按步骤统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Performance_User" xml:space="preserve">
+    <value>按员工统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Timeout" xml:space="preserve">
+    <value>超时统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Timeout_Detail" xml:space="preserve">
+    <value>明细列表</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Timeout_Step" xml:space="preserve">
+    <value>按步骤统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Timeout_User" xml:space="preserve">
+    <value>按员工统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Usage" xml:space="preserve">
+    <value>系统利用率</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Usage_Process" xml:space="preserve">
+    <value>流程使用统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Usage_Sys" xml:space="preserve">
+    <value>系统使用统计</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Users" xml:space="preserve">
+    <value>在线用户</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Users_30Days" xml:space="preserve">
+    <value>最近30天登录用户</value>
+  </data>
+  <data name="BPMModules_SYS_BPM_Users_Online" xml:space="preserve">
+    <value>当前在线用户</value>
+  </data>
+  <data name="YZApp_Default_ChangePwd" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="YZApp_Default_Link1" xml:space="preserve">
+    <value>门户首页</value>
+  </data>
+  <data name="YZApp_Default_LinkMsg" xml:space="preserve">
+    <value>邮件</value>
+  </data>
+  <data name="YZApp_Default_LinkWorklist" xml:space="preserve">
+    <value>待办事项</value>
+  </data>
+  <data name="YZApp_Default_Logout" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="BPM_Default_OutofOffice" xml:space="preserve">
+    <value>外出设置</value>
+  </data>
+  <data name="YZApp_Default_UserInfo" xml:space="preserve">
+    <value>账号信息</value>
+  </data>
+  <data name="YZApp_Default_Welcome" xml:space="preserve">
+    <value>欢迎, {0}</value>
+  </data>
+  <data name="All_Global_ErrorTitle" xml:space="preserve">
+    <value>&lt;span style='letter-spacing:1px'&gt;FlowPortal.net&lt;/span&gt; 错误报告</value>
+  </data>
+  <data name="All_Global_UnknowException" xml:space="preserve">
+    <value>发生了未知的异常。</value>
+  </data>
+  <data name="All_JSErr_Msg" xml:space="preserve">
+    <value>您的浏览器发生了Javascript运行错误，请与管理员联系&lt;br&gt;错误：{0}&lt;br&gt;文件：{1}&lt;br&gt;错误发生行（仅供参考）：{2}</value>
+  </data>
+  <data name="All_JSErr_Title" xml:space="preserve">
+    <value>浏览器错误报告</value>
+  </data>
+  <data name="All_JsonData_HttpFail_Msg" xml:space="preserve">
+    <value>从 {0} 装载数据失败，原因：</value>
+  </data>
+  <data name="All_JsonData_HttpFail_Title" xml:space="preserve">
+    <value>装载数据失败</value>
+  </data>
+  <data name="All_LoadModule_HttpFail_Msg" xml:space="preserve">
+    <value>加载模块定义文件 {0} 失败，原因：</value>
+  </data>
+  <data name="All_LoadModule_HttpFail_Title" xml:space="preserve">
+    <value>模块装载失败</value>
+  </data>
+  <data name="All_RFC_HttpFail_Msg" xml:space="preserve">
+    <value>访问RFC服务 {0} 失败，原因：</value>
+  </data>
+  <data name="All_RFC_HttpFail_Title" xml:space="preserve">
+    <value>远程调用失败</value>
+  </data>
+  <data name="All_Week1Short" xml:space="preserve">
+    <value>一</value>
+  </data>
+  <data name="All_Week2Short" xml:space="preserve">
+    <value>二</value>
+  </data>
+  <data name="All_Week3Short" xml:space="preserve">
+    <value>三</value>
+  </data>
+  <data name="All_Week4Short" xml:space="preserve">
+    <value>四</value>
+  </data>
+  <data name="All_Week5Short" xml:space="preserve">
+    <value>五</value>
+  </data>
+  <data name="All_Week6Short" xml:space="preserve">
+    <value>六</value>
+  </data>
+  <data name="All_Week7Short" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="BPM_SystemOptionConfirm_RecedeRestart" xml:space="preserve">
+    <value>申请退回给提交人后，提交人可以修改内容再提交。\n您确定要将申请退回给提交人？</value>
+  </data>
+  <data name="BPM_SystemOptionConfirm_Reject" xml:space="preserve">
+    <value>申请一旦被拒绝，提交人将不可再次提交本申请单。\n如果允许提交人修改表单内容后再提交，请用“退回重填”按钮。\n您确定要拒绝申请？</value>
+  </data>
+  <data name="BPM_SystemOptionMessage_Save" xml:space="preserve">
+    <value>任务已保存！</value>
+  </data>
+  <data name="BPM_Consign_EmptyUser" xml:space="preserve">
+    <value>加签人(点击修改)</value>
+  </data>
+  <data name="BPM_Consign_Forward" xml:space="preserve">
+    <value>进入下一关卡</value>
+  </data>
+  <data name="BPM_Consign_Parallel" xml:space="preserve">
+    <value>平行签核</value>
+  </data>
+  <data name="BPM_Consign_Return" xml:space="preserve">
+    <value>回到本关卡</value>
+  </data>
+  <data name="BPM_Consign_SelUserTitle" xml:space="preserve">
+    <value>选择加签人</value>
+  </data>
+  <data name="BPM_Consign_Serial" xml:space="preserve">
+    <value>顺序签核</value>
+  </data>
+  <data name="BPM_Consign_Text" xml:space="preserve">
+    <value>{0}，加签选项：{1}</value>
+  </data>
+  <data name="BPM_Invite_EmptyUser" xml:space="preserve">
+    <value>阅示人(点击修改)</value>
+  </data>
+  <data name="BPM_Invite_SelUserTitle" xml:space="preserve">
+    <value>选择阅示人员</value>
+  </data>
+  <data name="BPMDlg_Consign_ReturnType" xml:space="preserve">
+    <value>签核后</value>
+  </data>
+  <data name="BPMDlg_Consign_RoutingType" xml:space="preserve">
+    <value>签核顺序</value>
+  </data>
+  <data name="BPMModules_Personal_Leave" xml:space="preserve">
+    <value>外出设置</value>
+  </data>
+  <data name="Aspx_GetBack_Msg" xml:space="preserve">
+    <value>您当前处于外出状态！&lt;br&gt;按“{0}”按钮，取消外出状态！</value>
+  </data>
+  <data name="BPM_GetBack" xml:space="preserve">
+    <value>取消外出</value>
+  </data>
+  <data name="Aspx_GetBack_Title" xml:space="preserve">
+    <value>您当前状态为外出！</value>
+  </data>
+  <data name="Aspx_Leave_Account" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="Aspx_Leave_Caption" xml:space="preserve">
+    <value>外出设置</value>
+  </data>
+  <data name="Aspx_Leave_chkPeriod" xml:space="preserve">
+    <value>仅在以下时间段内外出</value>
+  </data>
+  <data name="Aspx_Leave_EndTime" xml:space="preserve">
+    <value>结束时间</value>
+  </data>
+  <data name="Aspx_Leave_labPeriod" xml:space="preserve">
+    <value>外出时间</value>
+  </data>
+  <data name="Aspx_Leave_Prompt_EndTime" xml:space="preserve">
+    <value>请输入结束时间！</value>
+  </data>
+  <data name="Aspx_Leave_Prompt_StartTime" xml:space="preserve">
+    <value>请输入开始时间！</value>
+  </data>
+  <data name="Aspx_Leave_StartTime" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="Aspx_Leave_Submit" xml:space="preserve">
+    <value>设置为外出</value>
+  </data>
+  <data name="Aspx_GetBack_Fail" xml:space="preserve">
+    <value>撤销外出失败！</value>
+  </data>
+  <data name="Aspx_CancelLeave_SuccessMessage" xml:space="preserve">
+    <value>外出设置已取消！&lt;br/&gt;如果需要设置外出，请按“我要设置外出...”按钮。</value>
+  </data>
+  <data name="Aspx_CancelLeave_SuccessSubmit" xml:space="preserve">
+    <value>我要设置外出...</value>
+  </data>
+  <data name="Aspx_CancelLeave_SuccessTitle" xml:space="preserve">
+    <value>外出设置已取消！</value>
+  </data>
+  <data name="Aspx_Leave_Propmt_Cmp" xml:space="preserve">
+    <value>结束日期必需大于开始日期！</value>
+  </data>
+  <data name="YZApp_Default_ChangeUser" xml:space="preserve">
+    <value>换用户登录</value>
+  </data>
+  <data name="Aspx_Login_BtnNTLogin" xml:space="preserve">
+    <value>NT 登录</value>
+  </data>
+  <data name="All_Columns" xml:space="preserve">
+    <value>列</value>
+  </data>
+  <data name="All_LoadMask" xml:space="preserve">
+    <value>读取中...</value>
+  </data>
+  <data name="All_SortAsc" xml:space="preserve">
+    <value>正序</value>
+  </data>
+  <data name="All_SortDesc" xml:space="preserve">
+    <value>倒序</value>
+  </data>
+  <data name="BPMAdmin_Report_Search_SelParam" xml:space="preserve">
+    <value>查询参数...</value>
+  </data>
+  <data name="Aspx_Invalid_File" xml:space="preserve">
+    <value>无效的文件</value>
+  </data>
+  <data name="Aspx_Invalid_FileID" xml:space="preserve">
+    <value>无效的附件ID</value>
+  </data>
+  <data name="Aspx_Upload_EmptyFileID" xml:space="preserve">
+    <value>参数错误，未指定FileID</value>
+  </data>
+  <data name="Aspx_Upload_FileIDNotFount" xml:space="preserve">
+    <value>未能找到附件，附件可能已被移动或删除，ID：{0}！</value>
+  </data>
+  <data name="Aspx_Upload_NoAuth" xml:space="preserve">
+    <value>您未授权允许上传文件</value>
+  </data>
+  <data name="Aspx_RecpDspFmt" xml:space="preserve">
+    <value>{0}(代:{1})</value>
+  </data>
+  <data name="Aspx_SysAct_PickBack" xml:space="preserve">
+    <value>取回</value>
+  </data>
+  <data name="BPMDlg_Pickback_ConfirmMsg" xml:space="preserve">
+    <value>请输入取回理由：</value>
+  </data>
+  <data name="BPMDlg_Pickback_ItemFail" xml:space="preserve">
+    <value>{0}：取回失败，原因：&lt;br/&gt;{1}</value>
+  </data>
+  <data name="BPMDlg_Pickback_ItemSuccess" xml:space="preserve">
+    <value>{0}：已取回</value>
+  </data>
+  <data name="BPMDlg_Pickback_SuccessMsg" xml:space="preserve">
+    <value>{0}个任务已取回！</value>
+  </data>
+  <data name="BPMDlg_Pickback_SuccessTitle" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="BPMDlg_Pickback_Title" xml:space="preserve">
+    <value>取回</value>
+  </data>
+  <data name="BPMDlg_Pickback_Waiting" xml:space="preserve">
+    <value>正在执行取回操作...</value>
+  </data>
+  <data name="XFormAgent_Grid_IncorrectDynArea" xml:space="preserve">
+    <value>不正确的DynamicArea格式：{0}</value>
+  </data>
+  <data name="XFormAgent_Grid_StartRowIndexOver" xml:space="preserve">
+    <value>Grid定义不正确，开始行超出了范围：{0}</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_NOTXLS" xml:space="preserve">
+    <value>文件{0}不是有效的Excel文件！</value>
+  </data>
+  <data name="BPMDlg_ExcelImport_XLSX" xml:space="preserve">
+    <value>抱歉，系统目前只支持从Excel97 - 2003工作簿导入数据，请将{0}转存后再试！</value>
+  </data>
+  <data name="XFormAgent_DepdencyDeadloop" xml:space="preserve">
+    <value>以下元素的表达式中存在循环依赖项：\n{0}</value>
+  </data>
+  <data name="XFormAgent_DependencyNotExist" xml:space="preserve">
+    <value>元素{0}的依赖变量"{1}"不存在！</value>
+  </data>
+  <data name="XFormAgent_VarNotExist" xml:space="preserve">
+    <value>变量"{0}"不存在！</value>
+  </data>
+  <data name="XFormAgent_Express_FuncNoDefine" xml:space="preserve">
+    <value>函数"{0}"未定义！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr001" xml:space="preserve">
+    <value>表达式"{0}"中的运算符{1}前后存在语法错误！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr002" xml:space="preserve">
+    <value>表达式"{0}"语法错误！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr003" xml:space="preserve">
+    <value>表达式"{0}"语法错误，不正确的分隔符：","！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr004" xml:space="preserve">
+    <value>表达式"{0}"语法错误，"("不匹配！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr005" xml:space="preserve">
+    <value>表达式"{0}"语法错误，缺少")"号！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr006" xml:space="preserve">
+    <value>表达式"{0}"语法错误，函数"{1}"不可嵌套！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr007" xml:space="preserve">
+    <value>表达式"{0}"错误，函数"{1}"应有{2}个参数！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr008" xml:space="preserve">
+    <value>语法错误：\n{0}</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr009" xml:space="preserve">
+    <value>表达式"{0}"语法错误！</value>
+  </data>
+  <data name="XFormAgent_Express_SynErr010" xml:space="preserve">
+    <value>表达式"{0}"中的函数"{1}"不存在！</value>
+  </data>
+  <data name="XFormAgent_Grid_Append" xml:space="preserve">
+    <value>在末尾添加</value>
+  </data>
+  <data name="XFormAgent_Grid_AppendCopy" xml:space="preserve">
+    <value>添加行拷贝</value>
+  </data>
+  <data name="XFormAgent_Grid_BindNoRepeatableTable" xml:space="preserve">
+    <value>Grid绑定到了非可重复表：{0}！</value>
+  </data>
+  <data name="XFormAgent_Grid_Clear" xml:space="preserve">
+    <value>清空所有行</value>
+  </data>
+  <data name="XFormAgent_Grid_Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="XFormAgent_Grid_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="XFormAgent_Grid_InsertAbove" xml:space="preserve">
+    <value>插入（在上方）</value>
+  </data>
+  <data name="XFormAgent_Grid_InsertBelow" xml:space="preserve">
+    <value>插入（在下方）</value>
+  </data>
+  <data name="XFormAgent_Grid_Paste" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="XFormAgent_HTTPGETERR" xml:space="preserve">
+    <value>通讯错误，从服务器加载数据失败！url：\n{0}</value>
+  </data>
+  <data name="XFormAgent_HTTPPOSTERR" xml:space="preserve">
+    <value>通讯错误，向服务器提交数据失败！url：\n{0}</value>
+  </data>
+  <data name="XFormAgent_LoadDataFailed" xml:space="preserve">
+    <value>从服务器加载数据失败！原因：\n{0}</value>
+  </data>
+  <data name="XFormAgent_Result_Indicator" xml:space="preserve">
+    <value>邀请阅示人员：{0}</value>
+  </data>
+  <data name="XFormAgent_Saving" xml:space="preserve">
+    <value>正在保存...</value>
+  </data>
+  <data name="XFormAgent_SelectNoDisplayValueColumn" xml:space="preserve">
+    <value>元素{0}未设置DisplayColumn与ValueColumn！</value>
+  </data>
+  <data name="XFormAgent_SendToOthUsers" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}\n您提交的表单已传送给：{1}{2}\n窗口将被关闭。{3}</value>
+  </data>
+  <data name="XFormAgent_Submiting" xml:space="preserve">
+    <value>正在提交...</value>
+  </data>
+  <data name="XFormAgent_TaskFinishedApproved" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}\n流程已结束（批准）\n窗口将被关闭。{1}</value>
+  </data>
+  <data name="XFormAgent_TaskFinishedRejected" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}\n流程已结束（拒绝）\n窗口将被关闭。{1}</value>
+  </data>
+  <data name="XFormAgent_TaskInWaiting" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}{1}\n窗口将被关闭。{2}</value>
+  </data>
+  <data name="XFormAgent_WaitingOthUsers" xml:space="preserve">
+    <value>提交已成功！业务流水号：{0}\n正在等待以下人员处理：{1}{2}\n窗口将被关闭。{3}</value>
+  </data>
+  <data name="Aspx_MINST_Warn3" xml:space="preserve">
+    <value>XFormShell不是必须的，即使你不安装XFormShell仍能使用浏览器的缺省行为，XFormShell的作用是改良了浏览器的部分行为，使得应用更友好。</value>
+  </data>
+  <data name="Aspx_MINST_Warn5" xml:space="preserve">
+    <value>上海易正信息技术有限公司担保该程序不包含恶意代码，不会破环您的电脑系统，也不会获取您的私人信息。</value>
+  </data>
+  <data name="XFormAgent_InstallShellMsg" xml:space="preserve">
+    <value>要安装XFormShell吗？\n按“确定”安装并使用XFormShell的打印功能；\n按“取消”不安装XFormShell，使用浏览器缺省打印功能；\n建议经常打印的用户安装XFormShell，按“确定”进入下载页面。</value>
+  </data>
+  <data name="All_NextMonth" xml:space="preserve">
+    <value>下个月</value>
+  </data>
+  <data name="All_PrevMonth" xml:space="preserve">
+    <value>上个月</value>
+  </data>
+  <data name="All_Today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="All_Groups" xml:space="preserve">
+    <value>安全组</value>
+  </data>
+  <data name="All_Roles" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="XFormAgent_Grid_BindNoRepeatableVar" xml:space="preserve">
+    <value>Grid中绑定了非可重复表的变量：{0}！</value>
+  </data>
+  <data name="Aspx_LoginTimeout" xml:space="preserve">
+    <value>用户未登录或登录已超时，请重新登录！</value>
+  </data>
+  <data name="MaintenanceMessage" xml:space="preserve">
+    <value>BPM系统正在停机维护&lt;br/&gt;预计将于{1}月{2}号{3}：{4}恢复运行</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Detail" xml:space="preserve">
+    <value>详细信息</value>
+  </data>
+  <data name="BPMAdmin_AppLog_Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="BPM_FlashUpload_FileType_Err" xml:space="preserve">
+    <value>因文件类型不符，禁止上传附件：{0}\n此处仅允许上传以下后缀的附件：{1}</value>
+  </data>
+  <data name="Aspx_Excel_Formula_EvlErr" xml:space="preserve">
+    <value>单元格{0}使用了不支持的表达式：{1}，请移除该表达式</value>
+  </data>
+  <data name="Aspx_Excel2Image_Timeout" xml:space="preserve">
+    <value>超时时间已到，在设定的时间内服务器未响应</value>
+  </data>
+  <data name="BPMDlg_Abort_Fail" xml:space="preserve">
+    <value>撤销失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Abort_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被撤销\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Delete_Fail" xml:space="preserve">
+    <value>删除失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Delete_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被删除\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_InviteIndicate_Fail" xml:space="preserve">
+    <value>邀请阅示失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_InviteIndicate_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n已邀请以下人员阅示：{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Inform_Fail" xml:space="preserve">
+    <value>知会失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Inform_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n已知会以下人员：{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Jump_Fail" xml:space="preserve">
+    <value>调度失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Jump_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已调度到：{1}[{2}]\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Jump_SuccessMsg" xml:space="preserve">
+    <value>业务流水号：{0}\n任务已调度到：{1}[{2}]</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PickbackRestart_Fail" xml:space="preserve">
+    <value>取回失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PickbackRestart_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被取回到：{1}[{2}]\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PickupShareTask_Fail" xml:space="preserve">
+    <value>获取共享任务失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PickupShareTask_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被获取为待办任务\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Public_Fail" xml:space="preserve">
+    <value>公开失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Public_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已公开给：{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PutbackShareTask_Fail" xml:space="preserve">
+    <value>放回共享失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_PutbackShareTask_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被放回到共享池\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Reject_Fail" xml:space="preserve">
+    <value>拒绝失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Reject_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被拒绝\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_Fail" xml:space="preserve">
+    <value>退回失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_ReturnToInitiator_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已退回给：{1}\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Transfer_Fail" xml:space="preserve">
+    <value>委托失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Transfer_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已委托给：{1}\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_DirectSend_Fail" xml:space="preserve">
+    <value>直送失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_DirectSend_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已直送到：{1}\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Pickback_Fail" xml:space="preserve">
+    <value>取回失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_Pickback_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被取回到：{1}[{2}]\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_RecedeBack_Fail" xml:space="preserve">
+    <value>退回失败！业务流水号：{0}\n原因：\n{1}</value>
+    <comment>1</comment>
+  </data>
+  <data name="BPMDlg_RecedeBack_Success" xml:space="preserve">
+    <value>处理成功！业务流水号：{0}\n任务已被退回到：{1}\n窗口将被关闭。</value>
+    <comment>1</comment>
+  </data>
+  <data name="Aspx_SetAuthCookieFailed" xml:space="preserve">
+    <value>无法设置cookie，登录失败，请与管理员联系。</value>
+  </data>
+  <data name="All_SearchAll" xml:space="preserve">
+    <value>--全部--</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_ActionDesc" xml:space="preserve">
+    <value>操作类型是</value>
+  </data>
+  <data name="BPMAdminDlg_SchAppLog_Result" xml:space="preserve">
+    <value>操作结果是</value>
+  </data>
+  <data name="All_HandlingTime_UnitDay" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="All_SearchAllProcess" xml:space="preserve">
+    <value>--所有流程--</value>
+  </data>
+  <data name="All_SearchAllUser" xml:space="preserve">
+    <value>--所有用户--</value>
+  </data>
+  <data name="All_SearchKeyword" xml:space="preserve">
+    <value>搜索关键字</value>
+  </data>
+  <data name="BPMAdmin_SearchInstanceCount" xml:space="preserve">
+    <value>--合计数大于--</value>
+  </data>
+  <data name="BPMAdmin_SearchProcessCount" xml:space="preserve">
+    <value>--处理次数大于--</value>
+  </data>
+  <data name="BPMAdmin_SearchProcessUsedHours" xml:space="preserve">
+    <value>--处理小时数大于--</value>
+  </data>
+  <data name="BPMAdmin_SearchTimeoutPercent" xml:space="preserve">
+    <value>--超时率大于--</value>
+  </data>
+  <data name="All_Total" xml:space="preserve">
+    <value>合计</value>
+  </data>
+  <data name="All_Comments" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="BPMDlg_DeleteFormTemplates_Confirm" xml:space="preserve">
+    <value>您确定要删除选中的范本吗？</value>
+  </data>
+  <data name="BPMModules_BPM_Task_FormTemplate" xml:space="preserve">
+    <value>范本夹</value>
+  </data>
+  <data name="BPM_SystemOptionMessage_DraftSaved" xml:space="preserve">
+    <value>草稿已更新！</value>
+  </data>
+  <data name="BPM_SystemOptionMessage_FormTemplateSaved" xml:space="preserve">
+    <value>范本已更新！</value>
+  </data>
+  <data name="BPM_SystemOptionMessage_SavedAsDraft" xml:space="preserve">
+    <value>表单已保存为草稿！</value>
+  </data>
+  <data name="BPM_SystemOptionMessage_SavedAsFormTemplate" xml:space="preserve">
+    <value>表单已保存为范本！</value>
+  </data>
+  <data name="BPMDlg_ProcessChartDlg_TitleWithVer" xml:space="preserve">
+    <value>流程图-{0}(版本:{1})</value>
+  </data>
+  <data name="BPM_ProcessVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="Aspx_StepRaiser" xml:space="preserve">
+    <value>({0}发起)</value>
+  </data>
+  <data name="XFormAgent_GetFieldSpoor_Fail" xml:space="preserve">
+    <value>获得修改信息失败，\n原因：{0}</value>
+  </data>
+  <data name="XFormAgent_Spoor_ModifyDate" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="XFormAgent_Spoor_None" xml:space="preserve">
+    <value>无修改</value>
+  </data>
+  <data name="XFormAgent_Spoor_Title" xml:space="preserve">
+    <value>修改履历</value>
+  </data>
+  <data name="XFormAgent_Spoor_User" xml:space="preserve">
+    <value>员工</value>
+  </data>
+  <data name="XFormAgent_Spoor_Value" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="BPMAdmin_Timeout_DetailLink" xml:space="preserve">
+    <value>超时明细</value>
+  </data>
+  <data name="BPMAdmin_Timeout_NoDetailLink" xml:space="preserve">
+    <value>无超时</value>
+  </data>
+</root>

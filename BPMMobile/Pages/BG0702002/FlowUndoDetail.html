@@ -1,0 +1,1063 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../Content/DoneOrMyApproval.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+   
+ </head > 
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>发函人<i style="color:red;">*</i></label>
+                <input type="text" id="fhname" name="fhname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" >
+                <label>发函部门<i style="color:red;">*</i></label>
+                <input type="text" id="fhdept" name="fhdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>发函日期<i style="color:red;">*</i></label>
+                <input type="date" id="fhdate" name="fhdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>联系电话</label>
+                <input type="tel" id="tel" name="tel"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>发出要求</label>
+                <input type="text" id="fcyq" name="fcyq"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>办理时限</label>
+                <input type="text" id="blsx" name="blsx"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>保密程度</label>
+                <input type="text" id="bmcd" name="bmcd"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label>内联编号</label>
+                <input type="text" id="nlbh" name="nlbh" />
+            </div>
+            <div class="mui-input-row">
+                <label>内联类别</label>
+                <input type="text" id="fnllb" name="fnllb"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>发函主题</label>
+                <input type="text" id="fhzt" name="fhzt"  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:8.75rem;">
+                <label>发函内容</label>
+                <textarea rows="7" id="fhnr" name="fhnr"  readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="display:none;height:7.25rem;" id="thd">
+                <label>退回原因</label>
+                <textarea rows="5" id="backReason" style="overflow:auto;" name="backReason" readonly="readonly"></textarea>
+            </div>
+           
+            <div class="mui-input-row">
+                <label>收函部门</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="shlist">
+
+                <!--<div class="mui-card" id="sh">
+                    <div class="mui-input-row">
+                        <label>部门列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteItem" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>收函部门</label>
+                        <input type="text" id="shdept" name="shdept"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>收函人</label>
+                        <input type="text" id="shname" name="shname"/>
+                        <input type="hidden" id="shno" name="shno"/>
+                    </div>
+                   <div class="mui-input-row">
+                       <label>收函人职位</label>
+                       <input type="text" id="zhiwei" name="zhiwei"/>
+                   </div>
+                </div>-->
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-table-view" style="margin-bottom:3.25rem;">
+                <div class="mui-table-view-cell  mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                        历史签核意见
+                    </a>
+                    <div class="mui-collapse-content">
+
+                        <!--流程列表-->
+                        <div class="list">
+                            <ul id="signff"></ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row"  id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row"  id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">确认</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+
+        </div>
+        <div class="mui-btn-row"  id="readD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+    </div>
+       
+        <input value="" id="stepId" name="stepId" type="hidden" />
+        <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+        <input type="hidden" id="processName" name="processName" value="" />
+        <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+        <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+        <input type="hidden" id="taskId" name="taskId" value="" />
+        <input type="hidden" id="myPhone" name="myPhone" value="" />
+        <input type="hidden" id="consignUser" name="consignUser" value="" />
+        <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+        <input type="hidden" id="fbillno" name="fbillno" value="" />
+        <div id="signd" style="display:none;">
+            <div class="mui-input-row"  id="ssd">
+                <label>签核意见</label>
+                <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+
+            </div>
+            <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+                <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+                <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+            </div>
+        </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getTaskMsg();      
+            upload();
+            watch();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });        
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                {'text':'退回某步','callBackId':'callback3'}
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);  
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+
+        });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+
+        function getTaskMsg() {
+
+
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                } else {
+                    stepId = url.split("pid=")[1];
+                }
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            itemidArr = new Array();
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    //console.log(data);
+                    if (status == "success") {
+
+
+                        console.log(data);
+                        var item = data.FormDataSet.BPM_SGGSBMLXD_A[0];
+                        $("#taskId").val(item.TaskID);
+                        $("#fhname").val(item.fhname);
+                        $("#fhdate").val(FormatterTimeYMS(item.fhdate));
+                        $("#fhdept").val(item.fhdept);
+                        $("#tel").val(item.tel);
+                        $("#fcyq").val(item.fcyq);
+                        $("#blsx").val(item.blsx);
+                        $("#bmcd").val(item.bmcd);
+                        $("#fnllb").val(item.fnllb);
+                        $("#fhzt").val(item.fhzt);
+                        $("#fhnr").val(item.fhnr);
+                        $("#stepId").val(stepId);
+                        $("#fbillno").val(item.fbillno);
+                        if (item.fj != null && item.fj != "") {
+                            var fjtmp = (String)(item.fj);
+
+                            fjArray = fjtmp.split(";");
+
+
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+
+                                            var time = String(data[i].LastUpdate).replace("T", " ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断 
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+
+                                            });
+
+
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+
+                        var shlist = data.FormDataSet.BPM_SGGSBMLXD_B;
+
+                        for (var i = 0; i < shlist.length; i++) {
+                            if (shlist[i].zhiwei == null) {
+                                shlist[i].zhiwei = "";
+                            }
+                            if (shlist[i].shdept == null) {
+                                shlist[i].shdept = "";
+                            }
+                            if (shlist[i].shname == null) {
+                                shlist[i].shname = "";
+                            }
+                            itemidArr.push(shlist[i].itemid);
+                            var li = ' <div class="mui-card" id= "sh" >';
+                            li = li + '     <div class="mui-input-row bgc">';
+                            li = li + '            <label>部门列表项</label>';
+                            li = li + '           <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteItem" onclick="deleteItem(this)"></span>';
+                            li = li + '       </div>';
+                            li = li + '       <div class="mui-input-row" style="height:auto;">';
+                            li = li + '          <label>收函部门</label>';
+                            li = li + '           <textarea id="shdept" name="shdept" readonly="readonly" rows="4">' + shlist[i].shdept + '</textarea>';
+                            li = li + '        </div>';
+                            li = li + '        <div class="mui-input-row">';
+                            li = li + '            <label>收函人</label>';
+                            li = li + '           <input type="text" id="shname" name="shname"  readonly="readonly" value="' + shlist[i].shname + '" />';
+                            li = li + '            <input type="hidden" id="shno" name="shno" readonly="readonly" value="' + shlist[i].shno + '"/>';
+                            li = li + '        </div>';
+                            li = li + '        <div class="mui-input-row">';
+                            li = li + '            <label>收函人职位</label>';
+                            li = li + '            <input type="text" id="zhiwei" name="zhiwei" readonly="readonly" value="' + shlist[i].zhiwei + '"/>';
+                            li = li + '        </div>';
+                            li = li + '     </div >';
+                            $("#shlist").append(li);
+
+                        }
+
+                        if ($('#myPhone').val() == "") {
+                            var myPhone = String(BPMOU).split("/");
+                            $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                        }
+                        var NodeName;
+                        //判断流程本节点是否结束，处理者是否为当前用户,
+                        //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                        for (var i = 0; i < data.Steps.length; i++) {
+                            //debugger;
+
+                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                                if (stepId.indexOf(data.Steps[i].StepID)!=-1) {
+
+                                    NodeName = data.Steps[i].NodeName;
+
+                                }
+
+                            }
+
+                        }
+
+                        if (NodeName == "开始") {
+                            $("#createD").css("display", "block");
+                            $("#tel,#fhzt,#fhnr").removeAttr('readonly');
+                            $(".upload-addbtn").css("display", "block");
+                            tapEvent();
+                            $("#mxlist").find("input").each(function () {
+                                $(this).removeAttr('readonly');
+                            });
+                            $("#mxlist").find("span").each(function () {
+                                $(this).css("display", "block");
+                            });
+                        } else if (NodeName == "sysInform") {
+                            $("#readD").css("display", "block");
+                        } else {
+                            if (typeof (NodeName) != "undefined") {
+                                $("#approvalD").css("display", "block");
+                            }
+                        }
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+
+                    }
+                }, error: function (e) {
+
+
+                }, complete: function () {
+
+                }
+            });
+        }
+
+        function Save() {
+           
+
+            var fhname = $("#fhname").val();
+            var fhdept = $("#fhdept").val();
+            var fhdate = $("#fhdate").val() + " 00:00:00";
+            var tel = $("#tel").val();
+            var fcyq = $("#fcyq").val();
+            var blsx = $("#blsx").val();
+            var bmcd = $("#bmcd").val();
+            var fhzt = $("#fhzt").val();
+            var fhnr = $("#fhnr").val();
+            var fnllb = $("#fnllb").val();
+
+            var shlistArr = new Array();
+            $("#shlist").find("#sh").each(function () {
+                var shdept = $(this).find("#shdept").val();
+                var shname = $(this).find("#shname").val();
+                var shno = $(this).find("#shno").val();
+                var zhiwei = $(this).find("#zhiwei").val();
+
+                var sh = ShItem(shdept, shname, shno, zhiwei);
+                shlistArr.push(sh);
+            });
+
+            var pid = $("#stepId").val();
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '   <Header>';
+                    xml = xml + '    <Method>Process</Method>';
+                    xml = xml + '   <PID>' + pid + '</PID>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '    <Comment></Comment>';
+                    xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '  </Header>';
+                    xml = xml + ' <FormData>';
+                    xml = xml + '<BPM_SGGSBMLXD_A>';
+                    xml = xml + '<fbillno>自动生成</fbillno>';
+                    xml = xml + '<fhname>' + fhdate + '</fhname>';
+                    xml = xml + '<fhdept>' + fhdept + '</fhdept>';
+                    xml = xml + '<fhdate>' + fhdate + '</fhdate>';
+                    xml = xml + '<tel>' + tel + '</tel>';
+                    xml = xml + '<fcyq>' + fcyq + '</fcyq>';
+                    xml = xml + '<blsx>' + blsx + '</blsx>';
+                    xml = xml + '<bmcd>' + bmcd + '</bmcd>';
+                    xml = xml + '<nlbh></nlbh>';
+                   
+                    xml = xml + '<fnllb>' + fnllb + '</fnllb>';
+
+                    xml = xml + '<fhzt>' + fhzt + '</fhzt>';
+                    xml = xml + '<fhnr>' + fhnr + '</fhnr>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '      <fj></fj>';
+                    }
+                    xml = xml + ' </BPM_SGGSBMLXD_A>';
+                    for (var i = 0; i < shlistArr.length; i++) {
+                        xml = xml + ' <BPM_SGGSBMLXD_B>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '  <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '<shdept>' + shlistArr[i].shdept + '</shdept>';
+                        xml = xml + '<shname>' + shlistArr[i].shname + '</shname>';
+                        xml = xml + '<shno>' + shlistArr[i].shno + '</shno>';
+                        xml = xml + '<zhiwei>' + shlistArr[i].zhiwei + '</zhiwei>';
+                        xml = xml + ' </BPM_SGGSBMLXD_B>';
+
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+
+                }
+
+            });
+
+        }
+
+
+
+        function AgreeOrConSign() {
+            var comment = $("#signSuggest").val();
+            var fhname = $("#fhname").val();
+            var fhdept = $("#fhdept").val();
+            var fhdate = $("#fhdate").val() + " 00:00:00";
+            var tel = $("#tel").val();
+            var fcyq = $("#fcyq").val();
+            var blsx = $("#blsx").val();
+            var bmcd = $("#bmcd").val();
+            var fhzt = $("#fhzt").val();
+            var fhnr = $("#fhnr").val();
+            var fnllb = $("#fnllb").val();
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+            var shlistArr = new Array();
+            $("#shlist").find("#sh").each(function () {
+                var shdept = $(this).find("#shdept").val();
+                var shname = $(this).find("#shname").val();
+                var shno = $(this).find("#shno").val();
+                var zhiwei = $(this).find("#zhiwei").val();
+                var sh = ShItem(shdept, shname, shno, zhiwei);
+                shlistArr.push(sh);
+            });
+            var xml = '<?xml version="1.0"?>';
+            xml = xml + '<XForm>';
+            xml = xml + '<Header>';
+            xml = xml + '<Method>Process</Method>';
+            xml = xml + '<PID>' + pid + '</PID>';
+            xml = xml + '<Action>同意</Action>';
+            xml = xml + '<Comment>' + comment + '</Comment>';
+            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+            xml = xml + '</Header>';
+            xml = xml + ' <FormData>';
+            xml = xml + '<BPM_SGGSBMLXD_A>';
+            xml = xml + '<fbillno>' + fbillno + '</fbillno>';
+            xml = xml + '<fhname>' + fhdate + '</fhname>';
+            xml = xml + '<fhdept>' + fhdept + '</fhdept>';
+            xml = xml + '<fhdate>' + fhdate + '</fhdate>';
+            xml = xml + '<tel>' + tel + '</tel>';
+            xml = xml + '<fcyq>' + fcyq + '</fcyq>';
+            xml = xml + '<blsx>' + blsx + '</blsx>';
+            xml = xml + '<bmcd>' + bmcd + '</bmcd>';
+            xml = xml + '<nlbh></nlbh>';
+           
+            xml = xml + '<fnllb>' + fnllb + '</fnllb>';
+
+            xml = xml + '<fhzt>' + fhzt + '</fhzt>';
+            xml = xml + '<fhnr>' + fhnr + '</fhnr>';
+            if (fjArray.toString() != null && fjArray.toString() != "") {
+                xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+            } else {
+                xml = xml + '      <fj></fj>';
+            }
+            xml = xml + ' </BPM_SGGSBMLXD_A>';
+            for (var i = 0; i < shlistArr.length; i++) {
+                xml = xml + ' <BPM_SGGSBMLXD_B>';
+                xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                xml = xml + '  <fentryno>' + (i + 1) + '</fentryno>';
+                xml = xml + '<shdept>' + shlistArr[i].shdept + '</shdept>';
+                xml = xml + '<shname>' + shlistArr[i].shname + '</shname>';
+                xml = xml + '<shno>' + shlistArr[i].shno + '</shno>';
+                xml = xml + '<zhiwei>' + shlistArr[i].zhiwei + '</zhiwei>';
+                xml = xml + ' </BPM_SGGSBMLXD_B>';
+
+            }
+            xml = xml + '</FormData>';
+            xml = xml + '</XForm>';
+            PostXml(xml);
+        }
+
+
+        function hasRead() {
+
+            var fhname = $("#fhname").val();
+            var fhdept = $("#fhdept").val();
+            var fhdate = $("#fhdate").val() + " 00:00:00";
+            var tel = $("#tel").val();
+            var fcyq = $("#fcyq").val();
+            var blsx = $("#blsx").val();
+            var bmcd = $("#bmcd").val();
+            var fhzt = $("#fhzt").val();
+            var fhnr = $("#fhnr").val();
+            var fnllb = $("#fnllb").val();
+            var pid = $("#stepId").val();
+            var fbillno = $("#fbillno").val();
+            var shlistArr = new Array();
+            $("#shlist").find("#sh").each(function () {
+                var shdept = $(this).find("#shdept").val();
+                var shname = $(this).find("#shname").val();
+                var shno = $(this).find("#shno").val();
+                var zhiwei = $(this).find("#zhiwei").val();
+
+                var sh = ShItem(shdept, shname, shno, zhiwei);
+                shlistArr.push(sh);
+            });
+
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + ' <FormData>';
+                    xml = xml + '<BPM_SGGSBMLXD_A>';
+                    xml = xml + '<fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '<fhname>' + fhdate + '</fhname>';
+                    xml = xml + '<fhdept>' + fhdept + '</fhdept>';
+                    xml = xml + '<fhdate>' + fhdate + '</fhdate>';
+                    xml = xml + '<tel>' + tel + '</tel>';
+                    xml = xml + '<fcyq>' + fcyq + '</fcyq>';
+                    xml = xml + '<blsx>' + blsx + '</blsx>';
+                    xml = xml + '<bmcd>' + bmcd + '</bmcd>';
+                    xml = xml + '<nlbh></nlbh>';
+                   
+                    xml = xml + '<fnllb>' + fnllb + '</fnllb>';
+
+                    xml = xml + '<fhzt>' + fhzt + '</fhzt>';
+                    xml = xml + '<fhnr>' + fhnr + '</fhnr>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '      <fj></fj>';
+                    }
+                    xml = xml + ' </BPM_SGGSBMLXD_A>';
+                    for (var i = 0; i < shlistArr.length; i++) {
+                        xml = xml + ' <BPM_SGGSBMLXD_B>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                        xml = xml + '  <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '<shdept>' + shlistArr[i].shdept + '</shdept>';
+                        xml = xml + '<shname>' + shlistArr[i].shname + '</shname>';
+                        xml = xml + '<shno>' + shlistArr[i].shno + '</shno>';
+                        xml = xml + '<zhiwei>' + shlistArr[i].zhiwei + '</zhiwei>';
+                        xml = xml + ' </BPM_SGGSBMLXD_B>';
+
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+
+
+
+
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+
+        function delPicture(el) {
+
+            $(el).parent().remove();
+            watch();
+
+        }
+
+        function ShItem(shdept, shname, shno, zhiwei) {
+            var sh = new Object();
+            sh.shdept = shdept;
+            sh.shname = shname;
+            sh.shno = shno;
+            sh.zhiwei = zhiwei;
+            return sh;
+        }
+
+        function tapEvent() {
+
+            var fcyqdata = [
+                {
+                    value: "pb",
+                    text: "批办"
+                },
+                {
+                    value: "xt",
+                    text: "协调"
+                },
+                {
+                    value: "yz",
+                    text: "阅知"
+                },
+                {
+                    value: "hf",
+                    text: "回复"
+                }
+
+            ];
+            showPicker('fcyq', fcyqdata);
+
+            var blsxdata = [
+                {
+                    value: "jj",
+                    text: "紧急"
+                },
+                {
+                    value: "yb",
+                    text: "一般"
+                }
+            ];
+            showPicker('blsx', blsxdata);
+
+            var bmcddata = [
+                {
+                    value: "jm",
+                    text: "绝密"
+                },
+                {
+                    value: "mm",
+                    text: "秘密"
+                }
+
+            ];
+            showPicker('bmcd', bmcddata);
+
+            var fnllbdata = [
+                {
+                    value: "wlzzl",
+                    text: "物料制作类"
+                },
+                {
+                    value: "xll",
+                    text: "协力类"
+                },
+                {
+                    value: "qtl",
+                    text: "其他类"
+
+                }
+            ];
+            showPicker('fnllb', fnllbdata);
+            var openIdArr;
+            $("#addItem").on('tap', function () {
+
+                XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+                    //alert(JSON.stringify(result));
+                    if (typeof (result) == "string") {
+                        result = JSON.parse(result);
+                    }
+
+                    if (result.success == true || result.success == "true") {
+                        openIdArr = new Array();
+
+                        for (var i = 0; i < result.data.persons.length; i++) {
+
+                            openIdArr.push(result.data.persons[i].openId);
+
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/bpm/PostAccount",
+                            data: { "ids": openIdArr },
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                            }, success: function (data, status) {
+
+                                if (status == "success") {
+
+                                    for (var i = 0; i < data.data.length; i++) {
+                                        //alert(JSON.stringify(data.data[i]));
+
+                                        var shdept = String(data.data[i].department).replace(/\\/g, "/");
+                                        var zhiwei = data.data[i].jobTitle;
+                                        var shname = data.data[i].name;
+                                        var shno = (String)(data.data[i].phone);
+                                        var li = ' <div class="mui-card" id= "sh" >';
+                                        li = li + '     <div class="mui-input-row bgc">';
+                                        li = li + '            <label>部门列表项</label>';
+                                        li = li + '           <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteItem" onclick="deleteItem(this)"></span>';
+                                        li = li + '       </div>';
+                                        li = li + '       <div class="mui-input-row" style="height:auto;">';
+                                        li = li + '          <label>收函部门</label>';
+                                        //li = li + '           <textarea id="shdept" name="shdept" rows="4">威高集团/威高集团总部/威高集团本部/流程与信息部(信息技术)</textarea>';
+                                        li = li + '           <textarea id="shdept" name="shdept" rows="4">' + shdept + '</textarea>';
+                                        li = li + '        </div>';
+                                        li = li + '        <div class="mui-input-row">';
+                                        li = li + '            <label>收函人</label>';
+                                        li = li + '          <input type="text" id="shname" name="shname" value="' + shname + '" />';
+                                        li = li + '            <input type="hidden" id="shno" name="shno" value="' + shno + '"/>';
+                                        li = li + '        </div>';
+                                        li = li + '        <div class="mui-input-row">';
+                                        li = li + '            <label>收函人职位</label>';
+                                        li = li + '            <input type="text" id="zhiwei" name="zhiwei" value="' + zhiwei + '"/>';
+                                        li = li + '        </div>';
+                                        li = li + '     </div >';
+                                        $("#shlist").append(li);
+                                    }
+
+
+                                }
+                            }, error: function (e) {
+
+                            }, complete: function () {
+
+
+                            }
+                        });
+
+
+
+                    }
+                    else {
+
+                    }
+                });
+
+
+            });
+
+        }
+    </script>
+</body> 
+</html>
+        

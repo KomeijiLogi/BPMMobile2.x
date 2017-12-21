@@ -1,0 +1,1290 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../Content/DoneOrMyApproval.css"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        html, body {
+            font-size: 20px;
+            background-color: white;
+            height: 100%;
+            overflow: auto;
+            font-family: "Microsoft YaHei", Arial,"微软雅黑","Microsoft yahei","Hiragino Sans GB","冬青黑体简体中文 w3","Hiragino Sans GB","冬青黑体简体中文 w3",STXihei,"华文细黑",SimSun,"宋体",Heiti,"黑体",sans-serif;
+        }
+
+      
+       
+     
+        
+    </style>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;display:block;z-index:998;" id="wrapper">
+        <div class="" id="scroller">
+            <form class="mui-input-group" style="left:0rem;right:0rem;">
+                <!--<div id="xx">
+
+                </div>--> 
+                <div class="mui-input-row">
+                    <label>标题<i style="color:red;">*</i></label>
+                    <input type="text" class="mui-input-clear" placeholder="请输入标题" id="flowTitle" name="flowTitle"/>
+                </div>
+                <div class="mui-input-row">
+                   
+                    <label>提交人</label>
+                    <input type="text" placeholder="提交人信息" readonly="readonly" id="flowPerson" name="flowPerson"  />
+                </div>
+                <div class="mui-input-row">
+                    <label>时间</label>
+                    <input type="datetime" readonly="readonly" placeholder="时间信息" id="flowTime" name="flowTime" />
+                </div>
+
+               
+
+                <div class="mui-input-row" style="height:5.25rem;">
+                    <label>事由<i style="color:red;">*</i></label>
+                    <textarea rows="8" id="flowCause" style="overflow:auto;" name="flowCause"></textarea>
+                </div>
+                <div class="mui-input-row" style="display:none;height:5.25rem;" id="thd">
+                    <label>退回原因</label>
+                    <textarea rows="8" id="backReason" style="overflow:auto;" name="backReason" readonly="readonly"></textarea>
+                </div>
+                <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                    <div class="border border-t upload-img" style="top:0rem;">
+                        <!--上传图片-->
+                        <div class="clearfix upload-btn" id="children-bg">
+                            <label class="label">附件</label>
+                            <span class="tips" id="imageCount"><!--已添加0张--></span>
+                            <!--上传图片按钮  -->
+                            <span class="upload-addbtn" style="display:none;">
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+
+                            </span>
+
+                        </div>
+                        <div class="upload-img-list">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mui-input-row" id="csd">
+                    <label>加签</label>
+                    <div class="mui-switch mui-switch-blue">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </div>
+                <div id="signbody">
+                    
+                    <div class="mui-input-row" id="signPerDiv">
+                        <label>加签人</label>
+                        <span class="mui-navigate-right"></span>
+                        <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人"/>
+                    </div>
+                    <div class="mui-input-row adl" >
+                        <label>加签模式</label>
+                    </div>
+                    <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+                       
+                        <ul class="mui-table-view mui-table-view-radio">
+                            <li class="mui-table-view-cell mui-selected" id="sxsl">
+                                <a class="mui-navigate-right" id="sxsa">
+                                    顺序加签
+                                </a>
+                            </li>
+                            <li class="mui-table-view-cell" id="pxsl">
+                                <a class="mui-navigate-right" id="pxsa">
+                                    平行加签
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mui-input-row adl">
+                        <label>加签回转</label>
+                    </div>
+                    <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+
+                        <ul class="mui-table-view mui-table-view-radio">
+                            <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                                <a class="mui-navigate-right" id="hdbjda">
+                                    回到本节点
+                                </a>
+                            </li>
+                            <li class="mui-table-view-cell" id="jrxjdl">
+                                <a class="mui-navigate-right" id="jrxjda">
+                                    进入下一节点
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+               
+                <div class="mui-input-row" style="height:auto;font-size:0.8rem;display:none;" id="ssd">
+                    <label>签核意见</label>
+                    <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+
+                </div>
+
+                <div class="mui-table-view" style="margin-bottom:3.25rem;">
+                    <div class="mui-table-view-cell  mui-collapse mui-active">
+                        <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                            历史签核意见
+                        </a>
+                        <div class="mui-collapse-content">
+
+                            <!--流程列表-->
+                            <div class="list">
+                                <ul id="signff"></ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+               
+            </form>
+            <div  id="approvalD" class="mui-btn-row">
+                &nbsp;&nbsp;
+                <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+                <!--<button class="mui-btn mui-btn-danger" type="button" style="top:1rem;width:25%;height:2.5rem;font-size:0.8rem;display:none;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;-->
+                <button class="mui-btn mui-btn-warning" type="button" style="width:40%;" id="refusebt" onclick="Refilled()">退回重填</button>
+            </div>
+            <div  id="createD" class="mui-btn-row">
+                <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+            </div>
+            <div  id="readD" class="mui-btn-row">
+                <button class="mui-btn mui-btn-primary" type="button"  id="readbt" onclick="hasRead()">已阅</button>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value=""/>
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value=""/>
+    <input type="hidden" id="noticeUser" name="noticeUser" value=""/>
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value=""/>
+
+
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row"  id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger"  type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+       
+        mui.init();
+
+        mui.ready(function () {
+           
+            getBPMParam();
+            getTaskMsg();
+            upload();
+            $('#flowTime').val(getNowFormatDate());
+            
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+            watch();
+            selectPic();
+           
+        });
+
+        mui('.mui-content .mui-switch').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    
+                    $('#signbody').css('display', 'block');
+                } else {
+                    
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+
+
+        var taskId;
+        var stepId;
+        var noticeOpenIdArr;
+        var BPMOU;
+        var consignOpenIdArr;
+        var fjArray = new Array();
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+         });
+
+        function openSignPer() {
+
+            XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                //alert(JSON.stringify(result.data));
+                if (typeof (result) == "string") {
+                    result = JSON.parse(result);
+                }
+
+                var consignNameArr = new Array();
+                consignOpenIdArr=new Array();
+                if (result.success == true || result.success == "true") {
+                    //$("#xx").text(JSON.stringify( result.data.persons));
+                    for (var i = 0; i < result.data.persons.length;i++){
+                        consignNameArr.push(result.data.persons[i].name);
+                        consignOpenIdArr.push((String)(result.data.persons[i].openId));
+                        
+                    }
+                    $('#signPer').val(consignNameArr);
+                    $('#consignOpenId').val(consignOpenIdArr);
+                   
+                    
+                }
+
+            });
+
+
+
+        }
+        function closeSingPer() {
+
+
+            if ($('.mui-switch').hasClass('mui-active')) {
+
+            }
+        }
+       
+        var attachArray = new Array();
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+                
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+
+
+               
+                if (url.split("pid=")[1].indexOf("ticket")!=-1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                    
+                } else {
+                   
+                    stepId = url.split("pid=")[1];
+                   
+                }
+
+               
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+                
+            }
+
+           
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                   
+                    if (status == "success") {
+                       
+                        //console.log(data);
+
+                        var item = data.FormDataSet.BPM_JRAPP[0];
+
+                        $("#flowTitle").val(item.fbt);
+                        $("#flowPerson").val(item.createuser);
+                        $("#flowTime").val(FormatterTime(item.createtime));
+                        $("#flowCause").val(item.fsy);
+                        $("#stepId").val(stepId);
+                        $("#taskId").val(item.TaskID);
+
+
+
+
+                        if (item.fj != null && item.fj != "") {
+                            var fjtmp = (String)(item.fj);
+
+                            fjArray = fjtmp.split(";");
+
+                           
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+                                       
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+                                            
+                                            var time = String(data[i].LastUpdate).replace("T"," ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;                          
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断 
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i+'" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i+'"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i +'"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+                                              
+                                            });
+
+                                           
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+                                    
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+
+                       
+                        if ($('#myPhone').val() == "") {
+                            var myPhone = String(BPMOU).split("/");
+                            $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                        }
+                        var shareContext = '';
+                        var NodeName;
+                        //判断流程本节点是否结束，处理者是否为当前用户,
+                        //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                        for (var i = 0; i < data.Steps.length; i++) {
+                            //debugger;
+
+                            if (data.Steps[i].Finished == false) {
+
+                                if (stepId.indexOf(data.Steps[i].StepID) != -1) {
+
+                                    NodeName = data.Steps[i].NodeName;
+                                    if (data.Steps[i].Share && !data.Steps[i].OwnerAccount) {
+                                        shareContext = '流程被共享';
+                                    } else if (data.Steps[i].Share && data.Steps[i].OwnerAccount) {
+                                        shareContext = '流程被取出';
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                       
+                        if (!NodeName) {
+                            $("#csd").css("display", "none");
+
+                        }
+
+
+                        if (NodeName == "开始") {
+                            //退回重填的处理
+                            $("#csd").css("display", "none");
+                            $("#ssd").css("display", "none");
+                            $("#createD").css("display", "block");
+                            $("#thd").css("display", "block");
+                            $("#backReason").val(data.Steps[data.Steps.length - 2].Comments);
+                            $("#flowPerId").val(data.Steps[data.Steps.length - 1].RecipientAccount);
+                            $("#processName").val(data.Steps[data.Steps.length - 1].ProcessName);
+
+                        } else if (NodeName == "sysInform") {
+                            //知会的处理
+                            $("#flowTitle").removeClass("mui-input-clear");
+                            $("#flowCause").removeClass("mui-input-clear");
+                            $("#flowTitle").attr("readonly", "readonly");
+                            $("#flowCause").attr("readonly", "readonly");
+                            $("#csd").css("display", "none");
+                            $("#readD").css("display", "block");
+
+
+                        } else {
+                            if (typeof (NodeName) != "undefined") {
+                                //审批的处理
+                                $("#flowTitle").removeClass("mui-input-clear");
+                                $("#flowCause").removeClass("mui-input-clear");
+                                $("#flowTitle").attr("readonly", "readonly");
+                                $("#flowCause").attr("readonly", "readonly");
+                                $("#approvalD").css("display", "block");
+                            }
+
+                        }
+                        if (shareContext == '流程被共享') {
+                            $("#approvalD").empty();
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickupbt" onclick="PickupShareTaskExt()">从共享任务中取出</button>';
+                            $("#approvalD").append(li);
+                        } else if (shareContext == '流程被取出') {
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickbackbt" onclick="PutbackShareTaskExt()">放回共享任务</button>';
+                            $("#approvalD").append(li);
+                        }
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+                    } else {
+                       
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                   
+                },
+                complete: function () { }
+
+            });
+
+
+          
+        }
+
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+
+       
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' },
+                {'text':'退回某步','callBackId':'callback3'}
+            ], 'menuList': [
+                 'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);  
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+                    });
+
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+
+        });
+
+      
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var hour = date.getHours();
+            if (hour >= 0 && hour <= 9) {
+                hour = "0" + hour;
+            }
+            var minute = date.getMinutes();
+            if (minute >= 0 && minute <= 9) {
+                minute = "0" + minute;
+            }
+            var currentdate = month + seperator1 + strDate
+                    + " " + hour + seperator2 + minute
+            ;
+            return currentdate;
+        }
+
+        function FormatterTime(time) {
+            var time = String(time);
+            var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
+            var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
+            time = ymd + " " + hms;
+
+            return time;
+        }
+
+
+        //审批或者加签
+        function AgreeOrConSign() {
+            var comment = $("#signSuggest").val();
+            var fbt=$('#flowTitle').val();
+            var fsy = $('#flowCause').val();
+            
+            var pid = $("#stepId").val();//stepId
+
+            var consignFlag = false;
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+
+           
+
+            //加签if分支
+
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+                consignFlag = true;
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }, success: function (data, status) {
+
+                        if (status == "success") {
+
+
+                            
+                            for (var i = 0; i < data.data.length; i++) {
+                                consignUserId.push(data.data[i].phone);
+                               
+                            }
+                            $('#consignUser').val(consignUserId);
+                            consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                            for (var i = 0; i < consignUserStr.length; i++){
+                                consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                            }
+                            consignUserStr = '[' + consignUserStr.toString() + ']';
+                            //alert(consignUserStr);
+                            var xml = '<?xml version="1.0"?>';
+                            xml = xml + '<XForm>';
+                            xml = xml + ' <Header>';
+                            xml = xml + '   <Method>Process</Method>';
+                            xml = xml + '   <PID>' + pid + '</PID> ';
+                            xml = xml + '   <Action>同意</Action>';
+                            xml = xml + '   <Comment>' + comment + '</Comment>';
+                            //加签差异xml部分
+                           
+
+                            xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+                            xml = xml + '  <ConsignUsers>'+consignUserStr+'</ConsignUsers>';
+                            xml = xml + ' <ConsignRoutingType>' + consignRoutingType+'</ConsignRoutingType>';
+                            xml = xml + '  <ConsignReturnType>' + consignReturnType+'</ConsignReturnType>';
+                            xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                            xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
+
+
+                           
+                            xml = xml + ' </Header>';
+                            xml = xml + ' <FormData>';
+                            xml = xml + '  <BPM_JRAPP>';
+                            xml = xml + '    <fbt>' + fbt + '</fbt>';
+                            xml = xml + '    <fsy>' + fsy + '</fsy>';
+                            if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                                xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                            } else {
+
+                                xml = xml + '      <fj></fj>';
+                            }
+                            xml = xml + '  </BPM_JRAPP>';
+                            xml = xml + ' </FormData>';
+                            xml = xml + '</XForm>';
+
+
+                            PostXml(xml);
+
+                        } else {
+
+                        }
+                    },
+                    error: function (e) {
+                        //console.log(e);  
+
+                    },
+                    complete: function () { }
+
+                });
+
+
+             //不加签分支
+            } else {
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + ' <Header>';
+                xml = xml + '   <Method>Process</Method>';
+                xml = xml + '   <PID>' + pid + '</PID> ';
+                xml = xml + '   <Action>同意</Action>';
+                xml = xml + '   <Comment>' + comment + '</Comment>';
+              
+                xml = xml + ' <UrlParams></UrlParams>';
+                xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+                xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+                xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+                xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+
+                xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
+
+                xml = xml + ' </Header>';
+                xml = xml + ' <FormData>';
+                xml = xml + '  <BPM_JRAPP>';
+                xml = xml + '    <fbt>' + fbt + '</fbt>';
+                xml = xml + '    <fsy>' + fsy + '</fsy>';
+                if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                    xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                } else {
+
+                    xml = xml + '      <fj></fj>';
+                }
+                xml = xml + '  </BPM_JRAPP>';
+                xml = xml + ' </FormData>';
+                xml = xml + '</XForm>';
+
+
+                PostXml(xml);
+
+            }
+           
+          
+        }
+
+
+        //退回重填
+        function Refilled() {
+           
+
+            var comments;
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请输入原因：', '', '退回理由', btnArray, function (e) {
+                if (e.index == 1) {
+                    comments = e.value;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/PostRecedeRestart",
+                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                        },
+                        success: function (data, status) {
+
+                            if (status == "success") {
+
+                                mui.toast("操作成功");
+                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
+                            } else {
+                                mui.toast("操作失败,请稍后重试");
+                            }
+                        },
+                        error: function (e) {
+                            //console.log(e);  
+
+                        },
+                        complete: function () { }
+
+                    });
+                } else {
+
+                }
+            }, 'div');
+            
+
+           
+        }
+
+        //已阅
+        function hasRead() {
+            var flowTitle = $("#flowTitle").val();
+            var flowPerId = $("#flowPerId").val();
+            var flowCause = $("#flowCause").val();
+            var pid = $("#stepId").val();//stepId
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '  <Header>';
+                    xml = xml + '    <Method>InformSubmit</Method>';
+                    xml = xml + '    <PID>' + pid + '</PID>';
+                    xml = xml + '    <Comment>' + comment + '</Comment>';
+
+                    xml = xml + '  </Header>';
+                    xml = xml + ' <FormData>';
+                    xml = xml + '  <BPM_JRAPP>';
+                    xml = xml + '     <fbt>' + flowTitle + '</fbt>';
+                    xml = xml + '     <fsy>' + flowCause + '</fsy>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+
+                        xml = xml + '      <fj></fj>';
+                    }
+                    xml = xml + '  </BPM_JRAPP>';
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm>';
+
+
+
+
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/PostProcess",
+                        data: { '': xml },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                        },
+                        success: function (data, status) {
+                            if (status == "success") {
+                                mui.toast("操作成功");
+                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
+                            } else {
+                                mui.toast("操作失败!请稍后重试");
+                            }
+
+                        },
+                        error: function (e) {
+                            //alert(e);
+                        },
+                        complete: function () { }
+                    });
+                }
+
+            });
+        }
+
+
+        function reject() {
+            var comments;
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请输入原因：', '', '拒绝理由', btnArray, function (e) {
+                if (e.index == 1) {
+                    comments = e.value;
+
+                   
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/PostReject",
+                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                        },
+                        success: function (data, status) {
+
+                            if (status == "success") {
+
+                                mui.toast("操作成功");
+                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
+                            } else {
+                                mui.toast("操作失败,请稍后重试");
+                            }
+                        },
+                        error: function (e) {
+                            console.log(e);  
+                           
+                        },
+                        complete: function () { }
+
+                    });
+                } else {
+
+                }
+            }, 'div');
+
+        }
+
+
+
+
+        function getBPMParam() {
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+                    }
+                },
+                error: function (e) {
+                },
+
+                complete: function () { }
+
+            });
+
+        }
+
+        //提交
+        function Save() {
+
+
+            var flowTitle = $("#flowTitle").val();
+            var flowPerId = $("#flowPerId").val();
+            var flowCause = $("#flowCause").val();
+
+            //TODO:附件部分添加
+            var pid = $("#stepId").val();
+
+            var xml = '<?xml version="1.0"?>';
+            xml = xml + '<XForm>';
+            xml = xml + '   <Header>';
+            xml = xml + '    <Method>Process</Method>';
+            xml = xml + '   <PID>' + pid + '</PID>';
+            xml = xml + '   <Action>提交</Action>';
+            xml = xml + '    <Comment></Comment>';
+            xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+            xml = xml + '  </Header>';
+            xml = xml + ' <FormData>';
+            xml = xml + '   <BPM_JRAPP>';
+            xml = xml + '      <fbt>' + flowTitle + '</fbt>';
+            xml = xml + '      <fsy>' + flowCause + '</fsy>';
+            if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+            } else {
+
+                xml = xml + '      <fj></fj>';
+            }
+            xml = xml + '   </BPM_JRAPP>';
+            xml = xml + ' </FormData>';
+            xml = xml + '</XForm>';
+
+            
+
+            PostXml(xml);
+
+        }
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+        function delPicture(el) {
+
+            $(el).parent().remove();
+            watch();
+
+
+        }
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+        function selectPic() {
+
+            var photos = new Array();
+            var photoNew = 0;
+            var photoCount = $('.upload-img-list >div').size();
+            var photoOld = 0;
+            $(".upload-img-list div").each(function () {
+                var FileName;
+                var FileType;
+                if (data.photoInfo[photoNew] != null) {
+                    FileName = data.photoInfo[photoNew].id;       //图片ID     
+                    FileType = data.photoInfo[photoNew].type;
+                    photoNew++;
+
+                    if (FileName) {
+                        photos.push({ 'FileName': FileName, 'FileType': FileType });
+                    }
+
+                } else {
+                    if (photoOld == 0) {
+
+                        photoOld = photoCount - photoNew;
+
+                    }
+
+                    else {
+                        if ($(this).hasClass("del")) {
+                            FileName = $(this).parent().parent().find("input[name=filepath]").val();
+                            FileType = $(this).parent().parent().find("input[name=filetype]").val();
+                            photoOld--;
+                        } else if ($(this).hasClass("success")) {
+                            FileName = $(this).find("input[name=filepath]").val();
+                            FileType = $(this).find("input[name=filetype]").val();
+                            photoOld--;
+                        }
+
+
+                        //if (FileName) {
+                        //    photos.push({ 'FileName': FileName, 'FileType': FileType });
+                        //}
+                    }
+
+                }
+
+            });
+
+        }
+
+
+
+        function showConfirm() {
+            $("#wrapper").css("display", "none");
+            $("#signd").css("display", "block");
+
+        }
+        function cancelConfirm() {
+
+            $("#wrapper").css("display", "block");
+            $("#signd").css("display", "none");
+        }
+
+        //定义附件函数
+        function attachItem(name,type,size,time,downurl) {
+            var attachment = new Object();
+            attachment.name = name;
+            attachment.type = type;
+            attachment.size = size;
+            attachment.time = time;
+            attachment.downurl = downurl;
+            return attachment;
+        }
+        //判断是否是Safari
+        function isSafari() {
+
+            if ( navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPhone") != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //ios刷新
+        function iosfresh() {
+
+
+            if ($('body').hasClass("no-cache")) {
+                document.body.style.display = "none";
+                window.location.reload();
+
+            }
+
+
+        }
+
+        function forbiddenCache() {
+            if (isSafari()) {
+                $('body').addClass("no-cache");
+               
+            }
+
+        }
+    </script> 
+</body>
+</html>

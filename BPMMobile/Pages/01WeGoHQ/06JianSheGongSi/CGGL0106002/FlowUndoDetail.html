@@ -1,0 +1,2511 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css"/>
+
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请单位<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请时间</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="qdate">需求到货日期<i style="color:red;">*</i></label>
+                <input type="date" id="qdate" name="qdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcnum">工程编码<i style="color:red;">*</i></label>
+                <input type="text" id="fgcnum" name="fgcnum" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgcname">工程名称<i style="color:red;">*</i></label>
+                <input type="text" id="fgcname" name="fgcname" value=""readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjsdw">建设单位<i style="color:red;">*</i></label>
+                <input type="text" id="fjsdw" name="fjsdw" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsfjj">是否加急<i style="color:red;">*</i></label>
+                <input type="text" id="fsfjj" name="fsfjj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwlzl">物料种类<i style="color:red;">*</i></label>
+                <input type="text" id="fwlzl" name="fwlzl" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;" id="div_gys">
+                <label for="fgys">供应商<i style="color:red;">*</i></label>
+                <input type="text" id="fgys" name="fgys" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;" id="div_shdd">
+                <label for="fshdd">送货地点<i style="color:red;">*</i></label>
+                <input type="text" id="fshdd" name="fshdd" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;" id="div_grt">
+                <label for="fgrt">隔热条<i style="color:red;">*</i></label>
+                <input type="text" id="fgrt" name="fgrt" value="" readonly="readonly" />
+            </div>
+
+
+            <!--玻璃采购明细-->
+            <div class="mui-input-row itemtitle2"  id="div_blcgmx" style="height:3.25rem;">
+                <label>玻璃采购明细(点击隐藏/显示)</label>
+               
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addItem_bl" ;></span></a>
+            </div>
+
+            <div class="mui-input-group" id="bllist_bl" >
+
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv_bl">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图纸附件-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">图纸附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图纸按钮  -->
+                        <span class="upload-addbtn" id="addbtn_bl" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+
+            <!--型材采购明细-->
+            <div class="mui-input-row itemtitle2"  id="div_xccgmx" style="height:3.25rem;">
+                <label>型材采购明细(点击隐藏/显示)</label>
+             
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addItem_xc" ;></span></a>
+            </div>
+
+            <div class="mui-input-group" id="bllist_xc" >
+
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv_xc">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图纸附件-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">图纸附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图纸按钮  -->
+                        <span class="upload-addbtn" id="addbtn_xc" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list-xc"></div>
+                </div>
+            </div>
+
+
+            <!--配件采购明细-->
+            <div class="mui-input-row itemtitle2"  id="div_pjcgmx" style="height:3.25rem;">
+                <label>配件采购明细(点击隐藏/显示)</label>
+              
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addItem_pj" ;></span></a>
+            </div>
+
+            <div class="mui-input-group" id="bllist_pj">
+
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv_pj">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图纸附件-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">图纸附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图纸按钮  -->
+                        <span class="upload-addbtn" id="addbtn_pj"  style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list-pj"></div>
+                </div>
+            </div>
+        
+
+            <div class="mui-input-row" id="csd">
+                <label>加签</label>
+                <div class="mui-switch mui-switch-blue">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="signbody">
+
+                <div class="mui-input-row" id="signPerDiv">
+                    <label>加签人</label>
+                    <span class="mui-navigate-right"></span>
+                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签模式</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="sxsl">
+                            <a class="mui-navigate-right" id="sxsa">
+                                顺序加签
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="pxsl">
+                            <a class="mui-navigate-right" id="pxsa">
+                                平行加签
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签回转</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                            <a class="mui-navigate-right" id="hdbjda">
+                                回到本节点
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="jrxjdl">
+                            <a class="mui-navigate-right" id="jrxjda">
+                                进入下一节点
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="mui-table-view" style="margin-bottom:3.25rem;">
+                <div class="mui-table-view-cell  mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                        历史签核意见
+                    </a>
+                    <div class="mui-collapse-content">
+
+                        <!--流程列表-->
+                        <div class="list">
+                            <ul id="signff"></ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row"  id="createD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row"  id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+
+        </div>
+        <div class="mui-btn-row"  id="readD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value=""/>
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row"  id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()" >确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+
+            getTaskMsg();
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+            upload();
+            watch();
+           
+
+        });
+        mui('.mui-content .mui-switch').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#signbody').css('display', 'block');
+                } else {
+
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                {'text':'退回到某步','callBackId':'callback3'}
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+        var  itemidArr_bl;
+        var itemidArr_xc;
+        var itemidArr_pj;
+        function getTaskMsg() {
+
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+
+                taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                    stepId = url.split("pid=")[1];
+                    stepId = stepId.split("&ticket")[0];
+                    var ticket = url.split("=")[3];
+                    localStorage.setItem('ticket', ticket);
+                } else {
+                    stepId = url.split("pid=")[1];
+                }
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            itemidArr_bl = new Array();
+            itemidArr_xc = new Array();
+            itemidArr_pj = new Array();
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    //console.log(data);
+                    if (status == "success") {
+                        optZTap();
+                        console.log(data);
+                        var item = data.FormDataSet.建设公司_物资采购_主表[0];
+                        $("#taskId").val(item.TaskID);
+                        $("#fname").val(item.申请人);
+                        $("#fdept").val(item.申请单位);
+                        $("#fdate").val(FormatterTimeYMS(item.申请日期));
+                        $("#qdate").val(FormatterTimeYMS(item.需求到货日期));
+                        $("#ftel").val(item.联系电话);
+                        $("#fgcnum").val(item.工程编码);
+                        $("#fgcname").val(item.工程名称);
+                        $("#fjsdw").val(item.建设单位);
+                        $("#fsfjj").val(item.是否加急);
+                        $("#fwlzl").val(item.物料种类);
+                        $("#fgys").val(item.供应商);
+                        $("#fshdd").val(item.送货地点);
+                        $("#fgrt").val(item.隔热条);
+                        $("#stepId").val(stepId);
+                        $("#fbillno").val(item.fbillno);
+                        if (String(item.物料种类).indexOf("玻璃") != -1) {
+                            
+                            $("#div_gys").css("display", "block");
+                            $("#div_shdd").css("display", "block");
+                            $("#div_pjcgmx").css("display", "none");
+                            $("#div_xccgmx").css("display", "none");
+                            $("#uploaddiv_xc").css("display", "none");
+                            $("#uploaddiv_pj").css("display", "none");
+                            $("#fgys").css('display', 'block');
+                        } else if (String(item.物料种类).indexOf("型材") != -1) {
+                            
+                            $("#div_gys").css("display", "block");
+                            $("#div_shdd").css("display", "block");
+                            $("#div_grt").css("display", "block");
+                            $("#div_blcgmx").css("display", "none");
+                            $("#div_pjcgmx").css("display", "none");
+                            $("#uploaddiv_pj").css("display", "none");
+                            $("#uploaddiv_bl").css("display", "none");
+                            $("#fgys").css('display', 'block');
+                        } else if (String(item.物料种类).indexOf("配件") != -1) {
+                            $("#div_blcgmx").css("display", "none");
+                            $("#div_xccgmx").css("display", "none");
+                            $("#uploaddiv_bl").css("display", "none");
+                            $("#uploaddiv_xc").css("display", "none");
+                        }
+
+                        if (item.附件 != null && item.附件 != "") {
+                            var fjtmp = (String)(item.附件);
+
+                            fjArray = fjtmp.split(";");
+
+
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求玻璃附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+
+                                            var time = String(data[i].LastUpdate).replace("T", " ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;          /*正式网址*//*app.weigaogroup.com:8040*/
+
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+
+                                            });
+
+
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+                        if (item.附件2 != null && item.附件2 != "") {
+                            var fjtmp = (String)(item.附件2);
+
+                            fjArray_xc = fjtmp.split(";");
+
+
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求型材附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray_xc },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+
+                                            var time = String(data[i].LastUpdate).replace("T", " ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;          /*正式网址*//*app.weigaogroup.com:8040*/
+
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list-xc").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+
+                                            });
+
+
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+                        if (item.附件3 != null && item.附件3 != "") {
+                            var fjtmp = (String)(item.附件);
+
+                            fjArray_pj = fjtmp.split(";");
+
+
+                            //console.log("fjArray:" + fjArray);
+
+                            //请求配件附件详细信息
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/bpm/GetAttachmentsInfo',
+                                //dataType:'json',
+                                data: { 'fileIds': fjArray_pj },
+
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                                },
+                                success: function (data, status) {
+                                    if (status == "success") {
+
+                                        console.log(data);
+
+                                        for (var i = 0; i < data.length; i++) {
+
+                                            var name = data[i].Name;
+                                            var type = (data[i].Ext).replace(".", "");
+                                            var size = String(data[i].Size);
+
+                                            var time = String(data[i].LastUpdate).replace("T", " ");
+                                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;          /*正式网址*//*app.weigaogroup.com:8040*/
+
+                                            var attach = attachItem(name, type, size, time, downurl);
+                                            attachArray.push(attach);
+
+
+
+                                            var li = '<div class="pic-preview smallyulan success">';
+                                            li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                            //类型判断
+                                            if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                                //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                                            } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                            } else {
+                                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                            }
+
+                                            li = li + ' </div>';
+                                            li = li + '</div>';
+                                            $(".upload-img-list-pj").append(li);
+
+
+                                            $(".imgdiv").each(function () {
+
+                                                $(this).parent().find(".del.none").hide();
+
+                                            });
+
+
+
+
+                                        }
+                                        watch();
+                                        $(".imgdiv").on('tap', function () {
+                                            console.log($(this)[0].id);
+                                            XuntongJSBridge.call('showFile', {
+                                                'fileName': attachArray[$(this)[0].id].name,
+                                                'fileExt': attachArray[$(this)[0].id].type,
+                                                'fileTime': attachArray[$(this)[0].id].time,
+                                                'fileSize': attachArray[$(this)[0].id].size,
+                                                'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                            }, function (result) {
+                                                //alert(JSON.stringify(result));
+                                            });
+                                        });
+
+
+                                    }
+
+                                }, error: function (e) {
+                                    console.log(e);
+
+                                }, complete: function () {
+
+                                }
+
+                            });
+
+                        }
+
+                        var fblcgmxItem = data.FormDataSet.建设公司_物资采购_玻璃;
+                        if (fblcgmxItem.length>0) {
+                            $("#div_blcgmx").css("display", "block");
+                        }
+                        for (var i = 0; i < fblcgmxItem.length; i++) {
+                            if (fblcgmxItem[i].备注 == null) {
+                                fblcgmxItem[i].备注 = '';
+                            }
+                            itemidArr_bl.push(fblcgmxItem[i].itemid);
+                            //var li = '<div id="bl" class="mui-card">';
+                            //li = li + '   <div class="mui-input-row bgc">';
+                            //li = li + '        <label>明细列表项</label> ';
+                            //li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblwlbm">物料编码<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fblwlbm" name="fblwlbm" value="' + fblcgmxItem[i].物料编码 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fazbw">安装部位<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fazbw" name="fazbw" value="' + fblcgmxItem[i].安装部位 + '" readonly="readonly" /> ';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblgg">玻璃规格<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fblgg" name="fblgg" value="' + fblcgmxItem[i].玻璃规格 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblk">玻璃宽<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fblk" name="fblk" value="' + fblcgmxItem[i].玻璃宽 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblg">玻璃高<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fblg" name="fblg" value="' + fblcgmxItem[i].玻璃高 + '"readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblsl">数量<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fblsl" name="fblsl" value="' + fblcgmxItem[i].玻璃数量 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fmj">面积<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fmj" name="fmj" value="' + fblcgmxItem[i].面积 + '"readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fblbz">备注</label>';
+                            //li = li + '        <input type="text" id="fblbz" name="fblbz" value="' + fblcgmxItem[i].备注 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '</div>';
+                            var li = '<div id="bl" class="mui-card">';
+                            li = li + '   <div class="mui-input-row bgc">';
+                            li = li + '        <label>明细列表项</label> ';
+                            li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '   </div>';
+                            li = li + '        <input type="hidden" id="fblwlbm" name="fblwlbm" value="' + fblcgmxItem[i].物料编码 + '" readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fazbw" name="fazbw" value="' + fblcgmxItem[i].安装部位 + '" readonly="readonly" /> ';
+                            li = li + '        <input type="hidden" id="fblgg" name="fblgg" value="' + fblcgmxItem[i].玻璃规格 + '" readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fblk" name="fblk" value="' + fblcgmxItem[i].玻璃宽 + '" readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fblg" name="fblg" value="' + fblcgmxItem[i].玻璃高 + '"readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fblsl" name="fblsl" value="' + fblcgmxItem[i].玻璃数量 + '" readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fmj" name="fmj" value="' + fblcgmxItem[i].面积 + '"readonly="readonly" />';
+                            li = li + '        <input type="hidden" id="fblbz" name="fblbz" value="' + fblcgmxItem[i].备注 + '" readonly="readonly" />';
+                            li = li + '    <textarea rows="5" readonly="readonly">';
+                            li = li + '物料代码: ' + fblcgmxItem[i].物料编码 + ' &nbsp 安装部位: ' + fblcgmxItem[i].安装部位 + ' &nbsp 玻璃规格: ' + fblcgmxItem[i].玻璃规格 + '&nbsp ';
+                            li = li + '玻璃宽:' + fblcgmxItem[i].玻璃宽 + '&nbsp 玻璃高:' + fblcgmxItem[i].玻璃高 + ' &nbsp 玻璃数量: ' + fblcgmxItem[i].玻璃数量 + '&nbsp ' + ' &nbsp 面积: ' + fblcgmxItem[i].面积;
+                            li = li + ' &nbsp 备注:' + fblcgmxItem[i].备注;
+                            li = li + ' </textarea > ';
+                            li = li + '</div>';
+
+                            $("#bllist_bl").append(li);
+
+                        }
+                        var fxccgmxItem = data.FormDataSet.建设公司_物资采购_型材;
+                        if (fxccgmxItem.length > 0) {
+                            $("#div_xccgmx").css("display", "block");
+                            $("#div_grt").css("display", "block");
+                        }
+                        for (var i = 0; i < fxccgmxItem.length; i++) {
+                            
+                            if (fxccgmxItem[i].备注 == null) {
+                                fxccgmxItem[i].备注 = '';
+                            }
+                            itemidArr_xc.push(fxccgmxItem[i].itemid);
+                            //var li = '<div id="xc" class="mui-card">';
+                            //li = li + '   <div class="mui-input-row bgc">';
+                            //li = li + '        <label>明细列表项</label> ';
+                            //li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcwlbm">物料编码<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fxcwlbm" name="fxcwlbm" value="' + fxccgmxItem[i].物料编码 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcxcmc">型材名称<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fxcxcmc" name="fxcxcmc" value="' + fxccgmxItem[i].型材名称 + '" readonly="readonly"/> ';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcxcdh">型材代号<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fxcxcdh" name="fxcxcdh" value="' + fxccgmxItem[i].型材代号 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcysxh">颜色型号<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fxcysxh" name="fxcysxh" value="' + fxccgmxItem[i].颜色型号 + '" readonly="readonly"/> ';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcmz">米重（kg/m）<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fxcmz" name="fxcmz" value="' + fxccgmxItem[i].米重 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcdc">定尺（m）<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fxcdc" name="fxcdc" value="' + fxccgmxItem[i].定尺 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcsl">数量（支）<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fxcsl" name="fxcsl" value="' + fxccgmxItem[i].数量 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxczl">重量（kg）<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fxczl" name="fxczl" value="' + fxccgmxItem[i].重量 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fxcbz">备注</label>';
+                            //li = li + '        <input type="text" id="fxcbz" name="fxcbz" value="' + fxccgmxItem[i].备注 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '</div>';
+                            var li = '<div id="xc" class="mui-card">';
+                            li = li + '   <div class="mui-input-row bgc">';
+                            li = li + '        <label>明细列表项</label> ';
+                            li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '   </div>';
+                            li = li + '        <input type="hidden" id="fxcwlbm" name="fxcwlbm" value="' + fxccgmxItem[i].物料编码 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxcxcmc" name="fxcxcmc" value="' + fxccgmxItem[i].型材名称 + '" readonly="readonly"/> ';
+                            li = li + '        <input type="hidden" id="fxcxcdh" name="fxcxcdh" value="' + fxccgmxItem[i].型材代号 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxcysxh" name="fxcysxh" value="' + fxccgmxItem[i].颜色型号 + '" readonly="readonly"/> ';
+                            li = li + '        <input type="hidden" id="fxcmz" name="fxcmz" value="' + fxccgmxItem[i].米重 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxcdc" name="fxcdc" value="' + fxccgmxItem[i].定尺 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxcsl" name="fxcsl" value="' + fxccgmxItem[i].数量 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxczl" name="fxczl" value="' + fxccgmxItem[i].重量 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fxcbz" name="fxcbz" value="' + fxccgmxItem[i].备注 + '" readonly="readonly" />';
+                            li = li + '    <textarea rows="5" readonly="readonly">';
+                            li = li + '物料编码:' + fxccgmxItem[i].物料编码 + '&nbsp 型材名称:' + fxccgmxItem[i].型材名称 + '&nbsp 型材代号:' + fxccgmxItem[i].型材代号;
+                            li = li + '&nbsp 颜色型号:' + fxccgmxItem[i].颜色型号 + '&nbsp 米重:' + fxccgmxItem[i].米重 + '&nbsp 定尺:' + fxccgmxItem[i].定尺;
+                            li = li + '&nbsp 数量:' + fxccgmxItem[i].数量 + '&nbsp 重量:' + fxccgmxItem[i].重量 + '&nbsp 备注:' + fxccgmxItem[i].备注;
+                            li = li + '    </textarea>';
+                            li = li + '</div>';
+                            $("#bllist_xc").append(li);
+
+                        }
+                        var fpjcgmxItem = data.FormDataSet.建设公司_物资采购_配件;
+                        if (fpjcgmxItem.length>0) {
+                            $("#div_pjcgmx").css("display", "block");
+                        }
+                        for (var i = 0; i < fpjcgmxItem.length; i++) {
+                            if (fpjcgmxItem[i].备注 == null) {
+                                fpjcgmxItem[i].备注 = '';
+                            }
+                            if (fpjcgmxItem[i].配件供应商 == null) {
+                                fpjcgmxItem[i].配件供应商 = '';
+                            }
+                            itemidArr_pj.push(fpjcgmxItem[i].itemid);
+                            //var li = '<div id="pj" class="mui-card">';
+                            //li = li + '   <div class="mui-input-row bgc">';
+                            //li = li + '        <label>明细列表项</label> ';
+                            //li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fpjwlbm">物料编码<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fpjwlbm" name="fpjwlbm" value="' + fpjcgmxItem[i].物料编码 + '"readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fpjwlmc">物料名称<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fpjwlmc" name="fpjwlmc" value="' + fpjcgmxItem[i].物料名称 + '" readonly="readonly"/> ';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fggxh" name="fggxh" value="' + fpjcgmxItem[i].规格型号 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fdw">单位<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="text" id="fdw" name="fdw" value="' + fpjcgmxItem[i].单位 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fpjsl">数量<i style="color:red;">*</i></label>';
+                            //li = li + '        <input type="number" id="fpjsl" name="fpjsl" value="' + fpjcgmxItem[i].配件数量 + '" readonly="readonly"/>';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fpjbz">备注</label>';
+                            //li = li + '        <input type="text" id="fpjbz" name="fpjbz" value="' + fpjcgmxItem[i].备注 + '" readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '   <div class="mui-input-row">';
+                            //li = li + '        <label for="fpjgys">供应商</label>';
+                            //li = li + '        <input type="text" id="fpjgys" name="fpjgys" value="' + fpjcgmxItem[i].配件供应商 + '"  readonly="readonly" />';
+                            //li = li + '   </div>';
+                            //li = li + '</div>';
+
+                            var li = '<div id="pj" class="mui-card">';
+                            li = li + '   <div class="mui-input-row bgc">';
+                            li = li + '        <label>明细列表项</label> ';
+                            li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '   </div>';
+                            li = li + '        <input type="hidden" id="fpjwlbm" name="fpjwlbm" value="' + fpjcgmxItem[i].物料编码 + '"readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fpjwlmc" name="fpjwlmc" value="' + fpjcgmxItem[i].物料名称 + '" readonly="readonly"/> ';
+                            li = li + '        <input type="hidden" id="fggxh" name="fggxh" value="' + fpjcgmxItem[i].规格型号 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fdw" name="fdw" value="' + fpjcgmxItem[i].单位 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fpjsl" name="fpjsl" value="' + fpjcgmxItem[i].配件数量 + '" readonly="readonly"/>';
+                            li = li + '        <input type="hidden" id="fpjbz" name="fpjbz" value="' + fpjcgmxItem[i].备注 + '" readonly="readonly" />';
+                          
+                            li = li + '<textarea rows="5" readonly="readonly">';
+                            li = li + '物料编码:' + fpjcgmxItem[i].物料编码 + '&nbsp 物料名称:' + fpjcgmxItem[i].物料名称 + '&nbsp规格型号:' + fpjcgmxItem[i].规格型号;
+                            li = li + '&nbsp 单位:' + fpjcgmxItem[i].单位 + '&nbsp 配件数量:' + fpjcgmxItem[i].配件数量 + '&nbsp 备注:' + fpjcgmxItem[i].备注 ;
+                            li = li + '</textarea>';
+                            li = li + '<div class="mui-input-row">';
+                            li = li + '        <label>配件供应商<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="text" id="fpjgys" name="fpjgys" value="' + fpjcgmxItem[i].配件供应商 + '" readonly="readonly"  />';
+                            li = li + '</div>';
+                         
+                            li = li + '</div>';
+                            $("#bllist_pj").append(li);
+
+                        }
+
+                        if ($('#myPhone').val() == "") {
+                            var myPhone = String(BPMOU).split("/");
+                            $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                        }
+                        var NodeName;
+                        //判断流程本节点是否结束，处理者是否为当前用户,
+                        //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                        for (var i = 0; i < data.Steps.length; i++) {
+                            //debugger;
+
+                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                                if (stepId.indexOf(data.Steps[i].StepID)!=-1) {
+
+                                    NodeName = data.Steps[i].NodeName;
+
+                                }
+
+                            }
+
+                        }
+                        $("#nodeName").val(NodeName); 
+                        if (NodeName == "开始") {
+                            $("#createD").css("display", "block");
+                            $("#csd").css("display", "none");
+                            $(".upload-addbtn").css("display", "block");
+                            $("#qdate").removeAttr("readonly");
+                            $("#ftel").removeAttr("readonly");
+                            $("#fgcnum").removeAttr("readonly");
+                            $("#fgcname").removeAttr("readonly");
+                            $("#fjsdw").removeAttr("readonly");
+                            $("#fwlzl").removeAttr("readonly");
+                           
+                            $("#bllist_bl").find("input").each(function () {
+                                $(this).removeAttr("readonly");
+                            });
+                            $("#bllist_xc").find("input").each(function () {
+                                $(this).removeAttr("readonly");
+                            });
+                            $("#bllist_pj").find("input").each(function () {
+                                $(this).removeAttr("readonly");
+                            });
+                            tapEvent();
+                            $("#bllist_bl").find('span').each(function () {
+                                $(this).css("display", "block");
+                            });
+                            $("#bllist_xc").find('span').each(function () {
+                                $(this).css("display", "block");
+                            });
+                            $("#bllist_pj").find('span').each(function () {
+                                $(this).css("display", "block");
+                            });
+
+                            $("#addItem_xc").css("display", "block");
+                            $("#addIem_pj").css("display", "block");
+                            $("#addItem_bl").css("display", "block");
+                        } else if (NodeName == "sysInform") {
+                            $("#readD").css("display", "block");
+                            $("#csd").css("display", "none");
+                        } else {
+                            if (typeof (NodeName) != "undefined") {
+                                $("#approvalD").css("display", "block");
+                                if (String(NodeName).indexOf("采招部经理")!=-1) {
+                                    $("#fgys").removeAttr("readonly");
+                                    $("#fgys").attr("placeholder", "请填写供应商");
+
+                                    if (fpjcgmxItem.length > 0){
+                                        $("#bllist_pj").find("#fpjgys").each(function () {
+                                            $(this).removeAttr('readonly');
+                                            $(this).attr('placeholder', '请填写配件供应商');
+
+                                        });
+                                    }
+                                    
+                                   
+                                   
+                                }
+                            }
+                               
+
+                        }
+                       
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+                    }
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+
+
+        }
+
+
+
+        function AgreeOrConSign() {
+
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var qdate = $("#qdate").val() + " 00:00:00";
+            var fgcnum = $("#fgcnum").val();
+            var fgcname = $("#fgcname").val();
+            var fjsdw = $("#fjsdw").val();
+            var fsfjj = $("#fsfjj").val();
+            var fwlzl = $("#fwlzl").val();
+            var fgys = $("#fgys").val();
+            var fshdd = $("#fshdd").val();
+            var fgrt = $("#fgrt").val();
+
+            var nodeName = $("#nodeName").val();
+
+            if (String(nodeName).indexOf("采招部经理") != -1) {
+                if (String(fwlzl).indexOf("型材") != -1 || String(fwlzl).indexOf("玻璃") != -1) {
+                    if (!fgys || fgys == '') {
+                        mui.toast('请填写供应商');
+                        return;
+                    }
+                }
+            }
+       
+            var i = 0;
+            var j = 0;
+            var k = 0;
+            var bllistArr = new Array();
+            var bllistArr_xc = new Array();
+            var bllistArr_pj = new Array();
+            $("#bllist_bl").find("#bl").each(function () {
+                var fblwlbm = $(this).find("#fblwlbm").val();
+                var fazbw = $(this).find("#fazbw").val();
+                var fblgg = $(this).find("#fblgg").val();
+                var fblk = $(this).find("#fblk").val();
+                var fblg = $(this).find("#fblg").val();
+                var fblsl = $(this).find("#fblsl").val();
+                var fmj = $(this).find("#fmj").val();
+                var fblbz = $(this).find("#fblbz").val();
+               
+
+
+                var bl = new Object;
+                bl.fblwlbm = fblwlbm;
+                bl.fazbw = fazbw;
+                bl.fblgg = fblgg;
+                bl.fblk = fblk;
+                bl.fblg = fblg;
+                bl.fblsl = fblsl;
+                bl.fmj = fmj;
+                bl.fblbz = fblbz;
+                bllistArr.push(bl);
+            });
+            $("#bllist_xc").find("#xc").each(function () {
+                var fxcwlbm = $(this).find("#fxcwlbm").val();
+                var fxcxcmc = $(this).find("#fxcxcmc").val();
+                var fxcxcdh = $(this).find("#fxcxcdh").val();
+                var fxcysxh = $(this).find("#fxcysxh").val();
+                var fxcmz = $(this).find("#fxcmz").val();
+                var fxcdc = $(this).find("#fxcdc").val();
+                var fxcsl = $(this).find("#fxcsl").val();
+                var fxczl = $(this).find("#fxczl").val();
+                var fxcbz = $(this).find("#fxcbz").val();
+
+
+
+
+                var xc = new Object;
+                xc.fxcwlbm = fxcwlbm;
+                xc.fxcxcmc = fxcxcmc;
+                xc.fxcxcdh = fxcxcdh;
+                xc.fxcysxh = fxcysxh;
+                xc.fxcmz = fxcmz;
+                xc.fxcdc = fxcdc;
+                xc.fxcsl = fxcsl;
+                xc.fxczl = fxczl;
+                xc.fxcbz = fxcbz;
+                bllistArr_xc.push(xc);
+            });
+            $("#bllist_pj").find("#pj").each(function () {
+                var fpjwlbm = $(this).find("#fpjwlbm").val();
+                var fpjwlmc = $(this).find("#fpjwlmc").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var fdw = $(this).find("#fdw").val();
+                var fpjsl = $(this).find("#fpjsl").val();
+                var fpjbz = $(this).find("#fpjbz").val();
+                var fpjgys = $(this).find("#fpjgys").val();
+
+
+             
+
+
+                var pj = new Object;
+                pj.fpjwlbm = fpjwlbm;
+                pj.fpjwlmc = fpjwlmc;
+                pj.fggxh = fggxh;
+                pj.fdw = fdw;
+                pj.fpjsl = fpjsl;
+                pj.fpjbz = fpjbz;
+                pj.fpjgys = fpjgys;
+                bllistArr_pj.push(pj);
+            });
+
+
+
+
+            var comment = $("#signSuggest").val();
+            var consignFlag = false;
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+            //加签if分支
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+                consignFlag = true;
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }, success: function (data, status) {
+
+                        if (status == "success") {
+
+
+                            for (var i = 0; i < data.data.length; i++) {
+                                consignUserId.push(data.data[i].phone);
+                            }
+                            $('#consignUser').val(consignUserId);
+                            consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+
+                            var xml = '<?xml version="1.0"?>';
+                            xml = xml + '<XForm>';
+                            xml = xml + '<Header>';
+                            xml = xml + '<Method>Process</Method>';
+                            xml = xml + '<PID>' + pid + '</PID>';
+                            xml = xml + '<Action>同意</Action>';
+                            xml = xml + '<Comment>' + comment + '</Comment>';
+
+
+                            //加签差异部分
+                            xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
+                            xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                            xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                            xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+
+                            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                            xml = xml + '</Header>';
+                            xml = xml + '<FormData>';
+                            xml = xml + '<建设公司_物资采购_主表>';
+                            xml = xml + '<单号>' + fbillno + '</单号>';
+                            xml = xml + '<申请人>' + fname + '</申请人>';
+                            xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                            xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                            xml = xml + '<需求到货日期>' + qdate + '</需求到货日期>';
+                            xml = xml + '<联系电话>' + ftel + '</联系电话>';
+                            xml = xml + '<工程编码>' + fgcnum + '</工程编码>';
+                            xml = xml + '<工程名称>' + fgcname + '</工程名称>';
+                            xml = xml + '<建设单位>' + fjsdw + '</建设单位>';
+                            xml = xml + '<是否加急>' + fsfjj + '</是否加急>';
+                            xml = xml + '<物料种类>' + fwlzl + '</物料种类>';
+                            xml = xml + '<供应商>' + fgys + '</供应商>';
+                            xml = xml + '<送货地点>' + fshdd + '</送货地点>';
+                            xml = xml + '<隔热条>' + fgrt + '</隔热条>';
+                            xml = xml + '<附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                            xml = xml + '<模板玻璃></模板玻璃>';
+                            xml = xml + '<附件2>' + fjArray_xc.toString().replace(",", ";") + '</附件2>';
+                            xml = xml + '<模板型材></模板型材>';
+                            xml = xml + '<附件3>' + fjArray_pj.toString().replace(",", ";") + '</附件3>';
+                            xml = xml + '<模板配件></模板配件>';
+                            xml = xml + '</建设公司_物资采购_主表>';
+                            if (fwlzl == '玻璃') {
+                                for (i; i < bllistArr.length; i++) {
+
+                                    xml = xml + '<建设公司_物资采购_玻璃>';
+                                    xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                                    xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_bl[i] + '</RowPrimaryKeys>';
+                                    xml = xml + '<序号>' + (i + 1) + '</序号>';
+                                    xml = xml + '<物料编码>' + bllistArr[i].fblwlbm + '</物料编码>';
+                                    xml = xml + '<安装部位>' + bllistArr[i].fazbw + '</安装部位>';
+                                    xml = xml + '<玻璃规格>' + bllistArr[i].fblgg + '</玻璃规格>';
+                                    xml = xml + '<玻璃宽>' + bllistArr[i].fblk + '</玻璃宽>';
+                                    xml = xml + '<玻璃高>' + bllistArr[i].fblg + '</玻璃高>';
+                                    xml = xml + '<玻璃数量>' + bllistArr[i].fblsl + '</玻璃数量>';
+                                    xml = xml + '<面积>' + bllistArr[i].fmj + '</面积>';
+                                    xml = xml + ' <备注>' + bllistArr[i].fblbz + '</备注>';
+                                    xml = xml + '</建设公司_物资采购_玻璃>';
+
+                                }
+                                xml = xml + '<建设公司_物资采购_型材>';
+                                xml = xml + '</建设公司_物资采购_型材>';
+                                xml = xml + '<建设公司_物资采购_配件>';
+                                xml = xml + '</建设公司_物资采购_配件>';
+                            }
+                            if (fwlzl == '型材') {
+                                xml = xml + '<建设公司_物资采购_玻璃>';
+                                xml = xml + '</建设公司_物资采购_玻璃>';
+                                for (j; j < bllistArr_xc.length; j++) {
+
+                                    xml = xml + '<建设公司_物资采购_型材>';
+                                    xml = xml + '  <RelationRowGuid>' + (j + i + 1) + '</RelationRowGuid>';
+                                    xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_xc[j] + '</RowPrimaryKeys>';
+                                    xml = xml + '<序号>' + (j + 1) + '</序号>';
+                                    xml = xml + '<物料编码>' + bllistArr_xc[j].fxcwlbm + '</物料编码>';
+                                    xml = xml + '<型材名称>' + bllistArr_xc[j].fxcxcmc + '</型材名称>';
+                                    xml = xml + '<型材代号>' + bllistArr_xc[j].fxcxcdh + '</型材代号>';
+                                    xml = xml + '<颜色型号>' + bllistArr_xc[j].fxcysxh + '</颜色型号>';
+                                    xml = xml + '<米重>' + bllistArr_xc[j].fxcmz + '</米重>';
+                                    xml = xml + '<定尺>' + bllistArr_xc[j].fxcdc + '</定尺>';
+                                    xml = xml + '<数量>' + bllistArr_xc[j].fxcsl + '</数量>';
+                                    xml = xml + '<重量>' + bllistArr_xc[j].fxczl + '</重量>';
+                                    xml = xml + '<备注>' + bllistArr_xc[j].fxcbz + '</备注>';
+                                    xml = xml + '</建设公司_物资采购_型材>';
+
+                                }
+                                xml = xml + '<建设公司_物资采购_配件>';
+                                xml = xml + '</建设公司_物资采购_配件>';
+                            }
+                            if (fwlzl == '配件') {
+
+                                xml = xml + '<建设公司_物资采购_玻璃>';
+                                xml = xml + '</建设公司_物资采购_玻璃>';
+                                xml = xml + '<建设公司_物资采购_型材>';
+                                xml = xml + '</建设公司_物资采购_型材>';
+                                for (k; k < bllistArr_pj.length; k++) {
+
+                                    xml = xml + '<建设公司_物资采购_配件>';
+                                    xml = xml + '  <RelationRowGuid>' + (k + j + i + 1) + '</RelationRowGuid>';
+                                    xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_pj[k] + '</RowPrimaryKeys>';
+                                    xml = xml + '<序号>' + (k + 1) + '</序号>';
+                                    xml = xml + '<物料编码>' + bllistArr_pj[k].fpjwlbm + '</物料编码>';
+                                    xml = xml + '<物料名称>' + bllistArr_pj[k].fpjwlmc + '</物料名称>';
+                                    xml = xml + '<规格型号>' + bllistArr_pj[k].fggxh + '</规格型号>';
+                                    xml = xml + '<单位>' + bllistArr_pj[k].fdw + '</单位>';
+                                    xml = xml + '<配件数量>' + bllistArr_pj[k].fpjsl + '</配件数量>';
+                                    xml = xml + '<备注>' + bllistArr_pj[k].fpjbz + '</备注>';
+                                    xml = xml + '<配件供应商>' + bllistArr_pj[k].fpjgys + '</配件供应商>';
+                                    xml = xml + '</建设公司_物资采购_配件>';
+
+                                }
+
+
+                            }
+                            xml = xml + '</FormData>';
+                            xml = xml + '</XForm>';
+                            PostXml(xml);
+                        }
+                    }, error: function (e) {
+
+                    }, complete: function () {
+
+                    }
+                });
+                //不加签分支
+            } else {
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + '<Header>';
+                xml = xml + '<Method>Process</Method>';
+                xml = xml + '<PID>' + pid + '</PID>';
+                xml = xml + '<Action>同意</Action>';
+                xml = xml + '<Comment>' + comment + '</Comment>';
+
+
+                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '</Header>';
+                xml = xml + '<FormData>';
+                xml = xml + '<建设公司_物资采购_主表>';
+                xml = xml + '<单号>' + fbillno + '</单号>';
+                xml = xml + '<申请人>' + fname + '</申请人>';
+                xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                xml = xml + '<需求到货日期>' + qdate + '</需求到货日期>';
+                xml = xml + '<联系电话>' + ftel + '</联系电话>';
+                xml = xml + '<工程编码>' + fgcnum + '</工程编码>';
+                xml = xml + '<工程名称>' + fgcname + '</工程名称>';
+                xml = xml + '<建设单位>' + fjsdw + '</建设单位>';
+                xml = xml + '<是否加急>' + fsfjj + '</是否加急>';
+                xml = xml + '<物料种类>' + fwlzl + '</物料种类>';
+                xml = xml + '<供应商>' + fgys + '</供应商>';
+                xml = xml + '<送货地点>' + fshdd + '</送货地点>';
+                xml = xml + '<隔热条>' + fgrt + '</隔热条>';
+                xml = xml + '<附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                xml = xml + '<模板玻璃></模板玻璃>';
+                xml = xml + '<附件2>' + fjArray_xc.toString().replace(",", ";") + '</附件2>';
+                xml = xml + '<模板型材></模板型材>';
+                xml = xml + '<附件3>' + fjArray_pj.toString().replace(",", ";") + '</附件3>';
+                xml = xml + '<模板配件></模板配件>';
+                xml = xml + '</建设公司_物资采购_主表>';
+                if (fwlzl == '玻璃') {
+                    for (i; i < bllistArr.length; i++) {
+
+                        xml = xml + '<建设公司_物资采购_玻璃>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_bl[i] + '</RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (i + 1) + '</序号>';
+                        xml = xml + '<物料编码>' + bllistArr[i].fblwlbm + '</物料编码>';
+                        xml = xml + '<安装部位>' + bllistArr[i].fazbw + '</安装部位>';
+                        xml = xml + '<玻璃规格>' + bllistArr[i].fblgg + '</玻璃规格>';
+                        xml = xml + '<玻璃宽>' + bllistArr[i].fblk + '</玻璃宽>';
+                        xml = xml + '<玻璃高>' + bllistArr[i].fblg + '</玻璃高>';
+                        xml = xml + '<玻璃数量>' + bllistArr[i].fblsl + '</玻璃数量>';
+                        xml = xml + '<面积>' + bllistArr[i].fmj + '</面积>';
+                        xml = xml + ' <备注>' + bllistArr[i].fblbz + '</备注>';
+                        xml = xml + '</建设公司_物资采购_玻璃>';
+
+                    }
+                    xml = xml + '<建设公司_物资采购_型材>';
+                    xml = xml + '</建设公司_物资采购_型材>';
+                    xml = xml + '<建设公司_物资采购_配件>';
+                    xml = xml + '</建设公司_物资采购_配件>';
+                }
+                if (fwlzl == '型材') {
+                    xml = xml + '<建设公司_物资采购_玻璃>';
+                    xml = xml + '</建设公司_物资采购_玻璃>';
+                    for (j; j < bllistArr_xc.length; j++) {
+
+                        xml = xml + '<建设公司_物资采购_型材>';
+                        xml = xml + '  <RelationRowGuid>' + (j + i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_xc[j] + '</RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (j + 1) + '</序号>';
+                        xml = xml + '<物料编码>' + bllistArr_xc[j].fxcwlbm + '</物料编码>';
+                        xml = xml + '<型材名称>' + bllistArr_xc[j].fxcxcmc + '</型材名称>';
+                        xml = xml + '<型材代号>' + bllistArr_xc[j].fxcxcdh + '</型材代号>';
+                        xml = xml + '<颜色型号>' + bllistArr_xc[j].fxcysxh + '</颜色型号>';
+                        xml = xml + '<米重>' + bllistArr_xc[j].fxcmz + '</米重>';
+                        xml = xml + '<定尺>' + bllistArr_xc[j].fxcdc + '</定尺>';
+                        xml = xml + '<数量>' + bllistArr_xc[j].fxcsl + '</数量>';
+                        xml = xml + '<重量>' + bllistArr_xc[j].fxczl + '</重量>';
+                        xml = xml + '<备注>' + bllistArr_xc[j].fxcbz + '</备注>';
+                        xml = xml + '</建设公司_物资采购_型材>';
+
+                    }
+                    xml = xml + '<建设公司_物资采购_配件>';
+                    xml = xml + '</建设公司_物资采购_配件>';
+                }
+                if (fwlzl == '配件') {
+
+                    xml = xml + '<建设公司_物资采购_玻璃>';
+                    xml = xml + '</建设公司_物资采购_玻璃>';
+                    xml = xml + '<建设公司_物资采购_型材>';
+                    xml = xml + '</建设公司_物资采购_型材>';
+                    for (k; k < bllistArr_pj.length; k++) {
+
+                        xml = xml + '<建设公司_物资采购_配件>';
+                        xml = xml + '  <RelationRowGuid>' + (k + j + i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_pj[k] + '</RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (k + 1) + '</序号>';
+                        xml = xml + '<物料编码>' + bllistArr_pj[k].fpjwlbm + '</物料编码>';
+                        xml = xml + '<物料名称>' + bllistArr_pj[k].fpjwlmc + '</物料名称>';
+                        xml = xml + '<规格型号>' + bllistArr_pj[k].fggxh + '</规格型号>';
+                        xml = xml + '<单位>' + bllistArr_pj[k].fdw + '</单位>';
+                        xml = xml + '<配件数量>' + bllistArr_pj[k].fpjsl + '</配件数量>';
+                        xml = xml + '<备注>' + bllistArr_pj[k].fpjbz + '</备注>';
+                        xml = xml + '<配件供应商>' + bllistArr_pj[k].fpjgys + '</配件供应商>';
+                        xml = xml + '</建设公司_物资采购_配件>';
+
+                    }
+
+
+                }
+                xml = xml + '</FormData>';
+                xml = xml + '</XForm>';
+                PostXml(xml);
+            }
+        }
+        function hasRead() {
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var qdate = $("#qdate").val() + " 00:00:00";
+            var fgcnum = $("#fgcnum").val();
+            var fgcname = $("#fgcname").val();
+            var fjsdw = $("#fjsdw").val();
+            var fsfjj = $("#fsfjj").val();
+            var fwlzl = $("#fwlzl").val();
+            var fgys = $("#fgys").val();
+            var fshdd = $("#fshdd").val();
+            var fgrt = $("#fgrt").val();
+
+
+            var i = 0;
+            var j = 0;
+            var k = 0;
+            var bllistArr = new Array();
+            var bllistArr_xc = new Array();
+            var bllistArr_pj = new Array();
+            $("#bllist_bl").find("#bl").each(function () {
+                var fblwlbm = $(this).find("#fblwlbm").val();
+                var fazbw = $(this).find("#fazbw").val();
+                var fblgg = $(this).find("#fblgg").val();
+                var fblk = $(this).find("#fblk").val();
+                var fblg = $(this).find("#fblg").val();
+                var fblsl = $(this).find("#fblsl").val();
+                var fmj = $(this).find("#fmj").val();
+                var fblbz = $(this).find("#fblbz").val();
+              
+
+                var bl = new Object;
+                bl.fblwlbm = fblwlbm;
+                bl.fazbw = fazbw;
+                bl.fblgg = fblgg;
+                bl.fblk = fblk;
+                bl.fblg = fblg;
+                bl.fblsl = fblsl;
+                bl.fmj = fmj;
+                bl.fblbz = fblbz;
+                bllistArr.push(bl);
+            });
+            $("#bllist_xc").find("#xc").each(function () {
+                var fxcwlbm = $(this).find("#fxcwlbm").val();
+                var fxcxcmc = $(this).find("#fxcxcmc").val();
+                var fxcxcdh = $(this).find("#fxcxcdh").val();
+                var fxcysxh = $(this).find("#fxcysxh").val();
+                var fxcmz = $(this).find("#fxcmz").val();
+                var fxcdc = $(this).find("#fxcdc").val();
+                var fxcsl = $(this).find("#fxcsl").val();
+                var fxczl = $(this).find("#fxczl").val();
+                var fxcbz = $(this).find("#fxcbz").val();
+
+               
+                var xc = new Object;
+                xc.fxcwlbm = fxcwlbm;
+                xc.fxcxcmc = fxcxcmc;
+                xc.fxcxcdh = fxcxcdh;
+                xc.fxcysxh = fxcysxh;
+                xc.fxcmz = fxcmz;
+                xc.fxcdc = fxcdc;
+                xc.fxcsl = fxcsl;
+                xc.fxczl = fxczl;
+                xc.fxcbz = fxcbz;
+                bllistArr_xc.push(xc);
+            });
+            $("#bllist_pj").find("#pj").each(function () {
+                var fpjwlbm = $(this).find("#fpjwlbm").val();
+                var fpjwlmc = $(this).find("#fpjwlmc").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var fdw = $(this).find("#fdw").val();
+                var fpjsl = $(this).find("#fpjsl").val();
+                var fpjbz = $(this).find("#fpjbz").val();
+                var fpjgys = $(this).find("#fpjgys").val();
+
+
+
+
+                var pj = new Object;
+                pj.fpjwlbm = fpjwlbm;
+                pj.fpjwlmc = fpjwlmc;
+                pj.fggxh = fggxh;
+                pj.fdw = fdw;
+                pj.fpjsl = fpjsl;
+                pj.fpjbz = fpjbz;
+                pj.fpjgys = fpjgys;
+                bllistArr_pj.push(pj);
+            });
+            var comment = '';
+
+
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_物资采购_主表>';
+                    xml = xml + '<单号>' + fbillno + '</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<需求到货日期>' + qdate + '</需求到货日期>';
+                    xml = xml + '<联系电话>' + ftel + '</联系电话>';
+                    xml = xml + '<工程编码>' + fgcnum + '</工程编码>';
+                    xml = xml + '<工程名称>' + fgcname + '</工程名称>';
+                    xml = xml + '<建设单位>' + fjsdw + '</建设单位>';
+                    xml = xml + '<是否加急>' + fsfjj + '</是否加急>';
+                    xml = xml + '<物料种类>' + fwlzl + '</物料种类>';
+                    xml = xml + '<供应商>' + fgys + '</供应商>';
+                    xml = xml + '<送货地点>' + fshdd + '</送货地点>';
+                    xml = xml + '<隔热条>' + fgrt + '</隔热条>';
+                    xml = xml + '<附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                    xml = xml + '<模板玻璃></模板玻璃>';
+                    xml = xml + '<附件2>' + fjArray_xc.toString().replace(",", ";") + '</附件2>';
+                    xml = xml + '<模板型材></模板型材>';
+                    xml = xml + '<附件3>' + fjArray_pj.toString().replace(",", ";") + '</附件3>';
+                    xml = xml + '<模板配件></模板配件>';
+                    xml = xml + '</建设公司_物资采购_主表>';
+                    if (fwlzl == '玻璃') {
+                        for (i; i < bllistArr.length; i++) {
+
+                            xml = xml + '<建设公司_物资采购_玻璃>';
+                            xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_bl[i] + '</RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (i + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr[i].fblwlbm + '</物料编码>';
+                            xml = xml + '<安装部位>' + bllistArr[i].fazbw + '</安装部位>';
+                            xml = xml + '<玻璃规格>' + bllistArr[i].fblgg + '</玻璃规格>';
+                            xml = xml + '<玻璃宽>' + bllistArr[i].fblk + '</玻璃宽>';
+                            xml = xml + '<玻璃高>' + bllistArr[i].fblg + '</玻璃高>';
+                            xml = xml + '<玻璃数量>' + bllistArr[i].fblsl + '</玻璃数量>';
+                            xml = xml + '<面积>' + bllistArr[i].fmj + '</面积>';
+                            xml = xml + ' <备注>' + bllistArr[i].fblbz + '</备注>';
+                            xml = xml + '</建设公司_物资采购_玻璃>';
+
+                        }
+                        xml = xml + '<建设公司_物资采购_型材>';
+                        xml = xml + '</建设公司_物资采购_型材>';
+                        xml = xml + '<建设公司_物资采购_配件>';
+                        xml = xml + '</建设公司_物资采购_配件>';
+                    }
+                    if (fwlzl == '型材') {
+                        xml = xml + '<建设公司_物资采购_玻璃>';
+                        xml = xml + '</建设公司_物资采购_玻璃>';
+                        for (j; j < bllistArr_xc.length; j++) {
+
+                            xml = xml + '<建设公司_物资采购_型材>';
+                            xml = xml + '  <RelationRowGuid>' + (j + i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_xc[j] + '</RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (j + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr_xc[j].fxcwlbm + '</物料编码>';
+                            xml = xml + '<型材名称>' + bllistArr_xc[j].fxcxcmc + '</型材名称>';
+                            xml = xml + '<型材代号>' + bllistArr_xc[j].fxcxcdh + '</型材代号>';
+                            xml = xml + '<颜色型号>' + bllistArr_xc[j].fxcysxh + '</颜色型号>';
+                            xml = xml + '<米重>' + bllistArr_xc[j].fxcmz + '</米重>';
+                            xml = xml + '<定尺>' + bllistArr_xc[j].fxcdc + '</定尺>';
+                            xml = xml + '<数量>' + bllistArr_xc[j].fxcsl + '</数量>';
+                            xml = xml + '<重量>' + bllistArr_xc[j].fxczl + '</重量>';
+                            xml = xml + '<备注>' + bllistArr_xc[j].fxcbz + '</备注>';
+                            xml = xml + '</建设公司_物资采购_型材>';
+
+                        }
+                        xml = xml + '<建设公司_物资采购_配件>';
+                        xml = xml + '</建设公司_物资采购_配件>';
+                    }
+                    if (fwlzl == '配件') {
+
+                        xml = xml + '<建设公司_物资采购_玻璃>';
+                        xml = xml + '</建设公司_物资采购_玻璃>';
+                        xml = xml + '<建设公司_物资采购_型材>';
+                        xml = xml + '</建设公司_物资采购_型材>';
+                        for (k; k < bllistArr_pj.length; k++) {
+
+                            xml = xml + '<建设公司_物资采购_配件>';
+                            xml = xml + '  <RelationRowGuid>' + (k + j + i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys>itemid=' + itemidArr_pj[k] + '</RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (k + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr_pj[k].fpjwlbm + '</物料编码>';
+                            xml = xml + '<物料名称>' + bllistArr_pj[k].fpjwlmc + '</物料名称>';
+                            xml = xml + '<规格型号>' + bllistArr_pj[k].fggxh + '</规格型号>';
+                            xml = xml + '<单位>' + bllistArr_pj[k].fdw + '</单位>';
+                            xml = xml + '<配件数量>' + bllistArr_pj[k].fpjsl + '</配件数量>';
+                            xml = xml + '<备注>' + bllistArr_pj[k].fpjbz + '</备注>';
+                            xml = xml + '<配件供应商>' + bllistArr_pj[k].fpjgys + '</配件供应商>';
+                            xml = xml + '</建设公司_物资采购_配件>';
+
+                        }
+
+
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+        function Save() {
+
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var qdate = $("#qdate").val() + " 00:00:00";
+            var fgcnum = $("#fgcnum").val();
+            var fgcname = $("#fgcname").val();
+            var fjsdw = $("#fjsdw").val();
+            var fsfjj = $("#fsfjj").val();
+            var fwlzl = $("#fwlzl").val();
+            var fgys = $("#fgys").val();
+            var fshdd = $("#fshdd").val();
+            var fgrt = $("#fgrt").val();
+            var pid = $("#stepId").val();
+
+            var ftel = $("#ftel").val();
+            var i = 0;
+            var j = 0;
+            var k = 0;
+            var bllistArr = new Array();
+            var bllistArr_xc = new Array();
+            var bllistArr_pj = new Array();
+            var mxflag = false;
+            $("#bllist_bl").find("#bl").each(function () {
+                var fblwlbm = $(this).find("#fblwlbm").val();
+                var fazbw = $(this).find("#fazbw").val();
+                var fblgg = $(this).find("#fblgg").val();
+                var fblk = $(this).find("#fblk").val();
+                var fblg = $(this).find("#fblg").val();
+                var fblsl = $(this).find("#fblsl").val();
+                var fmj = $(this).find("#fmj").val();
+                var fblbz = $(this).find("#fblbz").val();
+                if (!fblwlbm || fblwlbm == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料编码");
+                    return;
+                }
+
+                if (!fazbw || fazbw == "") {
+                    mxflag = true;
+                    mui.toast("请输入安装部位");
+                    return;
+                }
+                if (!fblgg || fblgg == "") {
+                    mxflag = true;
+                    mui.toast("请输入玻璃规格");
+                    return;
+                }
+                if (!fblk || fblk == "") {
+                    mxflag = true;
+                    mui.toast("请输入玻璃宽");
+                    return;
+
+                }
+                if (!fblg || fblg == "") {
+                    mxflag = true;
+                    mui.toast("请输入玻璃高");
+                    return;
+                }
+                if (!fblsl || fblsl == "") {
+                    mxflag = true;
+                    mui.toast("请输入数量");
+                    return;
+                }
+                if (!fmj || fmj == "") {
+                    mxflag = true;
+                    mui.toast("请输入面积");
+                    return;
+                }
+
+
+
+                var bl = new Object;
+                bl.fblwlbm = fblwlbm;
+                bl.fazbw = fazbw;
+                bl.fblgg = fblgg;
+                bl.fblk = fblk;
+                bl.fblg = fblg;
+                bl.fblsl = fblsl;
+                bl.fmj = fmj;
+                bl.fblbz = fblbz;
+                bllistArr.push(bl);
+            });
+            $("#bllist_xc").find("#xc").each(function () {
+                var fxcwlbm = $(this).find("#fxcwlbm").val();
+                var fxcxcmc = $(this).find("#fxcxcmc").val();
+                var fxcxcdh = $(this).find("#fxcxcdh").val();
+                var fxcysxh = $(this).find("#fxcysxh").val();
+                var fxcmz = $(this).find("#fxcmz").val();
+                var fxcdc = $(this).find("#fxcdc").val();
+                var fxcsl = $(this).find("#fxcsl").val();
+                var fxczl = $(this).find("#fxczl").val();
+                var fxcbz = $(this).find("#fxcbz").val();
+
+                if (!fxcwlbm || fxcwlbm == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料编码");
+                    return;
+                }
+
+                if (!fxcxcmc || fxcxcmc == "") {
+                    mxflag = true;
+                    mui.toast("请输入型材名称");
+                    return;
+                }
+                if (!fxcxcdh || fxcxcdh == "") {
+                    mxflag = true;
+                    mui.toast("请输入型材代号");
+                    return;
+                }
+                if (!fxcysxh || fxcysxh == "") {
+                    mxflag = true;
+                    mui.toast("请输入颜色型号");
+                    return;
+
+                }
+                if (!fxcmz || fxcmz == "") {
+                    mxflag = true;
+                    mui.toast("请输入米重");
+                    return;
+                }
+                if (!fxcdc || fxcdc == "") {
+                    mxflag = true;
+                    mui.toast("请输入定尺");
+                    return;
+                }
+                if (!fxcsl || fxcsl == "") {
+                    mxflag = true;
+                    mui.toast("请输入数量");
+                    return;
+                }
+
+
+
+                var xc = new Object;
+                xc.fxcwlbm = fxcwlbm;
+                xc.fxcxcmc = fxcxcmc;
+                xc.fxcxcdh = fxcxcdh;
+                xc.fxcysxh = fxcysxh;
+                xc.fxcmz = fxcmz;
+                xc.fxcdc = fxcdc;
+                xc.fxcsl = fxcsl;
+                xc.fxczl = fxczl;
+                xc.fxcbz = fxcbz;
+                bllistArr_xc.push(xc);
+            });
+            $("#bllist_pj").find("#pj").each(function () {
+                var fpjwlbm = $(this).find("#fpjwlbm").val();
+                var fpjwlmc = $(this).find("#fpjwlmc").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var fdw = $(this).find("#fdw").val();
+                var fpjsl = $(this).find("#fpjsl").val();
+                var fpjbz = $(this).find("#fpjbz").val();
+                var fpjgys = $(this).find("#fpjgys").val();
+
+
+                if (!fpjwlbm || fpjwlbm == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料编码");
+                    return;
+                }
+
+                if (!fpjwlmc || fpjwlmc == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料名称");
+                    return;
+                }
+                if (!fggxh || fggxh == "") {
+                    mxflag = true;
+                    mui.toast("请输入规格型号");
+                    return;
+                }
+                if (!fdw || fdw == "") {
+                    mxflag = true;
+                    mui.toast("请输入单位");
+                    return;
+
+                }
+                if (!fpjsl || fpjsl == "") {
+                    mxflag = true;
+                    mui.toast("请输入数量");
+                    return;
+                }
+                if (!fpjgys || fpjgys == "") {
+                    mxflag = true;
+                    mui.toast("请输入配件供应商");
+                    return;
+                }
+
+
+
+                var pj = new Object;
+                pj.fpjwlbm = fpjwlbm;
+                pj.fpjwlmc = fpjwlmc;
+                pj.fggxh = fggxh;
+                pj.fdw = fdw;
+                pj.fpjsl = fpjsl;
+                pj.fpjbz = fpjbz;
+                pj.fpjgys = fpjgys;
+                bllistArr_pj.push(pj);
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '   <Header>';
+                    xml = xml + '    <Method>Process</Method>';
+                    xml = xml + '   <PID>' + pid + '</PID>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '    <Comment></Comment>';
+                    xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '  </Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_物资采购_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<需求到货日期>' + qdate + '</需求到货日期>';
+                    xml = xml + '<联系电话>' + ftel + '</联系电话>';
+                    xml = xml + '<工程编码>' + fgcnum + '</工程编码>';
+                    xml = xml + '<工程名称>' + fgcname + '</工程名称>';
+                    xml = xml + '<建设单位>' + fjsdw + '</建设单位>';
+                    xml = xml + '<是否加急>' + fsfjj + '</是否加急>';
+                    xml = xml + '<物料种类>' + fwlzl + '</物料种类>';
+                    xml = xml + '<供应商>' + fgys + '</供应商>';
+                    xml = xml + '<送货地点>' + fshdd + '</送货地点>';
+                    xml = xml + '<隔热条>' + fgrt + '</隔热条>';
+                    xml = xml + '<附件>' + fjArray.toString().replace(",", ";") + '</附件>';
+                    xml = xml + '<模板玻璃></模板玻璃>';
+                    xml = xml + '<附件2>' + fjArray_xc.toString().replace(",", ";") + '</附件2>';
+                    xml = xml + '<模板型材></模板型材>';
+                    xml = xml + '<附件3>' + fjArray_pj.toString().replace(",", ";") + '</附件3>';
+                    xml = xml + '<模板配件></模板配件>';
+                    xml = xml + '</建设公司_物资采购_主表>';
+                    if (fwlzl == '玻璃') {
+                        for (i; i < bllistArr.length; i++) {
+
+                            xml = xml + '<建设公司_物资采购_玻璃>';
+                            xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (i + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr[i].fblwlbm + '</物料编码>';
+                            xml = xml + '<安装部位>' + bllistArr[i].fazbw + '</安装部位>';
+                            xml = xml + '<玻璃规格>' + bllistArr[i].fblgg + '</玻璃规格>';
+                            xml = xml + '<玻璃宽>' + bllistArr[i].fblk + '</玻璃宽>';
+                            xml = xml + '<玻璃高>' + bllistArr[i].fblg + '</玻璃高>';
+                            xml = xml + '<玻璃数量>' + bllistArr[i].fblsl + '</玻璃数量>';
+                            xml = xml + '<面积>' + bllistArr[i].fmj + '</面积>';
+                            xml = xml + ' <备注>' + bllistArr[i].fblbz + '</备注>';
+                            xml = xml + '</建设公司_物资采购_玻璃>';
+
+                        }
+                        xml = xml + '<建设公司_物资采购_型材>';
+                        xml = xml + '</建设公司_物资采购_型材>';
+                        xml = xml + '<建设公司_物资采购_配件>';
+                        xml = xml + '</建设公司_物资采购_配件>';
+                    }
+                    if (fwlzl == '型材') {
+                        xml = xml + '<建设公司_物资采购_玻璃>';
+                        xml = xml + '</建设公司_物资采购_玻璃>';
+                        for (j; j < bllistArr_xc.length; j++) {
+
+                            xml = xml + '<建设公司_物资采购_型材>';
+                            xml = xml + '  <RelationRowGuid>' + (j + i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (j + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr_xc[j].fxcwlbm + '</物料编码>';
+                            xml = xml + '<型材名称>' + bllistArr_xc[j].fxcxcmc + '</型材名称>';
+                            xml = xml + '<型材代号>' + bllistArr_xc[j].fxcxcdh + '</型材代号>';
+                            xml = xml + '<颜色型号>' + bllistArr_xc[j].fxcysxh + '</颜色型号>';
+                            xml = xml + '<米重>' + bllistArr_xc[j].fxcmz + '</米重>';
+                            xml = xml + '<定尺>' + bllistArr_xc[j].fxcdc + '</定尺>';
+                            xml = xml + '<数量>' + bllistArr_xc[j].fxcsl + '</数量>';
+                            xml = xml + '<重量>' + bllistArr_xc[j].fxczl + '</重量>';
+                            xml = xml + '<备注>' + bllistArr_xc[j].fxcbz + '</备注>';
+                            xml = xml + '</建设公司_物资采购_型材>';
+
+                        }
+                        xml = xml + '<建设公司_物资采购_配件>';
+                        xml = xml + '</建设公司_物资采购_配件>';
+                    }
+                    if (fwlzl == '配件') {
+
+                        xml = xml + '<建设公司_物资采购_玻璃>';
+                        xml = xml + '</建设公司_物资采购_玻璃>';
+                        xml = xml + '<建设公司_物资采购_型材>';
+                        xml = xml + '</建设公司_物资采购_型材>';
+                        for (k; k < bllistArr_pj.length; k++) {
+
+                            xml = xml + '<建设公司_物资采购_配件>';
+                            xml = xml + '  <RelationRowGuid>' + (k + j + i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<序号>' + (k + 1) + '</序号>';
+                            xml = xml + '<物料编码>' + bllistArr_pj[k].fpjwlbm + '</物料编码>';
+                            xml = xml + '<物料名称>' + bllistArr_pj[k].fpjwlmc + '</物料名称>';
+                            xml = xml + '<规格型号>' + bllistArr_pj[k].fggxh + '</规格型号>';
+                            xml = xml + '<单位>' + bllistArr_pj[k].fdw + '</单位>';
+                            xml = xml + '<配件数量>' + bllistArr_pj[k].fpjsl + '</配件数量>';
+                            xml = xml + '<备注>' + bllistArr_pj[k].fpjbz + '</备注>';
+                            xml = xml + '<配件供应商>' + bllistArr_pj[k].fpjgys + '</配件供应商>';
+                            xml = xml + '</建设公司_物资采购_配件>';
+
+                        }
+
+
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+       
+
+
+     
+        function tapEvent() {
+
+
+
+            $("#addItem_bl").on('tap', function () {
+
+
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblwlbm">物料编码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fblwlbm" name="fblwlbm" value="" placeholder="请输入物料编码"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fazbw">安装部位<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fazbw" name="fazbw" value="" placeholder="请输入安装部位"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblgg">玻璃规格<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fblgg" name="fblgg" value="" placeholder="请输入玻璃规格"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblk">玻璃宽<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fblk" name="fblk" value="" placeholder="请输入玻璃宽"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblg">玻璃高<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fblg" name="fblg" value="" placeholder="请输入玻璃高"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblsl">数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fblsl" name="fblsl" value="" placeholder="请输入数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fmj">面积<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fmj" name="fmj" value="" placeholder="请输入面积"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fblbz">备注</label>';
+                li = li + '        <input type="text" id="fblbz" name="fblbz" value="" placeholder="请输入备注" />';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#bllist_bl").append(li);
+
+            });
+            $("#addItem_xc").on('tap', function () {
+
+
+                var li = '<div id="xc" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcwlbm">物料编码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxcwlbm" name="fxcwlbm" value="" placeholder="请输入物料编码"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcxcmc">型材名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxcxcmc" name="fxcxcmc" value="" placeholder="请输入型材名称"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcxcdh">型材代号<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxcxcdh" name="fxcxcdh" value="" placeholder="请输入型材代号"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcysxh">颜色型号<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxcysxh" name="fxcysxh" value="" placeholder="请输入颜色型号"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcmz">米重（kg/m）<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fxcmz" name="fxcmz" value="" placeholder="请输入米重"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcdc">定尺（m）<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fxcdc" name="fxcdc" value="" placeholder="请输入定尺"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcsl">数量（支）<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fxcsl" name="fxcsl" value="" placeholder="请输入数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxczl">重量（kg）<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fxczl" name="fxczl" value="" placeholder="请输入重量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxcbz">备注</label>';
+                li = li + '        <input type="text" id="fxcbz" name="fxcbz" value="" placeholder="请输入备注" />';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#bllist_xc").append(li);
+            });
+            $("#addItem_pj").on('tap', function () {
+
+
+                var li = '<div id="pj" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fpjwlbm">物料编码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fpjwlbm" name="fpjwlbm" value="" placeholder="请输入物料编码"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fpjwlmc">物料名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fpjwlmc" name="fpjwlmc" value="" placeholder="请输入物料名称"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fggxh" name="fggxh" value="" placeholder="请输入规格型号"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fdw">单位<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fdw" name="fdw" value="" placeholder="请输入单位"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fpjsl">数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fpjsl" name="fpjsl" value="" placeholder="请输入数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fpjbz">备注</label>';
+                li = li + '        <input type="text" id="fpjbz" name="fpjbz" value="" placeholder="请输入备注" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fpjgys">供应商</label>';
+                li = li + '        <input type="text" id="fpjgys" name="fpjgys" value="" placeholder="请输入供应商" />';
+                li = li + '   </div>';
+                li = li + '</div>';
+                $("#bllist_pj").append(li);
+            });
+            //申请部门选择
+            var fdeptdata = [
+                {
+                    value: "lhptfgs",
+                    text: "绿化配套分公司"
+                },
+                {
+                    value: "mcfgs",
+                    text: "门窗分公司"
+                },
+                {
+                    value: "tycj",
+                    text: "铁艺车间"
+                },
+                {
+                    value: "mccj",
+                    text: "木窗车间"
+                },
+                {
+                    value: "lhjcj",
+                    text: "铝合金车间"
+                },
+                {
+                    value: "jzcj",
+                    text: "家装车间"
+                }
+            ];
+            showPicker("fdept", fdeptdata);
+
+            //是否加急选择
+            var fsfjjdata = [
+                {
+                    value: "yes",
+                    text: "是"
+                },
+                {
+                    value: "no",
+                    text: "否"
+                }
+            ];
+            showPicker("fsfjj", fsfjjdata);
+
+            //物料种类选择
+            var fwlzldata = [
+                {
+                    value: "bl",
+                    text: "玻璃"
+                },
+                {
+                    value: "xc",
+                    text: "型材"
+                },
+                {
+                    value: "pj",
+                    text: "配件"
+                }
+            ];
+            //showPicker("fwlzl", fwlzldata);
+
+
+            var element = document.getElementById("fwlzl");
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fwlzldata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    changeWlzl();
+                });
+
+            }, false);
+
+            //送货地点选择
+            var fshdddata = [
+                {
+                    value: "gd",
+                    text: "工地"
+                },
+                {
+                    value: "gs",
+                    text: "公司"
+                }
+
+            ];
+            showPicker("fshdd", fshdddata);
+
+            //隔热条选择
+            var fgrtdata = [
+
+                {
+                    value: "gc",
+                    text: "国产"
+                },
+                {
+                    value: "jk",
+                    text: "进口"
+                },
+                {
+                    value: "wu",
+                    text: "无隔热条"
+                }
+            ];
+            showPicker("fgrt", fgrtdata);
+
+           
+
+        }
+
+        function optZTap() {
+            var change_bl = false;
+            var change_xc = false;
+            var change_pj = false;
+            $("#div_blcgmx").on('tap', function () {
+                change_bl = !change_bl;
+                if (change_bl) {
+                    $("#bllist_bl").css("display", "block");
+                } else {
+                    $("#bllist_bl").css("display", "none");
+                }
+
+            });
+            $("#div_pjcgmx").on('tap', function () {
+                change_pj = !change_pj;
+                if (change_pj) {
+                    $("#bllist_pj").css("display", "block");
+                } else {
+                    $("#bllist_pj").css("display", "none");
+                }
+            });
+            $("#div_xccgmx").on('tap', function () {
+
+                change_xc = !change_xc;
+                if (change_xc) {
+                    $("#bllist_xc").css("display", "block");
+                } else {
+                    $("#bllist_xc").css("display", "none");
+                }
+            });
+
+        }
+        var fjArray_xc = new Array();
+        var fjArray_bl = new Array();
+        var fjArray_pj = new Array();
+        function changeWlzl() {
+            var wlzl = $("#fwlzl").val();
+            if (wlzl == "玻璃") {
+                $("#div_gys").css("display", "block");
+                $("#div_shdd").css("display", "block");
+                $("#div_grt").css("display", "none");
+                $("#div_blcgmx").css("display", "block");
+                $("#div_xccgmx").css("display", "none");
+                $("#div_pjcgmx").css("display", "none");
+                $("#bllist_bl").css("display", "block");
+                $("#bllist_xc").css("display", "none");
+                $("#bllist_pj").css("display", "none");
+                $("#uploaddiv_bl").css("display", "block");
+                $("#uploaddiv_xc").css("display", "none");
+                $("#uploaddiv_pj").css("display", "none");
+                upload();
+                $("#div_grt").css("display", "none");
+            } else if (wlzl == "型材") {
+                $("#div_gys").css("display", "block");
+                $("#div_shdd").css("display", "block");
+                $("#div_grt").css("display", "block");
+                $("#div_blcgmx").css("display", "none");
+                $("#div_xccgmx").css("display", "block");
+                $("#div_pjcgmx").css("display", "none");
+                $("#bllist_bl").css("display", "none");
+                $("#bllist_xc").css("display", "block");
+                $("#bllist_pj").css("display", "none");
+                $("#uploaddiv_bl").css("display", "none");
+                $("#uploaddiv_xc").css("display", "block");
+                $("#uploaddiv_pj").css("display", "none");
+                $("#addbtn_bl").parent().parent().parent().find('.upload-img-list').removeClass('upload-img-list');
+                $("#addbtn_xc").parent().parent().parent().find(".upload-img-list-xc").addClass('upload-img-list').removeClass('upload-img-list-xc');
+                $("#div_grt").css("display", "block");
+                fjArray_xc = fjArray;
+            } else if (wlzl == "配件") {
+                $("#div_gys").css("display", "none");
+                $("#div_shdd").css("display", "none");
+                $("#div_grt").css("display", "none");
+                $("#div_blcgmx").css("display", "none");
+                $("#div_xccgmx").css("display", "none");
+                $("#div_pjcgmx").css("display", "block");
+                $("#bllist_bl").css("display", "none");
+                $("#bllist_xc").css("display", "none");
+                $("#bllist_pj").css("display", "block");
+                $("#uploaddiv_bl").css("display", "none");
+                $("#uploaddiv_xc").css("display", "none");
+                $("#uploaddiv_pj").css("display", "block");
+                $("#addbtn_bl").parent().parent().parent().find('.upload-img-list').removeClass('upload-img-list');
+                $("#addbtn_pj").parent().parent().parent().find(".upload-img-list-pj").addClass('upload-img-list').removeClass('upload-img-list-pj');
+                $("#div_grt").css("display", "none");
+                fjArray_pj = fjArray;
+            } else {
+                $("#div_gys").css("display", "none");
+                $("#div_shdd").css("display", "none");
+                $("#div_grt").css("display", "none");
+                $("#div_blcgmx").css("display", "none");
+                $("#div_xccgmx").css("display", "none");
+                $("#div_pjcgmx").css("display", "none");
+                $("#bllist_bl").css("display", "none");
+                $("#bllist_xc").css("display", "none");
+                $("#bllist_pj").css("display", "none");
+                $("#uploaddiv_bl").css("display", "none");
+                $("#uploaddiv_xc").css("display", "none");
+                $("#uploaddiv_pj").css("display", "none");
+                $("#div_grt").css("display", "none");
+            }
+        }
+    </script>
+</body>
+</html>

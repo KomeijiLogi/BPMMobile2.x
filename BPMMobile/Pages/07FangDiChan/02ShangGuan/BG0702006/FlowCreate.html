@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;"> 
+             <div class="mui-input-row">
+                 <label for="fname">报告人<i style="color:red;">*</i></label>
+                 <input type="text" id="fname" name="fname" readonly="readonly"/>
+             </div>    
+             <div class="mui-input-row" style="display:none;">
+                 <label for="fdept">报告部门<i style="color:red;">*</i></label>
+                 <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="fdate">报告日期<i style="color:red;">*</i></label>
+                 <input type="text" id="fdate" name="fdate" readonly="readonly"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                 <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式"/>
+             </div>			 
+			 <div class="mui-input-row" >
+                 <label for="fgzpmc">故障品名称<i style="color:red;">*</i></label>
+                 <input type="text" id="fgzpmc" name="fgzpmc"  placeholder="请输入"/>
+             </div>
+			 <div class="mui-input-row" >
+                 <label for="fgzpxh">故障品型号<i style="color:red;">*</i></label>
+                 <input type="text" id="fgzpxh" name="fgzpxh"  placeholder="请输入"/>
+             </div>
+			 <div class="mui-input-row" >
+                 <label for="fgzpsl">数量<i style="color:red;">*</i></label>
+                 <input type="number" id="fgzpsl" name="fgzpsl"  placeholder="请输入" />
+             </div>
+             <div class="mui-input-row" >
+                 <label for="fgzpxlh">序列号<i style="color:red;">*</i></label>
+                 <input type="text" id="fgzpxlh" name="fgzpxlh"  placeholder="请输入"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="fgzrq">发生日期<i style="color:red;">*</i></label>
+                 <input type="date" id="fgzrq" name="fgzrq"  />
+             </div>
+             <div class="mui-input-row">
+                 <label for="fgztj">发生条件<i style="color:red;">*</i></label>
+                 <input type="text" id="fgztj" name="fgztj" readonly="readonly" placeholder="请选择"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="fjjcd">紧急程度<i style="color:red;">*</i></label>
+                 <input type="text" id="fjjcd" name="fjjcd" readonly="readonly" placeholder="请选择"/>
+             </div>
+             <div class="mui-input-row">
+                 <label for="fgzyy">故障原因<i style="color:red;">*</i></label>
+                 <input type="text" id="fgzyy" name="fgzyy" readonly="readonly" placeholder="请选择" />
+             </div>
+			 <div id="qt" class="mui-input-row" style="display:none;" >
+                 <label for="fqt">其他故障原因<i style="color:red;">*</i></label>
+                 <input type="text" id="fqt" name="fqt"  placeholder="请输入"/>
+             </div>
+              <div class="mui-input-row">
+                 <label for="fsmfwyq">上门服务<i style="color:red;">*</i></label>
+                 <input type="text" id="fsmfwyq" name="fsmfwyq" readonly="readonly" placeholder="请选择上门服务要求"/>
+             </div>
+
+             <div class="mui-input-row">
+                 <label for="fqwwcrq">期望完成时间<i style="color:red;">*</i></label>
+                 <input type="date" id="fqwwcrq" name="fqwwcrq"  />
+             </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fqx_xx_clcs">缺陷现象及已进行的处理措施<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fqx_xx_clcs" name="fqx_xx_clcs" placeholder="请输入"></textarea>
+             </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="fjg">维修(更换)结果<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="fjg" name="fjg" placeholder="请输入"></textarea>
+             </div>
+             <div class="mui-input-row">
+                <label for="ffyje">费用金额<i style="color:red;">*</i></label>
+                <input type="number" id="ffyje" name="ffyje" placeholder="0"/>
+            </div>
+             <div class="mui-input-row" style="height:5.25rem;">
+                 <label for="ffycl">费用处理<i style="color:red;">*</i></label>
+                 <textarea rows="5" id="ffycl" name="ffycl" placeholder="请输入"></textarea>
+             </div>
+             
+            <!-- <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                 <div class="border border-t upload-img" style="top:0rem;">
+                     上传图片
+                     <div class="clearfix upload-btn" id="children-bg">
+                         <label class="label">附件</label>
+                         <span class="tips" id="imageCount">已添加0张</span>
+                         上传图片按钮  
+                         <span class="upload-addbtn">
+                             <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                         </span>
+
+                     </div>
+                     <div class="upload-img-list"></div>
+                 </div>
+             </div>-->
+         </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onClick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+        var picker1 = new mui.PopPicker();
+		var picker2 = new mui.PopPicker();
+		var picker3 = new mui.PopPicker();
+		var picker4 = new mui.PopPicker();
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司办公设备维修、更换申请');
+            getBPMParam();
+            prepMsg();
+           
+            upload();
+            watch();            
+            setList();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+            //else { 
+			//	$("#fname").val("宫辉"); 
+			//}
+
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+						
+                } else {
+
+                }
+            }
+
+        });
+        function checkVal(val) {            
+            
+            if (val == "其他") {
+                $("#qt").css("display", "block");
+            } else {
+                $("#qt").css("display", "none");
+            }
+        }
+        function setList() {
+            
+            var ftypedata1 = [
+                   {
+                       value: "dycfs",
+                       text: "第一次发生"
+                   },
+                   {
+                       value: "yqgzzcfs",
+                       text: "以前故障再次发生"
+                   } 
+            ];            
+            picker1.setData(ftypedata1);
+            $("#fgztj").on('tap', function () {
+                var self = this;
+                picker1.show(function (items) {
+                    self.value = (items[0].text);
+                });
+            });
+
+			var ftypedata2 = [
+                   {
+                       value: "yzyxscgz",
+                       text: "严重影响生产工作"
+                   },
+                   {
+                       value: "zbyx",
+                       text: "暂不影响"
+                   }
+            ];            
+			picker2.setData(ftypedata2);
+			$("#fjjcd").on('tap', function () {
+			    var self = this;
+			    picker2.show(function (items) {
+			        self.value = (items[0].text);
+			    });
+			});
+			
+			var ftypedata3 = [
+                   {
+                       value: "zrms",
+                       text: "自然磨损"
+                   },
+                   {
+                       value: "ddsysmqx",
+                       text: "达到使用寿命期限"
+                   },
+                   {
+                       value: "rwsh",
+                       text: "人为损坏"
+                   },
+                   {
+                       value: "qt",
+                       text: "其他"
+                   }
+            ];            
+			picker3.setData(ftypedata3);			
+			$("#fgzyy").on('tap', function () {
+			    var self = this;
+			    picker3.show(function (items) {
+			        self.value = (items[0].text);
+			        checkVal(self.value);
+			    });
+			});
+
+			var ftypedata4 = [
+                   {
+                       value: "y",
+                       text: "是"
+                   },
+                   {
+                       value: "n",
+                       text: "否"
+                   }
+            ];            
+			picker4.setData(ftypedata4);			
+			$("#fsmfwyq").on('tap', function () {
+			    var self = this;
+			    picker4.show(function (items) {
+			        self.value = (items[0].text);
+			    });
+			});
+        }
+        function prepMsg() {
+
+          
+
+            $("#fdate").val(getNowFormatDate(2));
+            
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                   
+                    var msg = JSON.parse(localStorage.getItem('BPM_SGGSBGSBWXGHSQMsg'));
+                    $("#fname").val(msg.fname);
+                    $("#fdept").val(msg.fdept);
+                    $("#fdate").val(msg.fdate);
+                    $("#ftel").val(msg.ftel);
+                
+                   
+
+                } else {
+                  
+                }
+            }
+        }
+
+   
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var ftel = $("#ftel").val();
+            
+            var fgzpmc = $("#fgzpmc").val();
+            var fgzpxh = $("#fgzpxh").val();
+            var fgzpsl = $("#fgzpsl").val();
+            var fgzpxlh = $("#fgzpxlh").val();
+            var fgzrq = $("#fgzrq").val();
+            var fgztj = $("#fgztj").val();
+            var fjjcd = $("#fjjcd").val();
+            var fgzyy = $("#fgzyy").val();
+            var fqt = $("#fqt").val();
+            var fsmfwyq = $("#fsmfwyq").val();
+            var fqwwcrq = $("#fqwwcrq").val();
+            var fqx_xx_clcs = $("#fqx_xx_clcs").val();
+            var fjg = $("#fjg").val();
+            var ffyje = $("#ffyje").val();
+            var ffycl = $("#ffycl").val();
+
+
+
+            if (!ftel || ftel == "") {
+                mui.toast("请填写联系方式");
+                return;
+            }
+            if (!fgzpmc || fgzpmc == "") {
+                mui.toast("请填写故障品名称");
+                return;
+            }
+            if (!fgzpxh || fgzpxh == "") {
+                mui.toast("请填写故障品型号");
+                return;
+            }
+            if (!fgzpsl || fgzpsl == "") {
+                mui.toast("请填写故障品数量");
+                return;
+            }
+            if (!fgzpxlh || fgzpxlh == "") {
+                mui.toast("请填写故障品序列号");
+                return;
+            }         
+            if (!fgzrq || fgzrq == "") {
+                mui.toast("请填写故障发生日期");
+                return;
+            }
+            if (!fgztj || fgztj == "") {
+                mui.toast("请填写故障发生条件");
+                return;
+            }
+            if (!fjjcd || fjjcd == "") {
+                mui.toast("请填写紧急程度");
+                return;
+            }
+            if (!fgzyy || fgzyy == "") {
+                mui.toast("请填写故障原因");
+                return;
+            }
+            if (fgzyy == "其他") {
+                if (!fqt || fqt == "") {
+                    mui.toast("请填写其他故障原因");
+                    return;
+                }
+            }
+            if (!fsmfwyq || fsmfwyq == "") {
+                mui.toast("请填写上门服务要求");
+                return;
+            }
+            if (!fqwwcrq || fqwwcrq == "") {
+                mui.toast("请填写期望完成时间");
+                return;
+            }
+            if (!fqx_xx_clcs || fqx_xx_clcs == "") {
+                mui.toast("请填写缺陷现象及已进行的处理措施");
+                return;
+            }
+            if (!fjg || fjg == "") {
+                mui.toast("请填写维修(更换)结果");
+                return;
+            }
+            if (!ffyje || ffyje == "") {
+                mui.toast("请填写费用金额");
+                return;
+            }
+            if (!ffycl || ffycl == "") {
+                mui.toast("请填写费用处理");
+                return;
+            }
+                       
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + ' <ProcessName>盛祥商管公司办公设备维修、更换申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<BPM_SGGSBGSBWXGHSQB>';
+					xml = xml + '<fbillno>自动生成</fbillno>';
+                    xml = xml + '<fname>' + fname + '</fname>';
+                    xml = xml + '<fdept>' + fdept + '</fdept>';
+                    xml = xml + '<fdate>' + fdate + '</fdate>';
+                    xml = xml + '<ftel>' + ftel + '</ftel>';
+                    xml = xml + '<fgzpmc>' + fgzpmc + '</fgzpmc>';
+                    xml = xml + '<fgzpxh>' + fgzpxh + '</fgzpxh>';
+                    xml = xml + '<fgzpsl>' + fgzpsl + '</fgzpsl>';
+                    xml = xml + '<fgzpxlh>' + fgzpxlh + '</fgzpxlh>';
+                    xml = xml + '<fgzrq>' + fgzrq + '</fgzrq>';
+                    xml = xml + '<fgztj>' + fgztj + '</fgztj>';
+                    xml = xml + '<fjjcd>' + fjjcd + '</fjjcd>';
+                    xml = xml + '<fgzyy>' + fgzyy + '</fgzyy>';
+                    xml = xml + '<fsmfwyq>' + fsmfwyq + '</fsmfwyq>';
+                    xml = xml + '<fqwwcrq>' + fqwwcrq + '</fqwwcrq>';
+                    xml = xml + '<fqx_xx_clcs>' + fqx_xx_clcs + '</fqx_xx_clcs>';
+                    xml = xml + '<fjg>' + fjg + '</fjg>';
+                    xml = xml + '<ffyje>' + ffyje + '</ffyje>';
+                    xml = xml + '<ffycl>' + ffycl + '</ffycl>';
+                    
+                    //if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                    //    xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    //} else {
+
+                    //    xml = xml + '      <fj></fj>';
+                    //}
+                    xml = xml + '</BPM_SGGSBGSBWXGHSQB>';                   
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                   
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

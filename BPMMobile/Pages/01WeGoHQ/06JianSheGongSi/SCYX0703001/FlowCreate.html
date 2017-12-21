@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly"  />
+            </div>
+            <input type="hidden" id="fdept" name="fdept" value="" readonly="readonly" />
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="qdate">到货日期</label>
+                <input type="date" id="qdate" name="qdate" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label>维修采购明细</label>
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem" ;></span></a>
+            </div>
+            
+            <div class="mui-input-group" id="bllist">
+
+            </div>
+
+    </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\SCGL生产管理', '建设公司库存不良物资提报');
+            getBPMParam();
+            prepMsg();
+           
+ 
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+             
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+            $("#qdate").val(getNowFormatDate(2));
+
+          
+        }
+        function tapEvent() {
+            var fshfsdata = [
+                {
+                    value: "zq",
+                    text: "自取"
+                },
+                {
+                    value: "shsm",
+                    text: "送货上门"
+                }
+            ];
+
+
+            $("#addItem").on('tap', function () {
+
+                
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-pull-right" style="border:groove;margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwxdd">维修地点<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwxdd" name="fwxdd" value="" placeholder="请输入维修地点"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwlno">物料编码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlno" name="fwlno" value="" placeholder="请输入物料编码"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwlname">物料名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlname" name="fwlname" value="" placeholder="请输入物料名称"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fgg">规格<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fgg" name="fgg" value="" placeholder="请输入规格"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fdw">单位<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fdw" name="fdw" value="" placeholder="请输入单位"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fsl">数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fsl" name="fsl" value="" placeholder="请输入数量"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwxyy">维修原因<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwxyy" name="fwxyy" value="" placeholder="请输入维修原因"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fshfs">送货方式</label>';
+                li = li + '        <input type="text" id="fshfs" name="fshfs" value="" placeholder="请选择送货方式" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="ffycd">费用承担方<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="ffycd" name="ffycd" value="" placeholder="请输入费用承担方"/>';
+                li = li + '   </div>';
+
+
+
+
+                $("#bllist").append(li);
+               
+
+                var picker = new mui.PopPicker ();
+
+                picker.setData(fshfsdata);
+
+                $("#bllist").find("#fshfs").each(function () {
+
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+                        picker.show(function (items) {
+                            self.value = (items[0].text);
+                        });
+                    });
+
+                });
+
+
+
+
+            });
+
+
+        }
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var qdate = $("#qdate").val() + " 00:00:00";
+
+            var mxflag = false;
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fwxdd = $(this).find("#fwxdd").val();
+                var fwlno = $(this).find("#fwlno").val();
+                var fwlname = $(this).find("#fwlname").val();
+                var fdw = $(this).find("#fdw").val();
+                var fgg = $(this).find("#fgg").val();
+                var fsl = $(this).find("#fsl").val();
+                var fwxyy = $(this).find("#fwxyy").val();
+                var fshfs = $(this).find("#fshfs").val();
+                var ffycd = $(this).find("#ffycd").val();
+
+                if (!fwxdd || fwxdd == "") {
+                    mxflag = true;
+                    mui.toast("请输入维修地点");
+                    return;
+                }
+
+                if (!fwlno || fwlno == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料编码");
+                    return;
+                }
+                if (!fwlname || fwlname == "") {
+                    mxflag = true;
+                    mui.toast("请输入物料名称");
+                    return;
+                }
+                if (!fgg || fgg == "") {
+                    mxflag = true;
+                    mui.toast("请输入规格");
+                    return;
+
+                }
+                if (!fdw || fdw == "") {
+                    mxflag = true;
+                    mui.toast("请输入单位");
+                    return;
+                }
+                if (!fsl || fsl == "") {
+                    mxflag = true;
+                    mui.toast("请输入数量");
+                    return;
+                }
+                if (!fwxyy || fwxyy == "") {
+                    mxflag = true;
+                    mui.toast("请输入维修原因");
+                    return;
+                }
+                if (!fshfs || fshfs == "") {
+                    mxflag = true;
+                    mui.toast("请选择送货方式");
+                    return;
+                }
+                if (!ffycd || ffycd == "") {
+                    mxflag = true;
+                    mui.toast("请输入费用承担方");
+                    return;
+                }
+
+
+                var bl = new Object;
+                bl.fwxdd = fwxdd;
+                bl.fwlno = fwlno;
+                bl.fwlname = fwlname;
+                bl.fgg = fgg;
+                bl.fdw = fdw;
+                bl.fsl = fsl;
+                bl.fwxyy = fwxyy;
+                bl.fshfs = fshfs;
+                bl.ffycd = ffycd;
+                bllistArr.push(bl);
+            });
+            if (mxflag) {
+                return;
+            }
+            
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + ' <ProcessName>建设公司门窗售后维修采购申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>'+ version +'</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_门窗售后_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<申请人>' + fname + '</申请人>';
+                    xml = xml + '<申请部门>' + fdept + '</申请部门>';
+                    xml = xml + '<申请日期>' + fdate + '</申请日期>';
+                    xml = xml + '<需求到货日期>' + qdate + '</需求到货日期>';
+                    xml = xml + '</建设公司_门窗售后_主表>';
+                    for (var i = 0; i < bllistArr.length; i++) {
+
+                        xml = xml + '<建设公司_门窗售后_子表>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (i + 1) + '</序号>';
+                        xml = xml + '<维修地点>' + bllistArr[i].fwxdd + '</维修地点>';
+                        xml = xml + '<物料编码>' + bllistArr[i].fwlno + '</物料编码>';
+                        xml = xml + '<物料名称>' + bllistArr[i].fwlname + '</物料名称>';
+                        xml = xml + '<规格>' + bllistArr[i].fgg + '</规格>';
+                        xml = xml + '<单位>' + bllistArr[i].fdw + '</单位>';
+                        xml = xml + '<数量>' + bllistArr[i].fsl + '</数量>';
+                        xml = xml + '<维修原因>' + bllistArr[i].fwxyy + '</维修原因>';
+                        xml = xml + ' <送货方式>' + bllistArr[i].fshfs + '</送货方式>';
+                        xml = xml + '<费用承担方>' + bllistArr[i].ffycd + '</费用承担方>';
+                        xml = xml + '</建设公司_门窗售后_子表>';
+
+                    }
+
+                    xml = xml + '             </FormData>';
+                    xml = xml + '         </XForm>';
+                    PostXml(xml);
+
+                }
+            });
+
+
+        }
+        function BlItem(fwxdd, fwlno, fwlname, fgg, fdw, fsl, fwxyy, fshfs, ffycd) {
+
+            
+
+            if (!fwxdd || fwxdd == "") {
+
+                mui.toast("请输入维修地点");
+                return null;
+            }
+
+            if (!fwlno || fwlno == "") {
+
+                mui.toast("请输入物料编码");
+                return null;
+            }
+            if (!fwlname || fwlname == "") {
+
+                mui.toast("请输入物料名称");
+                return null;
+            }
+            if (!fgg || fgg == "") {
+
+                mui.toast("请输入规格");
+                return null;
+
+            }
+            if (!fdw || fdw == "") {
+                mui.toast("请输入单位");
+                return null;
+            }
+            if (!fsl || fsl == "") {
+                mui.toast("请输入数量");
+                return null;
+            }
+            if (!fwxyy || fwxyy == "") {
+                mui.toast("请输入维修原因");
+                return null;
+            }
+            if (!fshfs || fshfs == "") {
+
+                mui.toast("请选择送货方式")
+                return null;
+            }
+            if (!ffycd || ffycd == "") {
+
+                mui.toast("请输入费用承担方");
+                return null;
+            }
+
+        }
+    </script>
+    <a name="bottom"></a>
+</body>
+</html>

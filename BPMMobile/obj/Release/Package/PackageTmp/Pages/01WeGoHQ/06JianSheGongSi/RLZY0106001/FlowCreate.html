@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <meta charset="utf-8" />
+    <title></title>
+    
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">发起人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">发起日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">所属公司</label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fqjr">请假人<i style="color:red;">*</i></label>
+                <input type="text" id="fqjr" name="fqjr" value=""  readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fszcj">所在车间</label>
+                <input type="text" id="fszcj" name="fszcj" value="" placeholder="请输入所在车间"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fqjlx">请假类型<i style="color:red;">*</i></label>
+                <input type="text" id="fqjlx" name="fqjlx" value="" placeholder="请选择请假类型"   />
+            </div>
+            <div class="mui-input-row">
+                <label for="fstart">请假开始时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fstart" name="fstart" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fend">请假结束时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fend" name="fend" value="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fday">请假天数<i style="color:red;">*</i></label>
+                <input type="number" id="fday" name="fday" value="" placeholder="请输入请假天数"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="freason">请假事由<i style="color:red;">*</i></label>
+                <textarea rows="3" id="freason" name="freason" placeholder="请输入请假事由"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;"  onclick="changeQjlx()">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">病假证明<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" id="addbtn_bj" style="display:none">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+        </form>
+        <div class="mui-btn-row"  id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+         mui.init();
+
+         mui.ready(function () {
+             getVersion('\\01威高集团总部\\06建设公司\\RLZY人力资源', '建设公司车间员工请假申请');
+             upload();
+             getBPMParam();
+             watch();
+            
+             prepMsg();
+
+         });
+
+         XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+         XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+             if (typeof (result) == "string") {
+                 result = JSON.parse(result);
+             }
+
+             if (result.success == true || result.success == "true") {
+                 $("#fname").val(result.data.name);
+                 $("#fqjr").val(result.data.name);
+
+
+             }
+         });
+
+         XuntongJSBridge.call('createPop', {
+             'popTitle': '',
+             'popTitleCallBackId': '1',
+             'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+             'menuList': [
+                 'openWithBrowser'
+             ],
+
+         }, function (result) {
+             if (result.success == true || result.success == 'true') {
+                 var callBackId = result.data ? result.data.callBackId : '';
+                 if (callBackId == 'callback1') {
+                     window.location.reload();
+                     //location.reload();
+                 } else if (callBackId == 'callback2') {
+
+                 } else {
+
+                 }
+             }
+
+             });
+         function changeQjlx() {
+             var qjlx = $("#fqjlx").val();
+             if (qjlx == "病假") {
+                 $("#addbtn_bj").css("display", "block")
+             } else {
+                 $("#addbtn_bj").css("display", "none")
+             }
+
+         }
+       
+         var fno = '';
+         function prepMsg() {
+             tapEvent();
+             $("#fdate").val(getNowFormatDate(2));
+            
+             var getBPMOUAjax = $.ajax({
+
+                 type: 'get',
+                 url: "/api/bpm/GetBPMParam",
+                 data: {},
+                 beforeSend: function (XHR) {
+                     XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                 }
+             }).done(function (data) {
+                 BPMOU = data.Position[0].FullName;
+                 var fnoArr = BPMOU.split("/");
+                 fno = fnoArr[fnoArr.length - 1];
+             }).fail(function (e) {
+
+             });
+             getBPMOUAjax.then(function () {
+
+                 var xml = '<?xml version= "1.0" ?>';
+                 xml = xml + '      <Requests>';
+                 xml = xml + '     <Params>';
+                 xml = xml + '         <DataSource>PS</DataSource>';
+                 xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+                 xml = xml + '         <Type>1</Type>';
+                 xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                 xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+                 xml = xml + '        <Filter>';
+                 xml = xml + '            <fno>' + fno + '</fno>';
+                 xml = xml + '        </Filter>';
+                 xml = xml + '      </Params>';
+                 xml = xml + '   </Requests>';
+
+                 return   $.ajax({
+                     type: "POST",
+                     url: "/api/bpm/DataProvider",
+                     data: { '': xml },
+
+                     beforeSend: function (XHR) {
+                         XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                     }
+                 }).done(function (data) {
+
+
+
+
+                     var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                     //console.log(provideData);
+                     var personInfoObject = provideData.Tables[0].Rows[0];
+                     var personObject = ({
+                         name: personInfoObject.NAME,             //姓名
+                         account: personInfoObject.EMPLID,        //工号
+                         descript: personInfoObject.DEPT_DESCR,   //所在组织简约描述
+                         status: personInfoObject.DESCR1,          //状况 1-良好，2-特殊
+                         wedding: personInfoObject.DESCR2,         //婚姻状况
+                         residence: personInfoObject.DESCR4,       //户口状况
+                         nation: personInfoObject.DESCR50,         //民族
+                         deptdescript: personInfoObject.DESCR254,  //所在组织详细描述
+                         email: personInfoObject.EMAIL_ADDR,       //个人邮箱
+                         fzjsj: personInfoObject.FDEPZR,           //直接上级
+                         fzjsjno: personInfoObject.FDEPZRNUMBER,   //直接上级工号
+                         fzgsj: personInfoObject.FZR,              //最高上级 
+                         fzgsjno: personInfoObject.FZRNUMBER,      //最高上级工号
+                         fjoindate: personInfoObject.HPS_JOINWG_DT, //加入威高时间
+                         school: personInfoObject.HPS_VALUE01,      //毕业院校
+                         profession: personInfoObject.HPS_VALUE02,  //所学专业
+                         address: personInfoObject.HPS_VALUE03,     //家庭住址
+                         degree: personInfoObject.JPM_DESCR90,      //学历学位
+                         sex: personInfoObject.SEX,                 //性别 M/F
+                         fdeptname: personInfoObject.fdeptname,     //所属部门
+                         fgslj: personInfoObject.fgslj,             //所属部门详细路径
+                         fsscompany: personInfoObject.fsscompany,   //所属公司
+                         fssgroup: personInfoObject.fssgroup,       //所属组织
+                         fzwlevel: personInfoObject.fzwlevel,       //职位级别
+                         minzu: personInfoObject.minzu,              //民族
+                         jiguan: personInfoObject.jiguan,            //籍贯
+                         zhiwei: personInfoObject.zhiwei,             //职位 
+                         birthday: FormatterTime_Y_M_S(personInfoObject.BIRTHDATE.year, personInfoObject.BIRTHDATE.month, personInfoObject.BIRTHDATE.day),    //出生日期
+                         id: personInfoObject.NATIONAL_ID,             //身份证号 
+                         tel: personInfoObject.PHONE,                  //联系电话
+                         gradate: FormatterTime_Y_M_S(personInfoObject.HPS_DATE01.year, personInfoObject.HPS_DATE01.month, personInfoObject.HPS_DATE01.day),      //毕业时间
+                         depno: personInfoObject.DEPTID                 //部门编码        
+                     });
+                     console.log(personObject);
+                     $("#fszcj").val(personObject.fdeptname);  
+                 }).fail(function (e) {
+                 })
+
+             });
+             
+           
+         }
+
+
+         function tapEvent() {
+             var fqjlxdata = [
+                 {
+                     value: "sj",
+                     text: "事假"
+                 },
+                 {
+                     value: "bj",
+                     text: "病假"
+                 },
+                 {
+                     value: "cj",
+                     text: "产假"
+                 },
+                 {
+                     value: "pcj",
+                     text: "陪产假"
+                 },
+                 {
+                     value: "hj",
+                     text: "婚假"
+                 },
+                 {
+                     value: "gxj",
+                     text: "公休假"
+                 },
+                 {
+                     value: "sj",
+                     text: "丧假"
+                 }
+             ];
+
+             showPicker('fqjlx', fqjlxdata);
+
+         }
+
+
+         function Save() {
+             var fareaStr = String(BPMOU).split("/");
+             //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+             $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+             var fname = $("#fname").val();
+             var fdept = $("#fdept").val();
+             var fdate = $("#fdate").val() + " 00:00:00";
+             var fqjr = $("#fqjr").val();
+             var fszcj = $("#fszcj").val();
+             var fqjlx = $("#fqjlx").val();
+             var fstart = $("#fstart").val();
+             var fend = $("#fend").val();
+             var fday = $("#fday").val();
+             var freason = $("#freason").val();
+
+
+
+            
+             if (!fqjlx || fqjlx == "") {
+                 mui.toast("请选择请假类型");
+                 return;
+             }
+             if (!fstart|| fstart == "") {
+                 mui.toast("请输入请假开始时间");
+                 return;
+             }
+             if (!fend || fend == "") {
+                 mui.toast("请输入请假结束时间");
+                 return;
+             }
+             if (!fday || fday == "") {
+                 mui.toast("请输入请假天数");
+                 return;
+             }
+             if (!freason || freason == "") {
+                 mui.toast("请输入请假事由");
+                 return;
+             }
+
+             if (fqjlx == "病假" && (fjArray.toString() == null || fjArray.toString() == "")) {
+                 mui.toast("请上传病假证明");
+                 return;
+             }
+             var btnArry = ["取消", "确定"];
+             mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                 if (e.index == 1) {
+                     var xml = '<?xml version="1.0"?>';
+                     xml = xml + '<XForm>';
+                     xml = xml + '<Header>';
+                     xml = xml + '<Method>Post</Method>';
+                     xml = xml + '<ProcessName>建设公司车间员工请假申请</ProcessName>';
+                     xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                     xml = xml + '<DraftGuid></DraftGuid>';
+                     xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                     xml = xml + '<Action>提交</Action>';
+                     xml = xml + '<Comment></Comment>';
+                     xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                     xml = xml + ' </Header>';
+                     xml = xml + '<FormData>';
+                     xml = xml + '<建设公司_员工请假_主表>';
+                     xml = xml + '<单号>自动生成</单号>';
+                     xml = xml + '<发起人>' + fname + '</发起人>';
+                     xml = xml + '<发起日期>' + fdate + '</发起日期>';
+                     xml = xml + '<所属公司>' + fdept + '</所属公司>';
+                     xml = xml + '<请假人>' + fqjr + '</请假人>';
+                     xml = xml + '<所在车间>' + fszcj + '</所在车间>';
+                     xml = xml + '<请假类型>' + fqjlx + '</请假类型>';
+                     xml = xml + '<请假开始时间>' + fstart + '</请假开始时间>';
+                     xml = xml + '<请假结束时间>' + fend + '</请假结束时间>';
+                     xml = xml + '<请假天数>' + fday + '</请假天数>';
+                     xml = xml + '<请假事由>' + freason + '</请假事由>';
+                     xml = xml + '<病假证明>' + fjArray.toString().replace(",", ";") + '</病假证明>';
+                     xml = xml + '</建设公司_员工请假_主表>';
+                     xml = xml + '</FormData>';
+                     xml = xml + '</XForm>';
+                    // alert(xml);
+                     PostXml(xml);
+                 }
+             });
+         }
+    </script>
+
+</body>
+</html>

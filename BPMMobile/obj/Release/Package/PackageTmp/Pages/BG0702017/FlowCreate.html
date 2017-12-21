@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+       <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+         <div class="mui-input-row">
+             <label for="fname">发起人</label>
+             <input type="text" id="fname" name="fname" readonly="readonly"/>
+         </div>
+          <div class="mui-input-row" style="display:none;">
+              <label for="fdept">发起部门</label>
+              <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+          </div> 
+          <div class="mui-input-row">
+              <label for="fdate">发起时间</label>
+              <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+          </div> 
+           <div class="mui-input-row">
+               <label for="fcd">场地</label>
+               <input type="text" id="fcd" name="fcd" readonly="readonly" value="威高广场" placeholder="请选择场地"/>
+           </div>
+           <div class="bgc" style="height:2.25rem;text-align:center;padding-top:0.2rem;">
+               <label>商场租户\非租户资料</label>
+           </div>
+           <div class="mui-input-row">
+               <label for="fshmc">商户名称</label>
+               <input type="text" id="fshmc" name="fshmc" placeholder="请输入商户名称"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fsph">商铺号</label>
+               <input type="text" id="fsph" name="fsph" placeholder="请输入商铺号"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fgsmc">公司名称<i style="color:red;">*</i></label>
+               <input type="text" id="fgsmc" name="fgsmc" placeholder="请输入公司名称"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fgsdz">公司地址</label>
+               <input type="text" id="fgsdz" name="fgsdz" placeholder="请输入公司地址"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fdy">电邮</label>
+               <input type="email" id="fdy" name="fdy" placeholder="请输入电邮"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fyb">邮编</label>
+               <input type="text" id="fyb" name="fyb" placeholder="请输入邮编"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="flxr">联系人</label>
+               <input type="text" id="flxr" name="flxr" placeholder="请输入联系人"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fdh">电话号码</label>
+               <input type="tel" id="fdh" name="fdh" placeholder="请输入电话号码"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fsj">手机号</label>
+               <input type="tel" id="fsj" name="fsj" placeholder="请输入手机号"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fcz">传真号码</label>
+               <input type="text" id="fcz" name="fcz" placeholder="请输入传真号码"/>
+           </div>
+           <div class="bgc" style="height:2.25rem;text-align:center;padding-top:0.2rem;">
+               <label>租赁情况</label>
+           </div>
+           <div class="mui-input-group">
+               <div class="mui-input-row itemcontenttitle">
+                   <label for="fzplx">租赁类型<i style="color:red;">*</i></label>
+               </div>            
+               <div class="mui-input-row mui-checkbox mui-left">
+                   <label for="fhncd">户内场地</label>
+                   <input type="checkbox" name="fzplxcb" id="fhncd" value="户内场地"/>
+               </div>
+               <div class="mui-input-row mui-checkbox mui-left">
+                   <label for="fhwcd">户外场地</label>
+                   <input type="checkbox" name="fzplxcb" id="fhwcd" value="户外场地"/>
+               </div>
+               <div class="mui-input-row mui-checkbox mui-left">
+                   <label for="fzt">中庭</label>
+                   <input type="checkbox" name="fzplxcb" id="fzt" value="中庭"/>
+               </div>
+           </div>
+           <div class="mui-input-group">
+               <div class="mui-input-row itemcontenttitle">
+                   <label>租赁日期<i style="color:red;">*</i></label>
+               </div>
+               <div class="mui-input-row">
+                   <label for="fzlrq_ks">开始日期</label>
+                   <input type="date" id="fzlrq_ks" name="fzlrq_ks"/>
+               </div>
+               <div class="mui-input-row">
+                   <label for="fzlrq_js">结束日期</label>
+                   <input type="date" id="fzlrq_js" name="fzlrq_js"/>
+               </div>
+           </div>
+           <div class="mui-input-row">
+               <label for="fggwbh">广告位编号</label>
+               <input type="text" id="fggwbh" name="fggwbh" placeholder="请输入广告位编号"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fwz">位置</label>
+               <input type="text" id="fwz" name="fwz" placeholder="请输入位置"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fmj">面积(m^2)</label>
+               <input type="text" id="fmj" name="fmj" placeholder="请输入面积"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fgg">规格</label>
+               <input type="text" id="fgg" name="fgg" placeholder="请输入规格"/>
+           </div>
+           <div class="mui-input-row" style="height:2.25rem;">
+               <label for="fyxsysj">音响大屏使用时间</label>
+               <input type="text" id="fyxsysj" name="fyxsysj" placeholder="请输入音响大屏使用时间"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fbzsj">布展时间</label>
+               <input type="datetime-local" value="2017/07/17 15:51:00" id="fbzsj" name="fbzsj" placeholder="请选择布展时间"/>
+           </div>
+           <div class="mui-input-row">
+               <label for="fczsj">拆展时间</label>
+               <input type="datetime-local" value="2017/07/17 15:51:00" id="fczsj" name="fczsj" placeholder="请选择拆展时间"/>
+           </div>
+           <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+               <div class="border border-t upload-img" style="top:0rem;">
+                   <!--上传图片-->
+                   <div class="clearfix upload-btn" id="children-bg">
+                       <label class="label">附件</label>
+                       <span class="tips" id="imageCount"><!--已添加0张--></span>
+                       <!--上传图片按钮  -->
+                       <span class="upload-addbtn">
+                           <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                       </span>
+                   </div>
+                   <div class="upload-img-list"></div>
+               </div>
+           </div>
+       </form>
+        <div class="mui-btn-row" style="z-index:999;bottom:0.1rem;position:fixed;width:100%;" id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" style="width:100%;height:2.5rem;font-size:0.8rem;" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司活动场地验收申请');
+            upload();
+            getBPMParam();
+            watch();
+            forbiddenCache();
+            prepMsg();
+
+        });
+
+        mui('.mui-input-group').on('change', 'input', function () {
+            if (this.checked) {
+
+                fzplxArr.push(this.value);
+                console.log(fzplxArr);
+            } else {
+                if ($.inArray(this.value, fzplxArr) != -1) {
+
+
+                }
+            }
+
+        });
+
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    if (isSafari()) {
+                        iosfresh();
+                    } else {
+                        history.go(0);
+                    }
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+            
+        }
+
+        var fzplxArr = new Array();
+        function tapEvent() {
+
+
+            var fcddata = [
+                {
+                    value: "sgc",
+                    text:"时光城"
+                },
+                {
+                    value: "wggc",
+                    text:"威高广场"
+                }
+            ];
+
+            showPicker('fcd', fcddata);
+
+           
+
+        }
+
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+
+            var fcd = $("#fcd").val();
+            var fshmc = $("#fshmc").val();
+            var fsph = $("#fsph").val();
+            var fgsmc = $("#fgsmc").val();
+            var fgsdz = $("#fgsdz").val();
+            var fdy = $("#fdy").val();
+            var fyb = $("#fyb").val();
+            var flxr = $("#flxr").val();
+            var fdh = $("#fdh").val();
+            var fsj = $("#fsj").val();
+            var fcz = $("#fcz").val();
+            var fzplx = $("#fzplx").val();
+
+        }
+    </script>
+</body>
+</html>

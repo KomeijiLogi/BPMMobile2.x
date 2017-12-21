@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMMobile", "BPMMobile\BPMMobile.csproj", "{4094E417-6EE5-47D0-B3AD-DCC57AAAC081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YUN", "YUN\YUN.csproj", "{6E928FEB-4E2C-4F7C-8B1B-AC851BB21499}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4094E417-6EE5-47D0-B3AD-DCC57AAAC081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4094E417-6EE5-47D0-B3AD-DCC57AAAC081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4094E417-6EE5-47D0-B3AD-DCC57AAAC081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4094E417-6EE5-47D0-B3AD-DCC57AAAC081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E928FEB-4E2C-4F7C-8B1B-AC851BB21499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E928FEB-4E2C-4F7C-8B1B-AC851BB21499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E928FEB-4E2C-4F7C-8B1B-AC851BB21499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E928FEB-4E2C-4F7C-8B1B-AC851BB21499}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

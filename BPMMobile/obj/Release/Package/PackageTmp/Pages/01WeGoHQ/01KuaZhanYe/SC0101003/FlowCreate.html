@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgroup">所属集团<i style="color:red;">*</i></label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly" placeholder="请选择所属集团"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">申请公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" placeholder="请填写申请公司"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fczfs">处置方式<i style="color:red;">*</i></label>
+                <input type="text" id="fczfs" name="fczfs" readonly="readonly" placeholder="请选择处置方式"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fczqx">处置去向<i style="color:red;">*</i></label>
+                <input type="text" id="fczqx" name="fczqx" placeholder="请填写处置去向"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fif_bf">是否经过报废流程审批<i style="color:red;">*</i></label>
+                <input type="hidden" id="fif_bf" name="fif_bf" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fif_bfd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="flb">类别<i style="color:red;">*</i></label>
+                <input type="text" id="flb" name="flb" readonly="readonly" placeholder="请选择类别"/>
+            </div>
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <input type="hidden" id="TaskID_物资处置会签" name="TaskID_物资处置会签" />
+           
+            <div class="mui-input-row">
+                <label for="fyz_total">原值总计<i style="color:red;">*</i></label>
+                <input type="number" id="fyz_total" name="fyz_total" readonly="readonly" value="0"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjz_total">残值总计<i style="color:red;">*</i></label>
+                <input type="number" id="fjz_total" name="fjz_total" readonly="readonly" value="0"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fncljz_total">拟处理价值(元)<i style="color:red;">*</i></label>
+                <input type="number" id="fncljz_total" name="fncljz_total" readonly="readonly" value="0"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsyss_total">处置收益/损失(元)<i style="color:red;">*</i></label>
+                <input type="number" id="fsyss_total" name="fsyss_total" readonly="readonly" value="0"/>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>处置原因</label>
+            </div>
+            <div class="mui-row">
+                <textarea rows="5" id="freason" name="freason" placeholder="请填写处置原因" class="mui-col-xs-12"></textarea>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加处置物资明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+   </div>
+
+    <div id="search" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-btn mui-btn-link mui-pull-left mui-btn-blue" onclick="hiddenItem()">取消</a>
+            <h1 class="mui-title">选择</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="margin-top:2rem;height:100%;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+                <a>A</a>
+                <a>B</a>
+                <a>C</a>
+                <a>D</a>
+                <a>E</a>
+                <a>F</a>
+                <a>G</a>
+                <a>H</a>
+                <a>I</a>
+                <a>J</a>
+                <a>K</a>
+                <a>L</a>
+                <a>M</a>
+                <a>N</a>
+                <a>O</a>
+                <a>P</a>
+                <a>Q</a>
+                <a>R</a>
+                <a>S</a>
+                <a>T</a>
+                <a>U</a>
+                <a>V</a>
+                <a>W</a>
+                <a>X</a>
+                <a>Y</a>
+                <a>Z</a>
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="item_list"></ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\01跨产业集团\\SC生产', '集团公司物资处置申请');
+            getBPMParam();
+            prepMsg();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        mui("#fif_bfd").each(function () {
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fif_bf").val('是');
+
+                } else {
+
+                    $("#fif_bf").val('否');
+                }
+            });
+
+        });
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '   <Requests>';
+            xml = xml + '   <Params>';
+            xml = xml + '       <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>集团公司物资处置申请</ProcessName>';
+            xml = xml + '      <ProcessVersion>1.5</ProcessVersion>';
+            xml = xml + '      <Owner></Owner>';
+            xml = xml + '    </Params>';
+            xml = xml + '   </Requests>';
+
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.fname);
+                $("#fgroup").val(item.fgroup);
+                $("#fdept").val(item.fdept);
+
+            }).fail(function (e) {
+
+                });
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
+            xml = xml + '         <ID>erpcloud_公用_获取资产信息</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_公用_获取资产信息</ProcedureName>';
+            xml = xml + '        <Filter>';
+            xml = xml + '        </Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var infoArr = provideData.Tables[0].Rows;
+                for (var i = 0; i < infoArr.length;i++){
+                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                    li = li + '<input type="radio" name="radio" data-fzcmc="' + infoArr[i].资产名称 + '" data-fbfdh="' + infoArr[i].fbillno + '" ';
+                    li = li + 'data-fcompany="' + infoArr[i].所属公司 + '"  data-fggxh="' + infoArr[i].规格型号 + '" data-itemid_bf="' + infoArr[i].fid + '" ';
+                    li = li + 'data-taskid_bf="' + infoArr[i].TaskID + '" data-fsl="' + infoArr[i].数量 + '"  data-fsccj="' + infoArr[i].生产厂家 + '"  ';
+                    li = li + 'data-fscdate="' + FormatterTime_Y_M_S(infoArr[i].生产日期.year, infoArr[i].生产日期.month, infoArr[i].生产日期.day) + '"  ';
+                    li = li + 'data-fyz="' + infoArr[i].原值 + '" data-fjz="' + infoArr[i].净值 + '"  ';
+                    li = li + '/>' + infoArr[i].资产名称 + '&nbsp' + infoArr[i].所属公司 + '&nbsp' + infoArr[i].fbillno;
+                    li = li + '</li>';
+                    $("#item_list").append(li);
+                }
+                var header = document.querySelector('header.mui-bar');
+                var list = document.getElementById('list');
+                var done = document.getElementById('done');
+                //calc hieght
+                list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                //create
+                window.indexedList = new mui.IndexedList(list);
+                //done event
+                done.addEventListener('tap', function () {
+                    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+                    var checkedValues = [];
+                    var checkedElements = [];
+                    checkboxArray.forEach(function (box) {
+                        if (box.checked) {
+                            checkedValues.push(box.parentNode.innerText);
+                            console.log(box);
+                            var checkelement = {
+                                fzcmc: box.dataset.fzcmc,
+                                fbfdh: box.dataset.fbfdh,
+                                fcompany: box.dataset.fcompany,
+                                fggxh: box.dataset.fggxh,
+                                itemid_bf: box.dataset.itemid_bf,
+                                taskid_bf: box.dataset.taskid_bf,
+                                fsl: box.dataset.fsl,
+                                fsccj: box.dataset.fsccj,
+                                fscdate: box.dataset.fscdate,
+                                fyz: box.dataset.fyz,
+                                fjz: box.dataset.fjz
+                            };
+                            checkedElements.push(checkelement);
+                        }
+                    });
+                    if (checkedValues.length > 0) {
+                        hiddenItem();
+                        for (var i = 0; i < checkedElements.length;i++){
+                            var li = '<div id="mx" class="mui-card">';
+                            li = li + '    <div class="mui-input-row itemtitle">';
+                            li = li + '       <label>明细列表项</label>';
+                            li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fzcmc">资产名称<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="text" id="fzcmc" name="fzcmc" readonly="readonly" value="' + checkedElements[i].fzcmc + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fbfdh">报废流程单号</label>';
+                            li = li + '        <input type="text" id="fbfdh" name="fbfdh" readonly="readonly" value="' + checkedElements[i].fbfdh + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fcompany">所属公司</label>';
+                            li = li + '        <input type="text" id="fcompany" name="fcompany" readonly="readonly" value="' + checkedElements[i].fcompany + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + checkedElements[i].fggxh + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <input type="hidden" id="itemid_bf" name="itemid_bf" value="' + checkedElements[i].itemid_bf + '"/>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fph">批号</label>';
+                            li = li + '        <input type="text" id="fph" name="fph" placeholder="请填写批号"/>';
+                            li = li + '    </div>';
+                            li = li + '    <input type="hidden" id="taskid_bf" name="taskid_bf" value="' + checkedElements[i].taskid_bf + '"/>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fsl">数量</label>';
+                            li = li + '       <input type="number" id="fsl" name="fsl" readonly="readonly" value="' + checkedElements[i].fsl + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fsccj">生产厂家</label>';
+                            li = li + '       <input type="text" id="fsccj" name="fsccj" readonly="readonly" value="' + checkedElements[i].fsccj + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fscdate">生产日期</label>';
+                            li = li + '       <input type="date" id="fscdate" name="fscdate" readonly="readonly" value="' + checkedElements[i].fscdate + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fyz">原值(元)<i style="color:red;">*</i></label>';
+                            li = li + '       <input type="number" id="fyz" name="fyz" readonly="readonly" value="' + checkedElements[i].fyz + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fjz">残值(元)<i style="color:red;">*</i></label>';
+                            li = li + '       <input type="number" id="fjz" name="fjz" readonly="readonly" value="' + checkedElements[i].fjz + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fncljz">拟处理价值(元)<i style="color:red;">*</i></label>';
+                            li = li + '       <input type="number" id="fncljz" name="fncljz" placeholder="请填写拟处理价值"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fsyss">处置收益/损失(元)<i style="color:red;">*</i></label>';
+                            li = li + '       <input type="number" id="fsyss" name="fsyss" placeholder="请填写处置收益/损失"/>';
+                            li = li + '    </div>';
+                            li = li + '</div>';
+                            $("#mxlist").append(li);
+                            document.getElementById('tjmx').scrollIntoView();
+                            calcPrice();
+                            $("#mxlist").find("#fncljz,#fsyss").each(function () {
+
+                                $(this).on('input', function () {
+
+                                    calcPrice_input();
+                                });
+                            });
+                        }
+                       
+                    } else {
+
+                    }
+                }, false);
+                mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                    var count = list.querySelectorAll('input[type="radio"]:checked').length;
+                    var value = count ? "完成(" + count + ")" : "完成";
+                    done.innerHTML = value;
+                    if (count) {
+                        if (done.classList.contains("mui-disabled")) {
+                            done.classList.remove("mui-disabled");
+                        }
+                    } else {
+                        if (!done.classList.contains("mui-disabled")) {
+                            done.classList.add("mui-disabled");
+                        }
+                    }
+                });
+
+            }).fail(function (e) {
+
+            });
+        }
+
+        function tapEvent() {
+
+            var fgroupdata = [
+                {
+                    value: '',
+                    text:'威高集团总部'
+                },
+                {
+                    value: '',
+                    text:'医用制品集团'
+                },
+                {
+                    value: '',
+                    text:'房地产集团'
+                },
+                {
+                    value: '',
+                    text:'骨科材料集团'
+                },
+                {
+                    value: '',
+                    text:'心内介入耗材产业集团'
+                },
+                {
+                    value: '',
+                    text:'血液净化集团'
+                },
+                {
+                    value: '',
+                    text:'药业集团'
+                },
+                {
+                    value: '',
+                    text:'生物科技集团'
+                },
+                {
+                    value:'',
+                    text:'医疗商业集团'
+                }
+            ];
+            showPicker('fgroup', fgroupdata);
+
+            var fczfsdata = [
+                {
+                    value: '',
+                    text:'调剂使用'
+                },
+                {
+                    value: '',
+                    text: '外部出售'
+                },
+                {
+                    value: '',
+                    text: '废品出售'
+                }
+
+            ];
+            showPicker('fczfs', fczfsdata);
+
+            var flbdata = [
+                {
+                    value: '',
+                    text:'原材料'
+                },
+                {
+                    value: '',
+                    text: '半成品'
+                },
+                {
+                    value: '',
+                    text: '成品'
+                },
+                {
+                    value: '',
+                    text: '包装品'
+                },
+                {
+                    value: '',
+                    text: '工装器具'
+                },
+                {
+                    value: '',
+                    text: '模具'
+                },
+                {
+                    value: '',
+                    text: '设备'
+                },
+                {
+                    value: '',
+                    text: '低值易耗品'
+                },
+                {
+                    value: '',
+                    text: '其他'
+                }
+            ];
+            showPicker('flb', flbdata);
+
+            $("#tjmx").on('tap', function () {
+                showItem();
+
+            });
+        }
+
+
+        function showItem() {
+            $("#wrapper").css("display", "none");
+            $("#search").css("display", "block");
+            var header = document.querySelector('header.mui-bar');
+            var list = document.getElementById('list');
+            var done = document.getElementById('done');
+            //calc hieght
+            list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+            //create
+            window.indexedList = new mui.IndexedList(list);
+        }
+
+        function hiddenItem() {
+            $("#wrapper").css("display", "block");
+            $("#search").css("display", "none");
+        }
+
+
+        function calcPrice() {
+
+            var total_fyz = 0.00;
+            var total_fjz = 0.00;
+           
+            $("#mxlist").find("#fyz").each(function () {
+                var fyz = parseFloat($(this).val());
+                if (isNaN(fyz)) {
+                    fyz = 0.00;
+                }
+                total_fyz = (parseFloat(total_fyz) + fyz).toFixed(2);
+
+               
+            });
+            $("#fyz_total").val(total_fyz);
+            $("#mxlist").find("#fjz").each(function () {
+                var fjz = parseFloat($(this).val());
+                if (isNaN(fjz)) {
+                    fjz = 0.00;
+                }
+                total_fjz = (parseFloat(total_fjz) + fjz).toFixed(2);
+              
+            });
+            $("#fjz_total").val(total_fjz);
+
+        }
+
+        function calcPrice_input() {
+
+            var total_fncljz = 0.00;
+            var total_fsyss = 0.00;
+            $("#mxlist").find("#fncljz").each(function () {
+                var fncljz = parseFloat($(this).val());
+                if (isNaN(fncljz)) {
+                    fncljz = 0.00;
+                }
+                total_fncljz = (parseFloat(total_fncljz) + fncljz).toFixed(2);
+              
+            });
+            $("#fncljz_total").val(total_fncljz);
+            $("#mxlist").find("#fsyss").each(function () {
+                var fsyss = parseFloat($(this).val());
+                if (isNaN(fsyss)) {
+                    fsyss = 0.00;
+                }
+                total_fsyss = (parseFloat(total_fsyss) + fsyss).toFixed(2);
+               
+            });
+            $("#fsyss_total").val(total_fsyss);
+
+        }
+
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    calcPrice_input();
+                    calcPrice();
+                }
+            });
+
+        }
+
+        function mxItem(fzcmc, fbfdh, fcompany, fggxh, itemid_bf, fph, taskid_bf, fsl, fsccj, fscdate, fyz, fjz, fncljz, fsyss) {
+
+            var mx = new Object;
+            mx.fzcmc = fzcmc;
+            mx.fbfdh = fbfdh;
+            mx.fcompany = fcompany;
+            mx.fggxh = fggxh;
+            mx.itemid_bf = itemid_bf;
+            mx.fph = fph;
+            mx.taskid_bf = taskid_bf;
+            mx.fsl = fsl;
+            mx.fsccj = fsccj;
+            mx.fscdate = fscdate;
+            mx.fyz = fyz;
+            mx.fjz = fjz;
+            mx.fncljz = fncljz;
+            mx.fsyss = fsyss;
+
+            if (!fncljz){
+                mui.toast('请填写拟处理价值');
+                return null;
+            }
+            if (!fsyss) {
+                mui.toast('请填写处置收益/损失');
+                return null;
+            }
+            return mx;
+        }
+
+        function Save() {
+
+            var fname = $("#fname").val();
+            var fgroup = $("#fgroup").val();
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val();
+            var ftel = $("#ftel").val();
+            var fczfs = $("#fczfs").val();
+            var fczqx = $("#fczqx").val();
+            var fif_bf = $("#fif_bf").val();
+            var flb = $("#flb").val();
+            var fyz_total = $("#fyz_total").val();
+            var fjz_total = $("#fjz_total").val();
+            var fncljz = $("#fncljz_total").val();
+            var fsyss = $("#fsyss_total").val();
+            var freason = $("#freason").val();
+
+          
+
+            if (!fgroup) {
+                mui.toast('请选择所属产业集团');
+                return;
+            }
+            if (!fcompany) {
+                mui.toast('请填写申请公司');
+                return;
+            }
+            if (!fczfs) {
+                mui.toast('请选择处置方式');
+                return;
+            }
+            if (!fczqx) {
+                mui.toast('请填写处置去向');
+                return;
+            }
+            if (!flb) {
+                mui.toast('请选择类别');
+                return;
+            }
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+                var fzcmc = $(this).find("#fzcmc").val();
+                var fbfdh = $(this).find("#fbfdh").val();
+                var fcompany = $(this).find("#fcompany").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var itemid_bf = $(this).find("#itemid_bf").val();
+                var fph = $(this).find("#fph").val();
+                var taskid_bf = $(this).find("#taskid_bf").val();
+                var fsl = $(this).find("#fsl").val();
+                var fsccj = $(this).find("#fsccj").val();
+                var fscdate = $(this).find("#fscdate").val();
+                var fyz = $(this).find("#fyz").val();
+                var fjz = $(this).find("#fjz").val();
+                var fncljz = $(this).find("#fncljz").val();
+                var fsyss = $(this).find("#fsyss").val();
+                if (mxItem(fzcmc, fbfdh, fcompany, fggxh, itemid_bf, fph, taskid_bf, fsl, fsccj, fscdate, fyz, fjz, fncljz, fsyss) == null) {
+                    mxflag = true;
+                    return null;
+                }
+                var mx = mxItem(fzcmc, fbfdh, fcompany, fggxh, itemid_bf, fph, taskid_bf, fsl, fsccj, fscdate, fyz, fjz, fncljz, fsyss);
+                mxlistArr.push(mx);
+            });
+            if (String(fif_bf) == '是' && mxlistArr.length == 0) {
+                mui.toast('请添加处置物资明细');
+                return;
+            }
+            if (mxflag) {
+                return;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '    <Header>';
+                    xml = xml + '       <Method>Post</Method>';
+                    xml = xml + '         <ProcessName>集团公司物资处置申请</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '        <DraftGuid></DraftGuid>';
+                    xml = xml + '        <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '        <Action>提交</Action>';
+                    xml = xml + '        <Comment></Comment>';
+                    xml = xml + '       <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '   </Header>';
+                    xml = xml + '    <FormData>';
+
+
+                    xml = xml + '    <BPM_SCXWZCZSQ_A>';
+                    xml = xml + '      <fbillno>自动生成</fbillno>';
+                    xml = xml + '      <fname>' + fname + '</fname>';
+                    xml = xml + '        <fgroup>' + fgroup + '</fgroup>';
+                    xml = xml + '        <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '        <fdept>' + fdept + '</fdept>';
+                    xml = xml + '        <fdate>' + fdate + '</fdate>';
+                    xml = xml + '         <ftel>' + ftel + '</ftel>';
+                    xml = xml + '         <fczfs>' + fczfs + '</fczfs>';
+                    xml = xml + '          <fczqx>' + fczqx + '</fczqx>';
+                    xml = xml + '           <fif_bf>' + fif_bf + '</fif_bf>';
+                    xml = xml + '          <flb>' + flb + '</flb>';
+                    xml = xml + '          <TaskID_物资处置会签></TaskID_物资处置会签>';
+                    xml = xml + '         <fyz_total>' + fyz_total + '</fyz_total>';
+                    xml = xml + '          <fjz_total>' + fjz_total + '</fjz_total>';
+                    xml = xml + '         <fncljz>' + fncljz + '</fncljz>';
+                    xml = xml + '         <fsyss>' + fsyss + '</fsyss>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '           <fj>' + fjArray.toString().replace(";",",") + '</fj>';
+                    } else {
+                        xml = xml + '           <fj></fj>';
+                    }
+
+                    xml = xml + '             <freason>' + freason + '</freason>';
+                    xml = xml + '          </BPM_SCXWZCZSQ_A>';
+                    for (var i = 0; i < mxlistArr.length;i++){
+
+                        xml = xml + '         <BPM_SCXWZCZSQ_B>';
+                        xml = xml + '            <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '           <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '             <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '            <fzcmc>' + mxlistArr[i].fzcmc + '</fzcmc>';
+                        xml = xml + '            <fbfdh>' + mxlistArr[i].fbfdh + '</fbfdh>';
+                        xml = xml + '           <fcompany>' + mxlistArr[i].fcompany + '</fcompany>';
+                        xml = xml + '          <fggxh>' + mxlistArr[i].fggxh + '</fggxh>';
+                        xml = xml + '            <itemid_bf>' + mxlistArr[i].itemid_bf + '</itemid_bf>';
+                        xml = xml + '            <fph>' + mxlistArr[i].fph + '</fph>';
+                        xml = xml + '             <taskid_bf>' + mxlistArr[i].taskid_bf + '</taskid_bf>';
+                        xml = xml + '            <fsl>' + mxlistArr[i].fsl + '</fsl>';
+                        xml = xml + '             <fsccj>' + mxlistArr[i].fsccj + '</fsccj>';
+                        xml = xml + '             <fscdate>' + mxlistArr[i].fscdate + '</fscdate>';
+                        xml = xml + '            <fyz>' + mxlistArr[i].fyz + '</fyz>';
+                        xml = xml + '            <fjz>' + mxlistArr[i].fjz + '</fjz>';
+                        xml = xml + '               <fncljz>' + mxlistArr[i].fncljz + '</fncljz>';
+                        xml = xml + '               <fsyss>' + mxlistArr[i].fsyss + '</fsyss>';
+                        xml = xml + '           </BPM_SCXWZCZSQ_B>';
+                    }
+                 
+
+                    xml = xml + '     </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fdq">大区</label>
+                <input type="text" id="fdq" name="fdq" readonly="readonly" placeholder="请选择大区"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbsc">办事处</label>
+                <input type="text" id="fbsc" name="fbsc" placeholder="请填写办事处"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">业务员姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系方式"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flkdw">来客单位</label>
+                <input type="text" id="flkdw" name="flkdw" placeholder="请填写来客单位名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fyyjb">医院级别</label>
+                <input type="text" id="fyyjb" name="fyyjb" placeholder="请填写医院级别"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flkrs">来客人数</label>
+                <input type="number" id="flkrs" name="flkrs" placeholder="请填写来客人数"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcws">床位数</label>
+                <input type="number" id="fcws" name="fcws" placeholder="请填写床位数"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_lf">是否承担路费</label>
+                <input type="hidden" id="fif_lf" name="fif_lf" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fif_lfd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="flfhj">路费合计</label>
+                <input type="number" id="flfhj" name="flfhj" placeholder="请填写路费合计"/>
+            </div>
+            <div class="mui-input-row">
+                 <label for="flwdate">来威日期</label>
+                 <input type="date" id="flwdate" name="flwdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_xjz">是否需接站</label>
+                <input type="hidden" id="fif_xjz" name="fif_xjz" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fif_xjzd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjzdd">接站地点</label>
+                <input type="text" id="fjzdd" name="fjzdd" placeholder="请填写接站地点"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjdzsj">飞机到站时间</label>
+                <input type="text" id="ffjdzsj" name="ffjdzsj" placeholder="请填写飞机到站时间"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzsjd">住宿酒店</label>
+                <input type="text" id="fzsjd" name="fzsjd" placeholder="请填写住宿酒店"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjlxjsl">房间类型及数量</label>
+                <input type="text" id="ffjlxjsl" name="ffjlxjsl" placeholder="请填写房间类型及数量"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzsfhj">住宿费合计</label>
+                <input type="number" id="fzsfhj" name="fzsfhj" placeholder="请填写住宿费合计"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_apcl">是否安排车辆</label>
+                <input type="hidden" id="fif_apcl" name="fif_apcl" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fif_apcld">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="flkdate">离威日期</label>
+                <input type="date" id="flkdate" name="flkdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_xsz">是否需送站</label>
+                <input type="hidden" id="fif_xsz" name="fif_xsz" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fif_xszd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fszdd">送站地点</label>
+                <input type="text" id="fszdd" name="fszdd" placeholder="请填写送站地点"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjqfsj">飞机起飞时间</label>
+                <input type="text" id="ffjqfsj" name="ffjqfsj" placeholder="请填写飞机起飞时间"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flkmd">来客目的</label>
+                <input type="text" id="flkmd" name="flkmd" placeholder="请填写来客目的"/>
+            </div>
+            <div id="mxlist_xc">
+                <div id="mx" class="mui-card">
+                   <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                        <label for="fsj">时间</label>
+                        <input type="date" id="fsj" name="fsj"/>
+                    </div>
+                    <div class="mui-input-row itemtitle2">
+                        <label>活动行程</label>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fjqrs">景区人数</label>
+                        <input type="number" id="fjqrs" name="fjqrs" placeholder="请填写景区人数"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fmpf">门票费</label>
+                        <input type="number" id="fmpf" name="fmpf" placeholder="请填写门票费"/>
+                    </div>
+                    <div class="mui-input-row itemtitle2">
+                        <label>午餐</label>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwcycjdrs">用餐酒店人数</label>
+                        <input type="number" id="fwcycjdrs" name="fwcycjdrs" placeholder="请填写用餐酒店人数"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwcbz">午餐标准</label>
+                        <input type="number" id="fwcbz" name="fwcbz" placeholder="请填写午餐标准"/>
+                    </div>
+                    <div class="mui-input-row itemtitle2">
+                        <label>晚餐</label>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwfycjdrs">用餐酒店人数</label>
+                        <input type="number" id="fwfycjdrs" name="fwfycjdrs" placeholder="请填写用餐酒店人数" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwfbz">晚餐标准</label>
+                        <input type="number" id="fwfbz" name="fwfbz" placeholder="请填写晚餐标准" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="ffyhj">费用合计</label>
+                        <input type="number" id="ffyhj" name="ffyhj" placeholder="请填写费用合计"/>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_xc" style="margin-top:0.5rem;">
+                添加活动行程安排及费用标准
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row">
+                <label for="ffyyshj">费用预算合计</label>
+                <input type="number" id="ffyyshj" name="ffyyshj" placeholder="请填写费用预算合计(路费+住宿费+门票费+餐费)"/>
+            </div>
+            <div id="mxlist_ry">
+                <div id="mx" class="mui-card">
+                   <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fxm">姓名</label>
+                        <input type="text" id="fxm" name="fxm" placeholder="请填写姓名"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fzw">职务</label>
+                        <input type="text" id="fzw" name="fzw" placeholder="请填写职务"/>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_ry" style="margin-top:0.5rem;">
+                添加活动参与人员信息
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div> 
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理', '洁瑞公司学术交流申请');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

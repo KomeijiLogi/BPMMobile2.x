@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row" style="display:none;">
+                <label>公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label>部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>是否借款<i style="color:red;">*</i></label>
+                <input type="text" id="fif_jk" name="fif_jk" placeholder="请选择是否借款" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>备注</label>
+                <textarea rows="5" id="fremark" name="fremark" placeholder="请输入备注"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>申请明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="tglist">
+                <!--<div class="mui-card" id="tg">
+                    <div class="mui-input-row">
+                        <label>费用项目<i style="color:red;">*</i></label>
+                        <input type="text" id="fyxm" name="fyxm" value="推广费"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>费用类型<i style="color:red;">*</i></label>
+                        <input type="text" id="ffylx" name="ffylx"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>申请金额<i style="color:red;">*</i></label>
+                        <input type="number" id="fje" name="fje"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>申请理由<i style="color:red;">*</i></label>
+                        <textarea rows="3" id="fremark" name="fremark"></textarea>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="mui-input-row">
+                <label>合计金额(元)</label>
+                <input type="text" id="ftotal" name="ftotal" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label>大写金额</label>
+                <input type="text" id="ftotal_dx" name="ftotal_dx" readonly="readonly"/>
+            </div>
+
+           
+
+            <div class="mui-input-group" id="jklist" style="display:none;">
+                <div class="mui-card adjla">
+                    <div class="mui-input-row" style="height:2.75rem;">
+                        <label>借款金额(元)<i style="color:red;">*</i></label>
+                        <input type="number" id="fjktotal" name="fjktotal" onchange="amountDebt()" value=""/>
+                    </div>
+                    <div class="mui-input-row" style="display:none;">
+                        <label>大写金额</label>
+                        <input type="text" id="fjktotal_dx" name="fjktotal_dx" value="零元整"/>
+                    </div>
+                    <div class="mui-input-row" style="display:none;">
+                        <label>借款单号</label>
+                        <input type="text" id="fjkbillno" name="fjkbillno" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row" style="height:auto;">
+                        <label>借款事由</label>
+                        <textarea rows="5" id="fjkremark" name="fjkremark"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\01跨子公司\\CW财务管理', '盛祥商管公司挂账推广费用申请');
+            upload();
+            watch();
+            getBPMParam();
+            prepMsg();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                   
+                    var msg = JSON.parse(localStorage.getItem("BPM_FDCBX_TGFYSQMsg"));
+                    $("#fcompany").val(msg.fcompany);
+                    $("#fdept").val(msg.fdept);
+                    $("#fname").val(msg.fname);
+                    $("#fdate").val(msg.fdate);
+                    $("#fif_jk").val(msg.fif_jk);
+                    if ($("#fif_jk").val() == "是") {
+                        $("#jklist").css("display", "block");
+                    } else {
+                        $("#jklist").css("display", "none");
+                    }
+                    $("#fremark").val(msg.fremark);
+                    $("#ftotal").val(msg.ftotal);
+                    $("#ftotal_dx").val(msg.ftotal_dx);
+                    $("#fjktotal").val(msg.fjktotal);
+                    $("#fjktotal_dx").val(msg.fjktotal_dx);
+                    $("#fjkbillno").val(msg.fjkbillno);
+                    $("#fjkremark").val(msg.fjkremark);
+                    for (var i = 0; i < msg.ftgfy.length;i++){
+
+                        var ftgfyItem = JSON.stringify(msg.ftgfy[i]);
+                        var li = '    <div class="mui-card" id= "tg" >';
+                        li = li + '    <div class="mui-input-row bgl">';
+                        li = li + '        <label>明细列表项</label>';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteProduct(this)"></span>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '         <label>费用项目<i style="color:red;">*</i></label>';
+                        li = li + '         <input type="text" id="fyxm" name="fyxm" value="' + ftgfyItem.fyxm+'" />';
+
+                        li = li + '    </div>';
+                        li = li + '      <div class="mui-input-row">';
+                        li = li + '         <label>费用类型<i style="color:red;">*</i></label>';
+                        li = li + '         <input type="text" id="ffylx" name="ffylx" placeholder="请选择费用类型" value="' + ftgfyItem.ffylx+'"/>';
+                        li = li + '     </div>';
+                        li = li + '     <div class="mui-input-row" style="height:2.75rem;">';
+                        li = li + '         <label>申请金额(元)<i style="color:red;">*</i></label>';
+                        li = li + '         <input type="number" id="fje" name="fje" placeholder="请输入申请金额" onchange="amountCountAndPrice()" value="' + ftgfyItem.fje+'"/>';
+                        li = li + '     </div>';
+                        li = li + '     <div class="mui-input-row" style="height:5.25rem;">';
+                        li = li + '        <label>申请理由<i style="color:red;">*</i></label>';
+                        li = li + '         <textarea rows="5" id="fremark" name="fremark" placeholder="请输入申请理由">' + ftgfyItem.fremark+'</textarea>';
+                        li = li + '     </div>';
+                        li = li + '  </div > ';
+
+                        $("#tglist").append(li);
+                        showPicker('ffylx', ffylxdata);
+                    }
+                } else {
+                    
+                }
+            }
+
+        }
+
+        function tapEvent() {
+
+            var fif_jkdata = [
+                {
+                    value: "Y",
+                    text:"是"
+                },
+                {
+                    value: "N",
+                    text:"否"
+                }
+            ];
+
+                var element = document.getElementById('fif_jk');
+
+                var picker = new mui.PopPicker();
+
+                picker.setData(fif_jkdata);
+
+                element.addEventListener('tap', function () {
+
+                    picker.show(function (items) {
+
+                        element.value = items[0].text;
+                        if ($("#fif_jk").val() == "是") {
+                            $("#jklist").css("display", "block");
+                        } else {
+                            $("#jklist").css("display", "none");
+                        }
+                    });
+
+                }, false);
+
+
+
+
+
+
+            var ffylxdata = [
+                {
+                    value: "hdl",
+                    text:"活动类"
+                },
+                {
+                    value: "zzl",
+                    text: "制作类"
+                }
+            ];
+
+            $("#addItem").on('tap', function () {
+
+                var li = '    <div class="mui-card" id= "tg" >';
+                li = li + '    <div class="mui-input-row bgl">';
+                li = li + '        <label>明细列表项</label>';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteProduct(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '         <label>费用项目<i style="color:red;">*</i></label>';
+                li = li + '         <input type="text" id="fyxm" name="fyxm" value="推广费" />';
+
+                li = li + '    </div>';
+                li = li + '      <div class="mui-input-row">';
+                li = li + '         <label>费用类型<i style="color:red;">*</i></label>';
+                li = li + '         <input type="text" id="ffylx" name="ffylx" placeholder="请选择费用类型"/>';
+                li = li + '     </div>';
+                li = li + '     <div class="mui-input-row" style="height:2.75rem;">';
+                li = li + '         <label>申请金额(元)<i style="color:red;">*</i></label>';
+                li = li + '         <input type="number" id="fje" name="fje" placeholder="请输入申请金额" onchange="amountCountAndPrice()"/>';
+                li = li + '     </div>';
+                li = li + '     <div class="mui-input-row" style="height:5.25rem;">';
+                li = li + '        <label>申请理由<i style="color:red;">*</i></label>';
+                li = li + '         <textarea rows="5" id="fremark" name="fremark" placeholder="请输入申请理由"></textarea>';
+                li = li + '     </div>';
+                li = li + '  </div > ';
+
+                $("#tglist").append(li);
+
+                //showPicker('ffylx', ffylxdata);
+
+                var picker = new mui.PopPicker();
+
+                picker.setData(ffylxdata);
+
+
+                $("#tglist").find("#ffylx").each(function () {
+                    var self = this;
+                    console.log(self);
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+
+                        picker.show(function (items) {
+                            self.value=(items[0].text);
+                        });
+                    });
+                });
+
+
+            });
+
+
+        }
+
+
+        //删除产品明细列表项
+        function deleteProduct(context) {
+
+            $(context).parent().parent().remove();
+
+            //重新计算下总金额和总数量
+            amountCountAndPrice();
+        }
+
+        function amountCountAndPrice() {
+            var ftotal = 0;
+
+            $("#tglist").find("#tg").each(function () {
+                var fjetmp = parseFloat($(this).find("#fje").val());
+                if ($(this).find("#fje").val() == null || $(this).find("#fje").val() == "") {
+                    fjetmp = 0;
+                }
+                if (ftotal == 0) {
+                    ftotal = fjetmp;
+                } else {
+                    ftotal += fjetmp;
+                }
+
+            });
+            $("#ftotal").val(ftotal);
+            $("#ftotal_dx").val(atoc(ftotal));
+        }
+
+        function amountDebt() {
+            var fjktotal = $("#fjktotal").val();
+            $("#fjktotal_dx").val(atoc(fjktotal));
+
+        }
+
+
+        var data = {
+            picUrl: '/workreport/c/file/image/get.json?fileId=',
+            queryDraft: '/workreport/modify',
+            totalSize: 0,
+            photoInfo: [],
+            fileInfo: [],
+            photos: ''
+        }
+
+        function watch() {
+
+            var count = $('.upload-img-list >div').size();
+
+            if (count <= 4) {
+                $('#uploaddiv').css('height', '35vw');
+
+
+            } else if (count <= 8) {
+                $('#uploaddiv').css('height', '60vw');
+
+            } else if (count <= 12) {
+                $('#uploaddiv').css('height', '90vw');
+            }
+
+        }
+
+
+
+
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+            $("#fcompany").val(fareaStr[fareaStr.length - 3]);
+
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fif_jk = $("#fif_jk").val();
+            var fremark = $("#fremark").val();
+            var ftotal = $("#ftotal").val();
+            var ftotal_dx = $("#ftotal_dx").val();
+            var fjktotal = $("#fjktotal").val();
+            var fjktotal_dx = $("#fjktotal_dx").val();
+            var fjkbillno = $("#fjkbillno").val();
+            var fjkremark = $("#fjkremark").val();
+
+            if (!fif_jk || fif_jk == "") {
+                mui.toast("请选择是否是借款");
+                return;
+            } else if (fif_jk=="是"){
+                if (!fjktotal || fjktotal == "") {
+                    mui.toast("请输入借款金额");
+                    return;
+                }
+            }
+
+            var tglistArr = new Array();
+            $("#tglist").find("#tg").each(function () {
+                var fyxm = $(this).find("#fyxm").val();
+                var ffylx = $(this).find("#ffylx").val();
+                var fje = $(this).find("#fje").val();
+                var fremark = $(this).find("#fremark").val();
+                if (tgItem(fyxm, ffylx, fje, fremark) == null) {
+                    return;
+                }
+                var tg = tgItem(fyxm, ffylx, fje, fremark);
+                tglistArr.push(tg);
+            });
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    //xml = xml + '<ProcessName>CW0701011_房地产集团推广费用申请_流程</ProcessName>';
+                    xml = xml + '<ProcessName>盛祥商管公司挂账推广费用申请</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<BPM_FDCBX_TGFYSQ_A>';
+                    xml = xml + '<fbillno>自动带出</fbillno>';
+                    xml = xml + '<fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '<fdept>' + fdept + '</fdept>';
+                    xml = xml + ' <fname>' + fname + '</fname>';
+                    xml = xml + '<fdate>' + fdate + '</fdate>';
+                    xml = xml + '<fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '<fremark>' + fremark + '</fremark>';
+                    xml = xml + '<ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '<ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '<fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '<fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '<fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '<fjkremark>' + fjkremark + '</fjkremark>';
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+                        xml = xml + '      <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '      <fj></fj>';
+                    }
+                    xml = xml + '</BPM_FDCBX_TGFYSQ_A>';
+                    for (var i = 0; i < tglistArr.length; i++){
+                        xml = xml + '<BPM_FDCBX_TGFYSQ_B>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '  <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '<fyxm>' + tglistArr[i].fyxm + '</fyxm>';
+                        xml = xml + '<ffylx>' + tglistArr[i].ffylx + '</ffylx>';
+                        xml = xml + '<fje>' + tglistArr[i].fje + '</fje>';
+                        xml = xml + '<fremark>' + tglistArr[i].fremark + '</fremark>';
+                        xml = xml + '</BPM_FDCBX_TGFYSQ_B>';
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+
+
+        function tgItem(fyxm, ffylx, fje, fremark) {
+
+            var tg = new Object();
+            tg.fyxm = fyxm;
+            tg.ffylx = ffylx;
+            tg.fje = fje;
+            tg.fremark = fremark;
+            if (!fyxm || fyxm==""){
+                mui.toast("请输入费用项目");
+                return null;
+            }
+            if (!ffylx || ffylx == "") {
+                mui.toast("请输入费用类型");
+                return null;
+            }
+            if (!fje || fje == "") {
+                mui.toast("请输入申请金额");
+                return null;
+            }
+            if (!fremark || fremark == "") {
+                mui.toast("请输入申请理由");
+                return null;
+            }
+            return tg;
+        }
+    </script>
+</body>
+</html>

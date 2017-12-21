@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">请示人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">请示部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">请示日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fshmc">商户名称<i style="color:red;">*</i></label>
+                <input type="text" id="fshmc" name="fshmc" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdph">店铺号<i style="color:red;">*</i></label>
+                <input type="text" id="fdph" name="fdph" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqkyrq">申请开业日期<i style="color:red;">*</i></label>
+                <input type="date" id="fsqkyrq" name="fsqkyrq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fssxm">所属项目<i style="color:red;">*</i></label>
+                <input type="text" id="fssxm" name="fssxm" readonly="readonly" />
+            </div>
+            <div class="mui-input-group" id="yyb" style="display:none;">
+                <div class="mui-input-row">
+                    <label>运营部确认<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="ffhjdwjqq">复核进店文件齐全</label>
+                    <input id="ffhjdwjqq" name="ffhjdwjqq" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fwqf">无欠费</label>
+                    <input id="fwqf" name="fwqf" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fbxybl">保险已办理</label>
+                    <input id="fbxybl" name="fbxybl" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fwsgwgwclsx">无施工违章未处理事项</label>
+                    <input id="fwsgwgwclsx" name="fwsgwgwclsx" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fyyzzybl">营业执照已办理</label>
+                    <input id="fyyzzybl" name="fyyzzybl" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwtgxbx">未通过项表述<i style="color:red;">*</i></label>
+                    <input type="text" id="fwtgxbx" name="fwtgxbx" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="zsb" style="display:none;">
+                <div class="mui-input-row">
+                    <label>招商部确认</label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fhtwjqswb">合同文件签署完毕</label>
+                    <input id="fhtwjqswb" name="fhtwjqswb" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fshzzwjqqbcd">商户资质文件齐全并存档</label>
+                    <input id="fshzzwjqqbcd" name="fshzzwjqqbcd" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsqxx">尚缺信息<i style="color:red;">*</i></label>
+                    <input type="text" id="fsqxx" name="fsqxx" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="cwb" style="display:block;">
+                <div class="mui-input-row">
+                    <label>财务部确认</label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fkyqfyjq">开业前费用交齐</label>
+                    <input id="fkyqfyjq" name="fkyqfyjq" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fazcswb">POS机安装测试完毕</label>
+                    <input id="fazcswb" name="fazcswb" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row ">
+                    <label for="fsq">尚欠信息<i style="color:red;">*</i></label>
+                    <input type="text" id="fsq" name="fsq" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="gcb" style="display:none;">
+                <div class="mui-input-row">
+                    <label>工程部确认</label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="ftzqqtgys">图纸齐全/通过验收</label>
+                    <input id="ftzqqtgys" name="ftzqqtgys" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzdxtgys">重点项通过验收</label>
+                    <input id="fzdxtgys" name="fzdxtgys" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fwlxlzc">网络线路正常</label>
+                    <input id="fwlxlzc" name="fwlxlzc" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwtgx">未通过项表述<i style="color:red;">*</i></label>
+                    <input type="text" id="fwtgx" name="fwtgx" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="abb" style="display:none;">
+                <div class="mui-input-row">
+                    <label>安保部确认</label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="ftzqq">图纸齐全</label>
+                    <input id="ftzqq" name="ftzqq" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled mui-disabled">
+                    <label for="ftgxfys">通过消防验收</label>
+                    <input id="ftgxfys" name="ftgxfys" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fkyqjc">开业前检查</label>
+                    <input id="fkyqjc" name="fkyqjc" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwtg">未通过项表述<i style="color:red;">*</i></label>
+                    <input type="text" id="fwtg" name="fwtg" readonly="readonly" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="fzjlsp" style="display:none;">
+                <div class="mui-input-row">
+                    <label>副总经理审批<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="ftyky">同意开业</label>
+                    <input id="ftyky" name="ftyky" value="0" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fxkyhzg">先开业后整改</label>
+                    <input id="fxkyhzg" name="fxkyhzg" value="0" type="checkbox" disabled="disabled" />
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">添加附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getTaskMsg();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+        });
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                console.log(data);
+                var item = data.FormDataSet.BPM_SGGSSHKYSQSPB[0];
+                $("#fname").val(item.fname);
+                $("#fdept").val(item.fdept);
+                $("#fdate").val(FormatterTimeYMS(item.fdate));
+                $("#ftel").val(item.ftel);
+                $("#fshmc").val(item.fshmc);
+                $("#fdph").val(item.fdph);
+                $("#fsqkyrq").val(FormatterTimeYMS(item.fsqkyrq));
+                $("#fssxm").val(item.fssxm);
+                $("#ffhjdwjqq").val(item.ffhjdwjqq);
+                $("#fwqf").val(item.fwqf);
+                $("#fbxybl").val(item.fbxybl);
+                $("#fwsgwgwclsx").val(item.fwsgwgwclsx);
+                $("#fyyzzybl").val(item.fyyzzybl);
+                $("#fwtgxbx").val(item.fwtgxbx);
+                $("#fhtwjqswb").val(item.fhtwjqswb);
+                $("#fshzzwjqqbcd").val(item.fshzzwjqqbcd);
+                $("#fsqxx").val(item.fsqxx);
+                $("#fkyqfyjq").val(item.fkyqfyjq);
+                $("#fazcswb").val(item.fazcswb);
+                $("#fsq").val(item.fsq);
+                $("#ftzqqtgys").val(item.ftzqqtgys);
+                $("#fzdxtgys").val(item.fzdxtgys);
+                $("#fwlxlzc").val(item.fwlxlzc);
+                $("#fwtgx").val(item.fwtgx);
+                $("#ftzqq").val(item.ftzqq);
+                $("#ftgxfys").val(item.ftgxfys);
+                $("#fkyqjc").val(item.fkyqjc);
+                $("#fwtg").val(item.fwtg);
+                $("#ftyky").val(item.ftyky);
+                $("#fxkyhzg").val(item.fxkyhzg);
+                $("#ffhjdwjqq,#fwqf,#fbxybl,#fwsgwgwclsx,#fyyzzybl,#fwtgxbx,#fhtwjqswb,#fshzzwjqqbcd,#fsqxx,#fkyqfyjq,#fazcswb,#fsq,#ftzqqtgys,#fzdxtgys,#fwlxlzc,#fwtgx,#ftzqq,#ftgxfys,#fkyqjc,#fwtg,#ftyky,#fxkyhzg").each(function () {
+                    //console.log($(this));
+                    if ($(this).val() == "1") {
+
+                        $(this).attr("checked", "checked");
+                    }
+
+                });
+                if (item.fssxm == "威高广场") {
+                    $("#yyb").css("display", "block");
+                    $("#zsb").css("display", "block");
+                    $("#gcb").css("display", "block");
+                    $("#abb").css("display", "block");
+                    $("#fzjlsp").css("display", "block");
+                }
+
+                if (item.ffj != null && item.ffj != "") {
+                    var fjtmp = (String)(item.ffj);
+
+                    fjArray = fjtmp.split(";");
+
+
+                    //console.log("fjArray:" + fjArray);
+
+                    //请求附件详细信息
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/bpm/GetAttachmentsInfo',
+                        //dataType:'json',
+                        data: { 'fileIds': fjArray },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        },
+                        success: function (data, status) {
+                            if (status == "success") {
+
+                                console.log(data);
+
+                                for (var i = 0; i < data.length; i++) {
+
+                                    var name = data[i].Name;
+                                    var type = (data[i].Ext).replace(".", "");
+                                    var size = String(data[i].Size);
+
+                                    var time = String(data[i].LastUpdate).replace("T", " ");
+                                    var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                    var attach = attachItem(name, type, size, time, downurl);
+                                    attachArray.push(attach);
+
+
+
+                                    var li = '<div class="pic-preview smallyulan success">';
+                                    li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                                    //类型判断
+                                    if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                                        //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/xlsx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/docx@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/ppt@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/pdf@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../../../Content/images/zip@2x.png"/></div>';
+
+                                    } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                                    } else {
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                                    }
+
+                                    li = li + ' </div>';
+                                    li = li + '</div>';
+                                    $(".upload-img-list").append(li);
+
+
+                                    $(".imgdiv").each(function () {
+
+                                        $(this).parent().find(".del.none").hide();
+
+                                    });
+
+                                    watch();
+
+
+                                }
+
+                                $(".imgdiv").on('tap', function () {
+                                    console.log($(this)[0].id);
+                                    XuntongJSBridge.call('showFile', {
+                                        'fileName': attachArray[$(this)[0].id].name,
+                                        'fileExt': attachArray[$(this)[0].id].type,
+                                        'fileTime': attachArray[$(this)[0].id].time,
+                                        'fileSize': attachArray[$(this)[0].id].size,
+                                        'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                                    }, function (result) {
+                                        //alert(JSON.stringify(result));
+                                    });
+                                });
+
+
+                            }
+
+                        }, error: function (e) {
+                            console.log(e);
+
+                        }, complete: function () {
+
+                        }
+
+                    });
+
+                }
+                for (var i = 0; i < data.Steps.length; i++) {
+
+                    if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                        data.Steps[i].FinishAt = "";
+                    }
+                    var time = FormatterTime(data.Steps[i].FinishAt);
+
+                    var stepName = data.Steps[i].NodeName;
+                    if (data.Steps[i].NodeName == "sysInform") {
+                        stepName = "知会";
+                    } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                        stepName = "任务操作";
+                    } else if (data.Steps[i].NodeName == "开始") {
+                        stepName = "开始";
+                    }
+
+                    var stepAction = locationAction(data.Steps[i].SelAction);
+                    if (data.Steps[i].SelAction == "sysInform") {
+                        stepAction = "发起知会";
+                    } else if (data.Steps[i].SelAction == "Submit") {
+                        stepAction = "已阅";
+                    } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                        stepAction = "待处理";
+                    } else if (data.Steps[i].SelAction == "sysReject") {
+                        stepAction = "拒绝";
+                    } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                        stepAction = "退回重填";
+                    }
+
+
+                    var contents = data.Steps[i].Comments;
+                    if (contents == null) {
+                        contents = "无";
+                    }
+                    //判断是否是加签
+                    if (data.Steps[i].IsConsignStep == false) {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    } else {
+                        var li = ' <li>';
+                        li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                        li = li + '  <div class="righttext">';
+                        li = li + '     <div>';
+                        li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                        li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                        li = li + '        <p>签核意见: ' + contents + '</p>';
+                        li = li + '     </div>';
+                        li = li + '   </div>';
+                        li = li + '</li>';
+
+                    }
+                    $("#signff").append(li);
+                }
+            }).fail(function (e) {
+
+            })
+        }
+    </script>
+</body>
+</html>

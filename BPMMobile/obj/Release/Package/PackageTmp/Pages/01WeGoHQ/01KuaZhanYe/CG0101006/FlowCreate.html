@@ -1,0 +1,2120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalabel=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+        <div class="mui-input-row">
+            <label for="fname">提报人</label>
+            <input type="text" id="fname" name="fname" readonly="readonly"/>
+        </div>    
+        <div class="mui-input-row" style="display:none">
+            <label for="fdept">提报部门</label>
+            <input type="text" id="fdept" name="fdept" readonly="readonly" />
+        </div> 
+        <div class="mui-input-row">
+            <label for="fdate">提报日期</label>
+            <input type="date" id="fdate" name="fdate" readonly="readonly" />
+        </div> 
+        <div class="mui-input-row">
+            <label for="ftel">联系方式<i style="color:red">*</i></label>
+            <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式"/>
+        </div>
+        <div class="mui-input-row" style="display:none">
+            <label for="ftbjt">提报集团</label>
+            <input type="text" id="ftbjt" name="ftbjt" readonly="readonly"/>
+        </div>    
+        <div class="mui-input-row" style="display:none">
+            <label for="ftbgs">提报公司</label>
+            <input type="text" id="ftbgs" name="ftbgs" readonly="readonly"/>
+        </div>   
+        <div class="mui-input-row">
+            <label for="fbm">组织编码<i style="color:red">*</i></label>
+            <input type="text" id="fbm" name="fbm" placeholder="请选择组织编码" readonly="readonly"/>
+        </div>
+            <div class="mui-input-row">
+                <label for="fsyxt">所用系统<i style="color:red">*</i></label>
+                <input type="text" id="fsyxt" name="fsyxt"  readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fjt">产业集团<i style="color:red">*</i></label>
+                <input type="text" id="fjt" name="fjt" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgs">公司<i style="color:red">*</i></label>
+                <input type="text" id="fgs" name="fgs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqlx">申请类型<i style="color:red">*</i></label>
+                <input type="text" id="fsqlx" name="fsqlx" readonly="readonly" placeholder="请选择申请类型"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgyssx">供应商属性<i style="color:red">*</i></label>
+                <input type="text" id="fgyssx" name="fgyssx" readonly="readonly" placeholder="请选择供应商属性"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fgyslx">供应商类型<i style="color:red">*</i></label>
+                <input type="text" id="fgyslx" name="fgyslx" readonly="readonly" placeholder="请选择供应商类型" />
+            </div>
+            <div class="mui-input-group" id="gysxz" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">供应商新增</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwzmc">物资名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fwzmc" name="fwzmc"  placeholder="请输入物资名称"/>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fncgl">年采购量<i style="color:red;">*</i></label>
+                    <input type="text" id="fncgl" name="fncgl" placeholder="请输入年采购量" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fncge">年采购额<i style="color:red;">*</i></label>
+                    <input type="text" id="fncge" name="fncge" placeholder="请输入年采购额" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fif_xzwz">是否新增物资<i style="color:red;">*</i></label>
+                    <input type="text" id="fif_xzwz" name="fif_xzwz" placeholder="请选择是否是新增物资" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwzfl">物资分类<i style="color:red;">*</i></label>
+                    <input type="text" id="fwzfl" name="fwzfl" placeholder="请输入物资分类" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsbmc">设备名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fsbmc" name="fsbmc" placeholder="请输入设备名称" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsbjz">设备价值<i style="color:red;">*</i></label>
+                    <input type="text" id="fsbjz" name="fsbjz" placeholder="请输入设备价值" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="gysmx" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">供应商明细</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysbm_xz">供应商编码<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysbm_xz" name="fgysbm_xz" placeholder="请输入供应商编码" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysmc_xz">供应商名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysmc_xz" name="fgysmc_xz" placeholder="请输入供应商名称" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysdz_xz">供应商地址<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysdz_xz" name="fgysdz_xz" placeholder="请输入供应商地址" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsf_xz">所在省份<i style="color:red;">*</i></label>
+                    <input type="text" id="fsf_xz" name="fsf_xz" placeholder="请选择所在省份" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcs_xz">所在城市<i style="color:red;">*</i></label>
+                    <input type="text" id="fcs_xz" name="fcs_xz" placeholder="请选择所在城市" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="flxr_xz">联系人<i style="color:red;">*</i></label>
+                    <input type="text" id="flxr_xz" name="flxr_xz" placeholder="请输入联系人" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fshj_xz">手机号<i style="color:red;">*</i></label>
+                    <input type="tel" id="fshj_xz" name="fsjh_xz" placeholder="请输入手机号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fzj_xz">座机<i style="color:red;">*</i></label>
+                    <input type="text" id="fzj_xz" name="fzj_xz" placeholder="请输入座机" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyhzh_xz">银行账号<i style="color:red;">*</i></label>
+                    <input type="text" id="fyhzh_xz" name="fyhzh_xz" placeholder="请输入银行账号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyhlh_xz">银行联行号<i style="color:red;">*</i></label>
+                    <input type="text" id="fyhlh_xz" name="fyhlh_xz" placeholder="请输入银行联行号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fkhyh_xz">开户银行<i style="color:red;">*</i></label>
+                    <input type="text" id="fkhyh_xz" name="fkhyh_xz" placeholder="请输入开户银行" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyyzzh_xz">营业执照号<i style="color:red;">*</i></label>
+                    <input type="text" id="fyyzzh_xz" name="fyyzzh_xz" placeholder="请输入营业执照号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fswdjh_xz">税务登记号<i style="color:red;">*</i></label>
+                    <input type="text" id="fswdjh_xz" name="fswdjh_xz" placeholder="请输入税务登记号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsl_xz">税率（%）<i style="color:red;">*</i></label>
+                    <input type="number" id="fsl_xz" name="fsl_xz" placeholder="请输入税率" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fnwgx_xz">内外关系<i style="color:red;">*</i></label>
+                    <input type="text" id="fnwgx_xz" name="fnwgx_xz" placeholder="请选择内外关系" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="flhkh_xz">联行号+开户行</label>
+                    <input type="text" id="flhkh_xz" name="flhkh_xz" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fxzsy_xz">供应商新增事由</label>
+                    <textarea rows="8" id="fxzsy_xz" name="fxzsy_xz" placeholder="请输入供应商新增事由"></textarea>
+                </div>
+            </div>
+            <div class="mui-input-group" id="gysbg" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">供应商变更</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysbm_bg">供应商编码<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysbm_bg" name="fgysbm_bg" placeholder="请输入供应商编码" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysmc_bg">供应商名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysmc_bg" name="fgysmc_bg" placeholder="请输入供应商名称" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysmc_bgq">变更前供应商名称</label>
+                    <input type="text" id="fgysmc_bgq" name="fgysmc_bgq" placeholder="请输入变更前供应商名称" />
+                </div>
+                <div class="mui-input-row" id="bgmx">
+                    <label>供应商变更明细</label>
+                    <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem" ;></span></a>
+                </div>
+                <!--供应商变更明细列表-->
+                <div class="mui-input-group" id="bllist">
+                </div>
+
+            </div>
+            <div class="mui-input-group" id="gysfp" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">供应商分配</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysbm_fp">供应商编码<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysbm_fp" name="fgysbm_fp" placeholder="请输入供应商编码" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysmc_fp">供应商名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysmc_fp" name="fgysmc_fp" placeholder="请输入供应商名称" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="flxr_fp">联系人<i style="color:red;">*</i></label>
+                    <input type="text" id="flxr_fp" name="flxr_fp" placeholder="请输入联系人" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsjh_fp">手机号<i style="color:red;">*</i></label>
+                    <input type="tel" id="fsjh_fp" name="fsjh_fp" placeholder="请输入手机号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fzj_fp">座机<i style="color:red;">*</i></label>
+                    <input type="text" id="fzj_fp" name="fzj_fp" placeholder="请输入座机" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyhzh_fp">银行账号<i style="color:red;">*</i></label>
+                    <input type="text" id="fyhzh_fp" name="fyhzh_fp" placeholder="请输入银行账号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyhlh_fp">银行联行号<i style="color:red;">*</i></label>
+                    <input type="text" id="fyhlh_fp" name="fyhlh_fp" placeholder="请输入银行联行号" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fkhyh_fp">开户银行<i style="color:red;">*</i></label>
+                    <input type="text" id="fkhyh_fp" name="fkhyh_fp" placeholder="请输入开户银行" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="flhkh_fp">联行号+开户行<i style="color:red;">*</i></label>
+                    <input type="text" id="flhkh_fp" name="flhkh_fp" readonly="readonly" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsm_fp">供应商变更信息说明<i style="color:red;">*</i></label>
+                    <textarea rows="8" id="fsm_fp" name="fsm_fp" placeholder="请输入供应商变更信息说明"></textarea>
+                </div>
+
+            </div>
+
+            <div class="mui-input-group" id="gysqjy" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">供应商启用禁用</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysbm_qjy">供应商编码<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysbm_qjy" name="fgysbm_qjy" placeholder="请输入供应商编码" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgysmc_qjy">供应商名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fgysmc_qjy" name="fgysmc_qjy" placeholder="请输入供应商名称" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="flx_qjy">类型<i style="color:red;">*</i></label>
+                    <input type="text" id="flx_qjy" name="flx_qjy" placeholder="请选择类型" />
+                </div>
+                <div class="mui-input-row" style="display:none" id="jydate_ks">
+                    <label for="fjydate_ks">禁用开始日期<i style="color:red;">*</i></label>
+                    <input type="date" id="fjydate_ks" name="fjydate_ks" placeholder="请选择禁用开始日期" />
+                </div>
+                <div class="mui-input-row" style="display:none" id="jydate_js">
+                    <label for="fjydate_js">禁用开始日期<i style="color:red;">*</i></label>
+                    <input type="date" id="fjydate_js" name="fjydate_js" placeholder="请选择禁用结束日期" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyy_qjy">启用禁用原因<i style="color:red;">*</i></label>
+                    <textarea rows="8" id="fyy_qjy" name="fyy_qjy" placeholder="请输入禁用启用原因"></textarea>
+                </div>
+
+            </div>
+
+                <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                    <div class="border border-t upload-img" style="top:0rem;">
+                        <!--上传图片-->
+                        <div class="clearfix upload-btn" id="children-bg">
+                            <label class="label">添加附件</label>
+                            <span class="tips" id="imageCount"><!--已添加0张--></span>
+                            <!--上传图片按钮  -->
+                            <span class="upload-addbtn">
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                            </span>
+                        </div>
+                        <div class="upload-img-list"></div>
+                    </div>
+                </div>
+        </form>
+       </div>
+            <div class="mui-btn-row" id="SaveD">
+                <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+            </div>
+    <script>
+
+            mui.init();
+
+            mui.ready(function () {
+
+                getVersion('\\01威高集团总部\\01跨产业集团\\CG采购', '集团公司供应商新增分配启用禁用及变更申请');
+                prepMsg();
+                getBPMParam();
+                upload();
+                watch();
+            });
+            XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+            XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+                if (typeof (result) == "string") {
+                    result = JSON.parse(result);
+                }
+
+                if (result.success == true || result.success == "true") {
+                    $("#fname").val(result.data.name);
+
+                }
+            });
+
+            XuntongJSBridge.call('createPop', {
+                'popTitle': '',
+                'popTitleCallBackId': '1',
+                'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+                'menuList': [
+                    'openWithBrowser'
+                ],
+
+            }, function (result) {
+                if (result.success == true || result.success == 'true') {
+                    var callBackId = result.data ? result.data.callBackId : '';
+                    if (callBackId == 'callback1') {
+                        window.location.reload();
+                        //location.reload();
+                    } else if (callBackId == 'callback2') {
+
+                    } else {
+
+                    }
+                }
+
+            });
+
+            function prepMsg() {
+
+                $("#fdate").val(getNowFormatDate(2));
+                tapEvent();
+                var xml = '<?xml version= "1.0" ?>';
+                xml = xml + '<Requests>';
+                xml = xml + '    <Params>';
+                xml = xml + '      <Method>GetFormPostData</Method>';
+                xml = xml + '       <ProcessName>集团公司员工试用期转正申请</ProcessName>';
+                xml = xml + '       <ProcessVersion>' + version + '</ProcessVersion>';
+                xml = xml + '         <Owner></Owner>';
+                xml = xml + '      </Params>';
+                xml = xml + '    </Requests>';
+                var initHeaderMsg = $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/DataProvider",
+                    data: { '': xml },
+
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                    }
+                }).done(function (data) {
+                    var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                    console.log(provideData);
+                    var item = provideData.Tables[0].Rows[0];
+                    $("#fno").val(item.fno);
+                    $("#fname").val(item.fname);
+                    $("#foper").val(item.foper);
+                    $("#fzzyy_no").val(item.fzzyy_no);
+                }).fail(function (e) {
+
+                });
+                initHeaderMsg.then(function () {
+                    var fno = $("#fno").val();
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '      <Requests>';
+                    xml = xml + '     <Params>';
+                    xml = xml + '         <DataSource>PS</DataSource>';
+                    xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+                    xml = xml + '         <Type>1</Type>';
+                    xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                    xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+                    xml = xml + '        <Filter>';
+                    xml = xml + '            <fno>' + fno + '</fno>';
+                    xml = xml + '        </Filter>';
+                    xml = xml + '      </Params>';
+                    xml = xml + '   </Requests>';
+                    var initMainMsg = $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/DataProvider",
+                        data: { '': xml },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        }
+                    }).done(function (data) {
+
+                        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                        console.log(provideData);
+                        var personInfoObject = provideData.Tables[0].Rows[0];
+                        $("#fjt").val(personInfoObject.fssgroup);
+                        $("#fgs").val(personInfoObject.fsscompany);
+                        $("#fbm").val(personInfoObject.fdeptname);
+                        $("#fxzzw").val(personInfoObject.zhiwei);
+                        if (personInfoObject.SEX == 'M') {
+                            $("#fsex").val('男');
+                        } else {
+                            $("#fsex").val('女');
+                        }
+                        var birth_year = personInfoObject.BIRTHDATE.year;
+                        var birth_month = personInfoObject.BIRTHDATE.month;
+                        var birth_day = personInfoObject.BIRTHDATE.day;
+                        $("#fbirth").val(FormatterTime_Y_M_S(birth_year, birth_month, birth_day));
+                        $("#fidno").val(personInfoObject.NATIONAL_ID);
+                        $("#ftel").val(personInfoObject.PHONE);
+                        $("#fzgxl").val(personInfoObject.JPM_DESCR90);
+                        $("#fbyyx").val(personInfoObject.HPS_VALUE01);
+                        $("#fzy").val(personInfoObject.HPS_VALUE02);
+
+                        var grat_year = personInfoObject.HPS_DATE01.year;
+                        var grat_month = personInfoObject.HPS_DATE01.month;
+                        var grat_day = personInfoObject.HPS_DATE01.day;
+                        $("#fbytime").val(FormatterTime_Y_M_S(grat_year, grat_month, grat_day));
+                        $("#fhkxz").val(personInfoObject.DESCR4);
+
+                        var job_year = personInfoObject.START_DT_CHN.year;
+                        var job_month = personInfoObject.START_DT_CHN.month;
+                        var job_day = personInfoObject.START_DT_CHN.day;
+                        $("#fgzdate").val(FormatterTime_Y_M_S(job_year, job_month, job_day));
+                        $("#faddr").val(personInfoObject.HPS_VALUE03);
+                        $("#fdepid").val(personInfoObject.DEPTID);
+                        $("#fgscj").val(personInfoObject.SSGSTYPE);
+                    }).fail(function (e) {
+
+                    });
+                    initMainMsg.then(function () {
+                        var fdepid = $("#fdepid").val();
+                        var xml = '<?xml version= "1.0" ?>';
+                        xml = xml + '      <Requests>';
+                        xml = xml + '     <Params>';
+                        xml = xml + '         <DataSource>PS</DataSource>';
+                        xml = xml + '         <ID>erpcloud_公用_获取PS职位</ID>';
+                        xml = xml + '         <Type>1</Type>';
+                        xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                        xml = xml + '        <ProcedureName>erpcloud_公用_获取PS职位</ProcedureName>';
+                        xml = xml + '        <Filter>';
+                        xml = xml + '            <depId>' + fdepid + '</depId>';
+                        xml = xml + '        </Filter>';
+                        xml = xml + '      </Params>';
+                        xml = xml + '   </Requests>';
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/bpm/DataProvider",
+                            data: { '': xml },
+
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                            }
+                        }).done(function (data) {
+
+                            var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                            console.log(provideData);
+                            var positionArr = provideData.Tables[0].Rows;
+                            for (var i = 0; i < positionArr.length; i++) {
+                                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                                li = li + '<input type="hidden" id="pos_nbr" name="pos_nbr" value="' + positionArr[i].POSITION_NBR + '"/>';
+                                li = li + '<input type="hidden" id="pos_nbr_descr" name="pos_nbr_descr" value="' + positionArr[i].POSITION_NBR_DESCR + '"/>';
+                                li = li + '<input type="radio" name="radio" />' + positionArr[i].POSITION_NBR + '&nbsp' + positionArr[i].POSITION_NBR_DESCR;
+                                li = li + '</li>';
+                                $("#pos_list").append(li);
+                            }
+                            var header = document.querySelector('header.mui-bar');
+                            var list = document.getElementById('list');
+                            var done = document.getElementById('done');
+                            //calc hieght
+                            list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                            //create
+                            window.indexedList = new mui.IndexedList(list);
+                            //done event
+                            done.addEventListener('tap', function () {
+                                var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+                                var checkedValues = [];
+                                var checkedElements = [];
+                                checkboxArray.forEach(function (box) {
+                                    if (box.checked) {
+                                        checkedValues.push(box.parentNode.innerText);
+                                        var checkelement = ({
+
+                                            pos_nbr: $(box).parent().find('#pos_nbr').val(),
+                                            pos_nbr_descr: $(box).parent().find('#pos_nbr_descr').val()
+
+                                        });
+                                        checkedElements.push(checkelement);
+                                    }
+                                });
+                                if (checkedValues.length > 0) {
+                                    hiddenPosition();
+                                    $("#fzzzw_name").val(checkedElements[checkedElements.length - 1].pos_nbr_descr);
+                                    $("#fzzzw_no").val(checkedElements[checkedElements.length - 1].pos_nbr);
+                                } else {
+
+                                }
+                            }, false);
+                            mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                                var count = list.querySelectorAll('input[type="radio"]:checked').length;
+                                var value = count ? "完成(" + count + ")" : "完成";
+                                done.innerHTML = value;
+                                if (count) {
+                                    if (done.classList.contains("mui-disabled")) {
+                                        done.classList.remove("mui-disabled");
+                                    }
+                                } else {
+                                    if (!done.classList.contains("mui-disabled")) {
+                                        done.classList.add("mui-disabled");
+                                    }
+                                }
+                            });
+                        }).fail(function (e) {
+
+                        });
+                    });
+                });
+
+
+            }
+            function showPosition() {
+                $("#wrapper").css("display", "none");
+                $("#search").css("display", "block");
+                var header = document.querySelector('header.mui-bar');
+                var list = document.getElementById('list');
+                var done = document.getElementById('done');
+                //calc hieght
+                list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+                //create
+                window.indexedList = new mui.IndexedList(list);
+            }
+
+            function hiddenPosition() {
+                $("#wrapper").css("display", "block");
+                $("#search").css("display", "none");
+            }
+            function changeSqlx() {
+                var sqlx = $("#fsqlx").val();
+                if (sqlx == "新增") {
+                    $("#gysxz").css("display", "block");
+                    $("#gysmx").css("display", "block");
+                    $("#gysbg").css("display", "none");
+                    $("#gysfp").css("display", "none");
+                    $("#gysqjy").css("display", "none");
+                } else if (sqlx == "变更") {
+                    $("#gysbg").css("display", "block");
+                    $("#gysxz").css("display", "none");
+                    $("#gysmx").css("display", "none");
+                    $("#gysfp").css("display", "none");
+                    $("#gysqjy").css("display", "none");
+                } else if (sqlx == "分配") {
+                    $("#gysfp").css("display", "block");
+                    $("#gysxz").css("display", "none");
+                    $("#gysmx").css("display", "none");
+                    $("#gysbg").css("display", "none");
+                    $("#gysqjy").css("display", "none");
+                } else if (sqlx == "启用禁用") {
+                    $("#gysqjy").css("display", "block");
+                    $("#gysxz").css("display", "none");
+                    $("#gysmx").css("display", "none");
+                    $("#gysbg").css("display", "none");
+                    $("#gysfp").css("display", "none");
+                } else {
+                    $("#gysxz").css("display", "none");
+                    $("#gysmx").css("display", "none");
+                    $("#gysbg").css("display", "none");
+                    $("#gysfp").css("display", "none");
+                    $("#gysqjy").css("display", "none");
+
+                }
+            }
+            function changeLx_qjy() {
+                var lx_qjy = $("#flx_qjy").val();
+                if (lx_qjy == "禁用") {
+                    $("#jydate_ks").css("display", "block");
+                    $("#jydate_js").css("display", "block");
+                } else {
+                    $("#jydate_ks").css("display", "none");
+                    $("#jydate_js").css("display", "none");
+                }
+            }
+
+            function changeSf() {
+                var sf = $("#fsf_xz").val();
+                if (sf == "北京市") {
+                    var fcs_xzdata = [
+                        {
+                            value: "bj",
+                            text: "北京市"
+                        }
+                    ];
+                    showPicker('fcs_xz', fcs_xzdata);
+                }
+                else if (sf == "天津市") {
+                    var fcs_xzdata = [
+                        {
+                            value: "tj",
+                            text: "天津市"
+                        }
+                    ];
+                    showPicker('fcs_xz', fcs_xzdata);
+                }
+                else if (sf == "河北省") {
+                    var fcs_xzdata = [
+                        {
+                            value: "sjzs",
+                            text: "石家庄市"
+                        },
+                        {
+                            value: "tss",
+                            text: "唐山市"
+                        },
+                        {
+                            value: "qhds",
+                            text: "秦皇岛市"
+                        },
+                        {
+                            value: "hds",
+                            text: "邯郸市"
+                        },
+                        {
+                            value: "xts",
+                            text: "邢台市"
+                        },
+                        {
+                            value: "bds",
+                            text: "保定市"
+                        },
+                        {
+                            value: "zjks",
+                            text: "张家口市"
+                        },
+                        {
+                            value: "cds",
+                            text: "承德市"
+                        },
+                        {
+                            value: "czs",
+                            text: "沧州市"
+                        },
+                        {
+                            value: "lfs",
+                            text: "廊坊市"
+                        },
+                        {
+                            value: "hss",
+                            text: "衡水市"
+                        }
+                    ];
+                    showPicker('fcs_xz', fcs_xzdata);
+                }
+                else if (sf == "山西省") {
+                    fcs_xzdata = [
+                        {
+                            value: "tys",
+                            text: "太原市"
+                        },
+                        {
+                            value: "dts",
+                            text: "大同市"
+                        },
+                        {
+                            value: "yqs",
+                            text: "阳泉市"
+                        },
+                        {
+                            value: "czs",
+                            text: "长治市"
+                        },
+                        {
+                            value: "jcs",
+                            text: "晋城市"
+                        },
+                        {
+                            value: "szs",
+                            text: "朔州市"
+                        },
+                        {
+                            value: "jzs",
+                            text: "晋中市"
+                        },
+                        {
+                            value: "ycs",
+                            text: "运城市"
+                        },
+                        {
+                            value: "jzs",
+                            text: "忻州市"
+                        },
+                        {
+                            value: "linfen",
+                            text: "临汾市"
+                        },
+                        {
+                            value: "lls",
+                            text: "吕梁市"
+                        }
+                    ];
+                }
+                else if (sf == "内蒙古") {
+                    fcs_xzdata = [
+                        {
+                            value: "hhhts",
+                            text: "呼和浩特市"
+                        },
+                        {
+                            value: "bts",
+                            text: "包头市"
+                        },
+                        {
+                            value: "whs",
+                            text: "乌海市"
+                        },
+                        {
+                            value: "cfs",
+                            text: "赤峰市"
+                        },
+                        {
+                            value: "tls",
+                            text: "通辽市"
+                        },
+                        {
+                            value: "eedss",
+                            text: "鄂尔多斯市"
+                        },
+                        {
+                            value: "hlbes",
+                            text: "呼伦贝尔市"
+                        },
+                        {
+                            value: "bynes",
+                            text: "巴彦淖尔市"
+                        },
+                        {
+                            value: "wlcbs",
+                            text: "乌兰察布市"
+                        },
+                        {
+                            value: "xam",
+                            text: "兴安盟"
+                        },
+                        {
+                            value: "xlglm",
+                            text: "锡林郭勒盟"
+                        },
+                        {
+                            value: "alsm",
+                            text: "阿拉善盟"
+                        }
+                    ];
+                }
+                else if (sf == "辽宁省") {
+                    fcs_xzdata = [
+                        {
+                            value: "sys",
+                            text: "沈阳市"
+                        },
+                        {
+                            value: "dls",
+                            text: "大连市"
+                        },
+                        {
+                            value: "ass",
+                            text: "鞍山市"
+                        },
+                        {
+                            value: "fss",
+                            text: "抚顺市"
+                        },
+                        {
+                            value: "bxs",
+                            text: "本溪市"
+                        },
+                        {
+                            value: "dds",
+                            text: "丹东市"
+                        },
+                        {
+                            value: "jzs",
+                            text: "锦州市"
+                        },
+                        {
+                            value: "yks",
+                            text: "营口市"
+                        },
+                        {
+                            value: "hxs",
+                            text: "阜新市"
+                        },
+                        {
+                            value: "lys",
+                            text: "辽阳市"
+                        },
+                        {
+                            value: "pjs",
+                            text: "盘锦市"
+                        },
+                        {
+                            value: "tls",
+                            text: "铁岭市"
+                        },
+                        {
+                            value: "cys",
+                            text: "朝阳市"
+                        },
+                        {
+                            value: "hlds",
+                            text: "葫芦岛市"
+                        }
+                    ];
+                }
+                else if (sf == "吉林省") {
+                    fcs_xzdata = [
+                        {
+                            value: "ccs",
+                            text: "长春市"
+                        },
+                        {
+                            value: "jls",
+                            text: "吉林市"
+                        },
+                        {
+                            value: "sps",
+                            text: "四平市"
+                        },
+                        {
+                            value: "lys",
+                            text: "辽源市"
+                        },
+                        {
+                            value: "ths",
+                            text: "通化市"
+                        },
+                        {
+                            value: "bss",
+                            text: "白山市"
+                        },
+                        {
+                            value: "sys",
+                            text: "松原市"
+                        },
+                        {
+                            value: "bcs",
+                            text: "白城市"
+                        },
+                        {
+                            value: "ybzzz",
+                            text: "延边自治州"
+                        }
+                    ];
+                }
+                else if (sf == "黑龙江省") {
+                    fcs_xzdata = [
+                        {
+                            value: "hebs",
+                            text: "哈尔滨市"
+                        },
+                        {
+                            value: "qqhes",
+                            text: "齐齐哈尔市"
+                        },
+                        {
+                            value: "jxs",
+                            text: "鸡西市"
+                        },
+                        {
+                            value: "hgs",
+                            text: "鹤岗市"
+                        },
+                        {
+                            value: "syss",
+                            text: "双鸭山市"
+                        },
+                        {
+                            value: "dqs",
+                            text: "大庆市"
+                        },
+                        {
+                            value: "ycs",
+                            text: "伊春市"
+                        },
+                        {
+                            value: "jmss",
+                            text: "佳木斯市"
+                        },
+                        {
+                            value: "qths",
+                            text: "七台河市"
+                        },
+                        {
+                            value: "mdjs",
+                            text: "牡丹江市"
+                        },
+                        {
+                            value: "hhs",
+                            text: "黑河市"
+                        },
+                        {
+                            value: "shs",
+                            text: "绥化市"
+                        },
+                        {
+                            value: "dxal",
+                            text: "大兴安岭"
+                        }
+                    ];
+                }
+                else if (sf == "上海市") {
+                    fcs_xzdata = [
+                        {
+                            value: "sh",
+                            text: "上海市"
+                        }
+                    ];
+                }
+                else if (sf == "江苏省") {
+                    fcs_xzdata = [
+                        {
+                            value: "njs",
+                            text: "南京市"
+                        },
+                        {
+                            value: "wxs",
+                            text: "无锡市"
+                        },
+                        {
+                            value: "xzs",
+                            text: "徐州市"
+                        },
+                        {
+                            value: "czs",
+                            text: "常州市"
+                        },
+                        {
+                            value: "szs",
+                            text: "苏州市"
+                        },
+                        {
+                            value: "nts",
+                            text: "南通市"
+                        },
+                        {
+                            value: "lygs",
+                            text: "连云港市"
+                        },
+                        {
+                            value: "has",
+                            text: "淮安市"
+                        },
+                        {
+                            value: "ycs",
+                            text: "盐城市"
+                        },
+                        {
+                            value: "yzs",
+                            text: "扬州市"
+                        },
+                        {
+                            value: "zjs",
+                            text: "镇江市"
+                        },
+                        {
+                            value: "tzs",
+                            text: "泰州市"
+                        },
+                        {
+                            value: "sqs",
+                            text: "宿迁市"
+                        }
+                    ];
+                } 
+                else if (sf == "浙江省") {
+                    fcs_xzdata = [
+                        {
+                            value: "hzs",
+                            text: "杭州市"
+                        },
+                        {
+                            value: "nbs",
+                            text: "宁波市"
+                        },
+                        {
+                            value: "wzs",
+                            text: "温州市"
+                        },
+                        {
+                            value: "jxs",
+                            text: "嘉兴市"
+                        },
+                        {
+                            value: "hzs",
+                            text: "湖州市"
+                        },
+                        {
+                            value: "sxs",
+                            text: "绍兴市"
+                        },
+                        {
+                            value: "jhs",
+                            text: "金华市"
+                        },
+                        {
+                            value: "yzs",
+                            text: "衢州市"
+                        },
+                        {
+                            value: "zss",
+                            text: "舟山市"
+                        },
+                        {
+                            value: "tzs",
+                            text: "台州市"
+                        },
+                        {
+                            value: "lss",
+                            text: "丽水市"
+                        }
+                    ];
+                } 
+                else if (sf == "安徽省") {
+                    fcs_xzdata = [
+                        {
+                            value: "hfs",
+                            text: "合肥市"
+                        },
+                        {
+                            value: "whs",
+                            text: "芜湖市"
+                        },
+                        {
+                            value: "bfs",
+                            text: "蚌埠市"
+                        },
+                        {
+                            value: "hns",
+                            text: "淮南市"
+                        },
+                        {
+                            value: "mass",
+                            text: "马鞍山市"
+                        },
+                        {
+                            value: "hbs",
+                            text: "淮北市"
+                        },
+                        {
+                            value: "tls",
+                            text: "铜陵市"
+                        },
+                        {
+                            value: "aqs",
+                            text: "安庆市"
+                        },
+                        {
+                            value: "hss",
+                            text: "黄山市"
+                        },
+                        {
+                            value: "czs",
+                            text: "滁州市"
+                        },
+                        {
+                            value: "fys",
+                            text: "阜阳市"
+                        },
+                        {
+                            value: "szs",
+                            text: "宿州市"
+                        },
+                        {
+                            value: "chs",
+                            text: "巢湖市"
+                        },
+                        {
+                            value: "las",
+                            text: "六安市"
+                        },
+                        {
+                            value: "hzs",
+                            text: "亳州市"
+                        },
+                        {
+                            value: "czs",
+                            text: "池州市"
+                        },
+                        {
+                            value: "xcs",
+                            text: "宣城市"
+                        }
+                    ];
+                } 
+                else if (sf == "福建省") {
+                    fcs_xzdata = [
+                        {
+                            value: "fzs",
+                            text: "福州市"
+                        },
+                        {
+                            value: "xms",
+                            text: "厦门市"
+                        },
+                        {
+                            value: "pts",
+                            text: "莆田市"
+                        },
+                        {
+                            value: "sms",
+                            text: "三明市"
+                        },
+                        {
+                            value: "qzs",
+                            text: "泉州市"
+                        },
+                        {
+                            value: "zzs",
+                            text: "漳州市"
+                        },
+                        {
+                            value: "nps",
+                            text: "南平市"
+                        },
+                        {
+                            value: "lys",
+                            text: "龙岩市"
+                        },
+                        {
+                            value: "nds",
+                            text: "宁德市"
+                        }
+                    ];
+                } 
+                else if (sf == "江西省") {
+                    fcs_xzdata = [
+                        {
+                            value: "ncs",
+                            text: "南昌市"
+                        },
+                        {
+                            value: "jdzs",
+                            text: "景德镇市"
+                        },
+                        {
+                            value: "pxs",
+                            text: "萍乡市"
+                        },
+                        {
+                            value: "jjs",
+                            text: "九江市"
+                        },
+                        {
+                            value: "xys",
+                            text: "新余市"
+                        },
+                        {
+                            value: "yts",
+                            text: "鹰潭市"
+                        },
+                        {
+                            value: "gzs",
+                            text: "赣州市"
+                        },
+                        {
+                            value: "jas",
+                            text: "吉安市"
+                        },
+                        {
+                            value: "ycs",
+                            text: "宜春市"
+                        },
+                        {
+                            value: "fzs",
+                            text: "抚州市"
+                        }
+                    ];
+                }
+                else if (sf == "山东省") {
+                    fcs_xzdata = [
+                        {
+                            value: "jns",
+                            text: "济南市"
+                        },
+                        {
+                            value: "qds",
+                            text: "青岛市"
+                        },
+                        {
+                            value: "zbs",
+                            text: "淄博市"
+                        },
+                        {
+                            value: "zzs",
+                            text: "枣庄市"
+                        },
+                        {
+                            value: "dys",
+                            text: "东营市"
+                        },
+                        {
+                            value: "yts",
+                            text: "烟台市"
+                        },
+                        {
+                            value: "wfs",
+                            text: "潍坊市"
+                        },
+                        {
+                            value: "jns",
+                            text: "济宁市"
+                        },
+                        {
+                            value: "tas",
+                            text: "泰安市"
+                        },
+                        {
+                            value: "whs",
+                            text: "威海市"
+                        },
+                        {
+                            value: "rzs",
+                            text: "日照市"
+                        },
+                        {
+                            value: "lws",
+                            text: "莱芜市"
+                        },
+                        {
+                            value: "lys",
+                            text: "临沂市"
+                        },
+                        {
+                            value: "dzs",
+                            text: "德州市"
+                        },
+                        {
+                            value: "lcs",
+                            text: "聊城市"
+                        },
+                        {
+                            value: "bzs",
+                            text: "滨州市"
+                        },
+                        {
+                            value: "hzs",
+                            text: "菏泽市"
+                        }
+                    ];
+                }
+                else if (sf == "河南省") {
+                    fcs_xzdata = [
+                        {
+                            value: "zzs",
+                            text: "郑州市"
+                        },
+                        {
+                            value: "kfs",
+                            text: "开封市"
+                        },
+                        {
+                            value: "lys",
+                            text: "洛阳市"
+                        },
+                        {
+                            value: "pdss",
+                            text: "平顶山市"
+                        },
+                        {
+                            value: "ays",
+                            text: "安阳市"
+                        },
+                        {
+                            value: "hbs",
+                            text: "鹤壁市"
+                        },
+                        {
+                            value: "xxs",
+                            text: "新乡市"
+                        },
+                        {
+                            value: "jzs",
+                            text: "焦作市"
+                        },
+                        {
+                            value: "pys",
+                            text: "濮阳市"
+                        },
+                        {
+                            value: "xcs",
+                            text: "许昌市"
+                        },
+                        {
+                            value: "lhs",
+                            text: "漯河市"
+                        },
+                        {
+                            value: "smxs",
+                            text: "三门峡市"
+                        },
+                        {
+                            value: "nys",
+                            text: "南阳市"
+                        },
+                        {
+                            value: "sqs",
+                            text: "商丘市"
+                        },
+                        {
+                            value: "xys",
+                            text: "信阳市"
+                        },
+                        {
+                            value: "zks",
+                            text: "周口市"
+                        },
+                        {
+                            value: "zmds",
+                            text: "驻马店市"
+                        }
+                    ];
+                }
+                else if (sf == "湖北省") {
+                    fcs_xzdata = [
+                        {
+                            value: "whs",
+                            text: "武汉市"
+                        },
+                        {
+                            value: "hss",
+                            text: "黄石市"
+                        },
+                        {
+                            value: "sys",
+                            text: "十堰市"
+                        },
+                        {
+                            value: "ycs",
+                            text: "宜昌市"
+                        },
+                        {
+                            value: "xfs",
+                            text: "襄樊市"
+                        },
+                        {
+                            value: "ezs",
+                            text: "鄂州市"
+                        },
+                        {
+                            value: "jms",
+                            text: "荆门市"
+                        },
+                        {
+                            value: "hgs",
+                            text: "黄冈市"
+                        },
+                        {
+                            value: "xns",
+                            text: "咸宁市"
+                        },
+                        {
+                            value: "szs",
+                            text: "随州市"
+                        },
+                        {
+                            value: "eszzz",
+                            text: "恩施自治州"
+                        },
+                        {
+                            value: "szxxzdw",
+                            text: "省直辖行政单位"
+                        }
+                    ];
+                }
+                else if (sf == "湖南省") {
+                    fcs_xzdata = [
+                        {
+                            value: "css",
+                            text: "长沙市"
+                        },
+                        {
+                            value: "zzs",
+                            text: "株洲市"
+                        },
+                        {
+                            value: "xts",
+                            text: "湘潭市"
+                        },
+                        {
+                            value: "hys",
+                            text: "衡阳市"
+                        },
+                        {
+                            value: "sys",
+                            text: "邵阳市"
+                        },
+                        {
+                            value: "yys",
+                            text: "岳阳市"
+                        },
+                        {
+                            value: "cds",
+                            text: "常德市"
+                        },
+                        {
+                            value: "zjjs",
+                            text: "张家界市"
+                        },
+                        {
+                            value: "yys",
+                            text: "益阳市"
+                        },
+                        {
+                            value: "czs",
+                            text: "郴州市"
+                        },
+                        {
+                            value: "yzs",
+                            text: "永州市"
+                        },
+                        {
+                            value: "hhs",
+                            text: "怀化市"
+                        },
+                        {
+                            value: "lds",
+                            text: "娄底市"
+                        },
+                        {
+                            value: "xxzzz",
+                            text: "湘西自治州"
+                        }
+                    ];
+                }
+                else if (sf == "广东省") {
+                    fcs_xzdata = [
+                        {
+                            value: "gzs",
+                            text: "广州市"
+                        },
+                        {
+                            value: "sgs",
+                            text: "韶关市"
+                        },
+                        {
+                            value: "szs",
+                            text: "深圳市"
+                        },
+                        {
+                            value: "zhs",
+                            text: "珠海市"
+                        },
+                        {
+                            value: "sts",
+                            text: "汕头市"
+                        },
+                        {
+                            value: "fss",
+                            text: "佛山市"
+                        },
+                        {
+                            value: "jms",
+                            text: "江门市"
+                        },
+                        {
+                            value: "zjs",
+                            text: "湛江市"
+                        },
+                        {
+                            value: "mms",
+                            text: "茂名市"
+                        },
+                        {
+                            value: "zqs",
+                            text: "肇庆市"
+                        },
+                        {
+                            value: "hzs",
+                            text: "惠州市"
+                        },
+                        {
+                            value: "mzs",
+                            text: "梅州市"
+                        },
+                        {
+                            value: "sws",
+                            text: "汕尾市"
+                        },
+                        {
+                            value: "hys",
+                            text: "河源市"
+                        },
+                        {
+                            value: "yjs",
+                            text: "阳江市"
+                        },
+                        {
+                            value: "qys",
+                            text: "清远市"
+                        },
+                        {
+                            value: "dgs",
+                            text: "东莞市"
+                        },
+                        {
+                            value: "zss",
+                            text: "中山市"
+                        },
+                        {
+                            value: "czs",
+                            text: "潮州市"
+                        },
+                        {
+                            value: "jys",
+                            text: "揭阳市"
+                        },
+                        {
+                            value: "yfs",
+                            text: "云浮市"
+                        }
+                    ];
+                }
+                else if (sf == "广东省") {
+                    fcs_xzdata = [
+                        {
+                            value: "gzs",
+                            text: "广州市"
+                        },
+                        {
+                            value: "sgs",
+                            text: "韶关市"
+                        },
+                        {
+                            value: "szs",
+                            text: "深圳市"
+                        },
+                        {
+                            value: "zhs",
+                            text: "珠海市"
+                        },
+                        {
+                            value: "sts",
+                            text: "汕头市"
+                        },
+                        {
+                            value: "fss",
+                            text: "佛山市"
+                        },
+                        {
+                            value: "jms",
+                            text: "江门市"
+                        },
+                        {
+                            value: "zjs",
+                            text: "湛江市"
+                        },
+                        {
+                            value: "mms",
+                            text: "茂名市"
+                        },
+                        {
+                            value: "zqs",
+                            text: "肇庆市"
+                        },
+                        {
+                            value: "hzs",
+                            text: "惠州市"
+                        },
+                        {
+                            value: "mzs",
+                            text: "梅州市"
+                        },
+                        {
+                            value: "sws",
+                            text: "汕尾市"
+                        },
+                        {
+                            value: "hys",
+                            text: "河源市"
+                        },
+                        {
+                            value: "yjs",
+                            text: "阳江市"
+                        },
+                        {
+                            value: "qys",
+                            text: "清远市"
+                        },
+                        {
+                            value: "dgs",
+                            text: "东莞市"
+                        },
+                        {
+                            value: "zss",
+                            text: "中山市"
+                        },
+                        {
+                            value: "czs",
+                            text: "潮州市"
+                        },
+                        {
+                            value: "jys",
+                            text: "揭阳市"
+                        },
+                        {
+                            value: "yfs",
+                            text: "云浮市"
+                        }
+                    ];
+                }
+
+                //showPicker('fcs_xz', fcs_xzdata);
+            }
+            function tapEvent() {
+                //申请类型
+                var fsqlxdata = [
+                    {
+                        value: "xz",
+                        text: "新增"
+                    },
+                    {
+                        value: "bg",
+                        text: "变更"
+                    },
+                    {
+                        value: "fp",
+                        text: "分配"
+                    },
+                    {
+                        value: "qjy",
+                        text: "启用禁用"
+                    }
+                ];
+                var element = document.getElementById("fsqlx");
+                var picker = new mui.PopPicker();
+                picker.setData(fsqlxdata);
+                element.addEventListener('tap', function () {
+                    picker.show(function (items) {
+                        element.value = items[0].text;
+                        changeSqlx();
+                    });
+                }, false);
+                //供应商属性
+                var fgyssxdata = [
+                    {
+                        value: "nbgys",
+                        text: "内部供应商"
+                    },
+                    {
+                        value: "wbgys",
+                        text: "外部供应商"
+                    }
+                ];
+                showPicker('fgyssx', fgyssxdata);
+                //供应商类型
+                var fgyslxdata = [
+                    {
+                        value: "sb",
+                        text: "设备供应商"
+                    },
+                    {
+                        value: "wz",
+                        text: "物资供应商"
+                    },
+                    {
+                        value: "ww",
+                        text: "委外供应商"
+                    },
+                    {
+                        value: "gg",
+                        text: "广告供应商"
+                    },
+                    {
+                        value: "gw",
+                        text: "国外供应商"
+                    },
+                    {
+                        value: "fw",
+                        text: "服务供应商"
+                    },
+                    {
+                        value: "wl",
+                        text: "物流供应商"
+                    },
+                    {
+                        value: "dfp",
+                        text: "待分配供应商"
+                    },
+                    {
+                        value: "swjs",
+                        text: "商务结算供应商"
+                    }
+                ];
+                showPicker('fgyslx', fgyslxdata);
+                //是否新增物资
+                var fif_xzwzdata = [
+                    {
+                        value: "yes",
+                        text: "是"
+                    },
+                    {
+                        value: "no",
+                        text: "否"
+                    }
+                ];
+                showPicker('fif_xzwz', fif_xzwzdata);
+
+                //内外关系
+                var fnwgx_xzdata = [
+                    {
+                        value: "cyjtn",
+                        text: "集团内-产业集团内"
+                    },
+                    {
+                        value: "cyjtw",
+                        text: "集团内-产业集团外"
+                    },
+                    {
+                        value: "jtw",
+                        text: "集团外"
+                    }
+                ];
+                showPicker('fnwgx_xz', fnwgx_xzdata);
+
+                //启用禁用类型
+                var flx_qjydata = [
+                    {
+                        value: "qy",
+                        text: "启用"
+                    },
+                    {
+                        value: "jy",
+                        text: "禁用"
+                    }
+                ];
+                var element1 = document.getElementById("flx_qjy");
+                var picker1 = new mui.PopPicker();
+                picker1.setData(flx_qjydata);
+                element1.addEventListener('tap', function () {
+                    picker1.show(function (items) {
+                        element1.value = items[0].text;
+                        changeLx_qjy();
+                    });
+                }, false);
+
+
+                //所在省份
+                var fsfdata = [
+                    {
+                        value: "bjs",
+                        text: "北京市",
+                        fcsdata =[
+                            {
+                                value: "bj",
+                                text: "北京市"
+                            }
+                        ]
+                    },
+                    {
+                        value: "tjs",
+                        text: "天津市",
+                        fcsdata =[
+                            {
+                                value: "tj",
+                                text: "天津市"
+                            }
+                        ]
+                    },
+                    {
+                        value: "hbs",
+                        text: "河北省",
+                        fcsdata =[
+                            {
+                                value: "sjzs",
+                                text: "石家庄市"
+                            },
+                            {
+                                value: "tss",
+                                text: "唐山市"
+                            },
+                            {
+                                value: "qhds",
+                                text: "秦皇岛市"
+                            },
+                            {
+                                value: "hds",
+                                text: "邯郸市"
+                            },
+                            {
+                                value: "xts",
+                                text: "邢台市"
+                            },
+                            {
+                                value: "bds",
+                                text: "保定市"
+                            },
+                            {
+                                value: "zjks",
+                                text: "张家口市"
+                            },
+                            {
+                                value: "cds",
+                                text: "承德市"
+                            },
+                            {
+                                value: "czs",
+                                text: "沧州市"
+                            },
+                            {
+                                value: "lfs",
+                                text: "廊坊市"
+                            },
+                            {
+                                value: "hss",
+                                text: "衡水市"
+                            }
+                        ]
+                    },
+                    {
+                        value: "sxs",
+                        text: "山西省"
+                    },
+                    {
+                        value: "nmg",
+                        text: "内蒙古"
+                    },
+                    {
+                        value: "lns",
+                        text: "辽宁省"
+                    },
+                    {
+                        value: "jls",
+                        text: "吉林省"
+                    },
+                    {
+                        value: "hljs",
+                        text: "黑龙江省"
+                    },
+                    {
+                        value: "shs",
+                        text: "上海市"
+                    },
+                    {
+                        value: "jss",
+                        text: "江苏省"
+                    },
+                    {
+                        value: "zjs",
+                        text: "浙江省"
+                    },
+                    {
+                        value: "ahs",
+                        text: "安徽省"
+                    },
+                    {
+                        value: "fjs",
+                        text: "福建省"
+                    },
+                    {
+                        value: "jxs",
+                        text: "江西省"
+                    },
+                    {
+                        value: "sds",
+                        text: "山东省"
+                    },
+                    {
+                        value: "hns",
+                        text: "河南省"
+                    },
+                    {
+                        value: "hbs",
+                        text: "湖北省"
+                    },
+                    {
+                        value: "hns",
+                        text: "湖南省"
+                    },
+                    {
+                        value: "gds",
+                        text: "广东省"
+                    },
+                    {
+                        value: "gx",
+                        text: "广西"
+                    },
+                    {
+                        value: "hn",
+                        text: "海南省"
+                    },
+                    {
+                        value: "cqs",
+                        text: "重庆市"
+                    },
+                    {
+                        value: "scs",
+                        text: "四川省"
+                    },
+                    {
+                        value: "gzs",
+                        text: "贵州省"
+                    },
+                    {
+                        value: "yns",
+                        text: "云南省"
+                    },
+                    {
+                        value: "xz",
+                        text: "西藏"
+                    },
+                    {
+                        value: "sx",
+                        text: "陕西省"
+                    },
+                    {
+                        value: "gss",
+                        text: "甘肃省"
+                    },
+                    {
+                        value: "qhs",
+                        text: "青海省"
+                    },
+                    {
+                        value: "nx",
+                        text: "宁夏"
+                    },
+                    {
+                        value: "xj",
+                        text: "新疆"
+                    },
+                    {
+                        value: "tws",
+                        text: "台湾省"
+                    },
+                    {
+                        value: "xg",
+                        text: "香港"
+                    },
+                    {
+                        value: "am",
+                        text: "澳门"
+                    },
+                    {
+                        value: "gw",
+                        text: "国外"
+                    },
+                    {
+                        value: "yz",
+                        text: "亚洲"
+                    },
+                    {
+                        value: "fz",
+                        text: "非洲"
+                    },
+                    {
+                        value: "oz",
+                        text: "欧洲"
+                    },
+                    {
+                        value: "mz",
+                        text: "美洲"
+                    },
+                    {
+                        value: "dyz",
+                        text: "大洋洲及太平洋岛屿"
+                    }
+                ];
+                var sfpicker = new $.PopPicker({
+                    layer:2
+                });
+                sfpicker.setData(fsfdata);
+                var sf_xz = document.getElementById("fsf_xz");
+                var cs_xz = document.getElementById("fsf_xz");
+                sf_xz.addEventListener('tap', function (event) {
+                    sfpicker.show(function (items) {
+                        sf_xz.value = items[0].text;
+                        cs_xz.value = items[1].text;
+                    });
+                }, false);
+                //$("#fzzzw_name").on('tap', function () {
+                //    showPosition();
+                //});
+            }
+
+            function Save() {
+
+                var fno = $("#fno").val();
+                var fname = $("#fname").val();
+                var fdate = $("#fdate").val() + " 00:00:00";
+                var fygzw = $("#fygzw").val();
+                var fjt = $("#fjt").val();
+                var fgs = $("#fgs").val();
+                var fbm = $("#fbm").val();
+                var fxzzw = $("#fxzzw").val();
+                var fsex = $("#fsex").val();
+                var fbirth = $("#fbirth").val();
+                var fidno = $("#fidno").val();
+                var ftel = $("#ftel").val();
+                var fzgxl = $("#fzgxl").val();
+                var fbyyx = $("#fbyyx").val();
+                var fzy = $("#fzy").val();
+                var fbytime = $("#fbytime").val() + " 00:00:00";
+                var fhkxz = $("#fhkxz").val();
+                var fhkszd = $("#fhkszd").val();
+                var fgzdate = $("#fgzdate").val() + " 00:00:00";
+                var faddr = $("#faddr").val();
+                var fdajg = $("#fdajg").val();
+                var fsbjg = $("#fsbjg").val();
+                var fsbny = $("#fsbny").val() + " 00:00:00";
+                var fzzdate = $("#fzzdate").val() + " 00:00:00";
+                var fzzzw_name = $("#fzzzw_name").val();
+                var fzzzwpj = $("#fzzzwpj").val();
+                var fgscj = $("#fgscj").val();
+                var fzzyy_no = $("#fzzyy_no").val();
+                var fzzzw_no = $("#fzzzw_no").val();
+                var foper = $("#foper").val();
+                var fdepid = $("#fdepid").val();
+
+                if (!fsbjg) {
+                    mui.toast('请填写社保所在机构');
+                    return;
+                }
+                if (!$("#fsbny").val()) {
+                    mui.toast('请选择社保缴至日期');
+                    return;
+                }
+                if (!$("#fzzdate").val()) {
+                    mui.toast('请选择转正日期');
+                    return;
+                }
+                if (!fzzzw_name) {
+                    mui.toast('请选择转正后职位');
+                    return;
+                }
+                var btnArry = ["取消", "确定"];
+                mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                    if (e.index == 1) {
+                        var xml = '<?xml version= "1.0" ?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '      <Header>';
+                        xml = xml + '       <Method>Post</Method>';
+                        xml = xml + '        <ProcessName>集团公司员工试用期转正申请</ProcessName>';
+                        xml = xml + '        <ProcessVersion>' + version + '</ProcessVersion>';
+                        xml = xml + '       <DraftGuid></DraftGuid>';
+                        xml = xml + '        <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                        xml = xml + '         <Action>提交</Action>';
+                        xml = xml + '         <Comment></Comment>';
+                        xml = xml + '         <InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '     </Header>';
+                        xml = xml + '     <FormData>';
+                        xml = xml + '   <BPM_HR_YGZZ>';
+                        xml = xml + '     <fbillno>自动带出</fbillno>';
+                        xml = xml + '    <fno>' + fno + '</fno>';
+                        xml = xml + '     <fname>' + fname + '</fname>';
+                        xml = xml + '     <fdate>' + fdate + '</fdate>';
+                        xml = xml + '     <fygzw></fygzw>';
+                        xml = xml + '       <fjt>' + fjt + '</fjt>';
+                        xml = xml + '       <fgs>' + fgs + '</fgs>';
+                        xml = xml + '     <fbm>' + fbm + '</fbm>';
+                        xml = xml + '    <fxzzw>' + fxzzw + '</fxzzw>';
+                        xml = xml + '      <fsex>' + fsex + '</fsex>';
+                        xml = xml + '   <fbirth>' + fbirth + '</fbirth>';
+                        xml = xml + '    <fidno>' + fidno + '</fidno>';
+                        xml = xml + '      <ftel>' + ftel + '</ftel>';
+                        xml = xml + '      <fzgxl>' + fzgxl + '</fzgxl>';
+                        xml = xml + '     <fbyyx>' + fbyyx + '</fbyyx>';
+                        xml = xml + '      <fzy>' + fzy + '</fzy>';
+                        xml = xml + '    <fbytime>' + fbytime + '</fbytime>';
+                        xml = xml + '     <fhkxz>' + fhkxz + '</fhkxz>';
+                        xml = xml + '     <fhkszd>' + fhkszd + '</fhkszd>';
+                        xml = xml + '     <fgzdate>' + fgzdate + '</fgzdate>';
+                        xml = xml + '     <faddr>' + faddr + '</faddr>';
+                        xml = xml + '         <fdajg>' + fdajg + '</fdajg>';
+                        xml = xml + '    <fsbjg>' + fsbjg + '</fsbjg>';
+                        xml = xml + '     <fsbny>' + fsbny + '</fsbny>';
+                        xml = xml + '     <fzzdate>' + fzzdate + '</fzzdate>';
+                        xml = xml + '     <fzzzw_name>' + fzzzw_name + '</fzzzw_name>';
+                        if (fjArray.length != 0) {
+                            xml = xml + '       <fattach>' + fjArray.toString().replace(",", ";") + '</fattach>';
+                        } else {
+                            xml = xml + '       <fattach></fattach>';
+                        }
+
+
+                        xml = xml + '     <fzzzwpj>' + fzzzwpj + '</fzzzwpj>';
+                        xml = xml + '  <fsxdate></fsxdate>';
+                        xml = xml + '        <fgscj>' + fgscj + '</fgscj>';
+                        xml = xml + '      <fzzyy_no>' + fzzyy_no + '</fzzyy_no>';
+                        xml = xml + '     <fzzzw_no>' + fzzzw_no + '</fzzzw_no>';
+                        xml = xml + '      <foper>' + foper + '</foper>';
+                        xml = xml + '       <fdepid>' + fdepid + '</fdepid>';
+                        xml = xml + '    </BPM_HR_YGZZ>';
+                        xml = xml + '   </FormData>';
+                        xml = xml + '</XForm>';
+                        PostXml(xml);
+                    }
+                });
+            }
+    </script>
+</body>
+</html>

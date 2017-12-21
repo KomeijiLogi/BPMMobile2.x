@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbgfs">变更方式<i style="color:red;">*</i></label>
+                <input type="text" id="fbgfs" name="fbgfs" readonly="readonly" placeholder="请选择变更方式"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fsqrzz">申请人所属组织</label>
+                <textarea rows="3" id="fsqrzz" name="fsqrzz" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fjt">拟调整组织所属集团</label>
+                <textarea rows="3" id="fjt" name="fjt" readonly="readonly" placeholder=""></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fgs">拟调整组织所属公司</label>
+                <textarea rows="3" id="fgs" name="fgs" readonly="readonly" placeholder=""></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fzz_name">拟调整组织名称</label>
+                <textarea rows="3" id="fzz_name" name="fzz_name" readonly="readonly" placeholder="请选择组织名称"></textarea>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label id="title" >变更事项(含岗位及编制变更详情)<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row" style="height:auto;">
+                <textarea rows="5" id="fmsbz" name="fmsbz" class="mui-col-xs-12" placeholder="请填写变更事项"></textarea>
+            </div>
+            <div class="mui-input-row itemtitle">
+                <label>调整理由<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row" style="height:auto;">
+                <textarea rows="5" id="ftzly" name="ftzly" class="mui-col-xs-12" placeholder="请填写调整理由"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+   </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\01跨产业集团\\RL人力', '集团公司组织设立与调整申请');
+            getBPMParam();
+            prepMsg();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+
+        }
+
+        function tapEvent() {
+
+            var fbgfsdata = [
+                {
+                    value: '',
+                    text: '组织新增'
+                },
+                {
+                    value: '',
+                    text: '组织调整'
+                },
+                {
+                    value: '',
+                    text: '组织取消'
+                }
+            ];
+
+            var element = document.getElementById('fbgfs');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fbgfsdata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    if (String(element.value).indexOf('组织新增') != -1) {
+                        $("#fjt").removeAttr('readonly');
+                        $("#fjt").attr('placeholder', '请填写拟调整组织所属集团');
+                        $("#fgs").removeAttr('readonly');
+                        $("#fgs").attr('placeholder', '请填写拟调整组织所属公司');
+                        $("#fzz_name").removeAttr('readonly');
+                        $("#fzz_name").attr('placeholder', '请填写拟调整组织名称');
+                        $("#title").text('新增事项(含岗位及编制新增详情)');
+                    } else if (String(element.value).indexOf('组织调整') != -1){
+
+
+
+                    } else if (String(element.value).indexOf('组织取消') != -1) {
+
+                    }
+                });
+
+            }, false);
+        }
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所属公司</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fxmmc">项目名称<i style="color:red;">*</i></label>
+                <input type="text" id="fxmmc" name="fxmmc" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdm">K3代码<i style="color:red;">*</i></label>
+                <input type="text" id="fdm" name="fdm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkplx">开票类型<i style="color:red;">*</i></label>
+                <input type="text" id="fkplx" name="fkplx" placeholder="请选择开票类型" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="jdzje" style="display:none;">
+                <label for="fjdzje">进度总金额（元）<i style="color:red;">*</i></label>
+                <input type="number" id="fjdzje" name="fjdzje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" id="jszje" style="display:none;">
+                <label for="fjszje">决算总金额（元）<i style="color:red;">*</i></label>
+                <input type="number" id="fjszje" name="fjszje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fykfpje">已开发票金额（元）<i style="color:red;">*</i></label>
+                <input type="number" id="fykfpje" name="fykfpje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fwkfpje">未开发票金额（元）<i style="color:red;">*</i></label>
+                <input type="number" id="fwkfpje" name="fwkfpje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                <input type="text" id="fkhmc" name="fkhmc" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fnsrsbh">纳税人识别号<i style="color:red;">*</i></label>
+                <input type="text" id="fnsrsbh" name="fnsrsbh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhhmc">开户行名称<i style="color:red;">*</i></label>
+                <input type="text" id="fkhhmc" name="fkhhmc" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhhzh">开户行账号<i style="color:red;">*</i></label>
+                <input type="text" id="fkhhzh" name="fkhhzh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhdz">客户地址<i style="color:red;">*</i></label>
+                <input type="text" id="fkhdz" name="fkhdz" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhdh">客户电话<i style="color:red;">*</i></label>
+                <input type="tel" id="fkhdh" name="fkhdh" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsl">税率<i style="color:red;">*</i></label>
+                <input type="text" id="fsl" name="fsl" placeholder="请选择税率" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffpzl">发票种类<i style="color:red;">*</i></label>
+                <input type="text" id="ffpzl" name="ffpzl" placeholder="请选择发票种类" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbckpje">本次开票金额（含税）元<i style="color:red;">*</i></label>
+                <input type="number" id="fbckpje" name="fbckpje" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffph">发票号<i style="color:red;">*</i></label>
+                <input type="text" id="ffph" name="ffph" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffpbm">发票编码<i style="color:red;">*</i></label>
+                <input type="text" id="ffpbm" name="ffpbm" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">发票附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fbz">备注</label>
+                <textarea rows="8" id="fbz" name="fbz" readonly="readonly"></textarea>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:3rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value="" />
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            _init._preAskOrDone();
+
+        });
+
+    </script>
+</body>
+</html>

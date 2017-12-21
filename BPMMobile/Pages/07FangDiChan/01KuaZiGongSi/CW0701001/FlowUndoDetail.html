@@ -1,0 +1,1804 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/vue.min.js"></script>
+
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        .mui-row.mui-fullscreen > [class*="mui-col-"] {
+            height: 100%;
+        }
+
+        .mui-col-xs-3,
+        .mui-col-xs-9 {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .mui-segmented-control .mui-control-item {
+            line-height: 50px;
+            width: 100%;
+        }
+
+        .mui-control-content {
+            display: block;
+        }
+
+        .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="mui-content" v-bind:style="wrapper" id="wrapper">
+        <form class="mui-input-group" v-bind:style="form">
+            <div class="mui-input-row">
+                <label for="fcompany">{{fcompany}}</label>
+                <input type="text" id="fcompany" name="fcompany" v-bind:readonly="isReadonly" ref="fcompany" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">{{fdept}}</label>
+                <input type="text" id="fdept" name="fdept" v-bind:readonly="isReadonly" ref="fdept" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">{{fname}}</label>
+                <input type="text" id="fname" name="fname" v-bind:readonly="isReadonly" ref="fname" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">{{fdate}}<i v-bind:style="i">*</i></label>
+                <input type="date" id="fdate" name="fdate" v-bind:readonly="isReadonly" ref="fdate" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcllb">{{fcllb}}<i v-bind:style="i">*</i></label>
+                <input type="text" id="fcllb" name="fcllb" v-bind:readonly="isReadonly" ref="fcllb" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_jk">{{fif_jk}}<i v-bind:style="i">*</i></label>
+                <input type="hidden" id="fif_jk" name="fif_jk" v-bind:readonly="isReadonly" ref="fif_jk" />
+                <div class="mui-switch mui-switch-mini mui-switch-blue mui-disabled" id="fif_jkd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fremark">{{fremark}}</label>
+                <textarea id="fremark" name="fremark" rows="3" v-bind:readonly="isReadonly" ref="fremark"></textarea>
+            </div>
+            <div class="mui-card mui-input-group" id="fjkcard" style="display:none;">
+                <div class="mui-input-row itemtitle">
+                    <label>{{fjkcard}}</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjktotal">{{fjktotal}}<i v-bind:style="i">*</i></label>
+                    <input type="number" id="fjktotal" name="fjktotal" v-bind:readonly="isReadonly" ref="fjktotal" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjkbillno">{{fjkbillno}}</label>
+                    <input type="text" id="fjkbillno" name="fjkbillno" v-bind:readonly="isReadonly" ref="fjkbillno" />
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fjkremark">{{fjkremark}}</label>
+                    <textarea rows="7" id="fjkremark" name="fjkremark" v-bind:readonly="isReadonly" ref="fjkremark"></textarea>
+                </div>
+               
+            </div>
+            <div id="mxlist">
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" v-bind:style="tjmx">
+                添加出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-card">
+                <div class="mui-input-row itemtitle">
+                    <label>差旅费明细</label>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>费用项目</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>有效天数<i v-bind:style="i">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>分项标准<i v-bind:style="i">*</i></h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <h5>申请金额<i v-bind:style="i">*</i></h5>
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{ctjtf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_ctjtf" name="fje_ctjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_ctjtf" />
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{zsf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_zsf" name="fd_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_zsf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_zsf" name="fbz_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_zsf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_zsf" name="fje_zsf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_zsf" />
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{cf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_cf" name="fd_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_cf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_cf" name="fbz_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_cf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_cf" name="fje_cf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_cf" />
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{snjtf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fd_snjtf" name="fd_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fd_snjtf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_snjtf" name="fbz_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fbz_snjtf" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_snjtf" name="fje_snjtf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_snjtf" />
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3 col-div-adjust-forInput cutOffLine">
+                        <h5 class="h5-adjust-forInput">{{qtclf}}</h5>
+                    </div>
+                    <div class="mui-col-xs-3 ">
+
+                    </div>
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fje_qtclf" name="fje_qtclf" v-bind:readonly="isReadonly" class="mui-text-center" ref="fje_qtclf" />
+                    </div>
+                </div>
+                <div class="mui-row mui-text-center">
+                    <div class="mui-col-xs-3">
+
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine col-div-adjust-forInput">
+                        <h5 class="h5-adjust-forInput">合计</h5>
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="fbz_total" name="fbz_total" v-bind:readonly="isReadonly" class="mui-text-center" value="0" ref="fbz_total" />
+                    </div>
+                    <div class="mui-col-xs-3 cutOffLine">
+                        <input type="number" id="ftotal" name="ftotal" v-bind:readonly="isReadonly" class="mui-text-center" value="0" ref="ftotal" />
+                    </div>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcbz">{{fcbz}}<i v-bind:style="i">*</i></label>
+                    <input type="number" id="fcbz" name="fcbz" v-bind:readonly="isReadonly" value="0.00" ref="fcbz" />
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fccrw">{{fccrw}}<i v-bind:style="i">*</i></label>
+                    <textarea rows="8" id="fccrw" name="fccrw" v-bind:readonly="isReadonly" ref="fccrw"></textarea>
+                </div>
+            </div>
+
+            <div class="mui-input-row" id="csd">
+                <label>加签</label>
+                <div class="mui-switch mui-switch-blue" id="jqd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="signbody">
+
+                <div class="mui-input-row" id="signPerDiv">
+                    <label>加签人</label>
+                    <span class="mui-navigate-right"></span>
+                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签模式</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="sxsl">
+                            <a class="mui-navigate-right" id="sxsa">
+                                顺序加签
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="pxsl">
+                            <a class="mui-navigate-right" id="pxsa">
+                                平行加签
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-input-row adl">
+                    <label>加签回转</label>
+                </div>
+                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
+
+                    <ul class="mui-table-view mui-table-view-radio">
+                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
+                            <a class="mui-navigate-right" id="hdbjda">
+                                回到本节点
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell" id="jrxjdl">
+                            <a class="mui-navigate-right" id="jrxjda">
+                                进入下一节点
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+           
+        </form>
+        <div class="mui-table-view" style="margin-bottom:3.25rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mui-btn-row" id="createD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+        <div class="mui-btn-row" id="approvalD">
+            &nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%;" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" style="width:40%;" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
+            <!--<button class="mui-btn mui-btn-warning" type="button" style="width:25%;height:2.5rem;font-size:0.8rem;" id="refusebt" onclick="Refilled()">退回重填</button>-->
+        </div>
+        <div class="mui-btn-row" id="readD">
+            <button class="mui-btn mui-btn-primary" type="button" id="readbt" onclick="hasRead()">已阅</button>
+        </div>
+   </div>
+    <div id="showCity" style="visibility:hidden;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="hiddenCity()"></a>
+            <h4 class="mui-title">城市选择</h4>
+        </header>
+        <div class="mui-row mui-fullscreen" style="margin-top:2rem;">
+            <div class="mui-col-xs-3">
+                <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+                </div>
+            </div>
+            <div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden"  />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
+    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <input type="hidden" id="myPhone" name="myPhone" value="" />
+    <input type="hidden" id="consignUser" name="consignUser" value="" />
+    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
+    <input type="hidden" id="fbillno" name="fbillno" value="" />
+    <input type="hidden" id="nodeName" name="nodeName" value="" />
+    <div id="signd" style="display:none;">
+        <div class="mui-input-row" id="ssd">
+            <label>签核意见</label>
+            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
+
+        </div>
+        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
+            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
+        </div>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            $('#signPerDiv').click(function () {
+                openSignPer();
+
+            });
+            
+            v.prepMsg();
+            v.getTaskMsg();
+        });
+        mui('#fif_jkd').each(function () {
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#fjkcard").css("display", "block");
+                    $("#fif_jk").val('是');
+                } else {
+                    $("#fjkcard").css("display", "none");
+                    $("#fif_jk").val('否');
+                }
+
+            });
+        });
+        mui('#jqd').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#signbody').css('display', 'block');
+                } else {
+
+                    $('#signbody').css('display', 'none');
+                    $('#signPer').val('');
+                }
+
+            });
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '刷新', 'callBackId': 'callback1' },
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '退回某步', 'callBackId': 'callback3' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);  
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+                } else if (callBackId == 'callback3') {
+                    getRecedableToSteps();
+                }
+            }
+        });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                if (typeof (result.data.userName) == "undefined") {
+                    $('#myPhone').val("");
+                } else {
+                    $('#myPhone').val(result.data.userName);
+                }
+            }
+
+        });
+        var cityData = new Array();
+        var cityContext;
+        var fzwjbdata = [
+            {
+                value: '',
+                text: '高管以上'
+            },
+            {
+                value: '',
+                text: '部门经理'
+            },
+            {
+                value: '',
+                text: '一般员工'
+            }
+
+        ];
+
+        var fjtgjdata = [
+            {
+                value: '',
+                text: '飞机'
+            },
+            {
+                value: '',
+                text: '火车'
+            },
+            {
+                value: '',
+                text: '汽车'
+            },
+            {
+                value: '',
+                text: '轮船'
+            },
+            {
+                value: '',
+                text: '高铁'
+            },
+            {
+                value: '',
+                text: '其他'
+            }
+
+        ];
+        var fcllbdata = [
+            {
+                value: '',
+                text: '国内'
+            },
+            {
+                value: '',
+                text: '国外'
+            }
+        ];
+        var v = new Vue({
+            el: '#wrapper',
+            data: {
+                wrapper: {
+                    'background-color': 'white'
+                },
+                form: {
+                    'left': '0rem',
+                    'right': '0rem',
+                    'margin-bottom': '1rem',
+                    'padding-bottom': '4rem'
+                },
+                i: {
+                    'color': 'red'
+                },
+                tjmx: {
+                    'margin-top': '0.5rem',
+                    'display': 'none'
+                },
+                isReadonly: true,
+                fcompany: '公司名称',
+                fname: '申请人',
+                fdept: '部门名称',
+                fdate: '申请日期',
+                fcllb: '差旅类别',
+                fif_jk: '是否借款',
+                fremark: '备注',
+                fjkcard: '借款申请单',
+                fjktotal: '借款金额',
+                fjkbillno: '借款单号',
+                fjkremark: '借款事由',
+                fccrw: '出差任务内容',
+                fcbz: '超标准情况%',
+                ctjtf: '长途交通费',
+                zsf: '住宿费',
+                cf: '餐费',
+                snjtf: '市内交通费',
+                qtclf: '其他差旅费'
+
+            },
+            methods: {
+                getTaskMsg: function () {
+                    var context = this;
+
+                  
+
+                    var url = window.location.href;
+                    if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
+
+
+                        taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
+                        if (url.split("pid=")[1].indexOf("ticket") != -1) {
+                            stepId = url.split("pid=")[1];
+                            stepId = stepId.split("&ticket")[0];
+                            var ticket = url.split("=")[3];
+                            localStorage.setItem('ticket', ticket);
+                        } else {
+                            stepId = url.split("pid=")[1];
+                        }
+
+
+                    } else {
+                        mui.toast("网络异常,请稍后重试");
+                        history.go(-1);
+
+                    }
+                    itemidArr = new Array();
+                    $.ajax({
+                        type: "get",
+                        url: "/api/bpm/GetTaskData",
+                        data: { 'taskId': taskId },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        }
+                    }).done(function (data) {
+                        console.log(data);
+
+                        var item = data.FormDataSet.BPM_FDCBX_CLFYSQ_A[0];
+
+                        $("#fbillno").val(item.fbillno);
+                        $("#stepId").val(stepId);
+                        $("#taskId").val(item.TaskID);
+
+                        context.$refs.fcompany.value = item.fcompany;
+                        context.$refs.fdept.value = item.fdept;
+                        context.$refs.fname.value = item.fname;
+                        context.$refs.fdate.value = FormatterTimeYMS(item.fdate);
+                        context.$refs.fcllb.value = item.fcllb;
+                        context.$refs.fif_jk.value = item.fif_jk;
+
+                        if (String(item.fif_jk).indexOf('是')!=-1) {
+                            $('#fif_jkd').addClass('mui-active');
+                            $('#fjkcard').css("display", "block");
+                            context.$refs.fjktotal.value = item.fjktotal;
+                            context.$refs.fjkbillno.value = item.fjkbillno;
+                            context.$refs.fjkremark.value = item.fjkremark;
+                        }
+
+                        context.$refs.fremark.value = item.fremark;
+                        context.$refs.fje_ctjtf.value = item.fje_ctjtf;
+                        context.$refs.fccrw.value = item.fccrw;
+                        context.$refs.fd_zsf.value = item.fd_zsf;
+                        context.$refs.fbz_zsf.value = item.fbz_zsf;
+                        context.$refs.fje_zsf.value = item.fje_zsf;
+                        context.$refs.fcbz.value = item.fcbz;
+                        context.$refs.fd_cf.value = item.fd_cf;
+                        context.$refs.fbz_cf.value = item.fbz_cf;
+                        context.$refs.fje_cf.value = item.fje_cf;
+                        context.$refs.fd_snjtf.value = item.fd_snjtf;
+                        context.$refs.fbz_snjtf.value = item.fbz_snjtf;
+                        context.$refs.fje_snjtf.value = item.fje_snjtf;
+                        context.$refs.fje_qtclf.value = item.fje_qtclf;
+                        context.$refs.fbz_total.value = item.fbz_total;
+                        context.$refs.ftotal.value = item.ftotal;
+
+                        var item_c = data.FormDataSet.BPM_FDCBX_CLFYSQ_B;
+
+                        for (var i = 0; i < item_c.length; i++) {
+                            itemidArr.push(item_c[i].itemid);
+                            var li = ' <div class="mui-card" id="mx">';
+                            li = li + '   <div class="mui-input-row itemtitle">';
+                            li = li + '       <label>明细列表项</label>';
+                            li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                            li = li + '    </div>';
+                            li = li + '     <div class="mui-input-row">';
+                            li = li + '        <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="text" id="fzwjb" name="fzwjb"  readonly="readonly" value="' + item_c[i].fzwjb + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fsdate">开始时间<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="date" id="fsdate" name="fsdate" readonly="readonly" value="' + FormatterTimeYMS(item_c[i].fsdate) + '"/>';
+                            li = li + '    </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '       <label for="fedate">结束时间<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="date" id="fedate" name="fedate" readonly="readonly" value="' + FormatterTimeYMS(item_c[i].fedate) + '"/>';
+                            li = li + '   </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '     <label for="fjtgj">交通工具<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fjtgj" name="fjtgj" readonly="readonly" value="' + item_c[i].fjtgj + '" />';
+                            li = li + '  </div>';
+                            li = li + '  <div class="mui-input-row">';
+                            li = li + '      <label for="fcity">出差地点<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fcity" name="fcity" readonly="readonly" value="' + item_c[i].fcity + '" />';
+                            li = li + '    </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '      <label for="fdqlb">地区类别<i style="color:red;">*</i></label>';
+                            li = li + '      <input type="text" id="fdqlb" name="fdqlb" readonly="readonly"  value="' + item_c[i].fdqlb + '"/>';
+                            li = li + '   </div>';
+                            li = li + '   <div class="mui-input-row">';
+                            li = li + '      <label for="fccrs">出差人数<i style="color:red;">*</i></label>';
+                            li = li + '     <input type="number" id="fccrs" name="fccrs" readonly="readonly" value="' + item_c[i].fccrs + '" />';
+                            li = li + '   </div>';
+                            li = li + '    <div class="mui-input-row">';
+                            li = li + '        <label for="fday">出差天数<i style="color:red;">*</i></label>';
+                            li = li + '        <input type="number" id="fday" name="fday" readonly="readonly" value="' + item_c[i].fday + '"/>';
+                            li = li + '   </div>';
+                            li = li + '  </div>';
+                            $("#mxlist").append(li);
+                        }
+
+                        if ($('#myPhone').val() == "") {
+                            var myPhone = String(BPMOU).split("/");
+                            $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+
+                        }
+                        var NodeName;
+                        //判断流程本节点是否结束，处理者是否为当前用户,
+                        //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
+                        for (var i = 0; i < data.Steps.length; i++) {
+                            //debugger;
+
+                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+
+
+                                if (stepId.indexOf(data.Steps[i].StepID) != -1) {
+
+                                    NodeName = data.Steps[i].NodeName;
+
+                                }
+
+                            }
+
+                        }
+
+                        if (NodeName == "开始") {
+                            $("#createD").css("display", "block");
+                            $("#csd").css("display", "none");
+                            $("#tjmx").css("display", "block");
+
+                            context.tapEvent();
+                            $("#mxlist").find("#fcity").on('tap', function () {
+
+                                context.showCity(this);
+                            });
+                            $("#mxlist").find("#fsdate,#fedate,#fccrs,#fday").each(function () {
+                                $(this).removeAttr("readonly");
+                            });
+                            $("#mxlist").find('span').each(function () {
+                                $(this).css('display', 'block');
+                            });
+                            showPickerByZepto('#mxlist', '#fzwjb', fzwjbdata);
+                            showPickerByZepto('#mxlist', '#fjtgj', fjtgjdata);
+
+                            showPicker('fcllb', fcllbdata);
+                            $("#fif_jkd").removeClass('mui-disabled');
+                            $("#fremark,#fje_ctjtf,#fccrw,#fd_zsf,#fbz_zsf,#fje_zsf,#fcbz,#fbz_cf,#fje_cf,#fd_snjtf,#fbz_snjtf").removeAttr("readonly");
+                            $("#fje_snjtf,#fje_qtclf,#fjktotal,#fjkremark").removeAttr("readonly");
+                            mui('#fif_jkd').each(function () {
+
+                                this.addEventListener('toggle', function (event) {
+                                    if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                                        $("#fjkcard").css("display", "block");
+                                        $("#fif_jk").val('是');
+                                    } else {
+                                        $("#fjkcard").css("display", "none");
+                                        $("#fif_jk").val('否');
+                                    }
+
+                                });
+                            });
+                        } else if (NodeName == "sysInform"){
+                            $("#readD").css("display", "block");
+                            $("#csd").css("display", "none");
+                           
+                        } else {
+                            if (typeof (NodeName) != "undefined") {
+                                $("#approvalD").css("display", "block");
+                                mui('#jqd').each(function () {
+
+
+                                    this.addEventListener('toggle', function (event) {
+                                        if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                                            $('#signbody').css('display', 'block');
+                                        } else {
+
+                                            $('#signbody').css('display', 'none');
+                                            $('#signPer').val('');
+                                        }
+
+                                    });
+                                });
+                            }
+                        }
+
+                        for (var i = 0; i < data.Steps.length; i++) {
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+
+                    }).fail(function (e) {
+
+                    });
+                },
+                prepMsg: function () {
+                    var context = this;
+                   
+
+
+
+
+
+
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '      <Requests>';
+                    xml = xml + '       <Params>';
+                    xml = xml + '          <DataSource>BPM_EXPENSE</DataSource>';
+                    xml = xml + '           <ID>sys_province</ID>';
+                    xml = xml + '         <Type>1</Type>';
+                    xml = xml + '        <Method>GetUserDataTable</Method>';
+                    xml = xml + '      <TableName>sys_province</TableName>';
+                    xml = xml + '          <OrderBy></OrderBy>';
+                    xml = xml + '     </Params>';
+                    xml = xml + '       <Params>';
+                    xml = xml + '          <DataSource>BPM_EXPENSE</DataSource>';
+                    xml = xml + '           <ID>sys_city_t</ID>';
+                    xml = xml + '         <Type>1</Type>';
+                    xml = xml + '        <Method>GetUserDataTable</Method>';
+                    xml = xml + '      <TableName>sys_city_t</TableName>';
+                    xml = xml + '          <OrderBy></OrderBy>';
+                    xml = xml + '     </Params>';
+                    xml = xml + '   </Requests>';
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/DataProvider",
+                        data: { '': xml },
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                        }
+                    }).done(function (data) {
+                        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                        console.log(provideData);
+
+                        var children;
+                        for (var i = 0; i < provideData.Tables[0].Rows.length; i++) {
+                            var id_province = provideData.Tables[0].Rows[i].id;
+                            children = new Array();
+                            for (var j = 0; j < provideData.Tables[1].Rows.length; j++) {
+                                var id_city = provideData.Tables[1].Rows[j].id;
+                                if (id_province == id_city) {
+                                    var city = ({
+                                        value: provideData.Tables[1].Rows[j].cityid,
+                                        text: provideData.Tables[1].Rows[j].cityname,
+                                        type: provideData.Tables[1].Rows[j].citytype,
+                                        id: provideData.Tables[1].Rows[j].id,
+                                        province: provideData.Tables[0].Rows[i].provincename
+                                    });
+                                    children.push(city);
+                                } else if (id_city > 35 && id_province == 35) {
+                                    var city = ({
+                                        value: provideData.Tables[1].Rows[j].cityid,
+                                        text: provideData.Tables[1].Rows[j].cityname,
+                                        type: provideData.Tables[1].Rows[j].citytype,
+                                        id: provideData.Tables[1].Rows[j].id,
+                                        province: provideData.Tables[0].Rows[i].provincename
+                                    });
+                                    children.push(city);
+                                }
+
+                            }
+
+
+                            var province_city = ({
+                                value: provideData.Tables[0].Rows[i].provinceid,
+                                text: provideData.Tables[0].Rows[i].provincename,
+                                children: children
+                            });
+                            cityData.push(province_city);
+                        }
+
+
+
+                        //console.log(cityData);
+
+                        var controls = document.getElementById("segmentedControls");
+                        var contents = document.getElementById("segmentedControlContents");
+                        var html = [];
+                        var i = 0,
+                            j = 0,
+                            m = cityData.length, //左侧选项卡数量+1
+                            n = 21; //每个选项卡列表数量+1
+                        for (; i < cityData.length; i++) {
+                            html.push('<a class="mui-control-item" data-index="' + (i) + '" href="#content' + (i + 1) + '">' + cityData[i].text + '</a>');
+                        }
+                        controls.innerHTML = html.join('');
+                        html = [];
+                        for (i = 0; i < cityData.length; i++) {
+                            html.push('<div id="content' + i + '" class="mui-control-content"><ul class="mui-table-view">');
+                            for (j = 0; j < cityData[i].children.length; j++) {
+
+                                html.push('<li class="mui-table-view-cell city-chosen">' + cityData[i].children[j].text + '<input type="hidden" id="citytype" name="citytype" value="' + cityData[i].children[j].type + '"/><input type="hidden" id="provincename" name="provincename" value="' + cityData[i].children[j].province + '"/></li>');
+                            }
+                            html.push('</ul></div>');
+                        }
+                        contents.innerHTML = html.join('');
+                        //默认选中第一个
+                        controls.querySelector('.mui-control-item').classList.add('mui-active');
+                        //contents.querySelector('.mui-control-content').classList.add('mui-active');
+                        (function () {
+                            var controlsElem = document.getElementById("segmentedControls");
+                            var contentsElem = document.getElementById("segmentedControlContents");
+                            var controlListElem = controlsElem.querySelectorAll('.mui-control-item');
+                            var contentListElem = contentsElem.querySelectorAll('.mui-control-content');
+                            var controlWrapperElem = controlsElem.parentNode;
+                            var controlWrapperHeight = controlWrapperElem.offsetHeight;
+                            var controlMaxScroll = controlWrapperElem.scrollHeight - controlWrapperHeight;//左侧类别最大可滚动高度
+
+                            var maxScroll = contentsElem.scrollHeight - contentsElem.offsetHeight;//右侧内容最大可滚动高度
+
+                            var controlHeight = controlListElem[0].offsetHeight;//左侧类别每一项的高度
+                            var controlTops = []; //存储control的scrollTop值
+                            var contentTops = [0]; //存储content的scrollTop值
+                            var length = contentListElem.length;
+                            for (var i = 0; i < length; i++) {
+                                controlTops.push(controlListElem[i].offsetTop + controlHeight);
+                            }
+                            for (var i = 1; i < length; i++) {
+                                var offsetTop = contentListElem[i].offsetTop;
+                                if (offsetTop + 100 >= maxScroll) {
+                                    var height = Math.max(offsetTop + 100 - maxScroll, 100);
+                                    var totalHeight = 0;
+                                    var heights = [];
+                                    for (var j = i; j < length; j++) {
+                                        var offsetHeight = contentListElem[j].offsetHeight;
+                                        totalHeight += offsetHeight;
+                                        heights.push(totalHeight);
+                                    }
+                                    for (var m = 0, len = heights.length; m < len; m++) {
+                                        contentTops.push(parseInt(maxScroll - (height - heights[m] / totalHeight * height)));
+                                    }
+                                    break;
+                                } else {
+                                    contentTops.push(parseInt(offsetTop));
+                                }
+                            }
+                            contentsElem.addEventListener('scroll', function () {
+                                var scrollTop = contentsElem.scrollTop;
+                                for (var i = 0; i < length; i++) {
+                                    var offsetTop = contentTops[i];
+                                    var offset = Math.abs(offsetTop - scrollTop);
+                                    //						console.log("i:"+i+",scrollTop:"+scrollTop+",offsetTop:"+offsetTop+",offset:"+offset);
+                                    if (scrollTop < offsetTop) {
+                                        if (scrollTop >= maxScroll) {
+                                            onScroll(length - 1);
+                                        } else {
+                                            onScroll(i - 1);
+                                        }
+                                        break;
+                                    } else if (offset < 20) {
+                                        onScroll(i);
+                                        break;
+                                    } else if (scrollTop >= maxScroll) {
+                                        onScroll(length - 1);
+                                        break;
+                                    }
+                                }
+                            });
+                            var lastIndex = 0;
+                            //监听content滚动
+                            var onScroll = function (index) {
+                                if (lastIndex !== index) {
+                                    lastIndex = index;
+                                    var lastActiveElem = controlsElem.querySelector('.mui-active');
+                                    lastActiveElem && (lastActiveElem.classList.remove('mui-active'));
+                                    var currentElem = controlsElem.querySelector('.mui-control-item:nth-child(' + (index + 1) + ')');
+                                    currentElem.classList.add('mui-active');
+                                    //简单处理左侧分类滚动，要么滚动到底，要么滚动到顶
+                                    var controlScrollTop = controlWrapperElem.scrollTop;
+                                    if (controlScrollTop + controlWrapperHeight < controlTops[index]) {
+                                        controlWrapperElem.scrollTop = controlMaxScroll;
+                                    } else if (controlScrollTop > controlTops[index] - controlHeight) {
+                                        controlWrapperElem.scrollTop = 0;
+                                    }
+                                }
+                            };
+                            //滚动到指定content
+                            var scrollTo = function (index) {
+                                contentsElem.scrollTop = contentTops[index];
+                            };
+                            mui(controlsElem).on('tap', '.mui-control-item', function (e) {
+                                scrollTo(this.getAttribute('data-index'));
+                                return false;
+                            });
+
+                            $('.city-chosen').on('tap', function () {
+                                //console.log($(this));
+                                $(cityContext).val($(this).text());
+                                $(cityContext).parent().parent().find("#fdqlb").val($(this)[0].children.citytype.value);
+                                context.hiddenCity();
+                                document.getElementById('tjmx').scrollIntoView();
+                            });
+                        })();
+
+                    }).fail(function (e) {
+
+                    });
+
+                },
+                tapEvent: function () {
+                    var context = this;
+                    
+                    showPicker('fcllb', fcllbdata);
+
+                   
+
+                    $("#tjmx").on('tap', function () {
+
+                        var li = ' <div class="mui-card" id="mx">';
+                        li = li + '   <div class="mui-input-row itemtitle">';
+                        li = li + '       <label>明细列表项</label>';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                        li = li + '    </div>';
+                        li = li + '     <div class="mui-input-row">';
+                        li = li + '        <label for="fzwjb">职务级别<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fzwjb" name="fzwjb" placeholder="请选择职务级别" readonly="readonly"/>';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '       <label for="fsdate">开始时间<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="date" id="fsdate" name="fsdate" />';
+                        li = li + '    </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '       <label for="fedate">结束时间<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="date" id="fedate" name="fedate" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '     <label for="fjtgj">交通工具<i style="color:red;">*</i></label>';
+                        li = li + '      <input type="text" id="fjtgj" name="fjtgj" readonly="readonly" placeholder="请选择交通工具" />';
+                        li = li + '  </div>';
+                        li = li + '  <div class="mui-input-row">';
+                        li = li + '      <label for="fcity">出差地点<i style="color:red;">*</i></label>';
+                        li = li + '      <input type="text" id="fcity" name="fcity" readonly="readonly" placeholder="请选择出差地点" />';
+                        li = li + '    </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '      <label for="fdqlb">地区类别<i style="color:red;">*</i></label>';
+                        li = li + '      <input type="text" id="fdqlb" name="fdqlb" readonly="readonly" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '      <label for="fccrs">出差人数<i style="color:red;">*</i></label>';
+                        li = li + '     <input type="number" id="fccrs" name="fccrs" placeholder="请填写出差人数" />';
+                        li = li + '   </div>';
+                        li = li + '    <div class="mui-input-row">';
+                        li = li + '        <label for="fday">出差天数<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fday" name="fday" placeholder="请填写出差天数" />';
+                        li = li + '   </div>';
+                        li = li + '  </div>';
+                        $("#mxlist").append(li);
+                        showPickerByZepto('#mxlist', '#fzwjb', fzwjbdata);
+                        showPickerByZepto('#mxlist', '#fjtgj', fjtgjdata);
+                        $("#mxlist").find("#fcity").each(function () {
+                            $(this).on('tap', function () {
+                                context.showCity(this);
+                            });
+                        });
+                       
+                    });
+
+                    $("#fbz_zsf,#fbz_cf,#fbz_snjtf").on('input', function () {
+                        var fbz_zsf = parseFloat($("#fbz_zsf").val());
+                        var fbz_cf = parseFloat($("#fbz_cf").val());
+                        var fbz_snjtf = parseFloat($("#fbz_snjtf").val());
+                        if (isNaN(fbz_zsf)) {
+                            fbz_zsf = 0;
+                        }
+                        if (isNaN(fbz_cf)) {
+                            fbz_cf = 0;
+                        }
+                        if (isNaN(fbz_snjtf)) {
+                            fbz_snjtf = 0;
+                        }
+                        var total = 0;
+                        total = fbz_zsf + fbz_cf + fbz_snjtf;
+                        $("#fbz_total").val(total);
+                        context.calcPercent();
+                    });
+                    $("#fje_ctjtf,#fje_zsf,#fje_cf,#fje_snjtf,#fje_qtclf").on('input', function () {
+                        var fje_ctjtf = parseFloat($("#fje_ctjtf").val());
+                        var fje_zsf = parseFloat($("#fje_zsf").val());
+                        var fje_cf = parseFloat($("#fje_cf").val());
+                        var fje_snjtf = parseFloat($("#fje_snjtf").val());
+                        var fje_qtclf = parseFloat($("#fje_qtclf").val());
+
+                        if (isNaN(fje_ctjtf)) {
+                            fje_ctjtf = 0;
+                        }
+                        if (isNaN(fje_zsf)) {
+                            fje_zsf = 0;
+                        }
+                        if (isNaN(fje_cf)) {
+                            fje_cf = 0;
+                        }
+                        if (isNaN(fje_snjtf)) {
+                            fje_snjtf = 0;
+                        }
+                        if (isNaN(fje_qtclf)) {
+                            fje_qtclf = 0;
+                        }
+                        var total = 0;
+                        total = fje_ctjtf + fje_zsf + fje_cf + fje_snjtf + fje_qtclf;
+                        $("#ftotal").val(total);
+                        context.calcPercent();
+                    });
+                },
+                calcPercent: function () {
+                    var fbz_total = parseFloat($("#fbz_total").val());
+                    var ftotal = parseFloat($("#ftotal").val()) - parseFloat($("#fje_ctjtf").val());
+                    var fover = (ftotal - fbz_total) < 0 ? 0 : (ftotal - fbz_total);
+
+                    var fcbz = 0.00;
+                    if (ftotal > 0) {
+
+                        fcbz = ((fover / fbz_total) * 100).toFixed(2);
+                    }
+                    $("#fcbz").val(fcbz);
+                },
+                mxItem: function (fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday) {
+                    var mx = new Object;
+                    mx.fzwjb = fzwjb;
+                    mx.fsdate = fsdate;
+                    mx.fedate = fedate;
+                    mx.fjtgj = fjtgj;
+                    mx.fcity = fcity;
+                    mx.fdqlb = fdqlb;
+                    mx.fccrs = fccrs;
+                    mx.fday = fday;
+                    if (!fzwjb || fzwjb == '') {
+                        mui.toast('请选择职务级别');
+                        return null;
+                    }
+                    if (!String(fsdate).replace(" 00:00:00") || String(fsdate).replace(" 00:00:00") == '') {
+                        mui.toast('请选择开始时间');
+                        return null;
+                    }
+                    if (!String(fedate).replace(" 00:00:00") || String(fedate).replace(" 00:00:00") == '') {
+                        mui.toast('请选择结束时间');
+                        return null;
+                    }
+                    if (!fjtgj || fjtgj == '') {
+                        mui.toast('请选择交通工具');
+                        return null;
+                    }
+                    if (!fcity || fcity == '') {
+                        mui.toast('请选择出差城市');
+                        return null;
+                    }
+                    if (!fccrs || fccrs == '') {
+                        mui.toast('请填写出差人数');
+                        return null;
+                    }
+                    if (!fday || fday == '') {
+                        mui.toast('请填写出差天数');
+                        return null;
+                    }
+                    return mx;
+                },
+                showCity: function (context) {
+                    $("#wrapper").css("display", "none");
+                    $("#showCity").css("visibility", "visible");
+                    $("#SaveD").css("display", "none");
+                    cityContext = context;
+                },
+                hiddenCity: function () {
+                    $("#wrapper").css("display", "block");
+                    $("#showCity").css("visibility", "hidden");
+                    $("#SaveD").css("display", "block");
+                }
+            }
+
+
+        });
+       
+
+        function Save() {
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+
+            var fcompany = v.$refs.fcompany.value;
+            var fdept = v.$refs.fdept.value;
+            var fname = v.$refs.fname.value;
+            var fdate = v.$refs.fdate.value + " 00:00:00";
+            var fcllb = v.$refs.fcllb.value;
+            var fif_jk = v.$refs.fif_jk.value;
+            var fremark = v.$refs.fremark.value;
+            var fje_ctjtf = v.$refs.fje_ctjtf.value;
+            var fccrw = v.$refs.fccrw.value;
+            var fd_zsf = v.$refs.fd_zsf.value;
+            var fbz_zsf = v.$refs.fbz_zsf.value;
+            var fje_zsf = v.$refs.fje_zsf.value;
+            var fcbz = v.$refs.fcbz.value;
+            var fd_cf = v.$refs.fd_cf.value;
+            var fbz_cf = v.$refs.fbz_cf.value;
+            var fje_cf = v.$refs.fje_cf.value;
+            var fd_snjtf = v.$refs.fd_snjtf.value;
+            var fbz_snjtf = v.$refs.fbz_snjtf.value;
+            var fje_snjtf = v.$refs.fje_snjtf.value;
+            var fje_qtclf = v.$refs.fje_qtclf.value;
+            var fbz_total = v.$refs.fbz_total.value;
+            var ftotal = v.$refs.ftotal.value;
+            var ftotal_dx = atoc(ftotal);
+            if (fif_jk == '是') {
+                var fjktotal = v.$refs.fjktotal.value;
+                var fjktotal_dx = atoc(fjktotal);
+                var fjkbillno = v.$refs.fjkbillno.value;
+                var fjkremark = v.$refs.fjkremark.value;
+            } else {
+                var fjktotal = '';
+                var fjktotal_dx = '零元整';
+                var fjkbillno = '';
+                var fjkremark = '';
+            }
+            var mxflag = false;
+            var mxlistArr = new Array();
+
+            if (!fcllb || fcllb == '') {
+                mui.toast('请选择差旅类别');
+                return;
+            }
+            if (!fje_ctjtf || fje_ctjtf == '') {
+                mui.toast('请填写长途差旅费申请金额');
+                return;
+            }
+            if (!fccrw || fccrw == '') {
+                mui.toast('请填写出差任务内容');
+                return;
+            }
+            if (!fd_zsf || fd_zsf == '') {
+                mui.toast('请填写住宿费有效天数');
+                return;
+            }
+            if (!fbz_zsf || fbz_zsf == '') {
+                mui.toast('请填写住宿费标准');
+                return;
+            }
+            if (!fje_zsf || fje_zsf == '') {
+                mui.toast('请填写住宿费申请金额');
+                return;
+            }
+            if (!fd_cf || fd_cf == '') {
+                mui.toast('请填写餐费有效天数');
+                return;
+            }
+            if (!fbz_cf || fbz_cf == '') {
+                mui.toast('请填写餐费标准');
+                return;
+            }
+            if (!fje_cf || fje_cf == '') {
+                mui.toast('请填写餐费申请金额');
+                return;
+            }
+            if (!fd_snjtf || fd_snjtf == '') {
+                mui.toast('请填写市内交通费有效天数');
+                return;
+            }
+            if (!fbz_snjtf || fbz_snjtf == '') {
+                mui.toast('请填写市内交通费标准');
+                return;
+            }
+            if (!fje_snjtf || fje_snjtf == '') {
+                mui.toast('请填写市内交通费申请金额');
+                return;
+            }
+            if (!fje_qtclf || fje_qtclf == '') {
+                mui.toast('请填写其他差旅费申请金额');
+                return;
+            }
+            if (fif_jk == '是') {
+                if (!fjktotal || fjktotal == '') {
+                    mui.toast('请填写借款金额');
+                    return;
+                }
+            }
+
+            $("#mxlist").find("#mx").each(function () {
+
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + " 00:00:00";
+                var fedate = $(this).find("#fedate").val() + " 00:00:00";
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fcity = $(this).find("#fcity").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+                var mx = v.mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday);
+                if (mx == null) {
+                    mxflag = true;
+                    return;
+                }
+                mxlistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '   <Header>';
+                    xml = xml + '    <Method>Process</Method>';
+                    xml = xml + '   <PID>' + pid + '</PID>';
+                    xml = xml + '   <Action>提交</Action>';
+                    xml = xml + '    <Comment></Comment>';
+                    xml = xml + '    <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '  </Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '<BPM_FDCBX_CLFYSQ_A>';
+                    xml = xml + '  <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '  <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '  <fdept>' + fdept + '</fdept>';
+                    xml = xml + '  <fname>' + fname + '</fname>';
+                    xml = xml + '  <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                    xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '   <fremark>' + fremark + '</fremark>';
+                    xml = xml + '   <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                    xml = xml + '   <fccrw>' + fccrw + '</fccrw>';
+                    xml = xml + '    <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                    xml = xml + '   <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                    xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                    xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                    xml = xml + '  <fd_cf>' + fd_cf + '</fd_cf>';
+                    xml = xml + '  <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                    xml = xml + '   <fje_cf>' + fje_cf + '</fje_cf>';
+                    xml = xml + '   <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                    xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                    xml = xml + '    <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                    xml = xml + '   <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                    xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                    xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '   <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '   <fjkremark>' + fjkremark + '</fjkremark>';
+                    xml = xml + '  </BPM_FDCBX_CLFYSQ_A>';
+
+                    for (var i = 0; i < mxlistArr.length; i++) {
+                        xml = xml + '    <BPM_FDCBX_CLFYSQ_B>';
+                        xml = xml + '      <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '       <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '       <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '       <fzwjb>' + mxlistArr[i].fzwjb + '</fzwjb>';
+                        xml = xml + '       <fsdate>' + mxlistArr[i].fsdate + '</fsdate>';
+                        xml = xml + '      <fedate>' + mxlistArr[i].fedate + '</fedate>';
+                        xml = xml + '      <fjtgj>' + mxlistArr[i].fjtgj + '</fjtgj>';
+                        xml = xml + '      <fcity>' + mxlistArr[i].fcity + '</fcity>';
+                        xml = xml + '      <fdqlb>' + mxlistArr[i].fdqlb + '</fdqlb>';
+                        xml = xml + '      <fccrs>' + mxlistArr[i].fccrs + '</fccrs>';
+                        xml = xml + '       <fday>' + mxlistArr[i].fday + '</fday>';
+                        xml = xml + '    </BPM_FDCBX_CLFYSQ_B>';
+
+                    }
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+
+
+                }
+            });
+        }
+
+        function AgreeOrConSign() {
+            var comment = $("#signSuggest").val();
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+
+            var fcompany = v.$refs.fcompany.value;
+            var fdept = v.$refs.fdept.value;
+            var fname = v.$refs.fname.value;
+            var fdate = v.$refs.fdate.value + " 00:00:00";
+            var fcllb = v.$refs.fcllb.value;
+            var fif_jk = v.$refs.fif_jk.value;
+            var fremark = v.$refs.fremark.value;
+            var fje_ctjtf = v.$refs.fje_ctjtf.value;
+            var fccrw = v.$refs.fccrw.value;
+            var fd_zsf = v.$refs.fd_zsf.value;
+            var fbz_zsf = v.$refs.fbz_zsf.value;
+            var fje_zsf = v.$refs.fje_zsf.value;
+            var fcbz = v.$refs.fcbz.value;
+            var fd_cf = v.$refs.fd_cf.value;
+            var fbz_cf = v.$refs.fbz_cf.value;
+            var fje_cf = v.$refs.fje_cf.value;
+            var fd_snjtf = v.$refs.fd_snjtf.value;
+            var fbz_snjtf = v.$refs.fbz_snjtf.value;
+            var fje_snjtf = v.$refs.fje_snjtf.value;
+            var fje_qtclf = v.$refs.fje_qtclf.value;
+            var fbz_total = v.$refs.fbz_total.value;
+            var ftotal = v.$refs.ftotal.value;
+            var ftotal_dx = atoc(ftotal);
+            if (fif_jk == '是') {
+                var fjktotal = v.$refs.fjktotal.value;
+                var fjktotal_dx = atoc(fjktotal);
+                var fjkbillno = v.$refs.fjkbillno.value;
+                var fjkremark = v.$refs.fjkremark.value;
+            } else {
+                var fjktotal = '';
+                var fjktotal_dx = '零元整';
+                var fjkbillno = '';
+                var fjkremark = '';
+            }
+
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + " 00:00:00";
+                var fedate = $(this).find("#fedate").val() + " 00:00:00";
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fcity = $(this).find("#fcity").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+                var mx = v.mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday);
+                mxlistArr.push(mx);
+            });
+
+            var consignFlag = false;
+            var consignUserId = new Array();
+            var consignRoutingType;
+            var consignReturnType;
+
+            var consignUserStr;
+            //加签if分支
+            if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+                consignFlag = true;
+
+                if ($('#sxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Serial';
+
+                } else if ($('#pxsl').hasClass('mui-selected')) {
+                    consignRoutingType = 'Parallel';
+                }
+
+                if ($('#hdbjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Return';
+                } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                    consignReturnType = 'Forward';
+                }
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/bpm/PostAccount",
+                    data: { "ids": consignOpenIdArr },
+                    beforeSend: function (XHR) {
+                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                    }
+                }).done(function (data) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        consignUserId.push(data.data[i].phone);
+                    }
+                    $('#consignUser').val(consignUserId);
+                    consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+
+
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Process</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Action>同意</Action>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+
+                    //加签差异部分
+                    xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
+                    xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                    xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                    xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '<BPM_FDCBX_CLFYSQ_A>';
+                    xml = xml + '  <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '  <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '  <fdept>' + fdept + '</fdept>';
+                    xml = xml + '  <fname>' + fname + '</fname>';
+                    xml = xml + '  <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                    xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '   <fremark>' + fremark + '</fremark>';
+                    xml = xml + '   <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                    xml = xml + '   <fccrw>' + fccrw + '</fccrw>';
+                    xml = xml + '    <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                    xml = xml + '   <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                    xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                    xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                    xml = xml + '  <fd_cf>' + fd_cf + '</fd_cf>';
+                    xml = xml + '  <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                    xml = xml + '   <fje_cf>' + fje_cf + '</fje_cf>';
+                    xml = xml + '   <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                    xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                    xml = xml + '    <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                    xml = xml + '   <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                    xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                    xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '   <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '   <fjkremark>' + fjkremark + '</fjkremark>';
+                    xml = xml + '  </BPM_FDCBX_CLFYSQ_A>';
+
+                    for (var i = 0; i < mxlistArr.length; i++) {
+                        xml = xml + '    <BPM_FDCBX_CLFYSQ_B>';
+                        xml = xml + '      <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                        xml = xml + '       <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '       <fzwjb>' + mxlistArr[i].fzwjb + '</fzwjb>';
+                        xml = xml + '       <fsdate>' + mxlistArr[i].fsdate + '</fsdate>';
+                        xml = xml + '      <fedate>' + mxlistArr[i].fedate + '</fedate>';
+                        xml = xml + '      <fjtgj>' + mxlistArr[i].fjtgj + '</fjtgj>';
+                        xml = xml + '      <fcity>' + mxlistArr[i].fcity + '</fcity>';
+                        xml = xml + '      <fdqlb>' + mxlistArr[i].fdqlb + '</fdqlb>';
+                        xml = xml + '      <fccrs>' + mxlistArr[i].fccrs + '</fccrs>';
+                        xml = xml + '       <fday>' + mxlistArr[i].fday + '</fday>';
+                        xml = xml + '    </BPM_FDCBX_CLFYSQ_B>';
+
+                    }
+
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+
+
+                }).fail(function (e) {
+
+
+                });
+            } else {
+
+                var xml = '<?xml version="1.0"?>';
+                xml = xml + '<XForm>';
+                xml = xml + '<Header>';
+                xml = xml + '<Method>Process</Method>';
+                xml = xml + '<PID>' + pid + '</PID>';
+                xml = xml + '<Action>同意</Action>';
+                xml = xml + '<Comment>' + comment + '</Comment>';
+
+                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '</Header>';
+                xml = xml + '<FormData>';
+
+                xml = xml + '<BPM_FDCBX_CLFYSQ_A>';
+                xml = xml + '  <fbillno>' + fbillno + '</fbillno>';
+                xml = xml + '  <fcompany>' + fcompany + '</fcompany>';
+                xml = xml + '  <fdept>' + fdept + '</fdept>';
+                xml = xml + '  <fname>' + fname + '</fname>';
+                xml = xml + '  <fdate>' + fdate + '</fdate>';
+                xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                xml = xml + '   <fremark>' + fremark + '</fremark>';
+                xml = xml + '   <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                xml = xml + '   <fccrw>' + fccrw + '</fccrw>';
+                xml = xml + '    <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                xml = xml + '   <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                xml = xml + '  <fd_cf>' + fd_cf + '</fd_cf>';
+                xml = xml + '  <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                xml = xml + '   <fje_cf>' + fje_cf + '</fje_cf>';
+                xml = xml + '   <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                xml = xml + '    <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                xml = xml + '   <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                xml = xml + '   <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                xml = xml + '   <fjkremark>' + fjkremark + '</fjkremark>';
+                xml = xml + '  </BPM_FDCBX_CLFYSQ_A>';
+
+                for (var i = 0; i < mxlistArr.length; i++) {
+                    xml = xml + '    <BPM_FDCBX_CLFYSQ_B>';
+                    xml = xml + '      <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                    xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                    xml = xml + '       <fentryno>' + (i + 1) + '</fentryno>';
+                    xml = xml + '       <fzwjb>' + mxlistArr[i].fzwjb + '</fzwjb>';
+                    xml = xml + '       <fsdate>' + mxlistArr[i].fsdate + '</fsdate>';
+                    xml = xml + '      <fedate>' + mxlistArr[i].fedate + '</fedate>';
+                    xml = xml + '      <fjtgj>' + mxlistArr[i].fjtgj + '</fjtgj>';
+                    xml = xml + '      <fcity>' + mxlistArr[i].fcity + '</fcity>';
+                    xml = xml + '      <fdqlb>' + mxlistArr[i].fdqlb + '</fdqlb>';
+                    xml = xml + '      <fccrs>' + mxlistArr[i].fccrs + '</fccrs>';
+                    xml = xml + '       <fday>' + mxlistArr[i].fday + '</fday>';
+                    xml = xml + '    </BPM_FDCBX_CLFYSQ_B>';
+
+                }
+
+                xml = xml + ' </FormData>';
+                xml = xml + '</XForm >';
+                PostXml(xml);
+            }
+        }
+
+        function hasRead() {
+
+            var fbillno = $("#fbillno").val();
+            var pid = $("#stepId").val();
+
+            var fcompany = v.$refs.fcompany.value;
+            var fdept = v.$refs.fdept.value;
+            var fname = v.$refs.fname.value;
+            var fdate = v.$refs.fdate.value + " 00:00:00";
+            var fcllb = v.$refs.fcllb.value;
+            var fif_jk = v.$refs.fif_jk.value;
+            var fremark = v.$refs.fremark.value;
+            var fje_ctjtf = v.$refs.fje_ctjtf.value;
+            var fccrw = v.$refs.fccrw.value;
+            var fd_zsf = v.$refs.fd_zsf.value;
+            var fbz_zsf = v.$refs.fbz_zsf.value;
+            var fje_zsf = v.$refs.fje_zsf.value;
+            var fcbz = v.$refs.fcbz.value;
+            var fd_cf = v.$refs.fd_cf.value;
+            var fbz_cf = v.$refs.fbz_cf.value;
+            var fje_cf = v.$refs.fje_cf.value;
+            var fd_snjtf = v.$refs.fd_snjtf.value;
+            var fbz_snjtf = v.$refs.fbz_snjtf.value;
+            var fje_snjtf = v.$refs.fje_snjtf.value;
+            var fje_qtclf = v.$refs.fje_qtclf.value;
+            var fbz_total = v.$refs.fbz_total.value;
+            var ftotal = v.$refs.ftotal.value;
+            var ftotal_dx = atoc(ftotal);
+            if (fif_jk == '是') {
+                var fjktotal = v.$refs.fjktotal.value;
+                var fjktotal_dx = atoc(fjktotal);
+                var fjkbillno = v.$refs.fjkbillno.value;
+                var fjkremark = v.$refs.fjkremark.value;
+            } else {
+                var fjktotal = '';
+                var fjktotal_dx = '零元整';
+                var fjkbillno = '';
+                var fjkremark = '';
+            }
+
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+              
+                var fzwjb = $(this).find("#fzwjb").val();
+                var fsdate = $(this).find("#fsdate").val() + " 00:00:00";
+                var fedate = $(this).find("#fedate").val() + " 00:00:00";
+                var fjtgj = $(this).find("#fjtgj").val();
+                var fcity = $(this).find("#fcity").val();
+                var fdqlb = $(this).find("#fdqlb").val();
+                var fccrs = $(this).find("#fccrs").val();
+                var fday = $(this).find("#fday").val();
+                var mx = v.mxItem(fzwjb, fsdate, fedate, fjtgj, fcity, fdqlb, fccrs, fday);
+                mxlistArr.push(mx);
+            });
+            var comment = '';
+            var btnArray = ['取消', '确定'];
+            mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+                if (e.index == 1) {
+                    comment = e.value;
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>InformSubmit</Method>';
+                    xml = xml + '<PID>' + pid + '</PID>';
+                    xml = xml + '<Comment>' + comment + '</Comment>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+
+                    xml = xml + '<BPM_FDCBX_CLFYSQ_A>';
+                    xml = xml + '  <fbillno>' + fbillno + '</fbillno>';
+                    xml = xml + '  <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '  <fdept>' + fdept + '</fdept>';
+                    xml = xml + '  <fname>' + fname + '</fname>';
+                    xml = xml + '  <fdate>' + fdate + '</fdate>';
+                    xml = xml + '   <fcllb>' + fcllb + '</fcllb>';
+                    xml = xml + '   <fif_jk>' + fif_jk + '</fif_jk>';
+                    xml = xml + '   <fremark>' + fremark + '</fremark>';
+                    xml = xml + '   <fje_ctjtf>' + fje_ctjtf + '</fje_ctjtf>';
+                    xml = xml + '   <fccrw>' + fccrw + '</fccrw>';
+                    xml = xml + '    <fd_zsf>' + fd_zsf + '</fd_zsf>';
+                    xml = xml + '   <fbz_zsf>' + fbz_zsf + '</fbz_zsf>';
+                    xml = xml + '   <fje_zsf>' + fje_zsf + '</fje_zsf>';
+                    xml = xml + '   <fcbz>' + fcbz + '</fcbz>';
+                    xml = xml + '  <fd_cf>' + fd_cf + '</fd_cf>';
+                    xml = xml + '  <fbz_cf>' + fbz_cf + '</fbz_cf>';
+                    xml = xml + '   <fje_cf>' + fje_cf + '</fje_cf>';
+                    xml = xml + '   <fd_snjtf>' + fd_snjtf + '</fd_snjtf>';
+                    xml = xml + '   <fbz_snjtf>' + fbz_snjtf + '</fbz_snjtf>';
+                    xml = xml + '    <fje_snjtf>' + fje_snjtf + '</fje_snjtf>';
+                    xml = xml + '   <fje_qtclf>' + fje_qtclf + '</fje_qtclf>';
+                    xml = xml + '   <fbz_total>' + fbz_total + '</fbz_total>';
+                    xml = xml + '   <ftotal>' + ftotal + '</ftotal>';
+                    xml = xml + '   <ftotal_dx>' + ftotal_dx + '</ftotal_dx>';
+                    xml = xml + '   <fjktotal>' + fjktotal + '</fjktotal>';
+                    xml = xml + '   <fjktotal_dx>' + fjktotal_dx + '</fjktotal_dx>';
+                    xml = xml + '   <fjkbillno>' + fjkbillno + '</fjkbillno>';
+                    xml = xml + '   <fjkremark>' + fjkremark + '</fjkremark>';
+                    xml = xml + '  </BPM_FDCBX_CLFYSQ_A>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+                        xml = xml + '    <BPM_FDCBX_CLFYSQ_B>';
+                        xml = xml + '      <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '       <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
+                        xml = xml + '       <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '       <fzwjb>' + mxlistArr[i].fzwjb + '</fzwjb>';
+                        xml = xml + '       <fsdate>' + mxlistArr[i].fsdate + '</fsdate>';
+                        xml = xml + '      <fedate>' + mxlistArr[i].fedate + '</fedate>';
+                        xml = xml + '      <fjtgj>' + mxlistArr[i].fjtgj + '</fjtgj>';
+                        xml = xml + '      <fcity>' + mxlistArr[i].fcity + '</fcity>';
+                        xml = xml + '      <fdqlb>' + mxlistArr[i].fdqlb + '</fdqlb>';
+                        xml = xml + '      <fccrs>' + mxlistArr[i].fccrs + '</fccrs>';
+                        xml = xml + '       <fday>' + mxlistArr[i].fday + '</fday>';
+                        xml = xml + '    </BPM_FDCBX_CLFYSQ_B>';
+
+                    }
+
+                    xml = xml + ' </FormData>';
+                    xml = xml + '</XForm >';
+                    PostXml(xml);
+
+                }
+            });
+            
+        }
+    </script>
+</body>
+</html>

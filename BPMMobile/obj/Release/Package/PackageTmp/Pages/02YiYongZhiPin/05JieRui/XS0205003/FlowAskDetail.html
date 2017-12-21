@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-input-row">
+                <label for="fdq">大区</label>
+                <input type="text" id="fdq" name="fdq" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbsc">办事处</label>
+                <input type="text" id="fbsc" name="fbsc" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">业务员姓名</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式</label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flkdw">来客单位</label>
+                <input type="text" id="flkdw" name="flkdw" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyyjb">医院级别</label>
+                <input type="text" id="fyyjb" name="fyyjb" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flkrs">来客人数</label>
+                <input type="number" id="flkrs" name="flkrs" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcws">床位数</label>
+                <input type="number" id="fcws" name="fcws" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_lf">是否承担路费</label>
+                <input type="hidden" id="fif_lf" name="fif_lf" value="否" />
+                <div class="mui-switch mui-switch-blue mui-disabled" id="fif_lfd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="flfhj">路费合计</label>
+                <input type="number" id="flfhj" name="flfhj" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flwdate">来威日期</label>
+                <input type="date" id="flwdate" name="flwdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_xjz">是否需接站</label>
+                <input type="hidden" id="fif_xjz" name="fif_xjz" value="否" />
+                <div class="mui-switch mui-switch-blue mui-disabled" id="fif_xjzd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjzdd">接站地点</label>
+                <input type="text" id="fjzdd" name="fjzdd" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjdzsj">飞机到站时间</label>
+                <input type="text" id="ffjdzsj" name="ffjdzsj" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzsjd">住宿酒店</label>
+                <input type="text" id="fzsjd" name="fzsjd" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjlxjsl">房间类型及数量</label>
+                <input type="text" id="ffjlxjsl" name="ffjlxjsl" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fzsfhj">住宿费合计</label>
+                <input type="number" id="fzsfhj" name="fzsfhj" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_apcl">是否安排车辆</label>
+                <input type="hidden" id="fif_apcl" name="fif_apcl" value="否" />
+                <div class="mui-switch mui-switch-blue mui-disabled" id="fif_apcld">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="flkdate">离威日期</label>
+                <input type="date" id="flkdate" name="flkdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fif_xsz">是否需送站</label>
+                <input type="hidden" id="fif_xsz" name="fif_xsz" value="否" />
+                <div class="mui-switch mui-switch-blue mui-disabled" id="fif_xszd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row">
+                <label for="fszdd">送站地点</label>
+                <input type="text" id="fszdd" name="fszdd" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ffjqfsj">飞机起飞时间</label>
+                <input type="text" id="ffjqfsj" name="ffjqfsj" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="flkmd">来客目的</label>
+                <input type="text" id="flkmd" name="flkmd" readonly="readonly" />
+            </div>
+            <div id="mxlist_xc">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_xc" style="margin-top:0.5rem;display:none;">
+                添加活动行程安排及费用标准
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row">
+                <label for="ffyyshj">费用预算合计</label>
+                <input type="number" id="ffyyshj" name="ffyyshj" readonly="readonly" />
+            </div>
+            <div id="mxlist_ry">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_ry" style="margin-top:0.5rem;display:none;">
+                添加活动参与人员信息
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

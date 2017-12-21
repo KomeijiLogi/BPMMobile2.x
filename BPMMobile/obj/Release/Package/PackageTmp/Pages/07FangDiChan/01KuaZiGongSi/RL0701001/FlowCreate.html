@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fcompany">提报公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" placeholder="请选择提报公司"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报时间</label>
+                <input type="text" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>     
+                    <div class="mui-input-row">
+                        <label for="fwtime">外出时间<i style="color:red;">*</i></label>
+                        <input type="datetime-local" id="fwtime" name="fwtime"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhtime">回司时间<i style="color:red;">*</i></label>
+                        <input type="datetime-local" id="fhtime" name="fhtime"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fname">外出人<i style="color:red;">*</i></label>
+                        <input type="text" id="fname" name="fname" value=""/>
+                    </div>
+                    <div class="mui-input-row" style="height:auto;">
+                         <label for="fwhere">外出去向<i style="color:red;">*</i></label>
+                        <textarea rows="4" id="fwhere" name="fwhere" placeholder="请填写外出去向"></textarea>
+                    </div>
+                    <div class="mui-input-row" style="height:auto;">
+                        <label for="freason">外出事由<i style="color:red;">*</i></label>
+                        <textarea rows="6" id="freason" name="freason" placeholder="请填写外出事由"></textarea>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fnumber">补卡次数<i style="color:red;">*</i></label>
+                        <input type="number" id="fnumber" name="fnumber" placeholder="请填写补卡次数"/>
+                    </div>
+
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加外出明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <input type="hidden" id="fnameHidden" name="fnameHidden"/>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\01跨子公司\\RL人力资源', '房地产集团员工外出申请');
+            prepMsg();
+            getBPMParam();
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fnameHidden").val(result.data.name);
+                $("#mxlist").find("#fname").each(function () {
+                    $(this).val($("#fnameHidden").val());
+                });
+            }
+        });
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+           
+        }
+        
+
+        function tapEvent() {
+            var fcompanydata = [
+
+                {
+                    value: '',
+                    text: '房地产集团本部'
+                },
+                {
+                    value: '',
+                    text: '万通公司'
+                },
+                {
+                    value: '',
+                    text: '商管公司'
+                }
+
+            ];
+            showPicker('fcompany', fcompanydata);
+            $("#tjmx").on('tap', function () {
+
+                var li = ' <div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '  <div class="mui-input-row">';
+                li = li + '      <label for="fwtime">外出时间<i style="color:red;">*</i></label>';
+                li = li + '      <input type="datetime-local" id="fwtime" name="fwtime" />';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '       <label for="fhtime">回司时间<i style="color:red;">*</i></label>';
+                li = li + '      <input type="datetime-local" id="fhtime" name="fhtime" />';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '      <label for="fname">外出人<i style="color:red;">*</i></label>';
+                li = li + '      <input type="text" id="fname" name="fname" value="" />';
+                li = li + '    </div>';
+                li = li + '   <div class="mui-input-row" style="height:auto;">';
+                li = li + '        <label for="fwhere">外出去向<i style="color:red;">*</i></label>';
+                li = li + '       <textarea rows="4" id="fwhere" name="fwhere" placeholder="请填写外出去向"></textarea>';
+                li = li + '  </div>';
+                li = li + '   <div class="mui-input-row" style="height:auto;">';
+                li = li + '       <label for="freason">外出事由<i style="color:red;">*</i></label>';
+                li = li + '      <textarea rows="6" id="freason" name="freason" placeholder="请填写外出事由"></textarea>';
+                li = li + '   </div>';
+                li = li + '  <div class="mui-input-row">';
+                li = li + '      <label for="fnumber">补卡次数<i style="color:red;">*</i></label>';
+                li = li + '       <input type="number" id="fnumber" name="fnumber" placeholder="请填写补卡次数" />';
+                li = li + '    </div>';
+                li = li + ' </div>';
+                $("#mxlist").append(li);
+                document.getElementById('tjmx').scrollIntoView();
+                $("#mxlist").find("#fname").each(function () {
+                    $(this).val($("#fnameHidden").val());
+                });
+            })
+            
+        }
+
+        function mxItem(fwtime, fhtime, fname,fwhere, freason, fnumber) {
+            var mx = new Object;
+            mx.fwtime = fwtime;
+            mx.fhtime = fhtime;
+            mx.fwhere = fwhere;
+            mx.fname = fname;
+            mx.freason = freason;
+            mx.fnumber = fnumber;
+            if (!fwtime || fwtime=='') {
+                mui.toast('请填写外出时间');
+                return null;
+            }
+            if (!fhtime || fhtime == '') {
+                mui.toast('请填写回司时间');
+                return null;
+            }
+            if (!fname || fname == '') {
+                mui.toast('请填写外出人');
+                return null;
+            }
+            if (!fwhere || fwhere == '') {
+                mui.toast('请填写外出地点');
+                return null;
+            }
+            if (!freason || freason == '') {
+                mui.toast('请填写外出事由');
+                return null;
+            }
+            if (!fnumber || fnumber == '') {
+                mui.toast('请填写补卡次数');
+                return null;
+            }
+            return mx;
+        }
+
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var ftime = $("#fdate").val() + " 00:00:00";
+
+            if (!fcompany || fcompany == '') {
+                mui.toast('请选择提报公司');
+                return null;
+            }
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+                var fwtime = $(this).find("#fwtime").val();
+                var fhtime = $(this).find("#fhtime").val();
+                var fname = $(this).find("#fname").val();
+                var fwhere = $(this).find("#fwhere").val();
+                var freason = $(this).find("#freason").val();
+                var fnumber = $(this).find("#fnumber").val();
+                if (mxItem(fwtime, fhtime, fname, fwhere, freason, fnumber) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = mxItem(fwtime, fhtime, fname, fwhere, freason, fnumber);
+                mxlistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '      <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '       <ProcessName>房地产集团员工外出申请</ProcessName>';
+                    xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '     <DraftGuid></DraftGuid>';
+                    xml = xml + '    <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '         <Action>提交</Action>';
+                    xml = xml + '        <Comment></Comment>';
+                    xml = xml + '          <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '     </Header>';
+                    xml = xml + '     <FormData>';
+                    xml = xml + '        <BPM_FdcGoOut_A>';
+                    xml = xml + '            <fbillno>自动生成</fbillno>';
+                    xml = xml + '           <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '            <fdeptname>' + fdept + '</fdeptname>';
+                    xml = xml + '           <ftime>' + ftime + '</ftime>';
+                    xml = xml + '            <fisfinish></fisfinish>';
+                    xml = xml + '        </BPM_FdcGoOut_A>';
+                    for (var i = 0; i < mxlistArr.length;i++){
+                        xml = xml + '      <BPM_FdcGoOut_B>';
+                        xml = xml + '        <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '          <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '               <fwtime>' + mxlistArr[i].fwtime + '</fwtime>';
+                        xml = xml + '              <fhtime>' + mxlistArr[i].fhtime + '</fhtime>';
+                        xml = xml + '             <fname>' + mxlistArr[i].fname + '</fname>';
+                        xml = xml + '             <fwhere>' + mxlistArr[i].fwhere + '</fwhere>';
+                        xml = xml + '             <freason>' + mxlistArr[i].freason + '</freason>';
+                        xml = xml + '               <fnumber>' + mxlistArr[i].fnumber + '</fnumber>';
+                        xml = xml + '          </BPM_FdcGoOut_B>';
+                    }
+                    
+
+                    xml = xml + '       </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

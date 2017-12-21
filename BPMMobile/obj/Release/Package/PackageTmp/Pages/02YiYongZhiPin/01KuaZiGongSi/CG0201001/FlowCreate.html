@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;display:block;" id="wrapper">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">提报人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fzgs">子公司<i style="color:red;">*</i></label>
+                <input type="text" id="fzgs" name="fzgs" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffgs">分公司<i style="color:red;">*</i></label>
+                <input type="text" id="ffgs" name="ffgs" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fxmlb">项目类别<i style="color:red;">*</i></label>
+                <input type="text" id="fxmlb" name="fxmlb" readonly="readonly" placeholder="请选择项目类别"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fxmbh">项目编号<i style="color:red;">*</i></label>
+                <input type="text" id="fxmbh" name="fxmbh" placeholder="请填写项目编号"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fxmmc">项目名称<i style="color:red;">*</i></label>
+                <input type="text" id="fxmmc" name="fxmmc" placeholder="请填写项目名称"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="famount">申请金额<i style="color:red;">*</i></label>
+                <input type="number" id="famount" name="famount" placeholder="请填写申请金额"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fxmms">项目描述<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fxmms" name="fxmms" placeholder="请填写项目描述"></textarea>
+            </div>
+            <div id="mxlist_gys">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                        <label for="fgys_no">供应商编码</label>
+                        <input type="text" id="fgys_no" name="fgys_no" placeholder="请填写供应商编码"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fgys_name">供应商名称<i style="color:red;">*</i></label>
+                        <input type="text" id="fgys_name" name="fgys_name" placeholder="请填写供应商名称"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="famount">金额(元)</label>
+                        <input type="number" id="famount" name="famount" placeholder="请填写金额"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fremark">备注</label>
+                        <input type="text" id="fremark" name="fremark" placeholder="请填写备注"/>
+                    </div>
+                  
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_gys" style="margin-top:0.5rem;">
+                添加供应商信息
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div id="mxlist_bjb" >
+               
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_bjb" style="margin-top:0.5rem;display:none;">
+               添加比价部审核意见
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-input-row">
+                 <label for="fhj_shjg">审核价格合计</label>
+                 <input type="number" id="fhj_shjg" name="fhj_shjg" readonly="readonly" value="0"/>  
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\01跨子公司\\CG采购', '医用制品集团低值易耗品采购申请');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fname">申请人<i style="color:red;">*</i></label>
+               <input type="text" id="fname" name="fname" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">提报公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" placeholder="请填写提报公司"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">提报部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept"  placeholder="请填写提报部门"/>
+            </div>
+            <div class="mui-input-row">
+                 <label for="fno">申请人账号<i style="color:red;">*</i></label>
+                <input type="text" id="fno" name="fno" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fsys">所属系统<i style="color:red;">*</i></label>
+                <input type="text" id="fsys" name="fsys" readonly="readonly" placeholder="请选择所属系统"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fifcwd">是否财务</label>
+                <input type="hidden" id="fifcw" name="fifcw" value="否"/>
+                <div class="mui-switch mui-switch-blue" id="fifcwd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fpower">权限描述</label>
+                <textarea rows="8" id="fdescription" name="fdescription" placeholder="请填写权限描述"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>  
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\07房地产集团\\01跨子公司\\XX信息管理', '房地产集团信息系统权限申请');
+            prepMsg();
+            getBPMParam();
+            upload();
+            watch();
+        });
+
+
+        mui('#fifcwd').each(function () {
+
+
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+
+                    $('#fifcw').val('是');
+                } else {
+
+                    $('#fifcw').val('否');
+                }
+
+            });
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + ' <Requests>';
+            xml = xml + '    <Params>';
+            xml = xml + '   <Method>GetFormPostData</Method>';
+            xml = xml + '  <ProcessName>房地产集团信息系统权限申请</ProcessName>';
+            xml = xml + ' <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '   <Owner></Owner>';
+            xml = xml + '   </Params>';
+            xml = xml + '</Requests>';
+            var initHeaderMsg = $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.fname);
+                $("#fno").val(item.fno);
+                $("#fdept").val(item.fdept);
+               
+
+
+            }).fail(function (e) {
+
+            });
+        }
+
+        function tapEvent() {
+            var fsysdata = [
+                {
+                    value: '',
+                    text:'K3ERP'
+                },
+                {
+                    value: '',
+                    text: '威高网络'
+                },
+                {
+                    value: '',
+                    text: '云办公'
+                },
+                {
+                    value: '',
+                    text: '企业邮箱'
+                }
+            ];
+            showPicker('fsys', fsysdata);
+        }
+
+
+        function Save() {
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val();
+            var fcompany = $("#fcompany").val();
+            var fdept = $("#fdept").val();
+            var fno = $("#fno").val();
+            var fsys = $("#fsys").val();
+            var fifcw = $("#fifcw").val();
+            var fdescription = $("#fdescription").val();
+
+            console.log((Array.prototype.slice.call(fdept)).length);
+            //debugger;
+            if ((Array.prototype.slice.call(fdept)).length > 10) {
+                mui.toast('BPM提报部门字数限制为10，请酌情减少字段');
+                return;
+            }
+
+            if (!fcompany) {
+                mui.toast('请填写提报公司');
+                return null;
+            }
+            if (!fdept) {
+                mui.toast('请填写提报部门');
+                return null;
+            }
+            if (!fsys) {
+                mui.toast('请选择所属系统');
+                return null;
+            }
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '      <Header>';
+                    xml = xml + '       <Method>Post</Method>';
+                    xml = xml + '        <ProcessName>房地产集团信息系统权限申请</ProcessName>';
+                    xml = xml + '        <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '       <DraftGuid></DraftGuid>';
+                    xml = xml + '        <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '         <Action>提交</Action>';
+                    xml = xml + '         <Comment></Comment>';
+                    xml = xml + '         <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '     </Header>';
+                    xml = xml + '     <FormData>';
+                    xml = xml + '<BPM_FdcAuthorityApply_A>';
+                    xml = xml + ' <fbillno>自动生成</fbillno>';
+                    xml = xml + '  <fname>' + fname + '</fname>';
+                    xml = xml + '  <fdate>' + fdate + '</fdate>';
+                    xml = xml + '  <fcompany>' + fcompany + '</fcompany>';
+                    xml = xml + '  <fdept>' + fdept + '</fdept>';
+                    xml = xml + '  <fno>' + fno + '</fno>';
+                    xml = xml + '  <fsys>' + fsys + '</fsys>';
+                    xml = xml + '  <fifcw>' + fifcw + '</fifcw>';
+                    xml = xml + '  <fdescription>' + fdescription + '</fdescription>';
+                    if (fjArray.length != 0) {
+                        xml = xml + '  <fj>' + fjArray.toString().replace(",", ";") + '</fj>';
+                    } else {
+                        xml = xml + '  <fj></fj>';
+                    }
+
+                    xml = xml + ' </BPM_FdcAuthorityApply_A>';
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿.historyli {
+    padding-left: 0rem;
+    left: 0rem;
+}
+
+
+.list {
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+    .list li {
+        position: relative;
+        border-left: 1px solid #b1b1b1;
+    }
+
+        .list li:last-child {
+            border-left: none;
+        }
+
+#signff {
+    list-style: none;
+    padding-left: 0rem;
+    left: 0rem;
+}
+
+#signff >i {
+    display: inline-block;
+    font-size: 0rem;
+    vertical-align: top;
+}
+
+.lefttime {
+    display: inline-block;
+    width: 4rem;
+    padding-left: 1rem;
+    font-size: 0.7rem;
+    float: left;
+    position: relative;
+    top: -0.5rem;
+}
+
+    .lefttime i {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: #0099ff;
+        position: absolute;
+        left: -0.25rem;
+        top: 0.35rem;
+    }
+
+.righttext {
+    margin-left: 5.5rem;
+    position: relative;
+    top: -0.5rem;
+}
+
+    .righttext > div {
+        padding-bottom: 0.8rem;
+    }
+
+.flowmsg {
+    color: #00a0ea;
+    font-size: 0.65rem;
+}
+
+    .flowmsg > span {
+        color: #000000;
+        padding-left: 0.8rem;
+    }
+
+.flowstatus {
+    color: #e8382b;
+    /*padding-left: 0.4rem;*/
+}
+
+.signadd {
+    color: #fea900;
+}
+
+.adi {
+    font-size: 0.65rem;
+}
+
+.bgc {
+    color: white;
+    background-color: #00a0ea;
+}
+.hrefin {
+    color: #36A3CA;
+}
+.adjla {
+    /*margin-top:0.4rem;*/
+    border: groove;
+    border-color: #5191FD;
+    border-width: 0.01rem;
+}

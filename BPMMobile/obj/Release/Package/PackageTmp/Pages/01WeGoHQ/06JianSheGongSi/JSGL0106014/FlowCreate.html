@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">报销人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+                <input type="hidden" id="fno" name="fno" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报销日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">部门名称</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">公司名称</label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ffyxm">费用项目<i style="color:red;">*</i></label>
+                <input type="text" id="ffyxm" name="ffyxm" readonly="readonly" placeholder="请选择费用项目"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal">总报销金额</label>
+                <input type="number" id="ftotal" name="ftotal" readonly="readonly" value="0.00"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftotal_dx">大写金额<i style="color:red;">*</i></label>
+                <input type="text" id="ftotal_dx" name="ftotal_dx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                 <label for="fbz">备注</label>
+                <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>
+            </div>
+            <div id="group_tel" style="display:none;">
+                <div id="mxlist_tel">
+
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_tel" style="margin-top:0.5rem;">
+                    添加手机费报销明细(元)
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+                <div class="mui-card mui-input-group">
+                    <div class="mui-input-row">
+                        <label for="ftotal_tel">合计金额</label>
+                        <input type="number" id="ftotal_tel" name="ftotal_tel" readonly="readonly" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="ftotal_tel_dx">大写金额</label>
+                        <input type="text" id="ftotal_tel_dx" name="ftotal_tel_dx" readonly="readonly" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fdjs_tel">单据数<i style="color:red;">*</i></label>
+                        <input type="number" id="fdjs_tel" name="fdjs_tel" placeholder="请填写单据数" />
+                    </div>
+                </div>
+            </div>
+           <div id="group_oil" style="display:none;">
+               <div id="mxlist_oil">
+
+               </div>
+               <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_oil" style="margin-top:0.5rem;">
+                   添加燃油费报销明细(元)
+                   <span class="mui-icon mui-icon-plusempty"></span>
+               </a>
+               <div class="mui-card mui-input-group">
+                   <div class="mui-input-row">
+                       <label for="ftotal_oil">合计金额</label>
+                       <input type="number" id="ftotal_oil" name="ftotal_oil" readonly="readonly" />
+                   </div>
+                   <div class="mui-input-row">
+                       <label for="ftotal_oil_dx">大写金额</label>
+                       <input type="text" id="ftotal_oil_dx" name="ftotal_oil_dx" readonly="readonly" />
+                   </div>
+                   <div class="mui-input-row">
+                       <label for="fdjs_oil">单据数<i style="color:red;">*</i></label>
+                       <input type="number" id="fdjs_oil" name="fdjs_oil" placeholder="请填写单据数" />
+                   </div>
+               </div>
+           </div>
+           
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">票据<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\06建设公司\\建设管理平台', '建设公司手机燃油费报销');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

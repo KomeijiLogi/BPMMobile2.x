@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fgroup">所属集团<i style="color:red;">*</i></label>
+                <input type="text" id="fgroup" name="fgroup" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcompany">所在公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcompany" name="fcompany" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fywlx">业务类型<i style="color:red;">*</i></label>
+                <input type="text" id="fywlx" name="fywlx" readonly="readonly" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="ferp">ERP系统<i style="color:red;">*</i></label>
+                <input type="text" id="ferp" name="ferp" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fmail">企业邮箱<i style="color:red;">*</i></label>
+                <input type="text" id="fmail" name="fmail" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcwgw">财务岗位<i style="color:red;">*</i></label>
+                <input type="text" id="fcwgw" name="fcwgw" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none" id="gwlx">
+                <label for="fgwlx">岗位类型</label>
+                <input type="text" id="fgwlx" name="fgwlx" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsysno">资金系统用户名</label>
+                <input type="text" id="fsysno" name="fsysno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkeyno">key编号</label>
+                <input type="text" id="fkeyno" name="fkeyno" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fcwjl">财务经理<i style="color:red;">*</i></label>
+                <input type="text" id="fcwjl" name="fcwjl" readonly="readonly" />
+                <input type="text" hidden="hidden" id="fcwjlno" name="fcwjlno" />
+            </div>
+
+            <div class="mui-input-row">
+                <label for="fxqms">资金系统业务需求描述<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fxqms" name="fxqms"></textarea>
+            </div>
+            <div class="mui-input-group" id="fgwml" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">资金系统岗位目录<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjszdg">结算制单岗</label>
+                    <input id="fjszdg" name="fjszdg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjsshg">结算审核岗</label>
+                    <input id="fjsshg" name="fjsshg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fpjzdg">票据制单岗</label>
+                    <input id="fpjzdg" name="fpjzdg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fpjshg">票据审核岗</label>
+                    <input id="fpjshg" name="fpjshg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhzdg">资金计划制单岗</label>
+                    <input id="fzjjhzdg" name="fzjjhzdg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhshg">资金计划审核岗</label>
+                    <input id="fzjjhshg" name="fzjjhshg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhcxg">资金计划查询岗</label>
+                    <input id="fzjjhcxg" name="fzjjhcxg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjscxg">资金结算查询岗</label>
+                    <input id="fzjjscxg" name="fzjjscxg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjpjcxg">资金票据查询岗</label>
+                    <input id="fzjpjcxg" name="fzjpjcxg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fdwpjspg">单位票据审批岗</label>
+                    <input id="fdwpjspg" name="fdwpjspg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fdwfkspg">单位付款审批岗</label>
+                    <input id="fdwfkspg" name="fdwfkspg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fscfgsjs">市场分公司结算制单岗</label>
+                    <input id="fscfgsjs" name="fscfgsjs" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjtjhspg">集团计划审批岗岗</label>
+                    <input id="fjtjhspg" name="fjtjhspg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjtfkspg">集团付款审批岗</label>
+                    <input id="fjtfkspg" name="fjtfkspg" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fndzjyslr">年度资金预算录入</label>
+                    <input id="fndzjyslr" name="fndzjyslr" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fndzjyssh">年度资金预算审核</label>
+                    <input id="fndzjyssh" name="fndzjyssh" value="" type="checkbox" disabled="disabled" />
+                </div>
+            </div>
+            <div class="mui-input-group" id="fgwmlx" style="display:none;">
+                <div class="mui-input-row">
+                    <label style="width:100%">变更后岗位目录<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjszdg1">结算制单岗</label>
+                    <input id="fjszdg1" name="fjszdg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjsshg1">结算审核岗</label>
+                    <input id="fjsshg1" name="fjsshg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fpjzdg1">票据制单岗</label>
+                    <input id="fpjzdg1" name="fpjzdg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fpjshg1">票据审核岗</label>
+                    <input id="fpjshg1" name="fpjshg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhzdg1">资金计划制单岗</label>
+                    <input id="fzjjhzdg1" name="fzjjhzdg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhshg1">资金计划审核岗</label>
+                    <input id="fzjjhshg1" name="fzjjhshg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjhcxg1">资金计划查询岗</label>
+                    <input id="fzjjhcxg1" name="fzjjhcxg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjjscxg1">资金结算查询岗</label>
+                    <input id="fzjjscxg1" name="fzjjscxg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fzjpjcxg1">资金票据查询岗</label>
+                    <input id="fzjpjcxg1" name="fzjpjcxg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fdwpjspg1">单位票据审批岗</label>
+                    <input id="fdwpjspg1" name="fdwpjspg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fdwfkspg1">单位付款审批岗</label>
+                    <input id="fdwfkspg1" name="fdwfkspg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fscfgsjs1">市场分公司结算制单岗</label>
+                    <input id="fscfgsjs1" name="fscfgsjs1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjtjhspg1">集团计划审批岗岗</label>
+                    <input id="fjtjhspg1" name="fjtjhspg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fjtfkspg1">集团付款审批岗</label>
+                    <input id="fjtfkspg1" name="fjtfkspg1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fndzjyslr1">年度资金预算录入</label>
+                    <input id="fndzjyslr1" name="fndzjyslr1" value="" type="checkbox" disabled="disabled" />
+                </div>
+                <div class="mui-input-row mui-checkbox mui-disabled">
+                    <label for="fndzjyssh1">年度资金预算审核</label>
+                    <input id="fndzjyssh1" name="fndzjyssh1" value="" type="checkbox" disabled="disabled" />
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"> </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getTaskMsg();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '刷新', 'callBackId': 'callback2' }
+
+            ],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+
+
+                            });
+
+
+                        }
+
+
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    window.location.reload();
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+
+                    var item = data.FormDataSet.BPM_CWGSQXSQ[0];
+                    $("#taskId").val(item.TaskID);
+                    $("#fname").val(item.fname);
+                    $("#fgroup").val(item.fgroup);
+                    $("#fcompany").val(item.fcompany);
+                    $("#fdate").val(FormatterTimeYMS(item.fdate));
+                    $("#fywlx").val(item.fywlx);
+                    $("#ferp").val(item.ferp);
+                    $("#fmail").val(item.fmail);
+                    $("#ftel").val(item.ftel);
+                    $("#fcwgw").val(item.fcwgw);
+                    $("#fgwlx").val(item.fgwlx);
+                    $("#fsysno").val(item.fsysno);
+                    $("#fkeyno").val(item.fkeyno);
+                    $("#fcwjl").val(item.fcwjl);
+                    $("#fxqms").val(item.fxqms);
+                    $("#fcwjlno").val(item.fcwjlno);
+                    if (item.fywlx == "新增权限") {
+                        $("#fgwml").css("display", "block");
+                        $("#fgwmlx").css("display", "none");
+                        $("#gwlx").css("display", "none");
+                    } else if (item.fywlx == "变更权限") {
+                        $("#fgwml").css("display", "block");
+                        $("#fgwmlx").css("display", "block");
+                        $("#gwlx").css("display", "block");
+                    } else {
+                        $("#fgwml").css("display", "none");
+                        $("#fgwmlx").css("display", "none");
+                        $("#gwlx").css("display", "none");
+                    }
+
+                    var fgwmlStr = String(item.fgwml).split(",");
+                    for (var i = 0; i < fgwmlStr.length; i++) {
+                        if (fgwmlStr[i] == "结算制单岗") {
+                            $("#fjszdg").val(fgwmlStr[i]);
+                            $("#fjszdg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "结算审核岗") {
+                            $("#fjsshg").val(fgwmlStr[i]);
+                            $("#fjsshg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "票据制单岗") {
+                            $("#fpjzdg").val(fgwmlStr[i]);
+                            $("#fpjzdg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "票据审核岗") {
+                            $("#fpjshg").val(fgwmlStr[i]);
+                            $("#fpjshg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "资金计划制单岗") {
+                            $("#fzjjhzdg").val(fgwmlStr[i]);
+                            $("#fzjjhzdg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "资金计划审核岗") {
+                            $("#fzjjhshg").val(fgwmlStr[i]);
+                            $("#fzjjhshg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "资金计划查询岗") {
+                            $("#fzjjhcxg").val(fgwmlStr[i]);
+                            $("#fzjjhcxg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "资金结算查询岗") {
+                            $("#fzjjscxg").val(fgwmlStr[i]);
+                            $("#fzjjscxg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "资金票据查询岗") {
+                            $("#fzjpjcxg").val(fgwmlStr[i]);
+                            $("#fzjpjcxg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "单位票据审批岗") {
+                            $("#fdwpjspg").val(fgwmlStr[i]);
+                            $("#fdwpjspg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "单位付款审批岗") {
+                            $("#fdwfkspg").val(fgwmlStr[i]);
+                            $("#fdwfkspg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "市场分公司结算制单岗") {
+                            $("#fscfgsjs").val(fgwmlStr[i]);
+                            $("#fscfgsjs").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "集团计划审批岗") {
+                            $("#fjtjhspg").val(fgwmlStr[i]);
+                            $("#fjtjhspg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "集团付款审批岗") {
+                            $("#fjtfkspg").val(fgwmlStr[i]);
+                            $("#fjtfkspg").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "年度资金预算录入") {
+                            $("#fndzjyslr").val(fgwmlStr[i]);
+                            $("#fndzjyslr").attr("checked", "checked");
+                        } else if (fgwmlStr[i] == "年度资金预算审核") {
+                            $("#fndzjyssh").val(fgwmlStr[i]);
+                            $("#fndzjyssh").attr("checked", "checked");
+                        }
+                    }
+                    var fgwmlxStr = String(item.fgwmlx).split(",");
+                    for (var i = 0; i < fgwmlxStr.length; i++) {
+                        if (fgwmlxStr[i] == "结算制单岗") {
+                            $("#fjszdg1").val(fgwmlxStr[i]);
+                            $("#fjszdg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "结算审核岗") {
+                            $("#fjsshg1").val(fgwmlxStr[i]);
+                            $("#fjsshg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "票据制单岗") {
+                            $("#fpjzdg1").val(fgwmlxStr[i]);
+                            $("#fpjzdg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "票据审核岗") {
+                            $("#fpjshg1").val(fgwmlxStr[i]);
+                            $("#fpjshg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "资金计划制单岗") {
+                            $("#fzjjhzdg1").val(fgwmlxStr[i]);
+                            $("#fzjjhzdg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "资金计划审核岗") {
+                            $("#fzjjhshg1").val(fgwmlxStr[i]);
+                            $("#fzjjhshg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "资金计划查询岗") {
+                            $("#fzjjhcxg1").val(fgwmlxStr[i]);
+                            $("#fzjjhcxg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "资金结算查询岗") {
+                            $("#fzjjscxg1").val(fgwmlxStr[i]);
+                            $("#fzjjscxg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "资金票据查询岗") {
+                            $("#fzjpjcxg1").val(fgwmlxStr[i]);
+                            $("#fzjpjcxg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "单位票据审批岗") {
+                            $("#fdwpjspg1").val(fgwmlxStr[i]);
+                            $("#fdwpjspg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "单位付款审批岗") {
+                            $("#fdwfkspg1").val(fgwmlxStr[i]);
+                            $("#fdwfkspg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "市场分公司结算制单岗") {
+                            $("#fscfgsjs1").val(fgwmlxStr[i]);
+                            $("#fscfgsjs1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "集团计划审批岗") {
+                            $("#fjtjhspg1").val(fgwmlxStr[i]);
+                            $("#fjtjhspg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "集团付款审批岗") {
+                            $("#fjtfkspg1").val(fgwmlxStr[i]);
+                            $("#fjtfkspg1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "年度资金预算录入") {
+                            $("#fndzjyslr1").val(fgwmlxStr[i]);
+                            $("#fndzjyslr1").attr("checked", "checked");
+                        } else if (fgwmlxStr[i] == "年度资金预算审核") {
+                            $("#fndzjyssh1").val(fgwmlxStr[i]);
+                            $("#fndzjyssh1").attr("checked", "checked");
+                        }
+                    }
+
+                    for (var i = 0; i < data.Steps.length; i++) {
+
+                        if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                            data.Steps[i].FinishAt = "";
+                        }
+                        var time = FormatterTime(data.Steps[i].FinishAt);
+
+                        var stepName = data.Steps[i].NodeName;
+                        if (data.Steps[i].NodeName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.Steps[i].NodeName == "开始") {
+                            stepName = "开始";
+                        }
+
+                        var stepAction = locationAction(data.Steps[i].SelAction);
+                        if (data.Steps[i].SelAction == "sysInform") {
+                            stepAction = "发起知会";
+                        } else if (data.Steps[i].SelAction == "Submit") {
+                            stepAction = "已阅";
+                        } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                            stepAction = "待处理";
+                        } else if (data.Steps[i].SelAction == "sysReject") {
+                            stepAction = "拒绝";
+                        } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                            stepAction = "退回重填";
+                        }
+
+
+                        var contents = data.Steps[i].Comments;
+                        if (contents == null) {
+                            contents = "无";
+                        }
+                        //判断是否是加签
+                        if (data.Steps[i].IsConsignStep == false) {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        } else {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        }
+                        $("#signff").append(li);
+                    }
+
+                }, error: function (e) {
+
+                }, complete: function () {
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>

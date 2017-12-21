@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <!--<script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css"/>
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;">
+            <div class="mui-input-row">
+                <label>员工姓名</label>
+                <input type="text"  id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" >
+                <label>员工工号</label>
+                <input type="text"  id="fno" name="fno" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>起始时间</label>
+                <input type="date" placeholder="起始时间信息"  id="fstartdate" name="fstartdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>终止时间</label>
+                <input type="date" placeholder="终止时间信息"  id="foverdate" name="foverdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" >
+                <label>年度</label>
+                <input type="text"  id="fyear" name="fyear" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" >
+                <label>月度</label>
+                <input type="text"  id="fmonth" name="fmonth" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" >
+                <label>周</label>
+                <input type="number"  id="fweek" name="fweek" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>工作内容记录</label>
+                <textarea rows="8" id="fnrjl" name="fnrjl" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>存在问题及改进思路</label>
+                <textarea rows="8" id="fgjsl" name="fgjsl" readonly="readonly"></textarea>
+            </div>
+
+            <div class="mui-input-row">
+                <label>自我评价<i style="color:red;">*</i></label>
+                <input value="" id="zwpjg" name="zwpjg" type="text" readonly="readonly" class="adi"  />
+            </div>
+
+            <div class="mui-input-row">
+                <label>经理评价<i style="color:red;">*</i></label>
+                <input value="" id="jlpjg" name="jlpjg" type="text" readonly="readonly" class="adi"  />
+            </div>
+
+            <div class="mui-input-row">
+                <label>总监评价<i style="color:red;">*</i></label>
+                <input value="" id="zjpjg" name="zjpjg" type="text" readonly="readonly" class="adi"  />
+            </div>
+
+            <!--<div class="mui-input-group">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell mui-collapse">
+                        <a class="mui-navigate-right" href="#">自我评价
+                            <input id="zwpji" name="zwpji" class="mui-pull-right adi" readonly="readonly" value="" />
+                        </a>
+                        <div class="mui-collapse-content">
+
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>优秀</label>
+                                <input type="radio" name="zwpj" value="优秀"  class="zwpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>良好</label>
+                                <input type="radio" name="zwpj" value="良好" class="zwpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>中等</label>
+                                <input type="radio" name="zwpj" value="中等" class="zwpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>一般</label>
+                                <input type="radio" name="zwpj" value="一般" class="zwpj"/>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="mui-input-group">
+
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell mui-collapse">
+                        <a class="mui-navigate-right" href="#">经理评价
+                            <input id="jlpji" name="jlpji" class="mui-pull-right adi" readonly="readonly" value="" />
+                        </a>
+                        <div class="mui-collapse-content">
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>优秀</label>
+                                <input type="radio" name="jlpj" value="优秀"  class="jlpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>良好</label>
+                                <input type="radio" name="jlpj" value="良好" class="jlpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>中等</label>
+                                <input type="radio" name="jlpj" value="中等" class="jlpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>一般</label>
+                                <input type="radio" name="jlpj" value="一般" class="jlpj"/>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </div>-->
+
+            <!--<div class="mui-input-group">
+
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell mui-collapse">
+                        <a class="mui-navigate-right" href="#">总监评价
+                            <input id="zjpji" name="zjpji" class="mui-pull-right adi" readonly="readonly" value="" />
+                        </a>
+                        <div class="mui-collapse-content">
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>优秀</label>
+                                <input type="radio" name="zjpj" value="优秀" class="zjpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>良好</label>
+                                <input type="radio" name="zjpj" value="良好" class="zjpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>中等</label>
+                                <input type="radio" name="zjpj" value="中等" class="zjpj"/>
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>一般</label>
+                                <input type="radio" name="zjpj" value="一般" class="zjpj"/>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>-->
+
+
+            <div class="mui-input-row" style="height:auto;">
+                <label>改进意见(部门经理)</label>
+                <textarea rows="5" id="fgjjy_manager" name="fgjjy_manager" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>改进意见(总监)</label>
+                <textarea rows="5" id="fgjjy_director" name="fgjjy_director" readonly="readonly"></textarea>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                            <!--<li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="lefttime"><i></i>05-19 08:06</span>
+                            <div class="righttext">
+                                <div>
+                                    <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                    <p>签核意见</p>
+                                </div>
+                            </div>
+                        </li>-->
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+           
+            getTaskMsg();
+         
+            
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+
+        var noticeOpenIdArr;
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [
+                { 'text': '知会', 'callBackId': 'callback1' },
+                { 'text': '重新发起', 'callBackId': 'callback2' },
+                { 'text': '刷新', 'callBackId': 'callback3' }
+            ],
+            'menuList': [
+               'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+
+                    XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                        if (typeof (result) == "string") {
+                            result = JSON.parse(result);
+                        }
+
+
+                        noticeOpenIdArr = new Array();
+                        if (result.success == true || result.success == "true") {
+
+                            for (var i = 0; i < result.data.persons.length; i++) {
+
+                                noticeOpenIdArr.push(result.data.persons[i].openId);
+
+                            }
+                            $("#noticeOpenId").val(noticeOpenIdArr);
+                            //知会
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/PostAccount",
+                                data: { "ids": noticeOpenIdArr },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                }, success: function (data, status) {
+
+                                    if (status == "success") {
+                                        var accounts = new Array();
+                                        var accName = new Array();
+                                        for (var i = 0; i < data.data.length; i++) {
+                                            accounts.push((String)(data.data[i].phone));
+                                            accName.push(data.data[i].name);
+                                        }
+                                        //alert(JSON.stringify({ 'taskID': taskId, 'comments': '', 'accounts': accounts }));
+
+                                        var btnArry = ["取消", "确定"];
+                                        mui.confirm('将知会下列人员:' + accName, '知会通知', btnArry, function (e) {
+                                            if (e.index == 1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/api/bpm/PostInform",
+                                                    data: { 'taskID': taskId, 'comments': '', 'accounts': accounts },
+                                                    dataType: "json",
+                                                    beforeSend: function (XHR) {
+
+                                                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                                    },
+                                                    success: function (data, status) {
+
+                                                        if (status == "success") {
+                                                            mui.toast("知会成功");
+                                                        }
+                                                    }, error: function (e) {
+                                                        //console.log(e);  
+
+                                                    },
+                                                    complete: function () { }
+
+
+                                                });
+                                            } else {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }, error: function (e) {
+
+                                }, complete: function () { }
+                                
+
+                            });
+
+
+                        }
+
+                        
+
+                    });
+
+                } else if (callBackId == 'callback2') {
+                    var msg = JSON.stringify({
+                        "fname": $("#fname").val(),
+                        "fno": $("#fno").val(),
+                        "fstartdate": FormatterTimeYMS($("#fstartdate").val()),
+                        "foverdate": FormatterTimeYMS($("#foverdate").val()),
+                        "fyear": $("#fyear").val(),
+                        "fmonth": $("#fmonth").val(),
+                        "fweek": $("#fweek").val(),
+                        "fnrjl": $("#fnrjl").val(),
+                        "fgjsl": $("#fgjsl").val()
+                    });
+                    localStorage.setItem("BPM_ZGZHBMsg", msg);
+                    setTimeout("window.location.href = '/Pages/WeeklyFlow/FlowCreate.html?reset=true'", 1000);
+                } else if (callBackId == 'callback3') {
+                    window.location.reload();
+                    
+                }
+            }
+
+        });
+       
+        var taskId;
+        function getTaskMsg() {
+
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+
+                    var item = data.FormDataSet.BPM_周工作汇报[0];
+
+                    $("#fname").val(item.姓名);
+                    $("#fno").val(item.工号);
+                    $("#fdept").val(item.部门);
+                    $("#fstartdate").val(FormatterTimeYMS(item.开始日期));
+                    $("#foverdate").val(FormatterTimeYMS(item.结束日期));
+                    $("#fyear").val(item.年);
+                    $("#fmonth").val(item.月);
+                    $("#fweek").val(item.周);
+                    $("#fnrjl").val(item.工作内容);
+                    $("#fgjsl").val(item.存在问题);
+                    $("#stepId").val(stepId);
+                    $("#taskId").val(item.TaskID);
+                    //$("#fbillno").val(item.fbillno);
+                    $("#zwpjg").val(item.自我评价);
+                    $("#jlpjg").val(item.经理评价);
+                    $("#zjpjg").val(item.总监评价);
+
+
+                    $("#fgjjy_manager").val(item.经理意见);
+                    $("#fgjjy_director").val(item.总监意见);
+                   
+
+                   
+                    for (var i = 0; i < data.Steps.length;i++){
+
+                      
+
+                            if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                                data.Steps[i].FinishAt = "";
+                            }
+                            var time = FormatterTime(data.Steps[i].FinishAt);
+
+                            var stepName = data.Steps[i].NodeName;
+                            if (data.Steps[i].NodeName == "sysInform") {
+                                stepName = "知会";
+                            } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                                stepName = "任务操作";
+                            } else if (data.Steps[i].NodeName == "开始") {
+                                stepName = "开始";
+                            }
+
+                            var stepAction = locationAction(data.Steps[i].SelAction);
+                            if (data.Steps[i].SelAction == "sysInform") {
+                                stepAction = "发起知会";
+                            } else if (data.Steps[i].SelAction == "Submit") {
+                                stepAction = "已阅";
+                            } else if (data.Steps[i].SelAction == "null" || data.Steps[i].SelAction == null) {
+                                stepAction = "待处理";
+                            } else if (data.Steps[i].SelAction == "sysReject") {
+                                stepAction = "拒绝";
+                            } else if (data.Steps[i].SelAction == "sysRecedeRestart") {
+                                stepAction = "退回重填";
+                            }
+
+
+                            var contents = data.Steps[i].Comments;
+                            if (contents == null) {
+                                contents = "无";
+                            }
+                            //判断是否是加签
+                            if (data.Steps[i].IsConsignStep == false) {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            } else {
+                                var li = ' <li>';
+                                li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                                li = li + '  <div class="righttext">';
+                                li = li + '     <div>';
+                                li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                                li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                                li = li + '        <p>签核意见: ' + contents + '</p>';
+                                li = li + '     </div>';
+                                li = li + '   </div>';
+                                li = li + '</li>';
+
+                            }
+                            $("#signff").append(li);
+                        }
+                    
+                }, error: function (e) {
+                    console.log(e);
+
+                }, complete: function () {
+
+                }
+
+
+            });
+
+        }
+
+
+
+        function FormatterTimeT(time) {
+            var time = String(time);
+            var ymd = time.substring(0, time.indexOf(" "));
+            return ymd;
+        }
+   
+    </script>
+</body>
+
+</html>

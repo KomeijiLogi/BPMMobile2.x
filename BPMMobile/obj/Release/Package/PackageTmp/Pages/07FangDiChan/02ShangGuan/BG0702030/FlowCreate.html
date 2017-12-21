@@ -1,0 +1,535 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" /></head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="flx">类型</label>
+                <input type="text" id="flx" name="flx" readonly="readonly" placeholder="请选择类型"/>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加人员明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司员工云办公、BPM账号申请');
+            prepMsg();
+            getBPMParam();
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+        function tapEvent() {
+
+            var flxdata = [
+                {
+                    value: '',
+                    text:'新增'
+                },
+                {
+                    value: '',
+                    text:'离职'
+                },
+                {
+                    value: '',
+                    text:'调转'
+                }
+
+            ];
+            
+
+            var element = document.getElementById('flx');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(flxdata);
+
+            element.addEventListener('tap', function () {
+                var flx = $("#flx").val();
+                console.log(flx);
+                if (flx=='') {
+                    picker.show(function (items) {
+
+                        element.value = items[0].text;
+                    });
+                } else {
+                    var btnArry = ["取消", "确定"];
+                    mui.confirm('改变类型会导致列表清空，是否确定？', '确认提醒', btnArry, function (e) {
+                        if (e.index == 1) {
+                           
+                            picker.show(function (items) {
+                               
+                                element.value = items[0].text;
+                                
+                                if (flx != items[0].text) {
+                                    $("#mxlist").empty();
+                                }
+                            });
+                        }
+                    });
+
+                }
+                
+
+            }, false);
+
+
+
+
+            var fsqxtdata = [
+                {
+                    value: '',
+                    text:'云办公'
+                },
+                {
+                    value: '',
+                    text:'BPM'
+                },
+                {
+                    value: '',
+                    text:'云办公和BPM'
+                }
+
+            ];
+
+            $("#tjmx").on('tap', function () {
+                var flx = $("#flx").val();
+               
+                if (String(flx).indexOf("新增") != -1) {
+                    var li = '  <div id="mx" class="mui-card">';
+                    li = li + '    <div class="mui-input-row itemtitle">';
+                    li = li + '       <label>明细列表项</label>';
+                    li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '       <label for="fsqxt">申请系统<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="text" id="fsqxt" name="fsqxt" placeholder="请选择申请系统" readonly="readonly"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '        <label for="fssbm">所属部门<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fssbm" name="fssbm" placeholder="请填写所属部门" />';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '         <label for="fygh">员工工号<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="fygh" name="fygh" placeholder="请填写员工工号" />';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fygname">员工姓名<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fygname" name="fygname" placeholder="请填写员工姓名"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fzw">员工职位<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fzw" name="fzw" placeholder="请填写员工职位"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fzjsj">部门经理姓名<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fzjsj" name="fzjsj" placeholder="请填写部门经理姓名"/>';
+                    li = li + '     </div>';
+                    li = li + '</div>';
+                    $("#mxlist").append(li);
+                    document.getElementById('tjmx').scrollIntoView();
+                    showPickerByZepto('#mxlist', '#fsqxt', fsqxtdata);
+
+                } else if (String(flx).indexOf("离职") != -1) {
+                    var li = '  <div id="mx" class="mui-card">';
+                    li = li + '    <div class="mui-input-row itemtitle">';
+                    li = li + '       <label>明细列表项</label>';
+                    li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '       <label for="fsqxt">申请系统<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="text" id="fsqxt" name="fsqxt" placeholder="请选择申请系统" readonly="readonly"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '        <label for="fssbm">所属部门<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fssbm" name="fssbm" placeholder="请填写所属部门" />';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '         <label for="fygh">员工工号<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="fygh" name="fygh" placeholder="请填写员工工号" />';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fygname">员工姓名<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fygname" name="fygname" placeholder="请填写员工姓名"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fzw">员工职位<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fzw" name="fzw" placeholder="请填写员工职位"/>';
+                    li = li + '     </div>';
+                    li = li + '     <div class="mui-input-row">';
+                    li = li + '          <label for="fzjsj">部门经理姓名<i style="color:red;">*</i></label>';
+                    li = li + '          <input type="text" id="fzjsj" name="fzjsj" placeholder="请填写部门经理姓名"/>';
+                    li = li + '     </div>';
+                    li = li + '</div>';
+                    $("#mxlist").append(li);
+                    document.getElementById('tjmx').scrollIntoView();
+                    showPickerByZepto('#mxlist', '#fsqxt', fsqxtdata);
+                } else if (String(flx).indexOf("调转") != -1) {
+                    var li = '  <div id="mx" class="mui-card">';
+                    li = li + '    <div class="mui-input-row itemtitle">';
+                    li = li + '       <label>明细列表项</label>';
+                    li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '    </div>';
+                    li = li + '    <div class="mui-input-row">';
+                    li = li + '        <label for="fssxt">所属系统<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fssxt" name="fssxt" placeholder="请填写所属系统"/>';
+                    li = li + '    </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fno">员工工号<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fno" name="fno" placeholder="请填写员工工号"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fname">员工姓名<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fname" name="fname" placeholder="请填写员工姓名"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fdcbm">调出部门<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fdcbm" name="fdcbm" placeholder="请填写调出部门"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '       <label for="fyzw">原职位<i style="color:red;">*</i></label>';
+                    li = li + '       <input type="text" id="fyzw" name="fyzw" placeholder="请填写原职位"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fdrbm">调入部门<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fdrbm" name="fdrbm" placeholder="请填写调入部门 "/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fnrzw">拟任职位<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fnrzw" name="fnrzw" placeholder="请填写拟任职位"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row" style="height;3.25rem;">';
+                    li = li + '         <label for="fzjsj">调入部门部门经理姓名<i style="color:red;">*</i></label>';
+                    li = li + '         <input type="text" id="fzjsj" name="fzjsj" placeholder="请填写部门经理姓名"/>';
+                    li = li + '   </div>';
+                    li = li + ' </div>';
+                    $("#mxlist").append(li);
+                    document.getElementById('tjmx').scrollIntoView();
+                    showPickerByZepto('#mxlist', '#fssxt', fsqxtdata);
+                } else {
+
+                    mui.toast('请选择类型');
+                }
+        
+            });
+        }
+
+        function mxItemAddOrRemove(fsqxt, fssbm, fygh, fygname, fzw, fzjsj) {
+
+            var mx = new Object;
+            mx.fsqxt = fsqxt;
+            mx.fssbm = fssbm;
+            mx.fygh = fygh;
+            mx.fygname = fygname;
+            mx.fzw = fzw;
+            mx.fzjsj = fzjsj;
+            if (!fsqxt || fsqxt == '') {
+                mui.toast('请选择申请系统');
+                return null;
+            }
+            if (!fssbm || fssbm == '') {
+                mui.toast('请填写所属部门');
+                return null;
+            }
+            if (!fygh || fygh == '') {
+                mui.toast('请填写员工工号');
+                return null;  
+            }
+            if (!fygname || fygname == '') {
+                mui.toast('请填写员工姓名');
+                return null;
+            }
+            if (!fzw || fzw==''){
+                mui.toast('请填写员工职位');
+                return null;
+            }
+            if (!fzjsj || fzjsj == '') {
+                mui.toast('请填写部门经理姓名');
+                return null;
+            }
+            return mx;
+
+        }
+
+        function mxItemChange(fssxt, fno, fname, fdcbm, fyzw, fdrbm, fnrzw, fzjsj) {
+
+            var mx = new Object;
+            mx.fssxt = fssxt;
+            mx.fno = fno;
+            mx.fname = fname;
+            mx.fdcbm = fdcbm;
+            mx.fyzw = fyzw;
+            mx.fdrbm = fdrbm;
+            mx.fnrzw = fnrzw;
+            mx.fzjsj = fzjsj;
+            if (!fssxt || fssxt == '') {
+                mui.toast('请填写所属系统');
+                return null;
+            }
+            if (!fno || fno == '') {
+                mui.toast('请填写员工工号');
+                return null;
+            }
+            if (!fname || fname == '') {
+                mui.toast('请填写员工姓名');
+                return null;
+            }
+            if (!fdcbm || fdcbm == '') {
+                mui.toast('请填写调出部门');
+                return null;
+            }
+            if (!fyzw || fyzw == '') {
+                mui.toast('请填写原职位');
+                return null;
+            }
+            if (!fdrbm || fdrbm == '') {
+                mui.toast('请填写调入部门');
+                return null;
+            }
+            if (!fnrzw || fnrzw == '') {
+                mui.toast('请填写拟任职位');
+                return null;
+            }
+            if (!fzjsj || fzjsj == '') {
+                mui.toast('请填写调入部门部门经理姓名');
+                return null;
+            }
+            return mx;
+
+
+        }
+
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var flx = $("#flx").val();
+            var mxflag = false;
+
+            var mxlistArr_AddOrRemove = new Array();
+            var mxlistArr_Change = new Array();
+            if (String(flx).indexOf("新增") != -1 || String(flx).indexOf("离职") != -1) {
+
+                $("#mxlist").find("#mx").each(function () {
+
+                    var fsqxt = $(this).find("#fsqxt").val();
+                    var fssbm = $(this).find("#fssbm").val();
+                    var fygh = $(this).find("#fygh").val();
+                    var fygname = $(this).find("#fygname").val();
+                    var fzw = $(this).find("#fzw").val();
+                    var fzjsj = $(this).find("#fzjsj").val();
+                    if (mxItemAddOrRemove(fsqxt, fssbm, fygh, fygname, fzw, fzjsj) == null) {
+                        mxflag = true;
+                        return;
+                    }
+                    var mx = mxItemAddOrRemove(fsqxt, fssbm, fygh, fygname, fzw, fzjsj);
+                    mxlistArr_AddOrRemove.push(mx);
+                });
+
+            } else if (String(flx).indexOf("调转") != -1) {
+
+                $("#mxlist").find("#mx").each(function () {
+
+                    var fssxt = $(this).find("#fssxt").val();
+                    var fno = $(this).find("#fno").val();
+                    var fname = $(this).find("#fname").val();
+                    var fdcbm = $(this).find("#fdcbm").val();
+                    var fyzw = $(this).find("#fyzw").val();
+                    var fdrbm = $(this).find("#fdrbm").val();
+                    var fnrzw = $(this).find("#fnrzw").val();
+                    var fzjsj = $(this).find("#fzjsj").val();
+                    if (mxItemChange(fssxt, fno, fname, fdcbm, fyzw, fdrbm, fnrzw, fzjsj) == null) {
+                        mxflag = true;
+                        return;
+                    }
+                    var mx = mxItemChange(fssxt, fno, fname, fdcbm, fyzw, fdrbm, fnrzw, fzjsj);
+                    mxlistArr_Change.push(mx);
+                });
+            } else {
+
+            }
+
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '  <Header>';
+                    xml = xml + '       <Method>Post</Method>';
+                    xml = xml + '        <ProcessName>盛祥商管公司员工云办公、BPM账号申请</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '         <DraftGuid></DraftGuid>';
+                    xml = xml + '         <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '         <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '          <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '      </Header>';
+                    xml = xml + '      <FormData>';
+                    xml = xml + '  <BPM_SGGSZHSQ_A>';
+                    xml = xml + '    <fbillno>自动生成</fbillno>';
+                    xml = xml + '    <fname>' + fname + '</fname>';
+                    xml = xml + '    <fdept>' + fdept + '</fdept>';
+                    xml = xml + '    <fdate>' + fdate + '</fdate>';
+                    xml = xml + '    <flx>' + flx + '</flx>';
+                    xml = xml + ' </BPM_SGGSZHSQ_A>';
+                    if (String(flx).indexOf("新增") != -1 || String(flx).indexOf("离职") != -1) {
+                        for (var i = 0; i < mxlistArr_AddOrRemove.length; i++){
+
+                            xml = xml + ' <BPM_SGGSZHSQ_B>';
+                            xml = xml + ' <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                            xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '   <fentryrno>' + (i + 1) + '</fentryrno>';
+                            xml = xml + '   <fsqxt>' + mxlistArr_AddOrRemove[i].fsqxt + '</fsqxt>';
+                            xml = xml + '   <fssbm>' + mxlistArr_AddOrRemove[i].fssbm + '</fssbm>';
+                            xml = xml + '   <fygh>' + mxlistArr_AddOrRemove[i].fygh + '</fygh>';
+                            xml = xml + '  <fygname>' + mxlistArr_AddOrRemove[i].fygname + '</fygname>';
+                            xml = xml + '    <fzw>' + mxlistArr_AddOrRemove[i].fzw + '</fzw>';
+                            xml = xml + '    <fzjsj>' + mxlistArr_AddOrRemove[i].fzjsj + '</fzjsj>';
+                            xml = xml + '  </BPM_SGGSZHSQ_B>';
+
+                        }
+                        xml = xml + ' <BPM_SGGSZHSQ_B1>';
+                        xml = xml + '   <RelationRowGuid>'+(i)+'</RelationRowGuid>';
+                        xml = xml + '   <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '   <fentyrno>1</fentyrno>';
+                        xml = xml + '   <fssxt></fssxt>';
+                        xml = xml + '   <fno></fno>';
+                        xml = xml + '   <fname></fname>';
+                        xml = xml + '   <fdcbm></fdcbm>';
+                        xml = xml + '   <fyzw></fyzw>';
+                        xml = xml + '   <fdrbm></fdrbm>';
+                        xml = xml + '   <fnrzw></fnrzw>';
+                        xml = xml + '  <fzjsj></fzjsj>';
+                        xml = xml + ' </BPM_SGGSZHSQ_B1>';
+
+                    } else if (String(flx).indexOf("调转") != -1){
+                        xml = xml + ' <BPM_SGGSZHSQ_B>';
+                        xml = xml + '   <RelationRowGuid>1</RelationRowGuid>';
+                        xml = xml + '   <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '   <fentryrno>1</fentryrno>';
+                        xml = xml + '   <fsqxt></fsqxt>';
+                        xml = xml + '   <fssbm></fssbm>';
+                        xml = xml + '   <fygh></fygh>';
+                        xml = xml + '   <fygname></fygname>';
+                        xml = xml + '   <fzw></fzw>';
+                        xml = xml + '   <fzjsj></fzjsj>';
+                        xml = xml + '</BPM_SGGSZHSQ_B>';
+                        for (var i = 0; i < mxlistArr_Change.length;i++){
+                            xml = xml + '<BPM_SGGSZHSQ_B1>';
+                            xml = xml + '  <RelationRowGuid>'+(i+2)+'</RelationRowGuid>';
+                            xml = xml + '   <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '   <fentyrno>' + (i + 1) + '</fentyrno>';
+                            xml = xml + '   <fssxt>' + mxlistArr_Change[i].fssxt + '</fssxt>';
+                            xml = xml + '    <fno>' + mxlistArr_Change[i].fno + '</fno>';
+                            xml = xml + '    <fname>' + mxlistArr_Change[i].fname + '</fname>';
+                            xml = xml + '   <fdcbm>' + mxlistArr_Change[i].fdcbm + '</fdcbm>';
+                            xml = xml + '   <fyzw>' + mxlistArr_Change[i].fyzw + '</fyzw>';
+                            xml = xml + '   <fdrbm>' + mxlistArr_Change[i].fdrbm + '</fdrbm>';
+                            xml = xml + '    <fnrzw>' + mxlistArr_Change[i].fnrzw + '</fnrzw>';
+                            xml = xml + '    <fzjsj>' + mxlistArr_Change[i].fzjsj + '</fzjsj>';
+                            xml = xml + '  </BPM_SGGSZHSQ_B1>';
+
+                        }
+
+                    }
+                    xml = xml + '</FormData>';
+                    xml = xml + '</XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

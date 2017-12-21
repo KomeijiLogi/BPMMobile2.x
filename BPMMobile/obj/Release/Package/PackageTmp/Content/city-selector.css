@@ -1,0 +1,104 @@
+html,body{
+    /*background-color: white;*/
+    /*background: rgb(7,60,99);*/
+    font-size: 20px;
+    height: 100%;
+}
+label{
+    font-size: 0.75rem;
+}
+textarea{
+    font-size: 0.75rem;
+}
+
+input{
+    font-size: 0.75rem;
+    text-align: center;
+
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea:after{
+    border: none;
+}
+.aim_div {
+    text-align: center;
+    /*border-style: groove;*/
+
+}
+
+.city_h{
+    margin-top: 0.2rem;
+    font-size: 0.75rem;
+}
+.city_main{
+    margin-top: 0.2rem;
+    padding-left: 0.4rem;
+    padding-right:0.4rem;
+    padding-top:6.4rem;
+
+}
+.province_city_div{
+    position: absolute;
+    margin-top: 17rem;
+    padding: 0.4rem;
+    overflow: auto;
+}
+
+.city_show {
+    border: none;
+    background-color: white;
+    position:fixed; 
+    top:0rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    z-index: 996;
+}
+.city_list{
+    /*overflow: auto;*/
+}
+.city_collection{
+    font-size: 0.75rem;
+    top: 15rem;
+    height: 20rem;
+}
+#city_header{
+    margin-top: 0.4rem;
+}
+
+.mui-row>[class*="mui-col-"] {
+    height: 100%;
+}
+
+.mui-col-xs-3,
+.mui-col-xs-9 {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.mui-segmented-control .mui-control-item {
+    line-height: 50px;
+    width: 100%;
+}
+
+.mui-control-content {
+    display: block;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    background-color: #fff;
+}
+.adjust-screen{
+    position: absolute;
+    /*bottom: 0rem;*/
+    overflow: auto;
+
+}
+#complete_city {
+   font-size:1.8rem;
+}
+#cancel_city {
+    font-size: 1.8rem;
+}
+.arrow_adj {
+   padding-top:0.4rem;
+   margin-top:0.4rem;
+}

@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">汇总人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">汇总日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fyear">年度<i style="color:red;">*</i></label>
+                <input type="number" id="fyear" name="fyear" readonly="readonly" placeholder="请选择年度" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fmonth">月份<i style="color:red;">*</i></label>
+                <input type="number" id="fmonth" name="fmonth" readonly="readonly" placeholder="请选择月份" />
+            </div>
+            <div class="mui-input-group" id="bllist">
+            </div>
+
+
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\06威瑞外科有限公司', '威瑞外科办公用品汇总');
+            prepMsg();
+            getBPMParam();
+            upload();
+            watch();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+            });
+
+
+        function prepMsg() {
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            $.ajax({
+
+                type: 'get',
+                url: "/api/bpm/GetBPMParam",
+                data: {},
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    if (status == "success") {
+                        //console.log(data);
+                        BPMOU = data.Position[0].FullName;
+
+                        var fareaStr = String(BPMOU).split("/");
+                        //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+                        $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+                        return BPMOU;
+                    } else {
+                        return "";
+                    }
+                },
+                error: function (e) {
+                    return e;
+                },
+
+                complete: function () {
+                    return BPMOU;
+                }
+
+            });
+
+        }
+
+        function getList() {
+            var year = $("#fyear").val();
+            var month = $("#fmonth").val();
+            $("#bllist").empty();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
+            xml = xml + '         <ID>sp_oa_WRofficesluupies</ID>';
+            xml = xml + '         <Type>2</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>sp_oa_WRofficesluupies</ProcedureName>';
+            xml = xml + '      <Filter>';
+            xml = xml + '        <_x0040_Startfyear>' + year + '</_x0040_Startfyear>';
+            xml = xml + '        <_x0040_Startfmonth>' + month + '</_x0040_Startfmonth>';
+            xml = xml + '      </Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var expenseArr = provideData.Tables[0].Rows;
+                for (var i = 0; i < expenseArr.length; i++) {
+
+                    var li = '<div id="bl" class="mui-card">';
+                    li = li + '   <div class="mui-input-row bgc">';
+                    li = li + '        <label>明细列表项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fwpno">物品编码</label>';
+                    li = li + '        <input type="text" id="fwpno" name="fwpno" value="' + expenseArr[i].fwpno + '" readonly="readonly"/> ';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fwpname">物品名称</label>';
+                    li = li + '        <input type="text" id="fwpname" name="fwpname" value="' + expenseArr[i].fwpname + '" readonly="readonly"/> ';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fggxh">规格型号</label>';
+                    li = li + '        <input type="text" id="fggxh" name="fggxh" value="' + expenseArr[i].fggxh + '" readonly="readonly"/> ';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="funit">单位</label>';
+                    li = li + '        <input type="text" id="funit" name="funit" value="' + expenseArr[i].funit + '" readonly="readonly"/> ';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="famount">汇总数量</label>';
+                    li = li + '        <input type="number" id="famount" name="famount" value="' + expenseArr[i].famount + '" readonly="readonly"/> ';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fdetail">申请明细<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fdetail" name="fdetail" value="' + expenseArr[i].fdetail + '" readonly="readonly"/> ';
+                    li = li + '   </div>';                   
+                    $("#bllist").append(li);
+
+                }
+            }).fail(function (e) {
+
+             });
+
+
+
+        }
+
+        function tapEvent() {
+
+
+
+            var fyeardata = [
+                {
+                    value: "2017",
+                    text:"2017"
+                },
+                {
+                    value: "2018",
+                    text:"2018"
+                },
+                {
+                    value: "2019",
+                    text: "2019"
+                }
+            ];
+            var element = document.getElementById("fyear");
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fyeardata);
+
+            element.addEventListener('tap', function () {
+
+                picker.show(function (items) {
+
+                    element.value = items[0].text;
+                    getList();
+                });
+
+            }, false);
+            var fmonthdata = [
+                {
+                    value: "1",
+                    text: "1"
+                }, {
+                    value: "2",
+                    text: "2"
+                }, {
+                    value: "3",
+                    text: "3"
+                }, {
+                    value: "4",
+                    text: "4"
+                }, {
+                    value: "5",
+                    text: "5"
+                }, {
+                    value: "6",
+                    text: "6"
+                }, {
+                    value: "7",
+                    text: "7"
+                }, {
+                    value: "8",
+                    text: "8"
+                }, {
+                    value: "9",
+                    text: "9"
+                }, {
+                    value: "10",
+                    text: "10"
+                }, {
+                    value: "11",
+                    text: "11"
+                }, {
+                    value: "12",
+                    text: "12"
+                }
+            ];
+            var element1 = document.getElementById("fmonth");
+
+            var picker1 = new mui.PopPicker();
+
+            picker1.setData(fmonthdata);
+
+            element1.addEventListener('tap', function () {
+
+                picker1.show(function (items) {
+
+                    element1.value = items[0].text;
+                    getList();
+                });
+
+            }, false);
+
+        }
+
+
+
+        function Save() {
+
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fyear = $("#fyear").val();
+            var fmonth = $("#fmonth").val();
+
+            if (!fyear) {
+                mui.toast('请选择年度');
+                return;
+            }
+            if (!fmonth) {
+                mui.toast('请选择月份');
+                return;
+            }
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fwpno = $(this).find("#fwpno").val();
+                var fwpname = $(this).find("#fwpname").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var funit = $(this).find("#funit").val();
+                var famount = $(this).find("#famount").val();
+                var fdetail = $(this).find("#fdetail").val();
+ 
+                var bl = new Object;
+                bl.fwpno = fwpno;
+                bl.fwpname = fwpname;
+                bl.fggxh = fggxh;
+                bl.funit = funit;
+                bl.famount = famount;
+                bl.fdetail = fdetail;
+                bllistArr.push(bl);
+            });
+
+
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + ' <XForm>';
+                    xml = xml + '    <Header>';
+                    xml = xml + '      <Method>Post</Method>';
+                    xml = xml + '      <ProcessName>威瑞外科办公用品汇总</ProcessName>';
+                    xml = xml + '      <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '      <DraftGuid></DraftGuid>';
+                    xml = xml + '       <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '       <Action>提交</Action>';
+                    xml = xml + '        <Comment></Comment>';
+                    xml = xml + '        <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '      </Header>';
+                    xml = xml + '     <FormData>';
+                    xml = xml + '         <BPM_WROfficeSuppliesMonth_A>';
+                    xml = xml + '            <fbillno>自动生成</fbillno>';
+                    xml = xml + '            <fname>' + fname + '</fname>';
+                    xml = xml + '              <fdate>' + fdate + '</fdate>';
+                    xml = xml + '              <fyear>' + fyear + '</fyear>';
+                    xml = xml + '              <fmonth>' + fmonth + '</fmonth>';
+
+                    xml = xml + '           </BPM_WROfficeSuppliesMonth_A>';
+                    for (var i = 0; i < bllistArr.length; i++) {
+
+                        xml = xml + '<BPM_WROfficeSuppliesMonth_B>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '<fwpno>' + bllistArr[i].fwpno + '</fwpno>';
+                        xml = xml + '<fwpname>' + bllistArr[i].fwpname + '</fwpname>';
+                        xml = xml + '<fggxh>' + bllistArr[i].fggxh + '</fggxh>';
+                        xml = xml + '<funit>' + bllistArr[i].funit + '</funit>';
+                        xml = xml + '<famount>' + bllistArr[i].famount + '</famount>';
+                        xml = xml + '<fdetail>' + bllistArr[i].fdetail + '</fdetail>';
+                        xml = xml + '</BPM_WROfficeSuppliesMonth_B>';
+
+                    }
+                    xml = xml + '      </FormData>';
+                    xml = xml + '   </XForm>';
+                    PostXml(xml);
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;display:block;" id="wrapper">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row itemtitle2">
+                <label>车辆申请事由</label>
+            </div>
+            <div class="mui-row" style="height:auto;">
+                <textarea rows="3" id="fsqsy" name="fsqsy" class="mui-col-xs-12" placeholder="请填写车辆申请事由"></textarea>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>   
+                    <div class="mui-input-row">
+                        <label for="fclxh">车辆型号</label>
+                        <input type="text" id="fclxh" name="fclxh" placeholder="请填写车辆型号"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcph">车牌号</label>
+                        <input type="text" id="fcph" name="fcph" readonly="readonly" placeholder="请选择车牌号"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsj">司机</label>
+                        <input type="text" id="fsj" name="fsj" placeholder="请填写司机"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsjdh">司机电话</label>
+                        <input type="text" id="fsjdh" name="fsjdh" placeholder="请填写司机电话"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fksdate">开始时间</label>
+                        <input type="date" id="fksdate" name="fksdate"/>
+                    </div>
+                    <div class="mui-input-row">
+                         <label for="fjsdate">结束时间</label>
+                         <input type="date" id="fjsdate" name="fjsdate"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fqclcs">启程里程数</label>
+                        <input type="text" id="fqclcs" name="fqclcs" placeholder="请填写车辆启程里程数"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fjslcs">结束里程数</label>
+                        <input type="text" id="fjslcs" name="fjslcs" placeholder="请填写车辆结束里程数"/>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\02医用制品集团\\06威瑞外科有限公司', '威瑞外科派车申请流程');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

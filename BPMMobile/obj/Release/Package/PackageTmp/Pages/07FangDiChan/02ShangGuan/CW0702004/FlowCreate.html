@@ -1,0 +1,505 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+   
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" value=""/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly" />
+            </div>
+        
+            <div class="mui-input-row">
+                <label>申请明细</label>
+                <a href="#bottom"><span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span></a>
+            </div>
+            <div class="mui-input-group" id="bllist">
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjqmye">合计期末贷方余额</label>
+                <input type="number" id="fhjqmye" name="fhjqmye" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjxk">合计现款</label>
+                <input type="number" id="fhjxk" name="fhjxk" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjcd">合计承兑</label>
+                <input type="number" id="fhjcd" name="fhjcd" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjczk">合计储值卡</label>
+                <input type="number" id="fhjczk" name="fhjczk" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjfkhj">合计付款合计</label>
+                <input type="number" id="fhjfkhj" name="fhjfkhj" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjfkbl">合计付款比例</label>
+                <input type="number" id="fhjfkbl" name="fhjfkbl" value="" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fhjfkhye">合计付款后余额</label>
+                <input type="number" id="fhjfkhye" name="fhjfkhye" value="" readonly="readonly" />
+            </div>
+        </form>
+
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\07房地产集团\\02商管公司\\CW财务', '盛祥商管公司月度付款申请');
+            getBPMParam();
+            prepMsg();
+            forbiddenCache();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+          
+        }
+
+        function tapEvent() {
+
+
+
+            $("#addItem").on('tap', function () {
+
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxmmc">项目名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fxmmc" name="fxmmc" value="" placeholder="请输入项目名称"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fqmdfye">期末贷方余额<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fqmdfye" name="fqmdfye" value=""  placeholder="请输入期末贷方余额"  onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fxk">现款<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fxk" name="fxk" value="" placeholder="请输入现款"  onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fcd">承兑<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fcd" name="fcd" value="" placeholder="请输入承兑" onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fczk">储值卡<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fczk" name="fczk" value="" placeholder="请输入储值卡" onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="ffkhj">付款合计<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="ffkhj" name="ffkhj" value=""  readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="ffkbl">付款比例</label>';
+                li = li + '        <input type="number" id="ffkbl" name="ffkbl" value="" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="ffkhye">付款后余额</label>';
+                li = li + '        <input type="number" id="ffkhye" name="ffkhye" value="" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fbz">备注</label>';
+                li = li + '        <input type="text" id="fbz" name="fbz" value="" placeholder="请输入备注" />';
+                li = li + '   </div>';
+
+                $("#bllist").append(li);
+
+
+
+
+
+            });
+
+
+
+           
+        }
+
+        function calcPrice(context) {
+
+            var fqmdfye = parseFloat($(context).parent().parent().find("#fqmdfye").val());
+            var fxk = parseFloat($(context).parent().parent().find("#fxk").val());
+            var fcd = parseFloat($(context).parent().parent().find("#fcd").val());
+            var fczk = parseFloat($(context).parent().parent().find("#fczk").val());
+            var ffkhj;
+            var ffkbl;
+            var ffkhye;
+
+            if ( !fqmdfye || fqmdfye =="")
+            {
+                if (!fxk || fxk == "") {
+                    fxk = 0;
+                }
+                if (!fcd || fcd == "") {
+                    fcd = 0;
+                }
+                if (!fczk || fczk == "") {
+                    fczk = 0;
+                }
+                ffkhye = 0 - (parseInt(fxk) + parseInt(fcd) + parseInt(fczk));
+                $(context).parent().parent().find("#ffkbl").val("");
+                $(context).parent().parent().find("#ffkhj").val(parseInt(fxk) + parseInt(fcd) + parseInt(fczk));
+                $(context).parent().parent().find("#ffkhye").val(ffkhye);
+            } else {
+                if (!fxk || fxk == "") {
+                    fxk = 0;
+                }
+                if (!fcd || fcd == "") {
+                    fcd = 0;
+                }
+                if (!fczk || fczk == "") {
+                    fczk = 0;
+                }
+                $(context).parent().parent().find("#ffkhj").val(parseInt(fxk) + parseInt(fcd) + parseInt(fczk));
+                ffkhye = fqmdfye - (parseInt(fxk) + parseInt(fcd) + parseInt(fczk));
+                $(context).parent().parent().find("#ffkhye").val(ffkhye);
+                ffkbl = (parseInt(fxk) + parseInt(fcd) + parseInt(fczk)) / fqmdfye;
+                $(context).parent().parent().find("#ffkbl").val(ffkbl);
+
+            }
+           
+            //触发计算总金额函数
+            amountPrice();
+        }
+
+        function amountPrice() {
+            var fhjqmye = 0;
+            var fhjxk = 0;
+            var fhjcd = 0;
+            var fhjczk = 0;
+            var fhjfkhj = 0;
+            var fhjfkbl = 0;
+            var fhjfkhye = 0;
+
+            //计算合计期末贷方余额
+            $("#bllist").find("#bl").each(function () {
+                var fqmdfyetmp = parseFloat($(this).find("#fqmdfye").val());
+                if ($(this).find("#fqmdfye").val() == null || $(this).find("#fqmdfye").val() == "") {
+                    fqmdfyetmp = 0;
+                }
+
+                if (fhjqmye == 0) {
+                    fhjqmye = fqmdfyetmp;
+                } else {
+                    fhjqmye += fqmdfyetmp;
+                }
+            });
+
+            //计算合计现款
+            $("#bllist").find("#bl").each(function () {
+                var fxktmp = parseFloat($(this).find("#fxk").val());
+                if ($(this).find("#fxk").val() == null || $(this).find("#fxk").val() == "") {
+                    fxktmp = 0;
+                }
+                if (fhjxk == 0) {
+                    fhjxk = fxktmp;
+                } else {
+                    fhjxk += fxktmp;
+                }
+            });
+
+            //计算合计承兑
+            $("#bllist").find("#bl").each(function () {
+                var fcdtmp = parseFloat($(this).find("#fcd").val());
+                if ($(this).find("#fcd").val() == null || $(this).find("#fcd").val() == "") {
+                    fcdtmp = 0;
+                }
+                if (fhjcd == 0) {
+                    fhjcd = fcdtmp;
+                } else {
+                    fhjcd += fcdtmp;
+                }
+            });
+            //计算合计储值卡
+            $("#bllist").find("#bl").each(function () {
+                var fczktmp = parseFloat($(this).find("#fczk").val());
+                if ($(this).find("#fczk").val() == null || $(this).find("#fczk").val() == "") {
+                    fczktmp = 0;
+                }
+                if (fhjczk == 0) {
+                    fhjczk = fczktmp;
+                } else {
+                    fhjczk += fczktmp;
+                }
+            });
+
+            //计算合计付款合计
+            $("#bllist").find("#bl").each(function () {
+                var ffkhjtmp = parseFloat($(this).find("#ffkhj").val());
+                if ($(this).find("#ffkhj").val() == null || $(this).find("#ffkhj").val() == "") {
+                    ffkhjtmp = 0;
+                }
+                if (fhjfkhj == 0) {
+                    fhjfkhj = ffkhjtmp;
+                } else {
+                    fhjfkhj += ffkhjtmp;
+                }
+            });
+            //计算合计付款后余额
+            $("#bllist").find("#bl").each(function () {
+                var ffkhyetmp = parseFloat($(this).find("#ffkhye").val());
+                if ($(this).find("#ffkhye").val() == null || $(this).find("#ffkhye").val() == "") {
+                    ffkhyetmp = 0;
+                }
+                if (fhjfkhye == 0) {
+                    fhjfkhye = ffkhyetmp;
+                } else {
+                    fhjfkhye += ffkhyetmp;
+                }
+            });
+            if (fhjqmye == 0) {
+                $("#fhjfkbl").val("");
+            } else {
+                fhjfkbl = (fhjfkhj / fhjqmye);
+                $("#fhjfkbl").val(fhjfkbl);
+            }
+
+            $("#fhjqmye").val(fhjqmye);
+            $("#fhjxk").val(fhjxk);
+            $("#fhjcd").val(fhjcd);
+            $("#fhjczk").val(fhjczk);
+            $("#fhjfkhj").val(fhjfkhj);
+            $("#fhjfkhye").val(fhjfkhye);
+
+
+        }
+
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    amountPrice();
+                }
+            });
+
+
+        }
+
+        function Save() {
+
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+
+            var fname = $("#fname").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fhjqmye = $("#fhjqmye").val();
+            var fhjxk = $("#fhjxk").val();
+            var fhjcd = $("#fhjcd").val();
+            var fhjczk = $("#fhjczk").val();
+            var fhjfkhj = $("#fhjfkhj").val();
+            var fhjfkbl = $("#fhjfkbl").val();
+            var fhjfkhye = $("#fhjfkhye").val();
+
+            var mxflag = false;
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fxmmc = $(this).find("#fxmmc").val();
+                var fqmdfye = $(this).find("#fqmdfye").val();
+                var fxk = $(this).find("#fxk").val();
+                var fcd = $(this).find("#fcd").val();
+                var fczk = $(this).find("#fczk").val();
+                var ffkhj = $(this).find("#ffkhj").val();
+                var ffkbl = $(this).find("#ffkbl").val();
+                var ffkhye = $(this).find("#ffkhye").val();
+                var fbz = $(this).find("#fbz").val();
+                if (blItem(fxmmc, fqmdfye, fxk, fcd, fczk, ffkhj, ffkbl, ffkhye, fbz) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var mx = blItem(fxmmc, fqmdfye, fxk, fcd, fczk, ffkhj, ffkbl, ffkhye, fbz);
+                bllistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+              
+                var btnArry = ["取消", "确定"];
+                mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                    if (e.index == 1) {
+
+
+                        var xml = '<?xml version="1.0"?>';
+                        xml = xml + '<XForm>';
+                        xml = xml + '<Header>';
+                        xml = xml + '<Method>Post</Method>';
+                        xml = xml + ' <ProcessName>盛祥商管公司月度付款申请</ProcessName>';
+                        xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                        xml = xml + '<DraftGuid></DraftGuid>';
+                        xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                        xml = xml + '<Action>提交</Action>';
+                        xml = xml + '<Comment></Comment>';
+                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + '</Header>';
+                        xml = xml + '<FormData>';
+                        xml = xml + '<BPM_SXSGYDFKSQ_A>';
+                        xml = xml + '<fbillno>自动生成</fbillno>';
+                        xml = xml + '<fname>' + fname + '</fname>';
+                        xml = xml + '<fdept>' + fdept + '</fdept>';
+                        xml = xml + '<fdate>' + fdate + '</fdate>';
+                        xml = xml + '<qmdfye_hj>' + fhjqmye + '</qmdfye_hj>';
+                        xml = xml + '<fxk_hj>' + fhjxk + '</fxk_hj>';
+                        xml = xml + '<fcd_hj>' + fhjcd + '</fcd_hj>';
+                        xml = xml + '<fczk_hj>' + fhjczk + '</fczk_hj>';
+                        xml = xml + '<ffkhj_hj>' + fhjfkhj + '</ffkhj_hj>';
+                        xml = xml + '<ffkbl_hj>' + fhjfkbl + '</ffkbl_hj>';
+                        xml = xml + '<ffkhye_hj>' + fhjfkhye + '</ffkhye_hj>';
+                        xml = xml + '<fmb></fmb>';
+                        xml = xml + '</BPM_SXSGYDFKSQ_A>';
+                        for (var i = 0; i < bllistArr.length; i++) {
+
+                            xml = xml + '<BPM_SXSGYDFKSQ_B>';
+                            xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '<fxmmc>' + bllistArr[i].fxmmc + '</fxmmc>';
+                            xml = xml + '<qmdfye>' + bllistArr[i].fqmdfye + '</qmdfye>';
+                            xml = xml + '<fxk>' + bllistArr[i].fxk + '</fxk>';
+                            xml = xml + '<fcd>' + bllistArr[i].fcd + '</fcd>';
+                            xml = xml + '<fczk>' + bllistArr[i].fczk + '</fczk>';
+                            xml = xml + '<ffkhj>' + bllistArr[i].ffkhj + '</ffkhj>';
+                            xml = xml + ' <ffkbl>' + bllistArr[i].ffkbl + '</ffkbl>';
+                            xml = xml + '<ffkhye>' + bllistArr[i].ffkhye + '</ffkhye>';
+                            xml = xml + '<fbz>' + bllistArr[i].fbz + '</fbz>';
+                            xml = xml + '</BPM_SXSGYDFKSQ_B>';
+
+                        }
+
+                        xml = xml + '             </FormData>';
+                        xml = xml + '         </XForm>';
+                        //alert(xml);
+                        PostXml(xml);
+
+                    }
+                });
+
+
+            }
+
+        function blItem(fxmmc, fqmdfye, fxk, fcd, fczk, ffkhj, ffkbl, ffkhye, fbz) {
+            var mx = new Object;
+            mx.fxmmc = fxmmc;
+            mx.fqmdfye = fqmdfye;
+            mx.fxk = fxk;
+            mx.fcd = fcd;
+            mx.fczk = fczk;
+            mx.ffkhj = ffkhj;
+            mx.ffkbl = ffkbl;
+            mx.ffkhye = ffkhye;
+            mx.fbz = fbz;
+            if (!fxmmc || fxmmc == "") {
+
+                mui.toast("请输入项目名称");
+                return null;
+            }
+            if (!fqmdfye || fqmdfye == "") {
+                mui.toast("请输入期末贷方余额");
+                return null;
+
+            }
+            if (!fxk || fxk == "") {
+
+                mui.toast("请输入现款");
+                return null;
+            }
+            if (!fcd || fcd == "") {
+                mui.toast("请输入承兑");
+                return null;
+
+            }
+            if (!fczk || fczk == "") {
+                mui.toast("请输入储值卡");
+                return null;
+
+            }
+            return mx;
+        }
+
+    </script>
+
+    <a name="bottom"></a>
+</body>
+</html>

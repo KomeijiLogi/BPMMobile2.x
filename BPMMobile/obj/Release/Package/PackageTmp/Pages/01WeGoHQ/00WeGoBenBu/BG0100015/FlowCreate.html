@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+           <div class="mui-input-row">
+               <label for="fapplyman">申请人</label>
+               <input type="text" id="fapplyman" name="fapplyman" readonly="readonly"/>
+           </div>
+            <div class="mui-input-row">
+                <label for="fapplydate">申请日期</label>
+                <input type="date" id="fapplydate" name="fapplydate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdepartment">申请部门</label>
+                <input type="text" id="fdepartment" name="fdepartment" placeholder="请填写申请部门"/>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                        <label for="fcomputer">名称</label>
+                        <input type="text" id="fcomputer" name="fcomputer" placeholder="请填写名称" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fmodel">规格型号</label>
+                        <input type="text" id="fmodel" name="fmodel" placeholder="请填写规格型号"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fnumber">数量</label>
+                        <input type="number" id="fnumber" name="fnumber" placeholder="请填写数量"/>
+                    </div>
+                    <div class="mui-input-row" style="height:auto;">
+                        <label for="fnote">备注</label>
+                        <textarea rows="3" id="fnote" name="fnote" placeholder="请填写备注"></textarea>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+   </div>  
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\01威高集团总部\\00威高集团本部\\BG办公管理', '集团总部计算机耗材采购申请');
+            prepMsg();
+            getBPMParam();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fapplyman").val(result.data.name);
+
+            }
+        });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function prepMsg() {
+
+            $("#fapplydate").val(getNowFormatDate(2));
+            tapEvent();
+
+        }
+
+        function tapEvent() {
+
+            $("#tjmx").on('tap', function () {
+                var li = '  <div id="mx" class="mui-card">';
+                li = li + '    <div class="mui-input-row itemtitle">';
+                li = li + '       <label>明细列表项</label>';
+                li = li + '       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fcomputer">名称</label>';
+                li = li + '        <input type="text" id="fcomputer" name="fcomputer" placeholder="请填写名称"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fmodel">规格型号</label>';
+                li = li + '        <input type="text" id="fmodel" name="fmodel" placeholder="请填写规格型号"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row">';
+                li = li + '        <label for="fnumber">数量</label>';
+                li = li + '        <input type="number" id="fnumber" name="fnumber" placeholder="请填写数量"/>';
+                li = li + '    </div>';
+                li = li + '    <div class="mui-input-row" style="height:auto;">';
+                li = li + '        <label for="fnote">备注</label>';
+                li = li + '        <textarea rows="3" id="fnote" name="fnote" placeholder="请填写备注"></textarea>';
+                li = li + '    </div>';
+                li = li + '</div>';
+                $("#mxlist").append(li);
+            });
+        }
+
+
+        function mxItem(fcomputer, fmodel, fnumber, fnote) {
+
+            var mx = new Object;
+            mx.fcomputer = fcomputer;
+            mx.fmodel = fmodel;
+            mx.fnumber = fnumber;
+            mx.fnote = fnote;
+            if (!fcomputer || fcomputer=='') {
+                mui.toast('请填写名称');
+                return null;
+            }
+            if (!fmodel || fmodel == '') {
+                mui.toast('请填写规格型号');
+                return null;
+            }
+            if (!fnumber || fnumber == '') {
+                mui.toast('请填写数量');
+                return null;
+            }
+            return mx;
+
+        }
+
+
+        function Save() {
+
+            var fapplyman = $("#fapplyman").val();
+            var fapplydate = $("#fapplydate").val() + ' 00:00:00';
+            var fdepartment = $("#fdepartment").val();
+
+            var mxflag = false;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+                var fcomputer = $(this).find("#fcomputer").val();
+                var fmodel = $(this).find("#fmodel").val();
+                var fnumber = $(this).find("#fnumber").val();
+                var fnote = $(this).find("#fnote").val();
+
+                if (mxItem(fcomputer, fmodel, fnumber, fnote) == null) {
+                    mxflag = true;
+                    return;
+                }
+
+                var mx = mxItem(fcomputer, fmodel, fnumber, fnote);
+                mxlistArr.push(mx);
+            });
+            if (mxflag) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '   <XForm>';
+                    xml = xml + '         <Header>';
+                    xml = xml + '        <Method>Post</Method>';
+                    xml = xml + '       <ProcessName>集团总部计算机耗材采购申请</ProcessName>';
+                    xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '            <DraftGuid></DraftGuid>';
+                    xml = xml + '             <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '            <Action>提交</Action>';
+                    xml = xml + '          <Comment></Comment>';
+                    xml = xml + '             <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    xml = xml + '       <FormData>';
+                    xml = xml + '            <BPM_ComputerConsumable_A>';
+                    xml = xml + '              <fbillno>自动生成</fbillno>';
+                    xml = xml + '                 <fapplyman>' + fapplyman + '</fapplyman>';
+                    xml = xml + '                  <fapplydate>' + fapplydate + '</fapplydate>';
+                    xml = xml + '                 <fdepartment>' + fdepartment + '</fdepartment>';
+                    xml = xml + '              </BPM_ComputerConsumable_A>';
+
+                    for (var i = 0; i < mxlistArr.length;i++){
+                        xml = xml + '             <BPM_ComputerConsumable_B>';
+                        xml = xml + '                <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                        xml = xml + '                 <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '               <fentryno>' + (i + 1) + '</fentryno>';
+                        xml = xml + '                <fname>' + mxlistArr[i].fcomputer + '</fname>';
+                        xml = xml + '              <fmodel>' + mxlistArr[i].fmodel + '</fmodel>';
+                        xml = xml + '               <fqty>' + mxlistArr[i].fnumber + '</fqty>';
+                        xml = xml + '             <fnote>' + mxlistArr[i].fnote + '</fnote>';
+                        xml = xml + '          </BPM_ComputerConsumable_B>';
+                    }
+                   
+
+                    xml = xml + '        </FormData>';
+                    xml = xml + '       </XForm>';
+
+                    PostXml(xml);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

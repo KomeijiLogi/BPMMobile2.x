@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <!--<script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>-->
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../Content/DoneOrMyApproval.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+   
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:1rem;">
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" class="mui-input-clear" id="fname" name="fname" />
+            </div>
+            <div class="mui-input-row">
+                <label>所属区域</label>
+                <input type="text" class="mui-input-clear" id="farea" name="farea" />
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期</label>
+                <input type="date" class="mui-input-clear" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>联系电话<i style="color:red;">*</i></label>
+                <input type="tel" class="mui-input-clear" id="ftel" name="ftel" placeholder="请输入联系电话" />
+            </div>
+            <div class="mui-input-row">
+                <label>产品类别<i style="color:red;">*</i></label>
+                <input type="text" id="fcplb" name="fcplb" placeholder="请选择产品类别" readonly="readonly">
+            </div>
+            <div class="mui-input-row">
+                <label>发货类别<i style="color:red;">*</i></label>
+                <input type="text" id="ffhxz" name="ffhxz" placeholder="请选择发货类别" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>发票类型<i style="color:red;">*</i></label>
+                <input type="text" id="ffplx" name="ffplx" placeholder="请选择发票类型" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>购货单位<i style="color:red;">*</i></label>
+                <input type="text" id="fghdw" name="fghdw" placeholder="请输入购货单位" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="height:5.25rem;">
+                <label>发货地址<i style="color:red;">*</i></label>
+                <textarea rows="5" id="faddr" name="faddr" readonly="readonly"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>收货人<i style="color:red;">*</i></label>
+                <input type="text" id="fshr" name="fshr" placeholder="请输入收货人" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>收货电话<i style="color:red;">*</i></label>
+                <input type="tel" id="fshtel" name="fshtel" placeholder="请输入收货电话" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label>产品明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;display:none;" id="addProduct"></span>
+            </div>
+            <div id="wllist" class="mui-input-group">
+
+                <!--<div id="wl" class="mui-card">
+                    <div class="mui-input-row">
+
+                        <label>编号</label>
+                        <input type="number" id="RelationRowGuid" name="RelationRowGuid" value="1" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>物料编码<i style="color:red;">*</i></label>
+                        <input type="text" id="fwlno" name="fwlno" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>物料名称</label>
+                        <input type="text" id="fwlname" name="fwlname" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>规格型号<i style="color:red;">*</i></label>
+                        <input type="text" id="fggxh" name="fggxh" value=""/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>数量(支)<i style="color:red;">*</i></label>
+                        <input type="text" id="fsl" name="fsl" value=""/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>单价<i style="color:red;">*</i></label>
+                        <input type="number" id="fdj" name="fdj" value=""/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>金额</label>
+                        <input type="number" id="fdj" name="fdj" value="" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row" style="height:5.25rem;">
+                        <label>备注说明</label>
+                        <textarea rows="5" id="fremark" name="fremark"></textarea>
+                    </div>
+                </div>-->
+                <!--<div id="wl" class="mui-card">
+                    <div class="mui-input-row">
+
+                        <label>编号</label>
+                        <input type="number" id="RelationRowGuid" name="RelationRowGuid" value="2" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>物料编码<i style="color:red;">*</i></label>
+                        <input type="text" id="fwlno" name="fwlno" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>物料名称</label>
+                        <input type="text" id="fwlname" name="fwlname" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>规格型号<i style="color:red;">*</i></label>
+                        <input type="text" id="fggxh" name="fggxh" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>数量(支)<i style="color:red;">*</i></label>
+                        <input type="text" id="fsl" name="fsl" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>单价<i style="color:red;">*</i></label>
+                        <input type="number" id="fdj" name="fdj" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>金额</label>
+                        <input type="number" id="fdj" name="fdj" value="" readonly="readonly" />
+                    </div>
+                    <div class="mui-input-row" style="height:5.25rem;">
+                        <label>备注说明</label>
+                        <textarea rows="5" id="fremark" name="fremark"></textarea>
+                    </div>
+                </div>-->
+
+            </div>
+            <div class="mui-input-row">
+                <label>总计数量(支)</label>
+                <input type="number" id="fsltotal" name="fsltotal" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label>总计金额(元)</label>
+                <input type="number" id="ftotal" name="ftotal" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:4rem;">
+                <label>总计金额(大写)</label>
+                <input type="text" id="ftotal_dx" name="ftotal_dx" readonly="readonly" />
+            </div>
+
+
+
+        </form>
+
+        <div class="mui-table-view">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff">
+                            <!--<li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">发起<span>张成林<label class="flowstatus">提交</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">一审<span>AA<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg">二审<span>BB<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="lefttime"><i></i>05-19 08:06</span>
+                                <div class="righttext">
+                                    <div>
+                                        <div class="flowmsg signadd">加签<span>CC<label class="flowstatus">同意</label></span></div>
+                                        <p>签核意见</p>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+    <script>
+        mui.init();
+        mui.ready(function () {
+
+            //Notify();
+            getTaskMsg();
+           
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '审批详情' });
+
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        var taskId;
+        function getTaskMsg() {
+            var url = window.location.href;
+            if (url != null && url.indexOf("tid") != -1) {
+
+                taskId = url.split("tid=")[1];
+
+
+            } else {
+                mui.toast("网络异常,请稍后重试");
+                history.go(-1);
+
+            }
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetTaskData",
+                data: { 'taskId': taskId },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                },
+                success: function (data, status) {
+                    console.log(data);
+
+                    var item = data.FormDataSet.BPM_JRZPFH_A[0];
+                    $("#fname").val(item.fname);
+                    $("#farea").val(item.farea);
+                    $("#fdate").val(FormatterTimeYMS(item.fdate));
+                    $("#ftel").val(item.ftel);
+                    $("#fcplb").val(item.fcplb);
+                    $("#ffhxz").val(item.ffhxz);
+                    $("#ffplx").val(item.ffplx);
+                    $("#fghdw").val(item.fghdw);
+                    $("#faddr").val(item.faddr);
+                    $("#fshr").val(item.fshr);
+                    $("#fshtel").val(item.fshtel);
+                    $("#ftotal_dx").val(item.ftotal_dx);
+                    $("#fsltotal").val(item.fsl);
+                    $("#ftotal").val(item.ftotal);
+                    $("#taskId").val(item.TaskID);
+                    var wli = data.FormDataSet.BPM_JRZPFH_B;
+                    for (var i = 0; i < wli.length; i++) {
+                        if (wli[i].fwlname == null) {
+                            wli[i].fwlname = "";
+                        }
+                        if (wli[i].fremark == null) {
+                            wli[i].fremark = "";
+                        }
+
+                        var li = ' <div id="wl" class="mui-card adjla">';
+                        li = li + '   <div class="mui-input-row bgc">';
+                        li = li + '        <label>明细列表项</label> ';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteProduct(this)"></span>';
+                        li = li + '   </div>';
+                        //li = li + '   <div class="mui-input-row">';
+                        //li = li + '        <label>编号</label>';
+                        //li = li + '        <input type="number" id="RelationRowGuid" name="RelationRowGuid" value="' + relationRowGuid+'" readonly="readonly"/>';
+                        //li = li + '   </div>';
+                        li = li + '   <input type="hidden" id="itemid" name="itemid" value="' + wli[i].itemid + '">';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label> 物料编码 <i style= "color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwlno" name="fwlno" value="' + wli[i].fwlno + '"  readonly="readonly"/>';
+                        li = li + '   </div >';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>物料名称</label>';
+                        li = li + '        <input type="text" id="fwlname" name="fwlname" value="' + wli[i].fwlname + '" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '       <label>规格型号<i style="color:red;">*</i></label>';
+                        li = li + '       <input type="text" id="fggxh" name="fggxh" value="' + wli[i].fggxh + '" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>数量(支)<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fsl" name="fsl" value="' + wli[i].fsl + '"  readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>单价(元)<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fdj" name="fdj" value="' + wli[i].fdj + '" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label>金额(元)</label>';
+                        li = li + '        <input type="text" id="fje" name="fje" value="' + wli[i].fje + '" readonly="readonly" />';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row" style="height:5.25rem;">';
+                        li = li + '        <label>备注说明</label>';
+                        li = li + '        <textarea rows="5" id="fremark" name="fremark" readonly="readonly">' + wli[i].fremark + '</textarea>';
+                        li = li + '   </div>';
+                        li = li + ' </div >';
+
+                        $("#wllist").append(li);
+                    }
+
+
+                    for (var i = 0; i < data.Steps.length; i++) {
+                        
+                        if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
+                            data.Steps[i].FinishAt = "";
+                        }
+                        var time = FormatterTime(data.Steps[i].FinishAt);
+
+                        var stepName = data.Steps[i].NodeName;
+                        if (data.Steps[i].NodeName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.Steps[i].NodeName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.Steps[i].NodeName == "开始") {
+                            stepName = "开始";
+                        }
+
+                        var stepAction = locationAction( data.Steps[i].SelAction);
+                     
+
+                        var contents = data.Steps[i].Comments;
+                        if (contents == null) {
+                            contents = "无";
+                        }
+                        //判断是否是加签
+                        if (data.Steps[i].IsConsignStep == false) {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg">' + stepName + '<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        } else {
+                            var li = ' <li>';
+                            li = li + '  <span class="lefttime"><i></i>' + time + '</span>';
+                            li = li + '  <div class="righttext">';
+                            li = li + '     <div>';
+                            li = li + '        <div class="flowmsg signadd">加签<span>' + data.Steps[i].RecipientFullName + '</span></div>';
+                            li = li + '        <label class="flowstatus">' + stepAction + '</label>';
+                            li = li + '        <p>签核意见: ' + contents + '</p>';
+                            li = li + '     </div>';
+                            li = li + '   </div>';
+                            li = li + '</li>';
+
+                        }
+                        $("#signff").append(li);
+                    }
+                },
+                error: function (e) {
+
+
+                }, complete: function () {
+
+                }
+            });
+
+        }
+
+    </script>
+</body>
+</html>

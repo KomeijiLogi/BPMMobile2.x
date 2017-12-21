@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <!--<script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>-->
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <!--<link rel="stylesheet" href="../../Content/upload.css" />-->
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">检验人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">检验时间</label>
+                <input type="date" id="fdate" name="fdate"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fbjcj">被检车间<i style="color:red;">*</i></label>
+                <input type="text" id="fbjcj" name="fbjcj" required placeholder="请选择被检车间"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fcplx">产品类型<i style="color:red;">*</i></label>
+                <input type="text" id="fcplx" name="fcplx" required placeholder="请选择产品类型"/>
+            </div>
+
+            <a class="mui-btn mui-btn-yellow mui-btn-block mui-btn-outlined" id="tjmx" style="padding:0.6rem;margin-top:0.5rem;">
+                添加检验明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div id="mxlist" style="padding-bottom:2rem;">
+
+            </div>
+        </form>
+   </div> 
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getBPMParam();
+            getVersion('\\01威高集团总部\\06建设公司\\ZLGL质量管理', '建设公司车间生产过程检验记录备案');
+            prepMsg();
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+        function prepMsg() {
+
+            tapEvent();
+            $("#fdate").val(getNowFormatDate(2));
+
+        }
+
+        function tapEvent() {
+            var fbjcjdata = [
+                {
+                    value: '',
+                    text:'铝合金一车间'
+                },
+                {
+                    value: '',
+                    text:'铝合金二车间'                    
+                },
+                {
+                    value: '',
+                    text:'木窗车间'
+                },
+                {
+                    value: '',
+                    text:'铁艺车间'
+                }
+            ];
+
+
+            var fcpzldata = [
+
+                {
+                    value: '',
+                    text:'铝合金门窗'
+                },
+                {
+                    value: '',
+                    text:'塑钢门窗'
+                },
+                {
+                    value: '',
+                    text:'木门窗'
+                },
+                {
+                    value: '',
+                    text:'铁艺'
+                }
+            ];
+
+            var fgx_lhjmc_data = [
+                {
+                    value:'',
+                    text:'型材下料'
+                },
+                {
+                    value: '',
+                    text:'型材铣形、冲孔，钻眼'
+                },
+                {
+                    value: '',
+                    text:'框、扇组合'
+                },
+                {
+                    value: '',
+                    text:'中挺组装'
+                },
+                {
+                    value: '',
+                    text:'压线安装'
+                },
+                {
+                    value:'',
+                    text:'密封条、毛条镶嵌'
+                },
+                {
+                    value: '',
+                    text: '五金件安装'
+                },
+                {
+                    value: '',
+                    text: '框与扇组装'
+                },
+                {
+                    value: '',
+                    text: '玻璃安装'
+                },
+                {
+                    value: '',
+                    text: '玻璃打胶'
+                }
+            ];
+
+            var fgx_sgmc_data = [
+
+                {
+                    value: '',
+                    text:'型材下料'
+                },
+                {
+                    value: '',
+                    text: '型材铣形、铣V口、冲孔，钻眼'
+                },
+                {
+                    value: '',
+                    text: '钢衬安装'
+                },
+                {
+                    value: '',
+                    text: '框、扇焊接'
+                },
+                {
+                    value: '',
+                    text: '中挺裸接组装'
+                },
+                {
+                    value: '',
+                    text: '配装压线'
+                },
+                {
+                    value: '',
+                    text: '密封条、毛条镶嵌'
+                },
+                {
+                    value: '',
+                    text: '五金件安装'
+                },
+                {
+                    value: '',
+                    text: '框与扇组装'
+                },
+                {
+                    value: '',
+                    text: '玻璃安装'
+                }
+                
+            ];
+
+            var fgx_mmc_data = [
+                {
+                    value: '',
+                    text:'型材下料'
+                },
+                {
+                    value: '',
+                    text: '刨料'
+                },
+                {
+                    value: '',
+                    text: '型材铳型'
+                },
+                {
+                    value: '',
+                    text: '框、扇合框'
+                },
+                {
+                    value: '',
+                    text: '中挺组装'
+                },
+                {
+                    value: '',
+                    text: '配装压线'
+                },
+                {
+                    value: '',
+                    text: '窗扇打孔、整修'
+                },
+                {
+                    value: '',
+                    text: '打磨'
+                },
+                {
+                    value: '',
+                    text: '喷漆'
+                },
+                {
+                    value: '',
+                    text: '铝框组装'
+                },
+                {
+                    value: '',
+                    text: '木铝组装'
+                },
+                {
+                    value: '',
+                    text: '密封条镶嵌'
+                },
+                {
+                    value: '',
+                    text: '五金件安装'
+                },
+                {
+                    value: '',
+                    text: '框与扇组装'
+                },
+                {
+                    value: '',
+                    text: '玻璃安装'
+                },
+                {
+                    value: '',
+                    text: '玻璃打胶'
+                }
+
+            ];
+
+
+            var fgx_ty_data = [
+
+                {
+                    value: '',
+                    text:'下料'
+                },
+                {
+                    value: '',
+                    text: '组装'
+                },
+                {
+                    value: '',
+                    text: '焊接'
+                },
+                {
+                    value: '',
+                    text: '打磨'
+                },
+                {
+                    value: '',
+                    text: '喷漆'
+                }
+            ];
+
+            showPicker('fbjcj', fbjcjdata);
+            //showPicker('fcplx', fcpzldata);
+
+            var element = document.getElementById('fcplx');
+
+            var picker = new mui.PopPicker();
+
+            picker.setData(fcpzldata);
+
+           
+
+            $("#fcplx").on('tap', function () {
+                if ($("#fcplx").val() == null || $("#fcplx").val() == '') {
+                    picker.show(function (items) {
+
+                        element.value = items[0].text;
+                    });
+                } else {
+
+                    var btnArry = ["取消", "确定"];
+                    mui.confirm('产品类型切换会导致明细清空？', '明细清空提醒', btnArry, function (e) {
+                        if (e.index == 1) {
+                            $("#mxlist").empty();
+                            picker.show(function (items) {
+
+                                element.value = items[0].text;
+                            });
+                        }
+                    });
+                }
+               
+            });
+
+            $("#tjmx").on('tap', function () {
+               
+                var fcplx = $("#fcplx").val();
+                if (!fcplx || fcplx=='') {
+                    mui.toast('请先选择产品类型');
+                    return false;
+                }
+                if (String(fcplx).indexOf('铝合金') != -1) {
+
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细列表项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgcname">工程名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgcname" name="fgcname" placeholder="请填写工程名称" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgx">工序<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgx" name="fgx" placeholder="请选择工序" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjybhgx">检验不合格项<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fjybhgx" name="fjybhgx" placeholder="请填写校验不合格项" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjysl">校验数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fjysl" name="fjysl" placeholder="请填写校验数量" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fbhgsl">不合格数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fbhgsl" name="fbhgsl" placeholder="请填写不合格数量" required value="0"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fhgl">合格率%<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fhgl" name="fhgl" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '</div>';
+                    $("#mxlist").prepend(li);
+                    showPickerByZepto('#mxlist', '#fgx', fgx_lhjmc_data);
+
+                    $("#mxlist").find("#fjysl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fbhgsl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                    $("#mxlist").find("#fbhgsl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fjysl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                } else if (String(fcplx).indexOf('塑钢') != -1) {
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细列表项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgcname">工程名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgcname" name="fgcname" placeholder="请填写工程名称" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgx">工序<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgx" name="fgx" placeholder="请选择工序" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjybhgx">检验不合格项<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fjybhgx" name="fjybhgx" placeholder="请填写校验不合格项" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjysl">校验数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fjysl" name="fjysl" placeholder="请填写校验数量" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fbhgsl">不合格数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fbhgsl" name="fbhgsl" placeholder="请填写不合格数量" required value="0"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fhgl">合格率%<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fhgl" name="fhgl" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '</div>';
+                    $("#mxlist").prepend(li);
+                    showPickerByZepto('#mxlist', '#fgx', fgx_sgmc_data);
+                    $("#mxlist").find("#fjysl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fbhgsl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                    $("#mxlist").find("#fbhgsl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fjysl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                } else if (String(fcplx).indexOf('木门窗') != -1) {
+
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细列表项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgcname">工程名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgcname" name="fgcname" placeholder="请填写工程名称" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgx">工序<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgx" name="fgx" placeholder="请选择工序" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjybhgx">检验不合格项<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fjybhgx" name="fjybhgx" placeholder="请填写校验不合格项" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjysl">校验数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fjysl" name="fjysl" placeholder="请填写校验数量" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fbhgsl">不合格数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fbhgsl" name="fbhgsl" placeholder="请填写不合格数量" required value="0"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fhgl">合格率%<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fhgl" name="fhgl" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '</div>';
+                    $("#mxlist").prepend(li);
+                    showPickerByZepto('#mxlist', '#fgx', fgx_mmc_data);
+                    $("#mxlist").find("#fjysl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fbhgsl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                    $("#mxlist").find("#fbhgsl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fjysl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+                } else if (String(fcplx).indexOf('铁艺') != -1) {
+
+                    var li = '<div id="mx" class="mui-card">';
+                    li = li + '   <div class="mui-input-row itemtitle">';
+                    li = li + '        <label>明细列表项</label> ';
+                    li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgcname">工程名称<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgcname" name="fgcname" placeholder="请填写工程名称" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fgx">工序<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fgx" name="fgx" placeholder="请选择工序" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjybhgx">检验不合格项<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="text" id="fjybhgx" name="fjybhgx" placeholder="请填写校验不合格项" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fjysl">校验数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fjysl" name="fjysl" placeholder="请填写校验数量" required/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fbhgsl">不合格数量<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fbhgsl" name="fbhgsl" placeholder="请填写不合格数量" required value="0"/>';
+                    li = li + '   </div>';
+                    li = li + '   <div class="mui-input-row">';
+                    li = li + '        <label for="fhgl">合格率%<i style="color:red;">*</i></label>';
+                    li = li + '        <input type="number" id="fhgl" name="fhgl" readonly="readonly" required/>';
+                    li = li + '   </div>';
+                    li = li + '</div>';
+                    $("#mxlist").prepend(li);
+                    showPickerByZepto('#mxlist', '#fgx', fgx_ty_data);
+                    $("#mxlist").find("#fjysl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fbhgsl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+
+                    $("#mxlist").find("#fbhgsl").each(function () {
+                        $(this).off('input');
+                        $(this).on('input', function () {
+
+                            if (!(isNaN($(this).parent().parent().find("#fjysl").val()))) {
+
+                                var passNotNum = parseFloat($(this).parent().parent().find("#fbhgsl").val());
+                                var totalNum = parseFloat($(this).parent().parent().find("#fjysl").val());
+                                var passNum = parseFloat(totalNum - passNotNum);
+                                var passPercent = calcPassPercent(passNum, totalNum);
+                                $(this).parent().parent().find("#fhgl").val(passPercent.toFixed(2));
+
+                            }
+
+                        });
+                    });
+                }
+
+            });
+        }
+
+        function Save() {
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fbjcj = $("#fbjcj").val();
+            var fcplx = $("#fcplx").val();
+            if (fbjcj == '') {
+                mui.toast('请选择被检车间');
+                return false;
+            }
+            if (fcplx == '') {
+                mui.toast('请选择产品类型');
+                return false;
+            }
+            var mxflag = true;
+            var mxlistArr = new Array();
+            $("#mxlist").find("#mx").each(function () {
+
+                var fgcmc = $(this).find("#fgcname").val();
+                var fgx = $(this).find("#fgx").val();
+                var fjybhgx = $(this).find("#fjybhgx").val();
+                var fjysl = $(this).find("#fjysl").val();
+                //alert(fjysl);
+                var fbhgsl = $(this).find("#fbhgsl").val();
+                var fhgl = $(this).find("#fhgl").val();
+                if (mxItem(fgcmc, fgx, fjybhgx, fjysl, fbhgsl, fhgl) == null) {
+                    mxflag = false;
+                    return false;
+                }
+                var mx = mxItem(fgcmc, fgx, fjybhgx, fjysl, fbhgsl, fhgl);
+                mxlistArr.push(mx);
+                       
+            });
+            if (mxflag == false) {
+                return false;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + '<ProcessName>建设公司车间生产过程检验记录备案</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + ' <DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + ' <建设公司_车间生产过程_主表>';
+                    xml = xml + '   <单号>自动生成</单号>';
+                    xml = xml + '   <检验人>张成林</检验人>';
+                    xml = xml + '   <检验日期>2017-08-03 00:00:00</检验日期>';
+                    xml = xml + '<被检车间>铝合金二车间</被检车间>';
+                    xml = xml + '    <产品种类>铝合金门窗</产品种类>';
+                    xml = xml + ' </建设公司_车间生产过程_主表>';
+                    if (String(fcplx).indexOf("铝合金") != -1) {
+                        for (var i = 0; i < mxlistArr.length;i++){
+                            xml = xml + ' <建设公司_车间生产过程_铝合金>';
+                            xml = xml + '   <RelationRowGuid>' + (i + 1) +'</RelationRowGuid>';
+                            xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '    <序号>' + (i + 1) + '</序号>';
+                            xml = xml + '    <铝合金工程名称>' + mxlistArr[i].fgcmc + '</铝合金工程名称>';
+                            xml = xml + '   <铝合金工序>' + mxlistArr[i].fgx + '</铝合金工序>';
+                            xml = xml + '   <铝合金不合格项>' + mxlistArr[i].fjybhgx + '</铝合金不合格项>';
+                            xml = xml + '   <铝合金检验数量>' + mxlistArr[i].fjysl + '</铝合金检验数量>';
+                            xml = xml + '    <铝合金不合格数量>' + mxlistArr[i].fbhgsl + '</铝合金不合格数量>';
+                            xml = xml + '    <铝合金合格率>' + mxlistArr[i].fhgl + '</铝合金合格率>';
+                            xml = xml + ' </建设公司_车间生产过程_铝合金>';
+                        }
+
+                        xml = xml + ' <建设公司_车间生产过程_塑钢>';
+                        xml = xml + ' </建设公司_车间生产过程_塑钢>';
+                        xml = xml + '    <建设公司_车间生产过程_木窗>';
+                        xml = xml + '    </建设公司_车间生产过程_木窗>';
+                        xml = xml + '<建设公司_车间生产过程_铁艺>';
+                        xml = xml + '   </建设公司_车间生产过程_铁艺>';
+
+                    } else if (String(fcplx).indexOf("塑钢") != -1) {
+                        xml = xml + ' <建设公司_车间生产过程_铝合金>';
+                        xml = xml + ' </建设公司_车间生产过程_铝合金>';
+                        for (var i = 0; i < mxlistArr.length; i++) {
+                            xml = xml + ' <建设公司_车间生产过程_塑钢>';
+                            xml = xml + '<RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                            xml = xml + '   <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '   <序号>' + (i + 1) +'</序号>';
+                            xml = xml + '   <塑钢工程名称>' + mxlistArr[i].fgcmc + '</塑钢工程名称>';
+                            xml = xml + '<塑钢工序>' + mxlistArr[i].fgx + '</塑钢工序>';
+                            xml = xml + '   <塑钢不合格项>' + mxlistArr[i].fjybhgx + '</塑钢不合格项>';
+                            xml = xml + '   <塑钢检验数量>' + mxlistArr[i].fjysl + '</塑钢检验数量>';
+                            xml = xml + '   <塑钢不合格数量>' + mxlistArr[i].fbhgsl + '</塑钢不合格数量>';
+                            xml = xml + '   <塑钢合格率>' + mxlistArr[i].fhgl + '</塑钢合格率>';
+
+                            xml = xml + ' </建设公司_车间生产过程_塑钢>';
+                        }
+                        xml = xml + '    <建设公司_车间生产过程_木窗>';
+                        xml = xml + '    </建设公司_车间生产过程_木窗>';
+                        xml = xml + '<建设公司_车间生产过程_铁艺>';
+                        xml = xml + '   </建设公司_车间生产过程_铁艺>';
+                    } else if (String(fcplx).indexOf("木门") != -1) {
+                        xml = xml + ' <建设公司_车间生产过程_铝合金>';
+                        xml = xml + ' </建设公司_车间生产过程_铝合金>';
+                        xml = xml + ' <建设公司_车间生产过程_塑钢>';
+                        xml = xml + ' </建设公司_车间生产过程_塑钢>';
+                        for (var i = 0; i < mxlistArr.length; i++) {
+                            xml = xml + '    <建设公司_车间生产过程_木窗>';
+                            xml = xml + ' <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                            xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '    <序号>'+(i+1)+'</序号>';
+                            xml = xml + '    <木窗工程名称>' + mxlistArr[i].fgcmc + '</木窗工程名称>';
+                            xml = xml + '    <木窗工序>' + mxlistArr[i].fgx + '</木窗工序>';
+                            xml = xml + '    <木窗不合格项>' + mxlistArr[i].fjybhgx + '</木窗不合格项>';
+                            xml = xml + '    <木窗检验数量>' + mxlistArr[i].fjysl + '</木窗检验数量>';
+                            xml = xml + '    <木窗不合格数量>' + mxlistArr[i].fbhgsl + '</木窗不合格数量>';
+                            xml = xml + '    <木窗合格率>' + mxlistArr[i].fhgl + '</木窗合格率>';
+
+                            xml = xml + '    </建设公司_车间生产过程_木窗>';
+                        }
+                        xml = xml + '<建设公司_车间生产过程_铁艺>';
+                        xml = xml + '   </建设公司_车间生产过程_铁艺>';
+
+                    } else if (String(fcplx).indexOf("铁艺") != -1) {
+
+                        xml = xml + ' <建设公司_车间生产过程_铝合金>';
+                        xml = xml + ' </建设公司_车间生产过程_铝合金>';
+                        xml = xml + ' <建设公司_车间生产过程_塑钢>';
+                        xml = xml + ' </建设公司_车间生产过程_塑钢>';
+                        xml = xml + '    <建设公司_车间生产过程_木窗>';
+                        xml = xml + '    </建设公司_车间生产过程_木窗>';
+                        for (var i = 0; i < mxlistArr.length; i++) {
+                            xml = xml + '<建设公司_车间生产过程_铁艺>';
+                            xml = xml + '<RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
+                            xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '   <序号>' + (i + 1) + '</序号>';
+                            xml = xml + '   <铁艺工程名称>' + mxlistArr[i].fgcmc + '</铁艺工程名称>';
+                            xml = xml + '   <铁艺工序>' + mxlistArr[i].fgx + '</铁艺工序>';
+                            xml = xml + '    <铁艺不合格项>' + mxlistArr[i].fjybhgx + '</铁艺不合格项>';
+                            xml = xml + '   <铁艺检验数量>' + mxlistArr[i].fjysl + '</铁艺检验数量>';
+                            xml = xml + '   <铁艺不合格数量>' + mxlistArr[i].fbhgsl + '</铁艺不合格数量>';
+                            xml = xml + '   <铁艺合格率>' + mxlistArr[i].fhgl + '</铁艺合格率>';
+
+                            xml = xml + '   </建设公司_车间生产过程_铁艺>';
+                        }
+                    }
+                    xml = xml + '        </FormData>';
+                    xml = xml + '    </XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+
+        //计算合格率
+        function calcPassPercent(passNum, totalNum) {
+            if (isNaN(passNum) || isNaN(totalNum)) {
+                //console.log('传入数量格式不正确');
+                return 100.00;
+            }
+
+            var passPercent = parseFloat((passNum / totalNum) * 100);
+            return passPercent;
+        }
+
+        function mxItem(fgcmc,fgx,fjybhgx,fjysl,fbhgsl,fhgl) {
+
+            var mx = new Object;
+            mx.fgcmc = fgcmc;
+            mx.fgx = fgx;
+            mx.fjybhgx = fjybhgx;
+            mx.fbhgsl = fbhgsl;
+            mx.fjysl = fjysl;
+            mx.fhgl = fhgl;
+            if (fgcmc == '') {
+                mui.toast('请填写工程名称');
+                return null;
+            }
+            if (fgx == '') {
+                mui.toast('请选择工序');
+                return null;
+            }
+            if (fjysl == '') {
+                mui.toast('请填写校验不合格项');
+                return null;
+            }
+            if (fjysl == null || fjysl < 0 || fjysl == '') {
+                mui.toast('请填写正确的校验数量');
+                return null;
+            }
+            if (fbhgsl == null || fgcmc < 0 || fbhgsl == '') {
+                mui.toast('请填写正确的不合格数量');
+                return null;
+            }
+            return mx;
+
+        }
+    </script>
+</body>
+</html>

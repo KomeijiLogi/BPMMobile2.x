@@ -1,0 +1,569 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        .mui-bar {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        #done.mui-disabled {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:1;" id="wrapper">
+        <form class="mui-input-group mui-card" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-input-row">
+                <label for="ffbmk">发布模块</label>
+                <input type="text" id="ffbmk" name="ffbmk" readonly="readonly" value="通知公告" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fbt">标题</label>
+                <input type="text" id="fbt" name="fbt" placeholder="请填写标题" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fwjjb">文件级别</label>
+                <input type="text" id="fwjjb" name="fwjjb" placeholder="请选择文件级别" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fnr">内容</label>
+                <textarea rows="8" id="fnr" name="fnr" placeholder="请填写内容"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">正文及附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+
+            <a class="mui-btn mui-btn-yellow mui-btn-block mui-btn-outlined" id="ffbfw_bm">
+                添加发布范围(部门)
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div id="bmlist">
+                <!--<div id="bm" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>部门</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row" style="height:4.25rem;">
+                        <textarea id="ffbfw_bm_c" name="ffbfw_bm_c">威高集团/威高集团总部/威高集团本部/流程与信息部(信息技术)</textarea>
+                    </div>
+                </div>-->
+            </div>
+
+            <a class="mui-btn mui-btn-yellow mui-btn-block mui-btn-outlined" id="ffbfw_ry">
+                添加发布范围(人员)
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <ul class="mui-table-view mui-grid-view mui-grid-9" id="rylist">
+                <!--<div id="ry" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>人员</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row mui-text-center">
+
+                        <input type="text" id="ffbfw_ry_c" name="ffbfw_ry_c" class="mui-col-xs-6" value="张成林"/>
+                        <input type="text" id="ffbfw_ry_c_no" name="ffbfw_ry_c_no" readonly="readonly" class="mui-col-xs-6" value="00078251"/>
+                    </div>
+                </div>-->
+            </ul>
+        </form>
+    </div>
+    <div id="searchBPMOU" style="height:100%;display:none;z-index:20;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="hiddenOrg()"></a>
+            <h1 class="mui-title">查询组织</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div id='list' class="mui-indexed-list" style="padding-top:2rem;">
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索BPM组织" id="search">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="orglist" style="margin-bottom:2rem;"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+
+
+
+        mui.init();
+
+        mui.ready(function () {
+            getBPMParam();
+            getVersion('\\01威高集团总部\\06建设公司\\建设管理平台', '建设公司通知公告申请');
+            prepMsg();
+            upload();
+            watch();
+
+
+        });
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        function searchDOM() {
+            var header = document.querySelector('header.mui-bar');
+            var list = document.getElementById('list');
+            //calc hieght
+            //list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+            list.style.height = document.getElementById('searchBPMOU').offsetHeight + 'px';
+            //create
+            window.indexedList = new mui.IndexedList(list);
+
+            done.addEventListener('tap', function () {
+                var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
+                var checkedValues = [];
+                var checkedBPMOU = [];
+                selectOrgName = new Array();
+                selectOrgBPMOU = new Array();
+                selectOrgCode = new Array();
+                checkboxArray.forEach(function (box) {
+
+                    if (box.checked) {
+                        checkedValues.push(box.parentNode.innerText);
+                        selectOrgName.push(box.parentNode.innerText);
+                        //console.log($(box.parentNode).find("#bpmou").val());
+                        selectOrgBPMOU.push($(box.parentNode).find("#bpmou").val());
+                        selectOrgCode.push($(box.parentNode).find("#bpmcode").val());
+                    }
+                });
+                if (checkedValues.length > 0) {
+                    //mui.alert('你选择了: ' + checkedValues);
+                    $("#bmlist").empty();
+
+                    produceDOMforOrg(selectOrgName);
+                    hiddenOrg();
+                } else {
+                    //mui.alert('你没选择任何');
+                }
+            }, false);
+            mui('.mui-indexed-list-inner').on('change', 'input', function () {
+                var count = list.querySelectorAll('input[type="checkbox"]:checked').length;
+                var value = count ? "完成(" + count + ")" : "完成";
+                done.innerHTML = value;
+                if (count) {
+                    if (done.classList.contains("mui-disabled")) {
+                        done.classList.remove("mui-disabled");
+                    }
+                } else {
+                    if (!done.classList.contains("mui-disabled")) {
+                        done.classList.add("mui-disabled");
+                    }
+                }
+            });
+        }
+        function prepMsg() {
+            $("#fdate").val(getNowFormatDate(2));
+            tapEvent();
+            getBPMOUInfo();
+        }
+        var selecPersonOpenIdArr = new Array();
+        var selectPerson = new Array();
+        var selectPersonAccount = new Array();
+        var selectOrgCode = new Array();
+        var selectOrgName = new Array();
+        var selectOrgBPMOU = new Array();
+        var selectOrg = new Array();
+        function tapEvent() {
+            var fwjjbdata = [
+                {
+                    value: '',
+                    text:'部门级'
+                },
+                {
+                    value: '',
+                    text:'公司级'
+                },
+                {
+                    value: '',
+                    text:'分公司级'
+                }
+
+            ];
+
+            showPicker('fwjjb', fwjjbdata);
+
+            $("#ffbfw_bm").on('tap', function () {
+                showOrg();
+            });
+            $("#ffbfw_ry").on('tap', function () {
+                XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
+
+                    if (typeof (result) == "string") {
+                        result = JSON.parse(result);
+                    }
+
+                    if (result.success == true || result.success == "true") {
+                        //selecPersonOpenIdArr = new Array();
+                        for (var i = 0; i < result.data.persons.length; i++) {
+
+
+                            selecPersonOpenIdArr.push((String)(result.data.persons[i].openId));
+
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/bpm/PostAccount",
+                            data: { "ids": selecPersonOpenIdArr },
+                            beforeSend: function (XHR) {
+                                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                            }, success: function (data, status) {
+                                //alert(JSON.stringify(data));
+                                if (status == "success") {
+                                    selectPerson = new Array();
+                                    for (var i = 0; i < data.data.length; i++) {
+                                        //alert(JSON.stringify(data.data));
+                                        if (data.data[i].photoUrl == '' || data.data[i].photoUrl == null) {
+                                            data.data[i].photoUrl = "../../Content/images/nopic.jpg"
+                                        }
+
+                                        var selectperson = ({
+                                            name: (data.data[i].name),              //姓名
+                                            account: (data.data[i].phone),          //工号
+                                            photoUrl: (data.data[i].photoUrl),      //头像
+                                            department: (data.data[i].department),   //所属部门
+                                            jobTitle: (data.data[i].jobTitle),        //职位
+                                            openId: (data.data[i].openId)            //openid
+                                        });
+                                        selectPerson.push(selectperson);
+                                    }
+
+                                }
+                            }, error: function (e) {
+                            }, complete: function () {
+                                $("#rylist").empty();
+                                for (var i = 0; i < selectPerson.length; i++) {
+
+                                    var li = ' <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#" onclick="deleteThis(this)">';
+                                    li = li + '    <img src="' + selectPerson[i].photoUrl + '" style="border-radius:2rem;"/>';
+                                    li = li + '    <div class="mui-media-body">' + selectPerson[i].name + '<input type="hidden" id="openid" name="openid" value="' + selectPerson[i].openId + '"/></div></a>';
+                                    li = li + ' </li>';
+
+                                    $("#rylist").append(li);
+                                }
+
+
+                            }
+                        });
+
+
+
+                    }
+
+                });
+            });
+        }
+
+        function getBPMOUInfo() {
+
+
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>BPMDATA</DataSource>';
+            xml = xml + '         <ID>erpcloud_公用_获取组织</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_公用_获取组织</ProcedureName>';
+            xml = xml + '        <Filter>';
+            xml = xml + '         <code>01.07.04</code>';
+            xml = xml + '          </Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                },
+                success: function (data, status) {
+
+                    if (status == "success" || data.success == "true" || data.success == true) {
+
+
+
+                        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                        console.log(provideData);
+                        var BPMOUArr = provideData.Tables[0].Rows;
+                        for (var i = 0; i < BPMOUArr.length; i++) {
+                            //console.log(BPMOUArr[i].ouname);
+                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                            li = li + '<input type= "checkbox" />' + BPMOUArr[i].ouname + '<input type="hidden" id="bpmou" name="bpmou" value="' + BPMOUArr[i].fname + '"/><input type="hidden" id="bpmcode" name="bpmcode" value="' + BPMOUArr[i].code + '"/></li>';
+                            $("#orglist").append(li);
+                        }
+                    }
+                }, error: function (e) {
+                }, complete: function () {
+                }
+            });
+        }
+
+        function showOrg() {
+
+            $("#wrapper").css("display", "none");
+            $("#searchBPMOU").css("display", "block");
+            $(".mui-btn-row").css("display", "none");
+            searchDOM();
+
+        }
+        function hiddenOrg() {
+
+            $("#wrapper").css("display", "block");
+            $("#searchBPMOU").css("display", "none");
+            $(".mui-btn-row").css("display", "block");
+
+        }
+
+        function produceDOMforOrg(selectOrgName) {
+            for (var i = 0; i < selectOrgName.length; i++) {
+                var li = '   <div id= "bm" class="" >';
+                li = li + '     <div class="mui-input-row" style="height:2.75rem;">';
+                li = li + '        <label id="ffbfw_bm_c" name="ffbfw_bm_c" class="mui-col-xs-11">' + selectOrgName[i] + '</label>';
+                li = li + '        <span class="mui-icon mui-icon-closeempty mui-col-xs-1 mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;height:2.75rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '     </div>';
+                li = li + '  </div>';
+                $("#bmlist").append(li);
+            }
+
+        }
+        function Save() {
+            var fareaStr = String(BPMOU).split("/");
+            //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+            $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+            var ffbmk = $("#ffbmk").val();
+            var fname = $("#fname").val();
+            var fbt = $("#fbt").val();
+            var fdept = $("#fdept").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fwjjb = $("#fwjjb").val();
+            var fnr = $("#fnr").val();
+
+
+            if (!fbt || fbt == '') {
+                mui.toast('请填写标题');
+                return false;
+            }
+            if (!fwjjb || fwjjb == '') {
+                mui.toast('请选择文件级别');
+                return false;
+            }
+            if (!fnr || fnr == '') {
+                mui.toast('请填写内容');
+                return false;
+            }
+            for (var i = 0; i < selectOrgBPMOU.length; i++) {
+                var org = {
+                    bpmou: selectOrgBPMOU[i],
+                    code: selectOrgCode[i],
+                    ouname: selectOrgName[i]
+                }
+                selectOrg.push(org);
+
+            }
+            for (vari = 0; i < selectPerson.length; i++) {
+                selectPersonAccount.push(selectPerson[i].account);
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '    <XForm>';
+                    xml = xml + '        <Header>';
+                    xml = xml + '           <Method>Post</Method>';
+                    xml = xml + '           <ProcessName>建设公司通知公告申请</ProcessName>';
+                    xml = xml + '           <ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '           <DraftGuid></DraftGuid>';
+                    xml = xml + '          <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '           <Action>提交</Action>';
+                    xml = xml + '           <Comment></Comment>';
+                    xml = xml + '           <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '       </Header>';
+                    xml = xml + '      <FormData>';
+                    xml = xml + '         <Portal_TongZhiGongGao_js>';
+                    xml = xml + '              <FaBuLeiXingValue>' + ffbmk + '</FaBuLeiXingValue>';
+                    xml = xml + '               <FaBuLeiXing>' + ffbmk + '</FaBuLeiXing>';
+                    xml = xml + '               <IsActive>1</IsActive>';
+                    xml = xml + '               <SN>-自动生成-</SN>';
+                    xml = xml + '               <BiaoTi>' + fbt + '</BiaoTi>';
+                    xml = xml + '               <FaBuDanWei>' + fdept + '</FaBuDanWei>';
+                    xml = xml + '              <FaBuRenName>' + fname + '</FaBuRenName>';
+                    xml = xml + '               <FaBuShiJian>' + fdate + '</FaBuShiJian>';
+
+                    xml = xml + '             <flevel>' + fwjjb + '</flevel>';
+                    xml = xml + '             <ShiYou>' + fnr+'</ShiYou>';
+
+                    if (fjArray.toString() != null && fjArray.toString() != "") {
+
+                        xml = xml + '             <Attach>' + fjArray.toString().replace(",", ";") + '</Attach>';
+                    } else {
+                        xml = xml + '             <Attach></Attach>';
+                    }
+                    xml = xml + '               <lujing>' + selectOrgBPMOU.toString() + '</lujing>';
+                    xml = xml + '               <lujing2>' + selectPersonAccount.toString() + '</lujing2>';
+                    xml = xml + '               <NeiRong></NeiRong>';
+                    xml = xml + '          </Portal_TongZhiGongGao_js>';
+                    if (selectOrg.length != 0) {
+                        for (var i = 0; i < selectOrg.length; i++) {
+                            xml = xml + '           <Portal_TongZhiGongGaoACL_js>';
+                            xml = xml + '            <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                            xml = xml + '                <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '               <ACLType>1</ACLType>';
+                            xml = xml + '                <OUCode>' + selectOrg[i].code + '</OUCode>';
+                            xml = xml + '                <TaskID></TaskID>';
+                            xml = xml + '                <OUFullName>' + selectOrg[i].bpmou + '</OUFullName>';
+                            xml = xml + '             </Portal_TongZhiGongGaoACL_js>';
+                        }
+                    } else {
+                        xml = xml + '           <Portal_TongZhiGongGaoACL_js>';
+                        xml = xml + '             </Portal_TongZhiGongGaoACL_js>';
+                    }
+
+                    if (selectPerson.length != 0) {
+                        for (var i = 0; i < selectPerson.length; i++) {
+
+                            xml = xml + '           <Portal_TongZhiGongGaoACLUser_js>';
+                            xml = xml + '               <RelationRowGuid>' + (i + 1 + selectOrg.length) + '</RelationRowGuid>';
+                            xml = xml + '               <RowPrimaryKeys></RowPrimaryKeys>';
+                            xml = xml + '               <ALCType>1</ALCType>';
+                            xml = xml + '               <UserAccount>' + selectPerson[i].account + '</UserAccount>';
+                            xml = xml + '               <UserName>' + selectPerson[i].name + '</UserName>';
+                            xml = xml + '           </Portal_TongZhiGongGaoACLUser_js>';
+                        }
+                    } else {
+                        xml = xml + '           <Portal_TongZhiGongGaoACLUser_js>';
+                        xml = xml + '           </Portal_TongZhiGongGaoACLUser_js>';
+                    }
+
+                    xml = xml + '        </FormData>';
+                    xml = xml + '    </XForm>';
+                    PostXml(xml);
+                }
+            });
+
+        }
+
+        function deleteThis(context) {
+
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().fadeOut();
+                    //删除数组的openId
+                    var openid = $(context).find("#openid").val();
+                    removeByValue(selecPersonOpenIdArr, openid);
+                    for (var i = 0; i < selectPerson.length; i++) {
+                        if (selectPerson[i].openId == openid) {
+                            selectPerson.splice(i, 1);
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+html,body{
+    /*background-color: white;*/
+    font-size: 20px;
+    height: 100%;
+    /*overflow:auto;*/
+}
+/*iphone 5c及其同类机型以下适配*/
+@media screen and (max-height: 568px) {
+    html, body {
+       font-size:15px;
+      
+    }
+    .mui-input-row{
+        height: 2.4rem;
+    }
+    .button-adjust{
+        padding: 0.35rem;
+    }
+    
+    /*::-webkit-scrollbar {
+       width:0rem;
+    }*/
+}
+
+label{
+    font-size: 0.65rem;
+}
+textarea{
+    font-size: 0.65rem;
+}
+
+input{
+    font-size: 0.65rem;
+    text-align: center;
+
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=time], input[type=url], input[type=week], select, textarea:after{
+    border: none;
+}
+
+ul > div{
+    color: #808080;
+
+}
+h5{
+    color: #808080;
+}
+form >button{
+    margin: .7rem .35rem;
+    width: 90%;
+}
+i{
+    color: red;
+}
+
+div >span{
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    display: inline;
+}
+
+.mui-col-xs-4 >p:nth-child(1){
+    color: #3C74F7;
+    font-size: 0.7rem;
+}
+
+.mui-col-xs-4 >p:nth-child(2){
+    color: black;
+    font-size: 0.8rem;
+}
+.mui-col-xs-4 >p:nth-child(3){
+    color: black;
+    font-size: 0.8rem;
+}
+.mui-col-xs-6 >p:nth-child(1){
+    color: #3C74F7;
+    font-size: 0.7rem;
+}
+.mui-col-xs-6 >label{
+    text-align: center;
+    padding: 0.4rem;
+}
+/*#sc-form {
+    margin-bottom:1rem;
+}*/
+.sc-bg{
+    background-color: #ffffff;
+    width: 100%;
+
+}
+.sc-bg >div{
+    border-style: solid;
+    border-left-width: 0rem;
+    border-right-width: 0rem;
+    border-top-width: 0rem;
+    border-bottom-width: 0.01rem ;
+    border-color: #acacac;
+}
+.list_header{
+    background-color: #00a0ea;
+    color: white;
+}
+.calendar_h{
+   text-align: center;
+   color: white;
+   font-size: 0.75rem;
+   padding: 0.4rem;
+}
+.calendar_date_show{
+    background-color: white;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+.invalid_field{
+    color: #a7a7a7;
+}
+#deleteItem{
+    top: 0.1rem;
+    right:0.1rem;
+    margin-top: 0.1rem;
+    margin-right: 0.1rem;
+    padding-top: 0.1rem;
+    padding-right: 0.1rem;
+}
+#form_main{
+    /*display: none;*/
+    top: 0.5rem;
+    /*padding-top: 1.8rem;*/
+    z-index: 30;
+}
+#form_secondary{
+    /*display: none;*/
+   
+    z-index: 30;
+   
+}
+#form_guide_project {
+    /*display: none;*/
+    /*margin: 0.2rem 0.5rem 0.5rem;
+    position: fixed;
+    z-index: 998;
+    text-align: center;*/
+    text-align: center;
+    /*padding-bottom: 0.2rem;*/
+    background-color: transparent;
+    
+    padding-bottom: 2.5rem;
+}
+#form_guide_city{
+    display: none;
+    top:0rem;
+    background-color: white;
+}
+#form_guide_time{
+    display: none;
+    background: rgb(7,60,99);
+}
+#form_guide_extra {
+    margin: 0.2rem 0.5rem 0.5rem;
+    position: fixed;
+    z-index: 998;
+    /*text-align: center;*/
+    width:100%;
+}
+#change_transpotation{
+    color: #2E92DA;
+}
+#sc-row-5{
+    font-size: 0.8rem;
+    color: #a7a7a7;
+  
+}
+#sc-row-4 {
+   padding-top:0.4rem;
+}
+#sc-row-6{
+    color:#a7a7a7;
+    padding-top: 0.4rem;
+}
+.column_adj{
+   padding-top:0rem;
+   
+}
+#sc-row-5 >label {
+    color: #acacac;
+    font-size: 0.6rem;
+}
+.farea {
+    color: #acacac;
+    top:0.4rem;
+    font-size: 0.6rem;
+   
+}
+#fstandard {
+    /*height: 1rem;*/
+    font-size: 0.6rem;
+}
+#fspecially {
+    color: #F19D16;
+    font-size: 0.6rem;
+}
+#departure_province{
+    display: none;
+}
+#destination_province{
+    display: none;
+}
+#cwdate{
+    display: none;
+}
+.post_div{
+    z-index: 998;
+    bottom: 0rem;
+    position: fixed;
+    width: 100%;
+}
+.post_button{
+    width: 100%;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    border-radius:1rem;
+}
+.btn_transport_selector{
+  border-radius: 40%;
+}
+
+.form_guide_city_all{
+    display: none;
+    top:0rem;
+    background-color: white;
+    font-size: 0.75rem;
+    z-index:1;
+    border:none !important;
+}
+.city_collection {
+    /*display: none;*/
+    /*visibility: hidden;*/
+    visibility:hidden;
+    z-index: 1;
+   
+}
+
+#segmentedControls {
+
+    visibility:hidden;
+    overflow:hidden;
+    z-index:1;
+}
+#segmentedControlContents {
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 1;
+}
+.aim_input {
+  ime-mode:disabled;
+ 
+}
+
+.mini-input {
+   width:20%;
+  
+}
+.label_tp {
+   visibility:hidden;
+}
+#form_guide_project_2 {
+    text-align: center;
+    padding-bottom:0.2rem;
+}
+#button_tjmx {
+    /*width: 95%;*/
+    /*padding: 0.25rem 1rem;*/
+    margin-bottom:1rem;
+    padding-top:0.35rem;
+    padding-bottom:0.35rem;
+    font-size:0.75rem;
+
+}
+#tjmx {
+  
+  font-size:0.75rem;
+  z-index:1999;
+ 
+}
+
+
+.illustration_context {
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+.bottomborder {
+    border: dashed;
+    border-width: 0rem 0rem 0.02rem 0rem;
+}
+
+.illustration_context_extra {
+    font-size: 0.3rem;
+}
+#offCanvasSide {
+    background-color: white;
+}
+.extra_content {
+    display: none;
+}
+.hidden_button {
+    display: none;
+    width: 100%;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    border-radius:1rem;
+}
+.show_button {
+    width: 95%;
+    height: 1.8rem;
+    font-size: 0.8rem;
+}
+.fdate_adj {
+    text-align:center;
+}
+.p_adj {
+   color:#a7a7a7 !important;
+
+}
+.mui-collapse > a {
+   padding-bottom:0.15rem !important;
+   padding-top:0.15rem !important;
+   font-size:0.5rem !important;
+}
+

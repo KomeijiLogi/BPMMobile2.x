@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../Scripts/zepto.min.js"></script>
+    
+    <script type="text/javascript" src="../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../Content/upload.css" />
+    <link rel="stylesheet" href="../../Content/ApprovalUtils.css"/>
+    <title></title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group"  style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" >
+                <label for="fdept">提报单位<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" name="fdept" value="" readonly="readonly" placeholder="请选择提报单位"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdepot">提报仓库<i style="color:red;">*</i></label>
+                <input type="text" id="fdepot" name="fdepot" value="" readonly="readonly" placeholder="请选择提报仓库"/>
+            </div>
+            <div class="mui-input-row">
+                <label>不良物资明细</label>
+                <span class="mui-icon mui-icon-plusempty mui-pull-right" style="border:groove;margin-right:1rem;border-width:0.1rem;margin-top:0.1rem;" id="addItem"></span>
+            </div>
+            <div class="mui-input-group" id="bllist">
+
+            </div>
+            <div class="mui-input-row">
+                <label for="fsltotal">总计数量</label>
+                <input type="number" id="fsltotal" name="fsltotal" value="" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjetotal">总计金额(元)</label>
+                <input type="text" id="fjetotal" name="fjetotal" value="" readonly="readonly"/>
+            </div>
+
+        </form>
+    </div>
+    <div class="mui-btn-row" id="SaveD">
+        <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+    </div>
+    <script>
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\06建设公司\\SCGL生产管理','建设公司库存不良物资提报');
+            getBPMParam();
+            prepMsg();
+           
+        });
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+        XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+            if (typeof (result) == "string") {
+                result = JSON.parse(result);
+            }
+
+            if (result.success == true || result.success == "true") {
+                $("#fname").val(result.data.name);
+            }
+        });
+        XuntongJSBridge.call('createPop', {
+            'popTitle': '',
+            'popTitleCallBackId': '1',
+            'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+            'menuList': [
+                'openWithBrowser'
+            ],
+
+        }, function (result) {
+            if (result.success == true || result.success == 'true') {
+                var callBackId = result.data ? result.data.callBackId : '';
+                if (callBackId == 'callback1') {
+                    window.location.reload();
+                    //location.reload();
+                } else if (callBackId == 'callback2') {
+
+                } else {
+
+                }
+            }
+
+        });
+
+        
+        function prepMsg() {
+
+            tapEvent();
+
+            $("#fdate").val(getNowFormatDate(2));
+
+            var url = window.location.href;
+            if (url != null && url != "") {
+                if (String(url).indexOf("reset") != -1) {
+                   
+                    var msg = JSON.parse(localStorage.getItem('BPM_JSGSBLWZTBMsg'));
+                    $("#fname").val(msg.fname);
+                    $("#fdept").val(msg.fdept);
+                    $("#fdate").val(msg.fdate);
+                    $("#fdepot").val(msg.fdepot);
+                    $("#fsltotal").val(msg.fsltotal);
+                    $("#fjetotal").val(msg.fjetotal);
+
+                    var fwzlxdata = [
+                        {
+                            value: "scgcfl",
+                            text: "生产过程废料"
+                        },
+                        {
+                            value: "dzl",
+                            text: "呆滞料"
+                        },
+                        {
+                            value: "gbzq",
+                            text: "过保质期"
+                        }
+                    ];
+
+                    for (var i = 0; i < msg.fwlmx.length;i++){
+
+                        var fwlmxItem = JSON.parse(msg.fwlmx[i]);
+                        var li = '<div id="bl" class="mui-card">';
+                        li = li + '   <div class="mui-input-row bgc">';
+                        li = li + '        <label>明细列表项</label> ';
+                        li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fwlno">物料编码<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwlno" name="fwlno" value="' + fwlmxItem.fwlno + '" placeholder="请输入物料编码"/> ';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fwlname">物料名称<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwlname" name="fwlname" value="' + fwlmxItem.fwlname + '" placeholder="请输入物料名称"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fggxh" name="fggxh" value="' + fwlmxItem.fggxh + '" placeholder="请输入规格型号"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fdw">单位<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fdw" name="fdw" value="' + fwlmxItem.fdw + '" placeholder="请输入单位"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fsl">数量<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fsl" name="fsl" value="' + fwlmxItem.fsl + '" placeholder="请输入数量" onchange="calcPrice(this)"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fckdj">参考单价<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="number" id="fckdj" name="fckdj" value="' + fwlmxItem.fckdj + '" placeholder="请输入参考单价" onchange="calcPrice(this)"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fje">金额(元)</label>';
+                        li = li + '        <input type="text" id="fje" name="fje" value="' + fwlmxItem.fje + '" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fwzlx">物资类型<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fwzlx" name="fwzlx" value="' + fwlmxItem.fwzlx + '" placeholder="请选择物资类型" readonly="readonly"/>';
+                        li = li + '   </div>';
+                        li = li + '   <div class="mui-input-row">';
+                        li = li + '        <label for="fcsyy">产生原因<i style="color:red;">*</i></label>';
+                        li = li + '        <input type="text" id="fcsyy" name="fcsyy" value="' + fwlmxItem.fcsyy + '" placeholder="请输入产生原因"/>';
+                        li = li + '   </div>';
+
+                        $("#bllist").append(li);
+                        
+                        var picker = new mui.PopPicker();
+                        picker.setData(fwzlxdata);
+
+                        $("#bllist").find("#fwzlx").each(function () {
+
+                            var self = this;
+                            $(this).off('tap');
+                            $(this).on('tap', function () {
+                                picker.show(function (items) {
+                                    self.value = (items[0].text);
+                                });
+                            });
+
+                        });
+                    }
+                } else {
+                   
+                }
+            }
+        }
+
+        function tapEvent() {
+            var fwzlxdata = [
+                {
+                    value: "scgcfl",
+                    text:"生产过程废料"
+                },
+                {
+                    value: "dzl",
+                    text:"呆滞料"
+                },
+                {
+                    value: "gbzq",
+                    text:"过保质期"
+                }
+            ];
+
+
+            $("#addItem").on('tap',function(){
+
+                var li = '<div id="bl" class="mui-card">';
+                li = li + '   <div class="mui-input-row bgc">';
+                li = li + '        <label>明细列表项</label> ';
+                li = li + '        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwlno">物料编码<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlno" name="fwlno" value="" placeholder="请输入物料编码"/> ';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwlname">物料名称<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwlname" name="fwlname" value="" placeholder="请输入物料名称"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fggxh" name="fggxh" value="" placeholder="请输入规格型号"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fdw">单位<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fdw" name="fdw" value="" placeholder="请输入单位"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fsl">数量<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fsl" name="fsl" value="" placeholder="请输入数量" onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fckdj">参考单价<i style="color:red;">*</i></label>';
+                li = li + '        <input type="number" id="fckdj" name="fckdj" value="" placeholder="请输入参考单价" onchange="calcPrice(this)"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fje">金额(元)</label>';
+                li = li + '        <input type="text" id="fje" name="fje" value="" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fwzlx">物资类型<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fwzlx" name="fwzlx" value="" placeholder="请选择物资类型" readonly="readonly"/>';
+                li = li + '   </div>';
+                li = li + '   <div class="mui-input-row">';
+                li = li + '        <label for="fcsyy">产生原因<i style="color:red;">*</i></label>';
+                li = li + '        <input type="text" id="fcsyy" name="fcsyy" value="" placeholder="请输入产生原因"/>';
+                li = li + '   </div>';
+
+                $("#bllist").append(li);
+                var picker = new mui.PopPicker();
+
+                picker.setData(fwzlxdata);
+
+                $("#bllist").find("#fwzlx").each(function () {
+
+                    var self = this;
+                    $(this).off('tap');
+                    $(this).on('tap', function () {
+                        picker.show(function (items) {
+                            self.value = (items[0].text);
+                        });
+                    });
+
+                });
+
+               
+                
+               
+            });
+
+           
+
+            var fdeptdata = [
+                {
+                    value: "mcfgs",
+                    text:"门窗分公司"
+                },
+                {
+                    value: "lhptfgs",
+                    text:"绿化配套分公司"
+                },
+                {
+                    value: "jsgs",
+                    text:"建设公司"
+                }
+            ];
+            showPicker('fdept', fdeptdata);
+
+
+            var fdepotdata = [
+                {
+                    value: "lhj",
+                    text:"铝合金仓库"
+                },
+                {
+                    value: "ty",
+                    text:"铁艺仓库"
+                },
+                {
+                    value: "mc",
+                    text:"木窗仓库"
+                },
+                {
+                    value: "lhjccp",
+                    text:"铝合金产成品库"
+                },
+                {
+                    value: "lhpt",
+                    text:"绿化配套仓库"
+                },
+                {
+                    value: "mm",
+                    text:"苗木仓库"
+                },
+                {
+                    value: "mmcp",
+                    text:"苗木成品"
+                },
+                {
+                    value: "gs",
+                    text:"公司库"
+                },
+                {
+                    value: "st",
+                    text:"食堂库"
+                }
+            ];
+
+            showPicker('fdepot', fdepotdata);
+
+        }
+
+        function calcPrice(context) {
+
+            var fdj = $(context).parent().parent().find("#fckdj").val();
+            var fsl = $(context).parent().parent().find("#fsl").val();
+            var fje;
+            if (fdj != null && fsl != null) {
+
+                fje = fdj * fsl;
+
+            }
+            $(context).parent().parent().find("#fje").val((fje.toString()));
+            //格式化单价
+            $(context).parent().parent().find("#fdj").val((fdj.toString()));
+
+            //触发计算总量总金额函数
+            amountCountAndPrice();
+
+        }
+
+        function amountCountAndPrice() {
+            var fsltotal = 0;
+            var ftotal = 0;
+
+            $("#bllist").find("#bl").each(function () {
+                var fsltmp = parseFloat($(this).find("#fsl").val());
+                if ($(this).find("#fsl").val() == null || $(this).find("#fsl").val() == "") {
+                    fsltmp = 0;
+                }
+
+                if (fsltotal == 0) {
+                    fsltotal = fsltmp;
+                } else {
+                    fsltotal += fsltmp;
+                }
+
+                var fjetmp = parseFloat($(this).find("#fje").val());
+                if ($(this).find("#fje").val() == null || $(this).find("#fje").val() == "") {
+                    fjetmp = 0;
+                }
+                if (ftotal == 0) {
+                    ftotal = fjetmp;
+                } else {
+                    ftotal += fjetmp;
+                }
+
+            });
+            $("#fsltotal").val(fsltotal);
+            $("#fjetotal").val(FormatMoney(ftotal.toString()));
+        }
+
+        function deleteItem(context) {
+            var btnArray = ['否', '是'];
+            mui.confirm('确认删除？', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $(context).parent().parent().remove();
+                    amountCountAndPrice();
+                }
+            });
+
+          
+          
+        }
+
+        function Save() {
+
+          
+            var fname = $("#fname").val();
+            var fdate = $("#fdate").val() + " 00:00:00";
+            var fdept = $("#fdept").val();
+            var fdepot = $("#fdepot").val();
+            var fsltotal = $("#fsltotal").val();
+            var fjetotal = $("#fjetotal").val();
+            var mxflag = false;
+            var bllistArr = new Array();
+            $("#bllist").find("#bl").each(function () {
+                var fwlno = $(this).find("#fwlno").val();
+                var fwlname = $(this).find("#fwlname").val();
+                var fggxh = $(this).find("#fggxh").val();
+                var fdw = $(this).find("#fdw").val();
+                var fsl = $(this).find("#fsl").val();
+                var fckdj = $(this).find("#fckdj").val();
+                var fje = $(this).find("#fje").val();
+                var fwzlx = $(this).find("#fwzlx").val();
+                var fcsyy = $(this).find("#fcsyy").val();
+
+                if (BlItem(fwlno, fwlname, fggxh, fdw, fsl, fckdj, fje, fwzlx, fcsyy) == null) {
+                    mxflag = true;
+                    return;
+                }
+                var bl = BlItem(fwlno, fwlname, fggxh, fdw, fsl, fckdj, fje, fwzlx, fcsyy);
+                bllistArr.push(bl);
+            });
+           
+
+            if (!fdept || fdept=="") {
+
+                mui.toast("请选择提报单位");
+                return;
+            }
+            if (!fdepot || fdepot == "") {
+                mui.toast("请选择提报仓库");
+                return;
+
+            } 
+            if (mxflag == true) {
+                return;
+            }
+            var btnArry = ["取消", "确定"];
+            mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                if (e.index == 1) {
+
+                    
+                    var xml = '<?xml version="1.0"?>';
+                    xml = xml + '<XForm>';
+                    xml = xml + '<Header>';
+                    xml = xml + '<Method>Post</Method>';
+                    xml = xml + ' <ProcessName>建设公司库存不良物资提报</ProcessName>';
+                    xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                    xml = xml + '<DraftGuid></DraftGuid>';
+                    xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                    xml = xml + '<Action>提交</Action>';
+                    xml = xml + '<Comment></Comment>';
+                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + '</Header>';
+                    xml = xml + '<FormData>';
+                    xml = xml + '<建设公司_不良物资_主表>';
+                    xml = xml + '<单号>自动生成</单号>';
+                    xml = xml + '<提报人>' + fname + '</提报人>';
+                    xml = xml + '<提报日期>' + fdate + '</提报日期>';
+                    xml = xml + '<提报单位>' + fdept + '</提报单位>';
+                    xml = xml + '<提报仓库>' + fdepot + '</提报仓库>';
+                    xml = xml + '<合计数量>' + fsltotal + '</合计数量>';
+                    xml = xml + '<合计金额>' + fjetotal + '</合计金额>';
+                    xml = xml + '</建设公司_不良物资_主表>';
+                    for (var i = 0; i < bllistArr.length;i++){
+
+                        xml = xml + '<建设公司_不良物资_子表>';
+                        xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                        xml = xml + '  <RowPrimaryKeys></RowPrimaryKeys>';
+                        xml = xml + '<序号>' + (i + 1) + '</序号>';
+                        xml = xml + '<物料编码>' + bllistArr[i].fwlno + '</物料编码>';
+                        xml = xml + '<物料名称>' + bllistArr[i].fwlname + '</物料名称>';
+                        xml = xml + '<规格型号>' + bllistArr[i].fggxh + '</规格型号>';
+                        xml = xml + '<单位>' + bllistArr[i].fdw + '</单位>';
+                        xml = xml + '<数量>' + bllistArr[i].fsl + '</数量>';
+                        xml = xml + '<参考单价>' + bllistArr[i].fckdj + '</参考单价>';
+                        xml = xml + ' <金额>' + bllistArr[i].fje + '</金额>';
+                        xml = xml + '<物资类型>' + bllistArr[i].fwzlx + '</物资类型>';
+                        xml = xml + '<产生原因>' + bllistArr[i].fcsyy + '</产生原因>';
+                        xml = xml + '</建设公司_不良物资_子表>';
+
+                    }
+
+                    xml = xml + '             </FormData>';
+                    xml = xml + '         </XForm>';
+                    PostXml(xml);
+
+                }
+            });
+
+
+        }
+
+
+        function BlItem(fwlno, fwlname, fggxh, fdw, fsl, fckdj, fje, fwzlx, fcsyy) {
+
+            var bl = new Object;
+            bl.fwlno = fwlno;
+            bl.fwlname = fwlname;
+            bl.fggxh = fggxh;
+            bl.fdw = fdw;
+            bl.fsl = fsl;
+            bl.fckdj = fckdj;
+            bl.fje = fje;
+            bl.fwzlx = fwzlx;
+            bl.fcsyy = fcsyy;
+
+            if (!fwlno || fwlno=="") {
+
+                mui.toast("请输入物料编码");
+                return null;
+            }
+            if (!fwlname || fwlname=="") {
+
+                mui.toast("请输入物料名称");
+                return null;
+            }
+            if (!fggxh ||fggxh==""){
+
+                mui.toast("请输入规格型号");
+                return null;
+
+            }
+            if (!fdw || fdw == "") {
+                mui.toast("请输入单位");
+                return null;
+            }
+            if (!fsl || fsl == "") {
+                mui.toast("请输入数量");
+                return null;
+            }
+            if (!fckdj || fckdj == "") {
+                mui.toast("请输入参考单价");
+                return null;
+            }
+            if (!fwzlx || fwzlx==""){
+
+                mui.toast("请选择物资类型")
+                return null;
+            }
+            if (!fcsyy || fcsyy==""){
+
+                mui.toast("请输入产生原因");
+                return null;
+            }
+            return bl;
+        }
+    </script>
+</body>
+</html>

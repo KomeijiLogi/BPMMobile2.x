@@ -1,0 +1,17 @@
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Release\YUN.dll.config
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Release\YUN.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Release\YUN.pdb
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Release\Newtonsoft.Json.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\bin\Release\Newtonsoft.Json.xml
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Release\YUN.dll
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Release\YUN.pdb
+C:\Users\wang\Documents\i'm office\PersonalData\User\00000088@1000\RecvedFile\YUN\YUN\obj\Release\YUN.csprojResolveAssemblyReference.cache
+D:\Documents\BPMMobile\YUN\bin\Release\YUN.dll.config
+D:\Documents\BPMMobile\YUN\bin\Release\YUN.dll
+D:\Documents\BPMMobile\YUN\bin\Release\YUN.pdb
+D:\Documents\BPMMobile\YUN\bin\Release\BouncyCastle.Crypto.dll
+D:\Documents\BPMMobile\YUN\bin\Release\Newtonsoft.Json.dll
+D:\Documents\BPMMobile\YUN\obj\Release\YUN.csprojResolveAssemblyReference.cache
+D:\Documents\BPMMobile\YUN\obj\Release\YUN.dll
+D:\Documents\BPMMobile\YUN\obj\Release\YUN.pdb
+D:\Documents\BPMMobile\YUN\obj\Release\YUN.csproj.CoreCompileInputs.cache
