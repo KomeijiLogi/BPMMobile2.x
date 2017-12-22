@@ -82,7 +82,7 @@
 
         mui.ready(function () {
 
-            getVersion('\\01威高集团总部\\00威高集团本部\\BG办公管理', '集团总部计算机耗材采购申请');
+            getVersion('\\01威高集团总部\\00集团本部\\02_采购管理', '集团本部计算机耗材采购申请');
             prepMsg();
             getBPMParam();
            
@@ -216,7 +216,7 @@
                     xml = xml + '   <XForm>';
                     xml = xml + '         <Header>';
                     xml = xml + '        <Method>Post</Method>';
-                    xml = xml + '       <ProcessName>集团总部计算机耗材采购申请</ProcessName>';
+                    xml = xml + '       <ProcessName>集团本部计算机耗材采购申请</ProcessName>';
                     xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
                     xml = xml + '            <DraftGuid></DraftGuid>';
                     xml = xml + '             <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';

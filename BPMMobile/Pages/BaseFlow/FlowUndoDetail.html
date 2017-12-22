@@ -904,7 +904,6 @@
                 xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
                 xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
                 xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
-
                 xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
                 xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
 
@@ -933,49 +932,6 @@
         }
 
 
-        //退回重填
-        function Refilled() {
-           
-
-            var comments;
-            var btnArray = ['取消', '确定'];
-            mui.prompt('请输入原因：', '', '退回理由', btnArray, function (e) {
-                if (e.index == 1) {
-                    comments = e.value;
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostRecedeRestart",
-                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-
-                            if (status == "success") {
-
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败,请稍后重试");
-                            }
-                        },
-                        error: function (e) {
-                            //console.log(e);  
-
-                        },
-                        complete: function () { }
-
-                    });
-                } else {
-
-                }
-            }, 'div');
-            
-
-           
-        }
 
         //已阅
         function hasRead() {
@@ -1013,77 +969,12 @@
 
 
 
-
-
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostProcess",
-                        data: { '': xml },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-                            if (status == "success") {
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败!请稍后重试");
-                            }
-
-                        },
-                        error: function (e) {
-                            //alert(e);
-                        },
-                        complete: function () { }
-                    });
+                    PostXml(xml);
                 }
 
             });
         }
 
-
-        function reject() {
-            var comments;
-            var btnArray = ['取消', '确定'];
-            mui.prompt('请输入原因：', '', '拒绝理由', btnArray, function (e) {
-                if (e.index == 1) {
-                    comments = e.value;
-
-                   
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostReject",
-                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-
-                            if (status == "success") {
-
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败,请稍后重试");
-                            }
-                        },
-                        error: function (e) {
-                            console.log(e);  
-                           
-                        },
-                        complete: function () { }
-
-                    });
-                } else {
-
-                }
-            }, 'div');
-
-        }
 
 
 

@@ -368,10 +368,11 @@ function getVersion(path, name) {
             XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
         },
         success: function (data, status) {
+           
             if (status == "success") {
 
                 console.log(data);
-                version = (data.Version.Major) + "." + (data.Version.Minor);
+                version = data.Version;
             } else {
 
             }
