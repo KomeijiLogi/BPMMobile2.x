@@ -1650,7 +1650,13 @@
             xml = xml + '<Comment>' + comment + '</Comment>';
 
 
-            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+            xml = xml + ' <UrlParams></UrlParams>';
+            xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+            xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+            xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+            xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+            xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+            xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
             xml = xml + '</Header>';
             xml = xml + '<FormData>';
             xml = xml + ' <富森公司外贸订单评审表>';

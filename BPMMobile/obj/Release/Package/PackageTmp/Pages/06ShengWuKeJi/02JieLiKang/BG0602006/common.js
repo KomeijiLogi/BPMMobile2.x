@@ -159,7 +159,7 @@ function tapEvent() {
                 li = li + '       </div>';
                 li = li + '   </div>';
                 li = li + '   <div class="mui-row mui-text-center" style="font-size:0.5rem;">';
-                li = li + '       <div class="mui-col-xs-4">规格|' + item[i].fggxh;
+                li = li + '       <div class="mui-col-xs-4">规格|' + changeNullToEmpty( item[i].fggxh);
                 li = li + '       </div>';
                 li = li + '       <div class="mui-col-xs-4">单位|' +  item[i].funit;
                 li = li + '       </div>';
@@ -326,7 +326,14 @@ function Save() {
     var fyear = $("#fyear").val();
     var fmonth = $("#fmonth").val();
 
-
+    if (!fyear) {
+        mui.toast('请选择年份');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择月份');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -397,7 +404,14 @@ function reSave() {
     var fdate = $("#fdate").val();
     var fyear = $("#fyear").val();
     var fmonth = $("#fmonth").val();
-
+    if (!fyear) {
+        mui.toast('请选择年份');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择月份');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {

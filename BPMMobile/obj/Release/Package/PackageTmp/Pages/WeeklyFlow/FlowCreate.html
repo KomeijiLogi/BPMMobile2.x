@@ -196,25 +196,11 @@
         mui.init();
 
         mui.ready(function () {
-            getVersion('\\01威高集团总部\\00威高集团本部\\XX信息管理', '集团总部信息化推进部周工作汇报');
+            getVersion('\\01威高集团总部\\00集团本部\\16_行政办公', '集团本部信息化推进部周工作汇报');
             getBPMParam();
             getTimeMsg();
            
-            //var fs= document.getElementById('fstartdate');
-            //fs.onfocus = function () {
-            //    this.removeAttribute('placeholder');
-            //};
-            //fs.onblur = function () {
-            //    if (this.value == '') this.setAttribute('placeholder', '请输入起始时间');
-            //};
-
-            //var fo = document.getElementById('foverdate');
-            //fo.onfocus = function () {
-            //    this.removeAttribute('placeholder');
-            //};
-            //fo.onblur = function () {
-            //    if (this.value == '') this.setAttribute('placeholder', '请输入终止时间');
-            //};
+           
 
 
             $("#zwpjg").attr("placeholder", "请选择自我评价");
@@ -348,7 +334,7 @@
                     xml = xml + '   <Header>';
                     xml = xml + '    <Method>Post</Method>';
 
-                    xml = xml + '   <ProcessName>集团总部信息化推进部周工作汇报</ProcessName>';
+                    xml = xml + '   <ProcessName>集团本部信息化推进部周工作汇报</ProcessName>';
                     xml = xml + '   <ProcessVersion>' + version + '</ProcessVersion>';
                     xml = xml + '   <DraftGuid></DraftGuid>';
                     xml = xml + '   <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';

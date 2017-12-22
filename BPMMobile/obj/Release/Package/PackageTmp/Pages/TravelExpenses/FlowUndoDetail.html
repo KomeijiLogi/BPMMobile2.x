@@ -1909,7 +1909,13 @@
             xml = xml + '<PID>' + pid + '</PID>';
             xml = xml + '<Action>同意</Action>';
             xml = xml + '<Comment>' + comment + '</Comment>';
-            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+            xml = xml + ' <UrlParams></UrlParams>';
+            xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+            xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+            xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+            xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+            xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+            xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
             xml = xml + '</Header>';
             xml = xml + '<FormData>';
             xml = xml + '            <BPM_ZPJT_SCCLVFBX_A>';

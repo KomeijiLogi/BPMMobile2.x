@@ -41,8 +41,8 @@
                 <input type="date" id="fdate" name="fdate" readonly="readonly" />
             </div>
             <div class="mui-input-row">
-                <label for="fsqlx">申请类型<i style="color:red;">*</i></label>
-                <input type="text" id="fsqlx" name="fsqlx" readonly="readonly" />
+                <label for="fbglx">申请类型<i style="color:red;">*</i></label>
+                <input type="text" id="fbglx" name="fbglx" readonly="readonly" />
             </div>
             <div class="mui-input-row">
                 <label for="fsszgs">申请单位所属子公司<i style="color:red;">*</i></label>
@@ -270,7 +270,7 @@
                 success: function (data, status) {
                     console.log(data);
 
-                    var item = data.FormDataSet.医用制品集团岗位设立与编制调整申请[0];
+                    var item = data.FormDataSet.医用制品集团岗位及编制变更[0];
                    
 
                     $("#fname").val(item.申请人);

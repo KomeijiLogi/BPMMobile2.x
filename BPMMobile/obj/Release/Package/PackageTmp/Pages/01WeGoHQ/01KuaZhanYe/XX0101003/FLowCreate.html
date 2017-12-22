@@ -135,7 +135,7 @@
 
         mui.ready(function () {
 
-            getVersion('\\01威高集团总部\\01跨产业集团\\XX信息管理', '集团公司办公设备采购申请');
+            getVersion('\\00跨产业集团\\02_采购管理', '集团公司办公设备采购申请');
             prepMsg();
             getBPMParam();
             upload();
@@ -477,7 +477,15 @@
                     xml = xml + '             <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
                     xml = xml + '            <Action>提交</Action>';
                     xml = xml + '          <Comment></Comment>';
-                    xml = xml + '             <InviteIndicateUsers></InviteIndicateUsers>';
+                    xml = xml + ' <UrlParams></UrlParams>';
+                    xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+                    xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+                    xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+                    xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+
+                    xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                    xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
+
                     xml = xml + '       </Header>';
                     xml = xml + '       <FormData>';
                     xml = xml + ' <BPM_OA_ComputerApply_A>';

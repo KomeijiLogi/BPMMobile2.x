@@ -112,7 +112,7 @@ function initData(data, flag) {
     $("#fdept").val(item.所属区域);
     $("#fdate").val(FormatterTimeYMS(item.申请日期));
     $("#ftel").val(item.联系方式);
-    $("#fsqsyt").val(item.联系方式);
+    $("#fsqsyt").val(item.授权书用途);
     $("#fqt").val(changeNullToEmpty(item.其他信息));
     $("#fsqlx").val(item.授权类型);
     $("#fbsqr").val(item.被授权人);

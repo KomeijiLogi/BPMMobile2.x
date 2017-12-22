@@ -414,6 +414,7 @@ function nodeControllerExp(NodeName) {
         $("#mxlist").find('span').each(function () {
             $(this).css('display', 'block');
         });
+        $("#fcppz").removeAttr('readonly');
         $('#tjmx').show();
     } else if (NodeName != "sysInform") {
         if (typeof (NodeName) != "undefined") {
@@ -428,7 +429,7 @@ function nodeControllerExp(NodeName) {
 
             } else if (String(NodeName).indexOf('采购部') != -1) {
                  //含税单价、销售价格隐藏，采购确认时间必填
-                $("#mxlist").find('#fhsdj,#fxsjg,#ffkfs').each(function () {
+                $("#mxlist").find('#fhsdj,#fxsjg').each(function () {
                     $(this).hide();
                 });
                 $("#mxlist").find('#fcg_date').each(function () {
@@ -436,7 +437,7 @@ function nodeControllerExp(NodeName) {
                 });
             } else if (String(NodeName).indexOf('生产部') != -1) {
                  //含税单价、销售价格隐藏，生产确认时间必填
-                $("#mxlist").find('#fhsdj,#fxsjg,#ffkfs').each(function () {
+                $("#mxlist").find('#fhsdj,#fxsjg').each(function () {
                     $(this).hide();
                 });
                 $("#mxlist").find('#fsc_date').each(function () {
@@ -444,7 +445,7 @@ function nodeControllerExp(NodeName) {
                 });
             } else if (String(NodeName).indexOf('质量部') != -1) {
                 //含税单价、销售价格隐藏
-                $("#mxlist").find('#fhsdj,#fxsjg,#ffkfs').each(function () {
+                $("#mxlist").find('#fhsdj,#fxsjg').each(function () {
                     $(this).hide();
                 });
 

@@ -1,7 +1,7 @@
 ﻿function prepMsg() {
     $("#fdate").val(getNowFormatDate(2));
     tapEvent();
-
+    tapStartEvent();
     upload();
 
     var xml = '<?xml version= "1.0" ?>';
@@ -31,11 +31,12 @@
 
     });
 }
-function tapEvent() {
+
+function tapStartEvent() {
     var fdeptdata = [
         {
             value: '',
-            text:'注塑'
+            text: '注塑'
         },
         {
             value: '',
@@ -91,6 +92,9 @@ function tapEvent() {
         }
     ];
     showPicker('fdept', fdeptdata);
+}
+function tapEvent() {
+   
 
     $('#tjmx_jz').on('tap', function () {
 
@@ -370,6 +374,7 @@ function nodeControllerExp(NodeName) {
 
                 action = '提交';
                 $("#agreebt").text(action);
+              
             } else if (String(NodeName) == '设备副经理' || String(NodeName) == '质量管理员' || String(NodeName) == '技术主管' || String(NodeName) == '生产经理1') {
                 $("#tjmx_jz,#tjmx_yf").show();
                 $("#mxlist_jz,#mxlist_yf").find("input").each(function () {
@@ -386,6 +391,7 @@ function nodeControllerExp(NodeName) {
                 $("#fycms,#ffwyx,#fyyfx").attr('placeholder', '请填写对应内容');
                 action = '提交';
                 $("#agreebt").text(action);
+               
             } else if (String(NodeName) == '质量主管') {
                 $("#approvalD").empty();
                 var li = '&nbsp;&nbsp;';

@@ -925,6 +925,339 @@
     <Group>办公管理</Group>
     <Description>美食广场新增档口账号申请</Description>
   </Process>
+  <Process>
+    <Name>盛祥商管公司商户活动申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管商户活动申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于盛祥商管公司商户活动申请</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司威高广场商户报修申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司报修申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>盛祥商管公司威高广场商户报修申请</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司招商宣传与活动申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管招商宣传与活动申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于盛祥商管公司招商宣传与活动申请</Description>
+  </Process>
+  <Process>
+    <Name>盛祥商管公司租赁协议评审</Name>
+    <Path>\\09房地产集团\\02商管公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司租赁协议评审</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于盛祥商管公司租赁协议评审</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司VI延展设计申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\09_企业管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管VI延展设计申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于盛祥商管公司VI延展设计申请</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司客户投诉处理</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司客户投诉处理</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>盛祥商管公司客户投诉处理</Description>
+  </Process>
+  <Process>
+    <Name>兴源文化创意公司商户调整申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowCreate.html</ViewPage>
+    <DisplayName>兴源文化商户调整申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于兴源文化创意公司商户调整申请</Description>
+  </Process>
+  <Process>    
+    <Name>兴源文化创意公司履约保证金退还申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowCreate.html</ViewPage>
+    <DisplayName>兴源文化履约保证金退还申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于兴源文化创意公司履约保证金退还申请</Description>
+  </Process>
+   <Process>
+    <Name>兴源文化创意公司场地短期租赁申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowCreate.html</ViewPage>
+    <DisplayName>兴源文化场地短期租赁申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>用于兴源文化创意公司场地短期租赁申请</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司员工云办公、BPM账号申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司员工云办公、BPM账号申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>盛祥商管员工云办公、BPM账号申请</Description>
+  </Process>
+  
+ <Process>
+    <Name>盛祥商管公司活动场地申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司活动场地申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>盛祥商管公司活动场地申请</Description>
+  </Process>
+  <Process>
+    <Name>盛祥商管公司资金付款计划申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司资金付款计划申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>盛祥商管公司资金付款计划申请</Description>
+  </Process>
+<Process>
+    <Name>盛祥商管公司资金付款计划申请汇总</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司资金付款计划申请汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>盛祥商管公司资金付款计划申请汇总</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司网银充值提报</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司网银充值提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>盛祥商管公司网银充值提报</Description>
+  </Process>
+    <Process>
+    <Name>盛祥商管公司月度付款申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司月度付款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于盛祥商管公司月度付款申请</Description>
+  </Process>
+   <Process>
+    <Name>盛祥商管公司仓库押金退还申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管仓库押金退还申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>盛祥商管公司仓库押金退还申请</Description>
+  </Process>
+ <Process>
+    <Name>盛祥商管公司商户费用变更申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司商户费用变更申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>盛祥商管公司商户费用变更申请</Description>
+  </Process>
+ <Process>
+    <Name>盛祥商管公司招商合同评审</Name>
+    <Path>\\09房地产集团\\02商管公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/FLSW0702001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/FLSW0702001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/FLSW0702001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/FLSW0702001/FlowDoneDetail.html</ViewDonePage>
+  <ViewPage>/Pages/FLSW0702001/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管招商合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>法律事务</Group>
+    <Description>适用于盛祥商管招商合同评审流程</Description>
+  </Process>
+  <Process>
+    
+    <Name>盛祥商管公司其他合同评审</Name>
+    <Path>\\09房地产集团\\02商管公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/FLSW0702002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/FLSW0702002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/FLSW0702002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/FLSW0702002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/FLSW0702002/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管其他合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>法律事务</Group>
+    <Description>适用于盛祥商管公司其他合同评审</Description>
+  </Process>
+  <Process>
+    <Name>盛祥商管公司天伦苑老人退住退款申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管天伦苑老人退住退款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>市场营销</Group>
+    <Description>用于商管公司天伦苑老人退住退款申请</Description>
+  </Process>
+  <Process>
+    <Name>盛祥商管公司广告位申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管公司广告位申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>市场营销</Group>
+    <Description>盛祥商管公司广告位申请</Description>
+  </Process>
+  <Process>
+    <Name>兴源文化创意公司商户开业、停业申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</ViewPage>
+    <DisplayName>兴源文化商户开业、停业申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>市场营销</Group>
+    <Description>兴源文化创意公司商户开业、停业申请</Description>
+  </Process>
+  
  <!--
  <Process>
     <Name>洁瑞公司产品发货申请</Name>
@@ -960,44 +1293,7 @@
   </Process>
 
   
-<Process>
-    <Name>盛祥商管公司招商合同评审</Name>
-    <Path>\\07房地产集团\\02商管公司\\FLSW法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/FLSW0702001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/FLSW0702001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/FLSW0702001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/FLSW0702001/FlowDoneDetail.html</ViewDonePage>
-  <ViewPage>/Pages/FLSW0702001/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管招商合同评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>法律事务</Group>
-    <Description>适用于盛祥商管招商合同评审流程</Description>
-  </Process>
 
-
-
- 
- 
- 
-
-<Process>
-    
-    <Name>盛祥商管公司其他合同评审</Name>
-    <Path>\\07房地产集团\\02商管公司\\FLSW法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/FLSW0702002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/FLSW0702002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/FLSW0702002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/FLSW0702002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/FLSW0702002/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管其他合同评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>法律事务</Group>
-    <Description>适用于盛祥商管公司其他合同评审</Description>
-  </Process>
  <Process>
     <Name>建设公司库存不良物资提报</Name>
     <Path>\\01威高集团总部\\06建设公司\\SCGL生产管理</Path>
@@ -1060,8 +1356,6 @@
   </Process>
  
  
-  
-  
   
  <Process>
     <Name>市场差旅费用报销单</Name>
@@ -1393,121 +1687,21 @@
     <Group>质量管理</Group>
     <Description>适用于建设公司产成品出厂检验记录备案</Description>
   </Process>
-  <Process>
-    <Name>盛祥商管公司商户活动申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702019/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管商户活动申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于盛祥商管公司商户活动申请</Description>
-  </Process>
-
-  <Process>
-    <Name>盛祥商管公司招商宣传与活动申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702022/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管招商宣传与活动申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于盛祥商管公司招商宣传与活动申请</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司VI延展设计申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702025/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管VI延展设计申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于盛祥商管公司VI延展设计申请</Description>
-  </Process>
+  
 
  
  
- <Process>
-    <Name>盛祥商管公司天伦苑老人退住退款申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702002/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管天伦苑老人退住退款申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>市场营销</Group>
-    <Description>用于商管公司天伦苑老人退住退款申请</Description>
-  </Process>
+ 
+ 
+ 
 
   
 
- <Process>
-    <Name>盛祥商管公司仓库押金退还申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702005/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管仓库押金退还申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>盛祥商管公司仓库押金退还申请</Description>
-  </Process>
 
 
-  <Process>
-    <Name>兴源文化创意公司商户调整申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702028/FlowCreate.html</ViewPage>
-    <DisplayName>兴源文化商户调整申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司商户调整申请</Description>
-  </Process>
   
-  <Process>    
-    <Name>源文化创意公司履约保证金退还申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702029/FlowCreate.html</ViewPage>
-    <DisplayName>兴源文化履约保证金退还申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司履约保证金退还申请</Description>
-  </Process>
+  
+  
 
   <Process>
     <Name>BG0702035_商管公司激励申请_流程</Name>
@@ -1542,55 +1736,12 @@
     <Description>适用于建设公司原材料采购申请</Description>
   </Process>
 
-  <Process>
-    <Name>兴源文化创意公司场地短期租赁申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702036/FlowCreate.html</ViewPage>
-    <DisplayName>兴源文化场地短期租赁申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司场地短期租赁申请</Description>
-  </Process>
-
-  <Process>
-    <Name>盛祥商管公司租赁协议评审</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702024/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司租赁协议评审</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>用于盛祥商管公司租赁协议评审</Description>
-  </Process>
  
   
  
-  <Process>
-    <Name>盛祥商管公司月度付款申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702004/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司月度付款申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>适用于盛祥商管公司月度付款申请</Description>
-  </Process>
+  
+ 
+
   
   
   
@@ -1609,81 +1760,9 @@
     <Group>法律事务</Group>
     <Description>适用于建设公司合同评审</Description>
   </Process>
-  <Process>
-    <Name>盛祥商管公司员工云办公、BPM账号申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702030/FlowCreate.html</ViewPage>
-    <DisplayName>商管公司员工云办公、BPM账号申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>盛祥商管员工云办公、BPM账号申请</Description>
-  </Process>
-  <Process>
-    <Name>兴源文化创意公司商户开业、停业申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</ViewPage>
-    <DisplayName>兴源文化商户开业、停业申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>市场营销</Group>
-    <Description>兴源文化创意公司商户开业、停业申请</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司广告位申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702003/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司广告位申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>市场营销</Group>
-    <Description>盛祥商管公司广告位申请</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司网银充值提报</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702003/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司网银充值提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>盛祥商管公司网银充值提报</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司商户费用变更申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702006/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司商户费用变更申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>盛祥商管公司商户费用变更申请</Description>
-  </Process>
+ 
+  
+ 
  
 
 
@@ -1695,83 +1774,12 @@
 
   
 
-  <Process>
-    <Name>盛祥商管公司报修申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702020/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司报修申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>盛祥商管公司报修申请</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司活动场地申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702040/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司活动场地申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>盛祥商管公司活动场地申请</Description>
-  </Process>
-  <Process>
-    <Name>盛祥商管公司客户投诉处理</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702026/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司客户投诉处理</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>盛祥商管公司客户投诉处理</Description>
-  </Process>
+ 
+ 
+ 
 
-<Process>
-    <Name>盛祥商管公司资金付款计划申请</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702001/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司资金付款计划申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>盛祥商管公司资金付款计划申请</Description>
-  </Process>
 
-  <Process>
-    <Name>盛祥商管公司资金付款计划申请汇总</Name>
-    <Path>\\07房地产集团\\02商管公司\\CW财务</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/CW0702002/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管公司资金付款计划申请汇总</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>盛祥商管公司资金付款计划申请汇总</Description>
-  </Process>
+  
 
  
 

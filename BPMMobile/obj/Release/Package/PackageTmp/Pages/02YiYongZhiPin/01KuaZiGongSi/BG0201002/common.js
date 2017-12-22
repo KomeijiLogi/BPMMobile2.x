@@ -417,6 +417,16 @@ function tapEvent() {
     showPicker('fcglx', fcglxdata);
 
 }
+function deleteItem(context) {
+    var btnArray = ['否', '是'];
+    mui.confirm('确认删除？', '', btnArray, function (e) {
+        if (e.index == 1) {
+            $(context).parent().parent().remove();
+        }
+    calPrice();
+    });
+
+}
 function calPrice() {
     var ftotal = 0;
     $("#bllist").find("#bl").each(function () {

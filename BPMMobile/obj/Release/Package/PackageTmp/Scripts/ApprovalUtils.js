@@ -368,10 +368,11 @@ function getVersion(path, name) {
             XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
         },
         success: function (data, status) {
+           
             if (status == "success") {
 
                 console.log(data);
-                version = (data.Version.Major) + "." + (data.Version.Minor);
+                version = data.Version;
             } else {
 
             }
@@ -621,7 +622,9 @@ function locationAction(selAction ) {
         stepAction = "取回重填";
     }else if(selAction == "sysPickBack"){
         stepAction ="取回";
-    } else {
+    } else if (selAction == "sysTransfer") {
+        stepAction = "委托";
+    }else {
        stepAction = selAction;
     } 
     return stepAction;

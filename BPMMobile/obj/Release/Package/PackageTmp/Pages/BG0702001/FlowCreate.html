@@ -201,7 +201,7 @@
         mui.init();
 
         mui.ready(function () {
-            getVersion('\\07房地产集团\\02商管公司\\BG办公管理', '盛祥商管公司内部请示申请');
+            getVersion('\\09房地产集团\\02商管公司\\16_行政办公', '盛祥商管公司内部请示申请');
             getBPMParam();
             prepMsg();
             $('#signPerDiv').click(function () {
@@ -390,8 +390,12 @@
                                         consignUserId.push(data.data[i].phone);
                                     }
                                     $('#consignUser').val(consignUserId);
-                                    consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+                                    consignUserStr = (String)($('#consignUser').val()).split(",");
 
+                                    for (var i = 0; i < consignUserStr.length; i++) {
+                                        consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                                    }
+                                    consignUserStr = '[' + consignUserStr.toString() + ']';
                                     var xml = '<?xml version="1.0"?>';
                                     xml = xml + '<XForm>';
                                     xml = xml + '<Header>';
@@ -404,12 +408,13 @@
                                     xml = xml + '<Action>提交</Action>';
                                     xml = xml + '<Comment></Comment>';
                                     //加签差异xml部分
-                                    xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
-                                    xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
-                                    xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
-                                    xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                                    xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+                                    xml = xml + '  <ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                                    xml = xml + ' <ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                                    xml = xml + '  <ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                                    xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                                    xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
 
-                                    xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
                                     xml = xml + '</Header>';
                                     xml = xml + '<FormData>';
                                     xml = xml + '<BPM_SGGSNBQS>';
@@ -457,7 +462,13 @@
                         xml = xml + '<Comment></Comment>';
 
 
-                        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                        xml = xml + ' <UrlParams></UrlParams>';
+                        xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+                        xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+                        xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+                        xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+                        xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                        xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
                         xml = xml + '</Header>';
                         xml = xml + '<FormData>';
                         xml = xml + '<BPM_SGGSNBQS>';

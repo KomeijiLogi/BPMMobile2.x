@@ -80,7 +80,7 @@
 
         mui.ready(function () {
             getVersion('\\01威高集团总部\\00威高集团本部\\XX信息管理','洁瑞APP审批');
-            $('#flowTime').val(getNowFormatDate());
+            $('#flowTime').val(getNowFormatDate(1));
             upload();
             watch();
             getBPMParam();
@@ -103,7 +103,7 @@
                 result = JSON.stringify(result);
             }
             if (result.success == true || result.success == "true") {
-                $('#flowPerson').val(result.data.name + result.data.userName);
+                $('#flowPerson').val(result.data.name);
                 $('#flowPerId').val(result.data.userName);
 
             }
@@ -132,32 +132,7 @@
 
         });
 
-        function getNowFormatDate() {
-            var date = new Date();
-            var seperator1 = "-";
-            var seperator2 = ":";
-            var month = date.getMonth() + 1;
-            var strDate = date.getDate();
-            if (month >= 1 && month <= 9) {
-                month = "0" + month;
-            }
-            if (strDate >= 0 && strDate <= 9) {
-                strDate = "0" + strDate;
-            }
-            var hour = date.getHours();
-            if (hour >= 0 && hour <= 9) {
-                hour = "0" + hour;
-            }
-            var minute = date.getMinutes();
-            if (minute >= 0 && minute <= 9) {
-                minute = "0" + minute;
-            }
-            var currentdate = month + seperator1 + strDate
-                    + " " + hour + seperator2 + minute
-            ;
-            return currentdate;
-        }
-
+       
 
 
        
@@ -178,6 +153,7 @@
                     if (status == "success") {
                         //console.log(data);
                         BPMOU = data.Position[0].FullName;
+                       
                     }
                 },
                 error: function (e) {
@@ -215,7 +191,8 @@
             var flowTitle = $("#flowTitle").val();
             var flowPerId = $("#flowPerId").val();
             var flowCause = $("#flowCause").val();
-
+            var flowPerson = $("#flowPerson").val();
+            var dateNow = getNowFormatDate(1);
             if (flowTitle == null || flowTitle == "") {
                 mui.toast("标题不能为空");
                 return;
@@ -229,7 +206,7 @@
 
             //alert(fjArray.toString().replace(",", ";"));
 
-
+          
             var xml = '<?xml version="1.0"?>';   
             xml = xml + '<XForm>';
             xml = xml + ' <Header>';
@@ -240,52 +217,35 @@
             xml = xml + '   <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';          
             xml = xml + '   <Action>提交</Action>';
             xml = xml + '   <Comment></Comment>';
-            xml = xml + '   <InviteIndicateUsers></InviteIndicateUsers>';
+            //xml = xml + ' <UrlParams></UrlParams>';
+            //xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+            //xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+            //xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+            //xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+
+            //xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+            //xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
+
             xml = xml + ' </Header>';
             xml = xml + ' <FormData>';
             xml = xml + '   <BPM_JRAPP>';
+            xml = xml + '   <createuser>' + flowPerson+'</createuser>';
+            xml = xml + '  <createtime>' + dateNow+'</createtime>';
+
             xml = xml + '      <fbt>' + flowTitle + '</fbt>';
             xml = xml + '      <fsy>' + flowCause + '</fsy>';
-            if (fjArray.toString() != null && fjArray.toString() != "") {
+           
 
-                xml = xml + '      <fj>' + fjArray.toString().replace(",",";")+ '</fj>';
-            } else {
-
-                xml = xml + '      <fj></fj>';
-            }
+                xml = xml + '      <fj>' + fjArray.join(';')+ '</fj>';
+            
            
             xml = xml + '   </BPM_JRAPP>';
             xml = xml + ' </FormData>';
             xml = xml + '</XForm>';
-
+            console.log(xml);
             
 
-            $.ajax({
-                type: "POST",
-                url: "/api/bpm/PostProcess",
-                data: {'':xml},
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-                    
-                },
-                success: function (data, status) {
-
-                    if (status == "success") {
-                        //console.log(data);
-                        mui.toast("提交给" + data.Recipients[0].Recipient.DisplayName);
-                        setTimeout("window.location.href = '/Pages/index.html?ticket="+localStorage.getItem('ticket')+"'", 2000);
-                       
-                    } else {
-                        mui.toast("提交失败!请稍后重试");
-                    }
-                },
-                error: function (e) {
-                    //console.log(e);  
-                    
-                },
-                complete: function () { }
-
-            });
+            PostXml(xml);
 
 
 

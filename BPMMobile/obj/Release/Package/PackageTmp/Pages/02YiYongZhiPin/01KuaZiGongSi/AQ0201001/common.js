@@ -1057,7 +1057,7 @@ function initMsg(flag) {
             li = li + '        <input type="text" id="fcfdh" name="fcfdh" value="' + bli[i].fcfdh + '" readonly="readonly" />';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="fptr">被检查单位陪同人<i style="color:red;">*</i></label>';
+            li = li + '        <label for="fptr">被检查单位陪同人</label>';
             li = li + '        <input type="text" id="fptr" name="fptr" value="' + bli[i].fptr + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
@@ -1065,7 +1065,7 @@ function initMsg(flag) {
             li = li + '        <input type="text" id="ffsqy" name="ffsqy" value="' + bli[i].ffsqy + '" readonly="readonly" />';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="ftzdh">通知编号<i style="color:red;">*</i></label>';
+            li = li + '        <label for="ftzdh">通知编号</label>';
             li = li + '        <input type="text" id="ftzdh" name="ftzdh" value="' + bli[i].ftzdh + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
@@ -1093,7 +1093,7 @@ function initMsg(flag) {
             li = li + '        <input type="date" id="fxqrq" name="fxqrq" value="' + FormatterTimeYMS(bli[i].fxqrq) + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="fzgqk">整改情况<i style="color:red;">*</i></label>';
+            li = li + '        <label for="fzgqk">整改情况</label>';
             li = li + '        <input type="text" id="fzgqk" name="fzgqk" value="' + bli[i].fzgqk + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
@@ -1101,11 +1101,11 @@ function initMsg(flag) {
             li = li + '        <input type="text" id="fifwc" name="fifwc" value="' + bli[i].fifwc + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="fifcq">是否超期<i style="color:red;">*</i></label>';
+            li = li + '        <label for="fifcq">是否超期</label>';
             li = li + '        <input type="text" id="fifcq" name="fifcq" value="' + bli[i].fifcq + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="fcqyy">超期原因<i style="color:red;">*</i></label>';
+            li = li + '        <label for="fcqyy">超期原因</label>';
             li = li + '        <input type="text" id="fcqyy" name="fcqyy" value="' + bli[i].fcqyy + '" readonly="readonly"/>';
             li = li + '   </div>';
             li = li + '  <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">';
@@ -1123,7 +1123,7 @@ function initMsg(flag) {
             li = li + '  <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">';
             li = li + '     <div class="border border-t upload-img" style="top:0rem;">';
             li = li + '         <div class="clearfix upload-btn" id="children-bg">';
-            li = li + '            <label class="label">整改后照片<i style="color:red;">*</i></label>';
+            li = li + '            <label class="label">整改后照片</label>';
             li = li + '            <span class="tips" id="imageCount"><!--已添加0张--></span>';
             li = li + '            <span class="upload-addbtn" style="display:none;">';
             li = li + '                 <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">';
@@ -1133,7 +1133,7 @@ function initMsg(flag) {
             li = li + '         </div>';
             li = li + '     </div>';
             li = li + '   <div class="mui-input-row">';
-            li = li + '        <label for="fbz">备注<i style="color:red;">*</i></label>';
+            li = li + '        <label for="fbz">备注</label>';
             li = li + '        <input type="text" id="fbz" name="fbz" value="' + changeNullToEmpty(bli[i].fbz) + '" readonly="readonly"/>';
             li = li + '   </div>';
             $("#jclist").append(li);
@@ -1482,7 +1482,7 @@ function nodeController(data) {
     }
     $("#nodeName").val(NodeName);
     if (NodeName == "开始") {
-        $("#createD").css("display", "block");
+        
         $("#csd").css("display", "none");
         mui.alert("暂不支持发起功能");
         

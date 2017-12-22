@@ -481,19 +481,23 @@
                             $('#myPhone').val(String(myPhone[myPhone.length - 1]));
 
                         }
+                        var shareContext = '';
                         var NodeName;
                         //判断流程本节点是否结束，处理者是否为当前用户,
                         //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
                         for (var i = 0; i < data.Steps.length; i++) {
                             //debugger;
 
-                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
+                            if (data.Steps[i].Finished == false) {
 
-
-                                if (stepId.indexOf(data.Steps[i].StepID)!=-1) {
+                                if (stepId.indexOf(data.Steps[i].StepID) != -1) {
 
                                     NodeName = data.Steps[i].NodeName;
-
+                                    if (data.Steps[i].Share && !data.Steps[i].OwnerAccount) {
+                                        shareContext = '流程被共享';
+                                    } else if (data.Steps[i].Share && data.Steps[i].OwnerAccount) {
+                                        shareContext = '流程被取出';
+                                    }
                                 }
 
                             }
@@ -537,6 +541,18 @@
                                 $("#approvalD").css("display", "block");
                             }
 
+                        }
+                        if (shareContext == '流程被共享') {
+                            $("#approvalD").empty();
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickupbt" onclick="PickupShareTaskExt()">从共享任务中取出</button>';
+                            $("#approvalD").append(li);
+                        } else if (shareContext == '流程被取出') {
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickbackbt" onclick="PutbackShareTaskExt()">放回共享任务</button>';
+                            $("#approvalD").append(li);
                         }
                         for (var i = 0; i < data.Steps.length; i++) {
 
@@ -815,9 +831,13 @@
                                
                             }
                             $('#consignUser').val(consignUserId);
-                            consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+                            consignUserStr = (String)($('#consignUser').val()).split(",");
 
-
+                            for (var i = 0; i < consignUserStr.length; i++){
+                                consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                            }
+                            consignUserStr = '[' + consignUserStr.toString() + ']';
+                            //alert(consignUserStr);
                             var xml = '<?xml version="1.0"?>';
                             xml = xml + '<XForm>';
                             xml = xml + ' <Header>';
@@ -826,13 +846,17 @@
                             xml = xml + '   <Action>同意</Action>';
                             xml = xml + '   <Comment>' + comment + '</Comment>';
                             //加签差异xml部分
-                            xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
-                            xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
-                            xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
-                            xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                           
+
+                            xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+                            xml = xml + '  <ConsignUsers>'+consignUserStr+'</ConsignUsers>';
+                            xml = xml + ' <ConsignRoutingType>' + consignRoutingType+'</ConsignRoutingType>';
+                            xml = xml + '  <ConsignReturnType>' + consignReturnType+'</ConsignReturnType>';
+                            xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                            xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
 
 
-                            xml = xml + '   <InviteIndicateUsers></InviteIndicateUsers>';
+                           
                             xml = xml + ' </Header>';
                             xml = xml + ' <FormData>';
                             xml = xml + '  <BPM_JRAPP>';
@@ -850,31 +874,8 @@
                             xml = xml + '</XForm>';
 
 
-                            $.ajax({
-                                type: "POST",
-                                url: "/api/bpm/PostProcess",
-                                data: { '': xml },
-                                beforeSend: function (XHR) {
-                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                            PostXml(xml);
 
-                                },
-                                success: function (data, status) {
-
-                                    if (status == "success") {
-
-                                        mui.toast("操作成功");
-                                        setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                                    } else {
-                                        mui.toast("操作失败,请稍后重试");
-                                    }
-                                },
-                                error: function (e) {
-                                    //console.log(e);  
-
-                                },
-                                complete: function () { }
-
-                            });
                         } else {
 
                         }
@@ -898,7 +899,14 @@
                 xml = xml + '   <Action>同意</Action>';
                 xml = xml + '   <Comment>' + comment + '</Comment>';
               
-                xml = xml + '   <InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + ' <UrlParams></UrlParams>';
+                xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+                xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+                xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+                xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+                xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
+
                 xml = xml + ' </Header>';
                 xml = xml + ' <FormData>';
                 xml = xml + '  <BPM_JRAPP>';
@@ -916,31 +924,7 @@
                 xml = xml + '</XForm>';
 
 
-                $.ajax({
-                    type: "POST",
-                    url: "/api/bpm/PostProcess",
-                    data: { '': xml },
-                    beforeSend: function (XHR) {
-                        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                    },
-                    success: function (data, status) {
-
-                        if (status == "success") {
-
-                            mui.toast("操作成功");
-                            setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                        } else {
-                            mui.toast("操作失败,请稍后重试");
-                        }
-                    },
-                    error: function (e) {
-                        //console.log(e);  
-
-                    },
-                    complete: function () { }
-
-                });
+                PostXml(xml);
 
             }
            
@@ -948,49 +932,6 @@
         }
 
 
-        //退回重填
-        function Refilled() {
-           
-
-            var comments;
-            var btnArray = ['取消', '确定'];
-            mui.prompt('请输入原因：', '', '退回理由', btnArray, function (e) {
-                if (e.index == 1) {
-                    comments = e.value;
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostRecedeRestart",
-                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-
-                            if (status == "success") {
-
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败,请稍后重试");
-                            }
-                        },
-                        error: function (e) {
-                            //console.log(e);  
-
-                        },
-                        complete: function () { }
-
-                    });
-                } else {
-
-                }
-            }, 'div');
-            
-
-           
-        }
 
         //已阅
         function hasRead() {
@@ -1009,6 +950,7 @@
                     xml = xml + '    <Method>InformSubmit</Method>';
                     xml = xml + '    <PID>' + pid + '</PID>';
                     xml = xml + '    <Comment>' + comment + '</Comment>';
+
                     xml = xml + '  </Header>';
                     xml = xml + ' <FormData>';
                     xml = xml + '  <BPM_JRAPP>';
@@ -1027,77 +969,12 @@
 
 
 
-
-
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostProcess",
-                        data: { '': xml },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-                            if (status == "success") {
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败!请稍后重试");
-                            }
-
-                        },
-                        error: function (e) {
-                            //alert(e);
-                        },
-                        complete: function () { }
-                    });
+                    PostXml(xml);
                 }
 
             });
         }
 
-
-        function reject() {
-            var comments;
-            var btnArray = ['取消', '确定'];
-            mui.prompt('请输入原因：', '', '拒绝理由', btnArray, function (e) {
-                if (e.index == 1) {
-                    comments = e.value;
-
-                   
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/bpm/PostReject",
-                        data: { 'taskID': $("#taskId").val(), 'comments': comments },
-                        beforeSend: function (XHR) {
-                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                        },
-                        success: function (data, status) {
-
-                            if (status == "success") {
-
-                                mui.toast("操作成功");
-                                setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                            } else {
-                                mui.toast("操作失败,请稍后重试");
-                            }
-                        },
-                        error: function (e) {
-                            console.log(e);  
-                           
-                        },
-                        complete: function () { }
-
-                    });
-                } else {
-
-                }
-            }, 'div');
-
-        }
 
 
 
@@ -1161,34 +1038,9 @@
             xml = xml + ' </FormData>';
             xml = xml + '</XForm>';
 
+            
 
-
-            $.ajax({
-                type: "POST",
-                url: "/api/bpm/PostProcess",
-                data: { '': xml },
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-                },
-                success: function (data, status) {
-
-                    if (status == "success") {
-                        //console.log(data);
-                        mui.toast("提交成功");
-                        setTimeout(" window.location.href = '/Pages/UndoFlow.html'", 2000);
-                    } else {
-
-                        mui.toast("提交失败!请稍后重试");
-                    }
-                },
-                error: function (e) {
-                    //console.log(e);  
-
-                },
-                complete: function () { }
-
-            });
+            PostXml(xml);
 
         }
 

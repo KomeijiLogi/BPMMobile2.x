@@ -130,7 +130,7 @@ function initList() {
                     li = li + '   </div>';
                     li = li + '   <div class="mui-input-row">';
                     li = li + '      <label for="fremark">备注</label>';
-                    li = li + '      <input type="text" id="fremark" name="fremark" placeholder="请填写备注"/>';
+                    li = li + '      <input type="text" id="fremark" name="fremark" placeholder="请填写备注" />';
                     li = li + '   </div>';
                     li = li + '</div>';
 
@@ -243,7 +243,7 @@ function initData(data, flag) {
         li = li + '   </div>';
         li = li + '   <div class="mui-input-row">';
         li = li + '      <label for="fremark">备注</label>';
-        li = li + '      <input type="text" id="fremark" name="fremark" readonly="readonly" value="' + item_c[i].fremark + '"/>';
+        li = li + '      <input type="text" id="fremark" name="fremark" readonly="readonly" value="' + changeNullToEmpty( item_c[i].fremark )+ '"/>';
         li = li + '   </div>';
         li = li + '</div>';
 

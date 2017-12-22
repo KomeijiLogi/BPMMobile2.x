@@ -216,7 +216,8 @@
             'popTitleCallBackId': '1',
             'items': [
                 { 'text': '刷新', 'callBackId': 'callback1' },
-                { 'text': '知会', 'callBackId': 'callback2' }
+                { 'text': '知会', 'callBackId': 'callback2' },
+                { 'text': '退回某步', 'callBackId': 'callback3' }
             ],
             'menuList': [
                 'openWithBrowser'
@@ -312,7 +313,7 @@
                     });
 
                 } else if (callBackId == 'callback3') {
-
+                    getRecedableToSteps();
                 }
             }
 
@@ -642,19 +643,23 @@
                             $('#myPhone').val(String(myPhone[myPhone.length - 1]));
 
                         }
+                        var ShareNode;
                         var NodeName;
                         //判断流程本节点是否结束，处理者是否为当前用户,
                         //流程步骤是否是传过来的流程步骤，再根据这三项查出对应的节点名称
                         for (var i = 0; i < data.Steps.length; i++) {
                             //debugger;
 
-                            if (data.Steps[i].Finished == false && data.Steps[i].RecipientAccount == ($('#myPhone').val())) {
-
+                            if (data.Steps[i].Finished == false) {
 
                                 if (stepId.indexOf(data.Steps[i].StepID) != -1) {
 
                                     NodeName = data.Steps[i].NodeName;
-
+                                    if (data.Steps[i].Share && !data.Steps[i].OwnerAccount) {
+                                        ShareNode = '流程被共享';
+                                    } else if (data.Steps[i].Share && data.Steps[i].OwnerAccount) {
+                                        ShareNode = '流程被取出';
+                                    }
                                 }
 
                             }
@@ -672,6 +677,7 @@
                             $("#mxlist").find("input").each(function () {
                                 $(this).removeAttr("readonly");
                             });
+                            $("#foddnumber").removeAttr('readonly');
                             $("#xtywdmd").removeClass('mui-disabled');
                         } else if (NodeName == "sysInform") {
                             $("#readD").css("display", "block");
@@ -688,6 +694,21 @@
                             }
                         }
 
+                        if (ShareNode == '流程被共享') {
+                            $("#approvalD").empty();
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickupbt" onclick="PickupShareTaskExt()">从共享任务中取出</button>';
+                            $("#approvalD").append(li);
+
+                        } else if (ShareNode == '流程被取出') {
+
+                            var li = '';
+                            li = li + '    &nbsp;&nbsp;';
+                            li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickbackbt" onclick="PutbackShareTaskExt()">放回共享任务</button>';
+                            $("#approvalD").append(li);
+
+                        }
                         for (var i = 0; i < data.Steps.length; i++) {
 
                             if (data.Steps[i].FinishAt == "0001-01-01T00:00:00") {
@@ -1039,7 +1060,12 @@
                                 consignUserId.push(data.data[i].phone);
                             }
                             $('#consignUser').val(consignUserId);
-                            consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+                            consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                            for (var i = 0; i < consignUserStr.length; i++) {
+                                consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                            }
+                            consignUserStr = '[' + consignUserStr.toString() + ']';
                             var xml = '<?xml version="1.0"?>';
                             xml = xml + '<XForm>';
                             xml = xml + '<Header>';
@@ -1049,12 +1075,13 @@
                             xml = xml + '<Comment>' + comment + '</Comment>';
 
                             //加签差异部分
-                            xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
-                            xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
-                            xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
-                            xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                            xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+                            xml = xml + '  <ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                            xml = xml + ' <ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                            xml = xml + '  <ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                            xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                            xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
 
-                            xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
                             xml = xml + '</Header>';
                             xml = xml + '<FormData>';
                             xml = xml + '   <BPM_OA_QualityPlan_A>';
@@ -1113,7 +1140,13 @@
                 xml = xml + '<Comment>' + comment + '</Comment>';
 
 
-                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + ' <UrlParams></UrlParams>';
+                xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+                xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+                xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+                xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+                xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
                 xml = xml + '</Header>';
                 xml = xml + '<FormData>';
                 xml = xml + '   <BPM_OA_QualityPlan_A>';

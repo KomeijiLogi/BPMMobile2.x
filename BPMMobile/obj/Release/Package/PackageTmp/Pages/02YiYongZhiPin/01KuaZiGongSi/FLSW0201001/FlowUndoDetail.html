@@ -895,12 +895,8 @@
                     xml = xml + '            <交货周期>' + fjhzq + '</交货周期>';
                     xml = xml + '            <付款方式>' + ffkfs + '</付款方式>';
                     xml = xml + '              <其他情况说明>' + fremark + '</其他情况说明>';
-                    if (fjArray.length != 0) {
-                        xml = xml + '             <附件>' + fjArray.toSting().replace(",", ";") + '</附件>';
-                    } else {
-                        xml = xml + '             <附件></附件>';
-                    }
-
+                    xml = xml + '             <附件>' + fjArray.join(";") + '</附件>';
+                 
                     xml = xml + '           </制品集团_设备采购合同评审>';
 
                     xml = xml + '      </FormData>';
@@ -960,11 +956,8 @@
                     xml = xml + '            <交货周期>' + fjhzq + '</交货周期>';
                     xml = xml + '            <付款方式>' + ffkfs + '</付款方式>';
                     xml = xml + '              <其他情况说明>' + fremark + '</其他情况说明>';
-                    if (fjArray.length != 0) {
-                        xml = xml + '             <附件>' + fjArray.toSting().replace(",", ";") + '</附件>';
-                    } else {
-                        xml = xml + '             <附件></附件>';
-                    }
+                    xml = xml + '             <附件>' + fjArray.join(";") + '</附件>';
+
 
                     xml = xml + '           </制品集团_设备采购合同评审>';
                     xml = xml + '      </FormData>';
@@ -1073,11 +1066,8 @@
                         xml = xml + '            <交货周期>' + fjhzq + '</交货周期>';
                         xml = xml + '            <付款方式>' + ffkfs + '</付款方式>';
                         xml = xml + '              <其他情况说明>' + fremark + '</其他情况说明>';
-                        if (fjArray.length != 0) {
-                            xml = xml + '             <附件>' + fjArray.toSting().replace(",", ";") + '</附件>';
-                        } else {
-                            xml = xml + '             <附件></附件>';
-                        }
+                        xml = xml + '             <附件>' + fjArray.join(";") + '</附件>';
+
 
                         xml = xml + '           </制品集团_设备采购合同评审>';
                         xml = xml + '      </FormData>';
@@ -1116,11 +1106,8 @@
                 xml = xml + '            <交货周期>' + fjhzq + '</交货周期>';
                 xml = xml + '            <付款方式>' + ffkfs + '</付款方式>';
                 xml = xml + '              <其他情况说明>' + fremark + '</其他情况说明>';
-                if (fjArray.length != 0) {
-                    xml = xml + '             <附件>' + fjArray.toSting().replace(",", ";") + '</附件>';
-                } else {
-                    xml = xml + '             <附件></附件>';
-                }
+                xml = xml + '             <附件>' + fjArray.join(";") + '</附件>';
+
 
                 xml = xml + '           </制品集团_设备采购合同评审>';
                 xml = xml + '      </FormData>';

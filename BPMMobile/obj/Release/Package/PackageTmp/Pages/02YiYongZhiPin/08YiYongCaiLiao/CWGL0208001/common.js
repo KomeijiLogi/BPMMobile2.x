@@ -601,7 +601,7 @@ function initData(data, flag) {
         li = li + '   </div>';
         li = li + '   <div class="mui-input-row">';
         li = li + '       <label for="fbz">备注</label>';
-        li = li + '       <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + item_c[i].备注 + '"/>';
+        li = li + '       <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + changeNullToEmpty( item_c[i].备注) + '"/>';
         li = li + '   </div>';
         li = li + '</div>';
         $("#mxlist").append(li);

@@ -137,3 +137,5 @@ D:\Documents\BPMMobile\BPMMobile\obj\Release\BPMMobile.pdb
 D:\Documents\BPMMobile\BPMMobile\bin\log4net.dll
 D:\Documents\BPMMobile\BPMMobile\bin\log4net.xml
 D:\Documents\BPMMobile\BPMMobile\obj\Release\BPMMobile.csproj.CoreCompileInputs.cache
+D:\Documents\BPMMobile\BPMMobile\bin\BPM.Client.dll
+D:\Documents\BPMMobile\BPMMobile\bin\BPM.dll

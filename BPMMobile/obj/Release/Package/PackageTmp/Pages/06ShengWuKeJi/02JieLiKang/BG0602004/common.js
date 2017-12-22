@@ -123,7 +123,7 @@ function initList() {
                     li = li + '   </div>';
                     li = li + '   <div class="mui-input-row">';
                     li = li + '      <label for="famount">数量</label>';
-                    li = li + '      <input type="text" id="famount" name="famount" placeholder="请填写数量"/>';
+                    li = li + '      <input type="number" id="famount" name="famount" placeholder="请填写数量"/>';
                     li = li + '   </div>';
                     li = li + '</div>';
                     $("#mxlist").append(li);
@@ -225,7 +225,7 @@ function initData(data, flag) {
         li = li + '   </div>';
         li = li + '   <div class="mui-input-row">';
         li = li + '      <label for="famount">数量</label>';
-        li = li + '      <input type="text" id="famount" name="famount" readonly="readonly" value="' + changeNullToEmpty( item_c[i].famount )+ '"/>';
+        li = li + '      <input type="number" id="famount" name="famount" readonly="readonly" value="' + changeNullToEmpty( item_c[i].famount )+ '"/>';
         li = li + '   </div>';
         li = li + '</div>';
         $("#mxlist").append(li);
