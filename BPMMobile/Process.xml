@@ -1060,6 +1060,21 @@
     <Group>办公管理</Group>
     <Description>用于兴源文化创意公司场地短期租赁申请</Description>
   </Process>
+  <Process>
+    <Name>兴源文化创意公司商户开业、停业申请</Name>
+    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</ViewPage>
+    <DisplayName>兴源文化商户开业、停业申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>市场营销</Group>
+    <Description>兴源文化创意公司商户开业、停业申请</Description>
+  </Process>
    <Process>
     <Name>盛祥商管公司员工云办公、BPM账号申请</Name>
     <Path>\\09房地产集团\\02商管公司\\16_行政办公</Path>
@@ -1242,26 +1257,299 @@
     <Group>市场营销</Group>
     <Description>盛祥商管公司广告位申请</Description>
   </Process>
+  
   <Process>
-    <Name>兴源文化创意公司商户开业、停业申请</Name>
-    <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
+    <Name>外贸公司计划评审</Name>
+    <Path>\\03医用制品集团\\10外贸公司\\11_生产管理</Path>
     <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/07FangDiChan/02ShangGuan/SCYX0702004/FlowCreate.html</ViewPage>
-    <DisplayName>兴源文化商户开业、停业申请</DisplayName>
+    <CreatePage>/Pages/SC0200001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/SC0200001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/SC0200001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/SC0200001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/SC0200001/FlowCreate.html</ViewPage>
+    <DisplayName>外贸公司计划评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>外贸公司生产管理</Group>
+    <Description>适用于外贸公司计划评审</Description>
+  </Process>
+   <Process>
+    <Name>富森公司外贸订单评审</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\11_生产管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/SC0200002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/SC0200002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/SC0200002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/SC0200002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/SC0200002/FlowCreate.html</ViewPage>
+    <DisplayName>富森公司外贸订单评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>生产管理</Group>
+    <Description>适用于富森公司外贸订单评审</Description>
+  </Process>
+    <Process>
+    <Name>富森公司外贸样品评审</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\11_生产管理</Path>
+
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowCreate.html</ViewPage>
+    <DisplayName>富森公司外贸样品评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>生产管理</Group>
+    <Description>适用于富森公司外贸样品评审</Description>
+  </Process>
+  <Process>
+
+    <Name>富森公司外加工订单评审</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\11_生产管理</Path>
+
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowCreate.html</ViewPage>
+    <DisplayName>富森公司外加工订单评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>生产管理</Group>
+    <Description>适用于富森公司外加工订单评审</Description>
+
+  </Process>
+  <Process>
+    <Name>医用制品集团安全综合检查反馈</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\01_安全管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团安全综合检查反馈 </DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
-    <Group>市场营销</Group>
-    <Description>兴源文化创意公司商户开业、停业申请</Description>
+    <Group>安全</Group>
+    <Description>适用于医用制品集团安全综合检查反馈 </Description>
   </Process>
-  
- <!--
- <Process>
+  <Process>
+    <Name>医用制品集团安全定期检查反馈</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\01_安全管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团安全定期检查反馈 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>安全</Group>
+    <Description>适用于医用制品集团安全定期检查反馈 </Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团安全日常检查反馈</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\01_安全管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团安全日常检查反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用制品集团安全日常检查反馈</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团办公设备采购申请</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团办公设备采购申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于医用制品集团办公设备采购申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团低值易耗品采购申请</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团低值易耗品采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用制品集团低值易耗品采购申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团合同评审</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团合同评审 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>法律事务</Group>
+    <Description>医用制品集团合同评审</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团岗位设立与编制调整申请</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\10_人力资源</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团岗位设立与编制调整申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>人力资源</Group>
+    <Description>适用于医用制品集团岗位设立与编制调整申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团质量信息反馈</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团质量信息反馈 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>适用于医用制品集团质量信息反馈</Description>
+  </Process>
+  <Process>
+    <Name>医用制品公司共用配件供应申请</Name>
+    <Path>\\03医用制品集团\\02医用制品公司\\11_生产管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品公司共用配件供应申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>生产</Group>
+    <Description>适用于医用制品公司共用配件供应申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品公司客户交接申请</Name>
+    <Path>\\03医用制品集团\\02医用制品公司\\13_市场营销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品公司客户交接申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>生产</Group>
+    <Description>适用于医用制品公司客户交接申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品公司管理干部考勤提报</Name>
+    <Path>\\03医用制品集团\\02医用制品公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品公司管理干部考勤提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用制品公司管理干部考勤提报</Description>
+  </Process>
+  <Process>
+    <Name>海盛公司部门月度办公用品申请</Name>
+    <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowCreate.html</ViewPage>
+    <DisplayName>海盛公司部门月度办公用品申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>海盛公司部门月度办公用品申请</Description>
+  </Process>
+  <Process>
+    <Name>海盛公司月度办公用品申请汇总</Name>
+    <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowCreate.html</ViewPage>
+    <DisplayName>海盛公司月度办公用品申请汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>海盛公司月度办公用品申请汇总</Description>
+  </Process>
+  <Process>
+    <Name>海盛公司生产物资采购申请</Name>
+    <Path>\\03医用制品集团\\04海盛设备公司\\02_采购管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowCreate.html</ViewPage>
+    <DisplayName>海盛公司生产物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>海盛公司生产物资采购申请</Description>
+  </Process>
+  <Process>
+    <Name>海盛公司销售订单评审</Name>
+    <Path>\\03医用制品集团\\04海盛设备公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowCreate.html</ViewPage>
+    <DisplayName>海盛公司销售订单评审</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>海盛公司销售订单评审</Description>
+  </Process>
+  <Process>
     <Name>洁瑞公司产品发货申请</Name>
-    <Path>\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理</Path>
+    <Path>\\03医用制品集团\\03洁瑞医用制品公司\\04_仓储物流</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/JRMaterial/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/JRMaterial/FlowUndoDetail.html</ViewUndoPage>
@@ -1274,10 +1562,9 @@
     <Group>销售管理</Group>
     <Description>适用于洁瑞公司的产品发货申请流程</Description>
   </Process>
-
- <Process>
+<Process>
     <Name>洁瑞公司样品申请</Name>
-    <Path>\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理</Path>
+    <Path>\\03医用制品集团\\03洁瑞医用制品公司\\13_市场营销</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/JRPrototype/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/JRPrototype/FlowUndoDetail.html</ViewUndoPage>
@@ -1291,12 +1578,886 @@
     <Description>适用于洁瑞公司的样品申请流程</Description>
 
   </Process>
+  <Process>
+    <Name>洁瑞公司学术交流申请</Name>
+    <Path>\\03医用制品集团\\03洁瑞医用制品公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowCreate.html</ViewPage>
+    <DisplayName>洁瑞公司学术交流申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>洁瑞公司学术交流申请</Description>
+  </Process>
 
+  <Process>
+    <Name>洁瑞公司代理公司授权申请</Name>
+    <Path>\\03医用制品集团\\03洁瑞医用制品公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowCreate.html</ViewPage>
+    <DisplayName>洁瑞公司代理公司授权申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>洁瑞公司代理公司授权申请</Description>
+  </Process>
+  <Process>
+    <Name>洁瑞公司销售管理事务申请</Name>
+    <Path>\\03医用制品集团\\03洁瑞医用制品公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowCreate.html</ViewPage>
+    <DisplayName>洁瑞公司销售管理事务申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>洁瑞公司销售管理事务申请</Description>
+  </Process>
+  <Process>
+    <Name>输血器材公司生产管理提报</Name>
+    <Path>\\03医用制品集团\\07输血技术装备公司\\11_生产管理</Path>
+
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowCreate.html</ViewPage>
+    <DisplayName>输血器材公司生产管理提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>输血器材公司生产管理提报</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司产品核价申请</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司产品核价申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用材料公司产品核价申请</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司特殊合同评审</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司特殊合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>法律事务</Group>
+    <Description>适用于医用材料公司特殊合同评审</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司样品计划提报</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\11_生产管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司样品计划提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>生产管理</Group>
+    <Description>适用于医用材料公司样品计划提报</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司样品申请</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司样品申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用材料公司样品申请</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司发货申请</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司发货申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用材料公司发货申请</Description>
+  </Process>
+  <Process>
+    <Name>医用材料公司授权申请</Name>
+    <Path>\\03医用制品集团\\08医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowCreate.html</ViewPage>
+    <DisplayName>医用材料公司授权申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用材料公司授权申请</Description>
+  </Process>
+
+<Process>
+    <Name>洁丽康公司部门月度办公用品申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowCreate.html</ViewPage>
+    <DisplayName>洁丽康公司部门月度办公用品申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>洁丽康公司部门月度办公用品申请</Description>
+  </Process>
+  <Process>
+    <Name>洁丽康公司月度办公用品申请汇总</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowCreate.html</ViewPage>
+    <DisplayName>洁丽康公司月度办公用品申请汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>洁丽康公司月度办公用品申请汇总</Description>
+  </Process>
+<Process>
+    <Name>威瑞公司月度办公用品申请汇总</Name>
+    <Path>\\03医用制品集团\\06威瑞外科有限公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowCreate.html</ViewPage>
+    <DisplayName>威瑞公司月度办公用品申请汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>威瑞公司月度办公用品申请汇总</Description>
+  </Process>
   
+  <Process>
+    <Name>威瑞公司部门月度办公用品申请</Name>
+    <Path>\\03医用制品集团\\06威瑞外科有限公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowCreate.html</ViewPage>
+    <DisplayName>威瑞公司部门月度办公用品申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>威瑞公司部门月度办公用品申请</Description>
+  </Process>
+  <Process>
+    <Name>威瑞公司派车申请</Name>
+    <Path>\\03医用制品集团\\06威瑞外科有限公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowCreate.html</ViewPage>
+    <DisplayName>威瑞公司派车申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>威瑞公司派车申请</Description>
+  </Process>
+  
+  <Process>
+    <Name>建设公司安全检查问题反馈</Name>
+    <Path>\\09房地产集团\\04建设公司\\01_安全管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司安全检查问题反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>安全管理</Group>
+    <Description>适用于建设公司安全检查问题反馈整改</Description>
+  </Process>
+  <Process>
+    <Name>建设公司原材料采购申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司原材料采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>采购管理</Group>
+    <Description>适用于建设公司原材料采购申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司月度材料采购付款计划申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\11_生产管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司月度材料采购付款计划申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司月度材料采购付款计划申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司汇款申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司汇款申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司月度材料采购付款申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司月度材料采购付款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司月度材料采购付款申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司借款申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司借款申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司发票开具申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司发票开具申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司发票开具申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司合同评审</Name>
+    <Path>\\09房地产集团\\04建设公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>法律事务</Group>
+    <Description>适用于建设公司合同评审</Description>
+  </Process>
+  <Process>
+    <Name>建设公司分包施工单位新增申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司分包施工单位新增申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司分包施工单位新增申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司门窗工程成本分析提报</Name>
+    <Path>\\09房地产集团\\04建设公司\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司门窗工程成本分析提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>基建工程</Group>
+    <Description>适用于建设公司门窗工程成本分析提报</Description>
+  </Process>
+  <Process>
+    <Name>建设公司工程结算申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司工程结算申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>基建工程</Group>
+    <Description>适用于建设公司工程结算申请 </Description>
+  </Process>
+  <Process>
+    <Name>建设公司工程竣工自检申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司工程竣工自检申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>基建工程</Group>
+    <Description>适用于建设公司工程竣工自检申请 </Description>
+  </Process>
+  <Process>
+    <Name>建设公司分包合同备案申请</Name>
+    <Path>\\99业务平台\\07建设公司\\分包项目</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司分包合同备案申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司分包合同备案申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司工程分包进度审核申请</Name>
+    <Path>\\99业务平台\\07建设公司\\分包项目</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司工程分包进度审核申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司工程分包进度审核申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司分包单位月度付款计划申请</Name>
+    <Path>\\99业务平台\\07建设公司\\分包项目</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司分包单位月度付款计划申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司分包单位月度付款计划申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司工程分包进度款拨付申请</Name>
+    <Path>\\99业务平台\\07建设公司\\分包项目</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司工程分包进度款拨付申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司工程分包进度款拨付申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司差旅费申请</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司差旅费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司差旅费申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司差旅费报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司差旅费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司差旅费报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司招待费申请</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司招待费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>建设管理平台</Group>
+    <Description>适用于建设公司招待费申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司招待费报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司招待费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>建设管理平台</Group>
+    <Description>适用于建设公司招待费报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司培训费申请</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司培训费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>建设管理平台</Group>
+    <Description>适用于建设公司培训费申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司培训费报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司培训费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>建设管理平台</Group>
+    <Description>适用于建设公司培训费报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司手机燃油费报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司手机燃油费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司手机燃油费报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司投标费申请</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司投标费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司投标费申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司投标费报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司投标费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司投标费报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司其他费用申请</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司其他费用申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司其他费用报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司其他费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司其他费用报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司其他费用报销（通用）</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司其他费用报销（通用）</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司其他费用报销（通用）</Description>
+  </Process>
+  <Process>
+    <Name>建设公司食堂费用报销</Name>
+    <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司食堂费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司食堂费用报销</Description>
+  </Process>
+  <Process>
+    <Name>建设公司车间员工请假申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司车间员工请假申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>人力资源</Group>
+    <Description>适用于建设公司车间员工请假申请</Description>
+  </Process>
 
- <Process>
+  <Process>
+    <Name>建设公司行管（销售）人员转正参保申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司行管销售转正参保申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>人力资源</Group>
+    <Description>适用于建设公司行管人员转正参保申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司员工劳动合同续签申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司员工劳动合同续签申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>建设公司员工劳动合同续签申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司市场问题反馈</Name>
+    <Path>\\09房地产集团\\04建设公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司市场问题反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>适用于建设公司市场问题反馈</Description>
+  </Process>
+  <Process>
+    <Name>建设公司门窗销售订单提报</Name>
+    <Path>\\09房地产集团\\04建设公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司门窗销售订单提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司门窗销售订单提报</Description>
+  </Process>
+  <Process>
+    <Name>建设公司销售部销售提成申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司销售部销售提成申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司销售部销售提成申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司样品制作申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司样品制作申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司样品制作申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司VI制作申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\09_企业管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司VI制作申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司VI制作申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司门窗售后维修采购申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司门窗售后维修采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>采购管理</Group>
+    <Description>适用于建设公司门窗售后维修采购申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司K3项目编码新增申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\15_信息管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司K3项目编码新增申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>财务管理</Group>
+    <Description>建设公司K3项目编码新增申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司证件借用申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司证件借用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>行政办公</Group>
+    <Description>适用于建设公司证件借用申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司印章使用申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/CW0701009/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司印章使用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>行政办公</Group>
+    <Description>建设公司印章使用申请</Description>
+  </Process>
+  <Process>
+    <Name>建设公司生产质量问题反馈</Name>
+    <Path>\\09房地产集团\\04建设公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司生产质量问题反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>适用于建设公司生产质量问题反馈整改</Description>
+  </Process>
+  <Process>
+    <Name>建设公司产成品出厂检验记录备案</Name>
+    <Path>\\09房地产集团\\04建设公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司产成品出厂检验记录备案</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>适用于建设公司产成品出厂检验记录备案</Description>
+  </Process>
+
+<Process>
     <Name>建设公司库存不良物资提报</Name>
-    <Path>\\01威高集团总部\\06建设公司\\SCGL生产管理</Path>
+    <Path>\\09房地产集团\\04建设公司\\11_生产管理</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/SCGL0703002/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/SCGL0703002/FlowUndoDetail.html</ViewUndoPage>
@@ -1311,7 +2472,7 @@
   </Process>
 <Process>
     <Name>建设公司安质部零星采购申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CGGL采购管理</Path>
+    <Path>\\09房地产集团\\04建设公司\\02_采购管理</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/CGGL0703002/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/CGGL0703002/FlowUndoDetail.html</ViewUndoPage>
@@ -1324,6 +2485,87 @@
     <Group>采购管理</Group>
     <Description>适用于建设公司库存不良物资提报</Description>
   </Process>
+<Process>
+    <Name>建设公司行管（销售）人员试用期转正申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/RLZY0106002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/RLZY0106002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/RLZY0106002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/RLZY0106002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/RLZY0106002/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司试用期转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>人力资源</Group>
+    <Description>建设公司行管（销售）人员试用期转正申请</Description>
+  </Process>
+    <Process>
+    <Name>建设公司车间生产过程检验记录备案</Name>
+    <Path>\\09房地产集团\\04建设公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/ZLGL0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/ZLGL0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/ZLGL0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/ZLGL0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/ZLGL0106001/FlowCreate.html</ViewPage>
+    <DisplayName>车间生产过程检验记录备案</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>建设公司车间生产过程检验记录备案</Description>
+  </Process>
+  <Process>
+    <Name>建设公司车间员工转正参保申请</Name>
+    <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/RLZY0106004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/RLZY0106004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/RLZY0106004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/RLZY0106004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/RLZY0106004/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司车间员工转正参保</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>人力资源</Group>
+    <Description>建设公司车间员工转正参保申请</Description>
+  </Process>
+   <Process>
+    <Name>建设公司工程签证备案申请</Name>
+    <Path>\\09房地产集团\04建设公司\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/JJGC0106001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/JJGC0106001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/JJGC0106001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/JJGC0106001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/JJGC0106001/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司工程签证备案申请</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>基建工程</Group>
+    <Description>建设公司工程签证备案申请</Description>
+  </Process>
+  <Process>
+    <Name>医用制品集团大客户联销提报</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\13_市场营销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团大客户联销提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用制品集团大客户联销提报</Description>
+  </Process>
+
+  
+  
+ <!--
+ 
+
   <Process>
     <Name>商管周工作汇报_流程</Name>
     <Path>\\98门户</Path>
@@ -1403,67 +2645,11 @@
     <Description>适用于制品公司其他费用报销</Description>
   </Process>
 
-  <Process>
-    <Name>外贸公司计划评审</Name>
-    <Path>\\02医用制品集团\\00医用制品集团本部\\SC生产</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/SC0200001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/SC0200001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/SC0200001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/SC0200001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/SC0200001/FlowCreate.html</ViewPage>
-    <DisplayName>外贸公司计划评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>外贸公司生产管理</Group>
-    <Description>适用于外贸公司计划评审</Description>
-  </Process>
-  <Process>
-    <Name>富森公司外贸订单评审</Name>
-    <Path>\\02医用制品集团\\00医用制品集团本部\\SC生产</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/SC0200002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/SC0200002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/SC0200002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/SC0200002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/SC0200002/FlowCreate.html</ViewPage>
-    <DisplayName>富森公司外贸订单评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>生产管理</Group>
-    <Description>适用于富森公司外贸订单评审</Description>
-  </Process>
-<Process>
-    <Name>建设公司行管（销售）人员试用期转正申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\RLZY人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/RLZY0106002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/RLZY0106002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/RLZY0106002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/RLZY0106002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/RLZY0106002/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司试用期转正申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>人力资源</Group>
-    <Description>建设公司行管（销售）人员试用期转正申请</Description>
-  </Process>
   
-  <Process>
-    <Name>建设公司车间生产过程检验记录备案</Name>
-    <Path>\\01威高集团总部\\06建设公司\\ZLGL质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/ZLGL0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/ZLGL0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/ZLGL0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/ZLGL0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/ZLGL0106001/FlowCreate.html</ViewPage>
-    <DisplayName>车间生产过程检验记录备案</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>质量管理</Group>
-    <Description>建设公司车间生产过程检验记录备案</Description>
-  </Process>
+ 
+
+  
+
   <Process>
     <Name>建设公司规章制度申请</Name>
     <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
@@ -1510,198 +2696,13 @@
     <Description>建设公司会议纪要申请</Description>
   </Process>
 
-  <Process>
-    <Name>建设公司车间员工转正参保申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\RLZY人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/RLZY0106004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/RLZY0106004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/RLZY0106004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/RLZY0106004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/RLZY0106004/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司车间员工转正参保</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>人力资源</Group>
-    <Description>建设公司车间员工转正参保申请</Description>
-  </Process>
-
   
 
-  <Process>
-    <Name>建设公司工程签证备案申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\JJGC基建工程</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/JJGC0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/JJGC0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/JJGC0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/JJGC0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/JJGC0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司工程签证备案申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>基建工程</Group>
-    <Description>建设公司工程签证备案申请</Description>
-  </Process>
-  <Process>
-    <Name>建设公司印章使用申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\XZBG行政办公</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/CW0701009/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司印章使用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>行政办公</Group>
-    <Description>建设公司印章使用申请</Description>
-  </Process>
-
-
- 
-
-  <Process>
-    <Name>建设公司证件借用申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\XZBG行政办公</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/XZBG0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司证件借用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>行政办公</Group>
-    <Description>适用于建设公司证件借用申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>建设公司车间员工请假申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\RLZY人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司车间员工请假申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>人力资源</Group>
-    <Description>适用于建设公司车间员工请假申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>建设公司行管（销售）人员转正参保申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\RLZY人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106003/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司行管销售转正参保申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>人力资源</Group>
-    <Description>适用于建设公司行管人员转正参保申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>建设公司安全检查问题反馈</Name>
-    <Path>\\01威高集团总部\\06建设公司\\AQGL安全管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/AQGL0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司安全检查问题反馈</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>安全管理</Group>
-    <Description>适用于建设公司安全检查问题反馈整改</Description>
-  </Process>
-  <Process>
-    <Name>建设公司生产质量问题反馈</Name>
-    <Path>\\01威高集团总部\\06建设公司\\ZLGL质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0106003/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司生产质量问题反馈</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>质量管理</Group>
-    <Description>适用于建设公司生产质量问题反馈整改</Description>
-  </Process>
-  <Process>
-    <Name>建设公司月度材料采购付款计划申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CWGL财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司月度材料采购付款计划申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>适用于建设公司月度材料采购付款计划申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>建设公司门窗售后维修采购申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CGGL采购管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0703001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司门窗售后维修采购申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>采购管理</Group>
-    <Description>适用于建设公司门窗售后维修采购申请</Description>
-  </Process>
-
-  <Process>
-    <Name>建设公司产成品出厂检验记录备案</Name>
-    <Path>\\01威高集团总部\\06建设公司\\ZLGL质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/ZLGL0703002/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司产成品出厂检验记录备案</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>质量管理</Group>
-    <Description>适用于建设公司产成品出厂检验记录备案</Description>
-  </Process>
   
 
  
- 
- 
- 
- 
-
   
 
-
-
-  
-  
-  
 
   <Process>
     <Name>BG0702035_商管公司激励申请_流程</Name>
@@ -1719,193 +2720,9 @@
     <Description>用于商管公司激励申请</Description>
   </Process>
 
-  
-  <Process>
-    <Name>建设公司原材料采购申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CGGL采购管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CGGL0106002/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司原材料采购申请</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>采购管理</Group>
-    <Description>适用于建设公司原材料采购申请</Description>
-  </Process>
 
- 
-  
- 
-  
- 
-
-  
-  
-  
-  <Process>
-    <Name>建设公司合同评审</Name>
-    <Path>\\01威高集团总部\\06建设公司\\FLSW法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/FLSW0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司合同评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>法律事务</Group>
-    <Description>适用于建设公司合同评审</Description>
-  </Process>
- 
-  
- 
- 
-
-
-
-  
-
-
-
-
-  
-
- 
- 
- 
-
-
-  
-
- 
-
-
- 
-  
- 
- 
-
-  
-  <Process>
-    <Name>富森公司外贸样品评审</Name>
-     <Path>\\02医用制品集团\\09富森公司\\SC生产</Path>
-   
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200003/FlowCreate.html</ViewPage>
-    <DisplayName>富森公司外贸样品评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>生产管理</Group>
-    <Description>适用于富森公司外贸样品评审</Description>
-  </Process>
-
-  <Process>
-
-    <Name>富森公司外加工订单评审</Name>
-     <Path>\\02医用制品集团\\09富森公司\\SC生产</Path>
-    
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/00ZhiPinBenBu/SC0200004/FlowCreate.html</ViewPage>
-    <DisplayName>富森公司外加工订单评审</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>生产管理</Group>
-    <Description>适用于富森公司外加工订单评审</Description>
-
-  </Process>
-
-
-
-  
- 
-  
-
-  
-
-  
-
-
-  
-
- 
-
-
-
-
-
-  
-
- 
-
-  
-
- 
-  
- 
-
-  
- 
-
- 
-  
-
-  
-
-  
-
-  
-
- 
-
- 
-
-  
-
-  
-
-  
-
- 
-  
- 
-
-  
-  
-  
-  
-  
-  
-  
 <Process>
-    <Name>建设公司借款申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CWGL财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106004/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司借款申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司借款申请</Description>
-  </Process>
-  
-<Process>
-    <Name>建设公司物资采购申请</Name>
+    <Name>建设公司物资采购申请//废弃</Name>
     <Path>\\01威高集团总部\\06建设公司\\CG采购</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowCreate.html</CreatePage>
@@ -1920,987 +2737,8 @@
     <Description>建设公司物资采购申请</Description>
   </Process>
 
-  <Process>
-    <Name>建设公司其他费用报销（通用）</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106019/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司其他费用报销（通用）</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司其他费用报销（通用）</Description>
-  </Process>
-  <Process>
-    <Name>建设公司食堂费用报销</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106020/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司食堂费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司食堂费用报销</Description>
-  </Process>
 
-  <Process>
-    <Name>建设公司样品制作申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106004/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司样品制作申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司样品制作申请</Description>
-  </Process>
-
-  <Process>
-    <Name>建设公司市场宣传品制作申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106005/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司市场宣传品制作申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司市场宣传品制作申请</Description>
-  </Process>
-
- <Process>
-    <Name>建设公司K3项目编码新增申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\XXGL信息管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/XXGL0106001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司K3项目编码新增申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司K3项目编码新增申请</Description>
-  </Process>
-
-  <Process>
-    <Name>建设公司销售部销售提成申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106003/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司销售部销售提成申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司销售部销售提成申请</Description>
-  </Process>
- <Process>
-    <Name>建设公司门窗销售订单提报</Name>
-    <Path>\\01威高集团总部\\06建设公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106002/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司门窗销售订单提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司门窗销售订单提报</Description>
-  </Process>
-
-<Process>
-    <Name>建设公司分包合同备案申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106004/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司分包合同备案申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司分包合同备案申请</Description>
-  </Process>
-   <Process>
-    <Name>建设公司手机燃油费报销</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106014/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司手机燃油费报销</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司手机燃油费报销</Description>
-  </Process>
-<Process>
-    <Name>建设公司工程分包进度审核申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106005/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司工程分包进度审核申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司工程分包进度审核申请</Description>
-  </Process>
-  
- <Process>
-    <Name>建设公司分包单位月度付款计划申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106006/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司分包单位月度付款计划申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司分包单位月度付款计划申请</Description>
-  </Process>
-
-  
- <Process>
-    <Name>建设公司工程分包进度款拨付申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106007/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司工程分包进度款拨付申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司工程分包进度款拨付申请</Description>
-  </Process>
-
-  <Process>
-    <Name>建设公司投标费申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106017/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司投标费申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司投标费申请</Description>
-  </Process>
-
-  
-  <Process>
-    <Name>建设公司投标费报销</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106018/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司投标费报销</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司投标费报销</Description>
-  </Process>
-  
-
- <Process>
-    <Name>建设公司其他费用申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106015/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司其他费用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司其他费用申请</Description>
-  </Process>
-
-  <Process>
-    <Name>建设公司其他费用报销</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106016/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司其他费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司其他费用报销</Description>
-  </Process>
-   
-  <Process>
-    <Name>建设公司差旅费申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106008/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司差旅费申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司差旅费申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>建设公司差旅费报销</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106009/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司差旅费报销</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司差旅费报销</Description>
-  </Process>
-  <Process>
-      <Name>建设公司月度材料采购付款申请</Name> 
-      <Path>\\01威高集团总部\\06建设公司\\CWGL财务管理</Path>  
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106003/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司月度材料采购付款申请</DisplayName>   
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>财务管理</Group>    
-      <Description>适用于建设公司月度材料采购付款申请</Description>  
-  </Process>
-  
-  <Process>    
-      <Name>建设公司汇款申请</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\CWGL财务管理</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106002/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司汇款申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>财务管理</Group>   
-      <Description>适用于建设公司汇款申请</Description> 
-  </Process>
-  
-  <Process>    
-      <Name>建设公司发票开具申请</Name>   
-      <Path>\\01威高集团总部\\06建设公司\\CWGL财务管理</Path>   
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106005/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司发票开具申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>财务管理</Group>    
-      <Description>适用于建设公司发票开具申请</Description>  
-  </Process>
-  
-  <Process>    
-      <Name>建设公司分包施工单位新增申请</Name>   
-      <Path>\\01威高集团总部\\06建设公司\\JJGC基建工程</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106002/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司分包施工单位新增申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>财务管理</Group>   
-      <Description>适用于建设公司分包施工单位新增申请</Description>  
-  </Process>
-  
-  <Process>
-      <Name>建设公司市场问题反馈</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\SCYX市场营销</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/SCYX0106001/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司市场问题反馈</DisplayName>    
-      <Css></Css>   
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>财务管理</Group>    
-      <Description>适用于建设公司市场问题反馈</Description>  
-  </Process>
-  
-  <Process>
-    
-      <Name>建设公司招待费申请</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106010/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司招待费申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>建设管理平台</Group>   
-      <Description>适用于建设公司招待费申请</Description>  
-  </Process>
-  
-  <Process>   
-      <Name>建设公司招待费报销</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106011/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司招待费报销</DisplayName>   
-      <Css></Css>   
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>建设管理平台</Group>   
-      <Description>适用于建设公司招待费报销</Description>  
-  </Process>
-  
-  <Process>    
-      <Name>建设公司培训费申请</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>    
-      <CanCreate>False</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106012/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司培训费申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>建设管理平台</Group>   
-      <Description>适用于建设公司培训费申请</Description>  
-  </Process>
-  
-  <Process>    
-      <Name>建设公司培训费报销</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>    
-      <CanCreate>False</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JSGL0106013/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司培训费报销</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group>建设管理平台</Group>    
-      <Description>适用于建设公司培训费报销</Description>  
-  </Process>
-   
-  
-  <Process>    
-      <Name>建设公司员工劳动合同续签申请</Name>    
-      <Path>\\01威高集团总部\\06建设公司\\RLZY人力资源</Path>    
-      <CanCreate>True</CanCreate>
-      <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowCreate.html</CreatePage>
-      <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowUndoDetail.html</ViewUndoPage>
-      <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowAskDetail.html</ViewAskPage>
-      <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowDoneDetail.html</ViewDonePage>
-      <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/RLZY0106005/FlowCreate.html</ViewPage>
-      <DisplayName>建设公司员工劳动合同续签申请</DisplayName>    
-      <Css></Css>    
-      <Icon>../../../../Content/images/5.png</Icon>    
-      <Group></Group>    
-      <Description>建设公司员工劳动合同续签申请</Description>  
-  </Process>
  
-  <Process>
-  <Name>建设公司门窗工程成本分析提报</Name>
-  <Path>\\01威高集团总部\\06建设公司\\JJGC基建工程</Path>
-  <CanCreate>True</CanCreate>
-  <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowCreate.html</CreatePage>
-  <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowUndoDetail.html</ViewUndoPage>
-  <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowAskDetail.html</ViewAskPage>
-  <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowDoneDetail.html</ViewDonePage>
-  <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106003/FlowCreate.html</ViewPage>
-  <DisplayName>建设公司门窗工程成本分析提报</DisplayName>
-  <Css></Css>
-  <Icon>../../../../Content/images/5.png</Icon>
-  <Group>基建工程</Group>
-  <Description>适用于建设公司门窗工程成本分析提报</Description>
-  </Process>
-  <Process>
-  <Name>建设公司工程结算申请</Name>
-  <Path>\\01威高集团总部\\06建设公司\\JJGC基建工程</Path>
-  <CanCreate>True</CanCreate>
-  <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowCreate.html</CreatePage>
-  <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowUndoDetail.html</ViewUndoPage>
-  <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowAskDetail.html</ViewAskPage>
-  <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowDoneDetail.html</ViewDonePage>
-  <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106004/FlowCreate.html</ViewPage>
-  <DisplayName>建设公司工程结算申请 </DisplayName>
-  <Css></Css>
-  <Icon>../../../../Content/images/5.png</Icon>
-  <Group>基建工程</Group>
-  <Description>适用于建设公司工程结算申请 </Description>
-  </Process>
-  <Process>
-  <Name>建设公司工程竣工自检申请</Name>
-  <Path>\\01威高集团总部\\06建设公司\\JJGC基建工程</Path>
-  <CanCreate>True</CanCreate>
-  <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowCreate.html</CreatePage>
-  <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowUndoDetail.html</ViewUndoPage>
-  <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowAskDetail.html</ViewAskPage>
-  <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowDoneDetail.html</ViewDonePage>
-  <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/JJGC0106005/FlowCreate.html</ViewPage>
-  <DisplayName>建设公司工程竣工自检申请 </DisplayName>
-  <Css></Css>
-  <Icon>../../../../Content/images/5.png</Icon>
-  <Group>基建工程</Group>
-  <Description>适用于建设公司工程竣工自检申请 </Description>
-  </Process>
-  
-  
-  
-  
-  <Process>
-    <Name>洁瑞公司学术交流申请</Name>
-    <Path>\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205003/FlowCreate.html</ViewPage>
-    <DisplayName>洁瑞公司学术交流申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>洁瑞公司学术交流申请</Description>
-  </Process>
-   
-  <Process>
-    <Name>洁瑞公司代理公司授权申请</Name>
-    <Path>\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205004/FlowCreate.html</ViewPage>
-    <DisplayName>洁瑞公司代理公司授权申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>洁瑞公司代理公司授权申请</Description>
-  </Process>
-  <Process>
-    <Name>洁瑞公司销售管理事务申请</Name>
-    <Path>\\02医用制品集团\\05洁瑞医用制品公司\\XS销售管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/05JieRui/XS0205005/FlowCreate.html</ViewPage>
-    <DisplayName>洁瑞公司销售管理事务申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>洁瑞公司销售管理事务申请</Description>
-  </Process>
- <Process>
-    <Name>海盛公司销售订单评审</Name>
-    <Path>\\02医用制品集团\\04海盛设备公司\\XS销售</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/XS0204001/FlowCreate.html</ViewPage>
-    <DisplayName>海盛公司销售订单评审</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>海盛公司销售订单评审</Description>
-  </Process>
-
-  <Process>
-    <Name>医用制品公司管理干部考勤提报</Name>
-    <Path>\\02医用制品集团\\02医用制品公司\\XS销售</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品公司管理干部考勤提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用制品公司管理干部考勤提报</Description>
-  </Process>
-
-  <Process>
-    <Name>海盛公司部门月度办公用品申请</Name>
-    <Path>\\02医用制品集团\\04海盛设备公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204001/FlowCreate.html</ViewPage>
-    <DisplayName>海盛公司部门月度办公用品申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>海盛公司部门月度办公用品申请</Description>
-  </Process>
-  
- <Process>
-    <Name>海盛公司月度办公用品申请汇总</Name>
-    <Path>\\02医用制品集团\\04海盛设备公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/BG0204002/FlowCreate.html</ViewPage>
-    <DisplayName>海盛公司月度办公用品申请汇总</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>海盛公司月度办公用品申请汇总</Description>
-  </Process>
-  <Process>
-    <Name>医用制品集团低值易耗品采购申请</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\CG采购</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/CG0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团低值易耗品采购申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用制品集团低值易耗品采购申请</Description>
-  </Process>
-  <Process>
-    <Name>海盛公司生产物资采购申请</Name>
-    <Path>\\02医用制品集团\\04海盛设备公司\\CG采购</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowCreate.html</ViewPage>
-    <DisplayName>海盛公司生产物资采购申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>海盛公司生产物资采购申请</Description>
-  </Process>
-<Process>
-    <Name>洁丽康公司部门月度办公用品申请</Name>
-    <Path>\\06生物科技集团\\02洁丽康生物材料公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602004/FlowCreate.html</ViewPage>
-    <DisplayName>洁丽康公司部门月度办公用品申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>洁丽康公司部门月度办公用品申请</Description>
-  </Process>
-  
-<Process>
-    <Name>洁丽康公司月度办公用品申请汇总</Name>
-    <Path>\\06生物科技集团\\02洁丽康生物材料公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/06ShengWuKeJi/02JieLiKang/BG0602006/FlowCreate.html</ViewPage>
-    <DisplayName>洁丽康公司月度办公用品申请汇总</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>洁丽康公司月度办公用品申请汇总</Description>
-  </Process>
-
-   
-  <Process>
-    <Name>输血器材公司生产管理提报</Name>
-    <Path>\\02医用制品集团\\07输血技术装备公司\\SC生产</Path>
-	
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/07ShuXueJiShuZhuangBei/SCGL0207001/FlowCreate.html</ViewPage>
-    <DisplayName>输血器材公司生产管理提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>输血器材公司生产管理提报</Description>
-  </Process>
-  
-  <Process>
-    <Name>医用材料公司产品核价申请</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\CWGL财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/CWGL0208001/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司产品核价申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用材料公司产品核价申请</Description>
-  </Process>
-
- <Process>
-    <Name>医用材料公司授权申请</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208003/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司授权申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用材料公司授权申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>医用材料公司发货申请</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208002/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司发货申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用材料公司发货申请</Description>
-  </Process>
-  <Process>
-    <Name>医用材料公司样品申请</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\SCYX市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCYX0208001/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司样品申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用材料公司样品申请</Description>
-  </Process>
-  
-  <Process>
-    <Name>威瑞外科派车申请流程</Name>
-    <Path>\\02医用制品集团\\06威瑞外科有限公司</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206003/FlowCreate.html</ViewPage>
-    <DisplayName>威瑞外科派车申请流程</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>威瑞外科派车申请流程</Description>
-  </Process>
-
-  <Process>
-    <Name>医用制品集团安全日常检查反馈</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\AQ安全</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201003/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团安全日常检查反馈</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用制品集团安全日常检查反馈</Description>
-  </Process>
-
-  <Process>
-    <Name>医用制品集团大客户联销提报</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\XS销售</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团大客户联销提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用制品集团大客户联销提报</Description>
-  </Process>
-
-  <Process>
-    <Name>医用制品集团安全综合检查反馈</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\AQ安全</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团安全综合检查反馈 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>安全</Group>
-    <Description>适用于医用制品集团安全综合检查反馈 </Description>
-  </Process>
-  <Process>
-    <Name>医用制品集团安全定期检查反馈</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\AQ安全</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/AQ0201002/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团安全定期检查反馈 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>安全</Group>
-    <Description>适用于医用制品集团安全定期检查反馈 </Description>
-  </Process>
-  
-  <Process>
-    <Name>医用制品集团办公设备采购申请</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\BG办公管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/BG0201002/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团办公设备采购申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于医用制品集团办公设备采购申请</Description>
-  </Process>
-  <Process>
-    <Name>医用制品集团采购合同评审</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\FLSW法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/FLSW0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团采购合同评审 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>法律事务</Group>
-    <Description>适用于医用制品集团采购合同评审</Description>
-  </Process>
-  <Process>
-    <Name>医用制品集团岗位设立与编制调整申请</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\RLZY人力资源</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/RLZY0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团岗位设立与编制调整申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>人力资源</Group>
-    <Description>适用于医用制品集团岗位设立与编制调整申请</Description>
-  </Process>
-  <Process>
-    <Name>医用制品集团质量信息反馈</Name>
-    <Path>\\02医用制品集团\\01跨子公司\\ZLGL质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/ZLGL0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团质量信息反馈 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>质量管理</Group>
-    <Description>适用于医用制品集团质量信息反馈</Description>
-  </Process>
-  <Process>
-    <Name>医用制品公司共用配件供应申请</Name>
-    <Path>\\02医用制品集团\\02医用制品公司\\SC生产</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品公司共用配件供应申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>生产</Group>
-    <Description>适用于医用制品公司共用配件供应申请</Description>
-  </Process>
-  <Process>
-    <Name>医用制品公司客户交接申请</Name>
-    <Path>\\02医用制品集团\\02医用制品公司\\XS销售</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品公司客户交接申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>生产</Group>
-    <Description>适用于医用制品公司客户交接申请</Description>
-  </Process>
-  <Process>
-    <Name>医用材料公司特殊合同评审</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\FLSW法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/FLSW0208001/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司特殊合同评审</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>法律事务</Group>
-    <Description>适用于医用材料公司特殊合同评审</Description>
-  </Process>
-  
-  <Process>
-    <Name>医用材料公司样品计划提报</Name>
-    <Path>\\02医用制品集团\\08医用材料公司\\SCGL生产管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/08YiYongCaiLiao/SCGL0208001/FlowCreate.html</ViewPage>
-    <DisplayName>医用材料公司样品计划提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>生产管理</Group>
-    <Description>适用于医用材料公司样品计划提报</Description>
-  </Process>
-  
-  <Process>
-    <Name>威瑞外科办公用品汇总</Name>
-    <Path>\\02医用制品集团\\06威瑞外科有限公司</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206002/FlowCreate.html</ViewPage>
-    <DisplayName>威瑞外科办公用品汇总</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>适用于威瑞外科办公用品汇总</Description>
-  </Process>
-  
-  <Process>
-    <Name>威瑞外科办公用品申请</Name>
-    <Path>\\02医用制品集团\\06威瑞外科有限公司</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/06WeiRuiWaiKe/BG0206001/FlowCreate.html</ViewPage>
-    <DisplayName>威瑞外科办公用品申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>适用于威瑞外科办公用品申请</Description>
-  </Process>
 -->
 
 </ProcessList>

@@ -1052,7 +1052,12 @@ function AgreeOrConSign() {
                     consignUserId.push(data.data[i].phone);
                 }
                 $('#consignUser').val(consignUserId);
-                consignUserStr = (String)($('#consignUser').val()).replace(",", ";");
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
 
 
                 var xml = '<?xml version="1.0"?>';
@@ -1064,12 +1069,12 @@ function AgreeOrConSign() {
                 xml = xml + '<Comment>' + comment + '</Comment>';
 
                 //加签差异部分
-                xml = xml + '<ConsignEnabled>True</ConsignEnabled>';
-                xml = xml + '<ConsignUsers>' + consignUserStr + '</ConsignUsers>';
-                xml = xml + '<ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
-                xml = xml + '<ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
-
-                xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+                xml = xml + '  <ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+                xml = xml + ' <ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+                xml = xml + '  <ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+                xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+                xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
                 xml = xml + '</Header>';
                 xml = xml + '<FormData>';
                 xml = xml + '  <建设公司_样品制作申请_主表>';
@@ -1117,8 +1122,14 @@ function AgreeOrConSign() {
         xml = xml + '<Comment>' + comment + '</Comment>';
 
       
+        xml = xml + ' <UrlParams></UrlParams>';
+        xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+        xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+        xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+        xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
 
-        xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+        xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+        xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
         xml = xml + '</Header>';
         xml = xml + '<FormData>';
         xml = xml + '  <建设公司_样品制作申请_主表>';
