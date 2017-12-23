@@ -1807,7 +1807,21 @@
     <Group></Group>
     <Description>威瑞公司派车申请</Description>
   </Process>
-  
+   <Process>
+    <Name>医用制品集团大客户联销提报</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\13_市场营销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团大客户联销提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>医用制品集团大客户联销提报</Description>
+  </Process>
   <Process>
     <Name>建设公司安全检查问题反馈</Name>
     <Path>\\09房地产集团\\04建设公司\\01_安全管理</Path>
@@ -2545,20 +2559,52 @@
     <Group>基建工程</Group>
     <Description>建设公司工程签证备案申请</Description>
   </Process>
+ 
+
   <Process>
-    <Name>医用制品集团大客户联销提报</Name>
-    <Path>\\03医用制品集团\\01跨子公司\\13_市场营销</Path>
-    <CanCreate>False</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XS0201001/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品集团大客户联销提报</DisplayName>
+    <Name>建设公司通知公告申请</Name>
+    <Path>\\99业务平台\\07建设公司\\行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/98JSTZGG/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/98JSTZGG/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/98JSTZGG/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/98JSTZGG/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/98JSTZGG/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司通知公告申请 </DisplayName>
     <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group></Group>
-    <Description>医用制品集团大客户联销提报</Description>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>管理平台</Group>
+    <Description>建设公司通知公告申请</Description>
+  </Process>
+<Process>
+    <Name>建设公司会议纪要申请</Name>
+    <Path>\\99业务平台\\07建设公司\\行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/98JSHYJY/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/98JSHYJY/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/98JSHYJY/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/98JSHYJY/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/98JSHYJY/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司会议纪要申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>管理平台</Group>
+    <Description>建设公司会议纪要申请</Description>
+  </Process>
+<Process>
+    <Name>建设公司规章制度申请</Name>
+    <Path>\\99业务平台\\07建设公司\\行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/98JSGZZD/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/98JSGZZD/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/98JSGZZD/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/98JSGZZD/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/98JSGZZD/FlowCreate.html</ViewPage>
+    <DisplayName>建设公司规章制度申请 </DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>管理平台</Group>
+    <Description>建设公司规章制度申请</Description>
   </Process>
 
   
@@ -2649,52 +2695,6 @@
  
 
   
-
-  <Process>
-    <Name>建设公司规章制度申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/98JSGZZD/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/98JSGZZD/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/98JSGZZD/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/98JSGZZD/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/98JSGZZD/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司规章制度申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>管理平台</Group>
-    <Description>建设公司规章制度申请</Description>
-  </Process>
-<Process>
-    <Name>建设公司通知公告申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/98JSTZGG/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/98JSTZGG/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/98JSTZGG/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/98JSTZGG/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/98JSTZGG/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司通知公告申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>管理平台</Group>
-    <Description>建设公司通知公告申请</Description>
-  </Process>
-<Process>
-    <Name>建设公司会议纪要申请</Name>
-    <Path>\\01威高集团总部\\06建设公司\\建设管理平台</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/98JSHYJY/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/98JSHYJY/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/98JSHYJY/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/98JSHYJY/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/98JSHYJY/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司会议纪要申请 </DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>管理平台</Group>
-    <Description>建设公司会议纪要申请</Description>
-  </Process>
 
   
 
