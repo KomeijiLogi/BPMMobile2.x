@@ -15,6 +15,7 @@
     <Group>信息管理</Group>
     <Description>app测试用流程</Description>
   </Process>
+ 
    <Process>    
       <Name>集团总部发文通知申请</Name>    
       <Path>\\01威高集团总部\\01跨子公司\\16_行政办公</Path>    
@@ -76,7 +77,7 @@
     <Group>信息管理</Group>
     <Description>适用于集团总部信息化推进部工作汇报</Description>
   </Process>
-  
+ 
   <Process>
     <Name>集团公司新设公司及工商变更登记申请</Name>
     <Path>\\00跨产业集团\\09_企业管理</Path>
@@ -139,7 +140,7 @@
     <Group>财务</Group>
     <Description>适用于集团公司资金收支计划评审</Description>
   </Process>
-  
+ 
   <Process>
     <Name>集团公司资金系统用户及权限申请</Name>
     <Path>\\00跨产业集团\\03_财务管理</Path>
@@ -185,6 +186,7 @@
     <Group>财务</Group>
     <Description>适用于集团公司投资会签</Description>
   </Process>
+ 
   <Process>
     <Name>集团公司信息化投资申请</Name>
     <Path>\\00跨产业集团\\03_财务管理</Path>
@@ -200,6 +202,7 @@
     <Group>财务管理</Group>
     <Description>集团公司信息化投资申请</Description>
   </Process>
+  
   <Process>
     <Name>集团公司员工试用期转正申请</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
@@ -215,10 +218,10 @@
     <Group>人力资源</Group>
     <Description>集团公司员工试用期转正申请</Description>
   </Process>
-
+  
     <Process>
     <Name>集团公司员工内部调转申请(行管及行管辅岗)</Name>
-    <Path>\\01威高集团总部\\01跨产业集团\\RL人力</Path>
+    <Path>\\00跨产业集团\\10_人力资源</Path>
     <CanCreate>False</CanCreate>
     <CreatePage>/Pages/01WeGoHQ/01KuaZhanYe/RL0101003/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/01WeGoHQ/01KuaZhanYe/RL0101003/FlowUndoDetail.html</ViewUndoPage>
@@ -231,7 +234,9 @@
     <Group>人力资源</Group>
     <Description>集团公司员工内部调转申请(行管及行管辅岗)</Description>
   </Process>
-<Process>
+ 
+
+  <Process>
     <Name>集团公司员工离职申请(行管人员)</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
     <CanCreate>True</CanCreate>
@@ -262,6 +267,7 @@
     <Group>人力资源</Group>
     <Description>集团公司日常干部任免申请</Description>
   </Process>
+ 
    <Process>
     <Name>集团公司组织设立与调整申请</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
@@ -277,6 +283,7 @@
     <Group>人力资源</Group>
     <Description>集团公司组织设立与调整申请</Description>
   </Process>
+ 
    <Process>
     <Name>集团公司考勤系统日常运维提报</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
@@ -292,6 +299,7 @@
     <Group>人力资源</Group>
     <Description>集团公司考勤系统日常运维提报</Description>
   </Process>
+ 
   <Process>
     <Name>集团公司岗位设立与编制调整申请</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
@@ -307,6 +315,7 @@
     <Group>人力</Group>
     <Description>适用于集团公司岗位设立与编制调整申请</Description>
   </Process>
+  
   <Process>
     <Name>集团公司物资报废申请</Name>
     <Path>\\00跨产业集团\\03_财务管理</Path>
@@ -322,6 +331,7 @@
     <Group></Group>
     <Description>集团公司物资报废申请</Description>
   </Process>
+  
 <Process>
     <Name>集团公司物资报废会签</Name>
     <Path>\\00跨产业集团\\03_财务管理</Path>
@@ -337,6 +347,7 @@
     <Group></Group>
     <Description>集团公司物资报废会签</Description>
   </Process>
+ 
    <Process>
     <Name>集团公司物资处置申请</Name>
     <Path>\\00跨产业集团\\03_财务管理</Path>
@@ -367,6 +378,7 @@
     <Group></Group>
     <Description>集团公司物资处置会签</Description>
   </Process>
+  
    <Process>
     <Name>集团公司信息系统权限申请</Name>
     <Path>\\00跨产业集团\\15_信息管理</Path>
@@ -398,6 +410,7 @@
     <Group>信息管理</Group>
     <Description>集团公司办公设备采购申请</Description>
   </Process>
+ 
    <Process>
     <Name>集团公司PS系统权限申请</Name>
     <Path>\\00跨产业集团\\10_人力资源</Path>
@@ -413,6 +426,7 @@
     <Group>人力资源</Group>
     <Description>集团公司PS系统权限申请</Description>
   </Process>
+  
   <Process>
     <Name>集团公司研发项目变更、终止申请</Name>
     <Path>\\00跨产业集团\\17_研发技术</Path>
@@ -443,6 +457,7 @@
     <Group>研发</Group>
     <Description>适用于集团公司研发项目立项申请</Description>
   </Process>
+  
   <Process>
     <Name>集团公司通用物资采购申请</Name>
     <Path>\\00跨产业集团\\02_采购管理</Path>
@@ -473,6 +488,7 @@
     <Group>财务管理</Group>
     <Description>用于房地产集团差旅费申请</Description>
   </Process>
+  
   <Process>
     <Name>房地产集团差旅费报销</Name>
     <Path>\\09房地产集团\\01跨子公司\\03_财务管理</Path>
@@ -503,6 +519,7 @@
     <Group>财务管理</Group>
     <Description>房地产集团招待费申请</Description>
   </Process>
+ 
    <Process>
     <Name>房地产集团招待费报销</Name>
     <Path>\\09房地产集团\\01跨子公司\\03_财务管理</Path>
@@ -534,7 +551,7 @@
     <Group>财务管理</Group>
     <Description>用于房地产集团培训费申请</Description>
   </Process>
-
+  
    <Process>
     <Name>房地产集团培训费报销</Name>
     <Path>\\09房地产集团\\01跨子公司\\03_财务管理</Path>
@@ -580,6 +597,7 @@
     <Group>财务管理</Group>
     <Description>用于房地产其他费用报销</Description>
   </Process>
+  
   <Process>
     <Name>盛祥商管公司费用挂账申请</Name>
     <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
@@ -640,6 +658,7 @@
     <Group>财务管理</Group>
     <Description>适用于房地产集团推广费用申请流程</Description>
   </Process>
+ 
   <Process>
     <Name>房地产集团员工外出申请</Name>
     <Path>\\09房地产集团\\01跨子公司\\16_行政办公</Path>
@@ -715,6 +734,7 @@
     <Group>办公管理</Group>
     <Description>盛祥商管公司威高广场消费卡领用申请</Description>
   </Process>
+  
   <Process>
     <Name>盛祥商管公司威高广场代金劵、礼品领用申请</Name>
     <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
@@ -790,6 +810,7 @@
     <Group>办公管理</Group>
     <Description>适用于商管公司图纸会审</Description>
   </Process>
+  
   <Process>
     <Name>盛祥商管公司装修押金退还申请</Name>
     <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
@@ -865,6 +886,7 @@
     <Group>办公管理</Group>
     <Description>适用于盛祥商管公司商铺工程条件通知</Description>
   </Process>
+  
     <Process>
     <Name>盛祥商管公司活动场地验收申请</Name>
     <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
@@ -940,6 +962,7 @@
     <Group>办公管理</Group>
     <Description>用于盛祥商管公司商户活动申请</Description>
   </Process>
+  
    <Process>
     <Name>盛祥商管公司威高广场商户报修申请</Name>
     <Path>\\09房地产集团\\02商管公司\\08_基建工程</Path>
@@ -1015,6 +1038,7 @@
     <Group>办公管理</Group>
     <Description>盛祥商管公司客户投诉处理</Description>
   </Process>
+  
   <Process>
     <Name>兴源文化创意公司商户调整申请</Name>
     <Path>\\09房地产集团\\02商管公司\\13_市场营销</Path>
@@ -1106,6 +1130,7 @@
     <Group>办公管理</Group>
     <Description>盛祥商管公司活动场地申请</Description>
   </Process>
+  
   <Process>
     <Name>盛祥商管公司资金付款计划申请</Name>
     <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
@@ -1181,6 +1206,7 @@
     <Group>财务管理</Group>
     <Description>盛祥商管公司仓库押金退还申请</Description>
   </Process>
+  
  <Process>
     <Name>盛祥商管公司商户费用变更申请</Name>
     <Path>\\09房地产集团\\02商管公司\\03_财务管理</Path>
@@ -1352,6 +1378,7 @@
     <Group>安全</Group>
     <Description>适用于医用制品集团安全定期检查反馈 </Description>
   </Process>
+ 
   <Process>
     <Name>医用制品集团安全日常检查反馈</Name>
     <Path>\\03医用制品集团\\01跨子公司\\01_安全管理</Path>
@@ -1487,6 +1514,7 @@
     <Group></Group>
     <Description>医用制品公司管理干部考勤提报</Description>
   </Process>
+ 
   <Process>
     <Name>海盛公司部门月度办公用品申请</Name>
     <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
@@ -1517,9 +1545,10 @@
     <Group></Group>
     <Description>海盛公司月度办公用品申请汇总</Description>
   </Process>
+   
   <Process>
     <Name>海盛公司生产物资采购申请</Name>
-    <Path>\\03医用制品集团\\04海盛设备公司\\02_采购管理</Path>
+    <Path>\\03医用制品集团\\04海盛设备公司\\03_采购管理</Path>
     <CanCreate>False</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/CG0204001/FlowUndoDetail.html</ViewUndoPage>
@@ -1532,6 +1561,7 @@
     <Group></Group>
     <Description>海盛公司生产物资采购申请</Description>
   </Process>
+  
   <Process>
     <Name>海盛公司销售订单评审</Name>
     <Path>\\03医用制品集团\\04海盛设备公司\\13_市场营销</Path>
@@ -1547,6 +1577,8 @@
     <Group></Group>
     <Description>海盛公司销售订单评审</Description>
   </Process>
+ 
+  
   <Process>
     <Name>洁瑞公司产品发货申请</Name>
     <Path>\\03医用制品集团\\03洁瑞医用制品公司\\04_仓储物流</Path>
@@ -1578,6 +1610,7 @@
     <Description>适用于洁瑞公司的样品申请流程</Description>
 
   </Process>
+ 
   <Process>
     <Name>洁瑞公司学术交流申请</Name>
     <Path>\\03医用制品集团\\03洁瑞医用制品公司\\13_市场营销</Path>
@@ -1624,6 +1657,7 @@
     <Group></Group>
     <Description>洁瑞公司销售管理事务申请</Description>
   </Process>
+   
   <Process>
     <Name>输血器材公司生产管理提报</Name>
     <Path>\\03医用制品集团\\07输血技术装备公司\\11_生产管理</Path>
@@ -1640,6 +1674,7 @@
     <Group></Group>
     <Description>输血器材公司生产管理提报</Description>
   </Process>
+  
   <Process>
     <Name>医用材料公司产品核价申请</Name>
     <Path>\\03医用制品集团\\08医用材料公司\\03_财务管理</Path>
@@ -1655,6 +1690,7 @@
     <Group></Group>
     <Description>医用材料公司产品核价申请</Description>
   </Process>
+ 
   <Process>
     <Name>医用材料公司特殊合同评审</Name>
     <Path>\\03医用制品集团\\08医用材料公司\\05_法律事务</Path>
@@ -1670,6 +1706,7 @@
     <Group>法律事务</Group>
     <Description>适用于医用材料公司特殊合同评审</Description>
   </Process>
+  
   <Process>
     <Name>医用材料公司样品计划提报</Name>
     <Path>\\03医用制品集团\\08医用材料公司\\11_生产管理</Path>
@@ -1761,6 +1798,7 @@
     <Group></Group>
     <Description>洁丽康公司月度办公用品申请汇总</Description>
   </Process>
+  
 <Process>
     <Name>威瑞公司月度办公用品申请汇总</Name>
     <Path>\\03医用制品集团\\06威瑞外科有限公司\\16_行政办公</Path>
@@ -1807,6 +1845,7 @@
     <Group></Group>
     <Description>威瑞公司派车申请</Description>
   </Process>
+  
    <Process>
     <Name>医用制品集团大客户联销提报</Name>
     <Path>\\03医用制品集团\\01跨子公司\\13_市场营销</Path>
@@ -1822,6 +1861,7 @@
     <Group></Group>
     <Description>医用制品集团大客户联销提报</Description>
   </Process>
+  
   <Process>
     <Name>建设公司安全检查问题反馈</Name>
     <Path>\\09房地产集团\\04建设公司\\01_安全管理</Path>
@@ -1882,6 +1922,7 @@
     <Group>财务管理</Group>
     <Description>适用于建设公司汇款申请</Description>
   </Process>
+  
   <Process>
     <Name>建设公司月度材料采购付款申请</Name>
     <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
@@ -1942,6 +1983,7 @@
     <Group>法律事务</Group>
     <Description>适用于建设公司合同评审</Description>
   </Process>
+  
   <Process>
     <Name>建设公司分包施工单位新增申请</Name>
     <Path>\\09房地产集团\\04建设公司\\08_基建工程</Path>
@@ -2002,6 +2044,7 @@
     <Group>基建工程</Group>
     <Description>适用于建设公司工程竣工自检申请 </Description>
   </Process>
+  
   <Process>
     <Name>建设公司分包合同备案申请</Name>
     <Path>\\99业务平台\\07建设公司\\分包项目</Path>
@@ -2062,6 +2105,7 @@
     <Group>财务管理</Group>
     <Description>建设公司工程分包进度款拨付申请</Description>
   </Process>
+ 
   <Process>
     <Name>建设公司差旅费申请</Name>
     <Path>\\99业务平台\\07建设公司\\费用管理\\费用申请</Path>
@@ -2152,6 +2196,7 @@
     <Group>建设管理平台</Group>
     <Description>适用于建设公司培训费报销</Description>
   </Process>
+  
   <Process>
     <Name>建设公司手机燃油费报销</Name>
     <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
@@ -2227,6 +2272,7 @@
     <Group>财务管理</Group>
     <Description>建设公司其他费用报销</Description>
   </Process>
+  
   <Process>
     <Name>建设公司其他费用报销（通用）</Name>
     <Path>\\99业务平台\\07建设公司\\费用管理\\费用报销</Path>
@@ -2272,7 +2318,7 @@
     <Group>人力资源</Group>
     <Description>适用于建设公司车间员工请假申请</Description>
   </Process>
-
+ 
   <Process>
     <Name>建设公司行管（销售）人员转正参保申请</Name>
     <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
@@ -2333,6 +2379,7 @@
     <Group>财务管理</Group>
     <Description>建设公司门窗销售订单提报</Description>
   </Process>
+  
   <Process>
     <Name>建设公司销售部销售提成申请</Name>
     <Path>\\09房地产集团\\04建设公司\\13_市场营销</Path>
@@ -2378,6 +2425,7 @@
     <Group>财务管理</Group>
     <Description>建设公司VI制作申请</Description>
   </Process>
+  
   <Process>
     <Name>建设公司门窗售后维修采购申请</Name>
     <Path>\\09房地产集团\\04建设公司\\02_采购管理</Path>
@@ -2423,6 +2471,7 @@
     <Group>行政办公</Group>
     <Description>适用于建设公司证件借用申请</Description>
   </Process>
+  
   <Process>
     <Name>建设公司印章使用申请</Name>
     <Path>\\09房地产集团\\04建设公司\\16_行政办公</Path>
@@ -2529,6 +2578,7 @@
     <Group>质量管理</Group>
     <Description>建设公司车间生产过程检验记录备案</Description>
   </Process>
+ 
   <Process>
     <Name>建设公司车间员工转正参保申请</Name>
     <Path>\\09房地产集团\\04建设公司\\10_人力资源</Path>
@@ -2560,7 +2610,7 @@
     <Description>建设公司工程签证备案申请</Description>
   </Process>
  
-
+ 
   <Process>
     <Name>建设公司通知公告申请</Name>
     <Path>\\99业务平台\\07建设公司\\行政办公</Path>

@@ -1271,27 +1271,36 @@ namespace BPMMobile.Controllers
         /// <returns></returns>
         private BPMTaskCollection GetMyRequestList()
         {
-            PrepareBPMEnv();
-            BPMTaskCollection tasks = new BPMTaskCollection();
-            using (BPMConnection cn = new BPMConnection())
+            ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+            try
             {
-                cn.WebOpen();
-                var mobileProcess = GetMobileProcess();
-                foreach (var p in mobileProcess)
+                PrepareBPMEnv();
+                BPMTaskCollection tasks = new BPMTaskCollection();
+                using (BPMConnection cn = new BPMConnection())
                 {
-                    int rowcount = 0;
-                    var list = cn.GetHistoryTasks( 
-                        HistoryTaskType.MyRequest,p.Path,
-                        "ProcessName='" + p.Name + "'", 
-                        "", 
-                        "", 
-                        0, 
-                        int.MaxValue,
-                        out rowcount);
-                    tasks.Append(list);
+                    cn.WebOpen();
+                    var mobileProcess = GetMobileProcess();
+                    foreach (var p in mobileProcess)
+                    {
+                        int rowcount = 0;
+                        var list = cn.GetHistoryTasks(
+                            HistoryTaskType.MyRequest, p.Path,
+                            "ProcessName='" + p.Name + "'",
+                            "",
+                            "",
+                            0,
+                            int.MaxValue,
+                            out rowcount); 
+                        
+                        tasks.Append(list);
+                    }
                 }
+                return tasks;
+            }catch(Exception e)
+            {
+                log.Error("error:", e);
+                return null;
             }
-            return tasks;
         }
 
         /// <summary>

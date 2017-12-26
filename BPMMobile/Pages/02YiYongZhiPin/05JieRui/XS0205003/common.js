@@ -108,6 +108,7 @@ function tapEvent() {
         this.addEventListener('toggle', function (event) {
             if (event.detail.isActive == 'true' || event.detail.isActive == true) {
                 $("#fif_xjz").val('是');
+
             } else {
                 $("#fif_xjz").val('否');
             }
