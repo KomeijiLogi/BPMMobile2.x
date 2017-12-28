@@ -85,6 +85,12 @@
             });
 
            
+		    var url=window.location.href;
+			if(String(url).indexOf('ticket')!=-1){
+			   var ticket=(url.split("="))[1];
+               localStorage.setItem('ticket', ticket);
+               
+			}
             search();
         });
         XuntongJSBridge.call('setWebViewTitle', { 'title': '待办事项' });
@@ -192,7 +198,10 @@
 
                     }
                 },
-                error: function (e) { },
+                error: function (e) {
+                   
+                    history.go(0);
+                },
                 complete: function () { }
 
             })
