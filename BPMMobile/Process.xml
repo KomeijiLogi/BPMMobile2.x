@@ -473,6 +473,7 @@
     <Group>采购管理</Group>
     <Description>集团公司通用物资采购申请</Description>
   </Process>
+  
    <Process>
     <Name>房地产集团差旅费申请</Name>
     <Path>\\09房地产集团\\01跨子公司\\03_财务管理</Path>
@@ -704,6 +705,7 @@
     <Group>办公管理</Group>
     <Description>适用于商管公司内部请示流程</Description>
   </Process>
+  
    <Process>
     <Name>盛祥商管公司内部联系申请</Name>
     <Path>\\09房地产集团\\02商管公司\\16_行政办公</Path>
@@ -1439,6 +1441,7 @@
     <Group>法律事务</Group>
     <Description>医用制品集团合同评审</Description>
   </Process>
+  
   <Process>
     <Name>医用制品集团岗位设立与编制调整申请</Name>
     <Path>\\03医用制品集团\\01跨子公司\\10_人力资源</Path>
@@ -1469,9 +1472,10 @@
     <Group>质量管理</Group>
     <Description>适用于医用制品集团质量信息反馈</Description>
   </Process>
+  
   <Process>
     <Name>医用制品公司共用配件供应申请</Name>
-    <Path>\\03医用制品集团\\02医用制品公司\\11_生产管理</Path>
+    <Path>\\03医用制品集团\\02医用制品公司\\01跨分公司\\11_生产管理</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/SC0202007/FlowUndoDetail.html</ViewUndoPage>
@@ -1484,9 +1488,10 @@
     <Group>生产</Group>
     <Description>适用于医用制品公司共用配件供应申请</Description>
   </Process>
+ 
   <Process>
     <Name>医用制品公司客户交接申请</Name>
-    <Path>\\03医用制品集团\\02医用制品公司\\13_市场营销</Path>
+    <Path>\\03医用制品集团\\02医用制品公司\\01跨分公司\\13_市场营销</Path>
     <CanCreate>False</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202001/FlowUndoDetail.html</ViewUndoPage>
@@ -1501,7 +1506,7 @@
   </Process>
   <Process>
     <Name>医用制品公司管理干部考勤提报</Name>
-    <Path>\\03医用制品集团\\02医用制品公司\\16_行政办公</Path>
+    <Path>\\03医用制品集团\\02医用制品公司\\01跨分公司\\16_行政办公</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/02YiYongZhiPin/02YiYongZhiPin/XS0202006/FlowUndoDetail.html</ViewUndoPage>
@@ -1514,7 +1519,7 @@
     <Group></Group>
     <Description>医用制品公司管理干部考勤提报</Description>
   </Process>
- 
+  
   <Process>
     <Name>海盛公司部门月度办公用品申请</Name>
     <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
@@ -2657,47 +2662,9 @@
     <Description>建设公司规章制度申请</Description>
   </Process>
 
-  
-  
- <!--
- 
-
-  <Process>
-    <Name>商管周工作汇报_流程</Name>
-    <Path>\\98门户</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/98SGWeeklyFlow/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/98SGWeeklyFlow/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/98SGWeeklyFlow/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/98SGWeeklyFlow/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/98SGWeeklyFlow/FlowCreate.html</ViewPage> 
-    <DisplayName>盛祥商管周工作汇报 </DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>工作汇报</Group>
-    <Description>适用于商管周工作汇报</Description>
-  </Process>
-  <Process>
-    <Name>商管月工作汇报_流程</Name>
-    <Path>\\98门户</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/98SGMonthlyFlow/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/98SGMonthlyFlow/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/98SGMonthlyFlow/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/98SGMonthlyFlow/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/98SGMonthlyFlow/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管月工作汇报 </DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>工作汇报</Group>
-    <Description>适用于商管公司月工作汇报</Description>
-  </Process>
- 
- 
-  
- <Process>
+   <Process>
     <Name>市场差旅费用报销单</Name>
-    <Path>\\94制品在线费用报销\\市场费用报销</Path>
+    <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/TravelExpenses/FlowUndoDetail.html</ViewUndoPage>
@@ -2712,7 +2679,7 @@
   </Process>
  <Process>
     <Name>制品公司费用标准特批</Name>
-    <Path>\\94制品在线费用报销\\市场费用报销</Path>
+    <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/SpeciallyExpense/FlowUndoDetail.html</ViewUndoPage>
@@ -2727,7 +2694,7 @@
   </Process>
   <Process>
     <Name>制品集团其他费用报销</Name>
-    <Path>\\94制品在线费用报销\\市场费用报销</Path>
+    <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/OtherExpense/FlowUndoDetail.html</ViewUndoPage>
@@ -2740,36 +2707,58 @@
     <Group>费用报销</Group>
     <Description>适用于制品公司其他费用报销</Description>
   </Process>
-
-  
- 
-
-  
-
-  
-
-  
-
- 
-  
-
-
+<Process>
+    <Name>盛祥商管公司周工作汇报</Name>
+    <Path>\\99业务平台\\09盛祥商管</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/98SGWeeklyFlow/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/98SGWeeklyFlow/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/98SGWeeklyFlow/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/98SGWeeklyFlow/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/98SGWeeklyFlow/FlowCreate.html</ViewPage> 
+    <DisplayName>盛祥商管周工作汇报 </DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>工作汇报</Group>
+    <Description>适用于商管周工作汇报</Description>
+  </Process>
   <Process>
-    <Name>BG0702035_商管公司激励申请_流程</Name>
-    <Path>\\07房地产集团\\02商管公司\\BG办公管理</Path>
+    <Name>盛祥商管公司月工作汇报</Name>
+    <Path>\\99业务平台\\09盛祥商管</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/98SGMonthlyFlow/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/98SGMonthlyFlow/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/98SGMonthlyFlow/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/98SGMonthlyFlow/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/98SGMonthlyFlow/FlowCreate.html</ViewPage>
+    <DisplayName>盛祥商管月工作汇报 </DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>工作汇报</Group>
+    <Description>适用于商管公司月工作汇报</Description>
+  </Process>
+  <Process>
+    <Name>盛祥商管公司员工奖惩申请</Name>
+    <Path>\\99业务平台\\09盛祥商管</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/07FangDiChan/02ShangGuan/BG0702035/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/07FangDiChan/02ShangGuan/BG0702035/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/07FangDiChan/02ShangGuan/BG0702035/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/07FangDiChan/02ShangGuan/BG0702035/FlowDoneDetail.html</ViewDonePage>
     <ViewPage>/Pages/07FangDiChan/02ShangGuan/BG0702035/FlowCreate.html</ViewPage>
-    <DisplayName>盛祥商管激励申请</DisplayName>
+    <DisplayName>盛祥商管公司员工奖惩申请</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于商管公司激励申请</Description>
+    <Description>盛祥商管公司员工奖惩申请</Description>
   </Process>
 
+  
+ <!--
+ 
+
+  
+ 
 
 <Process>
     <Name>建设公司物资采购申请//废弃</Name>
