@@ -11,7 +11,7 @@ var action;
 var toStepIDs = new Array();
 var version="1.0";
 var DraftGuid = '';
-
+var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
 
 
 //提交,审批,加签,已阅

@@ -11,7 +11,7 @@ function upload() {
 
     //var picUrl = '/upload/';
 
-    var picUrl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx';
+    var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
     //var picUrl = 'http://172.16.7.7/BPM/YZSoft/Attachment/default.ashx';
     var me = this;
 
@@ -23,7 +23,7 @@ function upload() {
         isFile: false,
         //previewUrl: picUrl + '{id}?w=120&h=120',		//图片预览路径
         //previewUrl: picUrl + '?{id}?w=120&h=120',
-        previewUrl: picUrl + '?{id}',
+        previewUrl: picUrl + '{id}',
         //上传开始
         onUploadStart: function (xhr) {
             var $progress = this.find('.progress', true);
@@ -118,7 +118,7 @@ function upload() {
 }
 
 function upload_multi(zeptoId, zeptoAimDomClass) {
-    var picUrl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx';
+    var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
 
     var me = this;
     

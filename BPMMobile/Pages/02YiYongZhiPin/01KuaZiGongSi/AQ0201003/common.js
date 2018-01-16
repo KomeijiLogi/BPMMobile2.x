@@ -246,7 +246,7 @@ function initData(data, flag) {
                             var size = String(data[i].Size);
 
                             var time = String(data[i].LastUpdate).replace("T", " ");
-                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                            var downurl = baseDownloadUrl + data[i].FileID;
                             var attach = attachItem(name, type, size, time, downurl);
                             attachArray.push(attach);
 
@@ -258,7 +258,7 @@ function initData(data, flag) {
                             //类型判断
                             if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
 
-                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="'+baseDownloadUrl + data[i].FileID + '"/></div>';
                                 //li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://172.16.7.7/BPM/YZSoft/Attachment/default.ashx?201709180005"/></div>';
 
                             } else if ((data[i].Ext).indexOf("xls") != -1) {
@@ -367,7 +367,7 @@ function initData(data, flag) {
                             var size = String(data[i].Size);
 
                             var time = String(data[i].LastUpdate).replace("T", " ");
-                            var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                            var downurl = baseDownloadUrl + data[i].FileID;
                             var attach = attachItem(name, type, size, time, downurl);
                             attachArray.push(attach);
 
@@ -379,7 +379,7 @@ function initData(data, flag) {
                             //类型判断
                             if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
 
-                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+                                li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="'+baseDownloadUrl + data[i].FileID + '"/></div>';
                                 //li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://172.16.7.7/BPM/YZSoft/Attachment/default.ashx?201709180005"/></div>';
 
                             } else if ((data[i].Ext).indexOf("xls") != -1) {

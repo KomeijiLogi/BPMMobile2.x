@@ -588,7 +588,7 @@
                                     var size = String(data[i].Size);
 
                                     var time = String(data[i].LastUpdate).replace("T", " ");
-                                    var downurl = 'http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID;
+                                    var downurl = baseDownloadUrl + data[i].FileID;
                                     var attach = attachItem(name, type, size, time, downurl);
                                     attachArray.push(attach);
 
@@ -600,8 +600,8 @@
                                     //类型判断
                                     if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
 
-                                        //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></a></div>';
-                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="http://app.weigaogroup.com:8040/BPM/YZSoft/Attachment/default.ashx?' + data[i].FileID + '"/></div>';
+                                        //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="'+baseDownloadUrl + data[i].FileID + '"><img src="'+baseDownloadUrl + data[i].FileID + '"/></a></div>';
+                                        li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="'+baseDownloadUrl + data[i].FileID + '"/></div>';
 
                                     } else if ((data[i].Ext).indexOf("xls") != -1) {
 
