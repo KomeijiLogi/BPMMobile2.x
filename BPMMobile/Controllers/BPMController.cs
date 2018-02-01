@@ -108,6 +108,43 @@ namespace BPMMobile.Controllers
             }
             return myProcesses;
         }
+
+        /// <summary>
+        /// 获取全部流程
+        /// </summary>
+        /// <returns>流程名集合</returns>
+        private List<Process> GetCanCreateAll()
+        {
+            PrepareBPMEnv();
+            List<Process> myProcesses = new List<Process>();
+           
+            using (BPMConnection cn = new BPMConnection())
+            {
+                cn.WebOpen();
+                BPMObjectNameCollection processNames = new BPMObjectNameCollection();
+                var mobileProcess = GetMobileProcess();
+                var cache = new Dictionary<string, BPMObjectNameCollection>();
+                foreach (var p in mobileProcess)
+                {
+                    if (!p.CanCreate) continue;
+                    if (cache.ContainsKey(p.Name))
+                    {
+                        processNames = cache[p.Name];
+
+                    }
+                    else
+                    {
+                        processNames = ProcessNameManager.GetProcessNames(cn);
+                        cache.Add(p.Name, processNames);
+
+                    }
+                    
+                }
+            }
+
+            return myProcesses;
+        }
+
         /// <summary>
         /// 可发起流程列表
         /// </summary>
@@ -147,6 +184,8 @@ namespace BPMMobile.Controllers
             //        }
             //    }
             //}
+
+           
             var list = GetCanCreate();
                 return Json(list);
             }

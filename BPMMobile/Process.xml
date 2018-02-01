@@ -2663,7 +2663,7 @@
   </Process>
 
    <Process>
-    <Name>市场差旅费用报销单</Name>
+    <Name>医用制品公司市场差旅费报销</Name>
     <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
@@ -2678,7 +2678,7 @@
     <Description>适用于市场差旅费用报销</Description>
   </Process>
  <Process>
-    <Name>制品公司费用标准特批</Name>
+    <Name>医用制品公司市场特批费用标准申请</Name>
     <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
@@ -2686,14 +2686,14 @@
     <ViewAskPage>/Pages/SpeciallyExpense/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/SpeciallyExpense/FlowDoneDetail.html</ViewDonePage>
    <ViewPage>/Pages/SpeciallyExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品费用特批</DisplayName>
+    <DisplayName>医用制品市场费用特批</DisplayName>
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>费用报销</Group>
     <Description>适用于制品公司费用标准特批</Description>
   </Process>
   <Process>
-    <Name>制品集团其他费用报销</Name>
+    <Name>医用制品公司市场其他费用报销</Name>
     <Path>\\99业务平台\\11制品费用</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
@@ -2701,7 +2701,7 @@
     <ViewAskPage>/Pages/OtherExpense/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/OtherExpense/FlowDoneDetail.html</ViewDonePage>
     <ViewPage>/Pages/OtherExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品其他费用报销</DisplayName>
+    <DisplayName>医用制品市场其他费用报销</DisplayName>
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>费用报销</Group>
@@ -2757,8 +2757,6 @@
  <!--
  
 
-  
- 
 
 <Process>
     <Name>建设公司物资采购申请//废弃</Name>
