@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+   
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">拟定人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly" />
+            </div>
+            <div class="mui-input-row" style="display:none;">
+                <label for="fdept">拟定部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">申报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly" />
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请输入联系方式"/>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fhtdf">合同对方<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fhtdf" name="fhtdf" placeholder="请输入合同对方"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:3.25rem;">
+                <label for="fxmmc">项目名称<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fxmmc" name="fxmmc" placeholder="请输入项目名称"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="fhtlb">合同类别<i style="color:red;">*</i></label>
+                <input type="text" id="fhtlb" name="fhtlb" readonly="readonly" placeholder="请选择合同类别"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fht_mc_nr">合同名称及内容<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fht_mc_nr" name="fht_mc_nr" placeholder="请输入合同名称及内容"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fht_jk_fkfs">合同价款及付款方式<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fht_jk_fkfs" name="fht_jk_fkfs" placeholder="请输入合同价款及付款方式"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fydtk">特别约定条款<i style="color:red;">*</i></label>
+                <textarea rows="8" id="fydtk" name="fydtk" placeholder="请输入特别约定条款"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button"  id="commitbt" onclick="Save()">提交</button>
+        </div>
+      </div>
+     <script>
+
+         mui.init();
+         mui.ready(function () {
+             getVersion('\\09房地产集团\\02商管公司\\05_法律事务', '盛祥商管公司合同评审');
+             getBPMParam();
+             watch();
+             upload();
+             prepMsg();
+            
+         });
+
+         XuntongJSBridge.call('setWebViewTitle', { 'title': '发起流程' });
+
+         XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+             if (typeof (result) == "string") {
+                 result = JSON.parse(result);
+             }
+
+             if (result.success == true || result.success == "true") {
+                 $("#fname").val(result.data.name);
+             }
+         });
+         XuntongJSBridge.call('createPop', {
+             'popTitle': '',
+             'popTitleCallBackId': '1',
+             'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+             'menuList': [
+                 'openWithBrowser'
+             ],
+
+         }, function (result) {
+             if (result.success == true || result.success == 'true') {
+                 var callBackId = result.data ? result.data.callBackId : '';
+                 if (callBackId == 'callback1') {
+                     window.location.reload();
+                     //location.reload();
+                 } else if (callBackId == 'callback2') {
+
+                 } else {
+
+                 }
+             }
+
+         });
+         function prepMsg() {
+             tapEvent();
+             $("#fdate").val(getNowFormatDate(2));
+             var url = window.location.href;
+             if (url != null && url != "") {
+                 if (String(url).includes("reset")) {
+                    
+                     var msg = JSON.parse(localStorage.getItem('BPM_SGGSHTSPBMsg'));
+                     $("#fname").val(msg.fname);
+                     $("#fdept").val(msg.fdept);
+                     $("#fdate").val(msg.fdate);
+                     $("#ftel").val(msg.ftel);
+                     $("#fhtdf").val(msg.fhtdf);
+                     $("#fxmmc").val(msg.fxmmc);
+                     $("#fhtlb").val(msg.fhtlb);
+                     $("#fht_mc_nr").val(msg.fht_mc_nr);
+                     $("#fht_jk_fkfs").val(msg.fht_jk_fkfs);
+                     $("#fydtk").val(msg.fydtk);
+
+
+                 } else {
+                     
+                 }
+             }
+         }
+         function tapEvent() {
+             var fhtlbdata = [
+                 {
+                     value: "wggczsht",
+                     text:"威高广场招商合同"
+                 },
+                 {
+                     value: "msgczsht",
+                     text:"美食广场招商合同"
+                 },
+                 {
+                     value: "sgczsht",
+                     text:"时光城招商合同"
+                 },
+                 {
+                     value: "msczsht",
+                     text:"民俗邨招商合同"
+                 },
+                 {
+                     value: "hljzsht",
+                     text:"好邻居招商合同"
+                 },
+                 {
+                     value: "shbcxy",
+                     text:"商户补充协议"
+                 },
+                 {
+                     value: "qtht",
+                     text:"其他合同"
+                 }
+             ];
+
+             showPicker('fhtlb', fhtlbdata);
+
+         }
+
+
+         function Save() {
+
+             var fareaStr = String(BPMOU).split("/");
+             //将BPMOU://XX/XX/工号，获取倒数第二个，就是所在区域
+             $("#fdept").val(fareaStr[fareaStr.length - 2]);
+
+             var fname = $("#fname").val();
+             var fdept = $("#fdept").val();
+             var fdate = $("#fdate").val() + " 00:00:00";
+             var ftel = $("#ftel").val();
+             var fhtdf = $("#fhtdf").val();
+             var fxmmc = $("#fxmmc").val();
+             var fhtlb = $("#fhtlb").val();
+             var fht_mc_nr = $("#fht_mc_nr").val();
+             var fht_jk_fkfs = $("#fht_jk_fkfs").val();
+             var fydtk = $("#fydtk").val();
+             if (!ftel || ftel=="") {
+                 mui.toast("请输入联系方式");
+                 return;
+             }
+             if (!fhtdf || fhtdf == "") {
+                 mui.toast("请输入合同对方");
+                 return;
+             }
+             if (!fxmmc || fxmmc == "") {
+                 mui.toast("请输入项目名称");
+                 return;
+             }
+             if (!fhtlb || fhtlb == "") {
+                 mui.toast("请选择合同类别");
+                 return;
+             }
+             if (!fht_mc_nr || fht_mc_nr == "") {
+                 mui.toast("请输入合同名称及内容");
+                 return;
+             }
+             if (!fht_jk_fkfs || fht_jk_fkfs == "") {
+                 mui.toast("请输入合同价款及付款方式");
+                 return;
+             }
+             if (!fydtk || fydtk == "") {
+                 mui.toast("请输入特别约定条款");
+                 return;
+             }
+             if (fjArray.toString() == null || fjArray.toString() == "") {
+                 mui.toast("请上传附件");
+                 return;
+             }
+             var btnArry = ["取消", "确定"];
+             mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+                 if (e.index == 1) {
+                     var xml = '<?xml version="1.0"?>';
+                     xml = xml + '<XForm>';
+                     xml = xml + '<Header>';
+                     xml = xml + '<Method>Post</Method>';
+                     xml = xml + ' <ProcessName>盛祥商管公司合同评审</ProcessName>';
+
+                     xml = xml + '<ProcessVersion>' + version + '</ProcessVersion>';
+                     xml = xml + '<DraftGuid></DraftGuid>';
+                     xml = xml + '<OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
+                     xml = xml + '<Action>提交</Action>';
+                     xml = xml + '<Comment></Comment>';
+                     xml = xml + '<InviteIndicateUsers></InviteIndicateUsers>';
+                     xml = xml + '</Header>';
+                     xml = xml + '<FormData>';
+                     xml = xml + '<BPM_SGGSHTSPB>';
+                     xml = xml + '<fbillno>自动生成</fbillno>';
+                     xml = xml + '<fname>' + fname + '</fname>';
+                     xml = xml + '<fdept>' + fdept + '</fdept>';
+                     xml = xml + '<fdate>' + fdate + '</fdate>';
+                     xml = xml + '<ftel>' + ftel + '</ftel>';
+                     xml = xml + '<fhtdf>' + fhtdf + '</fhtdf>';
+                     xml = xml + ' <fxmmc>' + fxmmc + '</fxmmc>';
+                     xml = xml + '<fhtlb>' + fhtlb + '</fhtlb>';
+                     xml = xml + '<fht_mc_nr>' + fht_mc_nr + '</fht_mc_nr>';
+                     xml = xml + '<fht_jk_fkfs>' + fht_jk_fkfs + '</fht_jk_fkfs>';
+                     xml = xml + '<fydtk>' + fydtk + '</fydtk>';
+                     xml = xml + '<ffj>' + fjArray.toString().replace(",", ";") + '</ffj>';
+                     xml = xml + ' </BPM_SGGSHTSPB>';
+                     xml = xml + '</FormData>';
+                     xml = xml + '</XForm>';
+                     PostXml(xml);
+                 }
+             });
+         }
+     </script>
+</body>
+</html>

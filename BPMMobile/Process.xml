@@ -2768,10 +2768,24 @@
     <Group>办公管理</Group>
     <Description>药业集团发货、发票开具申请</Description>
   </Process>
+
+  <Process>
+    <Name>威海卫大厦借款申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>威海卫大厦借款申请</Description>
+  </Process>
+  
  <!--
- 
-
-
 <Process>
     <Name>建设公司物资采购申请//废弃</Name>
     <Path>\\01威高集团总部\\06建设公司\\CG采购</Path>

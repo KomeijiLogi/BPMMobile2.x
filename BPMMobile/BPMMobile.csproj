@@ -483,6 +483,11 @@
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\05CaiGou\CG0105001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\05CaiGou\CG0105001\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\05CaiGou\CG0105001\FlowDoneDetail.html" />
@@ -1206,6 +1211,7 @@
     <Content Include="Scripts\upload.detail.js" />
     <Content Include="Scripts\upload.js" />
     <Content Include="Scripts\util.js" />
+    <Content Include="Scripts\vconsole.min.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\xdate.js" />
     <Content Include="Scripts\zepto.min.js" />
@@ -1230,7 +1236,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Pages\01WeGoHQ\02LvYouCanYin\" />
-    <Folder Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\" />
     <Folder Include="Pages\01WeGoHQ\04HouQinFuWu\" />
     <Folder Include="Pages\01WeGoHQ\07RongZiZunLin\" />
     <Folder Include="Pages\02YiYongZhiPin\03YiLiaoXiTong\" />

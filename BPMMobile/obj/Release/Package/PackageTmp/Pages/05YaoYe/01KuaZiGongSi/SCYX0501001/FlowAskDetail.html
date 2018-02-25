@@ -1,0 +1,235 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人<i style="color:red;">*</i></label>
+                <input type="text" id="fname" name="fname" readonly data-fno="" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fqy">所属区域<i style="color:red;">*</i></label>
+                <input type="text" id="fqy" name="fqy" readonly placeholder="请选择所属区域" />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqrq">申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fsqrq" name="fsqrq" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label for="fsqlx">申请类型<i style="color:red;">*</i></label>
+                <input type="text" id="fsqlx" name="fsqlx" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                <input type="text" id="fkhmc" name="fkhmc" readonly data-fkhbm="" data-fkzcc="" />
+            </div>
+            <div id="fhcard">
+                <div class="mui-input-row itemtitle">
+                    <label>发货申请单</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fzjsj">直接上级<i style="color:red;">*</i></label>
+                    <input type="text" id="fzjsj" name="fzjsj" readonly data-fxszg="" />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsh_dz">收货地址<i style="color:red;">*</i></label>
+                    <input type="text" id="fsh_dz" name="fsh_dz" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsh_name">收货人<i style="color:red;">*</i></label>
+                    <input type="text" id="fsh_name" name="fsh_name" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsh_tel">收货电话<i style="color:red;">*</i></label>
+                    <input type="tel" id="fsh_tel" name="fsh_tel" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fdhrq">到货日期<i style="color:red;">*</i></label>
+                    <input type="date" id="fdhrq" name="fdhrq" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fkhlx">客户类型<i style="color:red;">*</i></label>
+                    <input type="text" id="fkhlx" name="fkhlx" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fdqqk">当前欠款</label>
+                    <input type="number" id="fdqqk" name="fdqqk" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fcsxq">超授信期<i style="color:red;">*</i></label>
+                    <input type="hidden" id="fcsxq" name="fcsxq" readonly />
+                    <div class="mui-switch mui-switch-blue mui-disabled" id="fcsxqd">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </div>
+
+                <div class="mui-input-row">
+                    <label for="fckdh">EAS出库单号<i style="color:red;">*</i></label>
+                    <input type="text" id="fckdh" name="fckdh" readonly />
+                </div>
+                <div class="mui-input-row itemtitle">
+                    <label>发货明细</label>
+                </div>
+                <div id="mxlist_fh">
+                    <div class="mui-card">
+                        <div class="mui-input-row itemtitle2">
+                            <label>合计</label>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhj_fhsl">申请数量<i style="color:red;">*</i></label>
+                            <input type="number" id="fhj_fhsl" name="fhj_fhsl" readonly />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsjfhsltotal">实际发货数量</label>
+                            <input type="number" id="fsjfhsltotal" name="fsjfhsltotal" readonly />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhj_fhje">含税金额<i style="color:red;">*</i></label>
+                            <input type="number" id="fhj_fhje" name="fhj_fhje" readonly />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhj_fhjs">件数<i style="color:red;">*</i></label>
+                            <input type="number" id="fhj_fhjs" name="fhj_fhjs" readonly />
+                        </div>
+                    </div>
+
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fh" style="margin-top:0.5rem;display:none;">
+                    添加发货明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="ffh_bz">备注</label>
+                    <textarea rows="5" id="ffh_bz" name="ffh_bz" readonly></textarea>
+                </div>
+            </div>
+            <div id="fpcard">
+                <div class="mui-input-row itemtitle">
+                    <label>发票申请单</label>
+                </div>
+                <div class="mui-input-row">
+                    <label for="ffplb">发票类别<i style="color:red;">*</i></label>
+                    <input type="text" id="ffplb" name="ffplb" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsj_name">收件人<i style="color:red;">*</i></label>
+                    <input type="text" id="fsj_name" name="fsj_name" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fsj_tel">收件人电话<i style="color:red;">*</i></label>
+                    <input type="tel" id="fsj_tel" name="fsj_tel" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fyjdz">邮寄地址<i style="color:red;">*</i></label>
+                    <input type="text" id="fyjdz" name="fyjdz" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fkd_gs">快递公司<i style="color:red;">*</i></label>
+                    <input type="text" id="fkd_gs" name="fkd_gs" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fkd_dh">快递单号<i style="color:red;">*</i></label>
+                    <input type="text" id="fkd_dh" name="fkd_dh" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="ffph">发票号<i style="color:red;">*</i></label>
+                    <input type="text" id="ffph" name="ffph" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fhrqks">发货日期开始</label>
+                    <input type="date" id="fhrqks" name="fhrqks" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fhrqjs">发货日期截止</label>
+                    <input type="date" id="fhrqjs" name="fhrqjs" readonly />
+                </div>
+                <div class="mui-input-row itemtitle">
+                    <label>发票明细</label>
+                </div>
+                <div id="mxlist_fp">
+                    <div class="mui-card">
+                        <div class="mui-input-row itemtitle2">
+                            <label>合计</label>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhj_fpsl">数量<i style="color:red;">*</i></label>
+                            <input type="number" id="fhj_fpsl" name="fhj_fpsl" readonly />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhj_fpje">含税金额<i style="color:red;">*</i></label>
+                            <input type="number" id="fhj_fpje" name="fhj_fpje" readonly />
+                        </div>
+                    </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fp" style="margin-top:0.5rem;display:none;">
+                    添加发票明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="ffp_bz">备注</label>
+                    <textarea rows="5" id="ffp_bz" name="ffp_bz" readonly></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

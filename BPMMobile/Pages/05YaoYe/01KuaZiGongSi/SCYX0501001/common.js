@@ -1,6 +1,7 @@
 ﻿function prepMsg() {
     tapEvent();
     $("#fsqrq").val(getNowFormatDate(2));
+    //getBPMParam();
     var xml = '<?xml version= "1.0" ?>';
     xml = xml + '   <Requests>';
     xml = xml + '   <Params>';
@@ -505,6 +506,14 @@ function tapEvent() {
         $("#selector").show();
     });
 
+
+    //从索引列表中返回表单
+    $(".mui-icon-left-nav").on('tap', function () {
+        $("#wrapper").show();
+        $("#selector").hide();
+
+    });
+
 }
 
 function checkEvent() {
@@ -608,7 +617,7 @@ function checkEvent() {
                 li += '<label for="fdw">单位<i style="color:red;">*</i></label>';
                 li += '<input type="text" id="fdw" name="fdw" readonly value="' + checkedElements[i].fdw + '" />';
                 li += '</div>';
-                li += '<div class="mui-input-row">';
+                li += '<div class="mui-input-row" style="display:none;">';
                 li += '<label for="fdwbm">单位编码<i style="color:red;">*</i></label>';
                 li += '<input type="text" id="fdwbm" name="fdwbm" readonly value="' + checkedElements[i].fdwbm + '" />';
                 li += '</div>';
@@ -633,16 +642,18 @@ function checkEvent() {
                 li += '<input type="number" id="fsjfhsl" name="fsjfhsl"  placeholder="请填写实际发货数量" value="0" />';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffh_je">含税金额<i style="color:red;">*</i></label>';
+                li += '<label for="ffh_je">含税金额</label>';
                 li += '<input type="number" id="ffh_je" name="ffh_je"  readonly value="0.000000" />';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffh_js">件数<i style="color:red;">*</i></label>';
+                li += '<label for="ffh_js">件数</label>';
                 li += '<input type="number" id="ffh_js" name="ffh_js"  readonly  />';
                 li += '</div>';
                 li += '</div>';
                 $("#mxlist_fh").append(li);
-                document.getElementById('tjmx_fh').scrollIntoView();
+
+               
+
                 $("#mxlist_fh").find("#ffh_sl").on('input', function () {
 
                     $(this).parent().parent().find("#fsjfhsl").val($(this).val());
@@ -688,12 +699,14 @@ function checkEvent() {
                 li += '<input type="number" id="ffp_sl" name="ffp_sl"  placeholder="请填写数量"/>';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffp_je">含税金额<i style="color:red;">*</i></label>';
+                li += '<label for="ffp_je">含税金额</label>';
                 li += '<input type="number" id="ffp_je" name="ffp_je"  readonly value="0.000000"/>';
                 li += '</div>';
                 li = li + '</div>';
                 $("#mxlist_fp").append(li);
-                document.getElementById('tjmx_fp').scrollIntoView();
+
+               
+
                 $("#mxlist_fp").find("input[type='number']").on('input', function () {
 
                     calcPriceBill(this);
@@ -715,6 +728,11 @@ function checkEvent() {
     $("#selector").hide();
     $("#wrapper").show();
     $("#datalist").empty();
+    if (vflag == 1) {
+        document.getElementById('tjmx_fh').scrollIntoView();
+    } else if (vflag == 2) {
+        document.getElementById('tjmx_fp').scrollIntoView();
+    }
 
 }
 //准备索引列表前置
@@ -759,63 +777,139 @@ function getProcedureMsg(pflag,vflag) {
     //pflag为存储过程调用flag ，0 表示调用客户资料 1表示调用物料资料
     //flag为行为的flag ，给prepIndexedList传递参数用
     if (pflag == 0) {
+
+       
        //调用 erpcloud_药业集团客户资料 存储过程
         var fno = $("#fname").data('fno');
-        // 测试数据 fno='00072155'
-        if (fno == '00078251') {      
-            fno = '00072155'
+        if (!fno) {
+            XuntongJSBridge.call('getPersonInfo', {}, function (result) {
+
+                if (typeof (result) == "string") {
+                    result = JSON.parse(result);
+                }
+
+                if (result.success == true || result.success == "true") {
+                    //alert(JSON.stringify(result.data));
+                    $("#fname").data('fno', result.data.userName);
+                    fno = result.data.userName;
+                    // 测试数据 fno='00072155'
+                    if (fno == '00078251') {
+                        fno = '00072155';
+                    }
+                    //alert(fno);
+                    var xml = '<?xml version= "1.0" ?>';
+                    xml = xml + '      <Requests>';
+                    xml = xml + '     <Params>';
+                    xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
+                    xml = xml + '         <ID>erpcloud_药业集团客户资料</ID>';
+                    xml = xml + '         <Type>1</Type>';
+                    xml = xml + '        <Method>GetUserDataProcedure</Method>';
+                    xml = xml + '        <ProcedureName>erpcloud_药业集团客户资料</ProcedureName>';
+                    xml = xml + '        <Filter>';
+
+                    xml = xml + '         <fno>' + fno + '</fno>';
+
+                    xml = xml + '        </Filter>';
+                    xml = xml + '    </Params>';
+                    xml = xml + '   </Requests>';
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/bpm/DataProvider",
+                        data: { '': xml },
+
+                        beforeSend: function (XHR) {
+                            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                        }
+
+                    }).done(function (data) {
+                        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                        console.log(provideData);
+
+                        var item = provideData.Tables[0].Rows;
+                        $("#datalist").empty();   //清除之前数据
+                        for (var i = 0; i < item.length; i++) {
+                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                            li += '<input type="radio" name="radio" ';
+                            li += 'data-fywy="' + item[i].业务员 + '"';
+                            li += 'data-fywybm="' + item[i].业务员编码 + '"';
+                            li += 'data-fdz="' + item[i].地址 + '"';
+                            li += 'data-fkhmc="' + item[i].客户名称 + '"';
+                            li += 'data-fkhbm="' + item[i].客户编码 + '"';
+                            li += 'data-fxszz="' + item[i].销售组织 + '"';
+                            li += 'data-fxszzbm="' + item[i].销售组织编码 + '"';
+                            li += ' />' + item[i].客户编码 + '||' + item[i].客户名称
+                            li += '</li>';
+                            $("#datalist").append(li);
+                        }
+                    }).fail(function (error) {
+
+                    }).then(function (data) {
+                        prepIndexedList(vflag);
+                    });
+
+                }
+                
+
+            });
+        } else {
+            if (fno == '00078251') {
+                fno = '00072155';
+            }
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
+            xml = xml + '         <ID>erpcloud_药业集团客户资料</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_药业集团客户资料</ProcedureName>';
+            xml = xml + '        <Filter>';
+
+            xml = xml + '         <fno>' + fno + '</fno>';
+
+            xml = xml + '        </Filter>';
+            xml = xml + '    </Params>';
+            xml = xml + '   </Requests>';
+
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+
+                var item = provideData.Tables[0].Rows;
+                $("#datalist").empty();   //清除之前数据
+                for (var i = 0; i < item.length; i++) {
+                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                    li += '<input type="radio" name="radio" ';
+                    li += 'data-fywy="' + item[i].业务员 + '"';
+                    li += 'data-fywybm="' + item[i].业务员编码 + '"';
+                    li += 'data-fdz="' + item[i].地址 + '"';
+                    li += 'data-fkhmc="' + item[i].客户名称 + '"';
+                    li += 'data-fkhbm="' + item[i].客户编码 + '"';
+                    li += 'data-fxszz="' + item[i].销售组织 + '"';
+                    li += 'data-fxszzbm="' + item[i].销售组织编码 + '"';
+                    li += ' />' + item[i].客户编码 + '||' + item[i].客户名称
+                    li += '</li>';
+                    $("#datalist").append(li);
+                }
+            }).fail(function (error) {
+
+            }).then(function (data) {
+                prepIndexedList(vflag);
+            });
         }
-
-        var xml = '<?xml version= "1.0" ?>';
-        xml = xml + '      <Requests>';
-        xml = xml + '     <Params>';
-        xml = xml + '         <DataSource>BPM_WEGO</DataSource>';
-        xml = xml + '         <ID>erpcloud_药业集团客户资料</ID>';
-        xml = xml + '         <Type>1</Type>';
-        xml = xml + '        <Method>GetUserDataProcedure</Method>';
-        xml = xml + '        <ProcedureName>erpcloud_药业集团客户资料</ProcedureName>';
-        xml = xml + '        <Filter>';
-
-        xml = xml + '         <fno>' + fno + '</fno>';
-
-        xml = xml + '        </Filter>';
-        xml = xml + '    </Params>';
-        xml = xml + '   </Requests>';
-
-        $.ajax({
-            type: "POST",
-            url: "/api/bpm/DataProvider",
-            data: { '': xml },
-
-            beforeSend: function (XHR) {
-                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-            }
-
-        }).done(function (data) {
-            var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
-            console.log(provideData);
-
-            var item = provideData.Tables[0].Rows;
-            $("#datalist").empty();   //清除之前数据
-            for (var i = 0; i < item.length;i++){
-                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                li += '<input type="radio" name="radio" ';
-                li += 'data-fywy="' + item[i].业务员 + '"';
-                li += 'data-fywybm="' + item[i].业务员编码 + '"';
-                li += 'data-fdz="' + item[i].地址 + '"';
-                li += 'data-fkhmc="' + item[i].客户名称 + '"';
-                li += 'data-fkhbm="' + item[i].客户编码 + '"';
-                li += 'data-fxszz="' + item[i].销售组织 + '"';
-                li += 'data-fxszzbm="' + item[i].销售组织编码 + '"';
-                li += ' />' + item[i].客户编码 + '||' + item[i].客户名称
-                li += '</li>';
-                $("#datalist").append(li);
-            }
-        }).fail(function (error) {
-
-        }).then(function (data) {
-            prepIndexedList(vflag);
-        });
+       
+       
+       
 
     } else if (pflag == 1) {
         //调用 erpcloud_药业集团物料资料 存储过程  
@@ -1009,6 +1103,8 @@ var itemidArr1 = new Array();
 var itemidArr2 = new Array();
 //加载页面内容
 function initData(data, flag) {
+    
+
     var item_a = data.FormDataSet.BPM_WGYYFHFPSQ_A[0];
     if (flag) {
 
@@ -1017,6 +1113,9 @@ function initData(data, flag) {
         $("#fbillno").val(item_a.fbillno);
     }
     $("#fname").val(item_a.fname);
+
+    //$("#fname").data('fno', accountBPM);
+
     $("#fqy").val(item_a.fqy);
     $("#fsqrq").val(FormatterTimeYMS(item_a.fsqrq));
     $("#fsqlx").val(item_a.fsqlx);
@@ -1042,7 +1141,16 @@ function initData(data, flag) {
     }
 
     $("#fckdh").val(item_a.fckdh);
-
+    if (String(item_a.fsqlx).match('发货') != null) {
+        $("#fhcard").show();
+    } else {
+        $("#fhcard").hide();
+    }
+    if (String(item_a.fsqlx).match('发票') != null) {
+        $("#fpcard").show();
+    } else {
+        $("#fpcard").hide();
+    }
     //发货部分
     $("#fhj_fhsl").val(item_a.fhj_fhsl);
     $("#fsjfhsltotal").val(item_a.fsjfhsltotal);
@@ -1166,7 +1274,7 @@ function initData(data, flag) {
         li += '</div>';
         $("#mxlist_fp").append(li);
     }
-
+    
 }
 
 //节点控制
@@ -1213,7 +1321,28 @@ function nodeControllerExp(NodeName) {
         });
         showPickerByZepto('#mxlist_fp', '#ffp_bzxs', ffh_bzxsdata);
 
+        //如果客户类型为授信期客户，将超授信期改为可变
+        if (String($("#fkhlx").val()).match('授信期') != null) {
+            $("#fcsxqd").removeClass('mui-disabled');
+        }
+        $("#mxlist_fp,#mxlist_fh").find('span').each(function () {
+            $(this).show();
+        });
 
+        getBPMParam();
+
+        $("#fname").data('fno', accountBPM);
+
+        if (String($("#fsqlx").val()).match('发货') == null) {
+            $("#mxlist_fh").find("#mx").each(function () {
+                $(this).remove();
+            });
+        } else if (String($("#fsqlx").val()).match('发票') == null) {
+            $("#mxlist_fp").find("#mx").each(function () {
+                $(this).remove();
+            });
+
+        }
         //商务专员
     } else if (String(NodeName).match(/\d+/g) == null || String(NodeName).match('（营销一区）1') != null) {
 
@@ -1303,6 +1432,7 @@ function mxItemShip(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_
             }
             if (!ffh_dj) {
                 mui.toast('请填写含税单价');
+               
                 return null;
             }
             if (!ffh_sl) {
@@ -1345,6 +1475,7 @@ function mxItemBill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je
             }
             if (!ffp_dj) {
                 mui.toast('请填写含税单价');
+                
                 return null;
             }
             if (!ffp_sl) {
@@ -1703,6 +1834,7 @@ function reSave() {
         var fzl = $(this).find("#fzl").val();
         var ffh_bzxs = $(this).find("#ffh_bzxs").val();
         var ffh_dj = $(this).find("#ffh_dj").val();
+       
         var ffh_sl = $(this).find("#ffh_sl").val();
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
@@ -2273,11 +2405,13 @@ function AgreeOrConSign() {
 
     //商务专员1
     if (String(nodeName).match(/\d+/g) == null || String(nodeName).match('（营销一区）1') != null) {
-
-        if (!fckdh) {
-            mui.toast('请填写出库单号');
-            return;
+        if (String(fsqlx).match('发货')!=null) {
+            if (!fckdh) {
+                mui.toast('请填写出库单号');
+                return;
+            }
         }
+       
 
         //核算专员
     } else if (String(nodeName).match('核算专员') != null) {
@@ -2286,25 +2420,29 @@ function AgreeOrConSign() {
 
         //发票专员
     } else if (String(nodeName).match('开票专员') != null) {
-
-        if (!ffph) {
-            mui.toast('请填写发票号');
-            return;
+        if (String(fsqlx).match('发票') != null) {
+            if (!ffph) {
+                mui.toast('请填写发票号');
+                return;
+            }
         }
+        
      
 
         //商务专员2
     } else if (String(nodeName).match(/\d+/g) != null && String(nodeName).match('商务') != null) {
+        if (String(fsqlx).match('发票') != null) {
+            if (!fkd_gs) {
+                mui.toast('请选择快递公司');
+                return;
+            }
+            if (!fkd_dh) {
+                mui.toast('请选择快递单号');
+                return;
+            }
 
-        if (!fkd_gs) {
-            mui.toast('请选择快递公司');
-            return;
         }
-        if (!fkd_dh) {
-            mui.toast('请选择快递单号');
-            return;
-        }
-
+       
     }
     
     var consignFlag = false;

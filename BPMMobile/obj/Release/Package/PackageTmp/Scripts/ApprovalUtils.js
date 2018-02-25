@@ -11,7 +11,8 @@ var action;
 var toStepIDs = new Array();
 var version="1.0";
 var DraftGuid = '';
-
+var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
+var accountBPM = '';
 
 
 //提交,审批,加签,已阅
@@ -337,8 +338,8 @@ function getBPMParam() {
             if (status == "success") {
                 //console.log(data);
                 BPMOU = data.Position[0].FullName;
-               
-                
+                accountBPM = data.BPMUser.Account;
+                console.log(accountBPM);
                 return BPMOU;
             } else {
                 return "";
@@ -936,13 +937,23 @@ function FormatterTime(time) {
 //格式化时间为yyyy-MM-dd
 function FormatterTimeYMS(time) {
     var time = String(time);
-    var ymd = time.substring(0, time.indexOf("T"));
-    return ymd;
+    if (time.indexOf('T') != -1) {
+        var ymd = time.substring(0, time.indexOf("T"));
+        return ymd;
+    } else {
+        return time;
+    }
+    
 }
 function FormatterTimeT(time) {
     var time = String(time);
-    var ymd = time.substring(0, time.indexOf(" "));
-    return ymd;
+    if (time.indexOf(" ") != -1) {
+        var ymd = time.substring(0, time.indexOf(" "));
+        return ymd;
+    } else {
+        return time;
+    }
+   
 }
 
 function FormatterTime_Y_M_S(year, month, day) {
