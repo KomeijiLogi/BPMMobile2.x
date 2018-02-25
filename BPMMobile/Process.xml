@@ -1519,7 +1519,51 @@
     <Group></Group>
     <Description>医用制品公司管理干部考勤提报</Description>
   </Process>
-  
+   <Process>
+    <Name>医用制品公司市场差旅费报销</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/TravelExpenses/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/TravelExpenses/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/TravelExpenses/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/TravelExpenses/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场差旅费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于市场差旅费用报销</Description>
+  </Process>
+ <Process>
+    <Name>医用制品公司市场特批费用标准申请</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/SpeciallyExpense/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/SpeciallyExpense/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/SpeciallyExpense/FlowDoneDetail.html</ViewDonePage>
+   <ViewPage>/Pages/SpeciallyExpense/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场费用特批</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于制品公司费用标准特批</Description>
+  </Process>
+  <Process>
+    <Name>医用制品公司市场其他费用报销</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/OtherExpense/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/OtherExpense/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/OtherExpense/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/OtherExpense/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场其他费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于制品公司其他费用报销</Description>
+  </Process>
   <Process>
     <Name>海盛公司部门月度办公用品申请</Name>
     <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
@@ -2662,51 +2706,7 @@
     <Description>建设公司规章制度申请</Description>
   </Process>
 
-   <Process>
-    <Name>医用制品公司市场差旅费报销</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/TravelExpenses/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/TravelExpenses/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/TravelExpenses/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/TravelExpenses/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场差旅费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于市场差旅费用报销</Description>
-  </Process>
- <Process>
-    <Name>医用制品公司市场特批费用标准申请</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/SpeciallyExpense/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/SpeciallyExpense/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/SpeciallyExpense/FlowDoneDetail.html</ViewDonePage>
-   <ViewPage>/Pages/SpeciallyExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场费用特批</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于制品公司费用标准特批</Description>
-  </Process>
-  <Process>
-    <Name>医用制品公司市场其他费用报销</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/OtherExpense/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/OtherExpense/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/OtherExpense/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/OtherExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场其他费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于制品公司其他费用报销</Description>
-  </Process>
+  
 <Process>
     <Name>盛祥商管公司周工作汇报</Name>
     <Path>\\99业务平台\\09盛祥商管</Path>
@@ -2753,7 +2753,21 @@
     <Description>盛祥商管公司员工奖惩申请</Description>
   </Process>
 
-  
+  <Process>
+    <Name>药业集团发货、发票开具申请</Name>
+    <Path>\\05药业集团\\01跨子公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001/FlowCreate.html</ViewPage>
+    <DisplayName>药业集团发货、发票开具申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>药业集团发货、发票开具申请</Description>
+  </Process>
  <!--
  
 

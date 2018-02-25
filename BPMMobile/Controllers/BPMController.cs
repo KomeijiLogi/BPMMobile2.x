@@ -336,18 +336,42 @@ namespace BPMMobile.Controllers
                             XmlNode nodeDataSourceName = nodeParam.SelectSingleNode("DataSource");
                             string dataSourceName = nodeDataSourceName.InnerText;
 
+                           
                             XmlNode nodeProcedureName = nodeParam.SelectSingleNode("ProcedureName");
                             string procedureName = nodeProcedureName.InnerText;
 
-                            BPMDBParameterCollection filters = new BPMDBParameterCollection();
+                          
+                            BPMDBParameterCollection filters = new BPMDBParameterCollection();                            
                             XmlNode nodeFilters = nodeParam.SelectSingleNode("Filter");
+
+                            //System.Diagnostics.Debug.WriteLine(nodeFilters);
+                            
+
+
+
                             if (nodeFilters != null)
                             {
-                                foreach (KeyValuePair<string, YZDSFilter> filter in filters)
+                                if (nodeFilters.FirstChild!=null)
                                 {
-                                    BPMDBParameter paramater = new BPMDBParameter(filter.Key, typeof(String), filter.Value.value);
-                                    filters.Add(paramater);
+                                    BPMDBParameter parameter = new BPMDBParameter(nodeFilters.FirstChild.Name, typeof(String), nodeFilters.InnerText);
+                                    filters.Add(parameter);
+
                                 }
+                                else
+                                {
+                                    foreach (KeyValuePair<string, YZDSFilter> filter in filters)
+                                    {
+
+                                        BPMDBParameter paramater = new BPMDBParameter(filter.Key, typeof(String), filter.Value.value);
+
+                                        //paramater.ParameterCompareType = BPMDBParameter.ParseOp(filter.Value.op, ParameterCompareType.Equ) | ParameterCompareType.NecessaryCondition;
+
+                                        filters.Add(paramater);
+                                    }
+                                }
+
+
+
                             }
 
                             FlowDataTable table = DataSourceManager.ExecProcedure(cn, dataSourceName, procedureName, filters);
