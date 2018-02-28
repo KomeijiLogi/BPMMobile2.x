@@ -15,6 +15,28 @@ var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Dow
 var accountBPM = '';
 
 
+
+window.onload = function () {
+
+    //匹配url，如果是发起页面
+    if (String(window.location.href).match('Create') != null) { 
+        //对两个字段可编辑行检查，如果不能编辑那么就隐藏吧
+        if ($("#fdate").attr('readonly')) {
+            $("#fdate").parent().hide();
+        };
+        if ($("#fdept").attr('readonly')) {
+            $("#fdept").parent().hide();
+        };
+        
+    }
+
+
+};
+
+
+
+
+
 //提交,审批,加签,已阅
 function PostXml(xml) {
     $.ajax({
