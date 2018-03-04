@@ -21,10 +21,10 @@ window.onload = function () {
     //匹配url，如果是发起页面
     if (String(window.location.href).match('Create') != null) { 
         //对两个字段可编辑行检查，如果不能编辑那么就隐藏吧
-        if ($("#fdate").attr('readonly')) {
+        if ($("#fdate").attr('readonly') != undefined) {
             $("#fdate").parent().hide();
         };
-        if ($("#fdept").attr('readonly')) {
+        if ($("#fdept").attr('readonly') != undefined) {
             $("#fdept").parent().hide();
         };
         

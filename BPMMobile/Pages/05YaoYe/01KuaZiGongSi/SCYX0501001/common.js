@@ -1344,7 +1344,7 @@ function nodeControllerExp(NodeName) {
 
         }
         //商务专员
-    } else if (String(NodeName).match(/\d+/g) == null || String(NodeName).match('（营销一区）1') != null) {
+    } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
         $("#fckdh").attr('placeholder', '请填写出库单号');
         $("#fckdh").removeAttr('readonly');

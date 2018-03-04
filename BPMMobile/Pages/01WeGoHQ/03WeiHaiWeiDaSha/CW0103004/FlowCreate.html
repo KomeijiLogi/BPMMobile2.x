@@ -44,15 +44,15 @@
             </div>
             <div class="mui-input-row">
                 <label for="ffybmjl">费用部门经理<i style="color:red;">*</i></label>
-                <input type="text" id="ffybmjl" name="ffybmjl" readonly placeholder="请选择费用部门经理"/>
+                <input type="text" id="ffybmjl" name="ffybmjl" readonly placeholder="请选择费用部门经理" data-ffybmjlno=""/>
             </div>
-            <div class="mui-input-row">
+            <div class="mui-input-row" style="height:auto;">
                 <label for="fxm">项目<i style="color:red;">*</i></label>
                 <textarea rows="5" id="fxm" name="fxm" placeholder="请填写项目"></textarea>
             </div>
             <div class="mui-input-row">
                 <label for="ffyhj">费用合计(元)<i style="color:red;">*</i></label>
-                <input type="text" id="ffyhj" name="ffyhj" placeholder="请填写费用合计"/>
+                <input type="text" id="ffyhj" name="ffyhj" placeholder="请填写费用合计" />
             </div> 
         </form>
         <div class="mui-btn-row" id="SaveD">
@@ -98,6 +98,7 @@
     <script type="text/javascript" src="../../../../Scripts/common.js"></script>
     <script type="text/javascript" src="common.js"></script>
     <script>
+        //var vconsole = new VConsole();
 
         mui.init();
 
