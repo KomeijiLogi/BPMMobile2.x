@@ -6,8 +6,19 @@
 ![](https://img.shields.io/badge/mui-3.5.0-green.svg)
 
 
-##### 跟随BPM升级而调整后台的BPMMobile
-##### 前端和后台均做了修改，相较于之前部分方法做了调整
+##### 跟随BPM升级而调整后台的BPMMobile,对应BPM5.7版本，核心调用BPM.dll和BPMClient.dll实现
+##### 前端和后台均做了修改，相较于之前部分方法重新做了调整
 
-#### 前端使用的是zepto +XuntongJSBridge+mui后台通过.net实现
+#### 前端使用的是zepto +XuntongJSBridge+mui 后台通过.net实现
+
+### 技术栈
+##### zepto 1.2.0
+##### mui 3.5.0
+##### XuntongJSBridge 内部版本
+##### vconsole 3.1.0 移动端调试用，正式环境下不使用
+##### baidu-statistics 流量监控js插件
+
+
+
+
 
