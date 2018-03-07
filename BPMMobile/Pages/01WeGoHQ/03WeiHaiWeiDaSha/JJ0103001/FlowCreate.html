@@ -30,10 +30,7 @@
                 <label for="fdate">报修日期<i style="color:red;">*</i></label>
                 <input type="date" id="fdate" name="fdate" />
             </div>
-            <div class="mui-input-row" style="height:auto;">
-                <label for="fbxnr">报修内容<i style="color:red;">*</i></label>
-                <textarea rows="3" id="fbxnr" name="fbxnr" placeholder="请填写报修内容"></textarea>
-            </div>
+            
             <div class="mui-input-row">
                 <label for="fdept">报修部门</label>
                 <input type="text" id="fdept" name="fdept" readonly/>
@@ -42,75 +39,93 @@
                 <label for="fjjcd">紧急程度<i style="color:red;">*</i></label>
                 <input type="text" id="fjjcd" name="fjjcd" readonly placeholder="请选择紧急程度"/>
             </div>
-            <div class="mui-input-row">
-                <label for="fpdr">派单人<i style="color:red;">*</i></label>
-                <input type="text" id="fpdr" name="fpdr" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fpdsj">派单时间<i style="color:red;">*</i></label>
-                <input type="date" id="fpdsj" name="fpdsj" readonly />
-            </div>
-            <div class="mui-input-row">
-                <label for="fjdr">接单人</label>
-                <input type="text" id="fjdr" name="fjdr" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fjssj">结束时间<i style="color:red;">*</i></label>
-                <input type="text" id="fjssj" name="fjssj" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fwxzt">维修状态<i style="color:red;">*</i></label>
-                <input type="text" id="fwxzt" name="fwxzt" readonly />
-            </div>
             <div class="mui-input-row" style="height:auto;">
-                <label for="fztyyms">状态原因描述</label>
-                <textarea rows="4" id="fztyyms" name="fztyyms" readonly></textarea>
+                <label for="fbxnr">报修内容<i style="color:red;">*</i></label>
+                <textarea rows="5" id="fbxnr" name="fbxnr" placeholder="请填写报修内容"></textarea>
             </div>
-            <div class="mui-input-row">
-                <label for="fecpgsj">二次派工时间</label>
-                <input type="date" id="fecpgsj" name="fecpgsj" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fgzdl">故障大类</label>
-                <input type="text" id="fgzdl" name="fgzdl" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fgzxl">故障小类</label>
-                <input type="text" id="fgzxl" name="fgzxl" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fwxgs">维修工时</label>
-                <input type="number" id="fwxgs" name="fwxgs" readonly/>
-            </div>
-            <div class="mui-input-row">
-                <label for="fqthf">其他耗费</label>
-                <input type="number" id="fqthf" name="fqthf" readonly/>
-            </div>
-           
-            <div class="mui-card">
-                <div class="mui-input-row itemtitle2">
-                    <label>维修评价<i style="color:red;">*</i></label>
-                </div>
-                <div class="mui-input-group">
-                    <div class="mui-input-row mui-radio">
-                        <label>满意</label>
-                        <input type="radio" id="fwxpj" name="fwxpj" disabled/>
-                    </div>
-                    <div class="mui-input-row mui-radio">
-                        <label>一般</label>
-                        <input type="radio" id="fwxpj" name="fwxpj" disabled/>
-                    </div>
-                    <div class="mui-input-row mui-radio">
-                        <label>不满意</label>
-                        <input type="radio" id="fwxpj" name="fwxpj" disabled/>
-                    </div>
+            <div id="fgdcard_part1" style="display:none;">
+                <div class="mui-input-row">
+                    <label for="fpdr">派单人<i style="color:red;">*</i></label>
+                    <input type="text" id="fpdr" name="fpdr" readonly />
                 </div>
                 <div class="mui-input-row">
-                    <label for="fbmyyy">不满意原因</label>
-                    <input type="text" id="fbmyyy" name="fbmyyy" readonly/>
+                    <label for="fpdsj">派单时间<i style="color:red;">*</i></label>
+                    <input type="date" id="fpdsj" name="fpdsj" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fjdr">接单人</label>
+                    <input type="text" id="fjdr" name="fjdr" readonly />
                 </div>
             </div>
+            <div id="fgdcard_part2" style="display:none;">
+                <div class="mui-input-row">
+                    <label for="fjssj">结束时间<i style="color:red;">*</i></label>
+                    <input type="text" id="fjssj" name="fjssj" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwxzt">维修状态<i style="color:red;">*</i></label>
+                    <input type="text" id="fwxzt" name="fwxzt" readonly />
+                </div>
+                <div class="mui-input-row" style="height:auto;">
+                    <label for="fztyyms">状态原因描述</label>
+                    <textarea rows="4" id="fztyyms" name="fztyyms" readonly></textarea>
+                </div>
+                <div class="mui-input-row">
+                    <label for="fecpgsj">二次派工时间</label>
+                    <input type="date" id="fecpgsj" name="fecpgsj" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgzdl">故障大类</label>
+                    <input type="text" id="fgzdl" name="fgzdl" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fgzxl">故障小类</label>
+                    <input type="text" id="fgzxl" name="fgzxl" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fwxgs">维修工时</label>
+                    <input type="number" id="fwxgs" name="fwxgs" readonly />
+                </div>
+                <div class="mui-input-row">
+                    <label for="fqthf">其他耗费</label>
+                    <input type="number" id="fqthf" name="fqthf" readonly />
+                </div>
+                <div id="mxlist">
 
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                    添加配件使用明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+
+              </div>
+              <div id="fgdcard_part3" style="display:none;">
+                <div class="mui-card">
+                    <div class="mui-input-row itemtitle2">
+                        <label>维修评价<i style="color:red;">*</i></label>
+                    </div>
+                    <div class="mui-input-group">
+                        <div class="mui-input-row mui-radio">
+                            <label>满意</label>
+                            <input type="radio" id="fwxpj" name="fwxpj" disabled />
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label>一般</label>
+                            <input type="radio" id="fwxpj" name="fwxpj" disabled />
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label>不满意</label>
+                            <input type="radio" id="fwxpj" name="fwxpj" disabled />
+                        </div>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fbmyyy">不满意原因</label>
+                        <input type="text" id="fbmyyy" name="fbmyyy" readonly />
+                    </div>
+                </div>
+
+               
+            </div>
            
         </form>
         <div class="mui-btn-row" id="SaveD">
