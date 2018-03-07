@@ -18,6 +18,10 @@
 ##### vconsole 3.1.0 移动端调试用，正式环境下不使用
 ##### baidu-statistics 流量监控js插件
 
+### 演示效果图:
+![](https://github.com/KomeijiLogi/BPMMobile2.x/blob/master/gif/yanshi1.gif)<br/>
+![](https://github.com/KomeijiLogi/BPMMobile2.x/blob/master/gif/yanshi2.gif)<br/>
+![](https://github.com/KomeijiLogi/BPMMobile2.x/blob/master/gif/yanshi3.gif)<br/>
 
 
 
