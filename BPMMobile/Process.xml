@@ -2913,7 +2913,21 @@
     <Description>适用于威海卫大厦青缇湾工程维修申请。</Description>
   </Process>
   
-  
+   <Process>
+    <Name>威海卫大厦员工转正申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工转正申请。</Description>
+  </Process>
  
   
   
