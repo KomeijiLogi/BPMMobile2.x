@@ -250,31 +250,31 @@ function initData(data,flag) {
               </div>
               <div class="mui-input-row">
                  <label for="fclmc">材料名称<i style="color:red;">*</i></label>
-                 <input type="text" id="fclmc" name="fclmc" readonly value="  ${(item_c[i].材料名称)} "/>
+                 <input type="text" id="fclmc" name="fclmc" readonly value="  ${changeNullToEmpty(item_c[i].材料名称)} "/>
               </div>
               <div class="mui-input-row">
                  <label for="fbm">编码</label>
-                 <input type="text" id="fbm" name="fbm" readonly value="${item_c[i].编码}"/>
+                 <input type="text" id="fbm" name="fbm" readonly value="${changeNullToEmpty(item_c[i].编码)}"/>
               </div>
               <div class="mui-input-row">
                   <label for="fggxh">规格型号</label>
-                  <input type="text" id="fggxh" name="fggxh" readonly value="${item_c[i].规格型号}"/>
+                  <input type="text" id="fggxh" name="fggxh" readonly value="${changeNullToEmpty(item_c[i].规格型号)}"/>
               </div>      
               <div class="mui-input-row">
                   <label for="fjldw">计量单位</label>
-                  <input type="text" id="fjldw" name="fjldw" readonly value="${item_c[i].计量单位}"/>
+                  <input type="text" id="fjldw" name="fjldw" readonly value="${changeNullToEmpty(item_c[i].计量单位)}"/>
               </div>   
               <div class="mui-input-row">
                   <label for="fghsl">更换数量<i style="color:red;">*</i></label>
-                  <input type="number" id="fghsl" name="fghsl" readonly value="${item_c[i].更换数量}"/>
+                  <input type="number" id="fghsl" name="fghsl" readonly value="${changeNullToEmpty(item_c[i].更换数量)}"/>
               </div>
               <div class="mui-input-row">
                   <label for="flyly">领用来源<i style="color:red;">*</i></label>
-                  <input type="text" id="flyly" name="flyly" readonly value="${item_c[i].领用来源}"/>   
+                  <input type="text" id="flyly" name="flyly" readonly value="${changeNullToEmpty(item_c[i].领用来源)}"/>   
               </div> 
                <div class="mui-input-row">
                   <label for="fbz">备注</label>
-                  <input type="text" id="fbz" name="fbz" readonly value="${item_c[i].备注}"/> 
+                  <input type="text" id="fbz" name="fbz" readonly value="${changeNullToEmpty(item_c[i].备注)}"/> 
                </div> 
             </div>  
         `;
@@ -340,15 +340,15 @@ class Mx {
     }
     //校验字段
     check() {
-        if (!fclmc){
+        if (!this.fclmc){
             mui.toast('请填写材料名称');
             return false;
         }
-        if (!fghsl) {
+        if (!this.fghsl) {
             mui.toast('请填写更换数量');
             return false;
         }
-        if (!flyly) {
+        if (!this.flyly) {
             mui.toast('请选择领用来源');
             return false;
         }
