@@ -1263,4 +1263,30 @@ function changeNullToEmpty(value) {
 }
 
 
+//封装dataProvider
+function dataProvider(xml, callback) {
+
+    var p = new Promise(function (resolve, reject) {
+        $.ajax({
+            type: "POST",
+            url: "/api/bpm/DataProvider",
+            data: { '': xml },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+            }
+        }).done(function (data) {
+            callback(data);
+            resolve();
+        }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            if (XMLHttpRequest.status == "401") {
+                mui.alert('授权过期，请重新打开页面');;
+            } else if (XMLHttpRequest.status == "500") {
+                mui.alert('服务器内部错误');
+            }
+            reject();
+        });
+    });
+    return p;
+}
+
 
