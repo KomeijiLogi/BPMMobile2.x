@@ -365,6 +365,9 @@ function nodeControllerExp(NodeName) {
     if (String(NodeName).match('开始') != null) {
         upload();
         $('#tjmx').show();
+        $("#mxlist").find('span').each(function () {
+            $(this).show();
+        });
         $("#mxlist").find('.reEdited').each(function () {
             $(this).removeAttr('readonly');
         });
