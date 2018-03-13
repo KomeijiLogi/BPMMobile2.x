@@ -76,8 +76,8 @@ function initList() {
         console.log(provideData);
         var dataArr = provideData.Tables[0].Rows;
         for (var i = 0; i < dataArr.length; i++) {
-            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-            li = li + '<input type="radio" name="radio"';
+            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+            li = li + '<input type="checkbox" name="checkbox"';
             li = li + 'data-fcpdm="' + dataArr[i].产品代码 + '"';
             li = li + 'data-fcpmc="' + dataArr[i].产品名称 + '"';
             li = li + 'data-fggxh="' + dataArr[i].规格型号 + '"';
@@ -96,7 +96,7 @@ function initList() {
         window.indexedList = new mui.IndexedList(list);
         //done event
         done.addEventListener('tap', function () {
-            var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+            var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
             var checkedValues = [];
             var checkedElements = [];
             checkboxArray.forEach(function (box) {
@@ -190,7 +190,7 @@ function initList() {
         }, false);
 
         mui('.mui-indexed-list-inner').on('change', 'input', function () {
-            var count = list.querySelectorAll('input[type="radio"]:checked').length;
+            var count = list.querySelectorAll('input[type="checkbox"]:checked').length;
             var value = count ? "完成(" + count + ")" : "完成";
             done.innerHTML = value;
             if (count) {
