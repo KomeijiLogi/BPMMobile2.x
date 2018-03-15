@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;display:block;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            
+            <div class="mui-input-row">
+                <label for="fname">提报人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display: none">
+                <label for="fdept">提报部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <!--style="display: none"-->
+            <div class="mui-input-row" style="display: none">
+                <label for="fdate">提报日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="ftel">联系电话</label>
+                <input type="text" id="ftel" name="ftel" placeholder="请填写联系方式" class="node1"/>
+            </div>
+
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fremark">备注</label>
+                <textarea rows="5" id="fremark" name="fremark" placeholder="请填写备注" class="node1"></textarea>
+            </div>
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-input-row itemtitle">
+                <label>物料信息修改明细</label>
+            </div>
+
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    
+                    <div class="mui-input-row">
+                        <label for="rowno">行号 </label>
+                        <input type="number" id="rowno" name="rowno" readonly="readonly" value="1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwlcode">物料代码<i style="color:red;">*</i></label>
+                        <input type="text" id="fwlcode" name="fwlcode" placeholder="请选择物料代码" class="node1" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwlname">物料名称</label>
+                        <input type="text" id="fwlname" name="fwlname" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fggxh">规格型号</label>
+                        <input type="text" id="fggxh" name="fggxh" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcode_yl">原来源编码</label>
+                        <input type="text" id="fcode_yl" name="fcode_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcode_bg">变更后来源编码</label>
+                        <input type="text" id="fcode_bg" name="fcode_bg" placeholder="请选择变更后来源编码" class="node1" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fdesignation_yl">原来源名称</label>
+                        <input type="text" id="fdesignation_yl" name="fdesignation_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fdesignatio_bg">变更后来源名称</label>
+                        <input type="text" id="fdesignatio_bg" name="fdesignatio_bg" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcl_yl">原最高存量</label>
+                        <input type="number" id="fcl_yl" name="fcl_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcl_bg">变更后最高存量</label>
+                        <input type="number" id="fcl_bg" name="fcl_bg" placeholder="请填写变更后最高存量" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="faqkcs_yl">原安全库存数量</label>
+                        <input type="number" id="faqkcs_yl" name="faqkcs_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="faqkcs_bg">变更后安全库存数量</label>
+                        <input type="number" id="faqkcs_bg" name="faqkcs_bg" placeholder="请填写变更后安全库存数量" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcgdj_yl">原采购单价</label>
+                        <input type="number" id="fcgdj_yl" name="fcgdj_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcgdj_bg">变更后采购单价</label>
+                        <input type="number" id="fcgdj_bg" name="fcgdj_bg" placeholder="请填写变更后采购单价" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcgzgj_yl">原采购最高价</label>
+                        <input type="number" id="fcgzgj_yl" name="fcgzgj_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fcgzgj_bg">变更后采购最高价</label>
+                        <input type="number" id="fcgzgj_bg" name="fcgzgj_bg" placeholder="请填写变更后采购最高价" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fgdtqq_yl">原固定提前期</label>
+                        <input type="number" id="fgdtqq_yl" name="fgdtqq_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fgdtqq_bg">变更后固定提前期</label>
+                        <input type="number" id="fgdtqq_bg" name="fgdtqq_bg" placeholder="请填写变更后固定提前期" class="node1"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fword_yl">原采购负责人代码</label>
+                        <input type="text" id="fword_yl" name="fword_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fword_bg">变更后采购负责人代码</label>
+                        <input type="text" id="fword_bg" name="fword_bg" placeholder="请选择变更后采购负责人代码" class="node1" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fname_yl">原采购负责人名称</label>
+                        <input type="text" id="fname_yl" name="fname_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fname_bg">变更后采购负责人名称</label>
+                        <input type="text" id="fname_bg" name="fname_bg" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="frate_yl">原税率</label>
+                        <input type="number" id="frate_yl" name="frate_yl" readonly="readonly"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="frate_bg">变更后税率</label>
+                        <input type="number" id="frate_bg" name="frate_bg" placeholder="请填写变更后税率" class="node1"/>
+                    </div>
+
+                </div>   
+
+            </div>
+
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加外出明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+
+   <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+           
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+            
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+		    <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist">
+
+                </ul> 
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+        
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\06生物科技集团\\02医疗系统公司\\02_采购管理', '医疗系统公司物料采购信息变更申请');
+
+            getBPMParam();
+
+            _init._preCreate();
+             
+        });
+
+        //调试;
+       // var vconsole = new VConsole();
+    </script>
+</body>
+</html>

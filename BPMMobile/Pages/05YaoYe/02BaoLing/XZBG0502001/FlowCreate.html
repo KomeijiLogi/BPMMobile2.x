@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;display:block;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fname">申请人</label>
+                <input type="text" id="fname" name="fname" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display: none">
+                <label for="fdept">申请部门</label>
+                <input type="text" id="fdept" name="fdept" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display: none">
+                <label for="fdate">申请日期</label>
+                <input type="date" id="fdate" name="fdate" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fswlx">事务类型<i style="color:red;">*</i></label>
+                <input type="text" id="fswlx" name="fswlx" placeholder="请选择事务类型" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fts">请假天数<i style="color:red;">*</i></label>
+                <input type="number" id="fts" name="fts" placeholder="请填写请假天数" class="saveCanChange"/>
+            </div>
+
+            <div class="mui-input-row itemtitle">
+                <label>外出明细</label>
+            </div>
+            <div id="mxlist">
+                <div id="mx" class="mui-card">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div> 
+                    <div class="mui-input-row">
+                    <label for="fwctime">外出时间<i style="color:red;">*</i></label>
+                    <input type="datetime-local" id="fwctime" name="fwctime" class="saveCanChange" />
+                    </div>
+                    <div class="mui-input-row">
+                    <label for="fhgstime">回公司时间<i style="color:red;">*</i></label>
+                    <input type="datetime-local" id="fhgstime" name="fhgstime" class="saveCanChange"/>
+                    </div>
+  
+                    <div class="mui-input-row">
+                        <label for="fwcqx">外出去向</label>
+                        <input type="text" id="fwcqx" name="fwcqx" placeholder="请填写外出去向"/>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fwcsy">外出事由</label>
+                        <input type="text" id="fwcsy" name="fwcsy" placeholder="请填写外出事由"/>
+                    </div>
+                    <div class="mui-input-row">
+                            <label for="fbkcs">补卡次数<i style="color:red;">*</i></label>
+                            <input type="number" id="fbkcs" name="fbkcs" placeholder="请填写补卡次数"/>
+                        </div>
+                    <div class="mui-input-row">
+                        <label for="freamark">备注</label>
+                        <input type="text" id="freamark" name="freamark" placeholder="请填写备注"/>
+                    </div>
+                </div>   
+            </div>
+
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加外出明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+
+   <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+           
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+            
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+		    <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist">
+
+                </ul> 
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\05药业集团\\02宝龄公司\\16_行政办公', '宝龄公司员工外出申请');
+
+            getBPMParam();
+
+            _init._preCreate();
+        });
+    </script>
+</body>
+</html>

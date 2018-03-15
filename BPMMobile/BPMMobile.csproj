@@ -483,6 +483,16 @@
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CG0103001\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CG0103001\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CG0103001\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CG0103001\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CG0103001\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103001\FlowCreate.html" />

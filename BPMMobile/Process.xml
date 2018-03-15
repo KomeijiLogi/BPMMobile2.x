@@ -2771,9 +2771,56 @@
     <Group>办公管理</Group>
     <Description>适用于药业集团业务员发货与发票开具的申请。</Description>
   </Process>
-  
-  
-    <Process>
+  <Process>
+    <Name>宝龄公司员工外出申请</Name>
+    <Path>\\05药业集团\\02宝龄公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowCreate.html</ViewPage>
+    <DisplayName>药业集团宝龄公司员工外出申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于宝龄公司员工外出的申请</Description>
+  </Process>
+
+  <Process>
+    <Name>生物科技集团质量信息反馈</Name>
+    <Path>\\06生物科技集团\\01跨子公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowCreate.html</ViewPage>
+    <DisplayName>生物科技集团质量信息反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>适用于生物科技集团各公司质量信息反馈</Description>
+  </Process>
+
+  <Process>
+    <Name>医疗系统公司物料采购信息变更申请</Name>
+    <Path>\\06生物科技集团\\02医疗系统公司\\02_采购管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowCreate.html</ViewPage>
+    <DisplayName>医疗系统公司物料采购信息变更申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>采购管理</Group>
+    <Description>适用于医疗系统公司各部门人员物料采购、仓储信息的变更申请</Description>
+  </Process>
+
+
+  <Process>
     <Name>威海卫大厦借款申请</Name>
     <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
     <CanCreate>True</CanCreate>
@@ -2991,9 +3038,59 @@
     <Group>办公管理</Group>
     <Description>适用于威海卫大厦青缇湾月度销售提成提报。</Description>
   </Process>
+
+
+  <Process>
+    <Name>威海卫大厦西软信息维护申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\15_信息管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦西软信息维护申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦西软信息维护申请。</Description>
+  </Process>
+
   
   
+  <Process>
+    <Name>威海卫大厦部门工作汇报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦部门工作汇报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦部门工作汇报。</Description>
+  </Process>
+
+
   
+  <Process>
+    <Name>威海卫大厦物资采购申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦西软信息维护申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦各部门食品原材料等物资的采购申请。</Description>
+  </Process>
   
   
   <!--
