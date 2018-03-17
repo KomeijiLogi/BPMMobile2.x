@@ -517,7 +517,7 @@ function tapEvent() {
 }
 
 function checkEvent() {
-    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
     var checkedValues = [];
     var checkedElements = [];
     var checkedElementsBill = [];
@@ -755,7 +755,7 @@ function prepIndexedList(vflag) {
 
     done.addEventListener('tap', checkEvent, false);
     mui('.mui-indexed-list-inner').on('change', 'input', function () {
-        var count = list.querySelectorAll('input[type="radio"]:checked').length;
+        var count = list.querySelectorAll('input[type="checkbox"]:checked').length;
         var value = count ? "完成(" + count + ")" : "完成";
         done.innerHTML = value;
         if (count) {
@@ -829,8 +829,8 @@ function getProcedureMsg(pflag,vflag) {
                         var item = provideData.Tables[0].Rows;
                         $("#datalist").empty();   //清除之前数据
                         for (var i = 0; i < item.length; i++) {
-                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                            li += '<input type="radio" name="radio" ';
+                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                            li += '<input type="checkbox" name="checkbox" ';
                             li += 'data-fywy="' + item[i].业务员 + '"';
                             li += 'data-fywybm="' + item[i].业务员编码 + '"';
                             li += 'data-fdz="' + item[i].地址 + '"';
@@ -888,8 +888,8 @@ function getProcedureMsg(pflag,vflag) {
                 var item = provideData.Tables[0].Rows;
                 $("#datalist").empty();   //清除之前数据
                 for (var i = 0; i < item.length; i++) {
-                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                    li += '<input type="radio" name="radio" ';
+                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                    li += '<input type="checkbox" name="checkbox" ';
                     li += 'data-fywy="' + item[i].业务员 + '"';
                     li += 'data-fywybm="' + item[i].业务员编码 + '"';
                     li += 'data-fdz="' + item[i].地址 + '"';
@@ -943,8 +943,8 @@ function getProcedureMsg(pflag,vflag) {
             $("#datalist").empty();   //清除之前数据
 
             for (var i = 0; i < itemData.length; i++) {
-                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                li += '<input type="radio" name="radio" ';
+                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                li += '<input type="checkbox" name="checkbox" ';
                 li += 'data-fwlbm="' + itemData[i].物料编码 + '"';
                 li += 'data-fwlmc="' + itemData[i].物料名称 + '"';
                 li += 'data-fdw="' + itemData[i].单位 + '"';

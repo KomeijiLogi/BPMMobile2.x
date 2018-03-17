@@ -3085,14 +3085,28 @@
     <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowDoneDetail.html</ViewDonePage>
     <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowCreate.html</ViewPage>
-    <DisplayName>威海卫大厦西软信息维护申请</DisplayName>
+    <DisplayName>威海卫大厦物资采购申请</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于威海卫大厦各部门食品原材料等物资的采购申请。</Description>
   </Process>
-  
-  
+
+  <Process>
+    <Name>药业集团发货、发票开具申请</Name>
+    <Path>\\05药业集团\\01跨子公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G/index.html</CreatePage>
+    <ViewUndoPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G/index.html</ViewUndoPage>
+    <ViewAskPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G/index.html</ViewAskPage>
+    <ViewDonePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G/index.html</ViewDonePage>
+    <ViewPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G/index.html</ViewPage>
+    <DisplayName>药业集团发货、发票开具申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于药业集团业务员发货与发票开具的申请。</Description>
+  </Process>
   <!--
  
 <Process>

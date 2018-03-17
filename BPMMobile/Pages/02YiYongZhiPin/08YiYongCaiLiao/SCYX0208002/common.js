@@ -32,22 +32,40 @@
         initList();
     });
 }
-
-function tapEvent() {
-    $('#tjmx').on('tap', function () {
-        showCard();
-    });
-}
 var ffplxdata = [
     {
         value: '',
-        text:'普通发票'
+        text: '普通发票'
     },
     {
         value: '',
         text: '增值税专用发票'
+    },
+    {
+        value: '',
+        text: '不要发票'
     }
 ];
+function tapEvent() {
+    $('#tjmx').on('tap', function () {
+        showCard();
+    });
+
+    var fsqlxdata = [
+        {
+            value: '',
+            text:'发货'
+        },
+        {
+            value: '',
+            text:'调拨'
+        }
+    ];
+    showPicker('fsqlx', fsqlxdata);
+
+    showPicker('ffplx', ffplxdata);
+}
+
 
 function initList() {
     var xml = '<?xml version= "1.0" ?>';
@@ -118,7 +136,7 @@ function initList() {
                     li = li + '      <label>明细列表项</label>';
                     li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
                     li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
+                    li = li + '   <div class="mui-input-row" style="display:none;">';
                     li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
                     li = li + '      <input type="text" id="fkhmc" name="fkhmc" placeholder="请填写客户名称"/>';
                     li = li + '   </div>';
@@ -158,11 +176,11 @@ function initList() {
                     li = li + '       <label for="fjs">件数</label>';
                     li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="0"/>';
                     li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
+                    li = li + '   <div class="mui-input-row"  style="display:none;">';
                     li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
                     li = li + '        <input type="date" id="ffhrq" name="ffhrq" />';
                     li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
+                    li = li + '   <div class="mui-input-row" style="display:none;">';
                     li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
                     li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" placeholder="请选择发票类型"/>';
                     li = li + '   </div>';
@@ -303,10 +321,7 @@ function mxItem(fkhmc, fcpdm, fcpmc, fggxh, fdw, ffhsl, fdj, fje, fzl, fjs, ffhr
         ffplx: ffplx,
         fbz: fbz,
         _check: function () {
-            if (!fkhmc){
-                mui.toast('请填写客户名称');
-                return null;
-            }
+            
             if (!ffhsl) {
                 mui.toast('请填写发货数量');
                 return null;
@@ -319,14 +334,8 @@ function mxItem(fkhmc, fcpdm, fcpmc, fggxh, fdw, ffhsl, fdj, fje, fzl, fjs, ffhr
                 mui.toast('请填写装量');
                 return null;
             }
-            if (!ffhrq) {
-                mui.toast('请填写发货日期');
-                return null;
-            }
-            if (!ffplx) {
-                mui.toast('请选择发票类型');
-                return null;
-            }
+           
+         
             return mx;
         }
 
@@ -348,6 +357,10 @@ function initData(data, flag) {
     $("#fshr").val(item.收货人);
     $("#fshdz").val(item.收货地址);
     $("#flxfs").val(item.收货人联系方式);
+    $("#fsqlx").val(item.申请类型);
+    $("#fkhmc").val(item.客户名称);
+    $("#ffhsj").val(FormatterTimeYMS(item.发货时间));
+    $("#ffplx").val(item.发票类型);
     $("#fsl_total").val(item.合计数量);
     $("#fje_total").val(item.合计金额);
     $("#fzs_total").val(item.合计件数);
@@ -359,7 +372,7 @@ function initData(data, flag) {
         li = li + '      <label>明细列表项</label>';
         li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
         li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
+        li = li + '   <div class="mui-input-row" style="display:none;">';
         li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
         li = li + '      <input type="text" id="fkhmc" name="fkhmc" readonly="readonly" value="' + item_c[i].客户名称 + '"/>';
         li = li + '   </div>';
@@ -399,11 +412,11 @@ function initData(data, flag) {
         li = li + '       <label for="fjs">件数</label>';
         li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="' + item_c[i].件数 + '"/>';
         li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
+        li = li + '   <div class="mui-input-row"  style="display:none;">';
         li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
         li = li + '        <input type="date" id="ffhrq" name="ffhrq" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].发货时间 )+ '"/>';
         li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
+        li = li + '   <div class="mui-input-row" style="display:none;">';
         li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
         li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" value="' + item_c[i].发票类型 + '"/>';
         li = li + '   </div>';
@@ -464,6 +477,12 @@ function Save() {
     var fje_total = $("#fje_total").val();
     var fzs_total = $("#fzs_total").val();
 
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var ffhsj = $("#ffhsj").val();
+    var ffplx = $("#ffplx").val();
+
+
     if (!ftel) {
         mui.toast('请填写联系方式');
         return;
@@ -480,7 +499,22 @@ function Save() {
         mui.toast('请填写收货人联系方式');
         return;
     }
-
+    if (!fsqlx) {
+        mui.toast('请选择申请类型');
+        return;
+    }
+    if (!fkhmc) {
+        mui.toast('请填写客户名称');
+        return;
+    }
+    if (!ffhsj) {
+        mui.toast('请填写发货时间');
+        return;
+    }
+    if (!ffplx) {
+        mui.toast('请选择发票类型');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -534,15 +568,20 @@ function Save() {
             xml = xml + '     <收货人>' + fshr + '</收货人>';
             xml = xml + '     <收货地址>' + fshdz + '</收货地址>';
             xml = xml + '     <收货人联系方式>' + flxfs + '</收货人联系方式>';
+            xml = xml + '   <申请类型>' + fsqlx + '</申请类型>';
+            xml = xml + '   <客户名称>' + fkhmc + '</客户名称>';
+            xml = xml + '  <发货时间>' + ffhsj + '</发货时间>';
+            xml = xml + '  <发票类型>' + ffplx + '</发票类型>';
             xml = xml + '     <合计数量>' + fsl_total + '</合计数量>';
             xml = xml + '     <合计金额>' + fje_total + '</合计金额>';
             xml = xml + '     <合计件数>' + fzs_total + '</合计件数>';
+
             xml = xml + '    </医用材料公司_发货申请_主表>';
             for (var i = 0; i < mxlistArr.length;i++){
                 xml = xml + '      <医用材料公司_发货申请_子表>';
                 xml = xml + '   <RelationRowGuid>'+(i+1)+'</RelationRowGuid>';
                 xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
-                xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
+                //xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
                 xml = xml + '    <产品代码>' + mxlistArr[i].fcpdm + '</产品代码>';
                 xml = xml + '    <产品名称>' + mxlistArr[i].fcpmc + '</产品名称>';
                 xml = xml + '    <规格型号>' + mxlistArr[i].fggxh + '</规格型号>';
@@ -552,8 +591,8 @@ function Save() {
                 xml = xml + '    <金额>' + mxlistArr[i].fje + '</金额>';
                 xml = xml + '    <装量>' + mxlistArr[i].fzl + '</装量>';
                 xml = xml + '    <件数>' + mxlistArr[i].fjs + '</件数>';
-                xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
-                xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
+                //xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
+                //xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
                 xml = xml + '    <备注说明>' + mxlistArr[i].fbz + '</备注说明>';
                 xml = xml + '    </医用材料公司_发货申请_子表>';
             }
@@ -580,6 +619,11 @@ function reSave() {
     var fje_total = $("#fje_total").val();
     var fzs_total = $("#fzs_total").val();
 
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var ffhsj = $("#ffhsj").val();
+    var ffplx = $("#ffplx").val();
+
     if (!ftel) {
         mui.toast('请填写联系方式');
         return;
@@ -596,7 +640,22 @@ function reSave() {
         mui.toast('请填写收货人联系方式');
         return;
     }
-
+    if (!fsqlx) {
+        mui.toast('请选择申请类型');
+        return;
+    }
+    if (!fkhmc) {
+        mui.toast('请填写客户名称');
+        return;
+    }
+    if (!ffhsj) {
+        mui.toast('请填写发货时间');
+        return;
+    }
+    if (!ffplx) {
+        mui.toast('请选择发票类型');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -647,6 +706,10 @@ function reSave() {
             xml = xml + '     <收货人>' + fshr + '</收货人>';
             xml = xml + '     <收货地址>' + fshdz + '</收货地址>';
             xml = xml + '     <收货人联系方式>' + flxfs + '</收货人联系方式>';
+            xml = xml + '   <申请类型>' + fsqlx + '</申请类型>';
+            xml = xml + '   <客户名称>' + fkhmc + '</客户名称>';
+            xml = xml + '  <发货时间>' + ffhsj + '</发货时间>';
+            xml = xml + '  <发票类型>' + ffplx + '</发票类型>';
             xml = xml + '     <合计数量>' + fsl_total + '</合计数量>';
             xml = xml + '     <合计金额>' + fje_total + '</合计金额>';
             xml = xml + '     <合计件数>' + fzs_total + '</合计件数>';
@@ -655,7 +718,7 @@ function reSave() {
                 xml = xml + '      <医用材料公司_发货申请_子表>';
                 xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
                 xml = xml + '    <RowPrimaryKeys></RowPrimaryKeys>';
-                xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
+                //xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
                 xml = xml + '    <产品代码>' + mxlistArr[i].fcpdm + '</产品代码>';
                 xml = xml + '    <产品名称>' + mxlistArr[i].fcpmc + '</产品名称>';
                 xml = xml + '    <规格型号>' + mxlistArr[i].fggxh + '</规格型号>';
@@ -665,8 +728,8 @@ function reSave() {
                 xml = xml + '    <金额>' + mxlistArr[i].fje + '</金额>';
                 xml = xml + '    <装量>' + mxlistArr[i].fzl + '</装量>';
                 xml = xml + '    <件数>' + mxlistArr[i].fjs + '</件数>';
-                xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
-                xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
+               // xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
+                //xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
                 xml = xml + '    <备注说明>' + mxlistArr[i].fbz + '</备注说明>';
                 xml = xml + '    </医用材料公司_发货申请_子表>';
             }
@@ -692,6 +755,10 @@ function hasRead() {
     var fsl_total = $("#fsl_total").val();
     var fje_total = $("#fje_total").val();
     var fzs_total = $("#fzs_total").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var ffhsj = $("#ffhsj").val();
+    var ffplx = $("#ffplx").val();
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -726,43 +793,7 @@ function hasRead() {
             xml = xml + '<PID>' + pid + '</PID>';
             xml = xml + '<Comment>' + comment + '</Comment>';
             xml = xml + '</Header>';
-            xml = xml + '<FormData>';
-
-            xml = xml + '     <医用材料公司_发货申请_主表>';
-            xml = xml + '     <单号>' + fbillno + '</单号>';
-            xml = xml + '     <申请人编号>' + fno + '</申请人编号>';
-            xml = xml + '     <申请人>' + fname + '</申请人>';
-            xml = xml + '    <所属区域>' + fdept + '</所属区域>';
-            xml = xml + '     <申请日期>' + fdate + '</申请日期>';
-            xml = xml + '     <联系方式>' + ftel + '</联系方式>';
-            xml = xml + '     <收货人>' + fshr + '</收货人>';
-            xml = xml + '     <收货地址>' + fshdz + '</收货地址>';
-            xml = xml + '     <收货人联系方式>' + flxfs + '</收货人联系方式>';
-            xml = xml + '     <合计数量>' + fsl_total + '</合计数量>';
-            xml = xml + '     <合计金额>' + fje_total + '</合计金额>';
-            xml = xml + '     <合计件数>' + fzs_total + '</合计件数>';
-            xml = xml + '    </医用材料公司_发货申请_主表>';
-            for (var i = 0; i < mxlistArr.length; i++) {
-                xml = xml + '      <医用材料公司_发货申请_子表>';
-                xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
-                xml = xml + '    <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
-                xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
-                xml = xml + '    <产品代码>' + mxlistArr[i].fcpdm + '</产品代码>';
-                xml = xml + '    <产品名称>' + mxlistArr[i].fcpmc + '</产品名称>';
-                xml = xml + '    <规格型号>' + mxlistArr[i].fggxh + '</规格型号>';
-                xml = xml + '    <单位>' + mxlistArr[i].fdw + '</单位>';
-                xml = xml + '     <发货数量>' + mxlistArr[i].ffhsl + '</发货数量>';
-                xml = xml + '    <单价>' + mxlistArr[i].fdj + '</单价>';
-                xml = xml + '    <金额>' + mxlistArr[i].fje + '</金额>';
-                xml = xml + '    <装量>' + mxlistArr[i].fzl + '</装量>';
-                xml = xml + '    <件数>' + mxlistArr[i].fjs + '</件数>';
-                xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
-                xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
-                xml = xml + '    <备注说明>' + mxlistArr[i].fbz + '</备注说明>';
-                xml = xml + '    </医用材料公司_发货申请_子表>';
-            }
-
-            xml = xml + '</FormData>';
+          
             xml = xml + '</XForm>';
             PostXml(xml);
         }
@@ -785,6 +816,11 @@ function AgreeOrConSign() {
     var fsl_total = $("#fsl_total").val();
     var fje_total = $("#fje_total").val();
     var fzs_total = $("#fzs_total").val();
+
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var ffhsj = $("#ffhsj").val();
+    var ffplx = $("#ffplx").val();
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -894,6 +930,10 @@ function AgreeOrConSign() {
             xml = xml + '     <收货人>' + fshr + '</收货人>';
             xml = xml + '     <收货地址>' + fshdz + '</收货地址>';
             xml = xml + '     <收货人联系方式>' + flxfs + '</收货人联系方式>';
+            xml = xml + '   <申请类型>' + fsqlx + '</申请类型>';
+            xml = xml + '   <客户名称>' + fkhmc + '</客户名称>';
+            xml = xml + '  <发货时间>' + ffhsj + '</发货时间>';
+            xml = xml + '  <发票类型>' + ffplx + '</发票类型>';
             xml = xml + '     <合计数量>' + fsl_total + '</合计数量>';
             xml = xml + '     <合计金额>' + fje_total + '</合计金额>';
             xml = xml + '     <合计件数>' + fzs_total + '</合计件数>';
@@ -902,7 +942,7 @@ function AgreeOrConSign() {
                 xml = xml + '      <医用材料公司_发货申请_子表>';
                 xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
                 xml = xml + '    <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
-                xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
+                //xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
                 xml = xml + '    <产品代码>' + mxlistArr[i].fcpdm + '</产品代码>';
                 xml = xml + '    <产品名称>' + mxlistArr[i].fcpmc + '</产品名称>';
                 xml = xml + '    <规格型号>' + mxlistArr[i].fggxh + '</规格型号>';
@@ -912,8 +952,8 @@ function AgreeOrConSign() {
                 xml = xml + '    <金额>' + mxlistArr[i].fje + '</金额>';
                 xml = xml + '    <装量>' + mxlistArr[i].fzl + '</装量>';
                 xml = xml + '    <件数>' + mxlistArr[i].fjs + '</件数>';
-                xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
-                xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
+                //xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
+                //xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
                 xml = xml + '    <备注说明>' + mxlistArr[i].fbz + '</备注说明>';
                 xml = xml + '    </医用材料公司_发货申请_子表>';
             }
@@ -954,6 +994,10 @@ function AgreeOrConSign() {
         xml = xml + '     <收货人>' + fshr + '</收货人>';
         xml = xml + '     <收货地址>' + fshdz + '</收货地址>';
         xml = xml + '     <收货人联系方式>' + flxfs + '</收货人联系方式>';
+        xml = xml + '   <申请类型>' + fsqlx + '</申请类型>';
+        xml = xml + '   <客户名称>' + fkhmc + '</客户名称>';
+        xml = xml + '  <发货时间>' + ffhsj + '</发货时间>';
+        xml = xml + '  <发票类型>' + ffplx + '</发票类型>';
         xml = xml + '     <合计数量>' + fsl_total + '</合计数量>';
         xml = xml + '     <合计金额>' + fje_total + '</合计金额>';
         xml = xml + '     <合计件数>' + fzs_total + '</合计件数>';
@@ -962,7 +1006,7 @@ function AgreeOrConSign() {
             xml = xml + '      <医用材料公司_发货申请_子表>';
             xml = xml + '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
             xml = xml + '    <RowPrimaryKeys>itemid=' + itemidArr[i] + '</RowPrimaryKeys>';
-            xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
+            //xml = xml + '    <客户名称>' + mxlistArr[i].fkhmc + '</客户名称>';
             xml = xml + '    <产品代码>' + mxlistArr[i].fcpdm + '</产品代码>';
             xml = xml + '    <产品名称>' + mxlistArr[i].fcpmc + '</产品名称>';
             xml = xml + '    <规格型号>' + mxlistArr[i].fggxh + '</规格型号>';
@@ -972,8 +1016,8 @@ function AgreeOrConSign() {
             xml = xml + '    <金额>' + mxlistArr[i].fje + '</金额>';
             xml = xml + '    <装量>' + mxlistArr[i].fzl + '</装量>';
             xml = xml + '    <件数>' + mxlistArr[i].fjs + '</件数>';
-            xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
-            xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
+           // xml = xml + '    <发货时间>' + mxlistArr[i].ffhrq + '</发货时间>';
+            //xml = xml + '    <发票类型>' + mxlistArr[i].ffplx + '</发票类型>';
             xml = xml + '    <备注说明>' + mxlistArr[i].fbz + '</备注说明>';
             xml = xml + '    </医用材料公司_发货申请_子表>';
         }

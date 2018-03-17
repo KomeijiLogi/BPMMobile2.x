@@ -910,6 +910,11 @@
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowUndoDetail.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\index.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\css\app.3bef6f992ed7301e3e696a575e613f94.css" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\app.a7f72204eef75ba59e92.js" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\manifest.3ad1d5771e9b13dbdad2.js" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\vendor.d0b585eafdc7cb6dea69.js" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\common.js" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\FlowAskDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\FlowCreate.html" />
@@ -1267,6 +1272,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="fonts\mui.ttf" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\css\app.3bef6f992ed7301e3e696a575e613f94.css.map" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\app.a7f72204eef75ba59e92.js.map" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\manifest.3ad1d5771e9b13dbdad2.js.map" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\vendor.d0b585eafdc7cb6dea69.js.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\calendar-selector.js" />
