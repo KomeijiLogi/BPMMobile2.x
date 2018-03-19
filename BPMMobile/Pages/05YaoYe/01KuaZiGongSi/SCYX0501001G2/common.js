@@ -217,6 +217,10 @@ var menu = document.getElementById("menu");
 var menuWrapperClassList = menuWrapper.classList;
 var backdrop = document.getElementById("menu-backdrop");
 
+var menuWrapper2 = document.getElementById("menu-wrapper2");
+var menu2 = document.getElementById("menu2");
+var menuWrapperClassList2 = menuWrapper2.classList;
+
 
 function tapEvent() {
     //所属区域
@@ -469,7 +473,7 @@ function tapEvent() {
     $("#tjmx_fp").on('tap', () => {
         check_event_flag = 2;
         getProcedureMsg(1);
-
+        toggleMenu2();
 
        
     });
@@ -537,6 +541,13 @@ function tapEvent() {
     $("#cancel_menu").on('tap', () => {
         toggleMenu();
     });
+    $("#confirm_menu_2").on('tap', () => {
+
+    });
+
+    $("#cancel_menu_2").on('tap', () => {
+        toggleMenu2();
+    });
 
     $("#fwlbm_menu").on('tap', () => {
         
@@ -564,6 +575,31 @@ function toggleMenu() {
         document.body.classList.add('menu-open');
         menuWrapper.className = 'menu-wrapper fade-in-down animated mui-active';
         menu.className = 'menu bounce-in-down animated';
+        //backdrop.style.opacity = 1;
+
+    }
+    setTimeout(function () {
+        busying = false;
+    }, 500);
+}
+function toggleMenu2() {
+    if (busying) {
+        return;
+    }
+    busying = true;
+    if (menuWrapperClassList2.contains('mui-active')) {
+        document.body.classList.remove('menu-open');
+        menuWrapper2.className = 'menu-wrapper fade-out-up animated';
+        menu2.className = 'menu bounce-out-up animated';
+        setTimeout(function () {
+            //backdrop.style.opacity = 0;
+            menuWrapper2.classList.add('hidden');
+
+        }, 500);
+    } else {
+        document.body.classList.add('menu-open');
+        menuWrapper2.className = 'menu-wrapper fade-in-down animated mui-active';
+        menu2.className = 'menu bounce-in-down animated';
         //backdrop.style.opacity = 1;
 
     }
@@ -941,3 +977,108 @@ function deleteItem(context) {
     });
 }
 
+
+function nodeControllerExp(NodeName) {
+
+    /**
+    *      特殊节点字段控制说明:
+    *      商务专员 可修改`实际发货数量`，填写`EAS出库单号`
+    *      核算专员 可修改`实际发货数量`
+    *      发票专员 可修改`实际发货数量`，填写`发票号`
+    *      商务专员2 可选择`快递公司`，修改`发货日期开始、截止`
+    *      
+    **/
+
+    //提交人
+    if (NodeName == '开始') {
+        
+        //商务专员
+    } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
+
+        $("#fckdh").attr('placeholder', '请填写出库单号');
+        $("#fckdh").removeAttr('readonly');
+
+        $("#mxlist_fh").find("#fsjfhsl").removeAttr('readonly');
+
+        $("#mxlist_fh").find("input[type='number']").on('input', function () {
+
+            calcPriceShip(this);
+        });
+
+        //核算专员
+    } else if (String(NodeName).match('核算专员') != null) {
+
+        $("#mxlist_fh").find("#fsjfhsl").removeAttr('readonly');
+
+        $("#mxlist_fh").find("input[type='number']").on('input', function () {
+
+            calcPriceShip(this);
+        });
+
+        //发票专员
+    } else if (String(NodeName).match('开票专员') != null) {
+
+        $("#ffph").attr('placeholder', '请填写发票号');
+        $("#ffph").removeAttr('readonly');
+
+        //商务专员2
+    } else if (String(NodeName).match(/\d+/g) != null && String(NodeName).match('商务') != null) {
+
+        $("#fkd_gs").attr('placeholder', '请选择快递公司');
+        var fkd_gsdata = [
+            {
+                value: '',
+                text: '圆通'
+            },
+            {
+                value: '',
+                text: 'EMS'
+            },
+            {
+                value: '',
+                text: '顺丰'
+            }
+        ];
+
+
+        showPicker('fkd_gs', fkd_gsdata);
+
+        $("#fkd_dh").attr('placeholder', '请填写快递单号');
+        $("#fkd_dh").removeAttr('readonly');
+
+
+        $("#mxlist_fh").find("#fsjfhsl").removeAttr('readonly');
+
+        $("#mxlist_fh").find("input[type='number']").on('input', function () {
+
+            calcPriceShip(this);
+        });
+
+
+    }
+
+}
+
+class MxItem_trad {
+
+}
+class MxItem_bill {
+
+}
+
+function Save() {
+
+}
+
+function reSave() {
+
+}
+
+function hasRead() {
+
+}
+
+function AgreeOrConSign() {
+
+}
+ 
