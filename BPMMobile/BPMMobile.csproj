@@ -910,6 +910,11 @@
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\08YiYongCaiLiao\SCYX0208003\FlowUndoDetail.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\common.js" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowAskDetail.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowCreate.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowDoneDetail.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowUndoDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\index.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\css\app.3bef6f992ed7301e3e696a575e613f94.css" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\app.a7f72204eef75ba59e92.js" />

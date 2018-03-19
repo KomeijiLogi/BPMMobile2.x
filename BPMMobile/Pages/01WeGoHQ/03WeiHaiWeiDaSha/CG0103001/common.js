@@ -94,7 +94,51 @@ function tapEvent() {
     });
 
 }
+function initCheckboxMsg() {
 
+    var xml = `<?xml version= "1.0" ?>
+                <Requests>
+                <Params>
+                <DataSource>BPM_WEGO</DataSource> 
+                <ID>erpcloud_威海卫大厦采购申请单</ID>
+                <Type>1</Type>
+                <Method>GetUserDataProcedure</Method>
+                <ProcedureName>erpcloud_威海卫大厦采购申请单</ProcedureName> 
+                <Filter>
+                </Filter>
+                </Params>
+                </Requests>
+    `;
+    $.ajax({
+        type: "POST",
+        url: "/api/bpm/DataProvider",
+        data: { '': xml },
+
+        beforeSend: function (XHR) {
+            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        }
+
+    }).done((data) => {
+        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+        console.log(provideData);
+        var items = provideData.Tables[0].Rows;
+        var li = ``;
+        for (let item of items) {
+            li += `
+                   <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+                      <input type="checkbox" id="checkbox" data-fpm="${item.FNAME_L2}" data-fbm="${item.FNUMBER}" 
+                         data-funit="${item.UNIT}" data-fkcl="${item.FQTY}" data-fgg="${item.FMODEL}"/>
+                       ${item.FNAME_L2}
+                   </li>   
+                    `;
+            $("#datalist").append(li);
+        }
+    }).fail((e) => {
+        console.log(e);
+    }).then(() => {
+        prepIndexedList();
+    });
+}
 //索引列表准备前置
 function prepIndexedList() {
 
@@ -109,17 +153,34 @@ function prepIndexedList() {
     done.addEventListener('tap', function () {
         var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
         var checkedValues = [];
-
+        var checkedEls = [];  //存放选中元素的数组
         checkboxArray.forEach(function (box) {
             if (box.checked) {
                 checkedValues.push(box.parentNode.innerText);
+
+                var checkedEl = {
+                    fpm: $(box).data('fpm'),
+                    fbm: $(box).data('fbm'),
+                    funit: $(box).data('funit'),
+                    fkcl: $(box).data('fkcl'),
+                    fgg: $(box).data('fgg')
+                };
+                checkedEls.push(checkedEl);
+
+
                 //取消选中，防止再次进入列表中会选中某一项
                 box.checked = !box.checked;
+                
 
             }
         });
         if (checkedValues.length > 0) {
-           
+            for (let i in checkedEls) {
+                var li = `
+
+                 `;
+            }
+
             $("#selector").hide();
             $("#wrapper").show();
         } else {
@@ -145,51 +206,7 @@ function prepIndexedList() {
     });
 }
 
-function initCheckboxMsg() {
 
-    var xml = `<?xml version= "1.0" ?>
-                <Requests>
-                <Params>
-                <DataSource>BPM_WEGO</DataSource> 
-                <ID>erpcloud_威海卫大厦采购申请单</ID>
-                <Type>1</Type>
-                <Method>GetUserDataProcedure</Method>
-                <ProcedureName>erpcloud_威海卫大厦采购申请单</ProcedureName> 
-                <Filter>
-                </Filter>
-                </Params>
-                </Requests>
-    `;
-    $.ajax({
-        type: "POST",
-        url: "/api/bpm/DataProvider",
-        data: { '': xml },
-
-        beforeSend: function (XHR) {
-            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-        }
-
-    }).done( (data)=> {
-        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
-        console.log(provideData);
-        var items = provideData.Tables[0].Rows;
-        var li = ``;
-        for (let item of items) {
-            li += `
-                   <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
-                      <input type="checkbox" id="checkbox" data-fpm="${item.FNAME_L2}" data-fbm="${item.FNUMBER}" 
-                         data-funit="${item.UNIT}" data-fkcl="${item.FQTY}" data-fgg="${item.FMODEL}"/>
-                       ${item.FNAME_L2}
-                   </li>   
-                    `;
-           // $("#datalist").append(li);
-        }
-        }).fail((e) => {
-            console.log(e);
-     }).then(() => {
-            prepIndexedList();
-     });
-}
 
 function initData(data, flag) {
     var item = data.FormDataSet.BPM_WHWWZCGSQ_A[0];
@@ -283,5 +300,19 @@ function initData(data, flag) {
 
 
 function nodeControllerExp(NodeName) {
+
+}
+
+function Save() {
+
+}
+
+function reSave() {
+
+}
+function hasRead() {
+
+}
+function AgreeOrConSign() {
 
 }
