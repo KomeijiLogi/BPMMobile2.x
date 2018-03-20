@@ -457,6 +457,7 @@ function tapEvent() {
 
     ];
     showPicker('ffh_bzxs_menu', ffh_bzxsdata);
+    showPicker('ffp_bzxs_menu', ffh_bzxsdata);
 
     $("#fkhmc").on('tap', () => {
         check_event_flag = 0;
@@ -495,14 +496,35 @@ function tapEvent() {
         calcPriceShip(this);
     });
 
+    $("#menu2").find("input[type='number']").on('input', function () {
+
+        calcPriceBill(this);
+    });
+
     $("#confirm_menu").on('tap', () => {
          //校验必填项
-
+        if (!$("#fwlbm_menu").val()){
+            mui.toast('请选择物料');
+            return;
+        }
+        if (!$("#ffh_bzxs_menu").val()) {
+            mui.toast('请选择包装形式');
+            return;
+        }
+        if (!$("#ffh_dj_menu").val()) {
+            mui.toast('请填写含税单价');
+            return;
+        }
+        if (!$("#ffh_sl_menu").val()) {
+            mui.toast('请填写申请数量');
+            return;
+        }
+       
 
         //弹出层输入数据绑定生成子表并添加到头部，始终保持头部是最新加的
        
         var li = `
-           <div class="mui-card">
+           <div class="mui-card" id="mx">
               <div class="mui-input-row itemtitle">
                    <label></label>    
                    <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
@@ -514,17 +536,18 @@ function tapEvent() {
               </div> 
               <div class="mui-row">
                  <input type="text" id="fdw" name="fdw" readonly placeholder="单位" value="${$("#fdw_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="hidden" id="fdwbm" name="fdwbm" placeholder="单位编码" value="${$("#fdwbm_menu").val()}"/> 
                  <input type="text" id="fzl" name="fzl" readonly placeholder="装量" value="${$("#fzl_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
                  <input type="text" id="ffh_bzxs" name="ffh_bzxs" readonly placeholder="包装形式" value="${$("#ffh_bzxs_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
               </div> 
               <div class="mui-row">
-                 <input type="text" id="ffh_dj" name="ffh_dj" readonly placeholder="含税单价" value="${$("#ffh_dj_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
-                 <input type="text" id="ffh_sl" name="ffh_sl" readonly placeholder="申请数量" value="${$("#ffh_sl_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
-                 <input type="text" id="fsjfhsl" name="fsjfhsl" readonly placeholder="实际发货数量" value="${$("#fsjfhsl_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="number" id="ffh_dj" name="ffh_dj" readonly placeholder="含税单价" value="${$("#ffh_dj_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="number" id="ffh_sl" name="ffh_sl" readonly placeholder="申请数量" value="${$("#ffh_sl_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="number" id="fsjfhsl" name="fsjfhsl" readonly placeholder="实际发货数量" value="${$("#fsjfhsl_menu").val()}" style="width:33%;" class="mui-col-xs-4"/>
               </div> 
                <div class="mui-row">
-                 <input type="text" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${$("#ffh_je_menu").val()}" style="width:33%;" class="mui-col-xs-6"/>
-                 <input type="text" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${$("#ffh_js_menu").val()}" style="width:33%;" class="mui-col-xs-6"/>
+                 <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${$("#ffh_je_menu").val()}" style="width:33%;" class="mui-col-xs-6"/>
+                 <input type="number" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${$("#ffh_js_menu").val()}" style="width:33%;" class="mui-col-xs-6"/>
                  
               </div>  
            </div>  
@@ -542,7 +565,50 @@ function tapEvent() {
         toggleMenu();
     });
     $("#confirm_menu_2").on('tap', () => {
+        //校验必填项
+        if (!$("#ffp_wlmc_menu").val()) {
+            mui.toast('请选择物料');
+            return;
+        }
+        if (!$("#ffp_bzxs_menu").val()) {
+            mui.toast('请选择包装形式');
+            return;
+        }
+        if (!$("#ffp_dj_menu").val()) {
+            mui.toast('请填写含税单价');
+            return;
+        }
+        if (!$("#ffp_sl_menu").val()) {
+            mui.toast('请填写数量');
+            return;
+        }
+       
+        var li = `
+                <div class="mui-card" id="mx">
+                  <div class="mui-input-row itemtitle">
+                       <label></label>    
+                       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                  </div>
+                  <div class="mui-row">
+                       <input type="text" id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称" value="${$("#ffp_wlmc_menu").val()}" class="mui-col-xs-4" style="width:33%;"/>
+                       <input type="text" id="ffp_ggxh" name="ffp_ggxh" readonly placeholder="规格型号" value="${$("#ffp_ggxh_menu").val()}" class="mui-col-xs-4" style="width:33%;"/>   
+                       <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${$("#ffp_bzxs_menu").val()}"  class="mui-col-xs-4" style="width:33%;"/>
+                  </div>  
+                  <div class="mui-row">
+                       <input type="text" id="ffp_dw" name="ffp_dw" readonly placeholder="单位" value="${$("#ffp_dw_menu").val()}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_dj" name="ffp_dj" readonly placeholder="含税单价" value="${$("#ffp_dj_menu").val()}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_sl" name="ffp_sl" readonly placeholder="数量" value="${$("#ffp_sl_menu").val()}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${$("#ffp_je_menu").val()}" class="mui-col-xs-3" style="width:25%;"/>
+                  </div>
+                </div>  
+                 `;
 
+        $("#mxlist_fp").prepend(li);   
+        calcTotalBill();
+        toggleMenu2();
+        $("#menu2").find('input').each(function () {
+            $(this).val('');
+        });
     });
 
     $("#cancel_menu_2").on('tap', () => {
@@ -551,6 +617,11 @@ function tapEvent() {
 
     $("#fwlbm_menu").on('tap', () => {
         
+        $("#wrapper").hide();
+        $("#selector").show();
+        prepIndexedList();
+    });
+    $("#ffp_wlmc_menu").on('tap', () => {
         $("#wrapper").hide();
         $("#selector").show();
         prepIndexedList();
@@ -709,6 +780,9 @@ function checkEvent() {
             $("#fdwbm_menu").val(checkedElementsTrad[0].fdwbm);
             $("#fzl_menu").val(checkedElementsTrad[0].fzl);
         } else if (check_event_flag == 2) {
+            $("#ffp_wlmc_menu").val(checkedElementsBill[0].fwlmc);
+            $("#ffp_ggxh_menu").val(checkedElementsBill[0].fggxh);
+            $("#ffp_dw_menu").val(checkedElementsBill[0].fdw);
 
         }
     }
@@ -928,8 +1002,8 @@ function calcTotalShip() {
 
 //计算发票子表
 function calcPriceBill(context) {
-    var ffp_dj = parseFloat($(context).parent().parent().find("#ffp_dj").val()).toFixed(6);
-    var ffp_sl = parseFloat($(context).parent().parent().find("#ffp_sl").val());
+    var ffp_dj = parseFloat($(context).parent().parent().find("#ffp_dj_menu").val()).toFixed(6);
+    var ffp_sl = parseFloat($(context).parent().parent().find("#ffp_sl_menu").val());
 
     if (!ffp_dj) {
         ffp_dj = 0.000000;
@@ -939,9 +1013,9 @@ function calcPriceBill(context) {
     }
 
     var ffp_je = ffp_dj * ffp_sl;
-    $(context).parent().parent().find("#ffp_je").val(ffp_je);
+    $("#ffp_je_menu").val(ffp_je);
 
-    calcTotalBill();
+    //calcTotalBill();
 }
 
 //计算发票总计
@@ -977,6 +1051,125 @@ function deleteItem(context) {
     });
 }
 
+var itemidArr1 = new Array();
+var itemidArr2 = new Array();
+//加载页面信息
+function initData(data, flag) {
+    var item_a = data.FormDataSet.BPM_WGYYFHFPSQ_A[0];
+    if (flag) {
+
+        $("#taskId").val(item_a.TaskID);
+        $("#stepId").val(stepId);
+        $("#fbillno").val(item_a.fbillno);
+    }
+    $("#fname").val(item_a.fname);
+    $("#fqy").val(item_a.fqy);
+    $("#fsqrq").val(FormatterTimeYMS(item_a.fsqrq));
+    $("#fsqlx").val(item_a.fsqlx);
+    $("#fkhmc").val(item_a.fkhmc);
+    $("#fkhmc").data('fkzcc', item_a.fkzcc);
+    $("#fkhmc").data('fkhbm', item_a.fkhbm);
+    //$("#fzjsj").val(item_a.fzjsj);
+    $("#fzjsj").data('fxszg', item_a.fxszg);
+    for (var n = 0; n < fzjsjdata.length; n++) {
+        if (String(fzjsjdata[n].value).match(item_a.fxszg) != null) {
+            $("#fzjsj").val(fzjsjdata[n].text);
+        }
+    }
+    $("#fsh_dz").val(item_a.fsh_dz);
+    $("#fsh_name").val(item_a.fsh_name);
+    $("#fsh_tel").val(item_a.fsh_tel);
+    $("#fdhrq").val(FormatterTimeYMS(item_a.fdhrq));
+    $("#fkhlx").val(item_a.fkhlx);
+    $("#fdqqk").val(item_a.fdqqk);
+    $("#fcsxq").val(item_a.fcsxq);
+    if (item_a.fcsxq == '是') {
+        $("#fcsxqd").addClass('mui-active');
+    }
+
+    $("#fckdh").val(item_a.fckdh);
+
+    //发货部分
+    $("#fhj_fhsl").val(item_a.fhj_fhsl);
+    $("#fsjfhsltotal").val(item_a.fsjfhsltotal);
+    $("#fhj_fhje").val(item_a.fhj_fhje);
+    $("#fhj_fhjs").val(item_a.fhj_fhjs);
+    $("#ffh_bz").val(item_a.ffh_bz);
+    var item_b1 = data.FormDataSet.BPM_WGYYFHFPSQ_B1;
+    for (var i = 0; i < item_b1.length; i++) {
+        itemidArr1.push(item_b1[i].itemid);
+        var li = `
+           <div class="mui-card" id="mx">
+              <div class="mui-input-row itemtitle">
+                   <label></label>    
+                   <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+              </div>
+              <div class="mui-row">
+                 <input type="text" id="fwlbm" name="fwlbm" readonly placeholder="物料编码" value="${item_b1[i].ffh_wlbm }" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="text" id="fwlmc" name="fwlmc" readonly placeholder="物料名称" value="${item_b1[i].ffh_wlmc}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="text" id="fggxh" name="fggxh" readonly placeholder="规格型号" value="${item_b1[i].ffh_ggxh}" style="width:33%;" class="mui-col-xs-4"/>
+              </div> 
+              <div class="mui-row">
+                 <input type="text" id="fdw" name="fdw" readonly placeholder="单位" value="${item_b1[i].ffh_dw}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="hidden" id="fdwbm" name="fdwbm" placeholder="单位编码" value="${item_b1[i].fjldwbm}"/>  
+                 <input type="text" id="fzl" name="fzl" readonly placeholder="装量" value="${item_b1[i].fzl}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="text" id="ffh_bzxs" name="ffh_bzxs" readonly placeholder="包装形式" value="${item_b1[i].ffh_bzxs}" style="width:33%;" class="mui-col-xs-4"/>
+              </div> 
+              <div class="mui-row">
+                 <input type="number" id="ffh_dj" name="ffh_dj" readonly placeholder="含税单价" value="${item_b1[i].ffh_dj}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="number" id="ffh_sl" name="ffh_sl" readonly placeholder="申请数量" value="${item_b1[i].ffh_sl}" style="width:33%;" class="mui-col-xs-4"/>
+                 <input type="number" id="fsjfhsl" name="fsjfhsl" readonly placeholder="实际发货数量" value="${item_b1[i].fsjfhsl }" style="width:33%;" class="mui-col-xs-4"/>
+              </div> 
+               <div class="mui-row">
+                 <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${item_b1[i].ffh_je}" style="width:33%;" class="mui-col-xs-6"/>
+                 <input type="number" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${item_b1[i].ffh_js}" style="width:33%;" class="mui-col-xs-6"/>
+                 
+              </div>  
+           </div>  
+         `;
+        $("#mxlist_fh").prepend(li);   
+    }
+    $("#ffplb").val(item_a.ffplb);
+    $("#fsj_name").val(item_a.fsj_name);
+    $("#fsj_tel").val(item_a.fsj_tel);
+    $("#fyjdz").val(item_a.fyjdz);
+    $("#fkd_gs").val(item_a.fkd_gs);
+    $("#fkd_dh").val(item_a.fkd_dh);
+    $("#ffph").val(item_a.ffph);
+    $("#fhrqks").val(FormatterTimeYMS(item_a.fhrqks));
+    $("#fhrqjs").val(FormatterTimeYMS(item_a.fhrqjs));
+
+    //发票部分 
+    $("#fhj_fpsl").val(item_a.fhj_fpsl);
+    $("#fhj_fpje").val(item_a.fhj_fpje);
+    $("#ffp_bz").val(item_a.ffp_bz);
+    var item_b2 = data.FormDataSet.BPM_WGYYFHFPSQ_B2;
+    for (var i = 0; i < item_b2.length; i++) {
+        itemidArr2.push(item_b2[i].itemid);
+        var li = `
+                <div class="mui-card" id="mx">
+                  <div class="mui-input-row itemtitle">
+                       <label></label>    
+                       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                  </div>
+                  <div class="mui-row">
+                       <input type="text" id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称" value="${item_b2[i].ffp_wlmc}" class="mui-col-xs-4" style="width:33%;"/>
+                       <input type="text" id="ffp_ggxh" name="ffp_ggxh" readonly placeholder="规格型号" value="${item_b2[i].ffp_ggxh}" class="mui-col-xs-4" style="width:33%;"/>   
+                       <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${item_b2[i].ffp_bzxs}"  class="mui-col-xs-4" style="width:33%;"/>
+                  </div>  
+                  <div class="mui-row">
+                       <input type="text" id="ffp_dw" name="ffp_dw" readonly placeholder="单位" value="${item_b2[i].ffp_dw}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_dj" name="ffp_dj" readonly placeholder="含税单价" value="${item_b2[i].ffp_dj}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_sl" name="ffp_sl" readonly placeholder="数量" value="${item_b2[i].ffp_sl}" class="mui-col-xs-3" style="width:25%;"/>
+                       <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${item_b2[i].ffp_je}" class="mui-col-xs-3" style="width:25%;"/>
+                  </div>
+                </div>  
+                 `;
+
+        $("#mxlist_fp").prepend(li);   
+    }
+}
+
 
 function nodeControllerExp(NodeName) {
 
@@ -991,7 +1184,8 @@ function nodeControllerExp(NodeName) {
 
     //提交人
     if (NodeName == '开始') {
-        
+       
+
         //商务专员
     } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
@@ -1060,25 +1254,1107 @@ function nodeControllerExp(NodeName) {
 }
 
 class MxItem_trad {
-
+    constructor(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js) {
+        this.fwlbm = fwlbm;
+        this.fwlmc = fwlmc;
+        this.fggxh = fggxh;
+        this.fdw = fdw;
+        this.fdwbm = fdwbm;
+        this.fzl = fzl;
+        this.ffh_bzxs = ffh_bzxs;
+        this.ffh_dj = ffh_dj;
+        this.ffh_sl = ffh_sl;
+        this.fsjfhsl = fsjfhsl;
+        this.ffh_je = ffh_je;
+        this.ffh_js = ffh_js;
+    }
 }
 class MxItem_bill {
-
+    constructor(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je) {
+        this.ffp_wlmc = ffp_wlmc;
+        this.ffp_ggxh = ffp_ggxh;
+        this.ffp_dw = ffp_dw;
+        this.ffp_bzxs = ffp_bzxs;
+        this.ffp_dj = ffp_dj;
+        this.ffp_sl = ffp_sl;
+        this.ffp_je = ffp_je;
+    }
 }
 
 function Save() {
+  
+    var fname = $("#fname").val();
+    var fno = $("#fname").data('fno');
+    var fqy = $("#fqy").val();
+    var fsqrq = $("#fsqrq").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    var fkzcc = $("#fkhmc").data('fkzcc');
 
+    var fzjsj = $("#fzjsj").val();
+    var fxszg = $("#fzjsj").data('fxszg');
+
+    var fsh_dz = $("#fsh_dz").val();
+    var fsh_name = $("#fsh_name").val();
+    var fsh_tel = $("#fsh_tel").val();
+    var fdhrq = $("#fdhrq").val();
+    var fkhlx = $("#fkhlx").val();
+    var fdqqk = $("#fdqqk").val();
+    var fcsxq = $("#fcsxq").val();
+    var fckdh = $("#fckdh").val();
+    var fhj_fhsl = $("#fhj_fhsl").val();
+    var fsjfhsltotal = $("#fsjfhsltotal").val();
+    var fhj_fhje = $("#fhj_fhje").val();
+    var fhj_fhjs = $("#fhj_fhjs").val();
+
+    var mxflag = false;
+    var mxlistArrShip = new Array();
+    $("#mxlist_fh").find("#mx").each(function () {
+
+        var fwlbm = $(this).find("#fwlbm").val();
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fdw = $(this).find("#fdw").val();
+        var fdwbm = $(this).find("#fdwbm").val();
+        var fzl = $(this).find("#fzl").val();
+        var ffh_bzxs = $(this).find("#ffh_bzxs").val();
+        var ffh_dj = $(this).find("#ffh_dj").val();
+        var ffh_sl = $(this).find("#ffh_sl").val();
+        var fsjfhsl = $(this).find("#fsjfhsl").val();
+        var ffh_je = $(this).find("#ffh_je").val();
+        var ffh_js = $(this).find("#ffh_js").val();
+
+      
+
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        mxlistArrShip.push(mx);
+    });
+
+
+    var ffh_bz = $("#ffh_bz").val();
+    var ffplb = $("#ffplb").val();
+    var fsj_name = $("#fsj_name").val();
+    var fsj_tel = $("#fsj_tel").val();
+    var fyjdz = $("#fyjdz").val();
+    var fkd_gs = $("#fkd_gs").val();
+    var fkd_dh = $("#fkd_dh").val();
+    var ffph = $("#ffph").val();
+    var fhrqks = $("#fhrqks").val();
+    var fhrqjs = $("#fhrqjs").val();
+
+    var fhj_fpsl = $("#fhj_fpsl").val();
+    var fhj_fpje = $("#fhj_fpje").val();
+
+
+
+    var mxlistArrBill = new Array();
+
+    $("#mxlist_fp").find("#mx").each(function () {
+        var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        var ffp_ggxh = $(this).find("#ffp_ggxh").val();
+        var ffp_dw = $(this).find("#ffp_dw").val();
+        var ffp_bzxs = $(this).find("#ffp_bzxs").val();
+        var ffp_dj = $(this).find("#ffp_dj").val();
+        var ffp_sl = $(this).find("#ffp_sl").val();
+        var ffp_je = $(this).find("#ffp_je").val();
+
+        var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
+        mxlistArrBill.push(mx);
+    });
+
+    var ffp_bz = $("#ffp_bz").val();
+
+
+    //校验主表中必填项
+    if (!fqy) {
+        mui.toast('请选择所属区域');
+        return;
+    }
+    if (!fsqrq) {
+        mui.toast('请填写申请日期');
+        return;
+    }
+
+    if (!fsqlx) {
+        mui.toast('请选择申请类型');
+        return;
+    }
+
+    if (!fkhmc) {
+        mui.toast('请选择客户名称');
+        return;
+    }
+
+    if (String(fsqlx).match('发货') != null) {
+        if (!fzjsj) {
+            mui.toast('请选择直接上级');
+            return;
+        }
+        if (!fsh_name) {
+            mui.toast('请填写收货人');
+            return;
+        }
+        if (!fsh_tel) {
+            mui.toast('请填写收货人电话');
+            return;
+        }
+        if (!fdhrq) {
+            mui.toast('请填写到货日期');
+            return;
+        }
+        if (!fkhlx) {
+            mui.toast('请选择客户类型');
+            return;
+        }
+
+    }
+    if (String(fsqlx).match('发票') != null) {
+        if (!ffplb) {
+            mui.toast('请选择发票类别');
+            return;
+        }
+        if (!fsj_name) {
+            mui.toast('请填写收件人');
+            return;
+        }
+        if (!fsj_tel) {
+            mui.toast('请填写收件人电话');
+            return;
+        }
+        if (!fyjdz) {
+            mui.toast('请填写邮件地址');
+            return;
+        }
+        if (!fhrqks) {
+            mui.toast('请填写发货日期开始');
+            return;
+        }
+        if (!fhrqjs) {
+            mui.toast('请填写发货日期结束');
+            return;
+        }
+
+
+    }
+    var btnArry = ["取消", "确定"];
+    mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version= "1.0" ?>
+                           <XForm>
+                               <Header>
+                                   <Method>Post</Method>
+                                   <ProcessName>药业集团发货、发票开具申请</ProcessName>
+                                   <ProcessVersion>${version}</ProcessVersion>
+                                   <DraftGuid></DraftGuid>
+                                   <OwnerMemberFullName>${BPMOU}</OwnerMemberFullName>
+                                   <Action>提交</Action>
+                                   <Comment></Comment>
+                                   <InviteIndicateUsers></InviteIndicateUsers>
+                               </Header>
+                              <FormData>
+                      `;
+
+            xml += `<BPM_WGYYFHFPSQ_A>
+                        <fbillno>自动生成</fbillno>
+                        <fname>${fname}</fname>
+                        <fqy>${fqy}</fqy>
+                        <fsqrq>${fsqrq}</fsqrq>
+                        <fsqlx>${fsqlx}</fsqlx>
+                        <fkhbm>${fkhbm}</fkhbm>
+                        <fkczz>${fkzcc}</fkczz>
+                        <fkhmc>${fkhmc}</fkhmc>
+                        <fxszg>${fxszg}</fxszg>
+                        <fsh_dz>${fsh_dz}</fsh_dz>
+                        <fsh_name>${fsh_name}</fsh_name>
+                        <fsh_tel>${fsh_tel}</fsh_tel>
+                        <fdhrq>${fdhrq}</fdhrq>
+                        <fkhlx>${fkhlx}</fkhlx>
+                        <fdqqk>${fdqqk}</fdqqk>
+                        <fcsxq>${fcsxq}</fcsxq>
+                        <fckdh>${fckdh}</fckdh>
+                        <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
+                        <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
+                        <fhj_fhje>${fhj_fhje}</fhj_fhje>
+                        <fhj_fhjs>${fhj_fhjs}</fhj_fhjs>
+                        <ffh_bz>${ffh_bz}</ffh_bz>
+                        <ffplb>${ffplb}</ffplb>
+                        <fsj_name>${fsj_name}</fsj_name>
+                        <fsj_tel>${fsj_tel}</fsj_tel>
+                        <fyjdz>${fyjdz}</fyjdz>
+                        <fkd_gs>${fkd_gs}</fkd_gs>
+                        <fkd_dh>${fkd_dh}</fkd_dh>
+                        <ffph>${ffph}</ffph>
+                        <fhrqks>${fhrqks}</fhrqks>
+                        <fhrqjs>${fhrqjs}</fhrqjs>
+                        <fhj_fpsl>${fhj_fpsl}</fhj_fpsl>
+                        <fhj_fpje>${fhj_fpje}</fhj_fpje>
+                        <ffp_bz>${ffp_bz}</ffp_bz>
+                    </BPM_WGYYFHFPSQ_A>
+                   `;
+            if (mxlistArrShip.length != 0) {
+                for (var i = 0; i < mxlistArrShip.length; i++) {
+                    xml += `
+                           <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno>${(i + 1)}</fentyrno>
+                                <ffh_wlbm>${mxlistArrShip[i].fwlbm}</ffh_wlbm>
+                                <ffh_wlmc>${mxlistArrShip[i].fwlmc}</ffh_wlmc>
+                                <ffh_ggxh>${mxlistArrShip[i].fggxh}</ffh_ggxh>
+                                <ffh_dw>${mxlistArrShip[i].fdw}</ffh_dw>
+                                <fjldwbm>${mxlistArrShip[i].fdwbm}</fjldwbm>
+                                <fzl>${mxlistArrShip[i].fzl}</fzl>
+                                <ffh_bzxs>${mxlistArrShip[i].ffh_bzxs}</ffh_bzxs>
+                                <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
+                                <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
+                                <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
+                                <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                          `;
+                }
+            } else {
+                xml += `
+                     <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno></fentyrno>
+                                <ffh_wlbm></ffh_wlbm>
+                                <ffh_wlmc></ffh_wlmc>
+                                <ffh_ggxh></ffh_ggxh>
+                                <ffh_dw></ffh_dw>
+                                <fjldwbm></fjldwbm>
+                                <fzl></fzl>
+                                <ffh_bzxs></ffh_bzxs>
+                                <ffh_dj></ffh_dj>
+                                <ffh_sl></ffh_sl>
+                                <fsjfhsl></fsjfhsl>
+                                <ffh_je></ffh_je>
+                                <ffh_js></ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                      `;
+            }
+
+            if (mxlistArrBill.length != 0) {
+                for (var i = 0; i < mxlistArrBill.length; i++) {
+                    xml += `
+                       <BPM_WGYYFHFPSQ_B2>
+                            <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 + i)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>${(i + 1)}</fentryno>
+                            <ffp_wlmc>${mxlistArrBill[i].ffp_wlmc}</ffp_wlmc>
+                            <ffp_ggxh>${mxlistArrBill[i].ffp_ggxh}</ffp_ggxh>
+                            <ffp_dw>${mxlistArrBill[i].ffp_dw}</ffp_dw>
+                            <ffp_bzxs>${mxlistArrBill[i].ffp_bzxs}</ffp_bzxs>
+                            <ffp_dj>${mxlistArrBill[i].ffp_dj}</ffp_dj>
+                            <ffp_sl>${mxlistArrBill[i].ffp_sl}</ffp_sl>
+                            <ffp_je>${mxlistArrBill[i].ffp_je}</ffp_je>
+                        </BPM_WGYYFHFPSQ_B2>
+                          `;
+                }
+    
+            } else {
+                xml += `<BPM_WGYYFHFPSQ_B2>
+                              <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 )}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>1</fentryno>
+                            <ffp_wlmc></ffp_wlmc>
+                            <ffp_ggxh></ffp_ggxh>
+                            <ffp_dw></ffp_dw>
+                            <ffp_bzxs></ffp_bzxs>
+                            <ffp_dj></ffp_dj>
+                            <ffp_sl></ffp_sl>
+                            <ffp_je></ffp_je>    
+                        </BPM_WGYYFHFPSQ_B2>
+                       `;
+            }
+            xml += `</FormData>
+                     </XForm>
+                   `;
+            PostXml(xml);
+        }
+    });
 }
 
 function reSave() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var fname = $("#fname").val();
+    var fno = $("#fname").data('fno');
+    var fqy = $("#fqy").val();
+    var fsqrq = $("#fsqrq").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    var fkzcc = $("#fkhmc").data('fkzcc');
+
+    var fzjsj = $("#fzjsj").val();
+    var fxszg = $("#fzjsj").data('fxszg');
+
+    var fsh_dz = $("#fsh_dz").val();
+    var fsh_name = $("#fsh_name").val();
+    var fsh_tel = $("#fsh_tel").val();
+    var fdhrq = $("#fdhrq").val();
+    var fkhlx = $("#fkhlx").val();
+    var fdqqk = $("#fdqqk").val();
+    var fcsxq = $("#fcsxq").val();
+    var fckdh = $("#fckdh").val();
+    var fhj_fhsl = $("#fhj_fhsl").val();
+    var fsjfhsltotal = $("#fsjfhsltotal").val();
+    var fhj_fhje = $("#fhj_fhje").val();
+    var fhj_fhjs = $("#fhj_fhjs").val();
+
+    var mxflag = false;
+    var mxlistArrShip = new Array();
+    $("#mxlist_fh").find("#mx").each(function () {
+
+        var fwlbm = $(this).find("#fwlbm").val();
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fdw = $(this).find("#fdw").val();
+        var fdwbm = $(this).find("#fdwbm").val();
+        var fzl = $(this).find("#fzl").val();
+        var ffh_bzxs = $(this).find("#ffh_bzxs").val();
+        var ffh_dj = $(this).find("#ffh_dj").val();
+        var ffh_sl = $(this).find("#ffh_sl").val();
+        var fsjfhsl = $(this).find("#fsjfhsl").val();
+        var ffh_je = $(this).find("#ffh_je").val();
+        var ffh_js = $(this).find("#ffh_js").val();
+
+
+
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        mxlistArrShip.push(mx);
+    });
+
+
+    var ffh_bz = $("#ffh_bz").val();
+    var ffplb = $("#ffplb").val();
+    var fsj_name = $("#fsj_name").val();
+    var fsj_tel = $("#fsj_tel").val();
+    var fyjdz = $("#fyjdz").val();
+    var fkd_gs = $("#fkd_gs").val();
+    var fkd_dh = $("#fkd_dh").val();
+    var ffph = $("#ffph").val();
+    var fhrqks = $("#fhrqks").val();
+    var fhrqjs = $("#fhrqjs").val();
+
+    var fhj_fpsl = $("#fhj_fpsl").val();
+    var fhj_fpje = $("#fhj_fpje").val();
+
+
+
+    var mxlistArrBill = new Array();
+
+    $("#mxlist_fp").find("#mx").each(function () {
+        var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        var ffp_ggxh = $(this).find("#ffp_ggxh").val();
+        var ffp_dw = $(this).find("#ffp_dw").val();
+        var ffp_bzxs = $(this).find("#ffp_bzxs").val();
+        var ffp_dj = $(this).find("#ffp_dj").val();
+        var ffp_sl = $(this).find("#ffp_sl").val();
+        var ffp_je = $(this).find("#ffp_je").val();
+
+        var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
+        mxlistArrBill.push(mx);
+    });
+
+    var ffp_bz = $("#ffp_bz").val();
+
+
+    //校验主表中必填项
+    if (!fqy) {
+        mui.toast('请选择所属区域');
+        return;
+    }
+    if (!fsqrq) {
+        mui.toast('请填写申请日期');
+        return;
+    }
+
+    if (!fsqlx) {
+        mui.toast('请选择申请类型');
+        return;
+    }
+
+    if (!fkhmc) {
+        mui.toast('请选择客户名称');
+        return;
+    }
+
+    if (String(fsqlx).match('发货') != null) {
+        if (!fzjsj) {
+            mui.toast('请选择直接上级');
+            return;
+        }
+        if (!fsh_name) {
+            mui.toast('请填写收货人');
+            return;
+        }
+        if (!fsh_tel) {
+            mui.toast('请填写收货人电话');
+            return;
+        }
+        if (!fdhrq) {
+            mui.toast('请填写到货日期');
+            return;
+        }
+        if (!fkhlx) {
+            mui.toast('请选择客户类型');
+            return;
+        }
+
+    }
+    if (String(fsqlx).match('发票') != null) {
+        if (!ffplb) {
+            mui.toast('请选择发票类别');
+            return;
+        }
+        if (!fsj_name) {
+            mui.toast('请填写收件人');
+            return;
+        }
+        if (!fsj_tel) {
+            mui.toast('请填写收件人电话');
+            return;
+        }
+        if (!fyjdz) {
+            mui.toast('请填写邮件地址');
+            return;
+        }
+        if (!fhrqks) {
+            mui.toast('请填写发货日期开始');
+            return;
+        }
+        if (!fhrqjs) {
+            mui.toast('请填写发货日期结束');
+            return;
+        }
+
+
+    }
+    var btnArry = ["取消", "确定"];
+    mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version="1.0"?>
+                         <XForm>
+                          <Header>
+                          <Method>Process</Method>
+                          <PID>${pid}</PID>
+                          <Action>提交</Action>
+                          <Comment></Comment>
+                          <InviteIndicateUsers></InviteIndicateUsers>
+                          </Header>
+                      <FormData>
+                      `;
+            xml += `<BPM_WGYYFHFPSQ_A>
+                        <fbillno>${fbillno}</fbillno>
+                        <fname>${fname}</fname>
+                        <fqy>${fqy}</fqy>
+                        <fsqrq>${fsqrq}</fsqrq>
+                        <fsqlx>${fsqlx}</fsqlx>
+                        <fkhbm>${fkhbm}</fkhbm>
+                        <fkczz>${fkzcc}</fkczz>
+                        <fkhmc>${fkhmc}</fkhmc>
+                        <fxszg>${fxszg}</fxszg>
+                        <fsh_dz>${fsh_dz}</fsh_dz>
+                        <fsh_name>${fsh_name}</fsh_name>
+                        <fsh_tel>${fsh_tel}</fsh_tel>
+                        <fdhrq>${fdhrq}</fdhrq>
+                        <fkhlx>${fkhlx}</fkhlx>
+                        <fdqqk>${fdqqk}</fdqqk>
+                        <fcsxq>${fcsxq}</fcsxq>
+                        <fckdh>${fckdh}</fckdh>
+                        <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
+                        <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
+                        <fhj_fhje>${fhj_fhje}</fhj_fhje>
+                        <fhj_fhjs>${fhj_fhjs}</fhj_fhjs>
+                        <ffh_bz>${ffh_bz}</ffh_bz>
+                        <ffplb>${ffplb}</ffplb>
+                        <fsj_name>${fsj_name}</fsj_name>
+                        <fsj_tel>${fsj_tel}</fsj_tel>
+                        <fyjdz>${fyjdz}</fyjdz>
+                        <fkd_gs>${fkd_gs}</fkd_gs>
+                        <fkd_dh>${fkd_dh}</fkd_dh>
+                        <ffph>${ffph}</ffph>
+                        <fhrqks>${fhrqks}</fhrqks>
+                        <fhrqjs>${fhrqjs}</fhrqjs>
+                        <fhj_fpsl>${fhj_fpsl}</fhj_fpsl>
+                        <fhj_fpje>${fhj_fpje}</fhj_fpje>
+                        <ffp_bz>${ffp_bz}</ffp_bz>
+                    </BPM_WGYYFHFPSQ_A>
+                   `;
+            if (mxlistArrShip.length != 0) {
+                for (var i = 0; i < mxlistArrShip.length; i++) {
+                    xml += `
+                           <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno>${(i + 1)}</fentyrno>
+                                <ffh_wlbm>${mxlistArrShip[i].fwlbm}</ffh_wlbm>
+                                <ffh_wlmc>${mxlistArrShip[i].fwlmc}</ffh_wlmc>
+                                <ffh_ggxh>${mxlistArrShip[i].fggxh}</ffh_ggxh>
+                                <ffh_dw>${mxlistArrShip[i].fdw}</ffh_dw>
+                                <fjldwbm>${mxlistArrShip[i].fdwbm}</fjldwbm>
+                                <fzl>${mxlistArrShip[i].fzl}</fzl>
+                                <ffh_bzxs>${mxlistArrShip[i].ffh_bzxs}</ffh_bzxs>
+                                <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
+                                <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
+                                <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
+                                <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                          `;
+                }
+            } else {
+                xml += `
+                     <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno></fentyrno>
+                                <ffh_wlbm></ffh_wlbm>
+                                <ffh_wlmc></ffh_wlmc>
+                                <ffh_ggxh></ffh_ggxh>
+                                <ffh_dw></ffh_dw>
+                                <fjldwbm></fjldwbm>
+                                <fzl></fzl>
+                                <ffh_bzxs></ffh_bzxs>
+                                <ffh_dj></ffh_dj>
+                                <ffh_sl></ffh_sl>
+                                <fsjfhsl></fsjfhsl>
+                                <ffh_je></ffh_je>
+                                <ffh_js></ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                      `;
+            }
+
+            if (mxlistArrBill.length != 0) {
+                for (var i = 0; i < mxlistArrBill.length; i++) {
+                    xml += `
+                       <BPM_WGYYFHFPSQ_B2>
+                            <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 + i)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>${(i + 1)}</fentryno>
+                            <ffp_wlmc>${mxlistArrBill[i].ffp_wlmc}</ffp_wlmc>
+                            <ffp_ggxh>${mxlistArrBill[i].ffp_ggxh}</ffp_ggxh>
+                            <ffp_dw>${mxlistArrBill[i].ffp_dw}</ffp_dw>
+                            <ffp_bzxs>${mxlistArrBill[i].ffp_bzxs}</ffp_bzxs>
+                            <ffp_dj>${mxlistArrBill[i].ffp_dj}</ffp_dj>
+                            <ffp_sl>${mxlistArrBill[i].ffp_sl}</ffp_sl>
+                            <ffp_je>${mxlistArrBill[i].ffp_je}</ffp_je>
+                        </BPM_WGYYFHFPSQ_B2>
+                          `;
+                }
+
+            } else {
+                xml += `<BPM_WGYYFHFPSQ_B2>
+                              <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>1</fentryno>
+                            <ffp_wlmc></ffp_wlmc>
+                            <ffp_ggxh></ffp_ggxh>
+                            <ffp_dw></ffp_dw>
+                            <ffp_bzxs></ffp_bzxs>
+                            <ffp_dj></ffp_dj>
+                            <ffp_sl></ffp_sl>
+                            <ffp_je></ffp_je>    
+                        </BPM_WGYYFHFPSQ_B2>
+                       `;
+            }
+            xml += `</FormData>
+                     </XForm>
+                   `;
+            PostXml(xml);
+        }
+    });
 
 }
 
 function hasRead() {
-
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = '';
+    var btnArray = ['取消', '确定'];
+    mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+        if (e.index == 1) {
+            comment = e.value;
+            var xml = `<?xml version="1.0"?>
+                           <XForm>
+                             <Header>
+                               <Method>InformSubmit</Method>
+                               <PID>${pid}</PID>
+                               <Comment>${comment}</Comment>
+                             </Header>
+                           </XForm>
+              `;
+            PostXml(xml);
+        }
+    });
 }
 
 function AgreeOrConSign() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = $("#signSuggest").val();
+    var nodeName = $("#nodeName").val();
 
+    var fname = $("#fname").val();
+    var fno = $("#fname").data('fno');
+    var fqy = $("#fqy").val();
+    var fsqrq = $("#fsqrq").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    var fkzcc = $("#fkhmc").data('fkzcc');
+
+    var fzjsj = $("#fzjsj").val();
+    var fxszg = $("#fzjsj").data('fxszg');
+
+    var fsh_dz = $("#fsh_dz").val();
+    var fsh_name = $("#fsh_name").val();
+    var fsh_tel = $("#fsh_tel").val();
+    var fdhrq = $("#fdhrq").val();
+    var fkhlx = $("#fkhlx").val();
+    var fdqqk = $("#fdqqk").val();
+    var fcsxq = $("#fcsxq").val();
+    var fckdh = $("#fckdh").val();
+    var fhj_fhsl = $("#fhj_fhsl").val();
+    var fsjfhsltotal = $("#fsjfhsltotal").val();
+    var fhj_fhje = $("#fhj_fhje").val();
+    var fhj_fhjs = $("#fhj_fhjs").val();
+
+    var mxflag = false;
+    var mxlistArrShip = new Array();
+    $("#mxlist_fh").find("#mx").each(function () {
+
+        var fwlbm = $(this).find("#fwlbm").val();
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fdw = $(this).find("#fdw").val();
+        var fdwbm = $(this).find("#fdwbm").val();
+        var fzl = $(this).find("#fzl").val();
+        var ffh_bzxs = $(this).find("#ffh_bzxs").val();
+        var ffh_dj = $(this).find("#ffh_dj").val();
+        var ffh_sl = $(this).find("#ffh_sl").val();
+        var fsjfhsl = $(this).find("#fsjfhsl").val();
+        var ffh_je = $(this).find("#ffh_je").val();
+        var ffh_js = $(this).find("#ffh_js").val();
+
+
+
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        mxlistArrShip.push(mx);
+    });
+
+
+    var ffh_bz = $("#ffh_bz").val();
+    var ffplb = $("#ffplb").val();
+    var fsj_name = $("#fsj_name").val();
+    var fsj_tel = $("#fsj_tel").val();
+    var fyjdz = $("#fyjdz").val();
+    var fkd_gs = $("#fkd_gs").val();
+    var fkd_dh = $("#fkd_dh").val();
+    var ffph = $("#ffph").val();
+    var fhrqks = $("#fhrqks").val();
+    var fhrqjs = $("#fhrqjs").val();
+
+    var fhj_fpsl = $("#fhj_fpsl").val();
+    var fhj_fpje = $("#fhj_fpje").val();
+
+
+
+    var mxlistArrBill = new Array();
+
+    $("#mxlist_fp").find("#mx").each(function () {
+        var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        var ffp_ggxh = $(this).find("#ffp_ggxh").val();
+        var ffp_dw = $(this).find("#ffp_dw").val();
+        var ffp_bzxs = $(this).find("#ffp_bzxs").val();
+        var ffp_dj = $(this).find("#ffp_dj").val();
+        var ffp_sl = $(this).find("#ffp_sl").val();
+        var ffp_je = $(this).find("#ffp_je").val();
+
+        var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
+        mxlistArrBill.push(mx);
+    });
+
+    var ffp_bz = $("#ffp_bz").val();
+    //特殊节点必填项校验
+
+    //console.log($("#nodeName").val());
+
+    //商务专员1
+    if ((String(nodeName).match(/\d+/g) == null && String(nodeName).match('商务') != null) || String(nodeName).match('（营销一区）1') != null) {
+        if (String(fsqlx).match('发货') != null) {
+            if (!fckdh) {
+                mui.toast('请填写出库单号');
+                return;
+            }
+        }
+
+
+        //核算专员
+    } else if (String(nodeName).match('核算专员') != null) {
+
+
+
+        //发票专员
+    } else if (String(nodeName).match('开票专员') != null) {
+        if (String(fsqlx).match('发票') != null) {
+            if (!ffph) {
+                mui.toast('请填写发票号');
+                return;
+            }
+        }
+
+
+
+        //商务专员2
+    } else if (String(nodeName).match(/\d+/g) != null && String(nodeName).match('商务') != null) {
+        if (String(fsqlx).match('发票') != null) {
+            if (!fkd_gs) {
+                mui.toast('请选择快递公司');
+                return;
+            }
+            if (!fkd_dh) {
+                mui.toast('请选择快递单号');
+                return;
+            }
+
+        }
+
+    }
+    var consignFlag = false;
+    var consignUserId = new Array();
+    var consignRoutingType;
+    var consignReturnType;
+
+    var consignUserStr;
+
+    //加签if分支
+    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+        consignFlag = true;
+
+        if ($('#sxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Serial';
+
+        } else if ($('#pxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Parallel';
+        }
+
+        if ($('#hdbjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Return';
+        } else if ($('#jrxjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Forward';
+        }
+
+
+        var consignAjax = $.ajax({
+            type: "POST",
+            url: "/api/bpm/PostAccount",
+            data: { "ids": consignOpenIdArr },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+            }
+        }).done(function (data, status) {
+            //alert(status);
+            if (status == "success") {
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    consignUserId.push(data.data[i].phone);
+                }
+                $('#consignUser').val(consignUserId);
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+            }
+        }).fail(function () {
+
+        });
+    } else {
+
+
+    }
+    if (consignFlag) {
+        consignAjax.then(function () {
+            var xml = '<?xml version="1.0"?>';
+            xml = xml + '<XForm>';
+            xml = xml + '<Header>';
+            xml = xml + '<Method>Process</Method>';
+            xml = xml + '<PID>' + pid + '</PID>';
+            xml = xml + '<Action>同意</Action>';
+            xml = xml + '<Comment>' + comment + '</Comment>';
+
+            //加签差异部分
+            xml = xml + '<ConsignEnabled>true</ConsignEnabled>';
+            xml = xml + '  <ConsignUsers>' + consignUserStr + '</ConsignUsers>';
+            xml = xml + ' <ConsignRoutingType>' + consignRoutingType + '</ConsignRoutingType>';
+            xml = xml + '  <ConsignReturnType>' + consignReturnType + '</ConsignReturnType>';
+            xml = xml + ' <InviteIndicateUsers>[]</InviteIndicateUsers>';
+            xml = xml + ' <Context>{&quot;Routing&quot;:{}}</Context>';
+            xml = xml + '</Header>';
+            xml = xml + '<FormData>';
+
+            xml += ' <BPM_WGYYFHFPSQ_A>';
+            xml += '   <fbillno>' + fbillno + '</fbillno>';
+            xml += '   <fname>' + fname + '</fname>';
+            xml += '   <fqy>' + fqy + '</fqy>';
+            xml += '   <fsqrq>' + fsqrq + '</fsqrq>';
+            xml += '   <fsqlx>' + fsqlx + '</fsqlx>';
+            xml += '   <fkhbm>' + fkhbm + '</fkhbm>';
+            xml += '   <fkczz>' + fkzcc + '</fkczz>';
+            xml += '   <fkhmc>' + fkhmc + '</fkhmc>';
+            xml += ' <fxszg>' + fxszg + '</fxszg>';
+            xml += '   <fsh_dz>' + fsh_dz + '</fsh_dz>';
+            xml += '   <fsh_name>' + fsh_name + '</fsh_name>';
+            xml += '  <fsh_tel>' + fsh_tel + '</fsh_tel>';
+            xml += '   <fdhrq>' + fdhrq + '</fdhrq>';
+            xml += '   <fkhlx>' + fkhlx + '</fkhlx>';
+            xml += '   <fdqqk>' + fdqqk + '</fdqqk>';
+            xml += '   <fcsxq>' + fcsxq + '</fcsxq>';
+            xml += '  <fckdh>' + fckdh + '</fckdh>';
+            xml += '  <fhj_fhsl>' + fhj_fhsl + '</fhj_fhsl>';
+            xml += '   <fsjfhsltotal>' + fsjfhsltotal + '</fsjfhsltotal>';
+            xml += '   <fhj_fhje>' + fhj_fhje + '</fhj_fhje>';
+            xml += '  <fhj_fhjs>' + fhj_fhjs + '</fhj_fhjs>';
+            xml += '   <ffh_bz>' + ffh_bz + '</ffh_bz>';
+            xml += '   <ffplb>' + ffplb + '</ffplb>';
+            xml += '   <fsj_name>' + fsj_name + '</fsj_name>';
+            xml += '   <fsj_tel>' + fsj_tel + '</fsj_tel>';
+            xml += '   <fyjdz>' + fyjdz + '</fyjdz>';
+            xml += '   <fkd_gs>' + fkd_gs + '</fkd_gs>';
+            xml += '   <fkd_dh>' + fkd_dh + '</fkd_dh>';
+            xml += '   <ffph>' + ffph + '</ffph>';
+            xml += '   <fhrqks>' + fhrqks + '</fhrqks>';
+            xml += '   <fhrqjs>' + fhrqjs + '</fhrqjs>';
+            xml += '    <fhj_fpsl>' + fhj_fpsl + '</fhj_fpsl>';
+            xml += '   <fhj_fpje>' + fhj_fpje + '</fhj_fpje>';
+            xml += '   <ffp_bz>' + ffp_bz + '</ffp_bz>';
+            xml += '  </BPM_WGYYFHFPSQ_A>';
+            if (mxlistArrShip.length != 0) {
+                for (var i = 0; i < mxlistArrShip.length; i++) {
+                    xml += ' <BPM_WGYYFHFPSQ_B1>';
+                    xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                    xml += '  <RowPrimaryKeys>itemid=' + itemidArr1[i] + '</RowPrimaryKeys>';
+                    xml += '  <fentyrno>' + (i + 1) + '</fentyrno>';
+                    xml += ' <ffh_wlbm>' + mxlistArrShip[i].fwlbm + '</ffh_wlbm>';
+                    xml += ' <ffh_wlmc>' + mxlistArrShip[i].fwlmc + '</ffh_wlmc>';
+                    xml += ' <ffh_ggxh>' + mxlistArrShip[i].fggxh + '</ffh_ggxh>';
+                    xml += '<ffh_dw>' + mxlistArrShip[i].fdw + '</ffh_dw>';
+                    xml += ' <fjldwbm>' + mxlistArrShip[i].fdwbm + '</fjldwbm>';
+                    xml += '  <fzl>' + mxlistArrShip[i].fzl + '</fzl>';
+                    xml += '  <ffh_bzxs>' + mxlistArrShip[i].ffh_bzxs + '</ffh_bzxs>';
+                    xml += ' <ffh_dj>' + mxlistArrShip[i].ffh_dj + '</ffh_dj>';
+                    xml += ' <ffh_sl>' + mxlistArrShip[i].ffh_sl + '</ffh_sl>';
+                    xml += ' <fsjfhsl>' + mxlistArrShip[i].fsjfhsl + '</fsjfhsl>';
+                    xml += '  <ffh_je>' + mxlistArrShip[i].ffh_je + '</ffh_je>';
+                    xml += '  <ffh_js>' + parseInt(mxlistArrShip[i].ffh_js) + '</ffh_js>';
+                    xml += ' </BPM_WGYYFHFPSQ_B1>';
+                }
+            } else {
+                xml += ' <BPM_WGYYFHFPSQ_B1>';
+                xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                xml += '  <RowPrimaryKeys></RowPrimaryKeys>';
+                xml += '  <fentyrno></fentyrno>';
+                xml += ' <ffh_wlbm></ffh_wlbm>';
+                xml += ' <ffh_wlmc></ffh_wlmc>';
+                xml += ' <ffh_ggxh></ffh_ggxh>';
+                xml += '<ffh_dw></ffh_dw>';
+                xml += ' <fjldwbm></fjldwbm>';
+                xml += '  <fzl></fzl>';
+                xml += '  <ffh_bzxs></ffh_bzxs>';
+                xml += ' <ffh_dj></ffh_dj>';
+                xml += ' <ffh_sl></ffh_sl>';
+                xml += ' <fsjfhsl></fsjfhsl>';
+                xml += '  <ffh_je></ffh_je>';
+                xml += '  <ffh_js></ffh_js>';
+                xml += ' </BPM_WGYYFHFPSQ_B1>';
+            }
+
+            if (mxlistArrBill.length != 0) {
+                for (var i = 0; i < mxlistArrBill.length; i++) {
+                    xml += ' <BPM_WGYYFHFPSQ_B2>';
+                    xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1 + i) + '</RelationRowGuid>';
+                    xml += ' <RowPrimaryKeys>itemid=' + itemidArr2[i] + '</RowPrimaryKeys>';
+                    xml += ' <fentryno>' + (i + 1) + '</fentryno>';
+                    xml += '  <ffp_wlmc>' + mxlistArrBill[i].ffp_wlmc + '</ffp_wlmc>';
+                    xml += '  <ffp_ggxh>' + mxlistArrBill[i].ffp_ggxh + '</ffp_ggxh>';
+                    xml += ' <ffp_dw>' + mxlistArrBill[i].ffp_dw + '</ffp_dw>';
+                    xml += ' <ffp_bzxs>' + mxlistArrBill[i].ffp_bzxs + '</ffp_bzxs>';
+                    xml += ' <ffp_dj>' + mxlistArrBill[i].ffp_dj + '</ffp_dj>';
+                    xml += ' <ffp_sl>' + mxlistArrBill[i].ffp_sl + '</ffp_sl>';
+                    xml += ' <ffp_je>' + mxlistArrBill[i].ffp_je + '</ffp_je>';
+                    xml += ' </BPM_WGYYFHFPSQ_B2>';
+
+                }
+
+            } else {
+                xml += ' <BPM_WGYYFHFPSQ_B2>';
+                xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1) + '</RelationRowGuid>';
+
+                xml += ' <RowPrimaryKeys></RowPrimaryKeys>';
+                xml += ' <fentryno>1</fentryno>';
+                xml += '  <ffp_wlmc></ffp_wlmc>';
+                xml += '  <ffp_ggxh></ffp_ggxh>';
+                xml += ' <ffp_dw></ffp_dw>';
+                xml += ' <ffp_bzxs></ffp_bzxs>';
+                xml += ' <ffp_dj></ffp_dj>';
+                xml += ' <ffp_sl></ffp_sl>';
+                xml += ' <ffp_je></ffp_je>';
+                xml += ' </BPM_WGYYFHFPSQ_B2>';
+
+            }
+
+
+
+            xml = xml + '</FormData>';
+            xml = xml + '</XForm>';
+            PostXml(xml);
+        })
+    } else {
+        var xml = '<?xml version="1.0"?>';
+        xml = xml + '<XForm>';
+        xml = xml + '<Header>';
+        xml = xml + '<Method>Process</Method>';
+        xml = xml + '<PID>' + pid + '</PID>';
+        xml = xml + '<Action>同意</Action>';
+        xml = xml + '<Comment>' + comment + '</Comment>';
+
+        xml = xml + ' <UrlParams></UrlParams>';
+        xml = xml + '  <ConsignEnabled>false</ConsignEnabled>';
+        xml = xml + '  <ConsignUsers>[]</ConsignUsers>';
+        xml = xml + '  <ConsignRoutingType>Parallel</ConsignRoutingType>';
+        xml = xml + '  <ConsignReturnType>Return</ConsignReturnType>';
+
+        xml = xml + '   <InviteIndicateUsers>[]</InviteIndicateUsers>';
+        xml = xml + '   <Context>{&quot;Routing&quot;:{}}</Context>';
+        xml = xml + '</Header>';
+        xml = xml + '<FormData>';
+
+        xml += ' <BPM_WGYYFHFPSQ_A>';
+        xml += '   <fbillno>' + fbillno + '</fbillno>';
+        xml += '   <fname>' + fname + '</fname>';
+        xml += '   <fqy>' + fqy + '</fqy>';
+        xml += '   <fsqrq>' + fsqrq + '</fsqrq>';
+        xml += '   <fsqlx>' + fsqlx + '</fsqlx>';
+        xml += '   <fkhbm>' + fkhbm + '</fkhbm>';
+        xml += '   <fkczz>' + fkzcc + '</fkczz>';
+        xml += '   <fkhmc>' + fkhmc + '</fkhmc>';
+        xml += ' <fxszg>' + fxszg + '</fxszg>';
+        xml += '   <fsh_dz>' + fsh_dz + '</fsh_dz>';
+        xml += '   <fsh_name>' + fsh_name + '</fsh_name>';
+        xml += '  <fsh_tel>' + fsh_tel + '</fsh_tel>';
+        xml += '   <fdhrq>' + fdhrq + '</fdhrq>';
+        xml += '   <fkhlx>' + fkhlx + '</fkhlx>';
+        xml += '   <fdqqk>' + fdqqk + '</fdqqk>';
+        xml += '   <fcsxq>' + fcsxq + '</fcsxq>';
+        xml += '  <fckdh>' + fckdh + '</fckdh>';
+        xml += '  <fhj_fhsl>' + fhj_fhsl + '</fhj_fhsl>';
+        xml += '   <fsjfhsltotal>' + fsjfhsltotal + '</fsjfhsltotal>';
+        xml += '   <fhj_fhje>' + fhj_fhje + '</fhj_fhje>';
+        xml += '  <fhj_fhjs>' + fhj_fhjs + '</fhj_fhjs>';
+        xml += '   <ffh_bz>' + ffh_bz + '</ffh_bz>';
+        xml += '   <ffplb>' + ffplb + '</ffplb>';
+        xml += '   <fsj_name>' + fsj_name + '</fsj_name>';
+        xml += '   <fsj_tel>' + fsj_tel + '</fsj_tel>';
+        xml += '   <fyjdz>' + fyjdz + '</fyjdz>';
+        xml += '   <fkd_gs>' + fkd_gs + '</fkd_gs>';
+        xml += '   <fkd_dh>' + fkd_dh + '</fkd_dh>';
+        xml += '   <ffph>' + ffph + '</ffph>';
+        xml += '   <fhrqks>' + fhrqks + '</fhrqks>';
+        xml += '   <fhrqjs>' + fhrqjs + '</fhrqjs>';
+        xml += '    <fhj_fpsl>' + fhj_fpsl + '</fhj_fpsl>';
+        xml += '   <fhj_fpje>' + fhj_fpje + '</fhj_fpje>';
+        xml += '   <ffp_bz>' + ffp_bz + '</ffp_bz>';
+        xml += '  </BPM_WGYYFHFPSQ_A>';
+        if (mxlistArrShip.length != 0) {
+            for (var i = 0; i < mxlistArrShip.length; i++) {
+                xml += ' <BPM_WGYYFHFPSQ_B1>';
+                xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+                xml += '  <RowPrimaryKeys>itemid=' + itemidArr1[i] + '</RowPrimaryKeys>';
+                xml += '  <fentyrno>' + (i + 1) + '</fentyrno>';
+                xml += ' <ffh_wlbm>' + mxlistArrShip[i].fwlbm + '</ffh_wlbm>';
+                xml += ' <ffh_wlmc>' + mxlistArrShip[i].fwlmc + '</ffh_wlmc>';
+                xml += ' <ffh_ggxh>' + mxlistArrShip[i].fggxh + '</ffh_ggxh>';
+                xml += '<ffh_dw>' + mxlistArrShip[i].fdw + '</ffh_dw>';
+                xml += ' <fjldwbm>' + mxlistArrShip[i].fdwbm + '</fjldwbm>';
+                xml += '  <fzl>' + mxlistArrShip[i].fzl + '</fzl>';
+                xml += '  <ffh_bzxs>' + mxlistArrShip[i].ffh_bzxs + '</ffh_bzxs>';
+                xml += ' <ffh_dj>' + mxlistArrShip[i].ffh_dj + '</ffh_dj>';
+                xml += ' <ffh_sl>' + mxlistArrShip[i].ffh_sl + '</ffh_sl>';
+                xml += ' <fsjfhsl>' + mxlistArrShip[i].fsjfhsl + '</fsjfhsl>';
+                xml += '  <ffh_je>' + mxlistArrShip[i].ffh_je + '</ffh_je>';
+                xml += '  <ffh_js>' + parseInt(mxlistArrShip[i].ffh_js) + '</ffh_js>';
+                xml += ' </BPM_WGYYFHFPSQ_B1>';
+            }
+        } else {
+            xml += ' <BPM_WGYYFHFPSQ_B1>';
+            xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
+            xml += '  <RowPrimaryKeys></RowPrimaryKeys>';
+            xml += '  <fentyrno></fentyrno>';
+            xml += ' <ffh_wlbm></ffh_wlbm>';
+            xml += ' <ffh_wlmc></ffh_wlmc>';
+            xml += ' <ffh_ggxh></ffh_ggxh>';
+            xml += '<ffh_dw></ffh_dw>';
+            xml += ' <fjldwbm></fjldwbm>';
+            xml += '  <fzl></fzl>';
+            xml += '  <ffh_bzxs></ffh_bzxs>';
+            xml += ' <ffh_dj></ffh_dj>';
+            xml += ' <ffh_sl></ffh_sl>';
+            xml += ' <fsjfhsl></fsjfhsl>';
+            xml += '  <ffh_je></ffh_je>';
+            xml += '  <ffh_js></ffh_js>';
+            xml += ' </BPM_WGYYFHFPSQ_B1>';
+        }
+
+        if (mxlistArrBill.length != 0) {
+            for (var i = 0; i < mxlistArrBill.length; i++) {
+                xml += ' <BPM_WGYYFHFPSQ_B2>';
+                xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1 + i) + '</RelationRowGuid>';
+                xml += ' <RowPrimaryKeys>itemid=' + itemidArr2[i] + '</RowPrimaryKeys>';
+                xml += ' <fentryno>' + (i + 1) + '</fentryno>';
+                xml += '  <ffp_wlmc>' + mxlistArrBill[i].ffp_wlmc + '</ffp_wlmc>';
+                xml += '  <ffp_ggxh>' + mxlistArrBill[i].ffp_ggxh + '</ffp_ggxh>';
+                xml += ' <ffp_dw>' + mxlistArrBill[i].ffp_dw + '</ffp_dw>';
+                xml += ' <ffp_bzxs>' + mxlistArrBill[i].ffp_bzxs + '</ffp_bzxs>';
+                xml += ' <ffp_dj>' + mxlistArrBill[i].ffp_dj + '</ffp_dj>';
+                xml += ' <ffp_sl>' + mxlistArrBill[i].ffp_sl + '</ffp_sl>';
+                xml += ' <ffp_je>' + mxlistArrBill[i].ffp_je + '</ffp_je>';
+                xml += ' </BPM_WGYYFHFPSQ_B2>';
+
+            }
+
+        } else {
+            xml += ' <BPM_WGYYFHFPSQ_B2>';
+            xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1) + '</RelationRowGuid>';
+
+            xml += ' <RowPrimaryKeys></RowPrimaryKeys>';
+            xml += ' <fentryno>1</fentryno>';
+            xml += '  <ffp_wlmc></ffp_wlmc>';
+            xml += '  <ffp_ggxh></ffp_ggxh>';
+            xml += ' <ffp_dw></ffp_dw>';
+            xml += ' <ffp_bzxs></ffp_bzxs>';
+            xml += ' <ffp_dj></ffp_dj>';
+            xml += ' <ffp_sl></ffp_sl>';
+            xml += ' <ffp_je></ffp_je>';
+            xml += ' </BPM_WGYYFHFPSQ_B2>';
+
+        }
+
+
+
+        xml = xml + '</FormData>';
+        xml = xml + '</XForm>';
+        PostXml(xml);
+    }
 }
  

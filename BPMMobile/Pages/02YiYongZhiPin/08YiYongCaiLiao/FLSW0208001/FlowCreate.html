@@ -81,7 +81,7 @@
                 <input type="text" id="fqt" name="fqt" readonly="readonly" />
             </div>
             <div class="mui-input-row">
-                <label for="fgkyq">顾客要求</label>
+                <label for="fgkyq">顾客要求<i style="color:red;">*</i></label>
                 <input type="text" id="fgkyq" name="fgkyq" placeholder="请输入顾客要求" />
             </div>
             <div class="mui-input-row">
@@ -534,6 +534,10 @@
                     mui.toast('请选择输入其他');
                     return;
                 }
+            }
+            if (!fgkyq) {
+                mui.toast('请填写顾客要求');
+                return;
             }
             if (fjArray.length == 0) {
                 mui.toast('请上传附件');

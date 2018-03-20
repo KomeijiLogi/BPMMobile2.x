@@ -2404,7 +2404,7 @@ function AgreeOrConSign() {
     //console.log($("#nodeName").val());
 
     //商务专员1
-    if (String(nodeName).match(/\d+/g) == null || String(nodeName).match('（营销一区）1') != null) {
+    if ((String(nodeName).match(/\d+/g) == null && String(nodeName).match('商务') != null) || String(nodeName).match('（营销一区）1') != null) {
         if (String(fsqlx).match('发货')!=null) {
             if (!fckdh) {
                 mui.toast('请填写出库单号');

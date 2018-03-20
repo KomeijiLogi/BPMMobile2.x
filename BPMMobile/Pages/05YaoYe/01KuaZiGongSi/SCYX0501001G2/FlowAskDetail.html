@@ -1,10 +1,663 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .animated {
+            -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes bounceInDown {
+            0%, 60%, 75%, 90%, 100% {
+                -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 25px, 0);
+                transform: translate3d(0, 25px, 0);
+            }
+
+            75% {
+                -webkit-transform: translate3d(0, -10px, 0);
+                transform: translate3d(0, -10px, 0);
+            }
+
+            90% {
+                -webkit-transform: translate3d(0, 5px, 0);
+                transform: translate3d(0, 5px, 0);
+            }
+
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        @keyframes bounceInDown {
+            0%, 60%, 75%, 90%, 100% {
+                -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 25px, 0);
+                transform: translate3d(0, 25px, 0);
+            }
+
+            75% {
+                -webkit-transform: translate3d(0, -10px, 0);
+                transform: translate3d(0, -10px, 0);
+            }
+
+            90% {
+                -webkit-transform: translate3d(0, 5px, 0);
+                transform: translate3d(0, 5px, 0);
+            }
+
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        .bounce-in-down {
+            -webkit-animation-name: bounceInDown;
+            animation-name: bounceInDown;
+        }
+
+        @-webkit-keyframes fadeInDown {
+            0%, 60%, 75%, 90%, 100% {
+                -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            75% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            90% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0%, 60%, 75%, 90%, 100% {
+                -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            60% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            75% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            90% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            100% {
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        .fade-in-down {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown;
+        }
+
+        @-webkit-keyframes bounceOutUp {
+            20% {
+                -webkit-transform: translate3d(0, -10px, 0);
+                transform: translate3d(0, -10px, 0);
+            }
+
+            40%, 45% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 20px, 0);
+                transform: translate3d(0, 20px, 0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+
+        @keyframes bounceOutUp {
+            20% {
+                -webkit-transform: translate3d(0, -10px, 0);
+                transform: translate3d(0, -10px, 0);
+            }
+
+            40%, 45% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 20px, 0);
+                transform: translate3d(0, 20px, 0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+
+        .bounce-out-up {
+            -webkit-animation-name: bounceOutUp;
+            animation-name: bounceOutUp;
+        }
+
+        @-webkit-keyframes fadeOutUp {
+            20% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            40%, 45% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+
+        @keyframes fadeOutUp {
+            20% {
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            40%, 45% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0px, 0);
+                transform: translate3d(0, 0px, 0);
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+
+        .fade-out-up {
+            -webkit-animation-name: fadeOutUp;
+            animation-name: fadeOutUp;
+        }
+
+        .menu-open {
+            height: 100%;
+            width: 100%;
+        }
+
+            .menu-open .mui-scroll-wrapper {
+                position: absolute;
+                top: 48px;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                overflow: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+
+        .menu-backdrop {
+            display: none;
+        }
+
+        .menu-open .menu-backdrop {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            display: block;
+            z-index: 998;
+        }
+
+        .menu-wrapper {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            text-align: center;
+            background-color: #ffffff;
+            width: 100%;
+        }
+
+            .menu-wrapper.hidden {
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+                z-index: -1;
+            }
+
+        .menu {
+            width: 100%;
+        }
+
+            .menu .mui-table-view-inverted {
+                color: gray;
+                font-size: 19px;
+            }
+
+                .menu .mui-table-view-inverted .mui-table-view-cell:after {
+                    height: 2px;
+                    left: 0;
+                    right: 0;
+                }
+
+        .menu-wrapper.mui-active,
+        .menu-wrapper.mui-active .menu {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+    </style>
 </head>
 <body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div style="padding: 10px 10px;">
+                <div id="segmentedControl" class="mui-segmented-control">
+                    <a class="mui-control-item mui-active" href="#item1">
+                        主要信息
+                    </a>
+                    <a class="mui-control-item" href="#item2">
+                        发货信息
+                    </a>
+                    <a class="mui-control-item" href="#item3">
+                        发票信息
+                    </a>
+                    <a class="mui-control-item" href="#item4">
+                        总计信息
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div id="item1" class="mui-control-content mui-active">
+                    <div class="mui-input-row">
+                        <label for="fname">申请人<i style="color:red;">*</i></label>
+                        <input type="text" id="fname" name="fname" readonly data-fno="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fqy">所属区域<i style="color:red;">*</i></label>
+                        <input type="text" id="fqy" name="fqy" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsqrq">申请日期<i style="color:red;">*</i></label>
+                        <input type="date" id="fsqrq" name="fsqrq" readonly class="saveCanChange" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsqlx">申请类型<i style="color:red;">*</i></label>
+                        <input type="text" id="fsqlx" name="fsqlx" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                        <input type="text" id="fkhmc" name="fkhmc" readonly  data-fkhbm="" data-fkzcc="" />
+                    </div>
+                    <div class="mui-table-view" style="margin-bottom:1rem;">
+                        <div class="mui-table-view-cell  mui-collapse mui-active">
+                            <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                                历史签核意见
+                            </a>
+                            <div class="mui-collapse-content">
+                                <!--流程列表-->
+                                <div class="list">
+                                    <ul id="signff"></ul>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="item2" class="mui-control-content">
+                    <div class="">
+                        <div class="mui-input-row">
+                            <label for="fzjsj">直接上级<i style="color:red;">*</i></label>
+                            <input type="text" id="fzjsj" name="fzjsj" readonly  data-fxszg="" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsh_dz">收货地址<i style="color:red;">*</i></label>
+                            <input type="text" id="fsh_dz" name="fsh_dz" readonly />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsh_name">收货人<i style="color:red;">*</i></label>
+                            <input type="text" id="fsh_name" name="fsh_name" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsh_tel">收货电话<i style="color:red;">*</i></label>
+                            <input type="tel" id="fsh_tel" name="fsh_tel" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fdhrq">到货日期<i style="color:red;">*</i></label>
+                            <input type="date" id="fdhrq" name="fdhrq" class="saveCanChange" readonly/>
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fkhlx">客户类型<i style="color:red;">*</i></label>
+                            <input type="text" id="fkhlx" name="fkhlx" readonly  />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fdqqk">当前欠款</label>
+                            <input type="number" id="fdqqk" name="fdqqk" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row" style="display:none;">
+                            <label for="fcsxq">超授信期<i style="color:red;">*</i></label>
+                            <input type="hidden" id="fcsxq" name="fcsxq" readonly />
+                            <div class="mui-switch mui-switch-blue mui-disabled" id="fcsxqd">
+                                <div class="mui-switch-handle"></div>
+                            </div>
+                        </div>
+
+                        <div class="mui-input-row" style="display:none;">
+                            <label for="fckdh">EAS出库单号<i style="color:red;">*</i></label>
+                            <input type="text" id="fckdh" name="fckdh" readonly />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ffh_bz">备注</label>
+                            <textarea rows="3" id="ffh_bz" name="ffh_bz" readonly class="saveCanChange"></textarea>
+                        </div>
+                    </div>
+                    <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fh" style="margin-top:0.5rem;display:none;">
+                        添加发货明细
+                        <span class="mui-icon mui-icon-plusempty"></span>
+                    </a>
+                    <div id="mxlist_fh"></div>
+                    <div id="menu-wrapper" class="menu-wrapper hidden">
+                        <div id="menu" class="menu">
+                            <div class="mui-card">
+                                <div class="mui-input-row">
+                                    <label for="fwlbm_menu">物料编码<i style="color:red;">*</i></label>
+                                    <input type="text" id="fwlbm_menu" name="fwlbm_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="fwlmc_menu">物料名称<i style="color:red;">*</i></label>
+                                    <input type="text" id="fwlmc_menu" name="fwlmc_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="fggxh_menu">规格型号<i style="color:red;">*</i></label>
+                                    <input type="text" id="fggxh_menu" name="fggxh_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="fdw_menu">单位<i style="color:red;">*</i></label>
+                                    <input type="text" id="fdw_menu" name="fdw_menu" readonly  />
+                                </div>
+                                <input type="hidden" id="fdwbm_menu" name="fdwbm_menu" readonly  />
+                                <div class="mui-input-row">
+                                    <label for="fzl_menu">装量<i style="color:red;">*</i></label>
+                                    <input type="text" id="fzl_menu" name="fzl_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="ffh_bzxs_menu">包装形式<i style="color:red;">*</i></label>
+                                    <input type="text" id="ffh_bzxs_menu" name="ffh_bzxs_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="ffh_dj_menu">含税单价<i style="color:red;">*</i></label>
+                                    <input type="number" id="ffh_dj_menu" name="ffh_dj_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="ffh_sl_menu">申请数量<i style="color:red;">*</i></label>
+                                    <input type="number" id="ffh_sl_menu" name="ffh_sl_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="fsjfhsl_menu">实际发货数量</label>
+                                    <input type="number" id="fsjfhsl_menu" name="fsjfhsl_menu" readonly/>
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="ffh_je_menu">含税金额</label>
+                                    <input type="number" id="ffh_je_menu" name="ffh_je_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label for="ffh_js_menu">件数</label>
+                                    <input type="number" id="ffh_js_menu" name="ffh_js_menu" readonly />
+                                </div>
+                                <div class="mui-row">
+                                    <button type="button" class="mui-btn mui-btn-primary mui-col-xs-6" id="confirm_menu">
+                                        确定
+                                    </button>
+                                    <button type="button" class="mui-btn mui-btn-danger  mui-col-xs-6" id="cancel_menu">
+                                        取消
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="item3" class="mui-control-content">
+                    <div class="">
+                        <div class="mui-input-row">
+                            <label for="ffplb">发票类别<i style="color:red;">*</i></label>
+                            <input type="text" id="ffplb" name="ffplb" readonly  />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsj_name">收件人<i style="color:red;">*</i></label>
+                            <input type="text" id="fsj_name" name="fsj_name" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fsj_tel">收件人电话<i style="color:red;">*</i></label>
+                            <input type="tel" id="fsj_tel" name="fsj_tel" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fyjdz">邮寄地址<i style="color:red;">*</i></label>
+                            <input type="text" id="fyjdz" name="fyjdz" readonly class="saveCanChange" />
+                        </div>
+                        <div style="display:none;" id="fbcinfo">
+                            <div class="mui-input-row">
+                                <label for="fkd_gs">快递公司<i style="color:red;">*</i></label>
+                                <input type="text" id="fkd_gs" name="fkd_gs" readonly  />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="fkd_dh">快递单号<i style="color:red;">*</i></label>
+                                <input type="text" id="fkd_dh" name="fkd_dh" readonly  />
+                            </div>
+                            <div class="mui-input-row">
+                                <label for="ffph">发票号<i style="color:red;">*</i></label>
+                                <input type="text" id="ffph" name="ffph" readonly  />
+                            </div>
+                        </div>
+
+                        <div class="mui-input-row">
+                            <label for="fhrqks">发货日期开始</label>
+                            <input type="date" id="fhrqks" name="fhrqks" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row">
+                            <label for="fhrqjs">发货日期截止</label>
+                            <input type="date" id="fhrqjs" name="fhrqjs" readonly class="saveCanChange" />
+                        </div>
+                        <div class="mui-input-row" style="height:auto;">
+                            <label for="ffp_bz">备注</label>
+                            <textarea rows="3" id="ffp_bz" name="ffp_bz" readonly class="saveCanChange"></textarea>
+                        </div>
+
+                    </div>
+
+
+
+                    <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fp" style="margin-top:0.5rem;display:none;">
+                        添加发票明细
+                        <span class="mui-icon mui-icon-plusempty"></span>
+                    </a>
+                    <div id="mxlist_fp"></div>
+                    <div id="menu-wrapper2" class="menu-wrapper hidden">
+                        <div id="menu2" class="menu">
+                            <div class="mui-card">
+                                <div class="mui-input-row">
+                                    <label>物料名称<i style="color:red;">*</i></label>
+                                    <input type="text" id="ffp_wlmc_menu" name="ffp_wlmc_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>规格型号</label>
+                                    <input type="text" id="ffp_ggxh_menu" name="ffp_ggxh_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>单位</label>
+                                    <input type="text" id="ffp_dw_menu" name="ffp_dw_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>包装形式<i style="color:red;">*</i></label>
+                                    <input type="text" id="ffp_bzxs_menu" name="ffp_bzxs_menu" readonly  />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>含税单价</label>
+                                    <input type="number" id="ffp_dj_menu" name="ffp_dj_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>数量</label>
+                                    <input type="number" id="ffp_sl_menu" name="ffp_sl_menu" readonly />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>含税金额</label>
+                                    <input type="number" id="ffp_je_menu" name="ffp_je" readonly  />
+                                </div>
+                                <div class="mui-row">
+                                    <button type="button" class="mui-btn mui-btn-primary mui-col-xs-6" id="confirm_menu_2">
+                                        确定
+                                    </button>
+                                    <button type="button" class="mui-btn mui-btn-danger  mui-col-xs-6" id="cancel_menu_2">
+                                        取消
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="item4" class="mui-control-content">
+                    <div class="mui-input-row itemtitle2">
+                        <label>发货合计</label>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhj_fhsl">申请数量<i style="color:red;">*</i></label>
+                        <input type="number" id="fhj_fhsl" name="fhj_fhsl" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fsjfhsltotal">实际发货数量</label>
+                        <input type="number" id="fsjfhsltotal" name="fsjfhsltotal" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhj_fhje">含税金额<i style="color:red;">*</i></label>
+                        <input type="number" id="fhj_fhje" name="fhj_fhje" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhj_fhjs">件数<i style="color:red;">*</i></label>
+                        <input type="number" id="fhj_fhjs" name="fhj_fhjs" readonly  />
+                    </div>
+
+                    <div class="mui-input-row itemtitle2">
+                        <label>发票合计</label>
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhj_fpsl">数量<i style="color:red;">*</i></label>
+                        <input type="number" id="fhj_fpsl" name="fhj_fpsl" readonly  />
+                    </div>
+                    <div class="mui-input-row">
+                        <label for="fhj_fpje">含税金额<i style="color:red;">*</i></label>
+                        <input type="number" id="fhj_fpje" name="fhj_fpje" readonly  />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
 </body>
 </html>
