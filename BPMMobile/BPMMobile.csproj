@@ -518,6 +518,11 @@
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103005\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103005\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103005\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\FlowCreate.html" />
@@ -548,6 +553,11 @@
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103002\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103002\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103002\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103003\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103003\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103003\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103003\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103003\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\FlowCreate.html" />
@@ -558,6 +568,11 @@
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103002\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103002\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103002\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103002\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103002\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103003\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103003\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103003\FlowCreate.html" />

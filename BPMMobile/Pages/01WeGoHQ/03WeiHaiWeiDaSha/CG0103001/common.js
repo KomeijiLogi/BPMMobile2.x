@@ -18,7 +18,7 @@
         $("#fname").val(item.fname);
         $("#fdept").val(item.fdept);
     });
-    initCheckboxMsg();
+    //initCheckboxMsg();
 }
 
 function dataProvider(xml, callback) {
