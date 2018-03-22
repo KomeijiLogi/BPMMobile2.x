@@ -45,145 +45,78 @@ function tapEvent() {
     showPicker('fsqlx', fsqlxdata);
 
     $("#tjmx").on('tap', function () {
-        var el = dom.div({ id: 'mx',class:'mui-card' },
-            dom.div({ class:'mui-input-row itemtitle'},
-                dom.label({}, '明细列表项'),
-                dom.span({
-                    class: 'mui-icon mui-icon-close mui-pull-right', style: 'margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;',
-                    id: 'deleteProduct', onclick:'deleteItem(this)'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fddbh' },
-                    '订单编号',
-                    dom.i({ style: 'color:red;' },'*')
-                ),
-                dom.input({
-                    id: 'fddbh', name: 'fddbh', type: 'text', placeholder:'请填写订单编号'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fcpname' },
-                    '产品名称',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fcpname', name: 'fcpname', type: 'text', placeholder: '请填写产品名称'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fggxh' },
-                    '规格型号',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fggxh', name: 'fggxh', type: 'text', placeholder: '请填写产品名称'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'funit' },
-                    '单位',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'funit', name: 'funit', type: 'text', placeholder: '请填写单位'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fsl' },
-                    '数量',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fsl', name: 'fsl', type: 'number', placeholder: '请填写数量'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fjhrq' },
-                    '交货日期',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fjhrq', name: 'fjhrq', type: 'date'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fywy' },
-                    '业务员'                   
-                ),
-                dom.input({
-                    id: 'fywy', name: 'fywy', type: 'text', placeholder:'请填写业务员'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fkhmc' },
-                    '客户名称'
-                ),
-                dom.input({
-                    id: 'fkhmc', name: 'fkhmc', type: 'text', placeholder: '请填写客户名称'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fhsdj' },
-                    '含税单价'
-                ),
-                dom.input({
-                    id: 'fhsdj', name: 'fhsdj', type: 'number', placeholder: '请填写含税单价'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fxsjg' },
-                    '销售价格',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fxsjg', name: 'fxsjg', type: 'number', placeholder: '请填写销售价格'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'ffkfs' },
-                    '付款方式',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'ffkfs', name: 'ffkfs', type: 'text', placeholder: '请填写付款方式'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fyf_date' },
-                    '研发确认时间',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fyf_date', name: 'fyf_date', type: 'date'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fcg_date' },
-                    '采购确认时间',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fcg_date', name: 'fcg_date', type: 'date'
-                })
-            ),
-            dom.div({ class: 'mui-input-row' },
-                dom.label({ for: 'fsc_date' },
-                    '生产确认时间',
-                    dom.i({ style: 'color:red;' }, '*')
-                ),
-                dom.input({
-                    id: 'fsc_date', name: 'fsc_date', type: 'date'
-                })
-            ),
-            dom.div({ class: 'mui-input-row itemtitle2' },
-                dom.label({},'产品配置')
-            ),
-            dom.div({ class: 'mui-row' },
-                dom.textarea({ id: 'fcppz', name: 'fcppz', rows: '5', placeholder:'请填写产品配置' })
-            )
-        );
-        $("#mxlist").append(el);
+        var li = ' <div id="mx" class="mui-card">';
+        li = li + '    <div class="mui-input-row itemtitle">';
+        li = li + '    <label>明细列表项</label>';
+        li = li + '    <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+        li = li + '   </div>';
+        li = li + '    <div class="mui-input-row">';
+        li = li + '    <label for="fddbh">订单编号<i style="color:red;">*</i></label>';
+        li = li + '  <input type="text" id="fddbh" name="fddbh"  placeholder="请填写"/>';
+        li = li + '   </div>';
+        li = li + '   <div class="mui-input-row">';
+        li = li + '      <label for="fcpname">产品名称<i style="color:red;">*</i></label>';
+        li = li + '    <input type="text" id="fcpname" name="fcpname"   placeholder="请填写"/>';
+        li = li + '  </div>';
+        li = li + ' <div class="mui-input-row">';
+        li = li + '    <label for="fggxh">规格型号<i style="color:red;">*</i></label>';
+        li = li + '  <input type="text" id="fggxh" name="fggxh"  placeholder="请填写"/>';
+        li = li + '  </div>';
+        li = li + '  <div class="mui-input-row">';
+        li = li + '     <label for="funit">单位<i style="color:red;">*</i></label>';
+        li = li + '     <input type="text" id="funit" name="funit"    placeholder="请填写"/>';
+        li = li + '   </div>';
+        li = li + '  <div class="mui-input-row">';
+        li = li + '     <label for="fsl">数量<i style="color:red;">*</i></label>';
+        li = li + '     <input type="number" id="fsl" name="fsl"   placeholder="请填写"/>';
+        li = li + '  </div>';
+        li = li + '   <div class="mui-input-row">';
+        li = li + '    <label for="fjhrq">交货日期<i style="color:red;">*</i></label>';
+        li = li + '   <input type="date" id="fjhrq" name="fjhrq"   placeholder="请填写"/>';
+        li = li + '   </div>';
+        li = li + '   <div class="mui-input-row">';
+        li = li + '  <label for="fywy">业务员</label>';
+        li = li + '    <input type="text" id="fywy" name="fywy"   placeholder="请填写" />';
+        li = li + '    </div>';
+        li = li + '   <div class="mui-input-row">';
+        li = li + '    <label for="fkhmc">客户名称</label>';
+        li = li + '     <input type="text" id="fkhmc" name="fkhmc"    placeholder="请填写"/>';
+        li = li + '   </div>';
+        li = li + '   <div class="mui-input-row">';
+        li = li + '      <label for="fhsdj">含税单价</label>';
+        li = li + '      <input type="number" id="fhsdj" name="fhsdj"   placeholder="请填写" />';
+        li = li + '   </div>';
+        li = li + '    <div class="mui-input-row">';
+        li = li + '   <label for="fxsjg">销售价格<i style="color:red;">*</i></label>';
+        li = li + '    <input type="number" id="fxsjg" name="fxsjg"    placeholder="请填写"/>';
+        li = li + '    </div>';
+        li = li + '  <div class="mui-input-row">';
+        li = li + '    <label for="ffkfs">付款方式<i style="color:red;">*</i></label>';
+        li = li + '      <input type="text" id="ffkfs" name="ffkfs"    placeholder="请填写"/>';
+        li = li + '  </div>';
+        li = li + '  <div class="mui-input-row">';
+        li = li + '      <label for="fyf_date">研发确认时间<i style="color:red;">*</i></label>';
+        li = li + '      <input type="date" id="fyf_date" name="fyf_date"    placeholder="请填写"/>';
+        li = li + '  </div>';
+        li = li + '    <div class="mui-input-row">';
+        li = li + '     <label for="fcg_date">采购确认时间<i style="color:red;">*</i></label>';
+        li = li + '      <input type="date" id="fcg_date" name="fcg_date"   placeholder="请填写"/>';
+        li = li + '    </div>';
+        li = li + ' <div class="mui-input-row">';
+        li = li + '    <label for="fsc_date">生产确认时间<i style="color:red;">*</i></label>';
+        li = li + '     <input type="date" id="fsc_date" name="fsc_date"     placeholder="请填写"/>';
+        li = li + '   </div>';
+        li = li + '  <div class="mui-input-row itemtitle2">';
+        li = li + '    <label>产品配置</label>';
+        li = li + '  </div>';
+        li = li + '  <div class="mui-row">';
+        li = li + '    <textarea id="fcppz" name="fcppz" rows="5"  placeholder="请填写"></textarea>';
+        li = li + ' </div>';
+        li = li + ' </div>';
+        $("#mxlist").append(li);
+
+       
+      
     });
 
 
