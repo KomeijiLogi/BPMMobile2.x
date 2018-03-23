@@ -1307,8 +1307,18 @@ function nodeControllerExp(NodeName) {
 
     //提交人
     if (NodeName == '开始') {
-        mui.alert('页面施工中');
-
+        //mui.alert('页面施工中,暂时不可编辑');
+        tapEvent();
+        $("#tjmx_fh,#tjmx_fp").show();
+        $("#mxlist_fh,#mxlist_fp").find('span').each(function () {
+            $(this).show();
+        });
+        $("#fkhmc").off('tap');
+        if (String($("#fkhlx").val()).match('授信期') != null) {
+            $("#fcsxqd").removeClass('mui-disabled');
+        }
+        $("#fsh_dz,#fsh_name,#fsh_tel,#fdhrq,#fdqqk,#ffh_bz").removeAttr('readonly');
+        $("#fsj_name,#fsj_tel,#fyjdz,#fhrqks,#fhrqjs,#ffp_bz").removeAttr('readonly');
         //商务专员
     } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
@@ -1436,6 +1446,9 @@ function Save() {
     $("#mxlist_fh").find("#mx").each(function () {
 
         var fwlbm = $(this).find("#fwlbm").val();
+        if (fwlbm == "null") {
+            return;
+        }
         var fwlmc = $(this).find("#fwlmc").val();
         var fggxh = $(this).find("#fggxh").val();
         var fdw = $(this).find("#fdw").val();
@@ -1475,6 +1488,9 @@ function Save() {
 
     $("#mxlist_fp").find("#mx").each(function () {
         var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        if (ffp_wlmc == "null") {
+            return;
+        }
         var ffp_ggxh = $(this).find("#ffp_ggxh").val();
         var ffp_dw = $(this).find("#ffp_dw").val();
         var ffp_bzxs = $(this).find("#ffp_bzxs").val();
@@ -1640,7 +1656,7 @@ function Save() {
             } else {
                 xml += `
                      <BPM_WGYYFHFPSQ_B1>
-                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RelationRowGuid>${( 1)}</RelationRowGuid>
                                <RowPrimaryKeys></RowPrimaryKeys>
                                <fentyrno></fentyrno>
                                 <ffh_wlbm></ffh_wlbm>
@@ -1733,6 +1749,9 @@ function reSave() {
     $("#mxlist_fh").find("#mx").each(function () {
 
         var fwlbm = $(this).find("#fwlbm").val();
+        if (fwlbm == "null") {
+            return;
+        }
         var fwlmc = $(this).find("#fwlmc").val();
         var fggxh = $(this).find("#fggxh").val();
         var fdw = $(this).find("#fdw").val();
@@ -1772,6 +1791,9 @@ function reSave() {
 
     $("#mxlist_fp").find("#mx").each(function () {
         var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        if (ffp_wlmc == "null") {
+            return;
+        }
         var ffp_ggxh = $(this).find("#ffp_ggxh").val();
         var ffp_dw = $(this).find("#ffp_dw").val();
         var ffp_bzxs = $(this).find("#ffp_bzxs").val();
@@ -1913,7 +1935,7 @@ function reSave() {
                     xml += `
                            <BPM_WGYYFHFPSQ_B1>
                                <RelationRowGuid>${(i + 1)}</RelationRowGuid>
-                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
                                <fentyrno>${(i + 1)}</fentyrno>
                                 <ffh_wlbm>${mxlistArrShip[i].fwlbm}</ffh_wlbm>
                                 <ffh_wlmc>${mxlistArrShip[i].fwlmc}</ffh_wlmc>
@@ -1933,8 +1955,8 @@ function reSave() {
             } else {
                 xml += `
                      <BPM_WGYYFHFPSQ_B1>
-                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
-                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <RelationRowGuid>${( 1)}</RelationRowGuid>
+                               <RowPrimaryKeys>itemid=${itemidArr1[0]}</RowPrimaryKeys>
                                <fentyrno></fentyrno>
                                 <ffh_wlbm></ffh_wlbm>
                                 <ffh_wlmc></ffh_wlmc>
@@ -1957,7 +1979,7 @@ function reSave() {
                     xml += `
                        <BPM_WGYYFHFPSQ_B2>
                             <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 + i)}</RelationRowGuid>
-                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
                             <fentryno>${(i + 1)}</fentryno>
                             <ffp_wlmc>${mxlistArrBill[i].ffp_wlmc}</ffp_wlmc>
                             <ffp_ggxh>${mxlistArrBill[i].ffp_ggxh}</ffp_ggxh>
@@ -1973,7 +1995,7 @@ function reSave() {
             } else {
                 xml += `<BPM_WGYYFHFPSQ_B2>
                               <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1)}</RelationRowGuid>
-                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <RowPrimaryKeys>itemid=${itemidArr2[0]}</RowPrimaryKeys>
                             <fentryno>1</fentryno>
                             <ffp_wlmc></ffp_wlmc>
                             <ffp_ggxh></ffp_ggxh>
@@ -2052,6 +2074,9 @@ function AgreeOrConSign() {
     $("#mxlist_fh").find("#mx").each(function () {
 
         var fwlbm = $(this).find("#fwlbm").val();
+        if (fwlbm == "null") {
+            return;
+        }
         var fwlmc = $(this).find("#fwlmc").val();
         var fggxh = $(this).find("#fggxh").val();
         var fdw = $(this).find("#fdw").val();
@@ -2091,6 +2116,9 @@ function AgreeOrConSign() {
 
     $("#mxlist_fp").find("#mx").each(function () {
         var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        if (ffp_wlmc == "null") {
+            return;
+        }
         var ffp_ggxh = $(this).find("#ffp_ggxh").val();
         var ffp_dw = $(this).find("#ffp_dw").val();
         var ffp_bzxs = $(this).find("#ffp_bzxs").val();
@@ -2285,8 +2313,8 @@ function AgreeOrConSign() {
                 }
             } else {
                 xml += ' <BPM_WGYYFHFPSQ_B1>';
-                xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
-                xml += '  <RowPrimaryKeys></RowPrimaryKeys>';
+                xml += '   <RelationRowGuid>' + ( 1) + '</RelationRowGuid>';
+                xml += '  <RowPrimaryKeys>itemid=' + itemidArr1[0] + '</RowPrimaryKeys>';
                 xml += '  <fentyrno></fentyrno>';
                 xml += ' <ffh_wlbm></ffh_wlbm>';
                 xml += ' <ffh_wlmc></ffh_wlmc>';
@@ -2324,7 +2352,7 @@ function AgreeOrConSign() {
                 xml += ' <BPM_WGYYFHFPSQ_B2>';
                 xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1) + '</RelationRowGuid>';
 
-                xml += ' <RowPrimaryKeys></RowPrimaryKeys>';
+                xml += ' <RowPrimaryKeys>itemid=' + itemidArr2[0] + '</RowPrimaryKeys>';
                 xml += ' <fentryno>1</fentryno>';
                 xml += '  <ffp_wlmc></ffp_wlmc>';
                 xml += '  <ffp_ggxh></ffp_ggxh>';
@@ -2421,8 +2449,8 @@ function AgreeOrConSign() {
             }
         } else {
             xml += ' <BPM_WGYYFHFPSQ_B1>';
-            xml += '   <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
-            xml += '  <RowPrimaryKeys></RowPrimaryKeys>';
+            xml += '   <RelationRowGuid>' + ( 1) + '</RelationRowGuid>';
+            xml += '  <RowPrimaryKeys>itemid=' + itemidArr1[0] + '</RowPrimaryKeys>';
             xml += '  <fentyrno></fentyrno>';
             xml += ' <ffh_wlbm></ffh_wlbm>';
             xml += ' <ffh_wlmc></ffh_wlmc>';
@@ -2460,7 +2488,7 @@ function AgreeOrConSign() {
             xml += ' <BPM_WGYYFHFPSQ_B2>';
             xml += '  <RelationRowGuid>' + (parseInt(mxlistArrShip.length) + 1) + '</RelationRowGuid>';
 
-            xml += ' <RowPrimaryKeys></RowPrimaryKeys>';
+            xml += ' <RowPrimaryKeys>itemid=' + itemidArr2[0] + '</RowPrimaryKeys>';
             xml += ' <fentryno>1</fentryno>';
             xml += '  <ffp_wlmc></ffp_wlmc>';
             xml += '  <ffp_ggxh></ffp_ggxh>';
