@@ -341,7 +341,7 @@ function initData(data, flag) {
     var item_c1 = data.FormDataSet.威海卫大厦员工调岗调薪申请表_B;
     if (String(item.变动范围).match('部门内') != null) {
         for (var i = 0; i < item_c1.length; i++) {
-            itemidArr1.push(item_c2[i].itemid);
+            itemidArr1.push(item_c1[i].itemid);
             var li = `
            <div id="mx" class="mui-card">
               <div class="mui-input-row itemtitle">
@@ -356,7 +356,7 @@ function initData(data, flag) {
                    <div class="mui-col-xs-4" style="display:flex;">
                          <label for="frzrq">入职日期<i style="color:red;">*</i></label>
 
-                         <input type="date" id="frzrq" name="frzrq" readonly value="${FormatterTimeYMS(item_c1[i].入职日期)} "/>
+                         <input type="date" id="frzrq" name="frzrq" readonly value="${FormatterTimeYMS(item_c1[i].入职日期)}"/>
                    </div>
                    <div class="mui-col-xs-4" style="display:flex;">
                         <label for="fbddyy">被调动原因<i style="color:red;">*</i></label>
@@ -390,25 +390,28 @@ function initData(data, flag) {
                    </div>
                    <div class="mui-col-xs-4" style="display:flex;">
                        <label for="frszt">人事状态</label>
-                        <input type="text" id="frszt" name="frszt" readonly value="${item_c1[i].人事状态}"/>   
+                        <input type="text" id="frszt" name="frszt" readonly value="${changeNullToEmpty(item_c1[i].人事状态)}"/>   
                    </div> 
               </div>
              
               <div class="mui-input-row" style="height:auto;">
                   <label for="fbz">备注</label>
-                  <textarea rows="2" id="fbz" name="fbz" readonly >${item_c1[i].备注}</textarea>
+                  <textarea rows="2" id="fbz" name="fbz" readonly >${changeNullToEmpty(item_c1[i].备注)}</textarea>
               </div>
            </div>
                  `;
             $("#mxlist_in").append(li);
         }
+    } else {
+        itemidArr1.push(item_c1[0].itemid);
     }
    
 
     var item_c2 = data.FormDataSet.威海卫大厦员工调岗调薪申请表_C;
     if (String(item.变动范围).match('部门间') != null) {
-        itemidArr2.push(item_c2[i].itemid);
+       
         for (var i = 0; i < item_c2.length; i++) {
+            itemidArr2.push(item_c2[i].itemid);
             var li = `
            <div id="mx" class="mui-card">
               <div class="mui-input-row itemtitle">
@@ -466,20 +469,24 @@ function initData(data, flag) {
                     </div>
                    <div class="mui-col-xs-6" style="display:flex;">
                        <label for="frszt">人事状态</label>
-                       <input type="text" id="frszt" name="frszt" readonly value="${item_c2[i].人事状态}"/>  
+                       <input type="text" id="frszt" name="frszt" readonly value="${changeNullToEmpty(item_c2[i].人事状态)}"/>  
                     </div>
                      
                </div>
                          
               <div class="mui-input-row" style="height:auto;">
                   <label for="fbz">备注</label>
-                  <textarea rows="2" id="fbz" name="fbz" readonly >${item_c2[i].备注}</textarea>
+                  <textarea rows="2" id="fbz" name="fbz" readonly >${changeNullToEmpty(item_c2[i].备注)}</textarea>
               </div>              
            </div>
                  `;
             $("#mxlist_out").append(li);
         }
+    } else {
+        console.log(item_c2[0].itemid);
+        itemidArr2.push(item_c2[0].itemid);
     }
+
 }
 function nodeControllerExp(NodeName) {
     if (String(NodeName).match('开始') != null) {
@@ -568,5 +575,346 @@ function AgreeOrConSign() {
     var fbillno = $("#fbillno").val();
     var comment = $("#signSuggest").val();
 
+    var fname = $("#fname").val();
+    var fdept = $("#fdept").val();
+    var fdate = $("#fdate").val();
+    var fbdfw = $("#fbdfw").val();
+    var mxflag = false;
+    var mxlistArr1 = new Array();
+    var mxlistArr2 = new Array();
+    if (String(fbdfw).match('部门内') != null) {
+        $("#mxlist_in").find("#mx").each(function () {
+            var fbsqrxm = $(this).find("#fbsqrxm").val();
+            var frzrq = $(this).find("#frzrq").val();
+            var fbddyy = $(this).find("#fbddyy").val();
+            var fxrgw = $(this).find("#fxrgw").val();
+            var fxggz = $(this).find("#fxggz").val();
+            var fndgwrq = $(this).find("#fndgwrq").val();
+            var fndgw = $(this).find("#fndgw").val();
+            var fndgwgz = $(this).find("#fndgwgz").val();
+            var frszt = $(this).find("#frszt").val();
+            var fbz = $(this).find("#fbz").val();
 
+            var mx =new MxItem_in(fbsqrxm, frzrq, fbddyy, fxrgw, fxggz, fndgwrq, fndgw, fndgwgz, frszt, fbz);
+            mxlistArr1.push(mx);
+        });
+
+    } else if (String(fbdfw).match('部门间') != null){
+        $("#mxlist_out").find("#mx").each(function () {
+            var fsqrxm = $(this).find("#fsqrxm").val();
+            var frzrq = $(this).find("#frzrq").val();
+            var fndgwrq = $(this).find("#fndgwrq").val();
+            var fxzszbm = $(this).find("#fxzszbm").val();
+            var fxrgw = $(this).find("#fxrgw").val();
+            var fxgwgz = $(this).find("#fxgwgz").val();
+            var fndrbm = $(this).find("#fndrbm").val();
+            var fndrbmqlj = $(this).find("#fndrbmqlj").val();
+            var fdrbmfzr = $(this).find("#fdrbmfzr").val();
+            var fdrbmfzrno = $(this).find("#fdrbmfzrno").val();
+            var fndgw = $(this).find("#fndgw").val();
+            var fndgwgz = $(this).find("#fndgwgz").val();
+            var frszt = $(this).find("#frszt").val();
+            var fbz = $(this).find("#fbz").val();
+            var mx = new MxItem_out(fsqrxm, frzrq, fndgwrq, fxzszbm, fxrgw, fxgwgz, fndrbm, fndrbmqlj, fdrbmfzr, fdrbmfzrno, fndgw, fndgwgz, frszt, fbz);
+            mxlistArr2.push(mx);
+        });
+
+
+    }
+    var consignFlag = false;
+    var consignUserId = new Array();
+    var consignRoutingType;
+    var consignReturnType;
+
+    var consignUserStr;
+
+    //加签if分支
+    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+        consignFlag = true;
+
+        if ($('#sxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Serial';
+
+        } else if ($('#pxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Parallel';
+        }
+
+        if ($('#hdbjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Return';
+        } else if ($('#jrxjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Forward';
+        }
+
+
+        var consignAjax = $.ajax({
+            type: "POST",
+            url: "/api/bpm/PostAccount",
+            data: { "ids": consignOpenIdArr },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+            }
+        }).done(function (data, status) {
+            //alert(status);
+            if (status == "success") {
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    consignUserId.push(data.data[i].phone);
+                }
+                $('#consignUser').val(consignUserId);
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+            }
+        }).fail(function () {
+
+        });
+    } else {
+
+
+    }
+    if (consignFlag) {
+        consignAjax.then(function () {
+            var xml = `<?xml version="1.0"?>
+                     <XForm>
+                     <Header>
+                     <Method>Process</Method>
+                     <PID>${pid}</PID>
+                     <Action>同意</Action>
+                     <Comment>${comment}</Comment>
+            
+                     <ConsignEnabled>true</ConsignEnabled>
+                     <ConsignUsers>${consignUserStr}</ConsignUsers>
+                     <ConsignRoutingType>${consignRoutingType}</ConsignRoutingType>
+                     <ConsignReturnType>${consignReturnType}</ConsignReturnType>
+                     <InviteIndicateUsers>[]</InviteIndicateUsers>
+                     <Context>{&quot;Routing&quot;:{}}</Context>
+                     </Header>';
+                     <FormData>`;
+            xml += `
+                      <威海卫大厦员工调岗调薪申请表_A>
+                        <fbillno>${fbillno}</fbillno>
+                        <提报人>${fname}</提报人>
+                        <申请部门>${fdept}</申请部门>
+                        <申请日期>${fdate}</申请日期>
+                        <变动范围>${fbdfw}</变动范围>
+                        <附件>${fjArray.join(";")}</附件>
+                    </威海卫大厦员工调岗调薪申请表_A>
+                    `;
+            if (mxlistArr1.length != 0) {
+                for (var i = 0; i < mxlistArr1.length;i++){
+                    xml += `
+                         <威海卫大厦员工调岗调薪申请表_B>
+                            <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+                            <被申请人姓名>${mxlistArr1[i].fbsqrxm}</被申请人姓名>
+                            <入职日期>${mxlistArr1[i].frzrq}</入职日期>
+                            <调动原因>${mxlistArr1[i].fbddyy}</调动原因>
+                            <现任岗位>${mxlistArr1[i].fxrgw}</现任岗位>
+                            <现岗位工资>${mxlistArr1[i].fxggz}</现岗位工资>
+                            <拟定到岗日期>${mxlistArr1[i].fndgwrq}</拟定到岗日期>
+                            <拟定岗位>${mxlistArr1[i].fndgw}</拟定岗位>
+                            <拟定岗位工资>${mxlistArr1[i].fndgwgz}</拟定岗位工资>
+                            <人事状态>${mxlistArr1[i].frszt}</人事状态>
+                            <备注>${mxlistArr1[i].fbz}</备注>
+                        </威海卫大厦员工调岗调薪申请表_B>
+                       `;
+                }
+                
+            } else {
+                xml += `
+                          <威海卫大厦员工调岗调薪申请表_B>
+                            <RelationRowGuid>1</RelationRowGuid>
+                            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+                            <被申请人姓名></被申请人姓名>
+                            <入职日期></入职日期>
+                            <调动原因></调动原因>
+                            <现任岗位></现任岗位>
+                            <现岗位工资></现岗位工资>
+                            <拟定到岗日期></拟定到岗日期>
+                            <拟定岗位></拟定岗位>
+                            <拟定岗位工资></拟定岗位工资>
+                            <人事状态>同意</人事状态>
+                            <备注></备注>
+                        </威海卫大厦员工调岗调薪申请表_B>
+                       `;
+            }
+            if (mxlistArr2.length != 0) {
+                for (var i = 0; i < mxlistArr2.length; i++) {
+                    xml += `
+                           <威海卫大厦员工调岗调薪申请表_C>
+                                <RelationRowGuid>${mxlistArr1.length + (i + 1)}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
+                                <申请人姓名>${mxlistArr2[i].fsqrxm}</申请人姓名>
+                                <入职日期>${mxlistArr2[i].frzrq}</入职日期>
+                                <拟定到岗日期>${mxlistArr2[i].fndgwrq}</拟定到岗日期>
+                                <现所在部门>${mxlistArr2[i].fxzszbm}</现所在部门>
+                                <现任岗位>${mxlistArr2[i].fxrgw}</现任岗位>
+                                <现岗位工资>${mxlistArr2[i].fxgwgz}</现岗位工资>
+                                <调入部门路径>${mxlistArr2[i].fndrbmqlj}</调入部门路径>
+                                <拟调入部门>${mxlistArr2[i].fndrbm}</拟调入部门>
+                                <调入部门负责人工号>${mxlistArr2[i].fdrbmfzrno}</调入部门负责人工号>
+                                <调入部门负责人>${mxlistArr2[i].fdrbmfzr}</调入部门负责人>
+                                <拟定岗位>${mxlistArr2[i].fndgw}</拟定岗位>
+                                <拟定岗位工资>${mxlistArr2[i].fndgwgz}</拟定岗位工资>
+                                <备注>${mxlistArr2[i].fbz}</备注>
+                                <人事状态>${mxlistArr2[i].frszt}</人事状态>
+                            </威海卫大厦员工调岗调薪申请表_C>
+                           `;
+                }
+
+            } else {
+                xml += `
+                           <威海卫大厦员工调岗调薪申请表_C>
+                                <RelationRowGuid>${mxlistArr1.length + (i + 1)}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
+                                <申请人姓名></申请人姓名>
+                                <入职日期></入职日期>
+                                <拟定到岗日期></拟定到岗日期>
+                                <现所在部门></现所在部门>
+                                <现任岗位></现任岗位>
+                                <现岗位工资></现岗位工资>
+                                <调入部门路径></调入部门路径>
+                                <拟调入部门></拟调入部门>
+                                <调入部门负责人工号></调入部门负责人工号>
+                                <调入部门负责人></调入部门负责人>
+                                <拟定岗位></拟定岗位>
+                                <拟定岗位工资></拟定岗位工资>
+                                <备注></备注>
+                                <人事状态></人事状态>
+                            </威海卫大厦员工调岗调薪申请表_C>
+                           `;
+
+            }
+            xml += `  </FormData>
+                      </XForm>`;
+
+            PostXml(xml);
+        })
+    } else {
+        var xml = `<?xml version="1.0"?>
+                   <XForm>
+                   <Header>
+                   <Method>Process</Method>
+                   <PID>${pid}</PID>
+                   <Action>同意</Action>
+                   <Comment>${comment}</Comment>
+
+                    <UrlParams></UrlParams>
+                    <ConsignEnabled>false</ConsignEnabled>
+                    <ConsignUsers>[]</ConsignUsers>
+                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                    <ConsignReturnType>Return</ConsignReturnType>
+
+                  <InviteIndicateUsers>[]</InviteIndicateUsers>
+                  <Context>{&quot;Routing&quot;:{}}</Context>
+                  </Header>
+                  <FormData>`;
+        xml += `
+                      <威海卫大厦员工调岗调薪申请表_A>
+                        <fbillno>${fbillno}</fbillno>
+                        <提报人>${fname}</提报人>
+                        <申请部门>${fdept}</申请部门>
+                        <申请日期>${fdate}</申请日期>
+                        <变动范围>${fbdfw}</变动范围>
+                        <附件>${fjArray.join(";")}</附件>
+                    </威海卫大厦员工调岗调薪申请表_A>
+                    `;
+        if (mxlistArr1.length != 0) {
+            for (var i = 0; i < mxlistArr1.length; i++) {
+                xml += `
+                         <威海卫大厦员工调岗调薪申请表_B>
+                            <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+                            <被申请人姓名>${mxlistArr1[i].fbsqrxm}</被申请人姓名>
+                            <入职日期>${mxlistArr1[i].frzrq}</入职日期>
+                            <调动原因>${mxlistArr1[i].fbddyy}</调动原因>
+                            <现任岗位>${mxlistArr1[i].fxrgw}</现任岗位>
+                            <现岗位工资>${mxlistArr1[i].fxggz}</现岗位工资>
+                            <拟定到岗日期>${mxlistArr1[i].fndgwrq}</拟定到岗日期>
+                            <拟定岗位>${mxlistArr1[i].fndgw}</拟定岗位>
+                            <拟定岗位工资>${mxlistArr1[i].fndgwgz}</拟定岗位工资>
+                            <人事状态>${mxlistArr1[i].frszt}</人事状态>
+                            <备注>${mxlistArr1[i].fbz}</备注>
+                        </威海卫大厦员工调岗调薪申请表_B>
+                       `;
+            }
+
+        } else {
+            xml += `
+                          <威海卫大厦员工调岗调薪申请表_B>
+                            <RelationRowGuid>1</RelationRowGuid>
+                            <RowPrimaryKeys>itemid=${itemidArr1[0]}</RowPrimaryKeys>
+                            <被申请人姓名></被申请人姓名>
+                            <入职日期></入职日期>
+                            <调动原因></调动原因>
+                            <现任岗位></现任岗位>
+                            <现岗位工资></现岗位工资>
+                            <拟定到岗日期></拟定到岗日期>
+                            <拟定岗位></拟定岗位>
+                            <拟定岗位工资></拟定岗位工资>
+                            <人事状态>同意</人事状态>
+                            <备注></备注>
+                        </威海卫大厦员工调岗调薪申请表_B>
+                       `;
+        }
+        if (mxlistArr2.length != 0) {
+            for (var i = 0; i < mxlistArr2.length; i++) {
+                xml += `
+                           <威海卫大厦员工调岗调薪申请表_C>
+                                <RelationRowGuid>${mxlistArr1.length + (i + 1)}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
+                                <申请人姓名>${mxlistArr2[i].fsqrxm}</申请人姓名>
+                                <入职日期>${mxlistArr2[i].frzrq}</入职日期>
+                                <拟定到岗日期>${mxlistArr2[i].fndgwrq}</拟定到岗日期>
+                                <现所在部门>${mxlistArr2[i].fxzszbm}</现所在部门>
+                                <现任岗位>${mxlistArr2[i].fxrgw}</现任岗位>
+                                <现岗位工资>${mxlistArr2[i].fxgwgz}</现岗位工资>
+                                <调入部门路径>${mxlistArr2[i].fndrbmqlj}</调入部门路径>
+                                <拟调入部门>${mxlistArr2[i].fndrbm}</拟调入部门>
+                                <调入部门负责人工号>${mxlistArr2[i].fdrbmfzrno}</调入部门负责人工号>
+                                <调入部门负责人>${mxlistArr2[i].fdrbmfzr}</调入部门负责人>
+                                <拟定岗位>${mxlistArr2[i].fndgw}</拟定岗位>
+                                <拟定岗位工资>${mxlistArr2[i].fndgwgz}</拟定岗位工资>
+                                <备注>${mxlistArr2[i].fbz}</备注>
+                                <人事状态>${mxlistArr2[i].frszt}</人事状态>
+                            </威海卫大厦员工调岗调薪申请表_C>
+                           `;
+            }
+
+        } else {
+            xml += `
+                           <威海卫大厦员工调岗调薪申请表_C>
+                                <RelationRowGuid>${mxlistArr1.length + ( 1)}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[0]}</RowPrimaryKeys>
+                                <申请人姓名></申请人姓名>
+                                <入职日期></入职日期>
+                                <拟定到岗日期></拟定到岗日期>
+                                <现所在部门></现所在部门>
+                                <现任岗位></现任岗位>
+                                <现岗位工资></现岗位工资>
+                                <调入部门路径></调入部门路径>
+                                <拟调入部门></拟调入部门>
+                                <调入部门负责人工号></调入部门负责人工号>
+                                <调入部门负责人></调入部门负责人>
+                                <拟定岗位></拟定岗位>
+                                <拟定岗位工资></拟定岗位工资>
+                                <备注></备注>
+                                <人事状态></人事状态>
+                            </威海卫大厦员工调岗调薪申请表_C>
+                           `;
+
+        }
+        xml += `  </FormData>
+                      </XForm>`;
+
+        PostXml(xml);
+    }
 }

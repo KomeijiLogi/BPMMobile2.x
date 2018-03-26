@@ -1130,6 +1130,11 @@
     <Content Include="Pages\98SGWeeklyFlow\FlowCreate.html" />
     <Content Include="Pages\98SGWeeklyFlow\FlowDoneDetail.html" />
     <Content Include="Pages\98SGWeeklyFlow\FlowUndoDetail.html" />
+    <Content Include="Pages\99ZPFY002\common.js" />
+    <Content Include="Pages\99ZPFY002\FlowAskDetail.html" />
+    <Content Include="Pages\99ZPFY002\FlowCreate.html" />
+    <Content Include="Pages\99ZPFY002\FlowDoneDetail.html" />
+    <Content Include="Pages\99ZPFY002\FlowUndoDetail.html" />
     <Content Include="Pages\AskFlow.html" />
     <Content Include="Pages\BG0702001\FlowAskDetail.html" />
     <Content Include="Pages\BG0702001\FlowCreate.html" />
@@ -1372,6 +1377,8 @@
     <Folder Include="Pages\10XinNeiHaoCai\03JinRuiKaiLi\" />
     <Folder Include="Pages\94FeiYong\" />
     <Folder Include="Pages\98MenHu\" />
+    <Folder Include="Pages\99ZPFY001\" />
+    <Folder Include="Pages\99ZPFY003\" />
     <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>

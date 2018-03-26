@@ -131,64 +131,135 @@ function initList() {
             });
             if (checkedValues.length > 0) {
                 for (var i = 0; i < checkedElements.length; i++) {
-                    var li = '<div id="mx" class="mui-card">';
-                    li = li + '   <div class="mui-input-row itemtitle">';
-                    li = li + '      <label>明细列表项</label>';
-                    li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row" style="display:none;">';
-                    li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
-                    li = li + '      <input type="text" id="fkhmc" name="fkhmc" placeholder="请填写客户名称"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + checkedElements[i].fcpdm + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fcpmc">产品名称</label>';
-                    li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + checkedElements[i].fcpmc + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fggxh">规格型号</label>';
-                    li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + checkedElements[i].fggxh + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fdw">单位</label>';
-                    li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + checkedElements[i].fdw + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="ffhsl">发货数量<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="number" id="ffhsl" name="ffhsl" placeholder="请填写发货数量"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fdj">单价<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="number" id="fdj" name="fdj" placeholder="请填写单价"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fje">金额</label>';
-                    li = li + '       <input type="number" id="fje" name="fje" readonly="readonly" value="0"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fzl">装量<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="number" id="fzl" name="fzl" placeholder="请填写装量"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fjs">件数</label>';
-                    li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="0"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row"  style="display:none;">';
-                    li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
-                    li = li + '        <input type="date" id="ffhrq" name="ffhrq" />';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row" style="display:none;">';
-                    li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" placeholder="请选择发票类型"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fbz">备注</label>';
-                    li = li + '       <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>';
-                    li = li + '   </div>';
-                    li = li + '</div>';
+                    //var li = '<div id="mx" class="mui-card">';
+                    //li = li + '   <div class="mui-input-row itemtitle">';
+                    //li = li + '      <label>明细列表项</label>';
+                    //li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row" style="display:none;">';
+                    //li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
+                    //li = li + '      <input type="text" id="fkhmc" name="fkhmc" placeholder="请填写客户名称"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + checkedElements[i].fcpdm + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fcpmc">产品名称</label>';
+                    //li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + checkedElements[i].fcpmc + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fggxh">规格型号</label>';
+                    //li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + checkedElements[i].fggxh + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fdw">单位</label>';
+                    //li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + checkedElements[i].fdw + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="ffhsl">发货数量<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="number" id="ffhsl" name="ffhsl" placeholder="请填写发货数量"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fdj">单价<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="number" id="fdj" name="fdj" placeholder="请填写单价"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fje">金额</label>';
+                    //li = li + '       <input type="number" id="fje" name="fje" readonly="readonly" value="0"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fzl">装量<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="number" id="fzl" name="fzl" placeholder="请填写装量"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fjs">件数</label>';
+                    //li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="0"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row"  style="display:none;">';
+                    //li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
+                    //li = li + '        <input type="date" id="ffhrq" name="ffhrq" />';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row" style="display:none;">';
+                    //li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" placeholder="请选择发票类型"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fbz">备注</label>';
+                    //li = li + '       <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>';
+                    //li = li + '   </div>';
+                    //li = li + '</div>';
+                    var li = `
+                          <div id="mx" class="mui-card">
+                             <div class="mui-input-row itemtitle">
+                                 <label>明细列表项</label>
+                                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                 <div class="mui-col-xs-4" style="display:none;">
+                                     <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                                     <textarea id="fkhmc" name="fkhmc" placeholder="请填写客户名称"></textarea>
+                                 </div>  
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label for="fcpdm">产品代码<i style="color:red;">*</i></label>
+                                      <textarea id="fcpdm" name="fcpdm" readonly="readonly" >${checkedElements[i].fcpdm}</textarea> 
+                                 </div>
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                      <label for="fcpmc">产品名称</label>
+                                      <textarea id="fcpmc" name="fcpmc" readonly="readonly">${checkedElements[i].fcpmc}</textarea>
+                                 </div>
+                                  <div class="mui-col-xs-4" style="display:flex;">
+                                      <label for="fggxh">规格型号</label>
+                                      <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="${checkedElements[i].fggxh}"/>
+                                  </div>
+                             </div>
+                              <div class="mui-row cutOffLine">
+                                  
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                       <label for="fdw">单位</label>
+                                       <input type="text" id="fdw" name="fdw" readonly="readonly" value="${checkedElements[i].fdw}"/>  
+                                   </div> 
+                                    <div class="mui-col-xs-4" style="display:flex;"> 
+                                        <label for="ffhsl">发货数量<i style="color:red;">*</i></label>
+                                        <input type="number" id="ffhsl" name="ffhsl" placeholder="请填写发货数量"/>
+                                    </div> 
+                                    <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fdj">单价<i style="color:red;">*</i></label>
+                                        <input type="number" id="fdj" name="fdj" placeholder="请填写单价"/>
+                                    </div>
+                              </div>
+                               <div class="mui-row cutOffLine"> 
+                                      
+                                    <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fje">金额</label>
+                                        <input type="number" id="fje" name="fje" readonly="readonly" value="0"/>
+                                    </div> 
+                                     <div class="mui-col-xs-4" style="display:flex;">
+                                         <label for="fzl">装量<i style="color:red;">*</i></label>
+                                         <input type="number" id="fzl" name="fzl" placeholder="请填写装量"/>
+                                     </div> 
+                                     <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fjs">件数</label>
+                                        <input type="number" id="fjs" name="fjs" readonly="readonly" value="0"/>
+                                    </div>
+                               </div>
+                              <div class="mui-row cutOffLine" style="display:none;"> 
+                                   
+                                    <div class="mui-col-xs-8" style="display:none;">
+                                         <label for="ffhrq">发货日期<i style="color:red;">*</i></label>
+                                         <input type="date" id="ffhrq" name="ffhrq" />    
+                                    </div>
+                                    <div class="mui-col-xs-4" style="display:none;" >
+                                        <label for="ffplx">发票类型<i style="color:red;">*</i></label>
+                                        <input type="text" id="ffplx" name="ffplx" readonly="readonly" placeholder="请选择发票类型"/> 
+                                    </div>
+                              </div>
+                              <div class="mui-input-row">
+                                   <label for="fbz">备注</label>
+                                   <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>
+                              </div>
+                          </div>  
+                            `;
                     $("#mxlist").append(li);
                     $("#mxlist").find("#ffhsl,#fdj,#fzl").each(function () {
                         $(this).off('input');
@@ -242,9 +313,9 @@ function hiddenCard() {
     $("#search").css("display", "none");
 }
 function calcNumber(context) {
-    var fsl = parseFloat( $(context).parent().parent().find("#ffhsl").val());
-    var fdj = parseFloat($(context).parent().parent().find("#fdj").val());
-    var fzl = parseFloat($(context).parent().parent().find("#fzl").val());
+    var fsl = parseFloat($(context).parent().parent().parent().find("#ffhsl").val());
+    var fdj = parseFloat($(context).parent().parent().parent().find("#fdj").val());
+    var fzl = parseFloat($(context).parent().parent().parent().find("#fzl").val());
     var fje = 0;
     var fjs = 0;
 
@@ -261,8 +332,8 @@ function calcNumber(context) {
     fje = parseFloat(fsl * fdj);
     fjs = parseFloat(fsl / fzl).toFixed(2);
 
-    $(context).parent().parent().find("#fje").val(fje);
-    $(context).parent().parent().find("#fjs").val(fjs);
+    $(context).parent().parent().parent().find("#fje").val(fje);
+    $(context).parent().parent().parent().find("#fjs").val(fjs);
     calcTotal();
 }
 function calcTotal() {
@@ -321,7 +392,7 @@ function mxItem(fkhmc, fcpdm, fcpmc, fggxh, fdw, ffhsl, fdj, fje, fzl, fjs, ffhr
         ffplx: ffplx,
         fbz: fbz,
         _check: function () {
-            
+           
             if (!ffhsl) {
                 mui.toast('请填写发货数量');
                 return null;
@@ -367,64 +438,136 @@ function initData(data, flag) {
     var item_c = data.FormDataSet.医用材料公司_发货申请_子表;
     for (var i = 0; i < item_c.length; i++){
         itemidArr.push(item_c[i].itemid);
-        var li = '<div id="mx" class="mui-card">';
-        li = li + '   <div class="mui-input-row itemtitle">';
-        li = li + '      <label>明细列表项</label>';
-        li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row" style="display:none;">';
-        li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
-        li = li + '      <input type="text" id="fkhmc" name="fkhmc" readonly="readonly" value="' + item_c[i].客户名称 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
-        li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + item_c[i].产品代码 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fcpmc">产品名称</label>';
-        li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + item_c[i].产品名称 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fggxh">规格型号</label>';
-        li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + changeNullToEmpty( item_c[i].规格型号 )+ '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fdw">单位</label>';
-        li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + item_c[i].单位 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="ffhsl">发货数量<i style="color:red;">*</i></label>';
-        li = li + '       <input type="number" id="ffhsl" name="ffhsl" readonly="readonly" value="' + item_c[i].发货数量 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fdj">单价<i style="color:red;">*</i></label>';
-        li = li + '       <input type="number" id="fdj" name="fdj" readonly="readonly" value="' + item_c[i].单价 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fje">金额</label>';
-        li = li + '       <input type="number" id="fje" name="fje" readonly="readonly" value="' + item_c[i].金额 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fzl">装量<i style="color:red;">*</i></label>';
-        li = li + '       <input type="number" id="fzl" name="fzl" readonly="readonly" value="' + item_c[i].装量 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fjs">件数</label>';
-        li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="' + item_c[i].件数 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row"  style="display:none;">';
-        li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
-        li = li + '        <input type="date" id="ffhrq" name="ffhrq" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].发货时间 )+ '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row" style="display:none;">';
-        li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
-        li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" value="' + item_c[i].发票类型 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fbz">备注</label>';
-        li = li + '       <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + changeNullToEmpty( item_c[i].备注说明 )+ '"/>';
-        li = li + '   </div>';
-        li = li + '</div>';
+        //var li = '<div id="mx" class="mui-card">';
+        //li = li + '   <div class="mui-input-row itemtitle">';
+        //li = li + '      <label>明细列表项</label>';
+        //li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row" style="display:none;">';
+        //li = li + '      <label for="fkhmc">客户名称<i style="color:red;">*</i></label>';
+        //li = li + '      <input type="text" id="fkhmc" name="fkhmc" readonly="readonly" value="' + item_c[i].客户名称 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + item_c[i].产品代码 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fcpmc">产品名称</label>';
+        //li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + item_c[i].产品名称 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fggxh">规格型号</label>';
+        //li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + changeNullToEmpty( item_c[i].规格型号 )+ '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fdw">单位</label>';
+        //li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + item_c[i].单位 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="ffhsl">发货数量<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="number" id="ffhsl" name="ffhsl" readonly="readonly" value="' + item_c[i].发货数量 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fdj">单价<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="number" id="fdj" name="fdj" readonly="readonly" value="' + item_c[i].单价 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fje">金额</label>';
+        //li = li + '       <input type="number" id="fje" name="fje" readonly="readonly" value="' + item_c[i].金额 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fzl">装量<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="number" id="fzl" name="fzl" readonly="readonly" value="' + item_c[i].装量 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fjs">件数</label>';
+        //li = li + '       <input type="number" id="fjs" name="fjs" readonly="readonly" value="' + item_c[i].件数 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row"  style="display:none;">';
+        //li = li + '        <label for="ffhrq">发货日期<i style="color:red;">*</i></label>';
+        //li = li + '        <input type="date" id="ffhrq" name="ffhrq" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].发货时间 )+ '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row" style="display:none;">';
+        //li = li + '       <label for="ffplx">发票类型<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="text" id="ffplx" name="ffplx" readonly="readonly" value="' + item_c[i].发票类型 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fbz">备注</label>';
+        //li = li + '       <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + changeNullToEmpty( item_c[i].备注说明 )+ '"/>';
+        //li = li + '   </div>';
+        //li = li + '</div>';
+
+        var li = `
+                          <div id="mx" class="mui-card">
+                             <div class="mui-input-row itemtitle">
+                                 <label>明细列表项</label>
+                                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                 <div class="mui-col-xs-4" style="display:none;">
+                                     <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
+                                     <textarea id="fkhmc" name="fkhmc" readonly>${item_c[i].客户名称}</textarea>
+                                 </div>  
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label for="fcpdm">产品代码<i style="color:red;">*</i></label>
+                                      <textarea id="fcpdm" name="fcpdm" readonly="readonly" >${item_c[i].产品代码}</textarea> 
+                                 </div>
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                      <label for="fcpmc">产品名称</label>
+                                      <textarea id="fcpmc" name="fcpmc" readonly="readonly">${item_c[i].产品名称}</textarea>
+                                 </div>
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                      <label for="fggxh">规格型号</label>
+                                      <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="${changeNullToEmpty(item_c[i].规格型号)}"/>
+                                  </div>
+                             </div>
+                              <div class="mui-row cutOffLine">
+                                  
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                       <label for="fdw">单位</label>
+                                       <input type="text" id="fdw" name="fdw" readonly="readonly" value="${item_c[i].单位}"/>  
+                                   </div> 
+                                    <div class="mui-col-xs-4" style="display:flex;"> 
+                                        <label for="ffhsl">发货数量<i style="color:red;">*</i></label>
+                                        <input type="number" id="ffhsl" name="ffhsl" readonly="readonly" value="${item_c[i].发货数量}"/>
+                                    </div> 
+                                     <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fdj">单价<i style="color:red;">*</i></label>
+                                        <input type="number" id="fdj" name="fdj" readonly="readonly" value="${item_c[i].单价}"/>
+                                    </div>  
+                              </div>
+                               <div class="mui-row cutOffLine"> 
+                                   
+                                    <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fje">金额</label>
+                                        <input type="number" id="fje" name="fje" readonly="readonly" value="${item_c[i].金额}"/>
+                                    </div> 
+                                     <div class="mui-col-xs-4" style="display:flex;">
+                                         <label for="fzl">装量<i style="color:red;">*</i></label>
+                                         <input type="number" id="fzl" name="fzl" readonly="readonly" value="${item_c[i].装量}"/>
+                                     </div> 
+                                    <div class="mui-col-xs-4" style="display:flex;">
+                                        <label for="fjs">件数</label>
+                                        <input type="number" id="fjs" name="fjs" readonly="readonly" value="${item_c[i].件数}"/>
+                                    </div>
+                               </div>
+                              <div class="mui-row cutOffLine" style="display:none;"> 
+                                    
+                                    <div class="mui-col-xs-8" style="display:none;">
+                                         <label for="ffhrq">发货日期<i style="color:red;">*</i></label>
+                                         <input type="date" id="ffhrq" name="ffhrq" readonly="readonly" value="${FormatterTimeYMS(item_c[i].发货时间)}"/>    
+                                    </div>
+                                    <div class="mui-col-xs-4" style="display:none;" >
+                                        <label for="ffplx">发票类型<i style="color:red;">*</i></label>
+                                        <input type="text" id="ffplx" name="ffplx" readonly="readonly" value="${item_c[i].发票类型}"/> 
+                                    </div>
+                              </div>
+                              <div class="mui-input-row">
+                                   <label for="fbz">备注</label>
+                                   <input type="text" id="fbz" name="fbz" readonly="readonly" value="${changeNullToEmpty(item_c[i].备注说明)}"/>
+                              </div>
+                          </div>  
+                            `;
         $("#mxlist").append(li);
     }
 }
