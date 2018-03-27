@@ -283,7 +283,13 @@
 
                      }
                  },
-                 error: function (e) { },
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     if (XMLHttpRequest.status == "401") {
+                         mui.alert('授权过期，请重新打开页面');;
+                     } else if (XMLHttpRequest.status == "500") {
+                         mui.alert('服务器内部错误');
+                     }
+                 },
                  complete: function () {
                      $("#loadingAnimate").css('display', "none");
                      $(".mui-content").css('opacity', '1');

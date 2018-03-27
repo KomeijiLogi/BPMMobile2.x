@@ -536,7 +536,7 @@ function Save() {
         mui.toast('请选择主要用途');
         return;
     }
-    if (!fxyhkflx) {
+    if (String(fzyyt).match('新用户') != null && (!fxyhkflx)) {
         mui.toast('请选择新用户开发类别');
         return;
     }
@@ -723,7 +723,7 @@ function reSave() {
         mui.toast('请选择主要用途');
         return;
     }
-    if (!fxyhkflx) {
+    if (String(fzyyt).match('新用户')!=null&&(!fxyhkflx)) {
         mui.toast('请选择新用户开发类别');
         return;
     }

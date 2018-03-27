@@ -483,6 +483,11 @@
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\YF0101002\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\02LvYouCanYin\CG0102001\common.js" />
+    <Content Include="Pages\01WeGoHQ\02LvYouCanYin\CG0102001\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\02LvYouCanYin\CG0102001\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\02LvYouCanYin\CG0102001\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\02LvYouCanYin\CG0102001\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\BG0103001\FlowCreate.html" />
@@ -563,6 +568,11 @@
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103004\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103005\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103005\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103005\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103005\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\RL0103005\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\SCYX0103001\FlowCreate.html" />
@@ -1350,7 +1360,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pages\01WeGoHQ\02LvYouCanYin\" />
     <Folder Include="Pages\01WeGoHQ\04HouQinFuWu\" />
     <Folder Include="Pages\01WeGoHQ\07RongZiZunLin\" />
     <Folder Include="Pages\02YiYongZhiPin\03YiLiaoXiTong\" />

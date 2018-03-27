@@ -526,8 +526,9 @@ function tapEvent() {
         var li = `
            <div class="mui-card" id="mx">
               <div class="mui-input-row itemtitle">
+                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                    <label></label>    
-                   <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                   <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
               </div>
               <div class="mui-row cutOffLine" >
                  <div class="mui-col-xs-4" style="display:flex;">
@@ -599,7 +600,30 @@ function tapEvent() {
         $("#menu").find('input').each(function () {
             $(this).val('');
         });
+     
+
     });
+
+    $("#mxlist_fh").on('tap', '.mui-icon-arrowright', function (e) {
+        toggleMenu();
+        $("#fwlbm_menu").val($(e.target).parent().parent().find("#fwlbm").val());
+        $("#fwlmc_menu").val($(e.target).parent().parent().find("#fwlmc").val());
+        $("#fggxh_menu").val($(e.target).parent().parent().find("#fggxh").val());
+        $("#fdw_menu").val($(e.target).parent().parent().find("#fdw").val());
+        $("#fdwbm_menu").val($(e.target).parent().parent().find("#fdwbm").val());
+        $("#fzl_menu").val($(e.target).parent().parent().find("#fzl").val());
+        $("#ffh_bzxs_menu").val($(e.target).parent().parent().find("#ffh_bzxs").val());
+        $("#ffh_dj_menu").val($(e.target).parent().parent().find("#ffh_dj").val());
+        $("#ffh_sl_menu").val($(e.target).parent().parent().find("#ffh_sl").val());
+        $("#fsjfhsl_menu").val($(e.target).parent().parent().find("#fsjfhsl").val());
+        $("#ffh_je_menu").val($(e.target).parent().parent().find("#ffh_je").val());
+        $("#ffh_js_menu").val($(e.target).parent().parent().find("#ffh_js").val());
+
+        $(e.target).parent().parent().remove();
+        calcTotalBill();
+    });
+
+
     $("#cancel_menu").on('tap', () => {
         toggleMenu();
     });
@@ -625,8 +649,9 @@ function tapEvent() {
         var li = `
                 <div class="mui-card" id="mx">
                   <div class="mui-input-row itemtitle">
+                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                        <label></label>    
-                       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                       <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
                   </div>
                   <div class="mui-row cutOffLine">
                         <div class="mui-col-xs-4" style="display:flex;">
@@ -671,6 +696,18 @@ function tapEvent() {
         $("#menu2").find('input').each(function () {
             $(this).val('');
         });
+    });
+    $("#mxlist_fp").on('tap', '.mui-icon-arrowright', function (e) {
+        toggleMenu2();
+        $("#ffp_wlmc_menu").val($(e.target).parent().parent().find("#ffp_wlmc").val());
+        $("#ffp_ggxh_menu").val($(e.target).parent().parent().find("#ffp_ggxh").val());
+        $("#ffp_dw_menu").val($(e.target).parent().parent().find("#ffp_dw").val());
+        $("#ffp_bzxs_menu").val($(e.target).parent().parent().find("#ffp_bzxs").val());
+        $("#ffp_dj_menu").val($(e.target).parent().parent().find("#ffp_dj").val());
+        $("#ffp_sl_menu").val($(e.target).parent().parent().find("#ffp_sl").val());
+        $("#ffp_je_menu").val($(e.target).parent().parent().find("#ffp_je").val());
+        $(e.target).parent().parent().remove();
+        calcTotalShip();
     });
 
     $("#cancel_menu_2").on('tap', () => {
