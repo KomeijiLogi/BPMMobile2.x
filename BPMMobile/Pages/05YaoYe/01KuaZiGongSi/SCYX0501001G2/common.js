@@ -708,6 +708,7 @@ function tapEvent() {
         $("#ffp_je_menu").val($(e.target).parent().parent().find("#ffp_je").val());
         $(e.target).parent().parent().remove();
         calcTotalShip();
+
     });
 
     $("#cancel_menu_2").on('tap', () => {
