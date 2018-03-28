@@ -359,7 +359,7 @@ function tapEvent() {
 
             ele2.value = items[0].text;
             $(ele2).data('fxszg', items[0].value);
-
+            
         });
 
     }, false);
@@ -554,7 +554,7 @@ function tapEvent() {
                  <input type="hidden" id="fdwbm" name="fdwbm" placeholder="单位编码" value="${$("#fdwbm_menu").val()}"/> 
                   <div class="mui-col-xs-4" style="display:flex;">
                        <label>装量</label>
-                      <input type="text" id="fzl" name="fzl" readonly placeholder="装量" value="${$("#fzl_menu").val()}" />
+                      <input type="number" id="fzl" name="fzl" readonly placeholder="装量" value="${$("#fzl_menu").val()}" />
                   </div>
                   <div class="mui-col-xs-4" style="display:flex;">
                       <label>包装形式</label>
@@ -1171,11 +1171,17 @@ function initData(data, flag) {
     $("#fkhmc").data('fkhbm', item_a.fkhbm);
     //$("#fzjsj").val(item_a.fzjsj);
     $("#fzjsj").data('fxszg', item_a.fxszg);
+
     for (var n = 0; n < fzjsjdata.length; n++) {
         if (String(fzjsjdata[n].value).match(item_a.fxszg) != null) {
             $("#fzjsj").val(fzjsjdata[n].text);
         }
     }
+    //草稿范本中直接上级为空的情况
+    if (!item_a.fxszg) {
+        $("#fzjsj").val('');
+    }
+
     $("#fsh_dz").val(item_a.fsh_dz);
     $("#fsh_name").val(item_a.fsh_name);
     $("#fsh_tel").val(item_a.fsh_tel);
@@ -1201,8 +1207,9 @@ function initData(data, flag) {
         var li = `
            <div class="mui-card" id="mx">
               <div class="mui-input-row itemtitle">
+                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                    <label></label>    
-                   <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                   <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
               </div>
               <div class="mui-row cutOffLine">
                   <div class="mui-col-xs-4" style="display:flex;">
@@ -1227,7 +1234,7 @@ function initData(data, flag) {
                   </div>  
                 <div class="mui-col-xs-4" style="display:flex;">
                        <label>装量</label>
-                       <input type="text" id="fzl" name="fzl" readonly placeholder="装量" value="${item_b1[i].fzl}" />
+                       <input type="number" id="fzl" name="fzl" readonly placeholder="装量" value="${item_b1[i].fzl}" />
                   </div>
                   <div class="mui-col-xs-4" style="display:flex;">
                        <label>包装形式</label>
@@ -1287,8 +1294,9 @@ function initData(data, flag) {
         var li = `
                 <div class="mui-card" id="mx">
                   <div class="mui-input-row itemtitle">
+                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                        <label></label>    
-                       <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                       <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
                   </div>
                   <div class="mui-row cutOffLine">
                        <div class="mui-col-xs-4" style="display:flex;">
@@ -1424,6 +1432,37 @@ function nodeControllerExp(NodeName) {
 
 }
 
+//加载范本数据
+function initTemplateData() {
+    //取当前url，获取到 DraftGuid
+    var url = window.location.href;
+    var urlTail = url.split("?")[1];   //url取出？后面部分
+    var urlFrag = urlTail.split("&");   //通过&将url后面部分拆分成数组，数组内容为xxx=xxx的格式
+    var DraftGuid = String(urlFrag[0]).replace("DraftGuid=", "");
+    $("#DraftGuid").val(DraftGuid);     //将draftGuid保存到dom中以备更新范本时使用
+
+    //请求范本数据
+    $.ajax({
+        type: 'get',
+        url: "/api/bpm/GetDraftData",
+        data: { 'draftID': DraftGuid },
+        beforeSend: function (XHR) {
+            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        }
+    }).done((data) => {
+        console.log(data);
+        initData(data, false);
+        $("#mxlist_fp,#mxlist_fh").find('span').each(function () {
+
+            $(this).show();
+        });
+    }).fail((e) => {
+
+    });
+}
+
+
+
 class MxItem_trad {
     constructor(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js) {
         this.fwlbm = fwlbm;
@@ -1451,6 +1490,512 @@ class MxItem_bill {
         this.ffp_je = ffp_je;
     }
 }
+
+//保存范本
+function SaveAsDraft() {
+    var fname = $("#fname").val();
+    var fno = $("#fname").data('fno');
+    var fqy = $("#fqy").val();
+    var fsqrq = $("#fsqrq").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    var fkzcc = $("#fkhmc").data('fkzcc');
+
+    var fzjsj = $("#fzjsj").val();
+    var fxszg = $("#fzjsj").data('fxszg');
+
+    var fsh_dz = $("#fsh_dz").val();
+    var fsh_name = $("#fsh_name").val();
+    var fsh_tel = $("#fsh_tel").val();
+    var fdhrq = $("#fdhrq").val();
+    var fkhlx = $("#fkhlx").val();
+    var fdqqk = $("#fdqqk").val();
+    var fcsxq = $("#fcsxq").val();
+    var fckdh = $("#fckdh").val();
+    var fhj_fhsl = $("#fhj_fhsl").val();
+    var fsjfhsltotal = $("#fsjfhsltotal").val();
+    var fhj_fhje = $("#fhj_fhje").val();
+    var fhj_fhjs = $("#fhj_fhjs").val();
+
+    var mxflag = false;
+    var mxlistArrShip = new Array();
+    $("#mxlist_fh").find("#mx").each(function () {
+
+        var fwlbm = $(this).find("#fwlbm").val();
+        if (fwlbm == "null") {
+            return;
+        }
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fdw = $(this).find("#fdw").val();
+        var fdwbm = $(this).find("#fdwbm").val();
+        var fzl = $(this).find("#fzl").val();
+        var ffh_bzxs = $(this).find("#ffh_bzxs").val();
+        var ffh_dj = $(this).find("#ffh_dj").val();
+        var ffh_sl = $(this).find("#ffh_sl").val();
+        var fsjfhsl = $(this).find("#fsjfhsl").val();
+        var ffh_je = $(this).find("#ffh_je").val();
+        var ffh_js = $(this).find("#ffh_js").val();
+
+
+
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        mxlistArrShip.push(mx);
+    });
+
+
+    var ffh_bz = $("#ffh_bz").val();
+    var ffplb = $("#ffplb").val();
+    var fsj_name = $("#fsj_name").val();
+    var fsj_tel = $("#fsj_tel").val();
+    var fyjdz = $("#fyjdz").val();
+    var fkd_gs = $("#fkd_gs").val();
+    var fkd_dh = $("#fkd_dh").val();
+    var ffph = $("#ffph").val();
+    var fhrqks = $("#fhrqks").val();
+    var fhrqjs = $("#fhrqjs").val();
+
+    var fhj_fpsl = $("#fhj_fpsl").val();
+    var fhj_fpje = $("#fhj_fpje").val();
+
+
+
+    var mxlistArrBill = new Array();
+
+    $("#mxlist_fp").find("#mx").each(function () {
+        var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        if (ffp_wlmc == "null") {
+            return;
+        }
+        var ffp_ggxh = $(this).find("#ffp_ggxh").val();
+        var ffp_dw = $(this).find("#ffp_dw").val();
+        var ffp_bzxs = $(this).find("#ffp_bzxs").val();
+        var ffp_dj = $(this).find("#ffp_dj").val();
+        var ffp_sl = $(this).find("#ffp_sl").val();
+        var ffp_je = $(this).find("#ffp_je").val();
+
+        var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
+        mxlistArrBill.push(mx);
+    });
+
+    var ffp_bz = $("#ffp_bz").val();
+
+    var btnArry = ["取消", "确定"];
+    mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version="1.0"?>
+                            <XForm>
+                                <Header>
+                                    <Method>SaveAsFormTemplate</Method>
+                                    <ProcessName>药业集团发货、发票开具申请</ProcessName>
+                                    <OwnerMemberFullName>${BPMOU}</OwnerMemberFullName>
+                                    <Comment></Comment>
+                                    <UrlParams>{}</UrlParams>
+                                    <ConsignEnabled>false</ConsignEnabled>
+                                    <ConsignUsers>[]</ConsignUsers>
+                                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                                    <ConsignReturnType>Return</ConsignReturnType>
+                                    <InviteIndicateUsers>[]</InviteIndicateUsers>
+                                    <Context>{&quot;Routing&quot;:{}}</Context>
+                                </Header>
+                           <FormData>
+                       `;
+            xml += `<BPM_WGYYFHFPSQ_A>
+                        <fbillno>自动生成</fbillno>
+                        <fname>${fname}</fname>
+                        <fqy>${fqy}</fqy>
+                        <fsqrq>${fsqrq}</fsqrq>
+                        <fsqlx>${fsqlx}</fsqlx>
+                        <fkhbm>${fkhbm}</fkhbm>
+                        <fkczz>${fkzcc}</fkczz>
+                        <fkhmc>${fkhmc}</fkhmc>
+                        <fxszg>${fxszg}</fxszg>
+                        <fsh_dz>${fsh_dz}</fsh_dz>
+                        <fsh_name>${fsh_name}</fsh_name>
+                        <fsh_tel>${fsh_tel}</fsh_tel>
+                        <fdhrq>${fdhrq}</fdhrq>
+                        <fkhlx>${fkhlx}</fkhlx>
+                        <fdqqk>${fdqqk}</fdqqk>
+                        <fcsxq>${fcsxq}</fcsxq>
+                        <fckdh>${fckdh}</fckdh>
+                        <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
+                        <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
+                        <fhj_fhje>${fhj_fhje}</fhj_fhje>
+                        <fhj_fhjs>${fhj_fhjs}</fhj_fhjs>
+                        <ffh_bz>${ffh_bz}</ffh_bz>
+                        <ffplb>${ffplb}</ffplb>
+                        <fsj_name>${fsj_name}</fsj_name>
+                        <fsj_tel>${fsj_tel}</fsj_tel>
+                        <fyjdz>${fyjdz}</fyjdz>
+                        <fkd_gs>${fkd_gs}</fkd_gs>
+                        <fkd_dh>${fkd_dh}</fkd_dh>
+                        <ffph>${ffph}</ffph>
+                        <fhrqks>${fhrqks}</fhrqks>
+                        <fhrqjs>${fhrqjs}</fhrqjs>
+                        <fhj_fpsl>${fhj_fpsl}</fhj_fpsl>
+                        <fhj_fpje>${fhj_fpje}</fhj_fpje>
+                        <ffp_bz>${ffp_bz}</ffp_bz>
+                    </BPM_WGYYFHFPSQ_A>
+                   `;
+            if (mxlistArrShip.length != 0) {
+                for (var i = 0; i < mxlistArrShip.length; i++) {
+                    xml += `
+                           <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno>${(i + 1)}</fentyrno>
+                                <ffh_wlbm>${mxlistArrShip[i].fwlbm}</ffh_wlbm>
+                                <ffh_wlmc>${mxlistArrShip[i].fwlmc}</ffh_wlmc>
+                                <ffh_ggxh>${mxlistArrShip[i].fggxh}</ffh_ggxh>
+                                <ffh_dw>${mxlistArrShip[i].fdw}</ffh_dw>
+                                <fjldwbm>${mxlistArrShip[i].fdwbm}</fjldwbm>
+                                <fzl>${mxlistArrShip[i].fzl}</fzl>
+                                <ffh_bzxs>${mxlistArrShip[i].ffh_bzxs}</ffh_bzxs>
+                                <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
+                                <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
+                                <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
+                                <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                          `;
+                }
+            } else {
+                xml += `
+                     <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno></fentyrno>
+                                <ffh_wlbm></ffh_wlbm>
+                                <ffh_wlmc></ffh_wlmc>
+                                <ffh_ggxh></ffh_ggxh>
+                                <ffh_dw></ffh_dw>
+                                <fjldwbm></fjldwbm>
+                                <fzl></fzl>
+                                <ffh_bzxs></ffh_bzxs>
+                                <ffh_dj></ffh_dj>
+                                <ffh_sl></ffh_sl>
+                                <fsjfhsl></fsjfhsl>
+                                <ffh_je></ffh_je>
+                                <ffh_js></ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                      `;
+            }
+
+            if (mxlistArrBill.length != 0) {
+                for (var i = 0; i < mxlistArrBill.length; i++) {
+                    xml += `
+                       <BPM_WGYYFHFPSQ_B2>
+                            <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 + i)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>${(i + 1)}</fentryno>
+                            <ffp_wlmc>${mxlistArrBill[i].ffp_wlmc}</ffp_wlmc>
+                            <ffp_ggxh>${mxlistArrBill[i].ffp_ggxh}</ffp_ggxh>
+                            <ffp_dw>${mxlistArrBill[i].ffp_dw}</ffp_dw>
+                            <ffp_bzxs>${mxlistArrBill[i].ffp_bzxs}</ffp_bzxs>
+                            <ffp_dj>${mxlistArrBill[i].ffp_dj}</ffp_dj>
+                            <ffp_sl>${mxlistArrBill[i].ffp_sl}</ffp_sl>
+                            <ffp_je>${mxlistArrBill[i].ffp_je}</ffp_je>
+                        </BPM_WGYYFHFPSQ_B2>
+                          `;
+                }
+
+            } else {
+                xml += `<BPM_WGYYFHFPSQ_B2>
+                              <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>1</fentryno>
+                            <ffp_wlmc></ffp_wlmc>
+                            <ffp_ggxh></ffp_ggxh>
+                            <ffp_dw></ffp_dw>
+                            <ffp_bzxs></ffp_bzxs>
+                            <ffp_dj></ffp_dj>
+                            <ffp_sl></ffp_sl>
+                            <ffp_je></ffp_je>    
+                        </BPM_WGYYFHFPSQ_B2>
+                       `;
+            }
+            xml += `</FormData>
+                     </XForm>
+                   `;
+            mui.alert('范本将保存到草稿列表中，请到草稿中查阅范本');
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/PostProcess",
+                data: { '': xml },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done((data, status) => {
+                if (status == "success") {
+                    console.log(data);
+                    mui.toast('保存范本成功');
+                } else {
+                    mui.toast("保存失败!请稍后重试");
+                }
+            }).fail((e) => {
+                console.log(e);
+            });
+        }
+    });
+    
+   
+}
+
+function UpdateDraft() {
+    var fname = $("#fname").val();
+    var fno = $("#fname").data('fno');
+    var fqy = $("#fqy").val();
+    var fsqrq = $("#fsqrq").val();
+    var fsqlx = $("#fsqlx").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    var fkzcc = $("#fkhmc").data('fkzcc');
+
+    var fzjsj = $("#fzjsj").val();
+    var fxszg = $("#fzjsj").data('fxszg');
+
+    var fsh_dz = $("#fsh_dz").val();
+    var fsh_name = $("#fsh_name").val();
+    var fsh_tel = $("#fsh_tel").val();
+    var fdhrq = $("#fdhrq").val();
+    var fkhlx = $("#fkhlx").val();
+    var fdqqk = $("#fdqqk").val();
+    var fcsxq = $("#fcsxq").val();
+    var fckdh = $("#fckdh").val();
+    var fhj_fhsl = $("#fhj_fhsl").val();
+    var fsjfhsltotal = $("#fsjfhsltotal").val();
+    var fhj_fhje = $("#fhj_fhje").val();
+    var fhj_fhjs = $("#fhj_fhjs").val();
+
+    var mxflag = false;
+    var mxlistArrShip = new Array();
+    $("#mxlist_fh").find("#mx").each(function () {
+
+        var fwlbm = $(this).find("#fwlbm").val();
+        if (fwlbm == "null") {
+            return;
+        }
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fdw = $(this).find("#fdw").val();
+        var fdwbm = $(this).find("#fdwbm").val();
+        var fzl = $(this).find("#fzl").val();
+        var ffh_bzxs = $(this).find("#ffh_bzxs").val();
+        var ffh_dj = $(this).find("#ffh_dj").val();
+        var ffh_sl = $(this).find("#ffh_sl").val();
+        var fsjfhsl = $(this).find("#fsjfhsl").val();
+        var ffh_je = $(this).find("#ffh_je").val();
+        var ffh_js = $(this).find("#ffh_js").val();
+
+
+
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        mxlistArrShip.push(mx);
+    });
+
+
+    var ffh_bz = $("#ffh_bz").val();
+    var ffplb = $("#ffplb").val();
+    var fsj_name = $("#fsj_name").val();
+    var fsj_tel = $("#fsj_tel").val();
+    var fyjdz = $("#fyjdz").val();
+    var fkd_gs = $("#fkd_gs").val();
+    var fkd_dh = $("#fkd_dh").val();
+    var ffph = $("#ffph").val();
+    var fhrqks = $("#fhrqks").val();
+    var fhrqjs = $("#fhrqjs").val();
+
+    var fhj_fpsl = $("#fhj_fpsl").val();
+    var fhj_fpje = $("#fhj_fpje").val();
+
+
+
+    var mxlistArrBill = new Array();
+
+    $("#mxlist_fp").find("#mx").each(function () {
+        var ffp_wlmc = $(this).find("#ffp_wlmc").val();
+        if (ffp_wlmc == "null") {
+            return;
+        }
+        var ffp_ggxh = $(this).find("#ffp_ggxh").val();
+        var ffp_dw = $(this).find("#ffp_dw").val();
+        var ffp_bzxs = $(this).find("#ffp_bzxs").val();
+        var ffp_dj = $(this).find("#ffp_dj").val();
+        var ffp_sl = $(this).find("#ffp_sl").val();
+        var ffp_je = $(this).find("#ffp_je").val();
+
+        var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
+        mxlistArrBill.push(mx);
+    });
+
+    var ffp_bz = $("#ffp_bz").val();
+
+
+    var DraftGuid = $("#DraftGuid").val();
+
+    var btnArry = ["取消", "确定"];
+    mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version="1.0"?>
+                            <XForm>
+                                <Header>
+                                    <Method>SaveDraft</Method>
+                                    <ProcessName>药业集团发货、发票开具申请</ProcessName>
+                                    <DraftGuid>${DraftGuid}</DraftGuid>
+                                    <OwnerMemberFullName>${BPMOU}</OwnerMemberFullName>
+                                    <Comment></Comment>
+                                    <UrlParams>{}</UrlParams>
+                                    <ConsignEnabled>false</ConsignEnabled>
+                                    <ConsignUsers>[]</ConsignUsers>
+                                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                                    <ConsignReturnType>Return</ConsignReturnType>
+                                    <InviteIndicateUsers>[]</InviteIndicateUsers>
+                                    <Context>{&quot;Routing&quot;:{}}</Context>
+                                </Header>
+                                <FormData>
+
+                      `;
+
+            xml += `<BPM_WGYYFHFPSQ_A>
+                        <fbillno>自动生成</fbillno>
+                        <fname>${fname}</fname>
+                        <fqy>${fqy}</fqy>
+                        <fsqrq>${fsqrq}</fsqrq>
+                        <fsqlx>${fsqlx}</fsqlx>
+                        <fkhbm>${fkhbm}</fkhbm>
+                        <fkczz>${fkzcc}</fkczz>
+                        <fkhmc>${fkhmc}</fkhmc>
+                        <fxszg>${fxszg}</fxszg>
+                        <fsh_dz>${fsh_dz}</fsh_dz>
+                        <fsh_name>${fsh_name}</fsh_name>
+                        <fsh_tel>${fsh_tel}</fsh_tel>
+                        <fdhrq>${fdhrq}</fdhrq>
+                        <fkhlx>${fkhlx}</fkhlx>
+                        <fdqqk>${fdqqk}</fdqqk>
+                        <fcsxq>${fcsxq}</fcsxq>
+                        <fckdh>${fckdh}</fckdh>
+                        <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
+                        <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
+                        <fhj_fhje>${fhj_fhje}</fhj_fhje>
+                        <fhj_fhjs>${fhj_fhjs}</fhj_fhjs>
+                        <ffh_bz>${ffh_bz}</ffh_bz>
+                        <ffplb>${ffplb}</ffplb>
+                        <fsj_name>${fsj_name}</fsj_name>
+                        <fsj_tel>${fsj_tel}</fsj_tel>
+                        <fyjdz>${fyjdz}</fyjdz>
+                        <fkd_gs>${fkd_gs}</fkd_gs>
+                        <fkd_dh>${fkd_dh}</fkd_dh>
+                        <ffph>${ffph}</ffph>
+                        <fhrqks>${fhrqks}</fhrqks>
+                        <fhrqjs>${fhrqjs}</fhrqjs>
+                        <fhj_fpsl>${fhj_fpsl}</fhj_fpsl>
+                        <fhj_fpje>${fhj_fpje}</fhj_fpje>
+                        <ffp_bz>${ffp_bz}</ffp_bz>
+                    </BPM_WGYYFHFPSQ_A>
+                   `;
+            if (mxlistArrShip.length != 0) {
+                for (var i = 0; i < mxlistArrShip.length; i++) {
+                    xml += `
+                           <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(i + 1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno>${(i + 1)}</fentyrno>
+                                <ffh_wlbm>${mxlistArrShip[i].fwlbm}</ffh_wlbm>
+                                <ffh_wlmc>${mxlistArrShip[i].fwlmc}</ffh_wlmc>
+                                <ffh_ggxh>${mxlistArrShip[i].fggxh}</ffh_ggxh>
+                                <ffh_dw>${mxlistArrShip[i].fdw}</ffh_dw>
+                                <fjldwbm>${mxlistArrShip[i].fdwbm}</fjldwbm>
+                                <fzl>${mxlistArrShip[i].fzl}</fzl>
+                                <ffh_bzxs>${mxlistArrShip[i].ffh_bzxs}</ffh_bzxs>
+                                <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
+                                <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
+                                <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
+                                <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                          `;
+                }
+            } else {
+                xml += `
+                     <BPM_WGYYFHFPSQ_B1>
+                               <RelationRowGuid>${(1)}</RelationRowGuid>
+                               <RowPrimaryKeys></RowPrimaryKeys>
+                               <fentyrno></fentyrno>
+                                <ffh_wlbm></ffh_wlbm>
+                                <ffh_wlmc></ffh_wlmc>
+                                <ffh_ggxh></ffh_ggxh>
+                                <ffh_dw></ffh_dw>
+                                <fjldwbm></fjldwbm>
+                                <fzl></fzl>
+                                <ffh_bzxs></ffh_bzxs>
+                                <ffh_dj></ffh_dj>
+                                <ffh_sl></ffh_sl>
+                                <fsjfhsl></fsjfhsl>
+                                <ffh_je></ffh_je>
+                                <ffh_js></ffh_js>
+                           </BPM_WGYYFHFPSQ_B1>
+                      `;
+            }
+
+            if (mxlistArrBill.length != 0) {
+                for (var i = 0; i < mxlistArrBill.length; i++) {
+                    xml += `
+                       <BPM_WGYYFHFPSQ_B2>
+                            <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1 + i)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>${(i + 1)}</fentryno>
+                            <ffp_wlmc>${mxlistArrBill[i].ffp_wlmc}</ffp_wlmc>
+                            <ffp_ggxh>${mxlistArrBill[i].ffp_ggxh}</ffp_ggxh>
+                            <ffp_dw>${mxlistArrBill[i].ffp_dw}</ffp_dw>
+                            <ffp_bzxs>${mxlistArrBill[i].ffp_bzxs}</ffp_bzxs>
+                            <ffp_dj>${mxlistArrBill[i].ffp_dj}</ffp_dj>
+                            <ffp_sl>${mxlistArrBill[i].ffp_sl}</ffp_sl>
+                            <ffp_je>${mxlistArrBill[i].ffp_je}</ffp_je>
+                        </BPM_WGYYFHFPSQ_B2>
+                          `;
+                }
+
+            } else {
+                xml += `<BPM_WGYYFHFPSQ_B2>
+                              <RelationRowGuid>${(parseInt(mxlistArrShip.length) + 1)}</RelationRowGuid>
+                            <RowPrimaryKeys></RowPrimaryKeys>
+                            <fentryno>1</fentryno>
+                            <ffp_wlmc></ffp_wlmc>
+                            <ffp_ggxh></ffp_ggxh>
+                            <ffp_dw></ffp_dw>
+                            <ffp_bzxs></ffp_bzxs>
+                            <ffp_dj></ffp_dj>
+                            <ffp_sl></ffp_sl>
+                            <ffp_je></ffp_je>    
+                        </BPM_WGYYFHFPSQ_B2>
+                       `;
+            }
+            xml += `</FormData>
+                     </XForm>
+                   `;
+
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/PostProcess",
+                data: { '': xml },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done((data, status) => {
+                if (status == "success") {
+                    console.log(data);
+                    mui.toast('更新范本成功');
+                } else {
+                    mui.toast("更新失败!请稍后重试");
+                }
+            }).fail((e) => {
+                console.log(e);
+            });
+        }
+    });
+}
+
 
 function Save() {
   

@@ -1050,6 +1050,20 @@ namespace BPMMobile.Controllers
                     out rowcount);
                     drafts.Append(list);
                 }
+                foreach (var p in mobileProcess)
+                {
+                    int rowcount = 0;
+                    var list = cn.GetMyDrafts(
+                        DraftType.FormTemplate,
+                        p.Path,
+                       "ProcessName='" + p.Name + "'",
+                        "",
+                        0,
+                        int.MaxValue,
+                        out rowcount
+                        );
+                    drafts.Append(list);
+                }
             }
             return drafts;
         }
@@ -1082,7 +1096,24 @@ namespace BPMMobile.Controllers
                         out rowcount);
                         drafts.Append(list);
                     }
+
                    
+                }
+                foreach(var p in mobileProcess)
+                {
+                    int rowcount = 0;
+                    if (p.DisplayName.IndexOf(search) != -1)
+                    {
+                        var list = cn.GetMyDrafts(
+                       DraftType.FormTemplate,
+                       p.Path,
+                       "ProcessName='" + p.Name + "'",
+                       "",
+                       0,
+                       int.MaxValue,
+                       out rowcount);
+                        drafts.Append(list);
+                    }
                 }
             }
             return drafts;

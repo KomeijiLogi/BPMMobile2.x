@@ -2756,7 +2756,7 @@
     <Group>办公管理</Group>
     <Description>适用于对盛祥商管公司员工激励与惩罚申请。</Description>
   </Process>
-<Process>
+<!--<Process>
     <Name>药业集团发货、发票开具申请</Name>
     <Path>\\05药业集团\\01跨子公司\\13_市场营销</Path>
     <CanCreate>True</CanCreate>
@@ -2770,7 +2770,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于药业集团业务员发货与发票开具的申请。</Description>
-  </Process>
+  </Process>-->
   <Process>
     <Name>宝龄公司员工外出申请</Name>
     <Path>\\05药业集团\\02宝龄公司\\16_行政办公</Path>
@@ -3182,7 +3182,7 @@
     <ViewUndoPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowCreate.html</ViewPage>
+    <ViewPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowTemplate.html</ViewPage>
     <DisplayName>药业集团发货、发票开具申请改二</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>

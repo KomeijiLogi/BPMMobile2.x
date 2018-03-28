@@ -939,6 +939,7 @@
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowAskDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowCreate.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowDoneDetail.html" />
+    <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowTemplate.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowUndoDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\index.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\css\app.3bef6f992ed7301e3e696a575e613f94.css" />

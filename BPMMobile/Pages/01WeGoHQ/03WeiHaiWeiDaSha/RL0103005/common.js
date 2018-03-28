@@ -283,6 +283,11 @@ function AssembledDom(fileExt, url,id) {
     return li;
 }
 
+
+function uploadRe() {
+
+
+}
 function nodeControllerExp(NodeName) {
 
 }
