@@ -517,7 +517,7 @@ function tapEvent() {
 }
 
 function checkEvent() {
-    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="radio"]'));
+    var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
     var checkedValues = [];
     var checkedElements = [];
     var checkedElementsBill = [];
@@ -617,7 +617,7 @@ function checkEvent() {
                 li += '<label for="fdw">单位<i style="color:red;">*</i></label>';
                 li += '<input type="text" id="fdw" name="fdw" readonly value="' + checkedElements[i].fdw + '" />';
                 li += '</div>';
-                li += '<div class="mui-input-row">';
+                li += '<div class="mui-input-row" style="display:none;">';
                 li += '<label for="fdwbm">单位编码<i style="color:red;">*</i></label>';
                 li += '<input type="text" id="fdwbm" name="fdwbm" readonly value="' + checkedElements[i].fdwbm + '" />';
                 li += '</div>';
@@ -642,16 +642,18 @@ function checkEvent() {
                 li += '<input type="number" id="fsjfhsl" name="fsjfhsl"  placeholder="请填写实际发货数量" value="0" />';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffh_je">含税金额<i style="color:red;">*</i></label>';
+                li += '<label for="ffh_je">含税金额</label>';
                 li += '<input type="number" id="ffh_je" name="ffh_je"  readonly value="0.000000" />';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffh_js">件数<i style="color:red;">*</i></label>';
+                li += '<label for="ffh_js">件数</label>';
                 li += '<input type="number" id="ffh_js" name="ffh_js"  readonly  />';
                 li += '</div>';
                 li += '</div>';
                 $("#mxlist_fh").append(li);
-                document.getElementById('tjmx_fh').scrollIntoView();
+
+               
+
                 $("#mxlist_fh").find("#ffh_sl").on('input', function () {
 
                     $(this).parent().parent().find("#fsjfhsl").val($(this).val());
@@ -697,12 +699,14 @@ function checkEvent() {
                 li += '<input type="number" id="ffp_sl" name="ffp_sl"  placeholder="请填写数量"/>';
                 li += '</div>';
                 li += '<div class="mui-input-row">';
-                li += '<label for="ffp_je">含税金额<i style="color:red;">*</i></label>';
+                li += '<label for="ffp_je">含税金额</label>';
                 li += '<input type="number" id="ffp_je" name="ffp_je"  readonly value="0.000000"/>';
                 li += '</div>';
                 li = li + '</div>';
                 $("#mxlist_fp").append(li);
-                document.getElementById('tjmx_fp').scrollIntoView();
+
+               
+
                 $("#mxlist_fp").find("input[type='number']").on('input', function () {
 
                     calcPriceBill(this);
@@ -724,6 +728,11 @@ function checkEvent() {
     $("#selector").hide();
     $("#wrapper").show();
     $("#datalist").empty();
+    if (vflag == 1) {
+        document.getElementById('tjmx_fh').scrollIntoView();
+    } else if (vflag == 2) {
+        document.getElementById('tjmx_fp').scrollIntoView();
+    }
 
 }
 //准备索引列表前置
@@ -746,7 +755,7 @@ function prepIndexedList(vflag) {
 
     done.addEventListener('tap', checkEvent, false);
     mui('.mui-indexed-list-inner').on('change', 'input', function () {
-        var count = list.querySelectorAll('input[type="radio"]:checked').length;
+        var count = list.querySelectorAll('input[type="checkbox"]:checked').length;
         var value = count ? "完成(" + count + ")" : "完成";
         done.innerHTML = value;
         if (count) {
@@ -820,8 +829,8 @@ function getProcedureMsg(pflag,vflag) {
                         var item = provideData.Tables[0].Rows;
                         $("#datalist").empty();   //清除之前数据
                         for (var i = 0; i < item.length; i++) {
-                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                            li += '<input type="radio" name="radio" ';
+                            var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                            li += '<input type="checkbox" name="checkbox" ';
                             li += 'data-fywy="' + item[i].业务员 + '"';
                             li += 'data-fywybm="' + item[i].业务员编码 + '"';
                             li += 'data-fdz="' + item[i].地址 + '"';
@@ -879,8 +888,8 @@ function getProcedureMsg(pflag,vflag) {
                 var item = provideData.Tables[0].Rows;
                 $("#datalist").empty();   //清除之前数据
                 for (var i = 0; i < item.length; i++) {
-                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                    li += '<input type="radio" name="radio" ';
+                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                    li += '<input type="checkbox" name="checkbox" ';
                     li += 'data-fywy="' + item[i].业务员 + '"';
                     li += 'data-fywybm="' + item[i].业务员编码 + '"';
                     li += 'data-fdz="' + item[i].地址 + '"';
@@ -934,8 +943,8 @@ function getProcedureMsg(pflag,vflag) {
             $("#datalist").empty();   //清除之前数据
 
             for (var i = 0; i < itemData.length; i++) {
-                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                li += '<input type="radio" name="radio" ';
+                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">';
+                li += '<input type="checkbox" name="checkbox" ';
                 li += 'data-fwlbm="' + itemData[i].物料编码 + '"';
                 li += 'data-fwlmc="' + itemData[i].物料名称 + '"';
                 li += 'data-fdw="' + itemData[i].单位 + '"';
@@ -1335,7 +1344,7 @@ function nodeControllerExp(NodeName) {
 
         }
         //商务专员
-    } else if (String(NodeName).match(/\d+/g) == null || String(NodeName).match('（营销一区）1') != null) {
+    } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
         $("#fckdh").attr('placeholder', '请填写出库单号');
         $("#fckdh").removeAttr('readonly');
@@ -2395,7 +2404,7 @@ function AgreeOrConSign() {
     //console.log($("#nodeName").val());
 
     //商务专员1
-    if (String(nodeName).match(/\d+/g) == null || String(nodeName).match('（营销一区）1') != null) {
+    if ((String(nodeName).match(/\d+/g) == null && String(nodeName).match('商务') != null) || String(nodeName).match('（营销一区）1') != null) {
         if (String(fsqlx).match('发货')!=null) {
             if (!fckdh) {
                 mui.toast('请填写出库单号');

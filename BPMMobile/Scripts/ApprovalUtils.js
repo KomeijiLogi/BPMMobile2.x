@@ -12,6 +12,7 @@ var toStepIDs = new Array();
 var version="1.0";
 var DraftGuid = '';
 var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
+//var baseDownloadUrl = 'http://172.16.7.8/BPM/YZSoft/Attachment/Download.ashx?fileid=';
 var accountBPM = '';
 
 

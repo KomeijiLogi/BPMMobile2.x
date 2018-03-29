@@ -205,7 +205,7 @@
                 mui.init();
 
                 mui.ready(function () {
-                    getVersion('\\99业务平台\\11制品费用', '制品公司费用标准特批');
+                    getVersion('\\99业务平台\\11制品费用', '医用制品公司市场其他费用报销');
                     getMsg();
                     upload();
                     watch();
@@ -300,19 +300,30 @@
                             xml = xml + '    <Requests>';
                             xml = xml + '        <Params>';
                             xml = xml + '            <Method>GetFormPostData</Method>';
-                            xml = xml + '         <ProcessName>制品公司费用标准特批</ProcessName>';
-                            xml = xml + '            <ProcessVersion>1.1</ProcessVersion>';
+                            xml = xml + '         <ProcessName>医用制品公司市场特批费用标准申请</ProcessName>';
+                            xml = xml + '            <ProcessVersion>1.0</ProcessVersion>';
                             xml = xml + '            <Owner></Owner>';
                             xml = xml + '        </Params>';
-                            xml = xml + '      <Params>';
-                            xml = xml + '         <DataSource>BPM_EXPENSE</DataSource>';
-                            xml = xml + '         <ID>业务员基础信息表</ID>';
-                            xml = xml + '         <Type>1</Type>';
-                            xml = xml + '        <Method>GetUserDataTable</Method>';
-                            xml = xml + '       <TableName>业务员基础信息表</TableName>';
-                            xml = xml + '       <OrderBy></OrderBy>';
-                            xml = xml + '        <Filter><业务员工号>' + fno + '</业务员工号></Filter>';
-                            xml = xml + '        </Params>';
+                            //xml = xml + '      <Params>';
+                            //xml = xml + '         <DataSource>BPM_EXPENSE</DataSource>';
+                            //xml = xml + '         <ID>业务员基础信息表</ID>';
+                            //xml = xml + '         <Type>1</Type>';
+                            //xml = xml + '        <Method>GetUserDataTable</Method>';
+                            //xml = xml + '       <TableName>业务员基础信息表</TableName>';
+                            //xml = xml + '       <OrderBy></OrderBy>';
+                            //xml = xml + '        <Filter><业务员工号>' + fno + '</业务员工号></Filter>';
+                            //xml = xml + '        </Params>';
+                            xml += `
+                            <Params>
+                            <DataSource>BPM_EXPENSE</DataSource> 
+                            <ID>erpcloud_业务员信息查询</ID>
+                            <Type>1</Type>
+                            <Method>GetUserDataProcedure</Method>
+                            <ProcedureName>erpcloud_业务员信息查询</ProcedureName> 
+                            <Filter><fno>${fno}</fno></Filter>
+                            </Params>
+                            
+                         `;
                             xml = xml + '     </Requests>';
                             $.ajax({
                                 type: "POST",
@@ -330,7 +341,7 @@
 
                                         var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
                                         console.log(provideData);
-
+                                       
                                         var userinfoArr = provideData.Tables[3].Rows;
                                         $("#fname").val(userinfoArr[0].业务员);
                                         $("#fzhiwu").val(userinfoArr[0].职务);
@@ -519,13 +530,13 @@
                             xml = xml + '            <Method>GetUserDataProcedure</Method>';
                             xml = xml + '            <ProcedureName>sp_zpfy_qtfybz</ProcedureName>';
                             xml = xml + '              <Filter>';
-                            xml = xml + '                 <_x0040_flevel>' + flevel + '</_x0040_flevel>';
-                            xml = xml + '                 <_x0040_fdqtype></_x0040_fdqtype>';
-                            xml = xml + '                 <_x0040_fyxm>' + $(self).val() + '</_x0040_fyxm>';
+                            xml = xml + '                 <flevel>' + flevel + '</flevel>';
+                            xml = xml + '                 <fdqtype></fdqtype>';
+                            xml = xml + '                 <fyxm>' + $(self).val() + '</fyxm>';
                             xml = xml + '             </Filter>';
                             xml = xml + '         </Params>';
                             xml = xml + '    </Requests>';
-
+                            console.log(xml);
                             $.ajax({
                                 type: "POST",
                                 url: "/api/bpm/DataProvider",
@@ -691,7 +702,7 @@
                             xml = xml + '     <XForm>';
                             xml = xml + '          <Header>';
                             xml = xml + '             <Method>Post</Method>';
-                            xml = xml + '              <ProcessName>制品公司费用标准特批</ProcessName>';
+                            xml = xml + '              <ProcessName>医用制品公司市场特批费用标准申请</ProcessName>';
                             xml = xml + '                <ProcessVersion>' + version + '</ProcessVersion>';
                             xml = xml + '             <DraftGuid></DraftGuid>';
                             xml = xml + '              <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';

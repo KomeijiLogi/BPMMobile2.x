@@ -2911,6 +2911,21 @@
     <Group>办公管理</Group>
     <Description>适用于威海卫大厦各部门经营毛利分析提报。</Description>
   </Process>
+  <!--<Process>
+    <Name>威海卫大厦协议客户挂账申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦协议客户挂账申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦协议客户挂账申请。</Description>
+  </Process>-->
   
   <Process>
     <Name>威海卫大厦青缇湾员工餐费申请</Name>
@@ -3042,7 +3057,7 @@
   <Process>
     <Name>威海卫大厦青缇湾员工面试信息提报</Name>
     <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowAskDetail.html</ViewAskPage>

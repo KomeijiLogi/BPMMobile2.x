@@ -9,10 +9,11 @@
 function upload() {
 
 
-    //var picUrl = '/upload/';
+  
 
-    var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
-    //var picUrl = 'http://172.16.7.7/BPM/YZSoft/Attachment/default.ashx';
+    //var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
+   
+    var picUrl = 'http://172.16.7.8/BPM/YZSoft/Attachment/Download.ashx?fileid=';
     var me = this;
 
     $("#file").upload({

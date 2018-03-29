@@ -28,7 +28,8 @@
 
     }).fail(function (e) {
 
-    });
+        });
+    upload();
 }
 
 function tapEvent() {

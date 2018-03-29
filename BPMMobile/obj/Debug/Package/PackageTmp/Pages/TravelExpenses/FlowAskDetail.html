@@ -540,9 +540,9 @@
     <input type="hidden" id="processName" name="processName" value="" />
     <input type="hidden" id="noticePer" name="noticePer" value="" />
     <input type="hidden" id="taskId" name="taskId" value="" />
-
+    <script type="text/javascript" src="../../Scripts/vconsole.min.js"></script>
     <script>
-
+        var vconsole = new VConsole();
         mui.init();
 
         mui.ready(function () {
@@ -1261,7 +1261,7 @@
                             fjArray = fjtmp.split(";");
 
 
-                            //console.log("fjArray:" + fjArray);
+                            console.log("fjArray:" + fjArray);
 
                             //请求附件详细信息
                             $.ajax({

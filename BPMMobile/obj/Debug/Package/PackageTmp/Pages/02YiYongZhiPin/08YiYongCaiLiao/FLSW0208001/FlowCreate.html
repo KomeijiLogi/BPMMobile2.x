@@ -81,7 +81,7 @@
                 <input type="text" id="fqt" name="fqt" readonly="readonly" />
             </div>
             <div class="mui-input-row">
-                <label for="fgkyq">顾客要求</label>
+                <label for="fgkyq">顾客要求<i style="color:red;">*</i></label>
                 <input type="text" id="fgkyq" name="fgkyq" placeholder="请输入顾客要求" />
             </div>
             <div class="mui-input-row">
@@ -257,6 +257,34 @@
 
             });
             initExpense();
+
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '<Requests>';
+            xml = xml + '    <Params>';
+            xml = xml + '      <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>医用材料公司特殊合同评审</ProcessName>';
+            xml = xml + '       <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '         <Owner></Owner>';
+            xml = xml + '      </Params>';
+            xml = xml + '    </Requests>';
+            var initHeaderMsg = $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.申请人);
+                $("#fdept").val(item.申请部门);
+                $("#fno").val(item.申请人编号);  
+            }).fail(function (e) {
+
+            });
         }
 
         function showExpense() {
@@ -534,6 +562,10 @@
                     mui.toast('请选择输入其他');
                     return;
                 }
+            }
+            if (!fgkyq) {
+                mui.toast('请填写顾客要求');
+                return;
             }
             if (fjArray.length == 0) {
                 mui.toast('请上传附件');

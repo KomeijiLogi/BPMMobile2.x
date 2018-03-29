@@ -267,7 +267,7 @@
                                  li = li + '          <img class="mui-media-object mui-pull-left" src="' + data[i].Icon + '">';
                                  li = li + '          <div class="mui-media-body"> ';
                                  li = li + '                ' + data[i].DisplayName + '';
-                                 li = li + '                <p class="mui-ellipsis">' + data[i].Description + '</p> ';
+                                 li = li + '                <p class="mui-ellipsis" style="font-size:0.6rem;">' + data[i].Description + '</p> ';
                                  li = li + '           </div> ';
                                  li = li + '          </a> ';
                                  li = li + '   </li> ';
@@ -283,7 +283,13 @@
 
                      }
                  },
-                 error: function (e) { },
+                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     if (XMLHttpRequest.status == "401") {
+                         mui.alert('授权过期，请重新打开页面');;
+                     } else if (XMLHttpRequest.status == "500") {
+                         mui.alert('服务器内部错误');
+                     }
+                 },
                  complete: function () {
                      $("#loadingAnimate").css('display', "none");
                      $(".mui-content").css('opacity', '1');

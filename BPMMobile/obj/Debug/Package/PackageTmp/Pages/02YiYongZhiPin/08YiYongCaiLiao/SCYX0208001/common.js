@@ -49,6 +49,59 @@ function tapEvent() {
         }
     ];
     showPicker('fsqrlb', fsqrlbdata);
+
+    var fzyytdata = [
+        {
+            value: '',
+            text: '学术会议',
+            children:[]
+        },
+        {
+            value: '',
+            text: '新用户开发',
+            children: [
+                {
+                    value: '',
+                    text:'直销'
+                },
+                {
+                    value: '',
+                    text:'分销'
+                }
+            ]
+        },
+        {
+            value: '',
+            text: '其他',
+            children:[]
+        }
+    ];
+    var element = document.getElementById('fzyyt');
+    var picker2 = new mui.PopPicker({
+        layer: 2
+    });
+    picker2.setData(fzyytdata);
+    
+    var el2 = document.getElementById('fxyhkflx');
+    element.addEventListener('tap', function () {
+
+        picker2.show(function (items) {
+
+            element.value = items[0].text;
+            if (items[1].text){
+                el2.value = items[1].text;
+            }
+           
+            if (items[1].text == '直销') {
+                $("#fzx").show();
+            } else if (items[1].text=='分销') {
+                $("#ffx").show();
+            }
+        });
+
+    }, false);
+
+
 }
 
 var fifdata = [
@@ -127,44 +180,92 @@ function initList() {
             });
             if (checkedValues.length > 0) {
                 for (var i = 0; i < checkedElements.length; i++) {
-                    var li = '<div id="mx" class="mui-card">';
-                    li = li + '   <div class="mui-input-row itemtitle">';
-                    li = li + '      <label>明细列表项</label>';
-                    li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + checkedElements[i].fcpdm + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fcpmc">产品名称</label>';
-                    li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + checkedElements[i].fcpmc + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fggxh">规格型号</label>';
-                    li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + checkedElements[i].fggxh + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fdw">单位</label>';
-                    li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + checkedElements[i].fdw + '"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fsl">数量<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="number" id="fsl" name="fsl" placeholder="请填写数量"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fif_mj">是否灭菌<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" placeholder="请选择是否灭菌"/>';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '       <label for="fyjxq_date">预计需求时间<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="date" id="fyjxq_date" name="fyjxq_date" />';
-                    li = li + '   </div>';
-                    li = li + '   <div class="mui-input-row">';
-                    li = li + '        <label for="fbz">备注</label>';
-                    li = li + '        <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>';
-                    li = li + '   </div>';
-                    li = li + '</div>';
+                    //var li = '<div id="mx" class="mui-card">';
+                    //li = li + '   <div class="mui-input-row itemtitle">';
+                    //li = li + '      <label>明细列表项</label>';
+                    //li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + checkedElements[i].fcpdm + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fcpmc">产品名称</label>';
+                    //li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + checkedElements[i].fcpmc + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fggxh">规格型号</label>';
+                    //li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + checkedElements[i].fggxh + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fdw">单位</label>';
+                    //li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + checkedElements[i].fdw + '"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fsl">数量<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="number" id="fsl" name="fsl" placeholder="请填写数量"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fif_mj">是否灭菌<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" placeholder="请选择是否灭菌"/>';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '       <label for="fyjxq_date">预计需求时间<i style="color:red;">*</i></label>';
+                    //li = li + '       <input type="date" id="fyjxq_date" name="fyjxq_date" />';
+                    //li = li + '   </div>';
+                    //li = li + '   <div class="mui-input-row">';
+                    //li = li + '        <label for="fbz">备注</label>';
+                    //li = li + '        <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>';
+                    //li = li + '   </div>';
+                    //li = li + '</div>';
+                    //$("#mxlist").append(li);
+
+                    var li = `
+                         <div id="mx" class="mui-card">
+                             <div class="mui-input-row itemtitle">
+                                 <label>明细列表项</label>
+                                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label>产品代码</label> 
+                                     <textarea id="fcpdm" name="fcpdm" readonly>${checkedElements[i].fcpdm}</textarea>
+                                 </div> 
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label>产品名称</label>
+                                     <textarea id="fcpmc" name="fcpmc" readonly>${checkedElements[i].fcpmc}</textarea> 
+                                 </div>
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                      <label>规格型号</label>
+                                     <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="${checkedElements[i].fggxh}"/>
+                                 </div> 
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                       <label>单位</label>
+                                       <input type="text" id="fdw" name="fdw" readonly="readonly" value="${checkedElements[i].fdw}"/>
+                                   </div>
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                        <label>数量</label>
+                                         <input type="number" id="fsl" name="fsl" placeholder="请填写数量"/>
+                                   </div>
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                        <label>是否灭菌</label> 
+                                        <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" placeholder="请选择是否灭菌"/> 
+                                   </div>
+                             </div>  
+                             <div class="mui-row cutOffLine">
+                                  <div class="mui-col-xs-6" style="display:flex;">
+                                      <label>预计需求时间</label>
+                                      <input type="date" id="fyjxq_date" name="fyjxq_date" />
+                                  </div>
+                                  <div class="mui-col-xs-6" style="display:flex;">
+                                       <label>备注</label> 
+                                        <input type="text" id="fbz" name="fbz" placeholder="请填写备注"/>
+                                  </div>
+                             </div>
+                         </div>
+                    `;
                     $("#mxlist").append(li);
                     showPickerByZepto('#mxlist', '#fif_mj', fifdata);
                 }
@@ -227,48 +328,112 @@ function initData(data, flag) {
     $("#fkhmc").val(item.客户名称);
     $("#fyjdz").val(item.邮寄地址);
     $("#fsqsm").val(item.申请说明);
+    $("#fzyyt").val(item.主要用途);
+    $("#fxyhkflx").val(item.新用户开发类别);
+
+    if (String(item.新用户开发类别).match('直销') != null) {
+        $("#fzx").show();
+        $("#fyyjb").val(item.医院级别);
+        $("#fcws").val(item.床位数);
+        $("#fmbks").val(item.目标科室);
+        $("#fjpcj").val(item.竞品厂家);
+        $("#fjpryj").val(item.竞品入院数);
+        $("#fyyl").val(item.月用量);
+    } else if (String(item.新用户开发类别).match('分销') != null) {
+        $("#ffx").show();
+        $("#fnsjxxe").val(item.年实际销售额);
+        $("#fzyjjcp").val(item.主要经营产品);
+        $("#fzyxsqy").val(item.主要销售区域);
+
+    }
 
     var item_c = data.FormDataSet.医用材料公司_样品申请_子表;
     for (var i = 0; i < item_c.length; i++){
         itemidArr.push(item_c[i].itemid);
-        var li = '<div id="mx" class="mui-card">';
-        li = li + '   <div class="mui-input-row itemtitle">';
-        li = li + '      <label>明细列表项</label>';
-        li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
-        li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + item_c[i].产品代码 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fcpmc">产品名称</label>';
-        li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + item_c[i].产品名称 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fggxh">规格型号</label>';
-        li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + changeNullToEmpty( item_c[i].规格型号 )+ '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fdw">单位</label>';
-        li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + item_c[i].单位 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fsl">数量<i style="color:red;">*</i></label>';
-        li = li + '       <input type="number" id="fsl" name="fsl" readonly="readonly" value="' + item_c[i].数量 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fif_mj">是否灭菌<i style="color:red;">*</i></label>';
-        li = li + '       <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" value="' + item_c[i].是否灭菌 + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '       <label for="fyjxq_date">预计需求时间<i style="color:red;">*</i></label>';
-        li = li + '       <input type="date" id="fyjxq_date" name="fyjxq_date" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].预计需求时间) + '"/>';
-        li = li + '   </div>';
-        li = li + '   <div class="mui-input-row">';
-        li = li + '        <label for="fbz">备注</label>';
-        li = li + '        <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + item_c[i].备注说明 + '"/>';
-        li = li + '   </div>';
-        li = li + '</div>';
+        //var li = '<div id="mx" class="mui-card">';
+        //li = li + '   <div class="mui-input-row itemtitle">';
+        //li = li + '      <label>明细列表项</label>';
+        //li = li + '      <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fcpdm">产品代码<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="text" id="fcpdm" name="fcpdm" readonly="readonly" value="' + item_c[i].产品代码 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fcpmc">产品名称</label>';
+        //li = li + '       <input type="text" id="fcpmc" name="fcpmc" readonly="readonly" value="' + item_c[i].产品名称 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fggxh">规格型号</label>';
+        //li = li + '       <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="' + changeNullToEmpty( item_c[i].规格型号 )+ '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fdw">单位</label>';
+        //li = li + '       <input type="text" id="fdw" name="fdw" readonly="readonly" value="' + item_c[i].单位 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fsl">数量<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="number" id="fsl" name="fsl" readonly="readonly" value="' + item_c[i].数量 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fif_mj">是否灭菌<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" value="' + item_c[i].是否灭菌 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '       <label for="fyjxq_date">预计需求时间<i style="color:red;">*</i></label>';
+        //li = li + '       <input type="date" id="fyjxq_date" name="fyjxq_date" readonly="readonly" value="' + FormatterTimeYMS( item_c[i].预计需求时间) + '"/>';
+        //li = li + '   </div>';
+        //li = li + '   <div class="mui-input-row">';
+        //li = li + '        <label for="fbz">备注</label>';
+        //li = li + '        <input type="text" id="fbz" name="fbz" readonly="readonly" value="' + item_c[i].备注说明 + '"/>';
+        //li = li + '   </div>';
+        //li = li + '</div>';
+        var li = `
+                         <div id="mx" class="mui-card">
+                             <div class="mui-input-row itemtitle">
+                                 <label>明细列表项</label>
+                                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label>产品代码</label> 
+                                     <textarea id="fcpdm" name="fcpdm" readonly>${item_c[i].产品代码}</textarea>
+                                 </div> 
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                     <label>产品名称</label>
+                                     <textarea id="fcpmc" name="fcpmc" readonly>${item_c[i].产品名称}</textarea> 
+                                 </div>
+                                 <div class="mui-col-xs-4" style="display:flex;">
+                                      <label>规格型号</label>
+                                     <input type="text" id="fggxh" name="fggxh" readonly="readonly" value="${changeNullToEmpty(item_c[i].规格型号)}"/>
+                                 </div> 
+                             </div>
+                             <div class="mui-row cutOffLine">
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                       <label>单位</label>
+                                       <input type="text" id="fdw" name="fdw" readonly="readonly" value="${item_c[i].单位}"/>
+                                   </div>
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                        <label>数量</label>
+                                         <input type="number" id="fsl" name="fsl" readonly  value="${item_c[i].数量}"/>
+                                   </div>
+                                   <div class="mui-col-xs-4" style="display:flex;">
+                                        <label>是否灭菌</label> 
+                                        <input type="text" id="fif_mj" name="fif_mj" readonly="readonly" value="${item_c[i].是否灭菌}"/> 
+                                   </div>
+                             </div>  
+                             <div class="mui-row cutOffLine">
+                                  <div class="mui-col-xs-6" style="display:flex;">
+                                      <label>预计需求时间</label>
+                                      <input type="date" id="fyjxq_date" name="fyjxq_date" readonly="readonly" value="${FormatterTimeYMS(item_c[i].预计需求时间)}"/>
+                                  </div>
+                                  <div class="mui-col-xs-6" style="display:flex;">
+                                       <label>备注</label> 
+                                        <input type="text" id="fbz" name="fbz"  readonly="readonly" value="${item_c[i].备注说明}"/>
+                                  </div>
+                             </div>
+                         </div>
+                    `;
         $("#mxlist").append(li);
 
     }
@@ -287,6 +452,7 @@ function nodeControllerExp(NodeName) {
             $(this).removeAttr('readonly');
         });
         $("#ftel,#fkhmc,#fyjdz,#fsqsm").removeAttr('readonly');
+        $("#fyyjb,#fcws,#fmbks,#fjpcj,#fjpryj,#fyyl,#fnsjxxe,#fzyjjcp,#fzyxsqy").removeAttr('readonly');
     }
 }
 function mxItem(fcpdm, fcpmc, fggxh, fdw, fsl, fif_mj, fyjxq_date, fbz) {
@@ -331,6 +497,21 @@ function Save() {
     var fkhmc = $("#fkhmc").val();
     var fyjdz = $("#fyjdz").val();
     var fsqsm = $("#fsqsm").val();
+
+    var fzyyt = $("#fzyyt").val();
+    var fxyhkflx = $("#fxyhkflx").val();
+    var fyyjb = $("#fyyjb").val();
+    var fcws = $("#fcws").val();
+    var fmbks = $("#fmbks").val();
+    var fjpcj = $("#fjpcj").val();
+    var fjpryj = $("#fjpryj").val();
+    var fyyl = $("#fyyl").val();
+
+    var fnsjxxe = $("#fnsjxxe").val();
+    var fzyjjcp = $("#fzyjjcp").val();
+    var fzyxsqy = $("#fzyxsqy").val();
+
+
     if (!ftel) {
         mui.toast('请填写联系方式');
         return;
@@ -351,10 +532,63 @@ function Save() {
         mui.toast('请填写申请说明');
         return;
     }
+    if (!fzyyt) {
+        mui.toast('请选择主要用途');
+        return;
+    }
+    if (String(fzyyt).match('新用户') != null && (!fxyhkflx)) {
+        mui.toast('请选择新用户开发类别');
+        return;
+    }
+    if (String(fxyhkflx).match('直销') != null && String(fzyyt).match('新用户开发') != null) {
+        if (!fyyjb) {
+            mui.toast('请填写医院级别');
+            return;
+
+        }
+        if (!fcws) {
+            mui.toast('请填写床位数');
+            return;
+        }
+        if (!fmbks) {
+            mui.toast('请填写目标科室');
+            return;
+        }
+        if (!fjpcj) {
+            mui.toast('请填写竞品厂家');
+            return;
+        }
+        if (!fjpryj) {
+            mui.toast('请填写竞品入院价');
+            return;
+        }
+        if (!fyyl) {
+            mui.toast('请填写月用量');
+            return;
+        }
+    }
+    if (String(fxyhkflx).match('分销') != null && String(fzyyt).match('新用户开发') != null) {
+        if (!fnsjxxe) {
+            mui.toast('请填写年实际销售额');
+            return;
+        }
+        if (!fzyjjcp) {
+            mui.toast('请填写主要经营产品');
+            return;
+        }
+        if (!fzyxsqy) {
+            mui.toast('请填写主要销售区域');
+            return;
+        }
+    }
+
     var mxflag = false;
     var mxlistArr = new Array();
+    
     $("#mxlist").find("#mx").each(function () {
+
         var fcpdm = $(this).find("#fcpdm").val();
+
         var fcpmc = $(this).find("#fcpmc").val();
         var fggxh = $(this).find("#fggxh").val();
         var fdw = $(this).find("#fdw").val();
@@ -369,6 +603,10 @@ function Save() {
         var mx = mxItem(fcpdm, fcpmc, fggxh, fdw, fsl, fif_mj, fyjxq_date, fbz);
         mxlistArr.push(mx);
     });
+    if (mxlistArr.length == 0) {
+        mui.toast('请添加子表');
+        return;
+    }
     if (mxflag) {
         return;
     }
@@ -400,6 +638,17 @@ function Save() {
             xml = xml + ' <客户名称>' + fkhmc + '</客户名称>';
             xml = xml + '  <邮寄地址>' + fyjdz + '</邮寄地址>';
             xml = xml + '   <申请说明>' + fsqsm + '</申请说明>';
+            xml = xml + '   <主要用途>' + fzyyt + '</主要用途>';
+            xml = xml + '  <新用户开发类别>' + fxyhkflx + '</新用户开发类别>';
+            xml = xml + '   <医院级别>' + fyyjb + '</医院级别>';
+            xml = xml + '  <床位数>' + fcws + '</床位数>';
+            xml = xml + '   <目标科室>' + fmbks + '</目标科室>';
+            xml = xml + '   <竞品厂家>' + fjpcj + '</竞品厂家>';
+            xml = xml + '   <竞品入院数>' + fjpryj + '</竞品入院数>';
+            xml = xml + ' <月用量>' + fyyl + '</月用量>';
+            xml = xml + '  <年实际销售额>' + fnsjxxe + '</年实际销售额>';
+            xml = xml + '  <主要经营产品>' + fzyjjcp + '</主要经营产品>';
+            xml = xml + '   <主要销售区域>' + fzyxsqy + '</主要销售区域>';
             xml = xml + '  </医用材料公司_样品申请_主表>';
             for (var i = 0; i < mxlistArr.length;i++){
                 xml = xml + '  <医用材料公司_样品申请_子表>';
@@ -436,6 +685,20 @@ function reSave() {
     var fkhmc = $("#fkhmc").val();
     var fyjdz = $("#fyjdz").val();
     var fsqsm = $("#fsqsm").val();
+    var fzyyt = $("#fzyyt").val();
+    var fxyhkflx = $("#fxyhkflx").val();
+    var fyyjb = $("#fyyjb").val();
+    var fcws = $("#fcws").val();
+    var fmbks = $("#fmbks").val();
+    var fjpcj = $("#fjpcj").val();
+    var fjpryj = $("#fjpryj").val();
+    var fyyl = $("#fyyl").val();
+
+    var fnsjxxe = $("#fnsjxxe").val();
+    var fzyjjcp = $("#fzyjjcp").val();
+    var fzyxsqy = $("#fzyxsqy").val();
+
+
     if (!ftel) {
         mui.toast('请填写联系方式');
         return;
@@ -456,6 +719,57 @@ function reSave() {
         mui.toast('请填写申请说明');
         return;
     }
+    if (!fzyyt) {
+        mui.toast('请选择主要用途');
+        return;
+    }
+    if (String(fzyyt).match('新用户')!=null&&(!fxyhkflx)) {
+        mui.toast('请选择新用户开发类别');
+        return;
+    }
+    if (String(fxyhkflx).match('直销') != null && String(fzyyt).match('新用户开发') != null) {
+        if (!fyyjb) {
+            mui.toast('请填写医院级别');
+            return;
+
+        }
+        if (!fcws) {
+            mui.toast('请填写床位数');
+            return;
+        }
+        if (!fmbks) {
+            mui.toast('请填写目标科室');
+            return;
+        }
+        if (!fjpcj) {
+            mui.toast('请填写竞品厂家');
+            return;
+        }
+        if (!fjpryj) {
+            mui.toast('请填写竞品入院价');
+            return;
+        }
+        if (!fyyl) {
+            mui.toast('请填写月用量');
+            return;
+        }
+    }
+    if (String(fxyhkflx).match('分销') != null && String(fzyyt).match('新用户开发') != null) {
+        if (!fnsjxxe) {
+            mui.toast('请填写年实际销售额');
+            return;
+        }
+        if (!fzyjjcp) {
+            mui.toast('请填写主要经营产品');
+            return;
+        }
+        if (!fzyxsqy) {
+            mui.toast('请填写主要销售区域');
+            return;
+        }
+    }
+
+
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -502,6 +816,17 @@ function reSave() {
             xml = xml + ' <客户名称>' + fkhmc + '</客户名称>';
             xml = xml + '  <邮寄地址>' + fyjdz + '</邮寄地址>';
             xml = xml + '   <申请说明>' + fsqsm + '</申请说明>';
+            xml = xml + '   <主要用途>' + fzyyt + '</主要用途>';
+            xml = xml + '  <新用户开发类别>' + fxyhkflx + '</新用户开发类别>';
+            xml = xml + '   <医院级别>' + fyyjb + '</医院级别>';
+            xml = xml + '  <床位数>' + fcws + '</床位数>';
+            xml = xml + '   <目标科室>' + fmbks + '</目标科室>';
+            xml = xml + '   <竞品厂家>' + fjpcj + '</竞品厂家>';
+            xml = xml + '   <竞品入院数>' + fjpryj + '</竞品入院数>';
+            xml = xml + ' <月用量>' + fyyl + '</月用量>';
+            xml = xml + '  <年实际销售额>' + fnsjxxe + '</年实际销售额>';
+            xml = xml + '  <主要经营产品>' + fzyjjcp + '</主要经营产品>';
+            xml = xml + '   <主要销售区域>' + fzyxsqy + '</主要销售区域>';
             xml = xml + '  </医用材料公司_样品申请_主表>';
             for (var i = 0; i < mxlistArr.length; i++) {
                 xml = xml + '  <医用材料公司_样品申请_子表>';
@@ -539,7 +864,19 @@ function hasRead() {
     var fkhmc = $("#fkhmc").val();
     var fyjdz = $("#fyjdz").val();
     var fsqsm = $("#fsqsm").val();
-  
+    var fzyyt = $("#fzyyt").val();
+    var fxyhkflx = $("#fxyhkflx").val();
+    var fyyjb = $("#fyyjb").val();
+    var fcws = $("#fcws").val();
+    var fmbks = $("#fmbks").val();
+    var fjpcj = $("#fjpcj").val();
+    var fjpryj = $("#fjpryj").val();
+    var fyyl = $("#fyyl").val();
+
+    var fnsjxxe = $("#fnsjxxe").val();
+    var fzyjjcp = $("#fzyjjcp").val();
+    var fzyxsqy = $("#fzyxsqy").val();
+
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -580,6 +917,17 @@ function hasRead() {
             xml = xml + ' <客户名称>' + fkhmc + '</客户名称>';
             xml = xml + '  <邮寄地址>' + fyjdz + '</邮寄地址>';
             xml = xml + '   <申请说明>' + fsqsm + '</申请说明>';
+            xml = xml + '   <主要用途>' + fzyyt + '</主要用途>';
+            xml = xml + '  <新用户开发类别>' + fxyhkflx + '</新用户开发类别>';
+            xml = xml + '   <医院级别>' + fyyjb + '</医院级别>';
+            xml = xml + '  <床位数>' + fcws + '</床位数>';
+            xml = xml + '   <目标科室>' + fmbks + '</目标科室>';
+            xml = xml + '   <竞品厂家>' + fjpcj + '</竞品厂家>';
+            xml = xml + '   <竞品入院数>' + fjpryj + '</竞品入院数>';
+            xml = xml + ' <月用量>' + fyyl + '</月用量>';
+            xml = xml + '  <年实际销售额>' + fnsjxxe + '</年实际销售额>';
+            xml = xml + '  <主要经营产品>' + fzyjjcp + '</主要经营产品>';
+            xml = xml + '   <主要销售区域>' + fzyxsqy + '</主要销售区域>';
             xml = xml + '  </医用材料公司_样品申请_主表>';
             for (var i = 0; i < mxlistArr.length; i++) {
                 xml = xml + '  <医用材料公司_样品申请_子表>';
@@ -619,6 +967,18 @@ function AgreeOrConSign() {
     var fkhmc = $("#fkhmc").val();
     var fyjdz = $("#fyjdz").val();
     var fsqsm = $("#fsqsm").val();
+    var fzyyt = $("#fzyyt").val();
+    var fxyhkflx = $("#fxyhkflx").val();
+    var fyyjb = $("#fyyjb").val();
+    var fcws = $("#fcws").val();
+    var fmbks = $("#fmbks").val();
+    var fjpcj = $("#fjpcj").val();
+    var fjpryj = $("#fjpryj").val();
+    var fyyl = $("#fyyl").val();
+
+    var fnsjxxe = $("#fnsjxxe").val();
+    var fzyjjcp = $("#fzyjjcp").val();
+    var fzyxsqy = $("#fzyxsqy").val();
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -724,6 +1084,17 @@ function AgreeOrConSign() {
             xml = xml + ' <客户名称>' + fkhmc + '</客户名称>';
             xml = xml + '  <邮寄地址>' + fyjdz + '</邮寄地址>';
             xml = xml + '   <申请说明>' + fsqsm + '</申请说明>';
+            xml = xml + '   <主要用途>' + fzyyt + '</主要用途>';
+            xml = xml + '  <新用户开发类别>' + fxyhkflx + '</新用户开发类别>';
+            xml = xml + '   <医院级别>' + fyyjb + '</医院级别>';
+            xml = xml + '  <床位数>' + fcws + '</床位数>';
+            xml = xml + '   <目标科室>' + fmbks + '</目标科室>';
+            xml = xml + '   <竞品厂家>' + fjpcj + '</竞品厂家>';
+            xml = xml + '   <竞品入院数>' + fjpryj + '</竞品入院数>';
+            xml = xml + ' <月用量>' + fyyl + '</月用量>';
+            xml = xml + '  <年实际销售额>' + fnsjxxe + '</年实际销售额>';
+            xml = xml + '  <主要经营产品>' + fzyjjcp + '</主要经营产品>';
+            xml = xml + '   <主要销售区域>' + fzyxsqy + '</主要销售区域>';
             xml = xml + '  </医用材料公司_样品申请_主表>';
             for (var i = 0; i < mxlistArr.length; i++) {
                 xml = xml + '  <医用材料公司_样品申请_子表>';
@@ -777,6 +1148,17 @@ function AgreeOrConSign() {
         xml = xml + ' <客户名称>' + fkhmc + '</客户名称>';
         xml = xml + '  <邮寄地址>' + fyjdz + '</邮寄地址>';
         xml = xml + '   <申请说明>' + fsqsm + '</申请说明>';
+        xml = xml + '   <主要用途>' + fzyyt + '</主要用途>';
+        xml = xml + '  <新用户开发类别>' + fxyhkflx + '</新用户开发类别>';
+        xml = xml + '   <医院级别>' + fyyjb + '</医院级别>';
+        xml = xml + '  <床位数>' + fcws + '</床位数>';
+        xml = xml + '   <目标科室>' + fmbks + '</目标科室>';
+        xml = xml + '   <竞品厂家>' + fjpcj + '</竞品厂家>';
+        xml = xml + '   <竞品入院数>' + fjpryj + '</竞品入院数>';
+        xml = xml + ' <月用量>' + fyyl + '</月用量>';
+        xml = xml + '  <年实际销售额>' + fnsjxxe + '</年实际销售额>';
+        xml = xml + '  <主要经营产品>' + fzyjjcp + '</主要经营产品>';
+        xml = xml + '   <主要销售区域>' + fzyxsqy + '</主要销售区域>';
         xml = xml + '  </医用材料公司_样品申请_主表>';
         for (var i = 0; i < mxlistArr.length; i++) {
             xml = xml + '  <医用材料公司_样品申请_子表>';

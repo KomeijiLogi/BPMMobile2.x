@@ -15,6 +15,28 @@ var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Dow
 var accountBPM = '';
 
 
+
+window.onload = function () {
+
+    //匹配url，如果是发起页面
+    if (String(window.location.href).match('Create') != null) { 
+        //对两个字段可编辑行检查，如果不能编辑那么就隐藏吧
+        if ($("#fdate").attr('readonly') != undefined) {
+            $("#fdate").parent().hide();
+        };
+        if ($("#fdept").attr('readonly') != undefined) {
+            $("#fdept").parent().hide();
+        };
+        
+    }
+
+
+};
+
+
+
+
+
 //提交,审批,加签,已阅
 function PostXml(xml) {
     $.ajax({
@@ -1239,4 +1261,32 @@ function changeNullToEmpty(value) {
     return value;
 
 }
+
+
+//封装dataProvider
+function dataProvider(xml, callback) {
+
+    var p = new Promise(function (resolve, reject) {
+        $.ajax({
+            type: "POST",
+            url: "/api/bpm/DataProvider",
+            data: { '': xml },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+            }
+        }).done(function (data) {
+            callback(data);
+            resolve();
+        }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            if (XMLHttpRequest.status == "401") {
+                mui.alert('授权过期，请重新打开页面');;
+            } else if (XMLHttpRequest.status == "500") {
+                mui.alert('服务器内部错误');
+            }
+            reject();
+        });
+    });
+    return p;
+}
+
 

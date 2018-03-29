@@ -159,6 +159,7 @@
         //渲染节点
         render: function () {
             if (this.cfg.previewWrap) {
+                console.log(this.cfg.previewWrap);
                 this._$elem.prependTo($(this.cfg.previewWrap));
             }
         },
@@ -231,25 +232,27 @@
 
             
             try {
-            //上传开始
-            xhr.onloadstart = function (e) { me._uploadStart(e, xhr); };
-            //上传结束
-            xhr.onload = function (e) { me._uploadComplete(e, xhr); };
-            //上传进度
-            //xhr.onprogress = function (e) { me._uploadProgress(e, xhr); };
-            xhr.upload.onprogress = function (e) { me._uploadProgress(e, xhr); };
-            //上传错误
-            xhr.onerror = function (e) { me._uploadFial(e, xhr); };
+                //上传开始
+                xhr.onloadstart = function (e) { me._uploadStart(e, xhr); };
+                //上传结束
+                xhr.onload = function (e) { me._uploadComplete(e, xhr); };
+                //上传进度
+                //xhr.onprogress = function (e) { me._uploadProgress(e, xhr); };
+                xhr.upload.onprogress = function (e) { me._uploadProgress(e, xhr); };
+                //上传错误
+                xhr.onerror = function (e) { me._uploadFial(e, xhr); };
 
-            //发送文件和表单自定义参数
-            xhr.open('post', this.cfg.uploadUrl);
+                //发送文件和表单自定义参数
+                xhr.open('post', this.cfg.uploadUrl);
 
-            //请求头部增加权限验证部分
-            xhr.setRequestHeader("Authorization", "Basic " + localStorage.getItem("ticket"));
+                //请求头部增加权限验证部分
+                xhr.setRequestHeader("Authorization", "Basic " + localStorage.getItem("ticket"));
             
-            //xhr.setRequestHeader("Content-Type", "application/json");
+                //xhr.setRequestHeader("Content-Type", "application/json");
            
                 xhr.send(fd);
+
+                
             } catch (e) {
                 alert(e);
             }
@@ -257,6 +260,7 @@
             //xhr.send(fd);
 
             this._xhr = xhr;
+            console.log(xhr);
         },
 
         //上传开始
@@ -343,6 +347,7 @@
 
             var ftype = (String)(fileInfo.name).substring((String)(fileInfo.name).lastIndexOf(".")+1);
             fjArray.push(fileInfo.id);
+            
 
             var imgUrl = this.cfg.previewUrl.replace('{id}', fileInfo.id);
 

@@ -210,3 +210,9 @@ li {
   border-width:0.05rem;
   
 }
+
+.flexLine{
+   display:flex;
+   border-bottom:1px solid #acacac;
+   
+}

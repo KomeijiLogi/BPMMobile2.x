@@ -528,6 +528,11 @@
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103006\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103007\common.js" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103007\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103007\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103007\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103007\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\common.js" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\03WeiHaiWeiDaSha\CW0103008\FlowCreate.html" />

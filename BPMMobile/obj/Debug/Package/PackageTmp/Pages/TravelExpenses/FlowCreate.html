@@ -609,8 +609,9 @@
             </li>
         </ul>
     </div>
-
+    <!--<script type="text/javascript" src="../../Scripts/vconsole.min.js"></script>-->
     <script>
+        //var vconsole = new VConsole();
 
         mui.init();
 
@@ -620,7 +621,7 @@
             initMsg();
             upload();
             watch();
-            getVersion('\\99业务平台\\11制品费用', '市场差旅费用报销单');
+            getVersion('\\99业务平台\\11制品费用', '医用制品公司市场差旅费报销');
          
         });
         mui('body').on('shown', '.mui-popover', function (e) {
@@ -1437,8 +1438,8 @@
         xml = xml + '      <Requests>';
         xml = xml + '     <Params>';
         xml = xml + '          <Method>GetFormPostData</Method>';
-        xml = xml + '        <ProcessName>市场差旅费用报销单</ProcessName>';
-        xml = xml + '         <ProcessVersion>1.1</ProcessVersion>';
+        xml = xml + '        <ProcessName>医用制品公司市场差旅费报销</ProcessName>';
+        xml = xml + '         <ProcessVersion>1.0</ProcessVersion>';
         xml = xml + '          <Owner></Owner>';
         xml = xml + '      </Params>';
         xml = xml + '      <Params>';
@@ -2537,13 +2538,13 @@
                         fno = $("#fno").val();
                     }
 
-                    
+                    console.log(fno);
                     var xml = '<?xml version= "1.0" ?>';
                     xml = xml + '      <Requests>';
                     xml = xml + '     <Params>';
                     xml = xml + '          <Method>GetFormPostData</Method>';
-                    xml = xml + '        <ProcessName>市场差旅费用报销单</ProcessName>';
-                    //xml = xml + '         <ProcessVersion>1.1</ProcessVersion>';
+                    xml = xml + '        <ProcessName>医用制品公司市场差旅费报销</ProcessName>';
+                   
                     xml = xml + '         <ProcessVersion>' + version + '</ProcessVersion>';
                     xml = xml + '          <Owner></Owner>';
                     xml = xml + '      </Params>';
@@ -2565,7 +2566,7 @@
                     xml = xml + '    <Method>GetUserDataProcedure</Method>';
                     xml = xml + '    <ProcedureName>sp_zpjt_wfcs</ProcedureName>';
                     xml = xml + '    <Filter>';
-                    xml = xml + '       <_x0040_user_no>' + fno + '</_x0040_user_no>';
+                    xml = xml + '       <user_no>' + fno + '</user_no>';
                     xml = xml + '      </Filter>';
                     xml = xml + ' </Params>';
 
@@ -2577,24 +2578,23 @@
                     xml = xml + '    <Method>GetUserDataProcedure</Method>';
                     xml = xml + '    <ProcedureName>sp_zpjt_scclfdate</ProcedureName>';
                     xml = xml + '   <Filter>';
-                    xml = xml + '       <_x0040_user_no>' + fno + '</_x0040_user_no>';
+                    xml = xml + '       <user_no>' + fno + '</user_no>';
                     xml = xml + '    </Filter>';
                     xml = xml + ' </Params>';
 
                     xml = xml + '      <Params>';
-                    xml = xml + '       <DataSource>BPM_EXPENSE</DataSource>';
-                    //xml = xml + '          <ID>p_ZPJTSCCL_city</ID>';
+                    xml = xml + '       <DataSource>BPM_EXPENSE</DataSource>';                   
                     xml = xml + '          <ID>erpcloud_医用制品差旅费报销</ID>';
                     xml = xml + '         <Type>2</Type>';
-                    xml = xml + '           <Method>GetUserDataProcedure</Method>';
-                    //xml = xml + '          <ProcedureName>p_ZPJTSCCL_city</ProcedureName>';
+                    xml = xml + '           <Method>GetUserDataProcedure</Method>';                   
                     xml = xml + '          <ProcedureName>erpcloud_医用制品差旅费报销</ProcedureName>';
                     xml = xml + '          <Filter>';
-                    xml = xml + '                <_x0040_fuser_no>' + fno + '</_x0040_fuser_no>';
+                    xml = xml + '                <fuser_no>' + fno + '</fuser_no>';
                     xml = xml + '           </Filter>';
                     xml = xml + '      </Params>';
 
                     xml = xml + '   </Requests>';
+                    //console.log(xml);
                     $.ajax({
                         type: "POST",
                         url: "/api/bpm/DataProvider",
@@ -2606,9 +2606,9 @@
                         success: function (data, status) {
 
                             if (status == "success" || data.success == "true" || data.success == true) {
+                               
 
-
-                                console.log(data);
+                                //console.log(data);
                                 var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
 
 
@@ -2673,7 +2673,7 @@
 
 
                         }, error: function (e) {
-
+                           
                         }, complete: function () {
 
                         }
@@ -2902,7 +2902,7 @@
                     xml = xml + ' <XForm>';
                     xml = xml + '       <Header>';
                     xml = xml + '           <Method>Post</Method>';
-                    xml = xml + '          <ProcessName>市场差旅费用报销单</ProcessName>';
+                    xml = xml + '          <ProcessName>医用制品公司市场差旅费报销</ProcessName>';
                     xml = xml + '            <ProcessVersion>' + version + '</ProcessVersion>';
                     xml = xml + '            <DraftGuid>' + DraftGuid + '</DraftGuid>';
                     xml = xml + '            <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
@@ -3110,7 +3110,7 @@
             xml = xml + ' <XForm>';
             xml = xml + '       <Header>';
             xml = xml + '           <Method>SaveAsDraft</Method>';
-            xml = xml + '          <ProcessName>市场差旅费用报销单</ProcessName>';
+            xml = xml + '          <ProcessName>医用制品公司市场差旅费报销</ProcessName>';
         
             xml = xml + '            <OwnerMemberFullName>' + BPMOU + '</OwnerMemberFullName>';
         
