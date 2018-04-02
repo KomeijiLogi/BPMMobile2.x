@@ -344,7 +344,17 @@ function nodeControllerExp(NodeName) {
         $("#mxlist").find('span').each(function () {
             $(this).show();
         });
+        $(".upload-addbtn").show();
 
+        upload();
+        $("#mxlist").find("#fsl,#fcgdj").each(function () {
+            $(this).on('input', function () {
+                calcPrice(this);
+            });
+        });
+        $("#mxlist").find("#fpm,#fdw,#fgg,#fsl,#fsqdj,#fcgdj,#fcgyq,#fcggys").each(function () {
+            $(this).removeAttr('readonly');
+        });
     } else if (String(NodeName).match('配送管理部') != null) {
         action = '确认';
     }

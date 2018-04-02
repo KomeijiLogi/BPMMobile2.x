@@ -342,6 +342,30 @@ function initData(data, flag) {
     }
 
 }
+
+function nodeControllerExp(NodeName) {
+    if (String(NodeName).match('开始') != null) {
+        tapEvent();
+        $("#ftel").removeAttr('readonly');
+
+        $("#mxlist").find('span').each(function () {
+            $(this).show();
+        });
+        $(".upload-addbtn").show();
+
+        upload();
+        $("#mxlist").find("#fsl,#fcgdj").each(function () {
+            $(this).on('input', function () {
+                calcPrice(this);
+            });
+        });
+        $("#mxlist").find("#fpm,#fdw,#fgg,#fsl,#fcgdj,#fcgyq,#fcggys").each(function () {
+            $(this).removeAttr('readonly');
+        });
+    }
+}
+
+
 class MxItem {
     constructor(fpm, fdw, fgg, fsl, fcgdj, fcgzj, fcgyq, fcggys) {
         this.fpm = fpm;
