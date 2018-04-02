@@ -211,8 +211,9 @@ li {
   
 }
 
-.flexLine{
-   display:flex;
-   border-bottom:1px solid #acacac;
-   
+.flexLine {
+    display: flex;
+    border-bottom: 1px solid #a7a7a7;
+    border-collapse: collapse;
+    flex-direction:column;
 }

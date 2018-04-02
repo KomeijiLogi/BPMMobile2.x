@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>发起人</label>
+                <input type="text" id="fname" name="fname" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label>发起日期</label>
+                <input type="date" id="fdate" name="fdate" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label>发起部门</label>
+                <input type="text" id="fdept" name="fdept" readonly/>
+            </div>
+            <div class="mui-row" style="padding-left:.8rem;">
+                <div class="mui-col-xs-4 flexLine">
+                    <label>编号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fbh" name="fbh" placeholder="请填写编号"></textarea>
+                </div>
+                <div class="mui-col-xs-4 flexLine">
+                    <label>标题<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fbt" name="fbt" placeholder="请填写标题"></textarea>
+                </div>
+                <div class="mui-col-xs-4 flexLine" style="height:3.1rem;">
+                    <label>是否有效</label>
+                    <input type="hidden" id="fifys" name="fifys" value="1"/>
+                    <div class="mui-switch mui-switch-blue mui-switch-mini mui-active" style="margin:1rem;" id="fifys_switch">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-row" style="padding:1rem;">
+                <label>发布范围（部门）</label>
+               <button type="button" class="mui-btn mui-btn-warning mui-pull-right" id="tjmx_dept">添加部门</button>
+            </div>
+            <div id="mxlist_dept">
+
+            </div>
+            <div class="mui-row" style="padding:1rem;">
+                <label>发布范围（人员）</label>
+                <button type="button" class="mui-btn mui-btn-warning mui-pull-right" id="tjmx_user">添加人员</button>
+            </div>
+            <div id="mxlist_user" style="display:flex;flex-wrap:wrap;">
+
+            </div>
+
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+
+    <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<script type="text/javascript" src="../../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+        //var vconsole = new VConsole();
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\04威海卫大厦\\16_行政办公', '威海卫大厦公函发布申请');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+
+
+    </script>
+</body>
+</html>

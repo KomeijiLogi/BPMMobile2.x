@@ -3154,7 +3154,21 @@
     <Description>适用于威海卫大厦部门工作汇报。</Description>
   </Process>
 
-
+  <Process>
+    <Name>威海卫大厦公函发布申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦公函发布申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦公函(报告)发布申请。</Description>
+  </Process>
   
   <Process>
     <Name>威海卫大厦物资采购申请</Name>
@@ -3187,6 +3201,51 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于食品餐饮管理总公司采购管理部供应商准入的申请。</Description>
+  </Process>
+   <Process>
+    <Name>食品餐饮公司物资采购申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门针对“低值易耗、海鲜肉禽、果蔬、粮油”类物资的采购申请。</Description>
+  </Process>
+  <Process>
+    <Name>食品餐饮公司工程物资采购申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司工程物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门针对工程物资的采购申请。</Description>
+  </Process>
+  <Process>
+    <Name>食品餐饮公司汇款申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门对外付款的申请。</Description>
   </Process>
   
   <Process>
