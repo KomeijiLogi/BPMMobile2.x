@@ -90,11 +90,11 @@ function tapEvent() {
         li += '</div>';
         li += '<div class="mui-input-row">';
         li += '<label for="fyjfy">预计费用<i style="color:red;">*</i></label>';
-        li += '<input type="text" id="fyjfy" name="fyjfy" placeholder="请填写预计费用"/>';
+        li += '<input type="number" id="fyjfy" name="fyjfy" placeholder="请填写预计费用"/>';
         li += '</div>';
         li += '<div class="mui-input-row">';
         li += '<label for="fsjfy">实际费用<i style="color:red;">*</i></label>';
-        li += '<input type="text" id="fsjfy" name="fsjfy" placeholder="请填写实际费用"/>';
+        li += '<input type="number" id="fsjfy" name="fsjfy" placeholder="请填写实际费用"/>';
         li += '</div>';
         li = li + '</div>';
         $("#mxlist").append(li);
@@ -311,11 +311,11 @@ function initData(data, flag) {
         li += '</div>';
         li += '<div class="mui-input-row">';
         li += '<label for="fyjfy">预计费用<i style="color:red;">*</i></label>';
-        li += '<input type="text" id="fyjfy" name="fyjfy" readonly value="' + item_c[i].预计费用+'"/>';
+        li += '<input type="number" id="fyjfy" name="fyjfy" readonly value="' + item_c[i].预计费用+'"/>';
         li += '</div>';
         li += '<div class="mui-input-row">';
         li += '<label for="fsjfy">实际费用<i style="color:red;">*</i></label>';
-        li += '<input type="text" id="fsjfy" name="fsjfy" readonly value="' + item_c[i].实际费用 +'"/>';
+        li += '<input type="number" id="fsjfy" name="fsjfy" readonly value="' + item_c[i].实际费用 +'"/>';
         li += '</div>';
         li += '</div>';
         $("#mxlist").append(li);
@@ -354,7 +354,7 @@ function Save() {
         var fwxhbyyy = $(this).find("#fwxhbyyy").val();
         var fyjfy = $(this).find("#fyjfy").val();
         var fsjfy = $(this).find("#fsjfy").val();
-        if (mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy) == null) {
+        if (mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy)._check() == null) {
             mxflag = true;
             return;
         }
@@ -428,7 +428,7 @@ function reSave() {
         var fwxhbyyy = $(this).find("#fwxhbyyy").val();
         var fyjfy = $(this).find("#fyjfy").val();
         var fsjfy = $(this).find("#fsjfy").val();
-        if (mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy) == null) {
+        if (mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy)._check() == null) {
             mxflag = true;
             return;
         }
@@ -497,10 +497,7 @@ function hasRead() {
         var fwxhbyyy = $(this).find("#fwxhbyyy").val();
         var fyjfy = $(this).find("#fyjfy").val();
         var fsjfy = $(this).find("#fsjfy").val();
-        if (mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy) == null) {
-            mxflag = true;
-            return;
-        }
+       
         var mx = mxItem(fcxch, fsqxm, fxylc, fwxhbyyy, fyjfy, fsjfy);
         mxlistArr.push(mx);
     });

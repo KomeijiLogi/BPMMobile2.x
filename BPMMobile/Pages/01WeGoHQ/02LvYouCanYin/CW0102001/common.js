@@ -64,7 +64,7 @@ function initData(data,flag) {
     $("#fskdw").val(item.fskdw);
     $("#fkhh").val(item.fkhh);
     $("#fzh").val(item.fzh);
-    $("#fbz").val(item.fbz);
+    $("#fbz").val(item.fremark);
     if (item.fj != null && item.fj != "") {
         var fjtmp = (String)(item.fj);
 
@@ -192,6 +192,8 @@ function nodeControllerExp(NodeName) {
         $(".upload-addbtn").show();
         $("#ftel,#fhkyt,#fhkfs,#fhkje,#fskdw,#fkhh,#fzh,#fbz").removeAttr('readonly');
 
+
+
     }
 }
 
@@ -230,18 +232,333 @@ function Save() {
     }
 
     if (!fkhh) {
-
+        mui.toast('请填写开户行');
+        return;
     }
+    if (!fzh) {
+        mui.toast('请填写账号');
+        return;
+    }
+
+    var btnArry = ["取消", "确定"];
+    mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version="1.0"?>
+                        <XForm>
+                            <Header>
+                                <Method>Post</Method>
+                                <ProcessName>食品餐饮公司汇款申请</ProcessName>
+                                <ProcessVersion>${version}</ProcessVersion>
+                                <DraftGuid></DraftGuid>
+                                <OwnerMemberFullName>${BPMOU}</OwnerMemberFullName>
+                                <Action>提交</Action>
+                                <Comment></Comment>
+                                <UrlParams></UrlParams>
+                                <ConsignEnabled>false</ConsignEnabled>
+                                <ConsignUsers>[]</ConsignUsers>
+                                <ConsignRoutingType>Parallel</ConsignRoutingType>
+                                <ConsignReturnType>Return</ConsignReturnType>
+                                <InviteIndicateUsers>[]</InviteIndicateUsers>
+                                <Context>{&quot;Routing&quot;:{}}</Context>
+                            </Header>
+                            <FormData>
+                      `;
+            xml += `
+                      <BPM_LYCYHKSQ>
+                        <fbillno>自动生成</fbillno>
+                        <fname>${fname}</fname>
+                        <fdept>${fdept}</fdept>
+                        <fdate>${fdate}</fdate>
+                        <flxfs>${ftel}</flxfs>
+                        <fhkyt>${fhkyt}</fhkyt>
+                        <fhkfs>${fhkfs}</fhkfs>
+                        <fhkje>${fhkje}</fhkje>
+                        <fdxje>${fdxje}</fdxje>
+                        <fskdw>${fskdw}</fskdw>
+                        <fkhh>${fkhh}</fkhh>
+                        <fzh>${fzh}</fzh>
+                        <fremark>${fbz}</fremark>
+                        <fj>${fjArray.join(";")}</fj>
+                    </BPM_LYCYHKSQ>
+                   `;
+            xml += ` </FormData>
+                    </XForm>
+                   `;
+            PostXml(xml);
+        }
+    });
+
+
 }
 
 function reSave() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+
+    var fname = $("#fname").val();
+    var fdept = $("#fdept").val();
+    var fdate = $("#fdate").val();
+    var ftel = $("#ftel").val();
+    var fhkyt = $("#fhkyt").val();
+    var fhkfs = $("#fhkfs").val();
+    var fhkje = $("#fhkje").val();
+    var fdxje = $("#fdxje").val();
+    var fskdw = $("#fskdw").val();
+    var fkhh = $("#fkhh").val();
+    var fzh = $("#fzh").val();
+    var fbz = $("#fbz").val();
+
+    if (!fhkyt) {
+        mui.toast('请填写汇款用途');
+        return;
+    }
+
+    if (!fhkfs) {
+        mui.toast('请填写汇款方式');
+        return;
+    }
+
+    if (!fhkje) {
+        mui.toast('请填写汇款金额');
+        return;
+    }
+    if (!fskdw) {
+        mui.toast('请填写收款单位');
+        return;
+    }
+
+    if (!fkhh) {
+        mui.toast('请填写开户行');
+        return;
+    }
+    if (!fzh) {
+        mui.toast('请填写账号');
+        return;
+    }
+    var btnArry = ["取消", "确定"];
+    mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
+        if (e.index == 1) {
+            var xml = `<?xml version="1.0"?>
+                        <XForm>
+                        <Header>
+                        <Method>Process</Method>
+                        <PID>${pid}</PID>
+                        <Action>提交</Action>
+                        <Comment></Comment>
+                        <InviteIndicateUsers></InviteIndicateUsers>
+                        </Header>
+                        <FormData>`;
+            xml += `
+                      <BPM_LYCYHKSQ>
+                        <fbillno>${fbillno}</fbillno>
+                        <fname>${fname}</fname>
+                        <fdept>${fdept}</fdept>
+                        <fdate>${fdate}</fdate>
+                        <flxfs>${ftel}</flxfs>
+                        <fhkyt>${fhkyt}</fhkyt>
+                        <fhkfs>${fhkfs}</fhkfs>
+                        <fhkje>${fhkje}</fhkje>
+                        <fdxje>${fdxje}</fdxje>
+                        <fskdw>${fskdw}</fskdw>
+                        <fkhh>${fkhh}</fkhh>
+                        <fzh>${fzh}</fzh>
+                        <fremark>${fbz}</fremark>
+                        <fj>${fjArray.join(";")}</fj>
+                    </BPM_LYCYHKSQ>
+                   `;
+            xml += ` </FormData>
+                    </XForm>
+                   `;
+            PostXml(xml);
+        }
+    });
 
 }
 
 function hasRead() {
 
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = '';
+    var btnArray = ['取消', '确定'];
+    mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+        if (e.index == 1) {
+            comment = e.value;
+            var xml = `<?xml version="1.0"?>
+                           <XForm>
+                             <Header>
+                               <Method>InformSubmit</Method>
+                               <PID>${pid}</PID>
+                               <Comment>${comment}</Comment>
+                             </Header>
+                           </XForm>
+              `;
+            PostXml(xml);
+        }
+    });
+
 }
 
 function AgreeOrConSign() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = $("#signSuggest").val();
 
+    var fname = $("#fname").val();
+    var fdept = $("#fdept").val();
+    var fdate = $("#fdate").val();
+    var ftel = $("#ftel").val();
+    var fhkyt = $("#fhkyt").val();
+    var fhkfs = $("#fhkfs").val();
+    var fhkje = $("#fhkje").val();
+    var fdxje = $("#fdxje").val();
+    var fskdw = $("#fskdw").val();
+    var fkhh = $("#fkhh").val();
+    var fzh = $("#fzh").val();
+    var fbz = $("#fbz").val();
+
+    var consignFlag = false;
+    var consignUserId = new Array();
+    var consignRoutingType;
+    var consignReturnType;
+
+    var consignUserStr;
+
+    //加签if分支
+    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+        consignFlag = true;
+
+        if ($('#sxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Serial';
+
+        } else if ($('#pxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Parallel';
+        }
+
+        if ($('#hdbjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Return';
+        } else if ($('#jrxjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Forward';
+        }
+
+
+        var consignAjax = $.ajax({
+            type: "POST",
+            url: "/api/bpm/PostAccount",
+            data: { "ids": consignOpenIdArr },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+            }
+        }).done(function (data, status) {
+            //alert(status);
+            if (status == "success") {
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    consignUserId.push(data.data[i].phone);
+                }
+                $('#consignUser').val(consignUserId);
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+            }
+        }).fail(function () {
+
+        });
+    } else {
+
+
+    }
+    if (consignFlag) {
+        consignAjax.then(function () {
+            var xml = `<?xml version="1.0"?>
+                     <XForm>
+                     <Header>
+                     <Method>Process</Method>
+                     <PID>${pid}</PID>
+                     <Action>同意</Action>
+                     <Comment>${comment}</Comment>
+            
+                     <ConsignEnabled>true</ConsignEnabled>
+                     <ConsignUsers>${consignUserStr}</ConsignUsers>
+                     <ConsignRoutingType>${consignRoutingType}</ConsignRoutingType>
+                     <ConsignReturnType>${consignReturnType}</ConsignReturnType>
+                     <InviteIndicateUsers>[]</InviteIndicateUsers>
+                     <Context>{&quot;Routing&quot;:{}}</Context>
+                     </Header>';
+                     <FormData>`;
+            xml += `
+                      <BPM_LYCYHKSQ>
+                        <fbillno>${fbillno}</fbillno>
+                        <fname>${fname}</fname>
+                        <fdept>${fdept}</fdept>
+                        <fdate>${fdate}</fdate>
+                        <flxfs>${ftel}</flxfs>
+                        <fhkyt>${fhkyt}</fhkyt>
+                        <fhkfs>${fhkfs}</fhkfs>
+                        <fhkje>${fhkje}</fhkje>
+                        <fdxje>${fdxje}</fdxje>
+                        <fskdw>${fskdw}</fskdw>
+                        <fkhh>${fkhh}</fkhh>
+                        <fzh>${fzh}</fzh>
+                        <fremark>${fbz}</fremark>
+                        <fj>${fjArray.join(";")}</fj>
+                    </BPM_LYCYHKSQ>
+                   `;
+            xml += ` </FormData>
+                    </XForm>
+                   `;
+            PostXml(xml);
+        })
+    } else {
+
+        var xml = `<?xml version="1.0"?>
+                   <XForm>
+                   <Header>
+                   <Method>Process</Method>
+                   <PID>${pid}</PID>
+                   <Action>同意</Action>
+                   <Comment>${comment}</Comment>
+
+                    <UrlParams></UrlParams>
+                    <ConsignEnabled>false</ConsignEnabled>
+                    <ConsignUsers>[]</ConsignUsers>
+                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                    <ConsignReturnType>Return</ConsignReturnType>
+
+                  <InviteIndicateUsers>[]</InviteIndicateUsers>
+                  <Context>{&quot;Routing&quot;:{}}</Context>
+                  </Header>
+                  <FormData>`;
+        xml += `
+                      <BPM_LYCYHKSQ>
+                        <fbillno>${fbillno}</fbillno>
+                        <fname>${fname}</fname>
+                        <fdept>${fdept}</fdept>
+                        <fdate>${fdate}</fdate>
+                        <flxfs>${ftel}</flxfs>
+                        <fhkyt>${fhkyt}</fhkyt>
+                        <fhkfs>${fhkfs}</fhkfs>
+                        <fhkje>${fhkje}</fhkje>
+                        <fdxje>${fdxje}</fdxje>
+                        <fskdw>${fskdw}</fskdw>
+                        <fkhh>${fkhh}</fkhh>
+                        <fzh>${fzh}</fzh>
+                        <fremark>${fbz}</fremark>
+                        <fj>${fjArray.join(";")}</fj>
+                    </BPM_LYCYHKSQ>
+                   `;
+        xml += ` </FormData>
+                    </XForm>
+                   `;
+        PostXml(xml);
+
+    }
 }
