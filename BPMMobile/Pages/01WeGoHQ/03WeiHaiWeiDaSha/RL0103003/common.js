@@ -78,6 +78,28 @@ function tapEvent() {
         });
 
     }, false);
+    var fbddyydata = [
+        {
+            value: '',
+            text:'晋升'
+        },
+        {
+            value: '',
+            text:'调整工作'
+        },
+        {
+            value: '',
+            text:'考绩优良'
+        },
+        {
+            value: '',
+            text:'年资增长'
+        },
+        {
+            value: '',
+            text:'其他'
+        }
+    ];
 
     $("#tjmx_in").on('tap', () => {
         var li = `
@@ -139,6 +161,7 @@ function tapEvent() {
            </div>
                  `;
         $("#mxlist_in").append(li);
+        showPickerByZepto('#mxlist_in', '#fbddyy', fbddyydata);
 
     });
     $("#tjmx_out").on('tap', () => {
@@ -164,7 +187,7 @@ function tapEvent() {
                </div>
               <div class="mui-row cutOffLine">
                    <div class="mui-col-xs-4" style="display:flex;">
-                       <label for="fxzszbm">现在所在部门<label>
+                       <label for="fxzszbm">现所在部门</label>
                        <input type="text" id="fxzszbm" name="fxzszbm" placeholder="请填写现在所在部门"/>
                     </div>
                    <div class="mui-col-xs-4" style="display:flex;">
@@ -434,7 +457,7 @@ function initData(data, flag) {
                </div>
               <div class="mui-row cutOffLine">
                    <div class="mui-col-xs-4" style="display:flex;">
-                       <label for="fxzszbm">现在所在部门<label>
+                       <label for="fxzszbm">现所在部门</label>
                        <input type="text" id="fxzszbm" name="fxzszbm" readonly value="${item_c2[i].现所在部门}"/>
                     </div>
                    <div class="mui-col-xs-4" style="display:flex;">

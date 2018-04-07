@@ -368,7 +368,9 @@ function AgreeOrConSign() {
     var pid = $("#stepId").val();
     var fbillno = $("#fbillno").val();
     var comment = $("#signSuggest").val();
+    var nodeName = $("#nodeName").val();
 
+    
     var fname = $("#fname").val();
     var fdept = $("#fdept").val();
     var fdate = $("#fdate").val();
@@ -378,6 +380,14 @@ function AgreeOrConSign() {
     var ffxnd = $("#ffxnd").val();
     var ffxyd = $("#ffxyd").val();
     var fcwfxyj = $("#fcwfxyj").val();
+
+    if (String(nodeName).match('营运部门经理') != null) {
+        if (fjArray2.length==0) {
+            mui.toast('请上传部门分析意见');
+            return;
+        }
+    }
+
     var consignFlag = false;
     var consignUserId = new Array();
     var consignRoutingType;

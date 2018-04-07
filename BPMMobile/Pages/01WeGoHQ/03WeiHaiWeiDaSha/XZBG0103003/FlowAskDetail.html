@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+                
+            <div class="mui-input-row">
+                <label for="申请人">申请人</label>
+                <input type="text" id="申请人" name="申请人" readonly="readonly"/>
+            </div>
+            <!--style="display: none"-->
+            <div class="mui-input-row" style="display: none">
+                <label for="申请部门">申请部门</label>
+                <input type="text" id="申请部门" name="申请部门" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display: none">
+                <label for="申请日期">申请日期</label>
+                <input type="date" id="申请日期" name="申请日期" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="证章种类">证章种类<i style="color:red;">*</i></label>
+                <input type="text" id="证章种类" name="证章种类" placeholder="请选择证章种类" readonly="readonly" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="用章类型">用章类型<i style="color:red;">*</i></label>
+                <input type="text" id="用章类型" name="用章类型" placeholder="请选择用章类型" readonly="readonly" class="node1"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="使用理由">使用理由<i style="color:red;">*</i></label>
+                <textarea rows="5" id="使用理由" name="使用理由" placeholder="请填写使用理由" class="node1"></textarea>
+            </div>
+
+            <div class="mui-input-row node_jc">
+                <label for="借出人">借出人<i style="color:red;">*</i></label>
+                <input type="text" id="借出人" name="借出人" placeholder="请填写借出人" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jc">
+                <label for="借出部门">借出部门<i style="color:red;">*</i></label>
+                <input type="text" id="借出部门" name="借出部门" placeholder="请填写借出部门" class="node1"/>
+            </div>
+            <!--style="display: none"-->
+            <div class="mui-input-row node_jc">
+                <label for="借出日期">借出日期<i style="color:red;">*</i></label>
+                <input type="date" id="借出日期" name="借出日期" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jc">
+                <label for="归还日期">归还日期<i style="color:red;">*</i></label>
+                <input type="date" id="归还日期" name="归还日期" class="node1"/>
+            </div>
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" id="addbtn_fj">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div id="ywzcard">
+            <div class="mui-input-row itemtitle">
+                <label>业务章使用明细</label>
+            </div>
+            <div id="mxlist">
+                
+            </div>
+
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加外出明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            </div>
+
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

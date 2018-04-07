@@ -1291,3 +1291,8 @@ function dataProvider(xml, callback) {
 }
 
 
+function formartNumber(num) {
+    //将小数自动补充或者取舍到2位
+    num = Number(num).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+    return num;
+}

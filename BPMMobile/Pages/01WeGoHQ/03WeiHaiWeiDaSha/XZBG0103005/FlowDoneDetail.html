@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            
+           <div class="mui-input-row">
+                <label for="申请人">申请人</label>
+                <input type="text" id="申请人" name="申请人" readonly="readonly"/>
+            </div>
+            <!--style="display: none"-->
+            <div class="mui-input-row" style="display: none">
+                <label for="申请部门">申请部门</label>
+                <input type="text" id="申请部门" name="申请部门" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row" style="display: none">
+                <label for="申请时间">申请日期</label>
+                <input type="date" id="申请时间" name="申请时间" readonly="readonly"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="出差类型">出差类型<i style="color:red;">*</i></label>
+                <input type="text" id="出差类型" name="出差类型" placeholder="请选择出差类型" readonly="readonly" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="订票需求">订票需求<i style="color:red;">*</i></label>
+                <input type="text" id="订票需求" name="订票需求" placeholder="请选择订票需求" readonly="readonly" class="node1"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="出差人员姓名及职位">出差人员姓名及职位<i style="color:red;">*</i></label>
+                <textarea rows="5" id="出差人员姓名及职位" name="出差人员姓名及职位" placeholder="请填写出差人员姓名及职位" class="node1"></textarea>
+            </div>
+
+            <div class="mui-input-row node_cclx">
+                <label for="fgly">知会管理员<i style="color:red;">*</i></label>
+                <input type="text" id="fgly" name="fgly" placeholder="请填写知会管理员" readonly="readonly" data-fno="" class="node1"/>
+            </div>
+            <div class="mui-input-row node_cclx">
+                <label for="出差负责人">出差负责人<i style="color:red;">*</i></label>
+                <input type="text" id="出差负责人" name="出差负责人" placeholder="请填写出差负责人" data-fno=""class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="出差开始时间">出差开始时间<i style="color:red;">*</i></label>
+                <input type="date" id="出差开始时间" name="出差开始时间" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="出差结束时间">出差结束时间<i style="color:red;">*</i></label>
+                <input type="date" id="出差结束时间" name="出差结束时间" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="出差天数">出差天数<i style="color:red;">*</i></label>
+                <input type="number" id="出差天数" name="出差天数" placeholder="请填写出差天数" class="node1"/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="出差内容">出差地点及出差任务内容<i style="color:red;">*</i></label>
+                <textarea rows="5" id="出差内容" name="出差内容" placeholder="请填写出差地点及出差任务内容" class="node1"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="预期完成目标">预期完成目标<i style="color:red;">*</i></label>
+                <textarea rows="5" id="预期完成目标" name="预期完成目标" placeholder="请填写预期完成目标" class="node1"></textarea>
+            </div>
+            <div class="mui-input-row node_dpxq" style="height:auto;">
+                <label for="证件号码">需订票人员及证件号码<i style="color:red;">*</i></label>
+                <textarea rows="5" id="证件号码" name="证件号码" placeholder="请填写需订票人员及证件号码" class="node1"></textarea>
+            </div>
+
+            <div id="fchcard">
+            <div class="mui-input-row itemtitle">
+                 <label>出差费用信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="长途交通费">长途交通费</label>
+                <input type="number" id="长途交通费" name="长途交通费" placeholder="请输入长途交通费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="住宿费">住宿费</label>
+                <input type="number" id="住宿费" name="住宿费" placeholder="请输入住宿费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="市内交通费">市内交通费</label>
+                <input type="number" id="市内交通费" name="市内交通费" placeholder="请输入市内交通费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="业务费">业务费</label>
+                <input type="number" id="业务费" name="业务费" placeholder="请输入业务费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="餐费">餐费</label>
+                <input type="number" id="餐费" name="餐费" placeholder="请输入用餐费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="培训费">培训费</label>
+                <input type="number" id="培训费" name="培训费" placeholder="请输入培训费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="其它">其它</label>
+                <input type="number" id="其它" name="其它" placeholder="请输入其它费用" class="node1"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="合计">合计</label>
+                <input type="text" id="合计" name="合计" readonly="readonly"/>
+            </div>
+            </div>
+
+            <div id="fjkcard">
+            <div class="mui-input-row itemtitle">
+                 <label>借款信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label for="是否借款">是否借款<i style="color:red;">*</i></label>
+                <input type="hidden" id="是否借款" name="是否借款" />
+                <div class="mui-switch mui-switch-blue" id="fif_jk">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="借款方式">借款方式</label>
+                <input type="text" id="借款方式" name="借款方式" placeholder="请选择借款方式" readonly="readonly" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="开户行">开户行</label>
+                <input type="text" id="开户行" name="开户行" placeholder="请输入开户行" class="node1" />
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="户名">户名</label>
+                <input type="text" id="户名" name="户名" placeholder="请输入户名" class="node1" />
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="银行账户">银行账户</label>
+                <input type="text" id="银行账户" name="银行账户" placeholder="请输入银行账户" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="现金借款">现金借款</label>
+                <input type="number" id="现金借款" name="现金借款" placeholder="请输入现金借款金额" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="转账借款">转账借款</label>
+                <input type="number" id="转账借款" name="转账借款" placeholder="请输入转账借款金额" class="node1"/>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="借款金额">借款总金额</label>
+                <input type="text" id="借款金额" name="借款金额"readonly="readonly"/>
+            </div>
+            <div class="mui-input-row node_jk">
+                <label for="借款金额大写">金额大写</label>
+                <input type="text" id="借款金额大写" name="借款金额大写" readonly="readonly"/>
+            </div>
+            </div>
+
+
+            <div class="mui-input-row" style="height:3.5rem;overflow:scroll;display:none;" id="uploaddiv" >
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" id="addbtn_fj">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div id="fmxcard" style="display: none">
+                <div class="mui-input-row itemtitle">
+                    <label>需知会管理人员明细</label>
+                </div>
+                <div id="mxlist">
+                
+                </div>
+
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                   添加明细
+                   <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

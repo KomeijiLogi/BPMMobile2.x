@@ -3,7 +3,7 @@ function prepMsg() {
     $("#fdate").val(getNowFormatDate(2));//日期
     tapEvent1();//点击事件
     upload();//允许附件上传
-
+    
     var xml = '<?xml version= "1.0" ?>';
     xml = xml + '<Requests>';
     xml = xml + '    <Params>';
@@ -34,6 +34,7 @@ function prepMsg() {
     initHeaderMsg.then(function () {
         initList();
     });
+
 }
 
 //待办、已办、已申请--根据单号，获取表单内容
@@ -165,15 +166,19 @@ function initData(data, flag) {
 
     $(".node1").attr('readonly', 'readonly');//发起权限字段只读
     $(".node1").removeAttr('placeholder');
-
+    //$(".upload-addbtn").hide();//上传附件按钮隐藏
+    //$(".upload-addbtn").css("display", "none");
+    $("#addbtn_fj").css("display", "none");
 }
 
 //加签按钮点击事件
 var flag_switch = false;
-document.getElementById("csswitch").addEventListener('toggle', function (event) {
-    flag_switch = !flag_switch;
-   // mui.toast(flag_switch);
-});
+function tapEvent_csswitch() {
+    document.getElementById("csswitch").addEventListener('toggle', function (event) {
+        flag_switch = !flag_switch;
+        // mui.toast(flag_switch);
+    });
+}
 
 //点击事件
 function tapEvent1() {
@@ -211,13 +216,25 @@ function tapEvent1() {
     ];
     showPicker('fcompany', fcompanydata);
 
+    //是否重大质量事故
+    mui('#fif_zdsgd').each(function () {
+        this.addEventListener('toggle', function (event) {
+            if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                $("#fif_zdsg").val('是');
+            } else {
+                $("#fif_zdsg").val('否');
+            }
+
+        });
+    });
+
 }
 
 //抬头表必输项检查
 function check(Method, Action, nodeName, fcompany, fcpmc, fwtms, fif_zdsg, fgzfx, fjzcs, ffzr, fyzrq) {
     /*if ((String(nodeName).match('开始') != null) || (String(nodeName).match('undefined') != null)) {*/
     if (((String(Method).match('Post') != null) && (String(Action).match('提交') != null))||(String(nodeName).match('开始') != null)){
-        //如果是发起或重新发起状态
+        //如果是发起或重新发起状态 
         if (!fcompany) {
             mui.toast('请选择产品生产公司');
             return false;
@@ -233,10 +250,10 @@ function check(Method, Action, nodeName, fcompany, fcpmc, fwtms, fif_zdsg, fgzfx
     }
          //生物科技质量部经理审批
     else if (String(nodeName).match('生物科技质量部经理') != null) {
-        if (!fif_zdsg) {
+        /*if (!fif_zdsg) {
             mui.toast('请填写是否重大质量事故');
             return false;
-        }
+        }*/
         if (!fgzfx) {
             mui.toast('请填写故障原因分析');
             return false;
@@ -554,16 +571,27 @@ function hasRead() {
 //待办--节点控制字段
 function nodeControllerExp(NodeName) {
     //mui.toast(NodeName);
+    tapEvent_csswitch();
+
     if (NodeName == '开始') {//返回重填，开始节点
        //donothing
         tapEvent1();//点击事件
+
+        //$(".upload-addbtn").show();//上传附件按钮
+        //$(".upload-addbtn").css("display", "block");
+        $("#addbtn_fj").css("display", "block");
         upload();//允许附件上传
-        $(".node1").removeAttr('readonly');
+
+        $(".node1").removeAttr("readonly");
 
     } else if (NodeName == "生物科技质量部经理") {//生物科技质量部经理节点
     //} else if (String(NodeName).match('生物科技质量部经理') != null) {
+        
+        //$(".upload-addbtn").show();//上传附件按钮
+        //$(".upload-addbtn").css("display", "block");
+        $("#addbtn_fj").css("display", "block");
         upload();//允许附件上传
- 
+
         //$(".node1").attr('readonly', 'readonly');//发起权限字段只读
         $(".node2").removeAttr('readonly');
         

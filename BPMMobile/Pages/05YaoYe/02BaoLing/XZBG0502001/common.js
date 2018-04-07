@@ -35,10 +35,12 @@
 
 //加签按钮点击事件
 var flag_switch = false;
-document.getElementById("csswitch").addEventListener('toggle', function (event) {
-    flag_switch = !flag_switch;
-   // mui.toast(flag_switch);
-});
+function tapEvent_csswitch() {
+    document.getElementById("csswitch").addEventListener('toggle', function (event) {
+        flag_switch = !flag_switch;
+        // mui.toast(flag_switch);
+    });
+}
 
 //点击事件
 function tapEvent() {
@@ -618,6 +620,8 @@ function hasRead() {
 
 //节点控制字段
 function nodeControllerExp(NodeName) {
+    tapEvent_csswitch();
+
     if (NodeName == '开始') {//返回重填，开始节点
         tapEvent();
         //添加明细按钮及删除图标

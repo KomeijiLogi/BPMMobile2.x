@@ -387,6 +387,10 @@ function Save() {
         mui.toast('请填写报修时间');
         return;
     }
+    if (!fjjcd) {
+        mui.toast('请选择紧急程度');
+        return;
+    }
     if (!fbxnr) {
         mui.toast('请填写报修内容');
         return;

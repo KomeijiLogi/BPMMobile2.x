@@ -262,17 +262,21 @@ function initData(data, flag) {
 
     $(".node1").attr('readonly', 'readonly');//发起权限字段只读
     $(".node1").removeAttr('placeholder');
+    $("#addbtn_fj").css("display", "none");
    
     $("#mxlist").find('#mx').each(function () {
         $(this).find("#deleteProduct").hide();
     });
+
 }
 
 //加签按钮点击事件
-document.getElementById("csswitch").addEventListener('toggle', function (event) {
-    flag_switch = !flag_switch;
-   // mui.toast(flag_switch);
-});
+function tapEvent_csswitch() {
+    document.getElementById("csswitch").addEventListener('toggle', function (event) {
+        flag_switch = !flag_switch;
+        // mui.toast(flag_switch);
+    });
+}
 
 //点击事件
 function tapEvent1() {
@@ -850,9 +854,13 @@ function hasRead() {
 //待办--节点控制字段
 function nodeControllerExp(NodeName) {
     //mui.toast(NodeName);
+    tapEvent_csswitch();
+
     if (NodeName == '开始') {//返回重填，开始节点
         /*
         tapEvent1();//点击事件
+
+        $("#addbtn_fj").css("display", "block");
         upload();//允许附件上传
 
         //添加明细按钮及删除图标

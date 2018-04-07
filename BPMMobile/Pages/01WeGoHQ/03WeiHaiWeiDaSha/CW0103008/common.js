@@ -192,7 +192,17 @@ function calcTotal() {
     $("#fje_night_total").val(fje_night_total);
     $("#fje_total").val(fje_total);
 }
+function deleteItem(context) {
+    var btnArray = ['否', '是'];
+    mui.confirm('确认删除？', '', btnArray, function (e) {
+        if (e.index == 1) {
+            $(context).parent().parent().remove();
+            calcTotal();
+        }
+    });
 
+
+}
 
 function initData(data, flag) {
     var item = data.FormDataSet.威海卫大厦青缇湾员工餐费用汇总_A[0];
@@ -357,6 +367,14 @@ function Save() {
     var fcs_night_total = $("#fcs_night_total").val();
     var fje_night_total = $("#fje_night_total").val();
     var fje_total = $("#fje_total").val();
+    if (!fyear) {
+        mui.toast('请选择提报年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择提报月度');
+        return;
+    }
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -452,7 +470,14 @@ function reSave() {
     var fcs_night_total = $("#fcs_night_total").val();
     var fje_night_total = $("#fje_night_total").val();
     var fje_total = $("#fje_total").val();
-
+    if (!fyear) {
+        mui.toast('请选择提报年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择提报月度');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function() {
