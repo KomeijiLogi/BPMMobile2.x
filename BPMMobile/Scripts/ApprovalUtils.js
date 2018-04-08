@@ -964,7 +964,10 @@ function FormatterTimeYMS(time) {
     if (time.indexOf('T') != -1) {
         var ymd = time.substring(0, time.indexOf("T"));
         return ymd;
-    } else {
+    } else if (time.indexOf(" ") != -1) {
+        var ymd = time.substring(0, time.indexOf(" "));
+        return ymd;
+    }else {
         return time;
     }
     

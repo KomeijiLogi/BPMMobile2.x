@@ -127,7 +127,7 @@ function deleteThis(context) {
     var btnArray = ['否', '是'];
     mui.confirm('确认删除？', '', btnArray, function (e) {
         if (e.index == 1) {
-            $(context).parent().fadeOut();
+            $(context).parent().remove();
         }
     });
 }
@@ -168,7 +168,7 @@ function prepIndexedList() {
                 var li = `
                         <div class="mui-card" id="mx">                          
                             <div class="mui-row">
-                                <div class="mui-col-xs-12 flexLine">
+                                <div class="mui-col-xs-12" style="display:flex;flex-direction:row;">
                                    
                                     <textarea rows="2" id="fsname" name="fsname" readonly>${checkedObjs[i].fsname}</textarea>
                                     <span class="mui-icon mui-icon-closeempty mui-pull-right" style="font-size:1.5rem;" onclick="deleteCard(this)"></span>
@@ -435,7 +435,7 @@ function deleteCard(context) {
     var btnArray = ['否', '是'];
     mui.confirm('确认删除？', '', btnArray, function (e) {
         if (e.index == 1) {
-            $(context).parent().parent().parent().fadeOut();
+            $(context).parent().parent().parent().remove();
 
         }
     });
@@ -484,7 +484,7 @@ function Save() {
         mui.toast('请填写标题');
         return;
     }
-    if (!fjArray) {
+    if (fjArray.length==0) {
         mui.toast('请上传附件');
         return;
     }
@@ -512,7 +512,9 @@ function Save() {
         mxlistArr2.push(mx);
     });
 
+    console.log(lujing, lujing2);
 
+   
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -603,7 +605,7 @@ function reSave() {
         mui.toast('请填写标题');
         return;
     }
-    if (!fjArray) {
+    if (fjArray.length==0) {
         mui.toast('请上传附件');
         return;
     }

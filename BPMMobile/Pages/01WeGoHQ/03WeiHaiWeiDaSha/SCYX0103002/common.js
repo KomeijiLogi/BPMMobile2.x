@@ -555,6 +555,18 @@ function nodeControllerExp(NodeName) {
     }
 }
 
+function deleteItem(context) {
+    var btnArray = ['否', '是'];
+    mui.confirm('确认删除？', '', btnArray, function (e) {
+        if (e.index == 1) {
+            $(context).parent().parent().remove();
+            calcTotal_yg();
+            calcTotal_kf();
+        }
+    });
+
+
+}
 class MxItem_kf {
     constructor(ffj, ffs, fdjsr, fsjsr, fce1, fpjfjdj, fsjpjfj, fce2) {
         this.ffj = ffj;
@@ -686,6 +698,14 @@ function Save() {
     var f_yg_cejl_total = $("#f_yg_cejl_total").val();
     var f_yg_zj_total = $("#f_yg_zj_total").val();
     var f_yg_sjff_total = $("#f_yg_sjff_total").val();
+    if (!fxsnd) {
+        mui.toast('请选择销售年度');
+        return;
+    }
+    if (!fxsyd) {
+        mui.toast('请选择销售月度');
+        return;
+    }
 
     var mxflag = false;
     var mxlistArr1 = new Array();
@@ -889,7 +909,14 @@ function reSave() {
     var f_yg_cejl_total = $("#f_yg_cejl_total").val();
     var f_yg_zj_total = $("#f_yg_zj_total").val();
     var f_yg_sjff_total = $("#f_yg_sjff_total").val();
-
+    if (!fxsnd) {
+        mui.toast('请选择销售年度');
+        return;
+    }
+    if (!fxsyd) {
+        mui.toast('请选择销售月度');
+        return;
+    }
     var mxflag = false;
     var mxlistArr1 = new Array();
     $("#mxlist_kf").find("#mx").each(function () {

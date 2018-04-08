@@ -228,6 +228,14 @@ function Save() {
     var fmonth = $("#fmonth").val();
     var fjle_total = $("#fjle_total").val();
     var fkke_total = $("#fkke_total").val();
+    if (!fyear) {
+        mui.toast('请选择提报年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择提报月度');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {
@@ -306,6 +314,14 @@ function reSave() {
     var fmonth = $("#fmonth").val();
     var fjle_total = $("#fjle_total").val();
     var fkke_total = $("#fkke_total").val();
+    if (!fyear) {
+        mui.toast('请选择提报年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择提报月度');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = new Array();
     $("#mxlist").find("#mx").each(function () {

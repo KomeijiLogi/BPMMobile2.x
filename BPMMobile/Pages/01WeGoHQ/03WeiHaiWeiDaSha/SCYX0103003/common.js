@@ -306,6 +306,18 @@ function nodeControllerExp(NodeName) {
     }
 }
 
+function deleteItem(context) {
+    var btnArray = ['否', '是'];
+    mui.confirm('确认删除？', '', btnArray, function (e) {
+        if (e.index == 1) {
+            $(context).parent().parent().remove();
+            calcTotal();
+        }
+    });
+
+
+}
+
 function Save() {
     var fname = $("#fname").val();
     var fdept = $("#fdept").val();
@@ -317,6 +329,15 @@ function Save() {
     var fcf_total = $("#fcf_total").val();
     var fqt_total = $("#fqt_total").val();
     var ftcje_total = $("#ftcje_total").val();
+
+    if (!fyear) {
+        mui.toast('请选择年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择月度');
+        return;
+    }
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -333,7 +354,7 @@ function Save() {
 
         var mx = new Mx(fzh, fjzrq, ffh, fkrxm, fxfzj, fff, fcf, fqt, ftcje);
         if (!mx.check()) {
-            mxflag = false;
+            mxflag = true;
             return;
         }
         mxlistArr.push(mx);
@@ -418,6 +439,14 @@ function reSave() {
     var fcf_total = $("#fcf_total").val();
     var fqt_total = $("#fqt_total").val();
     var ftcje_total = $("#ftcje_total").val();
+    if (!fyear) {
+        mui.toast('请选择年度');
+        return;
+    }
+    if (!fmonth) {
+        mui.toast('请选择月度');
+        return;
+    }
 
     var mxflag = false;
     var mxlistArr = new Array();
@@ -434,7 +463,7 @@ function reSave() {
 
         var mx = new Mx(fzh, fjzrq, ffh, fkrxm, fxfzj, fff, fcf, fqt, ftcje);
         if (!mx.check()) {
-            mxflag = false;
+            mxflag = true;
             return;
         }
         mxlistArr.push(mx);

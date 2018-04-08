@@ -448,17 +448,17 @@ function initData(data, flag) {
                     </div>
                    <div class="mui-col-xs-4" style="display:flex;">
                        <label for="frzrq">入职日期<i style="color:red;">*</i></label>
-                       <input type="date" id="frzrq" name="frzrq" readonly value="${FormatterTimeYMS(item_c2[i].入职日期)} "/>
+                       <textarea id="frzrq" name="frzrq" readonly >${FormatterTimeYMS(item_c2[i].入职日期)}</textarea>
                     </div>
                      <div class="mui-col-xs-4" style="display:flex;">
                         <label for="fndgwrq">拟定岗位日期<i style="color:red;">*</i></label>
-                        <input type="date" id="fndgwrq" name="fndgwrq" readonly value="${FormatterTimeYMS(item_c2[i].拟定到岗日期)}"/>
+                        <textarea id="fndgwrq" name="fndgwrq" readonly >${FormatterTimeYMS(item_c2[i].拟定到岗日期)}</textarea>
                     </div>
                </div>
               <div class="mui-row cutOffLine">
                    <div class="mui-col-xs-4" style="display:flex;">
                        <label for="fxzszbm">现所在部门</label>
-                       <input type="text" id="fxzszbm" name="fxzszbm" readonly value="${item_c2[i].现所在部门}"/>
+                       <textarea id="fxzszbm" name="fxzszbm" readonly rows="2">${item_c2[i].现所在部门}</textarea>
                     </div>
                    <div class="mui-col-xs-4" style="display:flex;">
                         <label for="fxrgw">现任岗位<i style="color:red;">*</i></label> 
@@ -472,7 +472,7 @@ function initData(data, flag) {
                 <div class="mui-row cutOffLine">
                    <div class="mui-col-xs-4" style="display:flex;">
                        <label for="fndrbm">拟调入部门<i style="color:red;">*</i></label> 
-                       <input type="text" id="fndrbm" name="fndrbm" readonly value="${item_c2[i].拟调入部门}"/>
+                       <textarea id="fndrbm" name="fndrbm" readonly>${item_c2[i].拟调入部门}</textarea>
                        <input type="hidden" id="fndrbmqlj" name="fndrbmqlj" readonly value="${item_c2[i].调入部门路径}"/>
                     </div>
                    <div class="mui-col-xs-4" style="display:flex;">
