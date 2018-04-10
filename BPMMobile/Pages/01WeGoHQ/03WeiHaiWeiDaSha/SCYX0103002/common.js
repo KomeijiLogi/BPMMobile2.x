@@ -293,7 +293,7 @@ function initData(data, flag) {
     }
     $("#fname").val(item.申请人);
     $("#fdept").val(item.申请部门);
-    $("#fdate").val(FormatterTimeYMS(item.申请日期));
+    $("#fdate").val(FormatterTimeYMS(item.申请时间));
     $("#fxsnd").val(item.销售年度);
     $("#fxsyd").val(item.销售月度);
     $("#fzskjs").val(item.总散客房间数);

@@ -375,6 +375,11 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\00KCY\HQ000701\common.js" />
+    <Content Include="Pages\00KCY\HQ000701\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000701\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000701\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000701\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowDoneDetail.html" />

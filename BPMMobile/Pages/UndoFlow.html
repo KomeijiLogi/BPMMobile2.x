@@ -53,6 +53,211 @@
     </div>
     
     <script type="text/javascript">
+   //     mui.init({
+
+   //         pullRefresh: {
+
+   //             container: "#wrapper",
+   //             up: {
+   //                 height: 50,
+   //                 auto: true,
+   //                 contentrefresh: "正在加载...",
+   //                 contentnomore: '没有更多数据了',
+   //                 callback: pullfresh
+   //             }, down: {
+   //                 height: 50,
+   //                 auto:false,
+   //                 contentdown: "下拉可以刷新",
+   //                 contentover: "释放立即刷新",
+   //                 contentrefresh: "正在刷新...",
+   //                 callback:refresh
+   //             }
+   //         }
+
+   //     });
+   //     mui.ready(function () {
+
+   //         mui('body').on('tap', 'a', function () {
+
+               
+   //             document.location.href = this.href;
+               
+   //         });
+
+           
+		 //   var url=window.location.href;
+			//if(String(url).indexOf('ticket')!=-1){
+			//   var ticket=(url.split("="))[1];
+   //            localStorage.setItem('ticket', ticket);
+               
+			//}
+   //         search();
+   //     });
+   //     XuntongJSBridge.call('setWebViewTitle', { 'title': '待办事项' });
+   //     XuntongJSBridge.call('createPop', {
+   //         'popTitle': '',
+   //         'popTitleCallBackId': '1',
+   //         'items': [{ 'text': '刷新', 'callBackId': 'callback1' }],
+   //         'menuList': [
+   //             'openWithBrowser'
+   //         ],
+
+   //     }, function (result) {
+   //         if (result.success == true || result.success == 'true') {
+   //             var callBackId = result.data ? result.data.callBackId : '';
+   //             if (callBackId == 'callback1') {
+   //                 window.location.reload();
+                    
+   //             } else if (callBackId == 'callback2') {
+
+   //             } else {
+
+   //             }
+   //         }
+
+   //     });
+
+
+   //     var startRowIndex = 0;
+   //     var rows = 10;
+   //     var total = 0;
+   //     function pullfresh() {
+
+   //         var search = $("#search").val();
+            
+
+   //         $.ajax({
+   //             type: "get",
+   //             url: "/api/bpm/GetMyUndoTask",
+   //             data: { 'startRowIndex': startRowIndex, 'rows': rows, 'search': search },
+   //             beforeSend: function (XHR) {
+   //                 XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+   //             },
+   //             success: function (data, status) {
+
+   //                 if (status == "success") {
+   //                     total = data.total;
+                        
+   //                     if (data.tasks.length == 0) {
+   //                         mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+   //                     } else {
+   //                         console.log(data);
+                            
+   //                         for (var i = 0; i < data.tasks.length; i++) {
+   //                             var stepName = data.tasks[i].StepName;
+   //                             if (data.tasks[i].StepName == "sysInform") {
+   //                                 stepName = "知会";
+   //                             } else if (data.tasks[i].StepName == "sysTaskOpt") {
+   //                                 stepName = "任务操作";
+   //                             } else if (data.tasks[i].StepName=="开始"){
+   //                                 stepName = "待提交";
+   //                             }
+
+   //                             var title = data.tasks[i].Description;
+   //                             if (title == null || title == "null") {
+   //                                 title = "";
+   //                             }
+
+   //                             var li = '<li class="mui-table-view-cell" id="touchArea">';
+
+   //                             li = li + '   <a href="' + data.tasks[i].ViewUndoPage + '?tid=' + data.tasks[i].TaskID + '&pid=' + data.tasks[i].StepID + '">';
+                               
+                                   
+                                
+   //                             li = li + '       <div class="mui-table">';
+   //                             li = li + '         <div class="mui-table-cell mui-col-xs-10" style="color:#3a3a3a;">';
+
+   //                             li = li + '        <img class="mui-pull-left" src="' + data.tasks[i].Icon + '" style="width:2rem;height:2rem;">';
+                              
+   //                             li = li + '           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">';
+   //                             li = li + '             ' + data.tasks[i].DisplayName + '<p class="mui-pull-right" style="color:#00a0ea;">' + stepName + '</p>';
+   //                             li = li + '           </h4>';
+   //                             //li = li + '            <label class="mui-pull-left" style="padding-left:0.5rem;color:#d91d47;">' + title + '</label>';
+   //                             li = li + '            <p class="mui-pull-right">' + FormatterTime(data.tasks[i].ReceiveAt) + '</p>';
+   //                             li = li + '           </div>';
+   //                             li = li + '         </div>';
+   //                             li = li + '    </a>';
+   //                             li = li + '</li>';
+
+                               
+   //                             $("#thelist").append(li);
+                                
+   //                         }
+   //                         //console.log(startRowIndex);
+   //                         startRowIndex += rows;
+                          
+                            
+   //                         if (startRowIndex < total) {
+   //                             mui('#wrapper').pullRefresh().endPullupToRefresh(false);
+   //                         } else {
+   //                             mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+   //                         }
+                            
+                            
+   //                     }
+
+   //                 }
+   //             },
+   //             error: function (e) {
+                   
+   //                 history.go(0);
+   //             },
+   //             complete: function () { }
+
+   //         })
+            
+            
+
+   //     }
+   //     function refresh() {
+   //         history.go(0);
+   //         mui('#refreshContainer').pullRefresh().endPulldown();
+   //     }
+
+
+   //     function FormatterTime(time) {
+
+   //         var time = String(time);
+   //         var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
+   //         var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
+   //         time = ymd + " " + hms;
+   //         return time;
+
+   //     }
+
+   //     //判断是否是Safari
+   //     function isSafari() {
+
+   //         if ( navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPhone") != -1) {
+   //             return true;
+   //         } else {
+   //             return false;
+   //         }
+   //     }
+     
+
+   //     function search() {
+   //         $("#search").on('keypress', function (e) {
+   //             var keycode = e.keyCode;
+        
+   //             var keyword = $("#search").val();
+
+   //             if (keycode == '13') {
+   //                 e.preventDefault();
+   //                 if (keyword == "") {
+   //                     window.location.reload();
+   //                 } else {
+   //                     $("#thelist").empty();
+   //                     startRowIndex = 0;
+   //                     pullfresh();
+   //                 }
+   //             }
+               
+   //         });
+
+   //     }
+    </script> 
+    <script>
         mui.init({
 
             pullRefresh: {
@@ -66,11 +271,11 @@
                     callback: pullfresh
                 }, down: {
                     height: 50,
-                    auto:false,
+                    auto: false,
                     contentdown: "下拉可以刷新",
                     contentover: "释放立即刷新",
                     contentrefresh: "正在刷新...",
-                    callback:refresh
+                    callback: refresh
                 }
             }
 
@@ -79,18 +284,18 @@
 
             mui('body').on('tap', 'a', function () {
 
-               
+
                 document.location.href = this.href;
-               
+
             });
 
-           
-		    var url=window.location.href;
-			if(String(url).indexOf('ticket')!=-1){
-			   var ticket=(url.split("="))[1];
-               localStorage.setItem('ticket', ticket);
-               
-			}
+
+            var url = window.location.href;
+            if (String(url).indexOf('ticket') != -1) {
+                var ticket = (url.split("="))[1];
+                localStorage.setItem('ticket', ticket);
+
+            }
             search();
         });
         XuntongJSBridge.call('setWebViewTitle', { 'title': '待办事项' });
@@ -107,7 +312,7 @@
                 var callBackId = result.data ? result.data.callBackId : '';
                 if (callBackId == 'callback1') {
                     window.location.reload();
-                    
+
                 } else if (callBackId == 'callback2') {
 
                 } else {
@@ -115,131 +320,13 @@
                 }
             }
 
-        });
+            });
 
-
-        var startRowIndex = 0;
-        var rows = 10;
-        var total = 0;
-        function pullfresh() {
-
-            var search = $("#search").val();
-            
-
-            $.ajax({
-                type: "get",
-                url: "/api/bpm/GetMyUndoTask",
-                data: { 'startRowIndex': startRowIndex, 'rows': rows, 'search': search },
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-                },
-                success: function (data, status) {
-
-                    if (status == "success") {
-                        total = data.total;
-                        
-                        if (data.tasks.length == 0) {
-                            mui('#wrapper').pullRefresh().endPullupToRefresh(true);
-                        } else {
-                            console.log(data);
-                            
-                            for (var i = 0; i < data.tasks.length; i++) {
-                                var stepName = data.tasks[i].StepName;
-                                if (data.tasks[i].StepName == "sysInform") {
-                                    stepName = "知会";
-                                } else if (data.tasks[i].StepName == "sysTaskOpt") {
-                                    stepName = "任务操作";
-                                } else if (data.tasks[i].StepName=="开始"){
-                                    stepName = "待提交";
-                                }
-
-                                var title = data.tasks[i].Description;
-                                if (title == null || title == "null") {
-                                    title = "";
-                                }
-
-                                var li = '<li class="mui-table-view-cell" id="touchArea">';
-
-                                li = li + '   <a href="' + data.tasks[i].ViewUndoPage + '?tid=' + data.tasks[i].TaskID + '&pid=' + data.tasks[i].StepID + '">';
-                               
-                                   
-                                
-                                li = li + '       <div class="mui-table">';
-                                li = li + '         <div class="mui-table-cell mui-col-xs-10" style="color:#3a3a3a;">';
-
-                                li = li + '        <img class="mui-pull-left" src="' + data.tasks[i].Icon + '" style="width:2rem;height:2rem;">';
-                              
-                                li = li + '           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">';
-                                li = li + '             ' + data.tasks[i].DisplayName + '<p class="mui-pull-right" style="color:#00a0ea;">' + stepName + '</p>';
-                                li = li + '           </h4>';
-                                //li = li + '            <label class="mui-pull-left" style="padding-left:0.5rem;color:#d91d47;">' + title + '</label>';
-                                li = li + '            <p class="mui-pull-right">' + FormatterTime(data.tasks[i].ReceiveAt) + '</p>';
-                                li = li + '           </div>';
-                                li = li + '         </div>';
-                                li = li + '    </a>';
-                                li = li + '</li>';
-
-                               
-                                $("#thelist").append(li);
-                                
-                            }
-                            //console.log(startRowIndex);
-                            startRowIndex += rows;
-                          
-                            
-                            if (startRowIndex < total) {
-                                mui('#wrapper').pullRefresh().endPullupToRefresh(false);
-                            } else {
-                                mui('#wrapper').pullRefresh().endPullupToRefresh(true);
-                            }
-                            
-                            
-                        }
-
-                    }
-                },
-                error: function (e) {
-                   
-                    history.go(0);
-                },
-                complete: function () { }
-
-            })
-            
-            
-
-        }
-        function refresh() {
-            history.go(0);
-            mui('#refreshContainer').pullRefresh().endPulldown();
-        }
-
-
-        function FormatterTime(time) {
-
-            var time = String(time);
-            var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
-            var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
-            time = ymd + " " + hms;
-            return time;
-
-        }
-
-        //判断是否是Safari
-        function isSafari() {
-
-            if ( navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPhone") != -1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-     
-
+        //使用搜索栏进行查询
         function search() {
             $("#search").on('keypress', function (e) {
                 var keycode = e.keyCode;
-        
+
                 var keyword = $("#search").val();
 
                 if (keycode == '13') {
@@ -252,10 +339,123 @@
                         pullfresh();
                     }
                 }
-               
+
             });
 
         }
-    </script> 
+        //格式化时间为yyyy-MM-dd hh:mm:ss
+        function FormatterTime(time) {
+            var time = String(time);
+            var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
+            var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
+            time = ymd + " " + hms;
+            return time;
+        }
+
+        var startRowIndex = !localStorage.getItem('startRowIndexUndo') ? 0 : localStorage.getItem('startRowIndexUndo');
+        console.log(startRowIndex, 'start');
+        var rows = 10;
+        var total = 0;
+        //刷新
+        function refresh() {
+            localStorage.setItem('startRowIndexUndo', 0);  //重置startRowIndex
+            window.location.reload();           
+            mui('#refreshContainer').pullRefresh().endPulldown();
+        }
+        //跳转到对应页面
+        function toggleJUMP(context) {
+
+            localStorage.setItem('startRowIndexUndo', startRowIndex > 0 ? parseInt(startRowIndex) - 10 : 0);
+            var page = $(context).find("#page").val();
+            var tid = $(context).find("#taskId").val();
+            var pid = $(context).find("#stepId").val();
+
+            console.log('this', context, 'startRowIndexUndo', startRowIndex);
+
+            window.location.href = page + '?tid=' + tid+'&pid='+pid;
+
+
+        }
+
+        function pullfresh() {
+
+            var search = $("#search").val();
+
+
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetMyUndoTask",
+                data: { 'startRowIndex': startRowIndex, 'rows': rows, 'search': search },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                total = data.total;
+
+                if (data.tasks.length == 0) {
+                    mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+                } else {
+                    console.log(data);
+
+                    for (var i = 0; i < data.tasks.length; i++) {
+                        var stepName = data.tasks[i].StepName;
+                        if (data.tasks[i].StepName == "sysInform") {
+                            stepName = "知会";
+                        } else if (data.tasks[i].StepName == "sysTaskOpt") {
+                            stepName = "任务操作";
+                        } else if (data.tasks[i].StepName == "开始") {
+                            stepName = "待提交";
+                        }
+
+                        var title = data.tasks[i].Description;
+                        if (title == null || title == "null") {
+                            title = "";
+                        }
+                        var li = `
+                               <li class="mui-table-view-cell" id="touchArea">
+                                  <input type="hidden" id="taskId" name="taskId" value="${data.tasks[i].TaskID}"/>
+                                  <input type="hidden" id="page" name="page" value="${data.tasks[i].ViewUndoPage}"/>
+                                  <input type="hidden" id="stepId" name="stepId" value="${data.tasks[i].StepID}"/>
+                                  <div class="mui-table">
+                                      <div class="mui-table-cell mui-col-xs-10">
+                                          <img class="mui-pull-left" src="${data.tasks[i].Icon}" style="width:2rem;height:2rem;"/>
+                                           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">
+                                               ${data.tasks[i].DisplayName}<p class="mui-pull-right" style="color:#00a0ea;">${stepName}</p>
+                                           </h4>
+                                           <p class="mui-pull-right">${FormatterTime(data.tasks[i].ReceiveAt)}</p>
+                                      </div>
+                                  </div>
+                               </li>
+
+                                 `;
+
+                        $("#thelist").append(li);
+
+                    }
+                    //绑定点击事件
+                    $("#thelist").find('li').each(function () {
+                        $(this).on('tap', function () {
+
+                            toggleJUMP(this);
+                        });
+                    });
+                    startRowIndex += rows;
+
+
+                    if (startRowIndex < total) {
+                        mui('#wrapper').pullRefresh().endPullupToRefresh(false);
+                    } else {
+                        mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+                    }
+
+                }
+
+            }).fail(function (e) {
+
+            });
+        }
+
+
+    </script>
 </body>
 </html>
