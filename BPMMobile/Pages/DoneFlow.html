@@ -179,37 +179,37 @@
                         var flowInfo = data.tasks[i];
 
 
-                        var stepName = "暂无信息";
+                        var stepName = "";
                         //匹配节点信息
-                        switch (data.tasks[i].TaskState) {
-                            case 0:
-                                stepName = "";
-                                break;
-                            case 1:
-                                stepName = "暂停";
-                                break;
-                            case 2:
-                                stepName = "停止";
-                                break;
-                            case 3:
-                                stepName = "撤销";
-                                break;
-                            case 4:
-                                stepName = "审批通过";
-                                break;
-                            case 5:
-                                stepName = "拒绝";
-                                break;
-                            case 6:
-                                stepName = "删除";
-                                break;
-                            case 7:
-                                stepName = "未知";
-                                break;
-                            default:
-                                break;
+                        //switch (data.tasks[i].TaskState) {
+                        //    case 0:
+                        //        stepName = "";
+                        //        break;
+                        //    case 1:
+                        //        stepName = "暂停";
+                        //        break;
+                        //    case 2:
+                        //        stepName = "停止";
+                        //        break;
+                        //    case 3:
+                        //        stepName = "撤销";
+                        //        break;
+                        //    case 4:
+                        //        stepName = "审批通过";
+                        //        break;
+                        //    case 5:
+                        //        stepName = "拒绝";
+                        //        break;
+                        //    case 6:
+                        //        stepName = "删除";
+                        //        break;
+                        //    case 7:
+                        //        stepName = "未知";
+                        //        break;
+                        //    default:
+                        //        break;
 
-                        }; 
+                        //}; 
                         //获取流程描述信息
                         var title = data.tasks[i].Description;
                         if (title == null || title == "null") {
