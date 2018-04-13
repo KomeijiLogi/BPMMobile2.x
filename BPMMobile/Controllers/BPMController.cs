@@ -681,40 +681,40 @@ namespace BPMMobile.Controllers
                 .Skip(startRowIndex)
                 .Take(rows);
                         var mobileProcess = GetMobileProcess();
-            var ret = from t in taskList
-                      join m in mobileProcess on t.ProcessName equals m.Name
-                      select new TaskDto()
-                      {
-                          DisplayName = m.DisplayName,
-                          Icon = m.Icon,
-                          CreateAt = t.CreateAt,
-                          ViewUndoPage = m.ViewUndoPage,
-                          ViewAskPage = m.ViewAskPage,
-                          ViewDonePage = m.ViewDonePage,
-                          Description = t.Description,
-                          ProcessName = t.ProcessName,
-                          TaskID = t.TaskID
-                      };
-           
-            //var ret2 = from t in taskList
-            //           join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
-            //           from item in mobileGroup.DefaultIfEmpty()
-            //           select new TaskDto()
-            //           {
-            //               DisplayName = t.ProcessName,
-            //               Icon = "../../../../Content/images/5.png",
-            //               CreateAt = t.CreateAt,
-            //               ViewUndoPage = mobileProcess.ViewUndoPage,
-            //               ViewAskPage = mobileProcess.ViewAskPage,
-            //               ViewDonePage = mobileProcess.ViewDonePage,
-            //               Description = t.Description,
-            //               ProcessName = t.ProcessName,
-            //               TaskID = t.TaskID
-            //           };
-             
+            //var ret = from t in taskList
+            //          join m in mobileProcess on t.ProcessName equals m.Name
+            //          select new TaskDto()
+            //          {
+            //              DisplayName = m.DisplayName,
+            //              Icon = m.Icon,
+            //              CreateAt = t.CreateAt,
+            //              ViewUndoPage = m.ViewUndoPage,
+            //              ViewAskPage = m.ViewAskPage,
+            //              ViewDonePage = m.ViewDonePage,
+            //              Description = t.Description,
+            //              ProcessName = t.ProcessName,
+            //              TaskID = t.TaskID
+            //          };
+
+            var ret2 = from t in taskList
+                       join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
+                       from m in mobileGroup.DefaultIfEmpty()
+                       select new TaskDto()
+                       {
+                           DisplayName = m==null? t.ProcessName:m.DisplayName,
+                           Icon = m == null ? "../../../../Content/images/5.png":m.Icon,
+                           CreateAt = t.CreateAt,
+                           ViewUndoPage = m==null? String.Empty : m.ViewUndoPage,
+                           ViewAskPage = m == null ? String.Empty : m.ViewAskPage,
+                           ViewDonePage = m == null ? String.Empty : m.ViewDonePage,
+                           Description = t.Description,
+                           ProcessName = t.ProcessName,
+                           TaskID = t.TaskID
+                       };
 
 
-            return Json(new { tasks = ret, total = allList.Count });
+
+            return Json(new { tasks = ret2, total = allList.Count });
            
 
         }
