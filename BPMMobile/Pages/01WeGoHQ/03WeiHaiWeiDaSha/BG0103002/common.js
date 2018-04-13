@@ -421,7 +421,7 @@ function initData(data, flag) {
                         <img src="" alt="" title="头像" style="border-radius:50%;margin-left:.2rem;"/>   
                         <label style="padding-left:.4rem;">${item_c2[i].UserName}</label>
                         <input type="hidden" id="fno" name="fno" value="${item_c2[i].UserAccount}"/>  
-                         <input type="hidden" id="ALCType" name="ALCType" value="${item_c1[i].ALCType}"/> 
+                         <input type="hidden" id="ALCType" name="ALCType" value="${item_c2[i].ALCType}"/> 
                     </div>                                
                 </div>
                 `;

@@ -680,7 +680,7 @@ namespace BPMMobile.Controllers
                 .OrderByDescending(t => t.CreateAt)
                 .Skip(startRowIndex)
                 .Take(rows);
-            var mobileProcess = GetMobileProcess();
+                        var mobileProcess = GetMobileProcess();
             var ret = from t in taskList
                       join m in mobileProcess on t.ProcessName equals m.Name
                       select new TaskDto()
@@ -695,7 +695,27 @@ namespace BPMMobile.Controllers
                           ProcessName = t.ProcessName,
                           TaskID = t.TaskID
                       };
+           
+            //var ret2 = from t in taskList
+            //           join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
+            //           from item in mobileGroup.DefaultIfEmpty()
+            //           select new TaskDto()
+            //           {
+            //               DisplayName = t.ProcessName,
+            //               Icon = "../../../../Content/images/5.png",
+            //               CreateAt = t.CreateAt,
+            //               ViewUndoPage = mobileProcess.ViewUndoPage,
+            //               ViewAskPage = mobileProcess.ViewAskPage,
+            //               ViewDonePage = mobileProcess.ViewDonePage,
+            //               Description = t.Description,
+            //               ProcessName = t.ProcessName,
+            //               TaskID = t.TaskID
+            //           };
+             
+
+
             return Json(new { tasks = ret, total = allList.Count });
+           
 
         }
         /// <summary>
@@ -717,11 +737,12 @@ namespace BPMMobile.Controllers
                     return Json(result);
                 }
 
-        } catch (Exception e) {
+            } catch (Exception e) {
 
-                log.Error("error:"+e);
+               log.Error("error:"+e);
+               return Json(e);
             }
-            return null;
+           
         }
         /// <summary>
         /// 退回
@@ -747,8 +768,9 @@ namespace BPMMobile.Controllers
             {
 
                 log.Error("error:" + e);
+                return Json(e);
             }
-            return null;
+           
         }
 
         /// <summary>
@@ -849,8 +871,9 @@ namespace BPMMobile.Controllers
                 }
             } catch (Exception e) {
                 log.Error("error:", e);
+                return Json(e);
             }
-            return null;
+            
 
         }
 
@@ -960,8 +983,9 @@ namespace BPMMobile.Controllers
             catch (Exception e)
             {
                 log.Error("error:", e);
+                return Json(e);
             }
-            return null;
+            
            
         }
 
@@ -1440,21 +1464,35 @@ namespace BPMMobile.Controllers
             BPMTaskCollection tasks = new BPMTaskCollection();
             using (BPMConnection cn = new BPMConnection())
             {
+
                 cn.WebOpen();
-                var mobileProcess = GetMobileProcess();
-                foreach (var p in mobileProcess)
-                {
-                    int rowcount = 0;
-                    var list = cn.GetHistoryTasks(
-                        HistoryTaskType.MyProcessed, p.Path,
-                        "ProcessName='" + p.Name + "'",
-                        "",
-                        "",
-                        0,
-                        int.MaxValue,
-                        out rowcount);
-                    tasks.Append(list);
-                }
+
+                //var mobileProcess = GetMobileProcess();               
+                //foreach (var p in mobileProcess)
+                //{
+                //    int rowcount = 0;
+                //    var list = cn.GetHistoryTasks(
+                //        HistoryTaskType.MyProcessed, p.Path,
+                //        "ProcessName='" + p.Name + "'",
+                //        "",
+                //        "",
+                //        0,
+                //        int.MaxValue,
+                //        out rowcount);
+                //    tasks.Append(list);
+                //}
+
+                int rowcount = 0;
+                var list = cn.GetHistoryTasks(
+                        HistoryTaskType.MyProcessed, "",
+                        "", "", "", 0, int.MaxValue, out rowcount
+                    );
+                tasks.Append(list);
+
+               
+               
+
+
             }
             return tasks;
         }

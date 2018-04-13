@@ -422,7 +422,11 @@
                                            <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">
                                                ${data.tasks[i].DisplayName}<p class="mui-pull-right" style="color:#00a0ea;">${stepName}</p>
                                            </h4>
-                                           <p class="mui-pull-right">${FormatterTime(data.tasks[i].ReceiveAt)}</p>
+                                            <h4 class="mui-ellipsis-2" style="font-size:0.6rem;;font-weight:500;padding-left:0.5rem;">
+                                                  ${localeLan(data.tasks[i].Description)}
+                                                <p class="mui-pull-right">${FormatterTime(data.tasks[i].ReceiveAt)}</p>
+                                            </h4>   
+                                          
                                       </div>
                                   </div>
                                </li>
@@ -439,7 +443,7 @@
                             toggleJUMP(this);
                         });
                     });
-                    startRowIndex += rows;
+                    startRowIndex = parseInt(startRowIndex) + parseInt(rows);
 
 
                     if (startRowIndex < total) {

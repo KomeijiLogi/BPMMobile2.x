@@ -158,6 +158,7 @@
 
 
         }
+       
 
         //加载
         function pullfresh() {
@@ -226,11 +227,16 @@
                                   <input type="hidden" id="page" name="page" value="${data.tasks[i].ViewAskPage}"/>
                                   <div class="mui-table">
                                       <div class="mui-table-cell mui-col-xs-10">
-                                          <img class="mui-pull-left" src="${data.tasks[i].Icon}" style="width:2rem;height:2rem;"/>
+                                          <img class="mui-pull-left" src="${data.tasks[i].Icon}" style="width:2rem;height:2rem;"/>                                             
                                            <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">
-                                               ${data.tasks[i].DisplayName}<p class="mui-pull-right" style="color:#00a0ea;">${stepName}</p>
+                                               ${data.tasks[i].DisplayName}
+                                               <p class="mui-pull-right" style="color:#00a0ea;">${stepName}</p>
                                            </h4>
-                                           <p class="mui-pull-right">${FormatterTime(data.tasks[i].CreateAt)}</p>
+                                            <h4 class="mui-ellipsis-2" style="font-size:0.6rem;;font-weight:500;padding-left:0.5rem;">
+                                                  ${localeLan(data.tasks[i].Description)}
+                                                <p class="mui-pull-right" style="font-size:12px;">${FormatterTime(data.tasks[i].CreateAt)}</p>
+                                            </h4>      
+                                          
                                       </div>
                                   </div>
                                </li>
