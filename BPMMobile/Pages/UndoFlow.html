@@ -360,7 +360,7 @@
         function refresh() {
             localStorage.setItem('startRowIndexUndo', 0);  //重置startRowIndex
             window.location.reload();           
-            mui('#refreshContainer').pullRefresh().endPulldown();
+            mui('#wrapper').pullRefresh().endPulldown();
         }
         //跳转到对应页面
         function toggleJUMP(context) {

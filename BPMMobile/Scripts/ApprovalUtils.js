@@ -1332,7 +1332,7 @@ function localeLan(str) {
     var localeStr = str;    //返回本地化语义
     switch (str) {
         case null:
-            localeStr = '无';
+            localeStr = '暂无摘要信息';
             break;
        
         default:           
