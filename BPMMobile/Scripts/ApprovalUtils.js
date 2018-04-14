@@ -1332,7 +1332,7 @@ function localeLan(str) {
     var localeStr = str;    //返回本地化语义
     switch (str) {
         case null:
-            localeStr = '...';
+            localeStr = '';
             break;       
         default:           
             break;

@@ -9,10 +9,11 @@
 function upload() {
 
 
-    //var picUrl = '/upload/';
+  
 
     var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
-    //var picUrl = 'http://172.16.7.7/BPM/YZSoft/Attachment/default.ashx';
+   
+    //var picUrl = 'http://172.16.7.8/BPM/YZSoft/Attachment/Download.ashx?fileid=';
     var me = this;
 
     $("#file").upload({
@@ -116,17 +117,16 @@ function upload() {
     
 
 }
-
-function upload_multi(zeptoId, zeptoAimDomClass) {
+//queryDom 提供jquery选择器 ,aimDom 缩略图显示位置
+function upload_multi(queryDom, aimDom) {
     var picUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
-
+    //var picUrl = 'http://172.16.7.8/BPM/YZSoft/Attachment/Download.ashx?fileid=';
     var me = this;
-    
-    $(zeptoId).upload({
+    //console.log(me);
+    (queryDom).upload({
 
         uploadUrl: '/api/bpm/UploadFiles',
-
-        previewWrap: zeptoAimDomClass,
+        previewWrap: aimDom,
         isFile: false,
         //previewUrl: picUrl + '{id}?w=120&h=120',		//图片预览路径
         //previewUrl: picUrl + '?{id}?w=120&h=120',
@@ -183,10 +183,12 @@ function upload_multi(zeptoId, zeptoAimDomClass) {
         onUploadFail: function (xhr) {
             var $progress = this.find('.progress', true);
             $progress.removeClass('uploading');
+
+            //console.log(xhr);
         },
         //删除图片 
         onDelImage: function (fileInfo) {
-          
+
 
         }
 

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label for="fwxdd">维修地点<i style="color:red;">*</i></label>
+                <input type="text" id="fwxdd" name="fwxdd" readonly placeholder="请选择维修地点"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fname">报修人</label>
+                <input type="text" id="fname" name="fname" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fdate">报修时间<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" name="fdate" />
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fbxnr">报修内容<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fbxnr" name="fbxnr" placeholder="请填写报修内容"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label for="flxdh">联系电话</label>
+                <input type="tel" id="flxdh" name="flxdh" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjjcd">紧急程度<i style="color:red;">*</i></label>
+                <input type="text" id="fjjcd" name="fjjcd" readonly placeholder="请选择紧急程度"/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjdr">接单人<i style="color:red;">*</i></label>
+                <input type="text" id="fjdr" name="fjdr" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label for="fjdsj">接单时间<i style="color:red;">*</i></label>
+                <input type="date" id="fjdsj" name="fjdsj" readonly/>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label for="fbz">备注</label>
+                <textarea rows="3" id="fbz" name="fbz" placeholder="请填写备注"></textarea>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+   
+    
+    <!--<script type="text/javascript" src="../../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+        //var vconsole = new VConsole();
+
+        mui.init();
+
+        mui.ready(function () {
+            getVersion('\\01威高集团总部\\04威海卫大厦\\08_基建工程', '威海卫大厦青缇湾工程维修申请');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+      
+
+    </script>
+</body>
+</html>

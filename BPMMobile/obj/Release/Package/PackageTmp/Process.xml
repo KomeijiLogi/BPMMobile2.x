@@ -29,7 +29,7 @@
       <Css></Css>   
       <Icon>../../../../Content/images/5.png</Icon>    
       <Group>办公管理</Group>   
-      <Description>适用于集团总部发文通知申请</Description> 
+      <Description>适用于威高集团本部各部门、采购公司发文通知申请，由集团行政办公室负责发布。</Description> 
   </Process>
   <Process>   
       <Name>集团总部管理制度发文申请</Name>
@@ -44,7 +44,7 @@
       <Css></Css>    
       <Icon>../../../../Content/images/5.png</Icon>    
       <Group>办公管理</Group>   
-      <Description>适用于集团总部管理制度发文申请</Description>  
+      <Description>适用于威高集团本部各部门、采购公司管理制度的发文申请，由集团行政办公室负责发布。</Description>  
   </Process>
   
   <Process>
@@ -60,7 +60,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>采购管理</Group>
-    <Description>集团本部计算机耗材采购申请</Description>
+    <Description>适用于威高集团本部各部门计算机耗材类用品的申请，计算机耗材类指：鼠标、内存条、U盘等价格在500元以内的用品。</Description>
   </Process>
    <Process>
     <Name>集团本部信息化推进部周工作汇报</Name>
@@ -75,7 +75,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>信息管理</Group>
-    <Description>适用于集团总部信息化推进部工作汇报</Description>
+    <Description>适用于威高集团本部信息化推进部周工作汇报。</Description>
   </Process>
  
   <Process>
@@ -91,7 +91,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>集团公司新设公司及工商变更登记申请</Description>
+    <Description>适用于全集团各公司新设公司的登记及现有公司工商登记信息变更的申请。</Description>
   </Process>
   
   <Process>
@@ -107,7 +107,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>行政办公</Group>
-    <Description>集团公司出国申请</Description>
+    <Description>适用于全集团员工进行出国的申请。</Description>
   </Process>
  <Process>
     <Name>集团公司供应商新增分配启用禁用及变更申请</Name>
@@ -122,7 +122,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>采购</Group>
-    <Description>适用于集团公司供应商新增分配启用禁用及变更申请</Description>
+    <Description>适用于全集团各公司进行EAS、K3系统的供应商新增、变更、分配、启用禁用申请。</Description>
   </Process>
   
   <Process>
@@ -138,7 +138,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务</Group>
-    <Description>适用于集团公司资金收支计划评审</Description>
+    <Description>适用于产业集团及子公司提报月度资金收支计划到集团财务部门。</Description>
   </Process>
  
   <Process>
@@ -154,7 +154,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务</Group>
-    <Description>适用于集团公司资金系统用户及权限申请</Description>
+    <Description>适用于全集团各公司财务人员使用GS资金系统用户及权限的申请。</Description>
   </Process>
   <Process>
     <Name>集团公司投资申请</Name>
@@ -169,7 +169,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务</Group>
-    <Description>适用于集团公司投资申请</Description>
+    <Description>适用于全集团各公司投资申请。</Description>
   </Process>
    <Process>
     <Name>集团公司投资会签</Name>
@@ -184,7 +184,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务</Group>
-    <Description>适用于集团公司投资会签</Description>
+    <Description>集团公司投资申请的子流程。</Description>
   </Process>
  
   <Process>
@@ -200,7 +200,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>集团公司信息化投资申请</Description>
+    <Description>适用于集团信息化投资申请，由信息化推进工程师提报，将会签文件（审批至产业集团总经理）作为附件上传。</Description>
   </Process>
   
   <Process>
@@ -216,7 +216,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司员工试用期转正申请</Description>
+    <Description>适用于威高集团各公司新入职行管人员进行试用期转正的申请。</Description>
   </Process>
   
     <Process>
@@ -232,7 +232,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司员工内部调转申请(行管及行管辅岗)</Description>
+    <Description>适用于威高集团各公司行管及辅岗人员（包括行管及辅岗、销售及辅岗、工程技术人员、财务人员）进行调转的申请。</Description>
   </Process>
  
 
@@ -249,7 +249,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司员工离职申请(行管人员)</Description>
+    <Description>适用于威高集团各公司行管人员（包括行管及辅岗、销售及辅岗、工程技术人员、财务人员）进行离职的申请。</Description>
   </Process>
   
   <Process>
@@ -265,7 +265,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司日常干部任免申请</Description>
+    <Description>适用于拟晋升职位为集团本部及直管子公司中层及以上、产业集团总经理助理及以上、子公司总经理的申请。</Description>
   </Process>
  
    <Process>
@@ -281,7 +281,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司组织设立与调整申请</Description>
+    <Description>适用于集团本部、直属子公司、产业集团本部（不含子/分公司）的组织设立与调整申请。</Description>
   </Process>
  
    <Process>
@@ -297,7 +297,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司考勤系统日常运维提报</Description>
+    <Description>适用于全集团员工使用考勤系统的权限或班次的新增/变更及上线需求的提报。</Description>
   </Process>
  
   <Process>
@@ -313,7 +313,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力</Group>
-    <Description>适用于集团公司岗位设立与编制调整申请</Description>
+    <Description>适用于集团本部、直属子公司、产业集团政策外岗位设立与编制调整的申请。</Description>
   </Process>
   
   <Process>
@@ -329,7 +329,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>集团公司物资报废申请</Description>
+    <Description>适用于全集团各公司物资报废申请。</Description>
   </Process>
   
 <Process>
@@ -345,7 +345,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>集团公司物资报废会签</Description>
+    <Description>集团公司物资报废申请的子流程。</Description>
   </Process>
  
    <Process>
@@ -361,7 +361,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>集团公司物资处置申请</Description>
+    <Description>适用于全集团各公司物资处置申请</Description>
   </Process>
   <Process>
     <Name>集团公司物资处置会签</Name>
@@ -376,7 +376,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>集团公司物资处置会签</Description>
+    <Description>集团公司物资处置申请的子流程</Description>
   </Process>
   
    <Process>
@@ -392,7 +392,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>信息管理</Group>
-    <Description>集团公司信息系统权限申请</Description>
+    <Description>适用于全集团员工使用EAS系统、K3系统、外网、IP地址、企业邮箱等权限的申请。</Description>
   </Process>
   
    <Process>
@@ -408,7 +408,11 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>信息管理</Group>
-    <Description>集团公司办公设备采购申请</Description>
+    <Description>
+      适用于所有需集团总部统一采购的办公设备如电脑、打印机等电子设备（集团总部包括桌椅等）的申请，
+      由各子公司、产业集团审核后流转至集团总部信息中心予以审核，由集团采购部予以采购。
+      注：房地产集团、医用制品集团下属公司请勿走本流程。
+    </Description>
   </Process>
  
    <Process>
@@ -424,7 +428,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>集团公司PS系统权限申请</Description>
+    <Description>适用于全集团员工使用PeopleSoft系统的权限申请。</Description>
   </Process>
   
   <Process>
@@ -440,7 +444,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>研发</Group>
-    <Description>适用于集团公司研发项目变更、终止申请</Description>
+    <Description>适用于全集团各公司研发项目变更或终止的申请。</Description>
   </Process>
    <Process>
     <Name>集团公司研发项目立项申请</Name>
@@ -455,7 +459,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>研发</Group>
-    <Description>适用于集团公司研发项目立项申请</Description>
+    <Description>适用于全集团各公司研发项目立项申请。</Description>
   </Process>
   
   <Process>
@@ -471,7 +475,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>采购管理</Group>
-    <Description>集团公司通用物资采购申请</Description>
+    <Description>适用于全集团各公司通用物资采购申请。</Description>
   </Process>
   
    <Process>
@@ -487,7 +491,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>用于房地产集团差旅费申请</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司差旅费的申请。</Description>
   </Process>
   
   <Process>
@@ -503,7 +507,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>房地产集团差旅费报销</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司差旅费的报销。</Description>
   </Process>
   <Process>
     <Name>房地产集团招待费申请</Name>
@@ -518,7 +522,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>房地产集团招待费申请</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司招待费的申请。</Description>
   </Process>
  
    <Process>
@@ -534,7 +538,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>房地产集团招待费报销</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司招待费的报销。</Description>
   </Process>
   
   <Process>
@@ -550,7 +554,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>用于房地产集团培训费申请</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司培训费的申请。</Description>
   </Process>
   
    <Process>
@@ -566,7 +570,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>用于房地产集团培训费报销</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司培训费的报销。</Description>
   </Process>
    <Process>
     <Name>房地产集团手机费用报销</Name>
@@ -581,7 +585,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>用于房地产集团手机费用报销</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司手机费的报销。</Description>
   </Process>
    <Process>
     <Name>房地产集团其他费用报销</Name>
@@ -596,7 +600,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>用于房地产其他费用报销</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司其他费用的报销。</Description>
   </Process>
   
   <Process>
@@ -612,7 +616,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司费用挂账申请</Description>
+    <Description>适用于盛祥商管公司各部门进行费用挂账的申请。</Description>
   </Process>
   <Process>    
      <Name>房地产集团其他费用申请(通用)</Name>
@@ -627,7 +631,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于房地产集团其他费用报销流程</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司其他费用的申请（通用）。</Description>
   </Process>
   <Process>
     <Name>房地产集团其他费用报销(通用)</Name>
@@ -642,7 +646,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于房地产集团其他费用报销流程</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司其他费用的报销（通用）。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司挂账推广费用申请</Name>
@@ -657,7 +661,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于房地产集团推广费用申请流程</Description>
+    <Description>适用于盛祥商管公司推广部推广费用的申请。</Description>
   </Process>
  
   <Process>
@@ -673,7 +677,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>房地产集团员工外出申请</Description>
+    <Description>适用于房地产集团本部、盛祥商管公司员工月度外出考勤申请。</Description>
   </Process>
   <Process>
     <Name>房地产集团信息系统权限申请</Name>
@@ -688,7 +692,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>信息管理</Group>
-    <Description>房地产集团信息系统权限申请</Description>
+    <Description>适用于房地产集团员工使用K3系统、威高网络、云办公、威高邮箱的权限申请。 </Description>
   </Process>
    <Process>   
     <Name>盛祥商管公司内部请示申请</Name>
@@ -703,7 +707,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司内部请示流程</Description>
+    <Description>适用于盛祥商管公司各部门内部工作请示申请。</Description>
   </Process>
   
    <Process>
@@ -719,7 +723,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司部门联系流程</Description>
+    <Description>适用于盛祥商管公司各部门内部联系申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司威高广场消费卡领用申请</Name>
@@ -734,7 +738,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管公司威高广场消费卡领用申请</Description>
+    <Description>适用于盛祥商管公司各部门对威高广场消费卡领用的申请。</Description>
   </Process>
   
   <Process>
@@ -750,7 +754,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于威高广场代金劵、礼品领用申请</Description>
+    <Description>适用于盛祥商管公司各部门威高广场代金券、礼品领用申请。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司合同评审</Name>
@@ -765,7 +769,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司合同评审</Description>
+    <Description>适用于盛祥商管公司各部门合同评审。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司办公设备维修、更换申请</Name>
@@ -780,7 +784,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司办公设备维修、更换申请</Description>
+    <Description>适用于盛祥商管公司各部门办公设备的维修（更换）申请，仅限于工程部无法维修需要外部人员维修的情况。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司工装制作申请</Name>
@@ -795,7 +799,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司工装制作申请</Description>
+    <Description>适用于盛祥商管公司各部门工装制作申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司图纸会签</Name>
@@ -810,7 +814,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司图纸会审</Description>
+    <Description>本流程适用于商管公司下属部门进行图纸会审审批。</Description>
   </Process>
   
   <Process>
@@ -826,7 +830,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司装修押金退还审批流程</Description>
+    <Description>本流程适用于商管公司下属部门装修押金退还审批。</Description>
   </Process>  
   <Process>
     <Name>盛祥商管公司商户撤场申请</Name>
@@ -841,7 +845,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司商户撤场申请</Description>
+    <Description>适用于盛祥商管公司兴源文化创意公司(民俗邨)商户撤场申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司开业保证金、履约保证金退还申请</Name>
@@ -856,7 +860,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于商管公司开业保证金、履约保证金退还审批</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城商户开业保证金、履约保证金退还申请。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司商户开业申请</Name>
@@ -871,7 +875,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于盛祥商管公司商户开业申请</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城商户开业申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司商铺工程条件通知</Name>
@@ -886,7 +890,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于盛祥商管公司商铺工程条件通知</Description>
+    <Description>适用于盛祥商管公司时光城、招商部对威高广场、时光城招商商铺工程条件的通知。</Description>
   </Process>
   
     <Process>
@@ -902,7 +906,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于盛祥商管公司活动场地验收申请</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城活动场地验收。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司合同执行通知</Name>
@@ -917,7 +921,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于盛祥商管公司合同执行通知</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城、美食广场合同执行通知。</Description>
   </Process>
  <Process>
     <Name>盛祥商管公司美食广场档口撤场工作申请</Name>
@@ -932,7 +936,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于盛祥商管公司美食广场档口撤场工作申请</Description>
+    <Description>适用于盛祥商管公司餐饮部美食广场档口撤场申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司美食广场新增档口账号申请</Name>  
@@ -947,7 +951,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>美食广场新增档口账号申请</Description>
+    <Description>盛祥商管公司美食广场新增档口账号申请</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司商户活动申请</Name>
@@ -962,7 +966,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司商户活动申请</Description>
+    <Description>适用于盛祥商管公司各部门商户活动申请。</Description>
   </Process>
   
    <Process>
@@ -978,7 +982,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管公司威高广场商户报修申请</Description>
+    <Description>适用于盛祥商管公司办公区域及威高广场各商铺报修的申请，工程部人员维修。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司招商宣传与活动申请</Name>
@@ -993,7 +997,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司招商宣传与活动申请</Description>
+    <Description>适用于盛祥商管公司各部门招商宣传与活动申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司租赁协议评审</Name>
@@ -1008,7 +1012,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司租赁协议评审</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城、民俗邨、好邻居商户租赁协议评审。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司VI延展设计申请</Name>
@@ -1023,7 +1027,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于盛祥商管公司VI延展设计申请</Description>
+    <Description>适用于盛祥商管公司推广部VI延展设计申请。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司客户投诉处理</Name>
@@ -1038,7 +1042,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管公司客户投诉处理</Description>
+    <Description>适用于盛祥商管公司各部门进行客户投诉的处理。</Description>
   </Process>
   
   <Process>
@@ -1054,7 +1058,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司商户调整申请</Description>
+    <Description>本流程适用于盛祥商管公司下属民俗邨进行商户调整的申请审批流程。</Description>
   </Process>
   <Process>    
     <Name>兴源文化创意公司履约保证金退还申请</Name>
@@ -1069,7 +1073,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司履约保证金退还申请</Description>
+    <Description>本流程适用于商管公司下属部门装修押金退还审批。</Description>
   </Process>
    <Process>
     <Name>兴源文化创意公司场地短期租赁申请</Name>
@@ -1084,7 +1088,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>用于兴源文化创意公司场地短期租赁申请</Description>
+    <Description>适用于盛祥商管公司兴源文化创意公司(民俗邨)场地短期租赁申请。</Description>
   </Process>
   <Process>
     <Name>兴源文化创意公司商户开业、停业申请</Name>
@@ -1099,7 +1103,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>市场营销</Group>
-    <Description>兴源文化创意公司商户开业、停业申请</Description>
+    <Description>适用于盛祥商管公司民俗邨商户的开业、停业申请。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司员工云办公、BPM账号申请</Name>
@@ -1114,7 +1118,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管员工云办公、BPM账号申请</Description>
+    <Description>适用于盛祥商管公司员工使用云办公及BPM系统账号的申请，包含：新增、内调、离职。</Description>
   </Process>
   
  <Process>
@@ -1130,7 +1134,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管公司活动场地申请</Description>
+    <Description>适用于盛祥商管公司威高广场、时光城、民俗邨、好邻居活动场地申请。</Description>
   </Process>
   
   <Process>
@@ -1146,7 +1150,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司资金付款计划申请</Description>
+    <Description>适用于盛祥商管公司各部门月度资金付款计划申请。</Description>
   </Process>
 <Process>
     <Name>盛祥商管公司资金付款计划申请汇总</Name>
@@ -1161,7 +1165,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司资金付款计划申请汇总</Description>
+    <Description>适用于盛祥商管公司财务部各部门月度资金付款计划申请汇总。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司网银充值提报</Name>
@@ -1176,7 +1180,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司网银充值提报</Description>
+    <Description>适用于盛祥商管公司财务部能源费（网银）充值提报。</Description>
   </Process>
     <Process>
     <Name>盛祥商管公司月度付款申请</Name>
@@ -1191,7 +1195,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于盛祥商管公司月度付款申请</Description>
+    <Description>适用于盛祥商管公司财务部月度付款的申请。</Description>
   </Process>
    <Process>
     <Name>盛祥商管公司仓库押金退还申请</Name>
@@ -1206,7 +1210,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司仓库押金退还申请</Description>
+    <Description>适用于盛祥商管公司威高广场商铺仓库押金退还的申请。</Description>
   </Process>
   
  <Process>
@@ -1222,7 +1226,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>盛祥商管公司商户费用变更申请</Description>
+    <Description>适用于盛祥商管公司商户费用变更申请。</Description>
   </Process>
  <Process>
     <Name>盛祥商管公司招商合同评审</Name>
@@ -1237,7 +1241,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>法律事务</Group>
-    <Description>适用于盛祥商管招商合同评审流程</Description>
+    <Description>适用于盛祥商管公司招商合同评审。</Description>
   </Process>
   <Process>
     
@@ -1253,7 +1257,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>法律事务</Group>
-    <Description>适用于盛祥商管公司其他合同评审</Description>
+    <Description>适用于盛祥商管公司其他合同（非招商合同）评审。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司天伦苑老人退住退款申请</Name>
@@ -1268,7 +1272,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>市场营销</Group>
-    <Description>用于商管公司天伦苑老人退住退款申请</Description>
+    <Description>适用于盛祥商管公司天伦苑对老人退住退款的申请。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司广告位申请</Name>
@@ -1283,7 +1287,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>市场营销</Group>
-    <Description>盛祥商管公司广告位申请</Description>
+    <Description>适用于盛祥商管公司推广部对广告位的申请。</Description>
   </Process>
   
   <Process>
@@ -1299,7 +1303,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>外贸公司生产管理</Group>
-    <Description>适用于外贸公司计划评审</Description>
+    <Description>适用于外贸公司下达生产计划评审。</Description>
   </Process>
    <Process>
     <Name>富森公司外贸订单评审</Name>
@@ -1314,7 +1318,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>生产管理</Group>
-    <Description>适用于富森公司外贸订单评审</Description>
+    <Description>适用于富森公司所有外贸自产订单（缝合线/原料线/手术针）全过程的评审。</Description>
   </Process>
     <Process>
     <Name>富森公司外贸样品评审</Name>
@@ -1330,7 +1334,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>生产管理</Group>
-    <Description>适用于富森公司外贸样品评审</Description>
+    <Description>适用于富森公司所有外贸样品（缝合线/原料线/手术针）全过程的评审。</Description>
   </Process>
   <Process>
 
@@ -1347,7 +1351,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>生产管理</Group>
-    <Description>适用于富森公司外加工订单评审</Description>
+    <Description>适用于富森公司所有外加工订单（缝合线/原料线/手术针）全过程的评审。 </Description>
 
   </Process>
   <Process>
@@ -1363,7 +1367,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>安全</Group>
-    <Description>适用于医用制品集团安全综合检查反馈 </Description>
+    <Description>适用于医用制品集团各公司安全综合检查、抽查反馈。 </Description>
   </Process>
   <Process>
     <Name>医用制品集团安全定期检查反馈</Name>
@@ -1378,7 +1382,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>安全</Group>
-    <Description>适用于医用制品集团安全定期检查反馈 </Description>
+    <Description>适用于医用制品集团各公司安全定期检查反馈。 </Description>
   </Process>
  
   <Process>
@@ -1394,7 +1398,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用制品集团安全日常检查反馈</Description>
+    <Description>适用于医用制品集团各公司安全日常检查反馈。</Description>
   </Process>
   <Process>
     <Name>医用制品集团办公设备采购申请</Name>
@@ -1409,7 +1413,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>适用于医用制品集团办公设备采购申请</Description>
+    <Description>适用于医用制品集团本部及其各子公司办公设备采购申请。</Description>
   </Process>
   <Process>
     <Name>医用制品集团低值易耗品采购申请</Name>
@@ -1424,7 +1428,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用制品集团低值易耗品采购申请</Description>
+    <Description>适用于医用制品集团各公司低值易耗品采购申请。</Description>
   </Process>
   <Process>
     <Name>医用制品集团合同评审</Name>
@@ -1439,7 +1443,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>法律事务</Group>
-    <Description>医用制品集团合同评审</Description>
+    <Description>适用于医用制品集团各公司合同评审，含设备投资类、低值易耗采购类、采购物资类、采购框架合同。</Description>
   </Process>
   
   <Process>
@@ -1455,7 +1459,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>适用于医用制品集团岗位设立与编制调整申请</Description>
+    <Description>适用于医用制品集团各分子公司岗位设立与编制调整申请。</Description>
   </Process>
   <Process>
     <Name>医用制品集团质量信息反馈</Name>
@@ -1470,7 +1474,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>质量管理</Group>
-    <Description>适用于医用制品集团质量信息反馈</Description>
+    <Description>适用于医用制品集团各公司质量信息反馈。</Description>
   </Process>
   
   <Process>
@@ -1486,7 +1490,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>生产</Group>
-    <Description>适用于医用制品公司共用配件供应申请</Description>
+    <Description>适用于医用制品公司分公司内部共用配件供应的申请。</Description>
   </Process>
  
   <Process>
@@ -1502,7 +1506,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>生产</Group>
-    <Description>适用于医用制品公司客户交接申请</Description>
+    <Description>本流程适用于医用制品公司下属市场销售分公司业务员进行客户交接，流程由销售人事部丛晓军发起，流转至集团市场营销管理部侯松余处结束。</Description>
   </Process>
   <Process>
     <Name>医用制品公司管理干部考勤提报</Name>
@@ -1517,53 +1521,9 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用制品公司管理干部考勤提报</Description>
+    <Description>适用于医用制品公司管理干部（部门经理级以上）考勤提报。</Description>
   </Process>
-   <Process>
-    <Name>医用制品公司市场差旅费报销</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/TravelExpenses/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/TravelExpenses/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/TravelExpenses/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/TravelExpenses/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场差旅费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于市场差旅费用报销</Description>
-  </Process>
- <Process>
-    <Name>医用制品公司市场特批费用标准申请</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/SpeciallyExpense/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/SpeciallyExpense/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/SpeciallyExpense/FlowDoneDetail.html</ViewDonePage>
-   <ViewPage>/Pages/SpeciallyExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场费用特批</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于制品公司费用标准特批</Description>
-  </Process>
-  <Process>
-    <Name>医用制品公司市场其他费用报销</Name>
-    <Path>\\99业务平台\\11制品费用</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/OtherExpense/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/OtherExpense/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/OtherExpense/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/OtherExpense/FlowCreate.html</ViewPage>
-    <DisplayName>医用制品市场其他费用报销</DisplayName>
-    <Css></Css>
-    <Icon>../../Content/images/5.png</Icon>
-    <Group>费用报销</Group>
-    <Description>适用于制品公司其他费用报销</Description>
-  </Process>
+  
   <Process>
     <Name>海盛公司部门月度办公用品申请</Name>
     <Path>\\03医用制品集团\\04海盛设备公司\\16_行政办公</Path>
@@ -1577,7 +1537,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>海盛公司部门月度办公用品申请</Description>
+    <Description>适用于海盛设备公司各部门月度办公用品申请。</Description>
   </Process>
   <Process>
     <Name>海盛公司月度办公用品申请汇总</Name>
@@ -1592,7 +1552,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>海盛公司月度办公用品申请汇总</Description>
+    <Description>适用于海盛设备公司行政部月度办公用品申请汇总。</Description>
   </Process>
    
   <Process>
@@ -1608,7 +1568,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>海盛公司生产物资采购申请</Description>
+    <Description>适用于海盛设备公司员工物资的采购。</Description>
   </Process>
   
   <Process>
@@ -1624,7 +1584,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>海盛公司销售订单评审</Description>
+    <Description>适用于海盛设备公司销售管理部销售订单的评审。</Description>
   </Process>
  
   
@@ -1641,7 +1601,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>销售管理</Group>
-    <Description>适用于洁瑞公司的产品发货申请流程</Description>
+    <Description>适用于洁瑞医用制品公司销售大区产品的发货申请。</Description>
   </Process>
 <Process>
     <Name>洁瑞公司样品申请</Name>
@@ -1656,7 +1616,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>销售管理</Group>
-    <Description>适用于洁瑞公司的样品申请流程</Description>
+    <Description>适用于洁瑞医用制品公司各部门样品申请。</Description>
 
   </Process>
  
@@ -1673,7 +1633,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>洁瑞公司学术交流申请</Description>
+    <Description>适用于针对洁瑞医用制品公司专科产品业务员学术交流的申请。</Description>
   </Process>
 
   <Process>
@@ -1689,7 +1649,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>洁瑞公司代理公司授权申请</Description>
+    <Description>适用于针对洁瑞医用制品公司业务员代理公司的授权申请。</Description>
   </Process>
   <Process>
     <Name>洁瑞公司销售管理事务申请</Name>
@@ -1704,7 +1664,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>洁瑞公司销售管理事务申请</Description>
+    <Description>适用于洁瑞医用制品公司业务员相关销售管理事务的申请。</Description>
   </Process>
    
   <Process>
@@ -1721,7 +1681,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>输血器材公司生产管理提报</Description>
+    <Description>适用于输血器材分公司生产管理报告，由下属各部门、生产车间发起。</Description>
   </Process>
   
   <Process>
@@ -1737,7 +1697,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用材料公司产品核价申请</Description>
+    <Description>适用于医用材料公司业务员及部门产品核价申请。</Description>
   </Process>
  
   <Process>
@@ -1753,7 +1713,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>法律事务</Group>
-    <Description>适用于医用材料公司特殊合同评审</Description>
+    <Description>适用于医用材料公司销售内勤特殊合同评审。</Description>
   </Process>
   
   <Process>
@@ -1769,7 +1729,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>生产管理</Group>
-    <Description>适用于医用材料公司样品计划提报</Description>
+    <Description>适用于医用材料公司各部门样品计划提报。</Description>
   </Process>
   <Process>
     <Name>医用材料公司样品申请</Name>
@@ -1784,7 +1744,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用材料公司样品申请</Description>
+    <Description>适用于医用材料公司业务员及部门申请样品。</Description>
   </Process>
   <Process>
     <Name>医用材料公司发货申请</Name>
@@ -1799,7 +1759,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用材料公司发货申请</Description>
+    <Description>适用于医用材料公司业务员申请发货。</Description>
   </Process>
   <Process>
     <Name>医用材料公司授权申请</Name>
@@ -1814,7 +1774,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用材料公司授权申请</Description>
+    <Description>适用于针对医用材料公司业务员授权申请。</Description>
   </Process>
 
 <Process>
@@ -1830,7 +1790,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>洁丽康公司部门月度办公用品申请</Description>
+    <Description>适用于洁丽康公司各部门月度办公用品申请。</Description>
   </Process>
   <Process>
     <Name>洁丽康公司月度办公用品申请汇总</Name>
@@ -1845,7 +1805,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>洁丽康公司月度办公用品申请汇总</Description>
+    <Description>适用于洁丽康公司行政办公室月度部门办公用品申请汇总。</Description>
   </Process>
   
 <Process>
@@ -1861,7 +1821,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>威瑞公司月度办公用品申请汇总</Description>
+    <Description>适用于威瑞外科公司各部门月度办公用品申请。</Description>
   </Process>
   
   <Process>
@@ -1877,7 +1837,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>威瑞公司部门月度办公用品申请</Description>
+    <Description>适用于威瑞外科公司行政管理部月度办公用品申请汇总。</Description>
   </Process>
   <Process>
     <Name>威瑞公司派车申请</Name>
@@ -1892,7 +1852,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>威瑞公司派车申请</Description>
+    <Description>适用于威瑞外科公司员工派车申请。</Description>
   </Process>
   
    <Process>
@@ -1908,7 +1868,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>医用制品集团大客户联销提报</Description>
+    <Description>适用于医用制品集团下属医用制品公司、威瑞、洁瑞、新生公司进行大客户联销的提报。</Description>
   </Process>
   
   <Process>
@@ -1924,7 +1884,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>安全管理</Group>
-    <Description>适用于建设公司安全检查问题反馈整改</Description>
+    <Description>适用于建设公司安全检查问题反馈整改。</Description>
   </Process>
   <Process>
     <Name>建设公司原材料采购申请</Name>
@@ -1939,11 +1899,11 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>采购管理</Group>
-    <Description>适用于建设公司原材料采购申请</Description>
+    <Description>适用于建设公司物资采购申请。</Description>
   </Process>
   <Process>
     <Name>建设公司月度材料采购付款计划申请</Name>
-    <Path>\\09房地产集团\\04建设公司\\11_生产管理</Path>
+    <Path>\\09房地产集团\\04建设公司\\03_财务管理</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CWGL0106001/FlowUndoDetail.html</ViewUndoPage>
@@ -1954,7 +1914,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司月度材料采购付款计划申请</Description>
+    <Description>适用于建设公司月度材料采购付款计划申请。</Description>
   </Process>
   <Process>
     <Name>建设公司汇款申请</Name>
@@ -1969,7 +1929,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司汇款申请</Description>
+    <Description>适用于建设公司汇款申请。</Description>
   </Process>
   
   <Process>
@@ -1985,7 +1945,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司月度材料采购付款申请</Description>
+    <Description>适用于建设公司月度材料采购付款申请。</Description>
   </Process>
   <Process>
     <Name>建设公司借款申请</Name>
@@ -2000,7 +1960,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司借款申请</Description>
+    <Description>适用于建设公司借款申请。</Description>
   </Process>
   <Process>
     <Name>建设公司发票开具申请</Name>
@@ -2015,7 +1975,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司发票开具申请</Description>
+    <Description>适用于建设公司发票开具申请。</Description>
   </Process>
   <Process>
     <Name>建设公司合同评审</Name>
@@ -2030,7 +1990,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>法律事务</Group>
-    <Description>适用于建设公司合同评审</Description>
+    <Description>适用于建设公司下属部门进行合同的签批。</Description>
   </Process>
   
   <Process>
@@ -2046,7 +2006,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司分包施工单位新增申请</Description>
+    <Description>适用于建设公司分包施工单位新增申请。</Description>
   </Process>
   <Process>
     <Name>建设公司门窗工程成本分析提报</Name>
@@ -2061,7 +2021,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>基建工程</Group>
-    <Description>适用于建设公司门窗工程成本分析提报</Description>
+    <Description>适用于建设公司门窗工程成本分析提报。</Description>
   </Process>
   <Process>
     <Name>建设公司工程结算申请</Name>
@@ -2076,7 +2036,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>基建工程</Group>
-    <Description>适用于建设公司工程结算申请 </Description>
+    <Description>适用于建设公司工程结算申请。 </Description>
   </Process>
   <Process>
     <Name>建设公司工程竣工自检申请</Name>
@@ -2091,7 +2051,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>基建工程</Group>
-    <Description>适用于建设公司工程竣工自检申请 </Description>
+    <Description>适用于建设公司工程竣工自检申请。 </Description>
   </Process>
   
   <Process>
@@ -2107,7 +2067,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司分包合同备案申请</Description>
+    <Description>适用于建设公司合同备案。</Description>
   </Process>
   <Process>
     <Name>建设公司工程分包进度审核申请</Name>
@@ -2122,7 +2082,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司工程分包进度审核申请</Description>
+    <Description>适用于建设公司工程分包进度审核。</Description>
   </Process>
   <Process>
     <Name>建设公司分包单位月度付款计划申请</Name>
@@ -2137,7 +2097,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司分包单位月度付款计划申请</Description>
+    <Description>适用于建设公司分包单位月度付款计划申请。</Description>
   </Process>
   <Process>
     <Name>建设公司工程分包进度款拨付申请</Name>
@@ -2152,7 +2112,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司工程分包进度款拨付申请</Description>
+    <Description>适用于建设公司分包进度款拨付申请。</Description>
   </Process>
  
   <Process>
@@ -2168,7 +2128,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司差旅费申请</Description>
+    <Description>适用于建设公司差旅费申请。</Description>
   </Process>
   <Process>
     <Name>建设公司差旅费报销</Name>
@@ -2183,7 +2143,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司差旅费报销</Description>
+    <Description>适用于建设公司差旅费报销。</Description>
   </Process>
   <Process>
     <Name>建设公司招待费申请</Name>
@@ -2198,7 +2158,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>建设管理平台</Group>
-    <Description>适用于建设公司招待费申请</Description>
+    <Description>适用于建设公司招待费申请。</Description>
   </Process>
   <Process>
     <Name>建设公司招待费报销</Name>
@@ -2213,7 +2173,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>建设管理平台</Group>
-    <Description>适用于建设公司招待费报销</Description>
+    <Description>适用于建设公司招待费报销。</Description>
   </Process>
   <Process>
     <Name>建设公司培训费申请</Name>
@@ -2228,7 +2188,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>建设管理平台</Group>
-    <Description>适用于建设公司培训费申请</Description>
+    <Description>适用于建设公司培训费申请。</Description>
   </Process>
   <Process>
     <Name>建设公司培训费报销</Name>
@@ -2243,7 +2203,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>建设管理平台</Group>
-    <Description>适用于建设公司培训费报销</Description>
+    <Description>适用于建设公司培训费报销。</Description>
   </Process>
   
   <Process>
@@ -2259,7 +2219,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司手机燃油费报销</Description>
+    <Description>适用于建设公司手机燃油费报销。</Description>
   </Process>
   <Process>
     <Name>建设公司投标费申请</Name>
@@ -2274,7 +2234,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司投标费申请</Description>
+    <Description>适用于建设公司投标费用申请。</Description>
   </Process>
   <Process>
     <Name>建设公司投标费报销</Name>
@@ -2289,7 +2249,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司投标费报销</Description>
+    <Description>适用于建设公司投标费报销。</Description>
   </Process>
   <Process>
     <Name>建设公司其他费用申请</Name>
@@ -2304,7 +2264,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司其他费用申请</Description>
+    <Description>适用于建设公司其他费用申请。</Description>
   </Process>
   <Process>
     <Name>建设公司其他费用报销</Name>
@@ -2319,7 +2279,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司其他费用报销</Description>
+    <Description>适用于建设公司其他费用报销。</Description>
   </Process>
   
   <Process>
@@ -2335,7 +2295,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司其他费用报销（通用）</Description>
+    <Description>适用于建设公司临时性其他费用报销。</Description>
   </Process>
   <Process>
     <Name>建设公司食堂费用报销</Name>
@@ -2350,7 +2310,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司食堂费用报销</Description>
+    <Description>适用于建设公司食堂费用报销。</Description>
   </Process>
   <Process>
     <Name>建设公司车间员工请假申请</Name>
@@ -2365,7 +2325,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>适用于建设公司车间员工请假申请</Description>
+    <Description>适用于建设公司车间员工请假申请。</Description>
   </Process>
  
   <Process>
@@ -2381,7 +2341,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>适用于建设公司行管人员转正参保申请</Description>
+    <Description>适用于建设公司行管人员转正参保申请。</Description>
   </Process>
   <Process>
     <Name>建设公司员工劳动合同续签申请</Name>
@@ -2396,7 +2356,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group></Group>
-    <Description>建设公司员工劳动合同续签申请</Description>
+    <Description>适用于建设公司员工劳动合同续签申请。</Description>
   </Process>
   <Process>
     <Name>建设公司市场问题反馈</Name>
@@ -2411,7 +2371,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>适用于建设公司市场问题反馈</Description>
+    <Description>适用于建设公司市场问题反馈整改。</Description>
   </Process>
   <Process>
     <Name>建设公司门窗销售订单提报</Name>
@@ -2426,7 +2386,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司门窗销售订单提报</Description>
+    <Description>适用于建设公司门窗销售订单提报。</Description>
   </Process>
   
   <Process>
@@ -2442,7 +2402,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司销售部销售提成申请</Description>
+    <Description>适用于建设公司销售部销售提成申请。</Description>
   </Process>
   <Process>
     <Name>建设公司样品制作申请</Name>
@@ -2457,7 +2417,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司样品制作申请</Description>
+    <Description>适用于建设公司样品制作申请。</Description>
   </Process>
   <Process>
     <Name>建设公司VI制作申请</Name>
@@ -2472,7 +2432,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司VI制作申请</Description>
+    <Description>适用于建设公司VI制作申请。</Description>
   </Process>
   
   <Process>
@@ -2488,7 +2448,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>采购管理</Group>
-    <Description>适用于建设公司门窗售后维修采购申请</Description>
+    <Description>适用于适用于建设公司门窗安装售后维修服务。</Description>
   </Process>
   <Process>
     <Name>建设公司K3项目编码新增申请</Name>
@@ -2503,7 +2463,7 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>财务管理</Group>
-    <Description>建设公司K3项目编码新增申请</Description>
+    <Description>适用于建设公司K3系统项目编码新增申请。</Description>
   </Process>
   <Process>
     <Name>建设公司证件借用申请</Name>
@@ -2518,7 +2478,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>行政办公</Group>
-    <Description>适用于建设公司证件借用申请</Description>
+    <Description>适用于建设公司证件借用申请。</Description>
   </Process>
   
   <Process>
@@ -2534,7 +2494,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>行政办公</Group>
-    <Description>建设公司印章使用申请</Description>
+    <Description>适用于建设公司印章使用申请。</Description>
   </Process>
   <Process>
     <Name>建设公司生产质量问题反馈</Name>
@@ -2549,7 +2509,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>质量管理</Group>
-    <Description>适用于建设公司生产质量问题反馈整改</Description>
+    <Description>适用于建设公司生产质量问题反馈整改。</Description>
   </Process>
   <Process>
     <Name>建设公司产成品出厂检验记录备案</Name>
@@ -2564,7 +2524,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>质量管理</Group>
-    <Description>适用于建设公司产成品出厂检验记录备案</Description>
+    <Description>适用于建设公司产成品出厂检验记录备案。</Description>
   </Process>
 
 <Process>
@@ -2580,7 +2540,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>生产管理</Group>
-    <Description>适用于建设公司库存不良物资提报</Description>
+    <Description>适用于建设公司不良物资提报。</Description>
   </Process>
 <Process>
     <Name>建设公司安质部零星采购申请</Name>
@@ -2595,7 +2555,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>采购管理</Group>
-    <Description>适用于建设公司库存不良物资提报</Description>
+    <Description>适用于建设公司零星物资采购申请。</Description>
   </Process>
 <Process>
     <Name>建设公司行管（销售）人员试用期转正申请</Name>
@@ -2610,7 +2570,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>建设公司行管（销售）人员试用期转正申请</Description>
+    <Description>适用于建设公司行管人员试用期转正申请。</Description>
   </Process>
     <Process>
     <Name>建设公司车间生产过程检验记录备案</Name>
@@ -2625,7 +2585,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>质量管理</Group>
-    <Description>建设公司车间生产过程检验记录备案</Description>
+    <Description>适用于建设公司车间生产过程检验记录备案。</Description>
   </Process>
  
   <Process>
@@ -2641,7 +2601,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>人力资源</Group>
-    <Description>建设公司车间员工转正参保申请</Description>
+    <Description>适用于建设公司车间员工转正参保申请。</Description>
   </Process>
    <Process>
     <Name>建设公司工程签证备案申请</Name>
@@ -2656,7 +2616,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>基建工程</Group>
-    <Description>建设公司工程签证备案申请</Description>
+    <Description>适用于建设公司项目工程签证备案。</Description>
   </Process>
  
  
@@ -2673,7 +2633,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>管理平台</Group>
-    <Description>建设公司通知公告申请</Description>
+    <Description>适用于建设公司通知公告发布。</Description>
   </Process>
 <Process>
     <Name>建设公司会议纪要申请</Name>
@@ -2688,7 +2648,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>管理平台</Group>
-    <Description>建设公司会议纪要申请</Description>
+    <Description>适用于建设公司会议纪要存档管理。</Description>
   </Process>
 <Process>
     <Name>建设公司规章制度申请</Name>
@@ -2703,10 +2663,54 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>管理平台</Group>
-    <Description>建设公司规章制度申请</Description>
+    <Description>适用于建设公司管理制度会签。</Description>
   </Process>
 
-  
+   <Process>
+    <Name>医用制品公司市场差旅费报销</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/TravelExpenses/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/TravelExpenses/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/TravelExpenses/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/TravelExpenses/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/TravelExpenses/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场差旅费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于医用制品公司市场差旅费报销。</Description>
+  </Process>
+ <Process>
+    <Name>医用制品公司市场特批费用标准申请</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/SpeciallyExpense/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/SpeciallyExpense/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/SpeciallyExpense/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/SpeciallyExpense/FlowDoneDetail.html</ViewDonePage>
+   <ViewPage>/Pages/SpeciallyExpense/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场费用特批</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于医用制品公司市场特批费用标准申请。</Description>
+  </Process>
+  <Process>
+    <Name>医用制品公司市场其他费用报销</Name>
+    <Path>\\99业务平台\\11制品费用</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/OtherExpense/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/OtherExpense/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/OtherExpense/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/OtherExpense/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/OtherExpense/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品市场其他费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../Content/images/5.png</Icon>
+    <Group>费用报销</Group>
+    <Description>适用于医用制品公司市场其他费用报销。</Description>
+  </Process>
 <Process>
     <Name>盛祥商管公司周工作汇报</Name>
     <Path>\\99业务平台\\09盛祥商管</Path>
@@ -2720,7 +2724,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>工作汇报</Group>
-    <Description>适用于商管周工作汇报</Description>
+    <Description>适用于盛祥商管公司员工周工作汇报。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司月工作汇报</Name>
@@ -2735,7 +2739,7 @@
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
     <Group>工作汇报</Group>
-    <Description>适用于商管公司月工作汇报</Description>
+    <Description>适用于盛祥商管公司员工月工作汇报。</Description>
   </Process>
   <Process>
     <Name>盛祥商管公司员工奖惩申请</Name>
@@ -2750,10 +2754,9 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>盛祥商管公司员工奖惩申请</Description>
+    <Description>适用于对盛祥商管公司员工激励与惩罚申请。</Description>
   </Process>
-
-  <Process>
+<!--<Process>
     <Name>药业集团发货、发票开具申请</Name>
     <Path>\\05药业集团\\01跨子公司\\13_市场营销</Path>
     <CanCreate>True</CanCreate>
@@ -2766,12 +2769,593 @@
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
-    <Description>药业集团发货、发票开具申请</Description>
+    <Description>适用于药业集团业务员发货与发票开具的申请。</Description>
+  </Process>-->
+  <Process>
+    <Name>宝龄公司员工外出申请</Name>
+    <Path>\\05药业集团\\02宝龄公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/05YaoYe/02BaoLing/XZBG0502001/FlowCreate.html</ViewPage>
+    <DisplayName>药业集团宝龄公司员工外出申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于宝龄公司员工外出的申请</Description>
   </Process>
- <!--
+
+  <Process>
+    <Name>生物科技集团质量信息反馈</Name>
+    <Path>\\06生物科技集团\\01跨子公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/01KuaZiGongSi/ZLGL0601001/FlowCreate.html</ViewPage>
+    <DisplayName>生物科技集团质量信息反馈</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>质量管理</Group>
+    <Description>适用于生物科技集团各公司质量信息反馈</Description>
+  </Process>
+
+  <Process>
+    <Name>医疗系统公司物料采购信息变更申请</Name>
+    <Path>\\06生物科技集团\\02医疗系统公司\\02_采购管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/06ShengWuKeJi/03YiLiaoXiTong/CGGL0603001/FlowCreate.html</ViewPage>
+    <DisplayName>医疗系统公司物料采购信息变更申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>采购管理</Group>
+    <Description>适用于医疗系统公司各部门人员物料采购、仓储信息的变更申请</Description>
+  </Process>
+
+
+  <Process>
+    <Name>威海卫大厦借款申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦借款申请。</Description>
+  </Process>
+  <Process>
+    <Name>威海卫大厦低值易耗品报废申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦低值易耗品报废申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦低值易耗品报废申请。</Description>
+  </Process>
+  <Process>
+    <Name>威海卫大厦客房费用减免申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103003/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦客房费用减免申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦客房费用减免申请。</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦管家班清洗费用申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103004/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦管家班清洗费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦管家班清洗费用申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>威海卫大厦车辆维修保养费用申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103005/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦车辆维修保养申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦车辆维修保养费用申请。</Description>
+  </Process>
+  <Process>
+    <Name>威海卫大厦部门经营毛利分析提报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103006/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦部门经营毛利分析提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦各部门经营毛利分析提报。</Description>
+  </Process>
+  <!--<Process>
+    <Name>威海卫大厦协议客户挂账申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103007/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦协议客户挂账申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦协议客户挂账申请。</Description>
+  </Process>-->
+  
+  <Process>
+    <Name>威海卫大厦青缇湾员工餐费申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CW0103008/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦青缇湾员工餐费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦青缇湾员工餐费汇总申请提报。</Description>
+  </Process>
+  
+   <Process>
+    <Name>威海卫大厦外来人员就餐申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/HQ0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/HQ0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/HQ0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/HQ0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/HQ0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦外来人员就餐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦外来人员职工餐的就餐申请。</Description>
+  </Process>
+  <Process>
+    <Name>威海卫大厦工程维修申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦工程维修申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦工程维修申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>威海卫大厦青缇湾工程维修申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\08_基建工程</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/JJ0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦青缇湾工程维修申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦青缇湾工程维修申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>威海卫大厦员工转正申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工转正申请。</Description>
+  </Process>
  
+   <Process>
+    <Name>威海卫大厦员工晋升申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工晋升申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工晋升申请。</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦员工调岗调薪申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103003/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工调岗调薪申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工调岗调薪申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>威海卫大厦员工考核提报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103004/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工考核提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工考核提报。</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦青缇湾员工面试信息提报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\10_人力资源</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/RL0103005/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦青缇湾员工面试信息提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦青缇湾员工面试信息提报。</Description>
+  </Process>
+  
+ <Process>
+    <Name>威海卫大厦部门营销方案申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦部门营销方案申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦部门营销方案申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>威海卫大厦客房销售记录提报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦客房销售记录提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦客房销售记录提报。</Description>
+  </Process>
+  
+  
+  <Process>
+    <Name>威海卫大厦青缇湾月度销售提成提报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/SCYX0103003/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦青缇湾月度销售提成提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦青缇湾月度销售提成提报。</Description>
+  </Process>
 
 
+  <Process>
+    <Name>威海卫大厦西软信息维护申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\15_信息管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XX0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦西软信息维护申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦西软信息维护申请。</Description>
+  </Process>
+
+  
+  
+  <Process>
+    <Name>威海卫大厦部门工作汇报</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦部门工作汇报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦部门工作汇报。</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦公函发布申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/BG0103002/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦公函发布申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦公函(报告)发布申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>威海卫大厦物资采购申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\02_采购管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/CG0103001/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦各部门食品原材料等物资的采购申请。</Description>
+  </Process>
+  <Process>
+    <Name>威海卫大厦证章使用申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103003/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦证章使用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦证章的盖章、借出等的使用申请</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦员工出差申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103005/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工出差申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工出差及出差费用申请</Description>
+  </Process>
+
+  <Process>
+    <Name>威海卫大厦员工请假申请</Name>
+    <Path>\\01威高集团总部\\04威海卫大厦\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/03WeiHaiWeiDaSha/XZBG0103004/FlowCreate.html</ViewPage>
+    <DisplayName>威海卫大厦员工请假申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威海卫大厦员工请假申请</Description>
+  </Process>
+
+
+  <Process>
+    <Name>食品餐饮公司供应商准入申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102001/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司供应商准入申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司采购管理部供应商准入的申请。</Description>
+  </Process>
+   <Process>
+    <Name>食品餐饮公司物资采购申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102002/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门针对“低值易耗、海鲜肉禽、果蔬、粮油”类物资的采购申请。</Description>
+  </Process>
+  <Process>
+    <Name>食品餐饮公司工程物资采购申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CG0102003/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司工程物资采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门针对工程物资的采购申请。</Description>
+  </Process>
+  <Process>
+    <Name>食品餐饮公司汇款申请</Name>
+    <Path>\\01威高集团总部\\02食品餐饮管理总公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/02LvYouCanYin/CW0102001/FlowCreate.html</ViewPage>
+    <DisplayName>食品餐饮公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于食品餐饮管理总公司各部门对外付款的申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>药业集团发货、发票开具申请</Name>
+    <Path>\\05药业集团\\01跨子公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/05YaoYe/01KuaZiGongSi/SCYX0501001G2/FlowTemplate.html</ViewPage>
+    <DisplayName>药业集团发货、发票开具申请改二</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于药业集团业务员发货与发票开具的申请。</Description>
+  </Process>
+
+
+
+
+
+  <Process>
+    <Name>集团公司食堂临时就餐申请</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000701/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000701/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000701/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000701/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000701/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司食堂临时就餐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用全集团员工临时就餐的申请，申请人与所属办公室文员电话沟通就餐事宜，统一由办公室文员发起，集团本部各部门自行发起。</Description>
+  </Process>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--
 <Process>
     <Name>建设公司物资采购申请//废弃</Name>
     <Path>\\01威高集团总部\\06建设公司\\CG采购</Path>
@@ -2788,8 +3372,6 @@
     <Description>建设公司物资采购申请</Description>
   </Process>
 
-
- 
 -->
 
 </ProcessList>

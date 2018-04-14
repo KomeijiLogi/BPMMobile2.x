@@ -203,7 +203,33 @@
                 }
 
             });
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '<Requests>';
+            xml = xml + '    <Params>';
+            xml = xml + '      <Method>GetFormPostData</Method>';
+            xml = xml + '       <ProcessName>医用材料公司样品计划提报</ProcessName>';
+            xml = xml + '       <ProcessVersion>' + version + '</ProcessVersion>';
+            xml = xml + '         <Owner></Owner>';
+            xml = xml + '      </Params>';
+            xml = xml + '    </Requests>';
+            var initHeaderMsg = $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
 
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var item = provideData.Tables[0].Rows[0];
+                $("#fname").val(item.提报人);
+                $("#fdept").val(item.提报部门);
+              
+            }).fail(function (e) {
+
+            });
         }
 
         function showExpense(self) {

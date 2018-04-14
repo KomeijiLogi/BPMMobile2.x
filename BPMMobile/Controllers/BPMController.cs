@@ -252,23 +252,42 @@ namespace BPMMobile.Controllers
                 .Take(rows);
             var mobileProcess = GetMobileProcess();
           
-                var ret = from t in taskList
-                          join m in mobileProcess on t.ProcessName equals m.Name
-                          select new TaskDto()
-                          {
-                              DisplayName = m.DisplayName,
-                              Icon = m.Icon,
-                              ReceiveAt = t.ReceiveAt,
-                              ViewUndoPage = m.ViewUndoPage,
-                              ViewAskPage = m.ViewAskPage,
-                              ViewDonePage = m.ViewDonePage,
-                              Description = t.Description,
-                              ProcessName = t.ProcessName,
-                              StepID = t.StepID,
-                              StepName = t.StepName,
-                              TaskID = t.TaskID
-                          };
-                return Json(new { tasks = ret, total = allList.Count });
+                //var ret = from t in taskList
+                //          join m in mobileProcess on t.ProcessName equals m.Name
+                //          select new TaskDto()
+                //          {
+                //              DisplayName = m.DisplayName,
+                //              Icon = m.Icon,
+                //              ReceiveAt = t.ReceiveAt,
+                //              ViewUndoPage = m.ViewUndoPage,
+                //              ViewAskPage = m.ViewAskPage,
+                //              ViewDonePage = m.ViewDonePage,
+                //              Description = t.Description,
+                //              ProcessName = t.ProcessName,
+                //              StepID = t.StepID,
+                //              StepName = t.StepName,
+                //              TaskID = t.TaskID
+                //          };
+            var BPMUrl = ConfigurationManager.AppSettings["BPMUrl"];
+            var BPMIcon = ConfigurationManager.AppSettings["BPMIcon"];
+            var ret2 = from t in taskList
+                       join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
+                       from m in mobileGroup.DefaultIfEmpty()
+                       select new TaskDto()
+                       {
+                           DisplayName = m == null ? t.ProcessName : m.DisplayName,
+                           Icon = m == null ? BPMIcon : m.Icon,
+                           ReceiveAt = t.ReceiveAt,
+                           ViewUndoPage = m == null ? BPMUrl : m.ViewUndoPage,
+                           ViewAskPage = m == null ? BPMUrl : m.ViewAskPage,
+                           ViewDonePage = m == null ? BPMUrl : m.ViewDonePage,
+                           Description = t.Description == null ? t.OwnerDisplayName : t.Description,
+                           ProcessName = t.ProcessName,
+                           StepID = t.StepID,
+                           StepName = t.StepName,
+                           TaskID = t.TaskID
+                       };
+            return Json(new { tasks = ret2, total = allList.Count });
            
 
             
@@ -644,22 +663,40 @@ namespace BPMMobile.Controllers
                 .Skip(startRowIndex)
                 .Take(rows);
             var mobileProcess = GetMobileProcess();
-            var ret = from t in taskList
-                      join m in mobileProcess on t.ProcessName equals m.Name
-                      select new TaskDto()
-                      {
-                          DisplayName = m.DisplayName,
-                          Icon = m.Icon,
-                          CreateAt = t.CreateAt,
-                          ViewUndoPage = m.ViewUndoPage,
-                          ViewAskPage=m.ViewAskPage,
-                          ViewDonePage=m.ViewDonePage,
-                          Description = t.Description,
-                          ProcessName = t.ProcessName,
-                          TaskState =t.TaskState,
-                          TaskID = t.TaskID
-                      };
-            return Json(new { tasks = ret, total = allList.Count });
+            //var ret = from t in taskList
+            //          join m in mobileProcess on t.ProcessName equals m.Name
+            //          select new TaskDto()
+            //          {
+            //              DisplayName = m.DisplayName,
+            //              Icon = m.Icon,
+            //              CreateAt = t.CreateAt,
+            //              ViewUndoPage = m.ViewUndoPage,
+            //              ViewAskPage=m.ViewAskPage,
+            //              ViewDonePage=m.ViewDonePage,
+            //              Description = t.Description,
+            //              ProcessName = t.ProcessName,
+            //              TaskState =t.TaskState,
+            //              TaskID = t.TaskID
+            //          };
+            var BPMUrl = ConfigurationManager.AppSettings["BPMUrl"];
+            var BPMIcon = ConfigurationManager.AppSettings["BPMIcon"];
+            var ret2 = from t in taskList
+                       join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
+                       from m in mobileGroup.DefaultIfEmpty()
+                       select new TaskDto()
+                       {
+                           DisplayName = m == null ? t.ProcessName : m.DisplayName,
+                           Icon = m == null ? BPMIcon : m.Icon,
+                           CreateAt = t.CreateAt,
+                           ViewUndoPage = m == null ? BPMUrl : m.ViewUndoPage,
+                           ViewAskPage = m == null ? BPMUrl : m.ViewAskPage,
+                           ViewDonePage = m == null ? BPMUrl : m.ViewDonePage,
+                           Description = t.Description == null ? t.OwnerDisplayName : t.Description,
+                           ProcessName = t.ProcessName,
+                           TaskState = t.TaskState,
+                           TaskID = t.TaskID
+                       };
+            return Json(new { tasks = ret2, total = allList.Count });
 
         }
        
@@ -696,18 +733,20 @@ namespace BPMMobile.Controllers
             //              TaskID = t.TaskID
             //          };
 
+            var BPMUrl = ConfigurationManager.AppSettings["BPMUrl"];
+            var BPMIcon = ConfigurationManager.AppSettings["BPMIcon"];
             var ret2 = from t in taskList
                        join m in mobileProcess on t.ProcessName equals m.Name into mobileGroup
                        from m in mobileGroup.DefaultIfEmpty()
                        select new TaskDto()
                        {
                            DisplayName = m==null? t.ProcessName:m.DisplayName,
-                           Icon = m == null ? "../../../../Content/images/5.png":m.Icon,
+                           Icon = m == null ? BPMIcon : m.Icon,
                            CreateAt = t.CreateAt,
-                           ViewUndoPage = m==null? String.Empty : m.ViewUndoPage,
-                           ViewAskPage = m == null ? String.Empty : m.ViewAskPage,
-                           ViewDonePage = m == null ? String.Empty : m.ViewDonePage,
-                           Description = t.Description,
+                           ViewUndoPage = m==null? BPMUrl : m.ViewUndoPage,
+                           ViewAskPage = m == null ? BPMUrl : m.ViewAskPage,
+                           ViewDonePage = m == null ? BPMUrl : m.ViewDonePage,
+                           Description = t.Description==null?t.OwnerDisplayName: t.Description,
                            ProcessName = t.ProcessName,
                            TaskID = t.TaskID
                        };
@@ -1322,24 +1361,29 @@ namespace BPMMobile.Controllers
             {
                
                 cn.WebOpen();
-                
-                
-                var mobileProcess = GetMobileProcess();
-                foreach (var p in mobileProcess)
-                {
-                    int rowcount = 0;
-                    var list = cn.GetMyTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcount);
 
 
-                    tasks.Append(list);
-                }
-                //共享池
-                foreach(var p in mobileProcess)
-                {
-                    int rowcounts = 0;
-                    var list = cn.GetShareTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcounts);
-                    tasks.Append(list);
-                }
+                //var mobileProcess = GetMobileProcess();
+                //foreach (var p in mobileProcess)
+                //{
+                //    int rowcount = 0;
+                //    var list = cn.GetMyTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcount);
+
+
+                //    tasks.Append(list);
+                //}
+                ////共享池
+                //foreach(var p in mobileProcess)
+                //{
+                //    int rowcounts = 0;
+                //    var list = cn.GetShareTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcounts);
+                //    tasks.Append(list);
+                //}
+                int rowcount = 0;
+                var list = cn.GetMyTaskList("", null, 0, int.MaxValue, out rowcount);
+                tasks.Append(list);
+                list = cn.GetShareTaskList("", null, 0, int.MaxValue, out rowcount);
+                tasks.Append(list);
             }
             return tasks;
         }
@@ -1397,21 +1441,32 @@ namespace BPMMobile.Controllers
                 using (BPMConnection cn = new BPMConnection())
                 {
                     cn.WebOpen();
-                    var mobileProcess = GetMobileProcess();
-                    foreach (var p in mobileProcess)
-                    {
-                        int rowcount = 0;
-                        var list = cn.GetHistoryTasks(
-                            HistoryTaskType.MyRequest, p.Path,
-                            "ProcessName='" + p.Name + "'",
-                            "",
-                            "",
-                            0,
-                            int.MaxValue,
-                            out rowcount); 
-                        
-                        tasks.Append(list);
-                    }
+                    //var mobileProcess = GetMobileProcess();
+                    //foreach (var p in mobileProcess)
+                    //{
+                    //    int rowcount = 0;
+                    //    var list = cn.GetHistoryTasks(
+                    //        HistoryTaskType.MyRequest, p.Path,
+                    //        "ProcessName='" + p.Name + "'",
+                    //        "",
+                    //        "",
+                    //        0,
+                    //        int.MaxValue,
+                    //        out rowcount); 
+
+                    //    tasks.Append(list);
+                    //}
+                    int rowcount = 0;
+                    var list = cn.GetHistoryTasks(
+                        HistoryTaskType.MyRequest,"","",
+                        "",
+                        "",
+                        0,
+                        int.MaxValue,
+                        out  rowcount
+                        );
+                    tasks.Append(list);
+
                 }
                 return tasks;
             }catch(Exception e)
