@@ -241,15 +241,20 @@ namespace BPMMobile.Controllers
             var allList = GetMyTaskList();
 
 
-            if (search!=null&&search != "")
-            {
-              allList = GetMyTaskList(search);
-            }
+           
            
             var taskList = allList
                 .OrderByDescending(t=>t.ReceiveAt)
                 .Skip(startRowIndex)
                 .Take(rows);
+            if (search != null && search != "")
+            {
+                taskList = allList
+                .OrderByDescending(t => t.ReceiveAt)
+                .Skip(startRowIndex)
+                .Take(rows)
+                 .TakeWhile(t => (t.ProcessName).Contains(search));
+            }
             var mobileProcess = GetMobileProcess();
           
                 //var ret = from t in taskList
@@ -654,14 +659,19 @@ namespace BPMMobile.Controllers
         public IHttpActionResult GetMyRequest(int startRowIndex, int rows, String search)
         {
             var allList = GetMyRequestList();
-            if (search != null && search != "")
-            {
-                allList = GetMyRequestList(search);
-            }
+            
             var taskList = allList
                 .OrderByDescending(t=>t.CreateAt)
                 .Skip(startRowIndex)
                 .Take(rows);
+            if (search != null && search != "")
+            {
+                taskList = allList
+                 .OrderByDescending(t => t.CreateAt)
+                 .Skip(startRowIndex)
+                 .Take(rows)
+                 .TakeWhile(t => (t.ProcessName).Contains(search));
+            }
             var mobileProcess = GetMobileProcess();
             //var ret = from t in taskList
             //          join m in mobileProcess on t.ProcessName equals m.Name
@@ -709,14 +719,26 @@ namespace BPMMobile.Controllers
         public IHttpActionResult GetMyProcessed(int startRowIndex, int rows,String search)
         {
             var allList = GetMyProcessedList();
-            if (search != null && search != "")
-            {
-                allList = GetMyProcessedList(search);
-            }
+            //if (search != null && search != "")
+            //{
+            //    allList = GetMyProcessedList(search);
+            //}
             var taskList = allList
                 .OrderByDescending(t => t.CreateAt)
                 .Skip(startRowIndex)
                 .Take(rows);
+
+            if (search != null && search != "")
+            {
+                taskList = allList
+                    .OrderByDescending(t => t.CreateAt)
+                    .Skip(startRowIndex)
+                    .Take(rows)
+                    .TakeWhile(t=>(t.ProcessName).Contains(search))
+                    ;
+                   
+            }
+            
                         var mobileProcess = GetMobileProcess();
             //var ret = from t in taskList
             //          join m in mobileProcess on t.ProcessName equals m.Name
