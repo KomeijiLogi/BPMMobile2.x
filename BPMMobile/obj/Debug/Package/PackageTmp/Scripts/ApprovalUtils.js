@@ -12,6 +12,7 @@ var toStepIDs = new Array();
 var version="1.0";
 var DraftGuid = '';
 var baseDownloadUrl = 'http://bpm.weigaogroup.com:8040/BPM/YZSoft/Attachment/Download.ashx?fileid=';
+//var baseDownloadUrl = 'http://172.16.7.8/BPM/YZSoft/Attachment/Download.ashx?fileid=';
 var accountBPM = '';
 
 
@@ -27,9 +28,10 @@ window.onload = function () {
         if ($("#fdept").attr('readonly') != undefined) {
             $("#fdept").parent().hide();
         };
-        
-    }
 
+    } 
+
+   
 
 };
 
@@ -45,40 +47,66 @@ function PostXml(xml) {
         data: { '': xml },
         beforeSend: function (XHR) {
             XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
         },
         success: function (data, status) {
+            $("button").attr('disabled', 'disabled');   //阻止用户重复提交
 
-            if (status == "success") {
-                console.log(data);
+          
+            console.log(data);
+            if (data.Recipients) {
                 if (data.Recipients[0] != null) {
                     if (data.Recipients[0].Recipient.DisplayName != null) {
                         mui.toast("提交给" + data.Recipients[0].Recipient.DisplayName);
                     } else {
-                        if (data.Recipients[1] != null){
+                        if (data.Recipients[1] != null) {
                             mui.toast("提交给" + data.Recipients[1].Recipient.DisplayName);
                         }
-                       
+
                     }
-                    
+
 
                 } else {
                     mui.toast("流程审批结束");
                 }
                 if (String(xml).indexOf("提交") != -1) {
-                    setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+
+                   setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
                 } else {
+
                     setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
                 }
+            } else {
+                $("button").removeAttr('disabled');
+                switch (data.BPMExceptionType) {
+                    case 4244:
+                        //缺少对应处理人状态码
+                        mui.alert(data.Param0+'缺少对应处理人');
+                        break;  
+                    case 4225:
+                        //xml拼写错误状态码
+                        mui.alert('发送的xml未正确结束');
+                        break;    
+                    case 4457:
+                        //重复提交异常状态码
+                        break;
+
+                    default:
+                        mui.alert("提交失败!请稍后重试");
+                        break;
+                }
+
+                //mui.toast("提交失败!请稍后重试");
+
+            }
+              
               
 
-            } else {
-                mui.toast("提交失败!请稍后重试");
-            }
+          
         },
         error: function (e) {
-            alert(e.statusText +" .... "+ e.responseText);
-
+            //alert(e.statusText +" .... "+ e.responseText);
+            console.log(e);
+           
         },
         complete: function () {
 
@@ -963,7 +991,10 @@ function FormatterTimeYMS(time) {
     if (time.indexOf('T') != -1) {
         var ymd = time.substring(0, time.indexOf("T"));
         return ymd;
-    } else {
+    } else if (time.indexOf(" ") != -1) {
+        var ymd = time.substring(0, time.indexOf(" "));
+        return ymd;
+    }else {
         return time;
     }
     
@@ -1290,3 +1321,22 @@ function dataProvider(xml, callback) {
 }
 
 
+function formartNumber(num) {
+    //将小数自动补充或者取舍到2位
+    num = Number(num).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+    return num;
+}
+
+//本地化语言中文显示
+function localeLan(str) {
+    var localeStr = str;    //返回本地化语义
+    switch (str) {
+        case null:
+            localeStr = '';
+            break;       
+        default:           
+            break;
+    }
+    console.log(localeStr);
+    return localeStr;
+}

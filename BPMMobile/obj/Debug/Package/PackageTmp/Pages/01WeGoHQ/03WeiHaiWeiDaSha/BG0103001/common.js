@@ -86,6 +86,7 @@ function initData(data, flag) {
     var fif_bmnhb = item.fifbmn;
     $("#fif_bmnhb").val(item.fifbmn);
 
+    console.log(fif_bmnhb);
     if (fif_bmnhb == '是') {
         $("#fif_bmnhbd").addClass('mui-active');
     } else {

@@ -530,66 +530,71 @@ function tapEvent() {
                    <label></label>    
                    <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
               </div>
-              <div class="mui-row cutOffLine" >
-                 <div class="mui-col-xs-4" style="display:flex;">
-                      <label>物料编码</label>
-                      <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${$("#fwlbm_menu").val()}</textarea>
-                 </div>  
-                  <div class="mui-col-xs-4" style="display:flex;">
-                      <label>物料名称</label>
-                      <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称" >${$("#fwlmc_menu").val()}</textarea>
-                  </div>
-                 <div class="mui-col-xs-4" style="display:flex;">
-                      <label>规格型号</label> 
-                      <textarea id="fggxh" name="fggxh" readonly placeholder="规格型号" >${$("#fggxh_menu").val()}</textarea>
-                  </div>
+               <div class="mui-table-view-cell mui-collapse">
+                   <a class="mui-navigate-right" href="#" style="font-size:30px;">            
+                        <div class="mui-row">
+                             <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">物料编码</label>
+                                  <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${$("#fwlbm_menu").val()}</textarea>
+                             </div>  
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">物料名称</label>
+                                  <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称" >${$("#fwlmc_menu").val()}</textarea>
+                              </div>
+                             <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">规格型号</label> 
+                                  <textarea id="fggxh" name="fggxh"  placeholder="规格型号" >${$("#fggxh_menu").val()}</textarea>
+                              </div>
+                        </div> 
+                   </a>  
+                    <div class="mui-collapse-content">
+                         <div class="mui-row cutOffLine"  >
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                  <label>单位</label>
+                                  <input type="text" id="fdw" name="fdw" readonly placeholder="单位" value="${$("#fdw_menu").val()}" />
+                              </div>
                 
-              </div> 
-              <div class="mui-row cutOffLine"  >
-                   <div class="mui-col-xs-4" style="display:flex;">
-                      <label>单位</label>
-                      <input type="text" id="fdw" name="fdw" readonly placeholder="单位" value="${$("#fdw_menu").val()}" />
-                  </div>
+                             <input type="hidden" id="fdwbm" name="fdwbm" placeholder="单位编码" value="${$("#fdwbm_menu").val()}"/> 
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                   <label>装量</label>
+                                  <input type="number" id="fzl" name="fzl" readonly placeholder="装量" value="${$("#fzl_menu").val()}" />
+                              </div>
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                  <label>包装形式</label>
+                                  <input type="text" id="ffh_bzxs" name="ffh_bzxs" readonly placeholder="包装形式" value="${$("#ffh_bzxs_menu").val()}" />
+                              </div>
                 
-                 <input type="hidden" id="fdwbm" name="fdwbm" placeholder="单位编码" value="${$("#fdwbm_menu").val()}"/> 
-                  <div class="mui-col-xs-4" style="display:flex;">
-                       <label>装量</label>
-                      <input type="number" id="fzl" name="fzl" readonly placeholder="装量" value="${$("#fzl_menu").val()}" />
-                  </div>
-                  <div class="mui-col-xs-4" style="display:flex;">
-                      <label>包装形式</label>
-                      <input type="text" id="ffh_bzxs" name="ffh_bzxs" readonly placeholder="包装形式" value="${$("#ffh_bzxs_menu").val()}" />
-                  </div>
-                
-              </div> 
-              <div class="mui-row cutOffLine" >
-                  <div class="mui-col-xs-4" style="display:flex;">
-                      <label>含税单价</label>
-                      <input type="number" id="ffh_dj" name="ffh_dj" readonly placeholder="含税单价" value="${$("#ffh_dj_menu").val()}" />
-                  </div>
-                  <div class="mui-col-xs-4" style="display:flex;">
-                       <label>申请数量</label>  
-                      <input type="number" id="ffh_sl" name="ffh_sl" readonly placeholder="申请数量" value="${$("#ffh_sl_menu").val()}" />
-                  </div>
-                  <div class="mui-col-xs-4" style="display:flex;">
-                       <label>实际发货</label>  
-                      <input type="number" id="fsjfhsl" name="fsjfhsl" readonly placeholder="实际发货数量" value="${$("#fsjfhsl_menu").val()}" />
-                  </div>
+                          </div> 
+                          <div class="mui-row cutOffLine" >
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                  <label>含税单价</label>
+                                  <input type="number" id="ffh_dj" name="ffh_dj" readonly placeholder="含税单价" value="${$("#ffh_dj_menu").val()}" />
+                              </div>
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                   <label>申请数量</label>  
+                                  <input type="number" id="ffh_sl" name="ffh_sl" readonly placeholder="申请数量" value="${$("#ffh_sl_menu").val()}" />
+                              </div>
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                   <label>实际发货</label>  
+                                  <input type="number" id="fsjfhsl" name="fsjfhsl" readonly placeholder="实际发货数量" value="${$("#fsjfhsl_menu").val()}" />
+                              </div>
                 
 
-              </div> 
-               <div class="mui-row cutOffLine"  >
-                  <div class="mui-col-xs-6" style="display:flex;">
-                     <label>含税金额</label> 
-                     <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${$("#ffh_je_menu").val()}" />
-                  </div>
-                   <div class="mui-col-xs-6" style="display:flex;">
-                     <label>件数</label> 
-                    <input type="number" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${$("#ffh_js_menu").val()}" />
-                  </div>
+                          </div> 
+                           <div class="mui-row cutOffLine"  >
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                 <label>含税金额</label> 
+                                 <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${$("#ffh_je_menu").val()}" />
+                              </div>
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                 <label>件数</label> 
+                                <input type="number" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${$("#ffh_js_menu").val()}" />
+                              </div>
                 
-                 
-              </div>  
+                          </div>     
+                    </div>
+               </div>  
+             
            </div>  
          `;
         $("#mxlist_fh").prepend(li);   
@@ -653,40 +658,45 @@ function tapEvent() {
                        <label></label>    
                        <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
                   </div>
-                  <div class="mui-row cutOffLine">
-                        <div class="mui-col-xs-4" style="display:flex;">
-                          <label>物料名称</label>
-                          <textarea id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称">${$("#ffp_wlmc_menu").val()}</textarea>
-                       </div>
-                       <div class="mui-col-xs-4" style="display:flex;">
-                          <label>规格型号</label>
-                          <textarea id="ffp_ggxh" name="ffp_ggxh" readonly placeholder="规格型号" >${$("#ffp_ggxh_menu").val()}</textarea>   
-                       </div>
-                       <div class="mui-col-xs-4" style="display:flex;">
-                          <label>包装形式</label>
-                          <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${$("#ffp_bzxs_menu").val()}"  />
-                       </div>
-                      
-                  </div>  
-                  <div class="mui-row cutOffLine">
-                        <div class="mui-col-xs-3" style="display:flex;">
-                          <label>单位</label>
-                          <input type="text" id="ffp_dw" name="ffp_dw" readonly placeholder="单位" value="${$("#ffp_dw_menu").val()}" />
-                       </div>
-                       <div class="mui-col-xs-3" style="display:flex;">
-                          <label>含税单价</label>
-                         <input type="number" id="ffp_dj" name="ffp_dj" readonly placeholder="含税单价" value="${$("#ffp_dj_menu").val()}" />
-                       </div>
-                       <div class="mui-col-xs-3" style="display:flex;">
-                          <label>数量</label>
-                         <input type="number" id="ffp_sl" name="ffp_sl" readonly placeholder="数量" value="${$("#ffp_sl_menu").val()}" />
-                       </div>
-                        <div class="mui-col-xs-3" style="display:flex;">
-                          <label>含税金额</label>
-                          <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${$("#ffp_je_menu").val()}" />
-                       </div>
-                    
+                  <div class="mui-table-view-cell mui-collapse">
+                      <a class="mui-navigate-right" href="#" style="font-size:30px;">
+                           <div class="mui-row">
+                                <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">物料名称</label>
+                                  <textarea id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称">${$("#ffp_wlmc_menu").val()}</textarea>
+                               </div>
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">规格型号</label>
+                                  <textarea id="ffp_ggxh" name="ffp_ggxh"  placeholder="规格型号" >${$("#ffp_ggxh_menu").val()}</textarea>   
+                               </div>
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                  <label style="display:none;">包装形式</label>
+                                  <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${$("#ffp_bzxs_menu").val()}"  />
+                               </div>                      
+                          </div>  
+                      </a>
+                       <div class="mui-collapse-content">
+                            <div class="mui-row cutOffLine">
+                                <div class="mui-col-xs-3" style="display:flex;">
+                                  <label>单位</label>
+                                  <input type="text" id="ffp_dw" name="ffp_dw" readonly placeholder="单位" value="${$("#ffp_dw_menu").val()}" />
+                               </div>
+                               <div class="mui-col-xs-3" style="display:flex;">
+                                  <label>含税单价</label>
+                                 <input type="number" id="ffp_dj" name="ffp_dj" readonly placeholder="含税单价" value="${$("#ffp_dj_menu").val()}" />
+                               </div>
+                               <div class="mui-col-xs-3" style="display:flex;">
+                                  <label>数量</label>
+                                 <input type="number" id="ffp_sl" name="ffp_sl" readonly placeholder="数量" value="${$("#ffp_sl_menu").val()}" />
+                               </div>
+                                <div class="mui-col-xs-3" style="display:flex;">
+                                  <label>含税金额</label>
+                                  <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${$("#ffp_je_menu").val()}" />
+                               </div>                    
+                          </div>
+                       </div>   
                   </div>
+                                   
                 </div>  
                  `;
 
@@ -1122,7 +1132,7 @@ function calcPriceBill(context) {
 function calcTotalBill() {
     var ffp_dj_total = 0;
     var ffp_sl_total = 0;
-    $("#mxlist_fp").find("#ffp_dj").each(function () {
+    $("#mxlist_fp").find("#ffp_je").each(function () {
         var value = parseFloat($(this).val());
         if (!$(this).val()) {
             value = 0;

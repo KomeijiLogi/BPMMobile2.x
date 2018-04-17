@@ -1870,6 +1870,23 @@
     <Group></Group>
     <Description>适用于医用制品集团下属医用制品公司、威瑞、洁瑞、新生公司进行大客户联销的提报。</Description>
   </Process>
+
+
+  <Process>
+    <Name>医用制品集团公章使用申请</Name>
+    <Path>\\03医用制品集团\\01跨子公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XZBG0201001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XZBG0201001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XZBG0201001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XZBG0201001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/01KuaZiGongSi/XZBG0201001/FlowCreate.html</ViewPage>
+    <DisplayName>医用制品集团公章使用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group></Group>
+    <Description>适用于医用制品集团各公司公章使用申请（目前暂仅适用于医用材料公司、自动化公司、模具公司）。</Description>
+  </Process>
   
   <Process>
     <Name>建设公司安全检查问题反馈</Name>

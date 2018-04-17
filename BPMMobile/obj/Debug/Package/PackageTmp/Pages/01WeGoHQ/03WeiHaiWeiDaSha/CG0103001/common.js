@@ -237,7 +237,7 @@ function initData(data, flag) {
             <div id="mx" class="mui-card">
               <div class="mui-input-row itemtitle">
                  <label>明细列表项</label>
-                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                 <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
               </div>
               <div class="mui-row cutOffLine">
                  <div class="mui-col-xs-4"  style="display:flex;">

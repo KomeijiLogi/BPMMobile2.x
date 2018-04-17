@@ -1258,7 +1258,7 @@
                 var flevel = $("#flevel").val();
                 var fno = $("#fempno").val();
                 var fxb = $("#fxb").val();
-                console.log(fno);
+                console.log(flevel,'flevel');
 
                 //var picker = new mui.PopPicker();
                 //picker.setData(ffyxmdata);
@@ -1282,12 +1282,12 @@
                             xml = xml + '        <Params>';
                             xml = xml + '           <DataSource>BPM_EXPENSE</DataSource>';
                             xml = xml + '             <ID>sp_zpfy_qtfybz</ID>';
-                            xml = xml + '             <Type>2</Type>';
+                            xml = xml + '             <Type>1</Type>';
                             xml = xml + '            <Method>GetUserDataProcedure</Method>';
                             xml = xml + '            <ProcedureName>sp_zpfy_qtfybz</ProcedureName>';
                             xml = xml + '              <Filter>';
                             xml = xml + '                 <flevel>' + flevel + '</flevel>';
-                            xml = xml + '                 <fdqtype></fdqtype>';
+                            xml = xml + '                 <fdqtype>二类</fdqtype>';
                             xml = xml + '                 <fyxm>' + $(self).val() + '</fyxm>';
                             xml = xml + '             </Filter>';
                             xml = xml + '         </Params>';

@@ -284,6 +284,7 @@
                      }
                  },
                  error: function (XMLHttpRequest, textStatus, errorThrown) {
+                     console.log(XMLHttpRequest.status);
                      if (XMLHttpRequest.status == "401") {
                          mui.alert('授权过期，请重新打开页面');;
                      } else if (XMLHttpRequest.status == "500") {

@@ -882,6 +882,11 @@
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XS0201001\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XS0201001\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XS0201001\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XZBG0201001\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XZBG0201001\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XZBG0201001\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XZBG0201001\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\XZBG0201001\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\ZLGL0201001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\ZLGL0201001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\01KuaZiGongSi\ZLGL0201001\FlowCreate.html" />

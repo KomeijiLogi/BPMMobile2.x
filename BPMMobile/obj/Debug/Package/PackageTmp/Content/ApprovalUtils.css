@@ -108,15 +108,14 @@ li {
 
 
 #createD {
-    padding-top: 0.2rem;
+    padding-top: 0.8rem;
     padding-bottom: 0.1rem;
     z-index: 999;
     bottom: 0rem;
     position: fixed;
     width: 100%;
     display: none;
-    background-color: white;
-    
+    background-color: whitesmoke;
 }
 #commitbt {
     width: 100%;
@@ -125,14 +124,14 @@ li {
     border-radius:1rem;
 }
 #approvalD {
-    padding-top:0.2rem;
-    padding-bottom:0.1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
     z-index: 999;
     bottom: 0rem;
     position: fixed;
     width: 100%;
     display: none;
-    background-color:white;
+    background-color: whitesmoke;
 }
 #agreebt {
     height: 2.3rem;
@@ -155,14 +154,14 @@ li {
     border-radius: 1rem;
 }
 #readD {
-    padding-top: 0.2rem;
+    padding-top: 0.8rem;
     padding-bottom: 0.1rem;
     z-index: 999;
     bottom: 0rem;
     position: fixed;
     width: 100%;
     display: none;
-    background-color: white;
+    background-color: whitesmoke;
 }
 #readbt {
     height: 2.3rem;
@@ -179,13 +178,13 @@ li {
     margin-bottom: 0.25rem;
 }
 #SaveD {
-    padding-top: 0.2rem;
+    padding-top: 0.8rem;
     padding-bottom: 0.1rem;
     z-index: 999;
     bottom: 0rem;
     position: fixed;
     width: 100%;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 #ssd {
@@ -209,4 +208,11 @@ li {
   border:outset;
   border-width:0.05rem;
   
+}
+
+.flexLine {
+    display: flex;
+    border-bottom: 1px solid #a7a7a7;
+    border-collapse: collapse;
+    flex-direction:column;
 }

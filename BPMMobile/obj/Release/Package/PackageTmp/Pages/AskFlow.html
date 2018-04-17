@@ -154,7 +154,7 @@
 
             console.log('this', context, 'startRowIndexAsk', startRowIndex);
 
-            window.location.href = page + '?tid=' + tid;
+            window.location.href = page + '?ticket=' + localStorage.getItem('ticket') + '&tid=' + tid;
 
 
         }

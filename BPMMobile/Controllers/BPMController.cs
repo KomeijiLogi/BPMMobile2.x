@@ -377,8 +377,13 @@ namespace BPMMobile.Controllers
                             {
                                 if (nodeFilters.FirstChild!=null)
                                 {
-                                    BPMDBParameter parameter = new BPMDBParameter(nodeFilters.FirstChild.Name, typeof(String), nodeFilters.InnerText);
-                                    filters.Add(parameter);
+                                    //BPMDBParameter parameter = new BPMDBParameter(nodeFilters.FirstChild.Name, typeof(String), nodeFilters.InnerText);
+                                    //filters.Add(parameter);
+                                    for (var n=0;n< nodeFilters.ChildNodes.Count;n++)
+                                    {
+                                        BPMDBParameter parameter = new BPMDBParameter(nodeFilters.ChildNodes[n].Name, typeof(String), nodeFilters.ChildNodes[n].InnerText);
+                                        filters.Add(parameter);
+                                    }
 
                                 }
                                 else

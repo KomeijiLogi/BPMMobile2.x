@@ -48,7 +48,7 @@
 
         </div>
     </div>
-    <script type="text/javascript">
+    <script>
         mui.init({
 
             pullRefresh: {
@@ -75,15 +75,18 @@
         mui.ready(function () {
 
             mui('body').on('tap', 'a', function () {
-
                 document.location.href = this.href;
             });
 
-           
             search();
         });
-        XuntongJSBridge.call('setWebViewTitle', { 'title': '申请事项' });
 
+        var startRowIndex = !localStorage.getItem('startRowIndexAsk') ? 0 : localStorage.getItem('startRowIndexAsk');
+        console.log(startRowIndex, 'start');
+        var rows = 10;
+        var total = 0;
+
+        XuntongJSBridge.call('setWebViewTitle', { 'title': '我的申请' });
         XuntongJSBridge.call('createPop', {
             'popTitle': '',
             'popTitleCallBackId': '1',
@@ -106,165 +109,10 @@
             }
 
         });
-
-        var startRowIndex = 0;
-        var rows = 10;
-        var total = 0;
-        function pullfresh() {
-            var search = $("#search").val();
-            $.ajax({
-                type: "get",
-                url: "/api/bpm/GetMyRequest",
-                data: { 'startRowIndex': startRowIndex, 'rows': rows, 'search': search  },
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-                },
-                success: function (data, status) {
-                    if (status == "success") {
-                        
-                        total = data.total;
-                        console.log(data);
-                        
-                        if (data.tasks.length == 0) {
-                            mui('#wrapper').pullRefresh().endPullupToRefresh(true);
-                        } else {
-                            for (var i = 0; i < data.tasks.length; i++) {
-
-                                //Todo:stepId为0，stepName为空的问题需要解决
-
-                                var stepName = "暂无信息";
-                                switch (data.tasks[i].TaskState) {
-
-                                    case 0:
-                                        stepName = "待处理";
-                                        break;
-                                    case 1:
-                                        stepName = "暂停";
-                                        break;
-                                    case 2:
-                                        stepName = "停止";
-                                        break;
-                                    case 3:
-                                        stepName = "撤销";
-                                        break;
-                                    case 4:
-                                        stepName = "审批通过";
-                                        break;
-                                    case 5:
-                                        stepName = "拒绝";
-                                        break;
-                                    case 6:
-                                        stepName = "删除";
-                                        break;
-                                    case 7:
-                                        stepName = "未知";
-                                        break;
-
-                                    default:
-                                        break;
-
-                                };
-                                var title = data.tasks[i].Description;
-                                if (title == null || title == "null") {
-                                    title = "";
-                                }
-
-                                var li = '<li class="mui-table-view-cell" id="touchArea">';
-                               
-                                li = li + '  <a href="' + data.tasks[i].ViewAskPage + '?tid=' + data.tasks[i].TaskID + '">';
-                                
-                                
-                                li = li + '       <input type="hidden" value="'+data.tasks[i].TaskID +'" id="taskId" name="taskId"/> ';
-                                li = li + '    <div class="mui-table">';
-                                li = li + '      <div class="mui-table-cell mui-col-xs-10">';
-                               
-                                li = li + '        <img class="mui-pull-left" src="' + data.tasks[i].Icon+'" style="width:2rem;height:2rem;">';
-                              
-                               
-                                li = li + '           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">';
-                                li = li + '             ' + data.tasks[i].DisplayName + '<p class="mui-pull-right" style="color:#00a0ea;">' + stepName + '</p>';
-                                li = li + '           </h4>';
-                                //li = li + '            <label class="mui-pull-left" style="padding-left:0.5rem;color:#d91d47;">' + title + '</label>';
-                                li = li + '            <p class="mui-pull-right">' + FormatterTime(data.tasks[i].CreateAt) + '</p>';
-                                li = li + '           </div>';
-                                li = li + '         </div>';
-                                li = li + '    </a>';
-                                li = li + '</li>';
-
-                                $("#thelist").append(li);
-
-                            }
-
-                            startRowIndex += rows;
-                            
-
-                            if (startRowIndex < total) {
-                                mui('#wrapper').pullRefresh().endPullupToRefresh(false);
-                            } else {
-                                mui('#wrapper').pullRefresh().endPullupToRefresh(true);
-                            }
-                        }
-                    }
-                },
-                error:function(e){
-
-                },
-                complete: function () { }
-            })
-            
-           
-
-        }
-
-        function FormatterTime(time) {
-
-            var time = String(time);
-            var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
-            var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
-            time = ymd + " " + hms;
-            return time;
-
-        }
-
-        function refresh() {
-            history.go(0);
-            mui('#refreshContainer').pullRefresh().endPulldown();
-        }
-
-        //判断是否是Safari
-        function isSafari() {
-
-            if ( navigator.userAgent.indexOf("iPad") != -1 || navigator.userAgent.indexOf("iPhone") != -1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        //ios刷新
-        function iosfresh() {
-
-
-            if ($('body').hasClass("no-cache")) {
-                document.body.style.display = "none";
-                window.location.reload();
-
-            }
-
-
-        }
-
-
-        function forbiddenCache() {
-            if (isSafari()) {
-                $('body').addClass("no-cache");
-               
-            }
-           
-        }
+        //使用搜索栏进行查询
         function search() {
             $("#search").on('keypress', function (e) {
                 var keycode = e.keyCode;
-
 
                 var keyword = $("#search").val();
 
@@ -280,6 +128,153 @@
                 }
 
             });
+
+        }
+        //格式化时间为yyyy-MM-dd hh:mm:ss
+        function FormatterTime(time) {
+            var time = String(time);
+            var ymd = time.substring(time.indexOf("-") + 1, time.indexOf("T"));
+            var hms = time.substring(time.indexOf("T") + 1, time.lastIndexOf(":"));
+            time = ymd + " " + hms;
+            return time;
+        }
+        //刷新
+        function refresh() {
+            localStorage.setItem('startRowIndexAsk', 0);  //重置startRowIndex
+            window.location.reload();           
+            mui('#wrapper').pullRefresh().endPulldown();
+        }
+        //跳转到对应页面
+        function toggleJUMP(context) {
+
+            localStorage.setItem('startRowIndexAsk', startRowIndex > 0 ? parseInt(startRowIndex) - 10 : 0);
+            var page = $(context).find("#page").val();
+            var tid = $(context).find("#taskId").val();
+
+
+            console.log('this', context, 'startRowIndexAsk', startRowIndex);
+
+            window.location.href = page + '?ticket=' + localStorage.getItem('ticket') + '&tid=' + tid;
+
+
+        }
+       
+
+        //加载
+        function pullfresh() {
+            var search = $("#search").val();
+            $.ajax({
+                type: "get",
+                url: "/api/bpm/GetMyRequest",
+                data: { 'startRowIndex': startRowIndex, 'rows': rows, 'search': search },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            })
+                .done(function (data) {
+                    total = data.total;
+                    console.log(data);
+                    if (data.tasks.length == 0) {
+                        mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+                    } else {
+                        for (var i = 0; i < data.tasks.length; i++) {
+                            var flowInfo = data.tasks[i];
+
+
+                            var stepName = "暂无信息";
+                            //匹配节点信息
+                            switch (data.tasks[i].TaskState) {
+                                case 0:
+                                    stepName = "待处理";
+                                    break;
+                                case 1:
+                                    stepName = "暂停";
+                                    break;
+                                case 2:
+                                    stepName = "停止";
+                                    break;
+                                case 3:
+                                    stepName = "撤销";
+                                    break;
+                                case 4:
+                                    stepName = "审批通过";
+                                    break;
+                                case 5:
+                                    stepName = "拒绝";
+                                    break;
+                                case 6:
+                                    stepName = "删除";
+                                    break;
+                                case 7:
+                                    stepName = "未知";
+                                    break;
+                                default:
+                                    break;
+
+                            };
+                            //获取流程描述信息
+                            var title = data.tasks[i].Description;
+                            if (title == null || title == "null") {
+                                title = "";
+                            }
+
+
+
+
+                            var li = `
+                               <li class="mui-table-view-cell" id="touchArea">
+                                  <input type="hidden" id="taskId" name="taskId" value="${data.tasks[i].TaskID}"/>
+                                  <input type="hidden" id="page" name="page" value="${data.tasks[i].ViewAskPage}"/>
+                                  <div class="mui-table">
+                                      <div class="mui-table-cell mui-col-xs-10">
+                                          <img class="mui-pull-left" src="${data.tasks[i].Icon}" style="width:2rem;height:2rem;"/>                                             
+                                           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">
+                                               ${data.tasks[i].DisplayName}
+                                               <p class="mui-pull-right" style="color:#00a0ea;">${stepName}</p>
+                                           </h4>
+                                            <h4 class="mui-ellipsis-2" style="font-size:0.6rem;;font-weight:500;padding-left:0.5rem;">
+                                                  ${localeLan(data.tasks[i].Description)}
+                                                <p class="mui-pull-right" style="font-size:12px;">${FormatterTime(data.tasks[i].CreateAt)}</p>
+                                            </h4>      
+                                          
+                                      </div>
+                                  </div>
+                               </li>
+
+                                 `;
+
+                            $("#thelist").append(li);
+
+
+                        }
+                        //绑定点击事件
+                        $("#thelist").find('li').each(function () {
+                            $(this).on('tap', function () {
+
+                                toggleJUMP(this);
+                            });
+                        });
+                        startRowIndex = parseInt(startRowIndex) + parseInt(rows);
+
+
+                        if (startRowIndex < total) {
+                            mui('#wrapper').pullRefresh().endPullupToRefresh(false);
+
+                        } else {
+                            mui('#wrapper').pullRefresh().endPullupToRefresh(true);
+
+                        }
+                    }
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    if (XMLHttpRequest.status == "401") {
+                        mui.alert('授权过期，请重新打开页面');;
+                    } else if (XMLHttpRequest.status == "500") {
+                        mui.alert('服务器内部错误');
+                    }
+                });
+
 
         }
     </script>

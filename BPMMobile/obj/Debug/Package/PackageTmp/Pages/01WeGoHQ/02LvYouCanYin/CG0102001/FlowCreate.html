@@ -30,8 +30,91 @@
                 <label>申请日期</label>
                 <input type="date" id="fdate" name="fdate" readonly/>
             </div>
-           
+            <div class="mui-input-row">
+                <label>联系电话</label>
+                <input type="tel" id="ftel" name="ftel" placeholder="请填写联系电话"/>
+            </div>
+            <div class="mui-row" style="padding-left:.8rem;">
+                <div class="mui-col-xs-6 flexLine" >
+                    <label>供应商名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fgys_name" name="fgys_name" placeholder="请填写供应商名称"></textarea>
+                </div>
+                <div class="mui-col-xs-6 flexLine">
+                    <label>供应商地址<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fgys_addr" name="fgys_addr" placeholder="请填写供应商地址"></textarea>
+                </div>
+            </div>
+            <div class="mui-row" style="padding-left:.8rem;">
+                <div class="mui-col-xs-3 flexLine" >
+                    <label>联系人<i style="color:red;">*</i></label>                   
+                </div>
+                <div class="mui-col-xs-3 flexLine" >
+                    <label>联系电话<i style="color:red;">*</i></label>                  
+                </div>
+                <div class="mui-col-xs-3 flexLine" >
+                    <label>授信期<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-col-xs-3 flexLine" >
+                    <label>返利点<i style="color:red;">*</i></label>
+                </div>
+            </div> 
+            <div class="mui-row" style="padding-left:0rem;">
+                <div class="mui-col-xs-3 flexLine" style="border-right:1px solid #acacac;">
+                    <textarea rows="2" id="fgys_lxr" name="fgys_lxr" placeholder="联系人"></textarea>
+                </div>
+                <div class="mui-col-xs-3 flexLine" style="border-right:1px solid #acacac;">
+                    <textarea rows="2" id="fgys_tel" name="fgys_tel" placeholder="联系电话" ></textarea>
+                </div>
+                <div class="mui-col-xs-3 flexLine" style="border-right:1px solid #acacac;">
+                    <textarea rows="2" id="fsxq" name="fsxq" placeholder="授信期"></textarea>
+                </div>
+                <div class="mui-col-xs-3 flexLine" style="border-right:1px solid #acacac;">
+                    <textarea rows="2"  id="ffld" name="ffld" placeholder="返利点" ></textarea>
+                </div>
+            </div>
+            <div class="mui-row" style="padding-left:.8rem;">
+                <div class="mui-col-xs-6 flexLine">
+                    <label>开户行<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhh" name="fkhh" placeholder="请填写开户行"></textarea>
+                </div>
+                <div class="mui-col-xs-6 flexLine">
+                    <label>开户行名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhhmc" name="fkhhmc" placeholder="请填写开户行名称"></textarea>
+                </div>
+            </div>
+            <div class="mui-row" style="padding-left:.8rem;">
+                <div class="mui-col-xs-6 flexLine">
+                    <label>银行账号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fyhzh" name="fyhzh" placeholder="请填写银行账号"></textarea>
+                </div>
+                <div class="mui-col-xs-6 flexLine">
+                    <label>营业执照号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fyyzzh" name="fyyzzh" placeholder="请填写营业执照号"></textarea>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>产品范围<i style="color:red;">*</i></label>
+                <textarea rows="3" id="fcpfw" name="fcpfw" placeholder="请填写产品范围"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>提报理由<i style="color:red;">*</i></label>
+                <textarea rows="3" id="ftbly" name="ftbly" placeholder="请填写提报理由"></textarea>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
 
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
         </form>
         <div class="mui-btn-row" id="SaveD">
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
