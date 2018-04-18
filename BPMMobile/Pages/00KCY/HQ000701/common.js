@@ -22,8 +22,10 @@
         var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
         console.log(provideData);
         var item = provideData.Tables[0].Rows[0];
-        $("#fname").val(item.fname);
-        $("#fdept").val(item.fdept);
+        //console.log(item);
+        $("#fname").val(item.ffqr);
+        $("#fgroup").val(item.fssgs);
+        $("#fcompany").val(item.fssjt);
     }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
         if (XMLHttpRequest.status == "401") {
             mui.alert('授权过期，请重新打开页面');;
@@ -32,8 +34,18 @@
         }
 
     });
+    //testNew();
 }
 
+function testNew() {
+    XuntongJSBridge.call('validate', {
+        'type': 'password',
+        'lightAppId': '10212',
+        'prompt':'为保证数据安全'
+    }, function (result) {
+        console.log(result);
+    });
+}
 function tapEvent() {
     var opidArr = [];
     $("#tjmx").on('tap', () => {
@@ -120,7 +132,7 @@ function tapEvent() {
                                      </div> 
                                      <div class="mui-row cutOffLine">
                                            <div class="mui-col-xs-3" style="display:flex;">
-                                               <label>就餐人数<i style="color:red;">*</i></label>
+                                               <label>人数<i style="color:red;">*</i></label>
                                                <input type="number" id="fjcrs" placeholder="请填写"/>
                                            </div>
                                            <div class="mui-col-xs-3" style="display:flex;">
@@ -138,7 +150,7 @@ function tapEvent() {
                                      </div> 
                                      <div class="mui-row">
                                          <div class="mui-col-xs-12" style="display:flex;">
-                                             <label>就餐事由<i style="color:red;">*</i></label>
+                                             <label>事由<i style="color:red;">*</i></label>
                                              <textarea rows="2" id="fjcsy" placeholder="请填写就餐事由"></textarea>
                                          </div>  
                                       </div> 

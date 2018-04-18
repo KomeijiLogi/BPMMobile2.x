@@ -153,7 +153,7 @@
 
             console.log('this', context, 'startRowIndexDone', startRowIndex);
 
-            window.location.href = page + '?ticket=' + localStorage.getItem('ticket') + '&tid=' + tid  ;
+            window.location.href = page + '?timestamp=' + new Date().getTime() + '&ticket=' + localStorage.getItem('ticket') + '&tid=' + tid;
 
              
         }
