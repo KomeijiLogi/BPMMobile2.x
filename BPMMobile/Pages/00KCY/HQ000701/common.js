@@ -34,18 +34,10 @@
         }
 
     });
-    //testNew();
+   
 }
 
-function testNew() {
-    XuntongJSBridge.call('validate', {
-        'type': 'password',
-        'lightAppId': '10212',
-        'prompt':'为保证数据安全'
-    }, function (result) {
-        console.log(result);
-    });
-}
+
 function tapEvent() {
     var opidArr = [];
     $("#tjmx").on('tap', () => {
@@ -141,7 +133,7 @@ function tapEvent() {
                                            </div>
                                             <div class="mui-col-xs-3" style="display:flex;">
                                                <label>餐标<i style="color:red;">*</i></label>
-                                               <input type="number" id="fcb" placeholder="请输入"  />
+                                               <input type="number" id="fcz" placeholder="请输入"  />
                                            </div>
                                              <div class="mui-col-xs-3" style="display:flex;">
                                                <label>金额</label>
@@ -166,6 +158,105 @@ function tapEvent() {
             }
         });
     });
+
+    var fcjstdata = [
+        {
+            value: '',
+            text:'骨科大食堂'
+        },
+        {
+            value: '',
+            text:'骨科小食堂'
+        },
+        {
+            value: '',
+            text:'医用材料大食堂'
+        },
+        {
+            value: '',
+            text:'马山大食堂'
+        },
+        {
+            value: '',
+            text:'马山小食堂'
+        },
+        {
+            value: '',
+            text:'五号门大食堂'
+        },
+        {
+            value: '',
+            text:'五号门小食堂'
+        },
+        {
+            value: '',
+            text:'五号门饺子馆'
+        },
+        {
+            value: '',
+            text:'八号门大食堂'
+        },
+        {
+            value: '',
+            text:'八号门小食堂'
+        },
+        {
+            value: '',
+            text:'一号门大食堂'
+        },
+        {
+            value: '',
+            text:'一号门洁瑞办公楼大食堂'
+        },
+        {
+            value: '',
+            text:'二号门大食堂'
+        },
+        {
+            value: '',
+            text:'三号门大食堂'
+        },
+        {
+            value: '',
+            text:'三号门小食堂'
+        }
+    ];
+
+    var element = document.getElementById('fcjst');
+    var picker = new mui.PopPicker();
+    picker.setData(fcjstdata);
+    element.addEventListener('tap', function () {
+
+        picker.show(function (items) {
+
+            element.value = items[0].text;
+            $("#mxlist").find("#fcb").each(function () {
+                var fcb = $(this).val();
+                if (String(fcb).match('早餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(3.00);
+                    }
+
+                } else if (String(fcb).match('午餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(5.50);
+                    } else if (String(items[0].text).match('小食堂') != null){
+                        $(this).parent().parent().find("#fcz").val(12.00);
+                    }
+                } else if (String(fcb).match('晚餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(4.50);
+                    }
+                } else if (String(fcb).match('夜餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(5.50);
+                    }
+                }
+            });
+        });
+
+    }, false);
+
 }
 
 function initData(data, flag) {
