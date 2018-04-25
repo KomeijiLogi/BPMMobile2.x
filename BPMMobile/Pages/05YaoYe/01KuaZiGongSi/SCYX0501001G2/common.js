@@ -223,6 +223,46 @@ var menuWrapperClassList2 = menuWrapper2.classList;
 
 
 function tapEvent() {
+    //库存组织
+    var fkcorgdata = [
+        {
+            value: '01.05.05.01', 
+            text:'注射器分公司'
+        },
+        {
+            value: '01.05.08.16',
+            text: '医疗器械经营'
+        },
+        {
+            value: '01.05.16',
+            text: '肾科公司'
+        },
+        {
+            value: '01.05.17',
+            text: '内镜公司'
+        },
+        {
+            value: '01.05.18',
+            text: '感控公司'
+        }
+
+    ];
+    var element22 = document.getElementById('fkcorg');
+
+    var picker22 = new mui.PopPicker();
+
+    picker22.setData(fkcorgdata);
+
+    element22.addEventListener('tap', function () {
+
+        picker22.show(function (items) {
+            $("#fkhmc").data('fkzcc', items[0].value)
+
+            element22.value = items[0].text;
+        });
+
+    }, false);
+
     //所属区域
 
     var fqydata = [
@@ -1054,7 +1094,7 @@ function calcPriceShip(context) {
     }
 
     var ffh_je = ffh_dj * fsjfhsl;
-    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fzl / fsjfhsl).toFixed(6);
+    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fsjfhsl / fzl).toFixed(6);
 
     $("#ffh_je_menu").val(ffh_je);
     $("#ffh_js_menu").val(ffh_js);
@@ -1146,8 +1186,8 @@ function calcTotalBill() {
         }
         ffp_sl_total += value;
     });
-    $("#fhj_fpsl").val(ffp_dj_total);
-    $("#fhj_fpje").val(ffp_sl_total);
+    $("#fhj_fpsl").val(ffp_sl_total);
+    $("#fhj_fpje").val(ffp_dj_total);
 }
 //重写删除功能
 function deleteItem(context) {
@@ -1177,7 +1217,8 @@ function initData(data, flag) {
     $("#fsqrq").val(FormatterTimeYMS(item_a.fsqrq));
     $("#fsqlx").val(item_a.fsqlx);
     $("#fkhmc").val(item_a.fkhmc);
-    $("#fkhmc").data('fkzcc', item_a.fkzcc);
+    
+    $("#fkhmc").data('fkzcc', item_a.fkczz);
     $("#fkhmc").data('fkhbm', item_a.fkhbm);
     //$("#fzjsj").val(item_a.fzjsj);
     $("#fzjsj").data('fxszg', item_a.fxszg);
@@ -1205,6 +1246,29 @@ function initData(data, flag) {
 
     $("#fckdh").val(item_a.fckdh);
 
+
+    switch (item_a.fkczz) {
+        case '01.05.05.01':
+            $("#fkcorg").val('注射器分公司');
+            break;
+        case '01.05.08.16':
+
+            $("#fkcorg").val('医疗器械经营');
+            break;
+        case '01.05.16':
+            $("#fkcorg").val('肾科公司');
+            break;
+        case '01.05.17':
+            $("#fkcorg").val('内镜公司');
+            break;
+        case '01.05.18':
+            $("#fkcorg").val('感控公司');
+            break;
+        default:
+            break;
+    }
+
+
     //发货部分
     $("#fhj_fhsl").val(item_a.fhj_fhsl);
     $("#fsjfhsltotal").val(item_a.fsjfhsltotal);
@@ -1217,26 +1281,30 @@ function initData(data, flag) {
         var li = `
            <div class="mui-card" id="mx">
               <div class="mui-input-row itemtitle">
-                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                    <label></label>    
                    <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
               </div>
-              <div class="mui-row cutOffLine">
-                  <div class="mui-col-xs-4" style="display:flex;">
-                       <label>物料编码</label>
-                       <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${item_b1[i].ffh_wlbm }</textarea>
-                  </div>   
-                   <div class="mui-col-xs-4" style="display:flex;">
-                         <label>物料名称</label> 
-                        <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称">${item_b1[i].ffh_wlmc}</textarea>
-                  </div> 
-                  <div class="mui-col-xs-4" style="display:flex;">
-                        <label>规格型号</label>
-                        <textarea id="fggxh" name="fggxh" readonly placeholder="规格型号" >${item_b1[i].ffh_ggxh}</textarea>
-                  </div> 
-               
 
-              </div> 
+             <div class="mui-table-view-cell mui-collapse">
+                   <a class="mui-navigate-right" href="#" style="font-size:30px;">            
+                        <div class="mui-row">
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                 
+                                   <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${item_b1[i].ffh_wlbm }</textarea>
+                              </div>   
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                     
+                                    <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称">${item_b1[i].ffh_wlmc}</textarea>
+                              </div> 
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                   
+                                    <textarea id="fggxh" name="fggxh" readonly placeholder="规格型号" >${item_b1[i].ffh_ggxh}</textarea>
+                              </div> 
+               
+                  </div> 
+               </a> 
+             <div class="mui-collapse-content">
               <div class="mui-row cutOffLine">
                   <div class="mui-col-xs-4" style="display:flex;">
                        <label>单位</label>
@@ -1280,6 +1348,7 @@ function initData(data, flag) {
                   </div>
                 
               </div>  
+             </div> 
            </div>  
          `;
         $("#mxlist_fh").prepend(li);   
@@ -1304,25 +1373,29 @@ function initData(data, flag) {
         var li = `
                 <div class="mui-card" id="mx">
                   <div class="mui-input-row itemtitle">
-                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                        <label></label>    
                        <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
                   </div>
-                  <div class="mui-row cutOffLine">
+                 <div class="mui-table-view-cell mui-collapse">
+                   <a class="mui-navigate-right" href="#" style="font-size:30px;">            
+                        <div class="mui-row">
                        <div class="mui-col-xs-4" style="display:flex;">
-                          <label>物料名称</label>
+                          
                          <textarea id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称" >${item_b2[i].ffp_wlmc}</textarea>
                        </div>
                         <div class="mui-col-xs-4" style="display:flex;">
-                            <label>规格型号</label>
+                           
                            <textarea id="ffp_ggxh" name="ffp_ggxh" readonly placeholder="规格型号" >${item_b2[i].ffp_ggxh}</textarea>  
                        </div>
                       <div class="mui-col-xs-4" style="display:flex;">
-                            <label>包装形式</label>
+                          
                             <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${item_b2[i].ffp_bzxs}"  />
                        </div>
                       
                   </div>  
+                   </a>
+                    <div class="mui-collapse-content">
                   <div class="mui-row cutOffLine">
                        <div class="mui-col-xs-3" style="display:flex;">
                             <label>单位</label>
@@ -1341,6 +1414,7 @@ function initData(data, flag) {
                           <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${item_b2[i].ffp_je}"/>
                        </div>
                       
+                  </div>
                   </div>
                 </div>  
                  `;

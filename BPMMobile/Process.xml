@@ -3319,22 +3319,7 @@
 
 
 
-  <Process>
-    <Name>集团公司食堂临时就餐申请</Name>
-    <Path>\\00跨产业集团\\07_后勤服务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/00KCY/HQ000701/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/00KCY/HQ000701/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/00KCY/HQ000701/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/00KCY/HQ000701/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/00KCY/HQ000701/FlowTemplate.html</ViewPage>
-    <DisplayName>集团公司食堂临时就餐申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用全集团员工临时就餐的申请，申请人与所属办公室文员电话沟通就餐事宜，统一由办公室文员发起，集团本部各部门自行发起。</Description>
-  </Process>
-
+ 
 
 
 
@@ -3384,9 +3369,130 @@
   </Process>
 
 
+ <Process>
+    <Name>集团公司食堂临时就餐申请</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000701/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000701/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000701/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000701/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000701/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司食堂临时就餐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用全集团员工临时就餐的申请，申请人与所属办公室文员电话沟通就餐事宜，统一由办公室文员发起，集团本部各部门自行发起。</Description>
+  </Process>
 
+   <Process>
+    <Name>集团公司食堂临时就餐汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000702/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000702/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000702/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000702/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000702/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司食堂临时就餐汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工临时就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
+  </Process>
 
+  <Process>
+    <Name>集团公司员工节假日就餐提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000703/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000703/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000703/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000703/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000703/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工节假日就餐提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工节假日就餐的提报，统一由各车间主任发起。</Description>
+  </Process>
+<Process>
+    <Name>集团公司员工节假日就餐汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000704/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000704/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000704/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000704/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000704/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工节假日就餐汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工节假日就餐的汇总核对，统一由后勤服务总公司各食堂管理员发起。</Description>
+  </Process>
+  <!--<Process>
+    <Name>集团公司员工加班就餐提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000705/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000705/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000705/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000705/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000705/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工加班就餐提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的提报，统一由分子公司车间主任发起。</Description>
+  </Process>-->
+  <Process>
+    <Name>集团公司员工加班就餐汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000706/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000706/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000706/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000706/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000706/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工加班就餐汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
+  </Process>
 
+  
+<Process>
+    <Name>集团公司员工月末乘坐班车线路提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000708/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000708/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000708/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000708/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000708/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工月末乘坐班车线路提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工月末乘坐班车路线调整提报，统一由各子公司办公室文员发起。</Description>
+  </Process>
+  <Process>
+    <Name>集团公司员工班车租赁申请</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000709/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000709/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000709/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000709/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000709/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工班车租赁申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工班车租赁申请，统一由各子公司办公室文员发起。</Description>
+  </Process>
   <!--
 <Process>
     <Name>建设公司物资采购申请//废弃</Name>

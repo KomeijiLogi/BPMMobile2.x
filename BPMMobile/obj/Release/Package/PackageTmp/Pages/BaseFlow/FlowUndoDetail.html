@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script type="text/javascript" src="../../Scripts/baidu-statistics.js"></script>
@@ -204,9 +204,9 @@
         </div>
     </div>
 
-
+    <script type="text/javascript" src="../../Scripts/vconsole.min.js"></script>
     <script type="text/javascript">
-       
+        var vconsole = new VConsole();
         mui.init();
 
         mui.ready(function () {
@@ -266,8 +266,9 @@
 
         function openSignPer() {
 
+            console.log('触发点击事件');
             XuntongJSBridge.call('selectPersons', { 'isMulti': 'true', 'pType': '1' }, function (result) {
-
+                console.log('调用js桥');
                 //alert(JSON.stringify(result.data));
                 if (typeof (result) == "string") {
                     result = JSON.parse(result);
@@ -276,7 +277,7 @@
                 var consignNameArr = new Array();
                 consignOpenIdArr=new Array();
                 if (result.success == true || result.success == "true") {
-                    //$("#xx").text(JSON.stringify( result.data.persons));
+                 
                     for (var i = 0; i < result.data.persons.length;i++){
                         consignNameArr.push(result.data.persons[i].name);
                         consignOpenIdArr.push((String)(result.data.persons[i].openId));

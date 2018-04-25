@@ -263,7 +263,7 @@
                              for (var i = 0; i < data.length; i++) {
 
                                  var li = '   <li class="mui-table-view-cell mui-media accroditem">';
-                                 li = li + '          <a href="' + data[i].CreatePage + '?version=' + data[i].Version + '" style="padding-left:0rem;" >';
+                                 li = li + '          <a href="' + data[i].CreatePage + '?timestamp=' + new Date().getTime() + '" style="padding-left:0rem;" >';
                                  li = li + '          <img class="mui-media-object mui-pull-left" src="' + data[i].Icon + '">';
                                  li = li + '          <div class="mui-media-body"> ';
                                  li = li + '                ' + data[i].DisplayName + '';

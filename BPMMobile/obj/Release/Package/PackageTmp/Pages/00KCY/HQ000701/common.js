@@ -22,8 +22,10 @@
         var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
         console.log(provideData);
         var item = provideData.Tables[0].Rows[0];
-        $("#fname").val(item.fname);
-        $("#fdept").val(item.fdept);
+        //console.log(item);
+        $("#fname").val(item.ffqr);
+        $("#fgroup").val(item.fssgs);
+        $("#fcompany").val(item.fssjt);
     }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
         if (XMLHttpRequest.status == "401") {
             mui.alert('授权过期，请重新打开页面');;
@@ -32,9 +34,48 @@
         }
 
     });
+   
 }
 
+
 function tapEvent() {
+    var fcbdata = [
+        {
+            value: '',
+            text: '早餐'
+        },
+        {
+            value: '',
+            text: '午餐'
+        },
+        {
+            value: '',
+            text: '晚餐'
+        },
+        {
+            value: '',
+            text: '夜餐'
+        },
+        {
+            value: '',
+            text: '包间点餐（午餐）'
+        },
+        {
+            value: '',
+            text: '特殊节日午餐'
+        },
+        {
+            value: '',
+            text: '特殊节日晚餐'
+        },
+        {
+            value: '',
+            text: '饺子馆点餐'
+        }
+    ];
+   
+
+
     var opidArr = [];
     $("#tjmx").on('tap', () => {
         XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
@@ -120,7 +161,7 @@ function tapEvent() {
                                      </div> 
                                      <div class="mui-row cutOffLine">
                                            <div class="mui-col-xs-3" style="display:flex;">
-                                               <label>就餐人数<i style="color:red;">*</i></label>
+                                               <label>人数<i style="color:red;">*</i></label>
                                                <input type="number" id="fjcrs" placeholder="请填写"/>
                                            </div>
                                            <div class="mui-col-xs-3" style="display:flex;">
@@ -129,7 +170,7 @@ function tapEvent() {
                                            </div>
                                             <div class="mui-col-xs-3" style="display:flex;">
                                                <label>餐标<i style="color:red;">*</i></label>
-                                               <input type="number" id="fcb" placeholder="请输入"  />
+                                               <input type="number" id="fcz" placeholder="请输入"  />
                                            </div>
                                              <div class="mui-col-xs-3" style="display:flex;">
                                                <label>金额</label>
@@ -138,13 +179,49 @@ function tapEvent() {
                                      </div> 
                                      <div class="mui-row">
                                          <div class="mui-col-xs-12" style="display:flex;">
-                                             <label>就餐事由<i style="color:red;">*</i></label>
+                                             <label>事由<i style="color:red;">*</i></label>
                                              <textarea rows="2" id="fjcsy" placeholder="请填写就餐事由"></textarea>
                                          </div>  
                                       </div> 
                                  </div>
                         `;
                         $("#mxlist").append(li);
+                        var picker2 = new mui.PopPicker();
+
+                        picker2.setData(fcbdata);
+
+                        $("#mxlist").find("#fcb").each(function () {
+                            var self = this;
+                            $(this).off('tap');
+                            $(this).on('tap', function () {
+
+                                picker.show(function (items) {
+                                    self.value = (items[0].text);
+                                    var fst = $("#fcjst").val();
+                                    if (String(fst).match('大食堂') != null) {
+                                        if (String(items[0].text).match('早餐') != null) {
+                                            $(self).parent().parent().find("#fcz").val(3.00);
+
+                                        } else if (String(items[0].text).match('午餐') != null) {
+                                            $(self).parent().parent().find("#fcz").val(5.50);
+
+                                        } else if (String(items[0].text).match('晚餐') != null) {
+                                            $(self).parent().parent().find("#fcz").val(4.50);
+
+                                        } else if (String(items[0].text).match('夜餐') != null) {
+                                            $(self).parent().parent().find("#fcz").val(5.50);
+
+                                        }
+
+                                    } else if (String(fst).match('小食堂') != null){
+                                        if (String(items[0].text).match('午餐') != null) {
+                                            $(self).parent().parent().find("#fcz").val(12.00);
+                                        }
+                                    }
+                                });
+                            });
+                        });
+
                     }).fail((e) => {
 
 
@@ -154,6 +231,108 @@ function tapEvent() {
             }
         });
     });
+
+    var fcjstdata = [
+        {
+            value: '',
+            text:'骨科大食堂'
+        },
+        {
+            value: '',
+            text:'骨科小食堂'
+        },
+        {
+            value: '',
+            text:'医用材料大食堂'
+        },
+        {
+            value: '',
+            text:'马山大食堂'
+        },
+        {
+            value: '',
+            text:'马山小食堂'
+        },
+        {
+            value: '',
+            text:'五号门大食堂'
+        },
+        {
+            value: '',
+            text:'五号门小食堂'
+        },
+        {
+            value: '',
+            text:'五号门饺子馆'
+        },
+        {
+            value: '',
+            text:'八号门大食堂'
+        },
+        {
+            value: '',
+            text:'八号门小食堂'
+        },
+        {
+            value: '',
+            text:'一号门大食堂'
+        },
+        {
+            value: '',
+            text:'一号门洁瑞办公楼大食堂'
+        },
+        {
+            value: '',
+            text:'二号门大食堂'
+        },
+        {
+            value: '',
+            text:'三号门大食堂'
+        },
+        {
+            value: '',
+            text:'三号门小食堂'
+        }
+    ];
+
+    var element = document.getElementById('fcjst');
+    var picker = new mui.PopPicker();
+    picker.setData(fcjstdata);
+    element.addEventListener('tap', function () {
+
+        picker.show(function (items) {
+
+            element.value = items[0].text;
+            $("#mxlist").find("#fcb").each(function () {
+                var fcb = $(this).val();
+                if (String(fcb).match('早餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(3.00);
+                    }
+
+                } else if (String(fcb).match('午餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(5.50);
+                    } else if (String(items[0].text).match('小食堂') != null){
+                        $(this).parent().parent().find("#fcz").val(12.00);
+                    }
+                } else if (String(fcb).match('晚餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(4.50);
+                    }
+                } else if (String(fcb).match('夜餐') != null) {
+                    if (String(items[0].text).match('大食堂') != null) {
+                        $(this).parent().parent().find("#fcz").val(5.50);
+                    }
+                }
+            });
+        });
+
+    }, false);
+
+
+    
+   
 }
 
 function initData(data, flag) {

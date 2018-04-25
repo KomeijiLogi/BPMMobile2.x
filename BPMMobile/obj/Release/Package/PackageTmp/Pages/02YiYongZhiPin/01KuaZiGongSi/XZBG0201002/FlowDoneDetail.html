@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" id="fname" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>所属集团</label>
+                <input type="text" id="fjt" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>所属子公司</label>
+                <input type="text" id="fzgs" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期</label>
+                <input type="date" id="fdate" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="ftel" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>参观子公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcgzgs" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>参观分公司<i style="color:red;">*</i></label>
+                <input type="text" id="fcgfgs" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>参观时间<i style="color:red;">*</i></label>
+                <input type="datetime-local" id="fcgsj" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>参观人群类别<i style="color:red;">*</i></label>
+                <input type="text" id="fcgrqlb" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>参观人数<i style="color:red;">*</i></label>
+                <input type="number" id="fcgrs" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>是否进车间<i style="color:red;">*</i></label>
+                <input type="hidden" id="fif_cj" value="否" />
+                <div class="mui-switch mui-switch-blue mui-switch-mini mui-disabled" id="fif_cjd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:auto;">
+                <label>参观目的</label>
+                <textarea id="fcgmd" readonly rows="4"></textarea>
+            </div>
+            <div class="mui-input-row itemtitle2">
+                <label>带队负责人信息</label>
+            </div>
+            <div class="mui-input-row">
+                <label>姓名<i style="color:red;">*</i></label>
+                <input type="text" id="fxm" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>所在公司<i style="color:red;">*</i></label>
+                <input type="text" id="fszgs" readonly />
+            </div>
+
+            <div class="mui-input-row">
+                <label>职务<i style="color:red;">*</i></label>
+                <input type="text" id="fzw" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>联系方式<i style="color:red;">*</i></label>
+                <input type="tel" id="flxfs" readonly />
+            </div>
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+         mui.init();
+
+         mui.ready(function () {
+             _init._preAskOrDone();
+
+         });
+    </script>
+</body>
+</html>

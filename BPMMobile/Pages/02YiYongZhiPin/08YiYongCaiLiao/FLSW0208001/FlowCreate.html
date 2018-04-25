@@ -33,12 +33,16 @@
                 <input type="date" id="fdate" name="fdate" readonly="readonly" />
             </div>
             <div class="mui-input-row">
-                <label for="fhtlb">特殊合同类别<i style="color:red;">*</i></label>
-                <input type="text" id="fhtlb" name="fhtlb" placeholder="请选择特殊合同类别" readonly="readonly"/>
+                <label for="fhtlb">类别<i style="color:red;">*</i></label>
+                <input type="text" id="fhtlb" name="fhtlb" placeholder="请选择类别" readonly="readonly"/>
             </div>
             <div class="mui-input-row">
                 <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
                 <input type="text" id="fkhmc" name="fkhmc" placeholder="请输入客户名称" />
+            </div>
+            <div class="mui-input-row">
+                <label>业务员</label>
+                <input type="text" id="fywy" placeholder="请填写"/>
             </div>
             <div class="mui-input-row">
                 <label for="fjhrq">交货日期<i style="color:red;">*</i></label>
@@ -412,16 +416,10 @@
             var fhtlbdata = [
                 {
                     value: "pxxq",
-                    text:"培训需求"
+                    text:"合同变更"
                 }, {
                     value: "jq",
-                    text: "交期"
-                }, {
-                    value: "xsjg",
-                    text: "销售价格"
-                }, {
-                    value: "jsyq",
-                    text: "技术要求"
+                    text: "特殊合同"
                 }
             ];
             showPicker("fhtlb", fhtlbdata);
@@ -522,7 +520,7 @@
 
 
             if (!fhtlb) {
-                mui.toast('请选择特殊合同类别');
+                mui.toast('请选择类别');
                 return;
             }
             if (!fkhmc) {
@@ -567,10 +565,7 @@
                 mui.toast('请填写顾客要求');
                 return;
             }
-            if (fjArray.length == 0) {
-                mui.toast('请上传附件');
-                return;
-            }
+            
           
 
             var btnArry = ["取消", "确定"];
@@ -595,8 +590,9 @@
                     xml = xml + '            <申请人>' + fname + '</申请人>';
                     xml = xml + '              <申请部门>' + fdept + '</申请部门>';
                     xml = xml + '              <申请日期>' + fdate + '</申请日期>';
-                    xml = xml + '              <特殊合同类别>' + fhtlb + '</特殊合同类别>';
+                    xml = xml + '              <类别>' + fhtlb + '</类别>';
                     xml = xml + '               <客户名称>' + fkhmc + '</客户名称>';
+                    xml += '   <业务员>' + $("#fywy").val() + '</业务员>';
                     xml = xml + '              <交货日期>' + fjhrq + '</交货日期>';
                     xml = xml + '              <产品大类>' + fcpdl + '</产品大类>';
                     xml = xml + '              <产品名称>' + fcpmc + '</产品名称>';

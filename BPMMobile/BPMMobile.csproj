@@ -381,6 +381,36 @@
     <Content Include="Pages\00KCY\HQ000701\FlowCreate.html" />
     <Content Include="Pages\00KCY\HQ000701\FlowDoneDetail.html" />
     <Content Include="Pages\00KCY\HQ000701\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000702\common.js" />
+    <Content Include="Pages\00KCY\HQ000702\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000702\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000702\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000702\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000703\common.js" />
+    <Content Include="Pages\00KCY\HQ000703\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000703\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000703\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000703\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000704\common.js" />
+    <Content Include="Pages\00KCY\HQ000704\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000704\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000704\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000704\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000705\common.js" />
+    <Content Include="Pages\00KCY\HQ000705\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000705\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000705\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000705\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000706\common.js" />
+    <Content Include="Pages\00KCY\HQ000706\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000706\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000706\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000706\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000708\common.js" />
+    <Content Include="Pages\00KCY\HQ000708\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000708\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000708\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000708\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowDoneDetail.html" />
@@ -1417,6 +1447,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Pages\00KCY\HQ000707\" />
+    <Folder Include="Pages\00KCY\HQ000709\" />
+    <Folder Include="Pages\00KCY\HQ000710\" />
     <Folder Include="Pages\01WeGoHQ\04HouQinFuWu\" />
     <Folder Include="Pages\01WeGoHQ\07RongZiZunLin\" />
     <Folder Include="Pages\02YiYongZhiPin\03YiLiaoXiTong\" />

@@ -45,11 +45,11 @@
                  <label>员工工号</label>
                  <input type="text" placeholder="请输入员工工号信息" readonly="readonly" id="fno" name="fno" />
              </div>
-             <div class="mui-input-row">
+             <div class="mui-input-row" style="display:none;">
                  <label>起始时间</label>
                  <input type="date" placeholder="请选择起始时间" class="mui-input-clear" id="fstartdate" name="fstartdate" />
              </div>
-             <div class="mui-input-row">
+             <div class="mui-input-row" style="display:none;">
                  <label>终止时间</label>
                  <input type="date" placeholder="请选择终止时间" class="mui-input-clear" id="foverdate" name="foverdate"/>
              </div>
@@ -74,7 +74,7 @@
                  <textarea rows="8" id="fgjsl" name="fgjsl"></textarea>
              </div>
 
-             <div class="mui-input-row">
+             <div class="mui-input-row" style="display:none;">
                  <label>自我评价<i style="color:red;">*</i></label>
                  <input value="" id="zwpjg" name="zwpjg" type="text" readonly="readonly" class="adi"/>
              </div>
@@ -322,10 +322,10 @@
                 mui.toast("请输入工作内容");
                 return;
             }
-            if (fzwpj == "") {
-                mui.toast("请选择自我评价");
-                return;
-            }
+            //if (fzwpj == "") {
+            //    mui.toast("请选择自我评价");
+            //    return;
+            //}
             var btnArry = ["取消", "确定"];
             mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
                 if (e.index == 1) {

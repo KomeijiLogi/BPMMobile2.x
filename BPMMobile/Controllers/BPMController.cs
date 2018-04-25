@@ -1390,27 +1390,27 @@ namespace BPMMobile.Controllers
                 cn.WebOpen();
 
 
-                //var mobileProcess = GetMobileProcess();
-                //foreach (var p in mobileProcess)
-                //{
-                //    int rowcount = 0;
-                //    var list = cn.GetMyTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcount);
+                var mobileProcess = GetMobileProcess();
+                foreach (var p in mobileProcess)
+                {
+                    int rowcount = 0;
+                    var list = cn.GetMyTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcount);
 
 
-                //    tasks.Append(list);
-                //}
-                ////共享池
-                //foreach(var p in mobileProcess)
-                //{
-                //    int rowcounts = 0;
-                //    var list = cn.GetShareTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcounts);
-                //    tasks.Append(list);
-                //}
-                int rowcount = 0;
-                var list = cn.GetMyTaskList("", null, 0, int.MaxValue, out rowcount);
-                tasks.Append(list);
-                list = cn.GetShareTaskList("", null, 0, int.MaxValue, out rowcount);
-                tasks.Append(list);
+                    tasks.Append(list);
+                }
+                //共享池
+                foreach (var p in mobileProcess)
+                {
+                    int rowcounts = 0;
+                    var list = cn.GetShareTaskList("ProcessName='" + p.Name + "'", null, 0, int.MaxValue, out rowcounts);
+                    tasks.Append(list);
+                }
+                //int rowcount = 0;
+                //var list = cn.GetMyTaskList("", null, 0, int.MaxValue, out rowcount);
+                //tasks.Append(list);
+                //list = cn.GetShareTaskList("", null, 0, int.MaxValue, out rowcount);
+                //tasks.Append(list);
             }
             return tasks;
         }
@@ -1468,31 +1468,31 @@ namespace BPMMobile.Controllers
                 using (BPMConnection cn = new BPMConnection())
                 {
                     cn.WebOpen();
-                    //var mobileProcess = GetMobileProcess();
-                    //foreach (var p in mobileProcess)
-                    //{
-                    //    int rowcount = 0;
-                    //    var list = cn.GetHistoryTasks(
-                    //        HistoryTaskType.MyRequest, p.Path,
-                    //        "ProcessName='" + p.Name + "'",
-                    //        "",
-                    //        "",
-                    //        0,
-                    //        int.MaxValue,
-                    //        out rowcount); 
+                    var mobileProcess = GetMobileProcess();
+                    foreach (var p in mobileProcess)
+                    {
+                        int rowcount = 0;
+                        var list = cn.GetHistoryTasks(
+                            HistoryTaskType.MyRequest, p.Path,
+                            "ProcessName='" + p.Name + "'",
+                            "",
+                            "",
+                            0,
+                            int.MaxValue,
+                            out rowcount);
 
-                    //    tasks.Append(list);
-                    //}
-                    int rowcount = 0;
-                    var list = cn.GetHistoryTasks(
-                        HistoryTaskType.MyRequest,"","",
-                        "",
-                        "",
-                        0,
-                        int.MaxValue,
-                        out  rowcount
-                        );
-                    tasks.Append(list);
+                        tasks.Append(list);
+                    }
+                    //int rowcount = 0;
+                    //var list = cn.GetHistoryTasks(
+                    //    HistoryTaskType.MyRequest,"","",
+                    //    "",
+                    //    "",
+                    //    0,
+                    //    int.MaxValue,
+                    //    out  rowcount
+                    //    );
+                    //tasks.Append(list);
 
                 }
                 return tasks;
@@ -1549,30 +1549,30 @@ namespace BPMMobile.Controllers
 
                 cn.WebOpen();
 
-                //var mobileProcess = GetMobileProcess();               
-                //foreach (var p in mobileProcess)
-                //{
-                //    int rowcount = 0;
-                //    var list = cn.GetHistoryTasks(
-                //        HistoryTaskType.MyProcessed, p.Path,
-                //        "ProcessName='" + p.Name + "'",
-                //        "",
-                //        "",
-                //        0,
-                //        int.MaxValue,
-                //        out rowcount);
-                //    tasks.Append(list);
-                //}
+                var mobileProcess = GetMobileProcess();
+                foreach (var p in mobileProcess)
+                {
+                    int rowcount = 0;
+                    var list = cn.GetHistoryTasks(
+                        HistoryTaskType.MyProcessed, p.Path,
+                        "ProcessName='" + p.Name + "'",
+                        "",
+                        "",
+                        0,
+                        int.MaxValue,
+                        out rowcount);
+                    tasks.Append(list);
+                }
 
-                int rowcount = 0;
-                var list = cn.GetHistoryTasks(
-                        HistoryTaskType.MyProcessed, "",
-                        "", "", "", 0, int.MaxValue, out rowcount
-                    );
-                tasks.Append(list);
+                //int rowcount = 0;
+                //var list = cn.GetHistoryTasks(
+                //        HistoryTaskType.MyProcessed, "",
+                //        "", "", "", 0, int.MaxValue, out rowcount
+                //    );
+                //tasks.Append(list);
 
-               
-               
+
+
 
 
             }
