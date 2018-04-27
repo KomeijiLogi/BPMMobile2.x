@@ -406,11 +406,26 @@
     <Content Include="Pages\00KCY\HQ000706\FlowCreate.html" />
     <Content Include="Pages\00KCY\HQ000706\FlowDoneDetail.html" />
     <Content Include="Pages\00KCY\HQ000706\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000707\common.js" />
+    <Content Include="Pages\00KCY\HQ000707\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000707\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000707\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000707\FlowUndoDetail.html" />
     <Content Include="Pages\00KCY\HQ000708\common.js" />
     <Content Include="Pages\00KCY\HQ000708\FlowAskDetail.html" />
     <Content Include="Pages\00KCY\HQ000708\FlowCreate.html" />
     <Content Include="Pages\00KCY\HQ000708\FlowDoneDetail.html" />
     <Content Include="Pages\00KCY\HQ000708\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000709\common.js" />
+    <Content Include="Pages\00KCY\HQ000709\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000709\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000709\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000709\FlowUndoDetail.html" />
+    <Content Include="Pages\00KCY\HQ000710\common.js" />
+    <Content Include="Pages\00KCY\HQ000710\FlowAskDetail.html" />
+    <Content Include="Pages\00KCY\HQ000710\FlowCreate.html" />
+    <Content Include="Pages\00KCY\HQ000710\FlowDoneDetail.html" />
+    <Content Include="Pages\00KCY\HQ000710\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\00WeGoBenBu\BG0100001\FlowDoneDetail.html" />
@@ -1447,9 +1462,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pages\00KCY\HQ000707\" />
-    <Folder Include="Pages\00KCY\HQ000709\" />
-    <Folder Include="Pages\00KCY\HQ000710\" />
     <Folder Include="Pages\01WeGoHQ\04HouQinFuWu\" />
     <Folder Include="Pages\01WeGoHQ\07RongZiZunLin\" />
     <Folder Include="Pages\02YiYongZhiPin\03YiLiaoXiTong\" />

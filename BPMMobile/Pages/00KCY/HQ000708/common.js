@@ -102,6 +102,10 @@ function tapEvent() {
         {
             value: '',
             text:'2018'
+        },
+        {
+            value: '',
+            text:'2019'
         }
     ];
 

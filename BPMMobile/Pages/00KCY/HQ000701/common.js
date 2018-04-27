@@ -218,6 +218,7 @@ function tapEvent() {
                                             $(self).parent().parent().find("#fcz").val(12.00);
                                         }
                                     }
+                                    calcMoney(self);
                                 });
                             });
                         });
@@ -325,6 +326,7 @@ function tapEvent() {
                         $(this).parent().parent().find("#fcz").val(5.50);
                     }
                 }
+                calcMoney(this);
             });
         });
 
@@ -333,6 +335,30 @@ function tapEvent() {
 
     
    
+}
+function calcMoney(context) {
+    var fjcrs = parseFloat($(context).parent().parent().parent().find("#fjcrs").val());
+    var fje = 0;
+    var fcz = parseFloat($(context).parent().parent().parent().find("#fcz").val());
+    fje = fcz * fjcrs;
+    $(context).parent().parent().parent().find("#fje").val(fje);
+    calcTotal();
+}
+function calcTotal() {
+    var frs_total = 0;
+    var fje_total = 0;
+
+    $("#mxlist").find("#mx").each(function () {
+        var fjcrs = parseFloat($(this).find("#fjcrs").val());
+        var fje = parseFloat($(this).find("#fje").val());
+        fjcrs = isNaN(fjcrs) ? 0 : fjcrs;
+        fje = isNaN(fje) ? 0 : fje;
+        frs_total += fjcrs;
+        fje_total += fje;
+    });
+    $("#frs_total").val(frs_total);
+    $("#fje_total").val(fje_total);
+
 }
 
 function initData(data, flag) {
@@ -446,6 +472,7 @@ function nodeControllerExp(NodeName) {
                             $(self).parent().parent().find("#fcz").val(12.00);
                         }
                     }
+                    calcMoney(self);
                 });
             });
         });
@@ -457,6 +484,16 @@ function nodeControllerExp(NodeName) {
     }
 }
 
+function deleteItem(context) {
+    var btnArray = ['否', '是'];
+    mui.confirm('确认删除？', '', btnArray, function (e) {
+        if (e.index == 1) {
+            $(context).parent().parent().remove();
+            calcTotal();
+        }
+    });
+
+}
 class Mx {
     constructor(fsqr, fsqgs, fsqrsjh, fjcsj, fjcrs, fcb, fcz, fje, fjcsy) {
         this.fsqr = fsqr;

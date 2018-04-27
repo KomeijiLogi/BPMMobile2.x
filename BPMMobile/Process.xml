@@ -3431,7 +3431,7 @@
     <Group>办公管理</Group>
     <Description>适用于全集团员工节假日就餐的汇总核对，统一由后勤服务总公司各食堂管理员发起。</Description>
   </Process>
-  <!--<Process>
+  <Process>
     <Name>集团公司员工加班就餐提报</Name>
     <Path>\\00跨产业集团\\07_后勤服务</Path>
     <CanCreate>True</CanCreate>
@@ -3445,7 +3445,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于全集团员工加班就餐的提报，统一由分子公司车间主任发起。</Description>
-  </Process>-->
+  </Process>
   <Process>
     <Name>集团公司员工加班就餐汇总</Name>
     <Path>\\00跨产业集团\\07_后勤服务</Path>
@@ -3461,7 +3461,22 @@
     <Group>办公管理</Group>
     <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
   </Process>
-
+  
+ <!--<Process>
+    <Name>集团公司员工节假日乘坐班车人数提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000707/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000707/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000707/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000707/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000707/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工节假日乘坐班车人数提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
+  </Process>-->
   
 <Process>
     <Name>集团公司员工月末乘坐班车线路提报</Name>
@@ -3492,6 +3507,21 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于全集团员工班车租赁申请，统一由各子公司办公室文员发起。</Description>
+  </Process>
+  <Process>
+    <Name>集团公司员工班车租赁汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000710/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000710/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000710/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000710/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000710/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工班车租赁汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威高集团员工班车租赁的账务处理，月末统一由后勤服务总公司班车管理员汇总发起。</Description>
   </Process>
   <!--
 <Process>
