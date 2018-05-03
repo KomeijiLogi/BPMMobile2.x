@@ -109,9 +109,12 @@ function PostXml(xml) {
             } else {
                 $("button").removeAttr('disabled');
                 switch (data.BPMExceptionType) {
+                    case 3:
+                        mui.alert('参数类型不正确');
+                        break;
                     case 4244:
                         //缺少对应处理人状态码
-                        mui.alert(data.Param0+'缺少对应处理人');
+                        mui.alert('<'+data.Param0+'>缺少对应处理人');
                         break;  
                     case 4225:
                         //xml拼写错误状态码
@@ -120,9 +123,11 @@ function PostXml(xml) {
                     case 4457:
                         //重复提交异常状态码
                         break;
-
+                    case 4525:
+                        mui.alert('<'+data.Param0 + '>没有满足条件的处理人,<br/>' + data.Param1 + '已禁用');
+                        break;
                     default:
-                        mui.alert("提交失败!请稍后重试");
+                        mui.alert("操作失败!请稍后重试");
                         break;
                 }
 
@@ -636,6 +641,16 @@ function showPickerOptimize(picker, el, data) {
 
 }
 
+
+function showPickerDelegate(zpid,zid,data) {
+    var picker = new mui.PopPicker();
+    picker.setData(data);
+    $(zpid).on('tap', zid, function () {
+        picker.show(function (items) {
+            self.value = (items[0].text);
+        });
+    });
+}
 
 //打开加签
 

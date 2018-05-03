@@ -47,7 +47,7 @@ function tapEvent() {
                             <label>明细列表项</label>
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                             <div class="mui-col-xs-4" style="display:flex;">
                                <label>所属集团<i style="color:red;">*</i></label>
                                <input type="text" id="fssjt" placeholder="待填"/>
@@ -61,7 +61,7 @@ function tapEvent() {
                                 <input type="text" id="fssbm" placeholder="待填"/>
                             </div>
                          </div>
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                              <div class="mui-col-xs-3" style="display:flex;">
                                 <label>姓名<i style="color:red;">*</i></label>
                                 <input type="text" id="fname" placeholder="待填"/> 
@@ -71,7 +71,7 @@ function tapEvent() {
                                  <input type="text" id="fckh" placeholder="待填"/>  
                              </div>
                          </div>   
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                              <div class="mui-col-xs-4" style="display:flex;">
                                 <label>乘车线路<i style="color:red;">*</i></label>
                                 <input type="text" id="fccxl" placeholder="待填"/> 
@@ -142,14 +142,14 @@ function initData(data, flag) {
     $("#fmonth").val(item.fmonth);
     var itme_c = data.FormDataSet.BPM_WGJTYGYMBCLXTB_B;
     for (var i = 0; i < itme_c.length;i++){
-        itemidArr.push(itme_c.itemid);
+        itemidArr.push(itme_c[i].itemid);
         var li = `
                    <div id="mx" class="mui-card">
                         <div class="mui-input-row itemtitle">
                             <label>明细列表项</label>
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                             <div class="mui-col-xs-4" style="display:flex;">
                                <label>所属集团<i style="color:red;">*</i></label>
                                <input type="text" id="fssjt" readonly value="${itme_c[i].fssjt}"/>
@@ -163,7 +163,7 @@ function initData(data, flag) {
                                 <input type="text" id="fssbm" readonly value="${itme_c[i].fssbm}"/>
                             </div>
                          </div>
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                              <div class="mui-col-xs-3" style="display:flex;">
                                 <label>姓名<i style="color:red;">*</i></label>
                                 <input type="text" id="fname" readonly value="${itme_c[i].fname}"/> 
@@ -173,7 +173,7 @@ function initData(data, flag) {
                                  <input type="text" id="fckh" readonly value="${itme_c[i].fckh}"/>  
                              </div>
                          </div>   
-                         <div class="mui-row" style="padding:1vw;">
+                         <div class="mui-row cutOffLine" style="padding:1vw;">
                              <div class="mui-col-xs-4" style="display:flex;">
                                 <label>乘车线路<i style="color:red;">*</i></label>
                                 <input type="text" id="fccxl" readonly value="${itme_c[i].fccxl}"/> 

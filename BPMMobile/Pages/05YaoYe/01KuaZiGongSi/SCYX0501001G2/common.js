@@ -1069,7 +1069,7 @@ function getProcedureMsg(pd_flag) {
 
 
 
-
+var ckjsflag = false;
 
 //计算发货子表
 function calcPriceShip(context) {
@@ -1098,10 +1098,40 @@ function calcPriceShip(context) {
 
     $("#ffh_je_menu").val(ffh_je);
     $("#ffh_js_menu").val(ffh_js);
+    if (Math.floor(ffh_js) != ffh_js) {
+        //mui.toast('填写申请数量不正确，请为装量的整数倍');
+        ckjsflag = true;
+    }
 
     //calcTotalShip();
 
 }
+function calcChangeShip(context) {
+    var ffh_dj = parseFloat($(context).parent().parent().parent().find("#ffh_dj").val()).toFixed(6);
+    var ffh_sl = parseFloat($(context).parent().parent().parent().find("#ffh_sl").val());
+    var fsjfhsl = parseFloat($(context).parent().parent().parent().find("#fsjfhsl").val());
+    var fzl = parseFloat($(context).parent().parent().parent().find("#fzl").val());
+
+    if (!ffh_dj) {
+        ffh_dj = 0.000000;
+    }
+    if (!ffh_sl) {
+        ffh_sl = 0;
+    }
+    if (!fsjfhsl) {
+        fsjfhsl = 0;
+    }
+    if (!fzl) {
+        fzl = 0;
+    }
+
+    var ffh_je = ffh_dj * fsjfhsl;
+    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fsjfhsl / fzl).toFixed(6);
+    console.log(ffh_js);
+    $(context).parent().parent().parent().find("#ffh_je").val(ffh_je);
+    $(context).parent().parent().parent().find("#ffh_js").val(ffh_js);
+}
+
 
 //计算发货总计
 function calcTotalShip() {
@@ -1166,6 +1196,21 @@ function calcPriceBill(context) {
     $("#ffp_je_menu").val(ffp_je);
 
     //calcTotalBill();
+}
+function calcChangeBill(context) {
+    var ffp_dj = parseFloat($(context).parent().parent().parent().find("#ffp_dj").val()).toFixed(6);
+    var ffp_sl = parseFloat($(context).parent().parent().parent().find("#ffp_sl").val());
+
+    if (!ffp_dj) {
+        ffp_dj = 0.000000;
+    }
+    if (!ffp_sl) {
+        ffp_sl = 0;
+    }
+
+    var ffp_je = ffp_dj * ffp_sl;
+    $(context).parent().parent().parent().find("#ffp_je").val(ffp_je);
+
 }
 
 //计算发票总计
@@ -1449,6 +1494,23 @@ function nodeControllerExp(NodeName) {
         }
         $("#fsh_dz,#fsh_name,#fsh_tel,#fdhrq,#fdqqk,#ffh_bz").removeAttr('readonly');
         $("#fsj_name,#fsj_tel,#fyjdz,#fhrqks,#fhrqjs,#ffp_bz").removeAttr('readonly');
+
+        $("#mxlist_fh").find("#ffh_dj").each(function () {
+            $(this).removeAttr('readonly');
+            $(this).on('input', function () {
+
+                calcChangeShip(this);
+                calcTotalShip();
+            });
+        });
+        $("#mxlist_fp").find("#ffp_dj").each(function () {
+            $(this).removeAttr('readonly');
+            $(this).on('input', function () {
+
+                calcChangeBill(this);
+                calcTotalShip();
+            });
+        });
         //商务专员
     } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
@@ -1459,7 +1521,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
         //核算专员
@@ -1469,7 +1531,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
         //发票专员
@@ -1508,7 +1570,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
 
@@ -1664,6 +1726,10 @@ function SaveAsDraft() {
     });
 
     var ffp_bz = $("#ffp_bz").val();
+    if (ckjsflag) {
+        mui.alert('发货子表件数不正确，应为整数,保存范本失败');
+        return;
+    }
 
     var btnArry = ["取消", "确定"];
     mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
@@ -1917,7 +1983,10 @@ function UpdateDraft() {
 
 
     var DraftGuid = $("#DraftGuid").val();
-
+    if (ckjsflag) {
+        mui.alert('发货子表件数不正确，应为整数,更新范本失败');
+        return;
+    }
     var btnArry = ["取消", "确定"];
     mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -2243,6 +2312,11 @@ function Save() {
 
 
     }
+
+    //if (ckjsflag) {
+    //    mui.alert('发货子表件数不正确，应为整数,提交失败');
+    //    return;
+    //}
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {

@@ -118,7 +118,7 @@ function tapEvent() {
                             <label>明细列表项</label>
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                        <div class="mui-row">
+                        <div class="mui-row cutOffLine">
                             <div class="mui-col-xs-8" style="dsiplay:flex;">
                                 <label>就餐时间</label>
                                 <input type="datetime-local" id="fjc_rq"/>
@@ -128,7 +128,7 @@ function tapEvent() {
                                  <input type="text" id="fcb" placeholder="请填写"/>
                              </div>                             
                         </div>  
-                        <div class="mui-row">
+                        <div class="mui-row cutOffLine">
                             <div class="mui-col-xs-4" style="display:flex;">
                                  <label>申请人数<i style="color:red;">*</i></label>
                                  <input type="number" id="fsqjcrs" placeholder="请填写"/> 
@@ -142,7 +142,7 @@ function tapEvent() {
                                   <input type="number" id="fsjjcl" readonly />
                             </div>
                          </div> 
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                              <div class="mui-col-xs-6" style="display:flex;">
                                 <label>餐标</label>
                                 <input type="number" id="fcbiao" placeholder="请填写"/>
@@ -330,7 +330,7 @@ function initOrgMsg() {
 }
 
 function initData(data, flag) {
-    var item = data.FormDataSet.BPM_WGJTJJRJCHZ_A[0];
+    var item = data.FormDataSet.BPM_WGJTJBJCHZ_A[0];
     if (flag) {
         $("#taskId").val(item.TaskID);
         $("#stepId").val(stepId);
@@ -355,9 +355,9 @@ function initData(data, flag) {
                    <div id="mx" class="mui-card">
                         <div class="mui-input-row itemtitle">
                             <label>明细列表项</label>
-                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                        <div class="mui-row">
+                        <div class="mui-row cutOffLine">
                             <div class="mui-col-xs-8" style="dsiplay:flex;">
                                 <label>就餐时间</label>
                                 <input type="datetime-local" id="fjc_rq" readonly value="${item_c[i].fjc_rq}"/>
@@ -367,7 +367,7 @@ function initData(data, flag) {
                                  <input type="text" id="fcb" readonly value="${item_c[i].fcb}"/>
                              </div>                             
                         </div>  
-                        <div class="mui-row">
+                        <div class="mui-row cutOffLine">
                             <div class="mui-col-xs-4" style="display:flex;">
                                  <label>申请人数<i style="color:red;">*</i></label>
                                  <input type="number" id="fsqjcrs" readonly value="${item_c[i].fsqjcrs}"/> 
@@ -381,7 +381,7 @@ function initData(data, flag) {
                                   <input type="number" id="fsjjcl" readonly value="${item_c[i].fsjjcl}"/>
                             </div>
                          </div> 
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                              <div class="mui-col-xs-6" style="display:flex;">
                                 <label>餐标</label>
                                 <input type="number" id="fcbiao" readonly value="${item_c[i].fcbiao}"/>

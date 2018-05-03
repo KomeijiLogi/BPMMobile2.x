@@ -122,7 +122,27 @@
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
         </div>
     </div>
-   
+    <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist"></ul>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
     <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>

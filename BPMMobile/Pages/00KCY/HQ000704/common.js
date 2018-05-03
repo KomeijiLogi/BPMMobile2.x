@@ -116,7 +116,7 @@ function tapEvent() {
                             <label>明细列表项</label>
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                              <div class="mui-col-xs-8" style="display:flex;">
                                  <label>就餐时间<i style="color:red;">*</i></label>
                                  <input type="datetime-local" id="fjcsj"/>
@@ -126,7 +126,7 @@ function tapEvent() {
                                    <input type="text" id="fcb" placeholder="请填写餐别"/>
                              </div>  
                          </div>
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                               <div class="mui-col-xs-4" style="display:flex;">
                                   <label>申请人数<i style="color:red;">*</i></label>
                                   <input type="number" id="fsqjcrs" placeholder="请填写申请就餐人数"/> 
@@ -344,7 +344,7 @@ function initData(data, flag) {
                             <label>明细列表项</label>
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                              <div class="mui-col-xs-8" style="display:flex;">
                                  <label>就餐时间<i style="color:red;">*</i></label>
                                  <input type="datetime-local" id="fjcsj" readonly value="${item_c[i].fjcsj}"/>
@@ -354,7 +354,7 @@ function initData(data, flag) {
                                    <input type="text" id="fcb" readonly value="${item_c[i].fcb}"/>
                              </div>  
                          </div>
-                         <div class="mui-row">
+                         <div class="mui-row cutOffLine">
                               <div class="mui-col-xs-4" style="display:flex;">
                                   <label>申请人数<i style="color:red;">*</i></label>
                                   <input type="number" id="fsqjcrs" readonly value="${item_c[i].fsqjcrs}"/> 

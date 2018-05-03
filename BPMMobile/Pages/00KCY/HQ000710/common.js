@@ -24,7 +24,7 @@
         console.log(provideData);
         var item = provideData.Tables[0].Rows[0];
         $("#fname").val(item.fname);
-
+       
 
     }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
         if (XMLHttpRequest.status == "401") {

@@ -3462,10 +3462,10 @@
     <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
   </Process>
   
- <!--<Process>
+ <Process>
     <Name>集团公司员工节假日乘坐班车人数提报</Name>
     <Path>\\00跨产业集团\\07_后勤服务</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/00KCY/HQ000707/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/00KCY/HQ000707/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/00KCY/HQ000707/FlowAskDetail.html</ViewAskPage>
@@ -3476,7 +3476,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
-  </Process>-->
+  </Process>
   
 <Process>
     <Name>集团公司员工月末乘坐班车线路提报</Name>
@@ -3522,6 +3522,56 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于威高集团员工班车租赁的账务处理，月末统一由后勤服务总公司班车管理员汇总发起。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司个人借款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司个人借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司个人借款的申请，由下属各部门发起。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司汇款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司汇款申请，由下属各部门发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司其他费用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司非差旅费的申请。</Description>
   </Process>
   <!--
 <Process>
