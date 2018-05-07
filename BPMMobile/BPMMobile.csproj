@@ -376,6 +376,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <None Include="gulpfile.js" />
     <Content Include="Pages\00KCY\HQ000701\common.js" />
     <Content Include="Pages\00KCY\HQ000701\FlowAskDetail.html" />
     <Content Include="Pages\00KCY\HQ000701\FlowCreate.html" />
@@ -1056,6 +1057,11 @@
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\CW0209006\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\CW0209006\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\CW0209006\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\RL0209001\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\RL0209001\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\RL0209001\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\RL0209001\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\RL0209001\FlowUndoDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\common.js" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowAskDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G2\FlowCreate.html" />
@@ -1247,6 +1253,16 @@
     <Content Include="Pages\07FangDiChan\02ShangGuan\SCYX0702004\FlowCreate.html" />
     <Content Include="Pages\07FangDiChan\02ShangGuan\SCYX0702004\FlowDoneDetail.html" />
     <Content Include="Pages\07FangDiChan\02ShangGuan\SCYX0702004\FlowUndoDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903002\common.js" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903002\FlowAskDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903002\FLowCreate.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903002\FlowDoneDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903002\FlowUndoDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903003\common.js" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903003\FlowAskDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903003\FlowCreate.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903003\FlowDoneDetail.html" />
+    <Content Include="Pages\09YiLiaoShangYe\03YiXueJianYan\SCYX0903003\FlowUndoDetail.html" />
     <Content Include="Pages\98JSGZZD\FlowAskDetail.html" />
     <Content Include="Pages\98JSGZZD\FlowCreate.html" />
     <Content Include="Pages\98JSGZZD\FlowDoneDetail.html" />
@@ -1438,6 +1454,7 @@
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\app.a7f72204eef75ba59e92.js.map" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\manifest.3ad1d5771e9b13dbdad2.js.map" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001G\static\js\vendor.d0b585eafdc7cb6dea69.js.map" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\calendar-selector.js" />
@@ -1505,7 +1522,6 @@
     <Folder Include="Pages\09YiLiaoShangYe\00YiLiaoShangYeBenBu\" />
     <Folder Include="Pages\09YiLiaoShangYe\01KuaZiGongSi\" />
     <Folder Include="Pages\09YiLiaoShangYe\02YiYaoGongSi\" />
-    <Folder Include="Pages\09YiLiaoShangYe\03YiXueJianYan\" />
     <Folder Include="Pages\09YiLiaoShangYe\04XunTongKeJi\" />
     <Folder Include="Pages\10XinNeiHaoCai\00KuaZiGongSi\" />
     <Folder Include="Pages\10XinNeiHaoCai\01YiLiaoQiXie\" />

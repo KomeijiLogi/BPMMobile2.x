@@ -127,7 +127,7 @@ function PostXml(xml) {
                         mui.alert('<'+data.Param0 + '>没有满足条件的处理人,<br/>' + data.Param1 + '已禁用');
                         break;
                     default:
-                        mui.alert("操作失败!请稍后重试");
+                        mui.alert("操作失败!请稍后重试,<br/>error code:" + data.BPMExceptionType + '<br/>' + data.Param0);
                         break;
                 }
 
@@ -735,6 +735,16 @@ function showConfirm() {
     $("#signd").css("display", "block");
 
 }
+//优化确认审批的操作
+function showConfirmOpt() {
+    if (checkNes()) {   //校验必填项，校验成功后显示
+        $("#wrapper").css("display", "none");
+        $("#signd").css("display", "block");
+    } else {
+        window.event.preventDefault();
+    }
+}
+
 function cancelConfirm() {
 
     $("#wrapper").css("display", "block");

@@ -689,3 +689,4 @@ D:\Documents\BPMMobile\BPMMobile\obj\Debug\zh-CHS\BPMMobile.resources.dll
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\zh-CHT\BPMMobile.resources.dll
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.dll
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.pdb
+D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.csproj.CopyComplete
