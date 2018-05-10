@@ -258,22 +258,24 @@ function calcTotalPJ() {
 }
 //计算维修费合计
 function calcTotalWX() {
+    var fwxfhj = 0;
     var fclf = parseFloat($("#fclf").val());
     var frgf = parseFloat($("#frgf").val());
     fclf = isNaN(fclf) ? 0 : fclf;
     frgf = isNaN(frgf) ? 0 : frgf;
-    var fwxfhj = fclf + frgf;
+    fwxfhj = fclf + frgf;
     $("#fwxfhj").val(fwxfhj);
 }
 
 //计算费用合计
 function calcTotalHJ() {
-
-    var fpjhchj = $("#fpjhchj").val();
-    var fwxfhj = $("#fwxfhj").val();
+    var ffyhj = 0;
+    var fpjhchj = parseFloat( $("#fpjhchj").val());
+    var fwxfhj = parseFloat( $("#fwxfhj").val());
     fpjhchj = isNaN(fpjhchj) ? 0 : fpjhchj;
     fwxfhj = isNaN(fwxfhj) ? 0 : fwxfhj;
-    var ffyhj = parseFloat(fpjhchj) + parseFloat( fwxfhj);
+
+    ffyhj = (fpjhchj) + (fwxfhj);
     $("#ffyhj").val(ffyhj);
 }
 
@@ -341,6 +343,10 @@ function initData(data,flag) {
 
     var item_c = data.FormDataSet.医学检验公司_设备维修申请_子表1;
     for (var i = 0; i < item_c.length; i++) {
+        if (item_c.length <= 0) {
+            return;
+        }
+      
         itemidArr.push(item_c[i].itemid);
         var li = `
                     <div id="mx">
@@ -533,15 +539,21 @@ function Save() {
         var value = $(this).val();
         var labelText = String($(this).parent().find('label').text()).replace("*","");
         var id = $(this).attr('id');
-        
+        if (String(id).match('fqtpp') != null) {
+            return;
+        }
 
         if (!value) {
+           
             mui.toast('请填写' + labelText);
             verrify_flag = true;
             return false;
         }
-
     });
+
+    if (String($("#fsbhp").val()).match('其他') != null && (!$("#fqtpp").val())) {
+        return;
+    }
     if (verrify_flag) {
         return;
     }
@@ -631,6 +643,9 @@ function Save() {
 }
 
 function reSave() {
+    var fbillno = $("#fbillno").val();
+    var pid = $("#stepId").val();
+
     //利用map对象生成映射
     var mapOne = new Map();
     $("#wrapper").find("input,textarea").each(function () {
@@ -713,7 +728,7 @@ function reSave() {
                         <服务态度>${mapOne.get('ffwtd')}</服务态度>
                         <工作效率>${mapOne.get('fgzxl')}</工作效率>
                         <用户意见>${mapOne.get('fyhyj')}</用户意见>
-                        <TaskID>${mapOne.get('taskId')}</TaskID>
+                        <TaskID>${$("#taskId").val()}</TaskID>
                         <申请人工号>${mapOne.get('fno')}</申请人工号>
                         <设备工程师工号>${mapOne.get('fsbgcs_no')}</设备工程师工号>
                     </医学检验公司_设备维修申请_主表>
@@ -722,9 +737,15 @@ function reSave() {
             for (var i = 0; i < mxlistArr.length; i++) {
                 xml += `
                          <医学检验公司_设备维修申请_子表1>
-                            <RelationRowGuid>${i+1}</RelationRowGuid>
-                            <RowPrimaryKeys></RowPrimaryKeys>
-                            <序号>${i + 1}</序号>
+                            <RelationRowGuid>${i + 1}</RelationRowGuid>`;
+                if (itemidArr.length == 0) {
+                    xml += `             <RowPrimaryKeys></RowPrimaryKeys>`;
+                } else {
+                    xml += `             <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>`;
+                }
+
+
+                xml += `                     <序号>${i + 1}</序号>
                             <配件耗材编号>${mxlistArr[i].fpjhcbh}</配件耗材编号>
                             <配件耗材名称>${mxlistArr[i].fpjhcmc}</配件耗材名称>
                             <数量>${mxlistArr[i].fsl}</数量>
@@ -764,6 +785,17 @@ function hasRead() {
     });
 }
 function AgreeOrConSign() {
+    
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = $("#signSuggest").val();
+    var nodeName = $("#nodeName").val();
+    if (String(nodeName).match('设备工程师') != null) {
+        action = '提交';
+    } else if (String(nodeName).match('业务管理员') != null) {
+        action = '完成';
+    } 
+
 
     //利用map对象生成映射
     var mapOne = new Map();
@@ -853,7 +885,7 @@ function AgreeOrConSign() {
                      <Header>
                      <Method>Process</Method>
                      <PID>${pid}</PID>
-                     <Action>同意</Action>
+                     <Action>${action}</Action>
                      <Comment>${comment}</Comment>
             
                      <ConsignEnabled>true</ConsignEnabled>
@@ -866,7 +898,7 @@ function AgreeOrConSign() {
                      <FormData>`;
             xml += `
                      <医学检验公司_设备维修申请_主表>
-                        <单号>${mapOne.get('fbillno')}</单号>
+                        <单号>${fbillno}</单号>
                         <申请人>${mapOne.get('fname')}</申请人>
                         <申请部门>${mapOne.get('fdept')}</申请部门>
                         <申请日期>${mapOne.get('fdate')}</申请日期>
@@ -904,7 +936,7 @@ function AgreeOrConSign() {
                         <服务态度>${mapOne.get('ffwtd')}</服务态度>
                         <工作效率>${mapOne.get('fgzxl')}</工作效率>
                         <用户意见>${mapOne.get('fyhyj')}</用户意见>
-                        <TaskID>${mapOne.get('taskId')}</TaskID>
+                        <TaskID>${$("#taskId").val()}</TaskID>
                         <申请人工号>${mapOne.get('fno')}</申请人工号>
                         <设备工程师工号>${mapOne.get('fsbgcs_no')}</设备工程师工号>
                     </医学检验公司_设备维修申请_主表>
@@ -913,9 +945,15 @@ function AgreeOrConSign() {
             for (var i = 0; i < mxlistArr.length; i++) {
                 xml += `
                          <医学检验公司_设备维修申请_子表1>
-                            <RelationRowGuid>${i + 1}</RelationRowGuid>
-                            <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
-                            <序号>${i + 1}</序号>
+                            <RelationRowGuid>${i + 1}</RelationRowGuid>`;
+                if (itemidArr.length == 0) {
+                    xml += `             <RowPrimaryKeys></RowPrimaryKeys>`;
+                } else {
+                    xml += `             <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>`;
+                }
+
+
+                xml += `                     <序号>${i + 1}</序号>
                             <配件耗材编号>${mxlistArr[i].fpjhcbh}</配件耗材编号>
                             <配件耗材名称>${mxlistArr[i].fpjhcmc}</配件耗材名称>
                             <数量>${mxlistArr[i].fsl}</数量>
@@ -936,7 +974,7 @@ function AgreeOrConSign() {
                    <Header>
                    <Method>Process</Method>
                    <PID>${pid}</PID>
-                   <Action>同意</Action>
+                   <Action>${action}</Action>
                    <Comment>${comment}</Comment>
 
                     <UrlParams></UrlParams>
@@ -951,7 +989,7 @@ function AgreeOrConSign() {
                   <FormData>`;
         xml += `
                      <医学检验公司_设备维修申请_主表>
-                        <单号>${mapOne.get('fbillno')}</单号>
+                        <单号>${fbillno}</单号>
                         <申请人>${mapOne.get('fname')}</申请人>
                         <申请部门>${mapOne.get('fdept')}</申请部门>
                         <申请日期>${mapOne.get('fdate')}</申请日期>
@@ -989,7 +1027,7 @@ function AgreeOrConSign() {
                         <服务态度>${mapOne.get('ffwtd')}</服务态度>
                         <工作效率>${mapOne.get('fgzxl')}</工作效率>
                         <用户意见>${mapOne.get('fyhyj')}</用户意见>
-                        <TaskID>${mapOne.get('taskId')}</TaskID>
+                        <TaskID>${$("#taskId").val()}</TaskID>
                         <申请人工号>${mapOne.get('fno')}</申请人工号>
                         <设备工程师工号>${mapOne.get('fsbgcs_no')}</设备工程师工号>
                     </医学检验公司_设备维修申请_主表>
@@ -998,9 +1036,15 @@ function AgreeOrConSign() {
         for (var i = 0; i < mxlistArr.length; i++) {
             xml += `
                          <医学检验公司_设备维修申请_子表1>
-                            <RelationRowGuid>${i + 1}</RelationRowGuid>
-                            <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
-                            <序号>${i + 1}</序号>
+                            <RelationRowGuid>${i + 1}</RelationRowGuid>`;
+            if (itemidArr.length == 0) {
+                xml += `             <RowPrimaryKeys></RowPrimaryKeys>`;
+            } else {
+                xml += `             <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>`;
+            }
+           
+
+            xml += `                     <序号>${i + 1}</序号>
                             <配件耗材编号>${mxlistArr[i].fpjhcbh}</配件耗材编号>
                             <配件耗材名称>${mxlistArr[i].fpjhcmc}</配件耗材名称>
                             <数量>${mxlistArr[i].fsl}</数量>
