@@ -66,11 +66,11 @@
     <Name>集团本部信息化推进部周工作汇报</Name>
     <Path>\\01威高集团总部\\00集团本部\\16_行政办公</Path>
     <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/WeeklyFlow/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/WeeklyFlow/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/WeeklyFlow/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/WeeklyFlow/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/WeeklyFlow/FlowCreate.html</ViewPage>
+    <CreatePage>/Pages/WeeklyFlow2/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/WeeklyFlow2/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/WeeklyFlow2/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/WeeklyFlow2/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/WeeklyFlow2/FlowCreate.html</ViewPage>
     <DisplayName>集团本部信息化推进部周工作汇报</DisplayName>
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
@@ -3574,7 +3574,26 @@
     <Description>适用于洁丽康公司非差旅费的申请。</Description>
   </Process>
 
-  
+
+  <Process>
+    <Name>洁丽康公司员工试用期转正申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工试用期转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工试用期转正的申请，由申请本人发起。</Description>
+  </Process>
+
+
+
+
   <Process>
     <Name>医学检验公司设备维修申请</Name>
     <Path>\\08医疗商业集团\\02医学检验公司\\13_市场营销</Path>
@@ -3607,7 +3626,10 @@
     <Group>办公管理</Group>
     <Description>适用于医学检验公司维修配件的申请，由设备工程师发起。</Description>
   </Process>
+
+
   
+
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>
     <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>

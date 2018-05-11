@@ -417,7 +417,17 @@ function tapEvent() {
     ];
     showPicker('fcompany', fcompanydata);
 
-
+    var fifdata = [
+        {
+            value: '',
+            text:'是'
+        },
+        {
+            value: '',
+            text:'否'
+        }
+    ];
+    showPicker('fif_dkh', fifdata);
 }
 
 
@@ -516,7 +526,9 @@ function initMsg(flag) {
         $("#fyzrq").val(FormatterTimeYMS(item.fyzrq));
         $("#fwtfl").val(item.fwtfl);
         $("#fif_zdsg").val(item.fif_zdsg);
-
+        $("#fif_dkh").val(item.是否大客户联销客户);
+        $("#fif_jr").val(item.是否需要洁瑞协同处理);
+        $("#fif_sjfy").val(item.是否涉及费用);
 
         if (item.ffj != null && item.ffj != "") {
             var fjtmp = (String)(item.ffj);
@@ -805,6 +817,30 @@ function nodeController(data) {
                     }
                 ];
                 showPicker("fif_zdsg", fif_zdsgdata);
+            } else if (String(NodeName).indexOf("股份质量部经理") != -1){
+                var fifdata = [
+                    {
+                        value: '',
+                        text:'是'
+                    },
+                    {
+                        value: '',
+                        text: '否'
+                    }
+                ];
+                showPicker('fif_jr', fifdata);
+            } else if (String(NodeName).indexOf("洁瑞质量部经理") != -1) {
+                var fifdata = [
+                    {
+                        value: '',
+                        text: '是'
+                    },
+                    {
+                        value: '',
+                        text: '否'
+                    }
+                ];
+                showPicker('fif_sjfy', fifdata);
             }
         }
     }
@@ -870,7 +906,10 @@ function Save() {
         mui.toast('请输入院方是否上报不良事件');
         return;
     }
-
+    if (!$("#fif_dkh").val()) {
+        mui.toast('请选择是否是大客户联销客户');
+        return;
+    }
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -911,6 +950,9 @@ function Save() {
             xml = xml + '   <fyprq>' + fyprq + '</fyprq>';
             xml = xml + '   <fgzlx>' + fgzlx + '</fgzlx>';
             xml = xml + '   <fif_sb>' + fif_sb + '</fif_sb>';
+            xml += '<是否大客户联销客户>' + $("#fif_dkh").val() + '</是否大客户联销客户>';
+            xml += '<是否需要洁瑞协同处理></是否需要洁瑞协同处理>';
+            xml += '<是否涉及费用></是否涉及费用>';
             xml = xml + '   <fclyq>' + fclyq + '</fclyq>';
             xml = xml + '   <fgzfx>' + fgzfx + '</fgzfx>';
             xml = xml + '   <fjzcs>' + fjzcs + '</fjzcs>';
@@ -989,6 +1031,10 @@ function reSave() {
         mui.toast('请输入院方是否上报不良事件');
         return;
     }
+    if (!$("#fif_dkh").val()) {
+        mui.toast('请选择是否是大客户联销客户');
+        return;
+    }
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -1025,6 +1071,9 @@ function reSave() {
             xml = xml + '   <fyprq>' + fyprq + '</fyprq>';
             xml = xml + '   <fgzlx>' + fgzlx + '</fgzlx>';
             xml = xml + '   <fif_sb>' + fif_sb + '</fif_sb>';
+            xml += '<是否大客户联销客户>' + $("#fif_dkh").val() + '</是否大客户联销客户>';
+            xml += '<是否需要洁瑞协同处理>' + $("#fif_jr").val() + '</是否需要洁瑞协同处理>';
+            xml += '<是否涉及费用>' + $("#fif_sjfy").val() + '</是否涉及费用>';
             xml = xml + '   <fclyq>' + fclyq + '</fclyq>';
             xml = xml + '   <fgzfx>' + fgzfx + '</fgzfx>';
             xml = xml + '   <fjzcs>' + fjzcs + '</fjzcs>';
@@ -1118,6 +1167,9 @@ function hasRead() {
             xml = xml + '   <fyprq>' + fyprq + '</fyprq>';
             xml = xml + '   <fgzlx>' + fgzlx + '</fgzlx>';
             xml = xml + '   <fif_sb>' + fif_sb + '</fif_sb>';
+            xml += '<是否大客户联销客户>' + $("#fif_dkh").val() + '</是否大客户联销客户>';
+            xml += '<是否需要洁瑞协同处理>' + $("#fif_jr").val() + '</是否需要洁瑞协同处理>';
+            xml += '<是否涉及费用>' + $("#fif_sjfy").val() + '</是否涉及费用>';
             xml = xml + '   <fclyq>' + fclyq + '</fclyq>';
             xml = xml + '   <fgzfx>' + fgzfx + '</fgzfx>';
             xml = xml + '   <fjzcs>' + fjzcs + '</fjzcs>';
@@ -1203,6 +1255,17 @@ function AgreeOrConSign() {
         }
         if (!fif_zdsg) {
             mui.toast("请选择是否重大事故");
+            return;
+        }
+    } else if (String(nodeName).match('股份质量部经理') != null) {
+        if (!$("#fif_jr").val()) {
+            mui.toast('请选择是否需要洁瑞协同处理');
+            return;
+        }
+       
+    } else if (String(nodeName).match('洁瑞质量部经理') != null) {
+        if (!$("#fif_sjfy").val()) {
+            mui.toast('请选择是否涉及费用');
             return;
         }
     }
@@ -1293,6 +1356,9 @@ function AgreeOrConSign() {
                     xml = xml + '   <fyprq>' + fyprq + '</fyprq>';
                     xml = xml + '   <fgzlx>' + fgzlx + '</fgzlx>';
                     xml = xml + '   <fif_sb>' + fif_sb + '</fif_sb>';
+                    xml += '<是否大客户联销客户>' + $("#fif_dkh").val() + '</是否大客户联销客户>';
+                    xml += '<是否需要洁瑞协同处理>' + $("#fif_jr").val() + '</是否需要洁瑞协同处理>';
+                    xml += '<是否涉及费用>' + $("#fif_sjfy").val() + '</是否涉及费用>';
                     xml = xml + '   <fclyq>' + fclyq + '</fclyq>';
                     xml = xml + '   <fgzfx>' + fgzfx + '</fgzfx>';
                     xml = xml + '   <fjzcs>' + fjzcs + '</fjzcs>';
@@ -1359,6 +1425,9 @@ function AgreeOrConSign() {
         xml = xml + '   <fyprq>' + fyprq + '</fyprq>';
         xml = xml + '   <fgzlx>' + fgzlx + '</fgzlx>';
         xml = xml + '   <fif_sb>' + fif_sb + '</fif_sb>';
+        xml += '<是否大客户联销客户>' + $("#fif_dkh").val() + '</是否大客户联销客户>';
+        xml += '<是否需要洁瑞协同处理>' + $("#fif_jr").val() + '</是否需要洁瑞协同处理>';
+        xml += '<是否涉及费用>' + $("#fif_sjfy").val() + '</是否涉及费用>';
         xml = xml + '   <fclyq>' + fclyq + '</fclyq>';
         xml = xml + '   <fgzfx>' + fgzfx + '</fgzfx>';
         xml = xml + '   <fjzcs>' + fjzcs + '</fjzcs>';

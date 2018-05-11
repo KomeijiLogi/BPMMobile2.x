@@ -1396,3 +1396,5 @@ function localeLan(str) {
     console.log(localeStr);
     return localeStr;
 }
+
+
