@@ -3591,9 +3591,85 @@
     <Description>适用于洁丽康公司员工试用期转正的申请，由申请本人发起。</Description>
   </Process>
 
+<Process>
+    <Name>洁丽康公司员工参保申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工参保申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工缴纳保险的申请，由申请本人发起。</Description>
+  </Process>
+<Process>
+    <Name>洁丽康公司员工合同续签申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工合同续签申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请，由人事专员发起。</Description>
+  </Process>
 
-
-
+  <Process>
+    <Name>洁丽康公司员工证明申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工证明申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请。</Description>
+  </Process>
+  
+    
+  <Process>
+    <Name>洁丽康公司销售日报提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售日报提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售部门的日报提报，由销售部门发起。</Description>
+  </Process>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+    
   <Process>
     <Name>医学检验公司设备维修申请</Name>
     <Path>\\08医疗商业集团\\02医学检验公司\\13_市场营销</Path>

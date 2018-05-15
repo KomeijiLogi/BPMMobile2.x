@@ -17,6 +17,7 @@
 <body>
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
             <div class="mui-input-row">
                 <label>工号</label>
                 <input type="text" id="fno" readonly />
@@ -29,14 +30,14 @@
                 <label>申请日期<i style="color:red;">*</i></label>
                 <input type="text" id="fdate" readonly />
             </div>
-            <div class="mui-input-row itemtitle">
-                <label>转正信息</label>
+            <div class="mui-input-row">
+                <label>联系电话</label>
+                <input type="tel" id="flxdh" readonly />
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>参保信息</label>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-3" style="display:flex;">
-                    <label>所属集团</label>
-                    <textarea rows="2" id="fssjt" readonly></textarea>
-                </div>
                 <div class="mui-col-xs-3" style="display:flex;">
                     <label>所属公司</label>
                     <textarea rows="2" id="fssgs" readonly></textarea>
@@ -49,79 +50,59 @@
                     <label>职位</label>
                     <textarea rows="2" id="fzw" readonly></textarea>
                 </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>入职日期</label>
+                    <textarea rows="2" id="frzrq" readonly></textarea>
+                </div>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
                 <div class="mui-col-xs-3" style="display:flex;">
+                    <label>身份证号</label>
+                    <textarea rows="2" id="fsfzh" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
                     <label>性别</label>
-                    <textarea rows="2" id="fxb" readonly></textarea>
+                    <textarea rows="2" id="fsb" readonly></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
                     <label>出生日期</label>
                     <textarea rows="2" id="fcsrq" readonly></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
-                    <label>身份证号</label>
-                    <textarea rows="2" id="fsfzh" readonly></textarea>
+                    <label>户口性质<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fhkxz" readonly></textarea>
                 </div>
-                <div class="mui-col-xs-3" style="display:flex;">
-                    <label>联系电话</label>
-                    <textarea rows="2" id="flxdh" readonly></textarea>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>户口所在地<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fhkszd" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>家庭地址<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fjtdz" readonly></textarea>
                 </div>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
                 <div class="mui-col-xs-3" style="display:flex;">
-                    <label>最高学历</label>
-                    <textarea rows="2" id="fzgxl" readonly></textarea>
+                    <label>工作城市<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fgzcs" readonly></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
-                    <label>毕业院校</label>
-                    <textarea rows="2" id="fbyyx" readonly></textarea>
+                    <label>社保缴纳城市<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsbjncs" readonly></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
-                    <label>专业</label>
-                    <textarea rows="2" id="fzy" readonly></textarea>
+                    <label>社保起缴年月<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsbqjny" readonly></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
-                    <label>毕业时间</label>
-                    <textarea rows="2" id="fbysj" readonly></textarea>
+                    <label>社保中断缴至年月</label>
+                    <textarea rows="2" id="fsbzdjzny" readonly></textarea>
                 </div>
             </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-6" style="display:flex;">
-                    <label>入职时间</label>
-                    <textarea rows="2" id="frzsj" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-6" style="display:flex;">
-                    <label>申请转正时间<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fsqzzsj" readonly></textarea>
-                </div>
-            </div>
-
-            <div class="mui-input-row itemtitle">
-                <label>自我评价<i style="color:red;">*</i></label>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:1vw;">
-                <div class="mui-col-xs-12 mui-col-md-5">
-                    <textarea rows="5" id="fzwpj" readonly></textarea>
-                </div>
-            </div>
-            <div class="mui-input-row itemtitle">
-                <label>直接上级填写</label>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:1vw;">
-                <div class="mui-col-xs-6" style="display:flex;">
-                    <label>转正意见</label>
-                    <textarea rows="2" id="fzzyj" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>延长转正期</label>
-                    <textarea rows="1" id="fyczzq" readonly style="padding:3vw;"></textarea>
-                </div>
-                <div class="mui-col-xs-2" style="display:flex;">
-                    <label style="padding:3vw;">个月</label>
-                </div>
-            </div>
-
         </form>
 
         <div class="mui-table-view" style="margin-bottom:1rem;">

@@ -18,62 +18,51 @@
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
             <div class="mui-input-row">
-                <label>员工姓名</label>
-                <input type="text" id="fname" readonly />
-                <input type="hidden" id="fno" />
-            </div>
-            <div class="mui-input-row" style="display:block !important;">
-                <label>部门</label>
-                <input type="text" id="fdept" readonly />
+                <label>工号</label>
+                <input type="text" id="fno" readonly />
             </div>
             <div class="mui-input-row">
-                <label>工作周</label>
-                <input type="text" id="fweek" readonly />
+                <label>姓名</label>
+                <input type="text" id="fname" readonly />
             </div>
-            <div class="mui-row itemtitle" style="height:10vw;text-align:center;padding-top:2vw;">
-                <label>主要工作事项描述<i style="color:red;">*</i></label>
+            <div class="mui-input-row">
+                <label>填写日期</label>
+                <input type="text" id="fdate" readonly  />
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>续签信息</label>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-12" style="display:flex;">
-                    <textarea rows="5" id="fgznr" readonly></textarea>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>部门</label>
+                    <textarea rows="2" id="fbm" readonly></textarea>
                 </div>
-            </div>
-            <div class="mui-row itemtitle" style="height:10vw;text-align:center;padding-top:2vw;">
-                <label>存在主要问题及改进措施</label>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-12" style="display:flex;">
-                    <textarea rows="5" id="fczwt" readonly></textarea>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>职位</label>
+                    <textarea rows="2" id="fzw" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>入职日期</label>
+                    <textarea rows="2" id="frzrq" readonly></textarea>
                 </div>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
                 <div class="mui-col-xs-8" style="display:flex;">
-                    <label>部门经理评价</label>
-                    <textarea rows="2" id="fpj_bmjl" readonly placeholder="请填写"></textarea>
+                    <label>合同预计结束日期<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fjsrq" readonly ></textarea>
                 </div>
                 <div class="mui-col-xs-4" style="display:flex;">
-                    <label>考核等级<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkhdj_bmjl" readonly placeholder="请选择"></textarea>
+                    <label>拟下次签订年限<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fqdnx" readonly></textarea>
                 </div>
             </div>
             <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-8" style="display:flex;">
-                    <label>总监评价</label>
-                    <textarea rows="2" id="fpj_zj" readonly placeholder="请填写"></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>考核等级<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkhdj_zj" readonly placeholder="请选择"></textarea>
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="fbz" readonly></textarea>
                 </div>
             </div>
-
-            <input type="hidden" id="fmonth" readonly />
-            <input type="hidden" id="fyear" readonly />
-            <input type="hidden" id="fcfbj" readonly />
-
-            <input type="hidden" id="fksdate" readonly />
-            <input type="hidden" id="fjsdate" readonly />
-            <input type="hidden" id="ftbdate" readonly />
+            <input type="hidden" id="fssgs" readonly />
             <div class="mui-input-row" id="csd">
                 <label>加签</label>
                 <div class="mui-switch mui-switch-blue" id="csswitch">
@@ -172,6 +161,10 @@
             <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
         </div>
     </div>
+
+
+
+
     <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
     <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.js"></script>

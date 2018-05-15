@@ -99,13 +99,28 @@ function PostXml(xml) {
                 } else {
                     mui.toast("流程审批结束");
                 }
-                if (String(xml).indexOf("提交") != -1) {
+                if (String(navigator.userAgent).match('cloudhub') == null) {
+                    if (String(xml).indexOf("提交") != -1) {
 
-                   setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                        setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                    } else {
+
+                        setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                    }
                 } else {
+                    //mui.alert("操作成功,点击确定关闭页面", '提示信息', function () {
+                    //    XuntongJSBridge.call('close');
+                    //});
+                    if (String(xml).indexOf("提交") != -1) {
 
-                    setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                        setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                    } else {
+
+                        setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                    }
                 }
+
+               
             } else {
                 $("button").removeAttr('disabled');
                 switch (data.BPMExceptionType) {
@@ -1398,3 +1413,34 @@ function localeLan(str) {
 }
 
 
+//解决键盘遮挡编辑区域的问题
+window.addEventListener('resize', function () {
+    if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+        window.setTimeout(function () {
+            if ('scrollIntoView' in document.activeElement) {
+                document.activeElement.scrollIntoView();
+            } else {
+                document.activeElement.scrollIntoViewIfNeeded();
+            }
+        }, 0);
+    }
+
+});
+
+
+function showDtPicker(el) {
+    var opts = { "type": "date", "beginYear": new Date().getFullYear()-1, "endYear": new Date().getFullYear()+3 };
+    var picker = new mui.DtPicker(opts);
+
+    $(el).on('tap', function () {
+
+        picker.show(function (rs) {
+            
+            $(el).val(rs.text);
+
+            //picker.dispose();
+        });
+    });
+    
+    
+}
