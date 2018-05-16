@@ -3,6 +3,12 @@
     background-color: white;
     height: 100%;
     overflow: auto;
+  
+}
+.mui-content::after {
+    /**开启硬件加速**/
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 .itemborder {
     /*margin-top:0.4rem;*/
