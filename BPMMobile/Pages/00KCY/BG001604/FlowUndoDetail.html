@@ -17,123 +17,31 @@
 <body>
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
             <div class="mui-input-row">
-                <label>填写人</label>
+                <label>提报人</label>
                 <input type="text" id="fname" readonly />
             </div>
             <div class="mui-input-row">
-                <label>填写日期</label>
+                <label>提报日期</label>
                 <input type="date" id="fdate" readonly />
             </div>
             <div class="mui-input-row">
-                <label>渠道类型<i style="color:red;">*</i></label>
-                <input type="text" id="fqdlx" readonly />
+                <label>所属公司</label>
+                <input type="text" id="fssgs" readonly />
             </div>
-            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
-                <label>基本资料</label>
-            </div>
-
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>客户名称<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkhmc" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>客户编码<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkhbm" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>客户分类<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkhfl" readonly></textarea>
-                </div>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>组织机构代码<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fjgdm" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>税务登记号<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fswdjh" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>法人代表<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="ffrdb" readonly></textarea>
-                </div>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>开票类型<i style="color:red;">*</i></label>
-                    <input type="text" id="ffplx" readonly />
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>税率<i style="color:red;">*</i></label>
-                    <input type="text" id="fsl" readonly />
-                </div>
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>床位数<i style="color:red;">*</i></label>
-                    <input type="number" id="fcws" readonly />
-                </div>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-12" style="display:flex;">
-                    <label>地址<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fdz" readonly></textarea>
-                </div>
-            </div>
-
-            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
-                <div class="border border-t upload-img" style="top:0rem;">
-                    <!--上传图片-->
-                    <div class="clearfix upload-btn" id="children-bg">
-                        <label class="label">附件</label>
-                        <span class="tips" id="imageCount"><!--已添加0张--></span>
-                        <!--上传图片按钮  -->
-                        <span class="upload-addbtn" style="display:none;">
-                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
-                        </span>
-
-                    </div>
-                    <div class="upload-img-list"></div>
-                </div>
+            <div class="mui-input-row">
+                <label>联系电话<i style="color:red;">*</i></label>
+                <input type="tel" id="flxdh" readonly />
             </div>
 
             <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
-                <label>销售资料</label>
+                <label>工作牌申请明细表</label>
             </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>部门编码<i style="color:red;">*</i></label>
-                    <textarea id="fbmbm" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-8" style="display:flex;">
-                    <label>部门名称<i style="color:red;">*</i></label>
-                    <textarea id="fbmmc" readonly></textarea>
-                </div>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>销售员编码<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fxsybm" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-8" style="display:flex;">
-                    <label>销售员名称<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fxsymc" readonly></textarea>
-                </div>
-            </div>
-            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
-                <label>财务资料</label>
-            </div>
-            <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-4" style="display:flex;">
-                    <label>财务组织编码</label>
-                    <textarea rows="2" id="fzzbm" readonly></textarea>
-                </div>
-                <div class="mui-col-xs-8" style="display:flex;">
-                    <label>财务组织名称</label>
-                    <textarea rows="2" id="fzzmc" readonly></textarea>
-                </div>
-            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;display:none;">
+                添加工作牌申请明细表
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
             <div class="mui-input-row" id="csd">
                 <label>加签</label>
                 <div class="mui-switch mui-switch-blue" id="csswitch">
@@ -201,7 +109,7 @@
         </div>
         <div class="mui-btn-row" id="approvalD">
             &nbsp;&nbsp;
-            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirmOpt()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
             <button class="mui-btn mui-btn-danger" type="button" style="width:40%" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
 
         </div>
@@ -210,28 +118,6 @@
         </div>
     </div>
 
-
-    <div id="selector" style="display:none;">
-        <header class="mui-bar mui-bar-nav">
-            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
-            <h1 class="mui-title">选择列表</h1>
-            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
-        </header>
-        <div class="mui-indexed-list" id="list" style="top:2rem;">
-
-            <div class="mui-indexed-list-search mui-input-row mui-search">
-                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
-            </div>
-            <div class="mui-indexed-list-bar" style="display:none;">
-
-            </div>
-            <div class="mui-indexed-list-alert"></div>
-            <div class="mui-indexed-list-inner">
-                <div class="mui-indexed-list-empty-alert">没有数据</div>
-                <ul class="mui-table-view" id="datalist"></ul>
-            </div>
-        </div>
-    </div>
 
     <input value="" id="stepId" name="stepId" type="hidden" />
     <input type="hidden" id="flowPerId" name="flowPerId" value="" />

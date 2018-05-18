@@ -3524,6 +3524,10 @@
     <Description>适用于威高集团员工班车租赁的账务处理，月末统一由后勤服务总公司班车管理员汇总发起。</Description>
   </Process>
 
+  
+  
+
+    
 
   <Process>
     <Name>洁丽康公司个人借款申请</Name>
@@ -3671,8 +3675,8 @@
     <Description>适用于洁丽康公司销售部门的月计划提报，由销售部门发起。</Description>
   </Process>
     
-    <!--<Process>
-    <Name>洁丽康公司月销售任务完成情况分析</Name>
+    <Process>
+    <Name>洁丽康公司月销售任务完成情况分析提报</Name>
     <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
     <CanCreate>True</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowCreate.html</CreatePage>
@@ -3683,9 +3687,9 @@
     <DisplayName>洁丽康公司月销售任务完成情况分析</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
+    <Group>未完成</Group>
     <Description>适用于洁丽康公司销售部门的月销售任务完成情况分析提报，由销售部门发起。</Description>
-  </Process>-->
+  </Process>
     
     
     
@@ -3760,6 +3764,22 @@
     <Description>适用于医学检验公司维修配件的申请，由设备工程师发起。</Description>
   </Process>
 
+  
+  <Process>
+    <Name>集团公司行管人员工作牌申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001604/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001604/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001604/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001604/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001604/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司行管人员工作牌申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团行管人员工作牌申请办理，统一由各公司、集团各部门相关业务负责人发起。</Description>
+  </Process>
 
   
 

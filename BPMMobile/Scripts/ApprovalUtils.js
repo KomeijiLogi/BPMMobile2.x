@@ -1444,3 +1444,85 @@ function showDtPicker(el) {
     
     
 }
+
+//拼装dom
+function AssembledDom(fileExt, url, id) {
+    var li = ``;
+    var picext = ['png', 'jpg', 'bmp'];
+    //pic
+    //if (String(fileExt).match('png') != null || String(fileExt).match('jpg') != null || String(fileExt).match('bmp') != null) {
+    if (picext.includes(String(fileExt))) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                      <div class="img-wrap smallimg imgdiv" id="${id}"><img src="${url}"/></div>
+                  </div>
+              </div>  
+             `;
+        //excel
+    } else if (String(fileExt).match('xls') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/xlsx@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //word
+    } else if (String(fileExt).match('doc') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/docx@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //ppt
+    } else if (String(fileExt).match('ppt') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/ppt@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //pdf
+    } else if (String(fileExt).match('pdf') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/pdf@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //zip
+    } else if (String(fileExt).match('zip') != null || String(fileExt).match('7z') != null || String(fileExt).match('rar') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/zip@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //txt
+    } else if (String(fileExt).match('txt') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/txt@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //other
+    } else {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/unkown@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+    }
+
+    return li;
+}

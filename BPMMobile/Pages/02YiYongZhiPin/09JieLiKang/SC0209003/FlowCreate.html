@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="description" content="洁丽康公司销售日报提报" />
+    <meta name="description" content="洁丽康公司月销售任务完成情况分析" />
 
     <link rel="stylesheet" href="../../../../Content/mui.min.css" />
     <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
@@ -19,8 +19,118 @@
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <div class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
             <div class="mui-input-row">
-
+                <label>销售人员<i style="color:red;">*</i></label>
+                <textarea rows="2" id="fxsry" readonly placeholder="请选择"></textarea>
+                <input type="hidden" id="fno" readonly/>
             </div>
+            <div class="mui-input-row">
+                <label>销售区域<i style="color:red;">*</i></label>
+                <textarea rows="2" id="fxsqy" placeholder="请填写"></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>月<i style="color:red;">*</i></label>
+                <textarea rows="2" id="fy" readonly placeholder="请选择"></textarea>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>任务完成情况(单位:万元)</label>
+            </div>
+            <div class="mui-col-xs-12" style="text-align:center;">
+                <label style="font-size:0.8rem;">销售额（含税）<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>当月任务</label>
+                    <input type="number" id="fdyrw_xse" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>当月完成</label>
+                    <input type="number" id="fdywc_xse" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>完成率</label>
+                    <input type="text" id="fwcl_xse" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计任务(01-x月)</label>
+                    <input type="number" id="fljrw_xse" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计完成(01-x月)</label>
+                    <input type="number" id="fljwc_xse" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计完成率</label>
+                    <input type="text" id="fljwcl_xse" readonly />
+                </div>
+            </div>
+            <div class="mui-col-xs-12" style="text-align:center;">
+                <label style="font-size:0.8rem;">回款额<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>当月任务</label>
+                    <input type="number" id="fdyrw_hke" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>当月完成</label>
+                    <input type="number" id="fdywc_hke" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>完成率</label>
+                    <input type="text" id="fwcl_hke" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计任务(01-x月)</label>
+                    <input type="number" id="fljrw_hke" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计完成(01-x月)</label>
+                    <input type="number" id="fljwc_hke" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>累计完成率</label>
+                    <input type="text" id="fljwcl_hke" readonly />
+                </div>
+            </div>
+            <div class="mui-col-xs-12" style="text-align:center;">
+                <label style="font-size:0.8rem;">销售发出金额<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>当月完成</label>
+                    <input type="number" id="fdywc_fc" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>累计完成(01-x月)</label>
+                    <input type="number" id="fljwc_fc" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>原因分析</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>销售额任务未完成原因分析<i style="color:red;">*</i></label>
+                    <textarea rows="4" id="fyyfx1" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>回款任务未完成原因分析<i style="color:red;">*</i></label>
+                    <textarea rows="4" id="fyyfx2" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注<i style="color:red;">*</i></label>
+                    <textarea rows="4" id="fbz" readonly></textarea>
+                </div>
+            </div>
+
         </div>
         <div class="mui-btn-row" id="SaveD">
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
@@ -42,12 +152,12 @@
     <script type="text/javascript" src="common.js"></script>
     <script>
         //var vconsole = new VConsole();
-
+         
         mui.init();
 
         mui.ready(function () {
 
-            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销', '洁丽康公司月销售任务完成情况分析');
+            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销', '洁丽康公司月销售任务完成情况分析提报');
             getBPMParam();
             _init._preCreate();
 
