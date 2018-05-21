@@ -568,5 +568,17 @@ function nodeControllerExp(NodeName) {
 }
 //共享任务扩展
 function nodeShareExt(ShareNode) {
+    if (ShareNode == '流程被共享') {
+        $("#approvalD").empty();
+        var li = '';
+        li = li + '    &nbsp;&nbsp;';
+        li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickupbt" onclick="PickupShareTaskExt()">从共享任务中取出</button>';
+        $("#approvalD").append(li);
+    } else if (ShareNode == '流程被取出') {
+        var li = '';
+        li = li + '    &nbsp;&nbsp;';
+        li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickbackbt" onclick="PutbackShareTaskExt()">放回共享任务</button>';
+        $("#approvalD").append(li);
 
+    }
 }

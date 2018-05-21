@@ -754,9 +754,7 @@ function AgreeOrConSign() {
     var comment = $("#signSuggest").val();
     var nodeName = $("#nodeName").val();
 
-    var fbillno = $("#fbillno").val();
-    var pid = $("#stepId").val();
-
+    
     var fname = $("#fname").val();
     var date = $("#date").val();
     var fyear = $("#fyear").val();

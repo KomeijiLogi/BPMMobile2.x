@@ -3782,7 +3782,23 @@
   </Process>
 
   
-
+<Process>
+    <Name>集团公司员工入职宿舍、餐卡办理申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001605/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001605/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001605/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001605/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001605/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工入职宿舍、餐卡办理申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工入职时宿舍、餐卡办理申请，统一由各子公司人事专员发起。</Description>
+  </Process>
+  
+  
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>
     <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
