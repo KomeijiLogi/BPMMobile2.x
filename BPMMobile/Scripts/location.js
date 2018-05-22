@@ -12,9 +12,10 @@
     var defaultConfig = {
         
          targetEle: '',         //目标元素
-         isDelegate: false,    //是否事件代理，true为是，false为否
+         isDelegate: false,    //是否多个子表使用，true为是，false为否
          cityId: '',           //城市元素id
-         proId:''              //省份id  
+         proId: '',              //省份id  
+         isForeign: false         //是否国外，true 为国外，false为国内 
     };
 
     //主函数
@@ -24,25 +25,44 @@
 
         return this.each(function () {
             var selector = this.id ? '#' + this.id : (this.className ? getClassSelector(this.className) : this.tagName);
+          
+            if (conf.isDelegate) {
+
+                selector = conf.targetEle;
+            }
+            console.log('------selector-------');
+            console.log(selector);
 
             new assembledController().init(conf);    //加载配置
 
+            $('body').off('tap');
+
             $('body').on('tap', selector, function () {
+                var self = this;
                 var picker = new mui.PopPicker({
                     layer:2
                 });
                 picker.setData(locationData);
                 picker.show(function (items) {
+                    if (conf.isForeign) {
+                        $(self).parent().parent().find('#' + config.proId).val(items[0].text);   //州name
+                        $(self).parent().parent().find('#' + config.cityId).val(items[1].text);  //国家name
+                    } else {
+                        $(self).parent().parent().find('#' + config.proId).val(items[0].text);   //省份name
+                        $(self).parent().parent().find('#' + config.proId).data('provinceid', items[0].provinceid);   //省份id
 
-                    $(selector).parent().parent().find('#' + config.proId).val(items[0].text);   //省份name
-                    $(selector).parent().parent().find('#' + config.proId).data('provinceid',items[0].provinceid);   //省份id
+                        $(self).parent().parent().find('#' + config.cityId).val(items[1].text);  //城市name
+                        $(self).parent().parent().find('#' + config.cityId).data('citytype', items[1].citytype); //城市type
+                        $(self).parent().parent().find('#' + config.cityId).data('cityid', items[1].cityid);   //城市id
 
-                    $(selector).parent().parent().find('#' + config.cityId).val(items[1].text);  //城市name
-                    $(selector).parent().parent().find('#' + config.cityId).data('citytype', items[1].citytype); //城市type
-                    $(selector).parent().parent().find('#' + config.cityId).data('cityid', items[1].cityid);   //城市id
-
+                    }
+                   
                 });
             });
+
+            function getClassSelector(className) {
+                return '.' + className.replace(/\s/g, '\,\.');
+            }
         });
     }
 
@@ -55,23 +75,15 @@
     assembledController.prototype = {
         init: function (conf) {
             this.conf = conf;  //传递参数配置
+            if (conf.isForeign) {
+                this.getState();
+            } else {
+                this.getProvince();
 
-            this.getProvince();
+                this.getCity();
+            }
+           
 
-            this.getCity();
-
-            //this.assemArray();
-
-            //var self = this;
-            //var promise = new Promise(function (resolve,reject) {
-            //    self.getProvince();
-            //    self.getCity();
-            //    resolve(provinceData, cityData);
-            //});
-            //promise.then(function (value) {
-                
-            //    self.assemArray();
-            //});
             
         },
         getCity: function () {             //获取城市信息
@@ -165,7 +177,7 @@
         assemArray: function () {              //拼接数组信息
 
 
-           
+            locationData = [];
             for (var i = 0; i < provinceData.length; i++) {
 
                 var proTmp = [];
@@ -184,6 +196,68 @@
             locationData = provinceData;
             console.log('--------locationData-----------');
             console.log(locationData);
+        },
+        //获取国外信息
+        getState: function () {
+            var self = this;
+            var xml = `<?xml version= "1.0" ?>
+                                 <Requests>
+                                 <Params>
+                                 <DataSource>BPM_EXPENSE</DataSource>
+                                 <ID>erpcloud_查询国外</ID>
+                                 <Type>1</Type>
+                                 <Method>GetUserDataProcedure</Method>
+                                 <ProcedureName>erpcloud_查询国外</ProcedureName>
+                                 <Filter></Filter>
+                                 </Params>
+                                 </Requests>
+                               `;
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var stateDatas = provideData.Tables[0].Rows;
+                locationData = []; 
+                
+                var stateTmp = [];                               
+                stateTmp= stateDatas.map(function (item) {   //取出大洲
+                    return item.fstate;
+                })
+
+                stateTmp = Array.from(new Set(stateTmp));  //去重
+
+                console.log('-------stateTmp-------');
+                console.log(stateTmp);
+
+                for (var n = 0; n < stateTmp.length; n++) {
+                    var couTmp = [];
+                    for (var i = 0; i < stateDatas.length; i++) {
+                        var country = {
+                            state: stateDatas[i].fstate,
+                            text: stateDatas[i].fcountry
+                        };
+                        if (stateDatas[i].fstate == stateTmp[n]) {
+                            couTmp.push(country);
+                        }
+                    }
+                    var loca = {
+                        text: stateTmp[n],
+                        children: couTmp
+                    }
+                    locationData.push(loca);
+                }
+               
+
+            }).fail(function (e) {
+
+            });
         }
     }
    

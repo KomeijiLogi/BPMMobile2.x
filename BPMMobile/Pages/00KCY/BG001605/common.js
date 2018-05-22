@@ -1,5 +1,5 @@
 ﻿function prepMsg() {
-   
+    test();
     $("#fdate").val(getNowFormatDate(2));
     tapEvent();
     var xml = `<?xml version= "1.0" ?>
@@ -116,7 +116,7 @@ function tapEvent() {
             text: '初村3号门3期F4男宿舍'
         }
     ];
-    showPicker('fzsdd', fzsdzdata);
+    //showPicker('fzsdd', fzsdzdata);
 
     $('body').on('tap', '#fif_bc', function () {
 
@@ -275,14 +275,15 @@ function nodeControllerExp(NodeName) {
     }
 }
 
-//function test() {
-//    $("#fzsdd").showCityPicker({
-//        targetEle: 'fzsdd',         //目标元素
-//        isDelegate: false,    //是否事件代理，true为是，false为否
-//        cityId: 'fgzdz',           //城市元素id
-//        proId: 'fzsdd'              //省份id  
-//    });
-//}
+function test() {
+    $("#fzsdd").showCityPicker({
+        targetEle: '.ff',         //目标元素
+        isDelegate: true,    //是否子表使用，true为是，false为否
+        cityId: 'fgzdz',           //城市元素id
+        proId: 'fzsdd',              //省份id  
+        isForeign:true,               //是否国内
+    });
+}
 
 
 
