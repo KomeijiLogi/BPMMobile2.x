@@ -3785,7 +3785,7 @@
 <Process>
     <Name>集团公司员工入职宿舍、餐卡办理申请</Name>
     <Path>\\00跨产业集团\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/00KCY/BG001605/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/00KCY/BG001605/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/00KCY/BG001605/FlowAskDetail.html</ViewAskPage>
@@ -3814,7 +3814,37 @@
     <Description>适用于全集团员工离职时宿舍、餐卡清理的提报，统一由各车间主任发起。</Description>
   </Process>
   
+  <Process>
+    <Name>集团公司员工免费生日蛋糕申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001607/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001607/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001607/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001607/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001607/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工免费生日蛋糕申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工免费生日蛋糕申请。</Description>
+  </Process>
   
+   <Process>
+    <Name>集团公司员工车辆通行证申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001608/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001608/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001608/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001608/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001608/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工车辆通行证申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工车辆通行证申请，统一由各公司办公室发起。</Description>
+  </Process>
   
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>
