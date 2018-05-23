@@ -169,6 +169,96 @@ function initData(data, flag) {
     $("#fname").val(item.fname);
     $("#fdate").val(FormatterTimeYMS(item.fdate));
     $("#fgs").val(item.fgs);
-
+    $("#ftel").val(item.ftel);
+    $("#flx").val(item.flx);
+    var item_c = data.FormDataSet.BPM_YGCLTXZSQ_B;
+    for (var i = 0; i < item_c.length; i++) {
+        itemidArr.push(item_c[i].itemid);
+        var li = `
+                   <div id="mx" class="mui-card">
+                      <div class="mui-input-row itemtitle">
+                         <label>明细列表项</label>
+                         <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                      </div>
+                      <div class="mui-row cutOffLine" style="padding:3vw;">
+                         <div class="mui-col-xs-4" style="display:flex;">
+                            <label>姓名<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fxm" readonly placeholder="请选择"></textarea> 
+                         </div>
+                          <div class="mui-col-xs-4" style="display:flex;">
+                             <label>所属集团</label>
+                             <textarea rows="2" id="fss_jt" readonly></textarea>
+                         </div>
+                         <div class="mui-col-xs-4" style="display:flex;">
+                             <label>所属公司</label> 
+                             <textarea rows="2" id="fss_gs" readonly></textarea>
+                         </div>                           
+                      </div>
+                       <div class="mui-row cutOffLine" style="padding:3vw;">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>手机号码<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fsjh" readonly></textarea> 
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>车牌号<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fcph" readonly></textarea>  
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>车型<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fcx" readonly></textarea> 
+                            </div>
+                       </div>
+                        <div class="mui-input-row cutOffLine" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                                <div class="border border-t upload-img" style="top:0rem;">
+                                    <div class="clearfix upload-btn" id="children-bg">
+                                        <label class="label">行驶证<i style="color:red;">*</i></label>
+                                        <span class="tips" id="imageCount"></span>
+                                        <span class="upload-addbtn">
+                                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                                        </span>
+                                    </div>
+                                    <div class="upload-img-list"></div>
+                                </div>
+                        </div>
+                      <div class="mui-row cutOffLine" style="padding:3vw;">
+                          <div class="mui-col-xs-12" style="display:flex;">
+                              <label>行驶证持有人<i style="color:red;">*</i></label> 
+                              <textarea rows="2" id="fcyr" readonly ></textarea>
+                          </div>
+                      </div>
+                        <div class="mui-input-row cutOffLine" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                                <div class="border border-t upload-img" style="top:0rem;">
+                                    <div class="clearfix upload-btn" id="children-bg">
+                                        <label class="label">驾驶证<i style="color:red;">*</i></label>
+                                        <span class="tips" id="imageCount"></span>
+                                        <span class="upload-addbtn">
+                                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                                        </span>
+                                    </div>
+                                    <div class="upload-img-list"></div>
+                                </div>
+                        </div>
+                        <div class="mui-input-row cutOffLine" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                                <div class="border border-t upload-img" style="top:0rem;">
+                                    <div class="clearfix upload-btn" id="children-bg">
+                                        <label class="label">结婚证<i style="color:red;">*</i></label>
+                                        <span class="tips" id="imageCount"></span>
+                                        <span class="upload-addbtn">
+                                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                                        </span>
+                                    </div>
+                                    <div class="upload-img-list"></div>
+                                </div>
+                        </div>
+                        <div class="mui-row cutOffLine" style="padding:3vw;">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                 <label>车辆通行证号<i style="color:red;">*</i></label>    
+                                 <textarea rows="2" id="ftxzh" readonly></textarea>
+                            </div>     
+                        </div> 
+                  </div>
+                   `;
+        $("#mxlist").append(li);
+    }
 
 }
