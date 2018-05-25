@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="集团本部差旅费(含招待)申请" />
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>公司名称</label>
+                    <textarea rows="2" id="comp_name" readonly placeholder="请选择"></textarea>
+                    <input type="hidden" id="dept_no" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>部门名称</label>
+                    <textarea rows="2" id="dept_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请人</label>
+                    <input type="hidden" id="user_no" readonly />
+                    <textarea rows="2" id="user_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请日期</label>
+                    <textarea rows="2" id="sqdate" readonly></textarea>
+                </div>
+                <input type="hidden" id="user_leadtitle" readonly />
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费月度预算</label>
+                    <textarea rows="2" id="yueys" readonly></textarea>
+                    <input type="hidden" id="yiyongys" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费可用预算</label>
+                    <textarea rows="2" id="keyongys" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费用属性</label>
+                    <textarea rows="2" id="feiyongsx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费超预算%</label>
+                    <textarea rows="2" id="chaoysqk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>招待费月度预算</label>
+                    <textarea rows="2" id="en_yueys" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>招待费可用预算</label>
+                    <input type="hidden" id="en_yiyongys" />
+                    <textarea rows="2" id="en_keyongys" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>招待费用属性</label>
+                    <textarea rows="2" id="en_feiyongsx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>招待费超预算%</label>
+                    <textarea rows="2" id="en_chaoysqk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅类别<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="chailvlb" readonly placeholder="请选择"></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>是否借款</label>
+                    <textarea rows="2" id="shifoujk" readonly placeholder="请选择">否</textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>总申请金额</label>
+                    <textarea rows="2" id="tren_amt_z" readonly>0</textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>大写金额</label>
+                    <textarea rows="2" id="tren_amt_zdx" readonly>零元整</textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="beizhu" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div id="fjkcard" style="display:none;">
+                <div class="">
+                    <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                        <label>借款申请单</label>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款金额</label>
+                            <input type="number" id="jkje" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>大写金额</label>
+                            <input type="text" id="jkjedx" readonly />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款单号</label>
+                            <input type="text" id="jkcode" readonly />
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款事由</label>
+                            <textarea rows="2" id="jkrem" placeholder="请填写"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>差旅费申请明细</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用项目</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>有效天数</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>分项标准<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请金额</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>长途交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_ct" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>住宿费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs_yxts" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs_fxbz" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>餐费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf_yxts" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf_fxbz" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>市内交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn_yxts" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn_fxbz" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>其他差旅费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_qt" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>合计金额</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zmx" readonly value="0" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_z" readonly value="0" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>大写金额</label>
+                    <textarea rows="2" id="amt_zdx" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>超标准情况（%）</label>
+                    <textarea rows="2" id="chaobzqk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>出差任务内容<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="chuchairw" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div id="gntitle" class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>国内出差明细</label>
+            </div>
+            <div id="mxlist_gn">
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>职务级别<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="zwjb" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差时间<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="qsdate" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>至</label>
+                            <textarea rows="2" id="zzdate" readonly placeholder="请选择"></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地点(省)<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="dd_pro" class="city_collect" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地点(市)<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="dd_city" class="city_collect" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地区类别<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="dqlb" readonly></textarea>
+                        </div>
+                        <input type="hidden" id="citymid" readonly />
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>交通工具<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="jtgj" class="jtgj" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差人数<i style="color:red;">*</i></label>
+                            <input type="number" id="ccrs" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差天数<i style="color:red;">*</i></label>
+                            <input type="number" id="ccts" placeholder="请填写" />
+                        </div>
+                    </div>
+                    <input type="hidden" id="drccbz" readonly />
+                    <input type="hidden" id="ccbz" readonly />
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_gn" style="margin-top:0.5rem;">
+                添加国内出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div id="gwtitle" class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>国外出差明细</label>
+            </div>
+            <div id="mxlist_gw">
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>职务级别<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="zwjb" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差时间<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="qsdate" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>至</label>
+                            <textarea rows="2" id="zzdate" readonly placeholder="请选择"></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地点(州)<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="dd_pro" class="state_collect" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地点(国家)<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="dd_city" class="state_collect" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>交通工具<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="jtgj" readonly placeholder="请选择"></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差人数<i style="color:red;">*</i></label>
+                            <input type="number" id="ccrs" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差天数<i style="color:red;">*</i></label>
+                            <input type="number" id="ccts" placeholder="请填写" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_gw" style="margin-top:0.5rem;">
+                添加国外出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>招待费申请明细</label>
+            </div>
+            <div id="mxlist_zd">
+                <div class="mui-row cutOffLine" style="padding:3vw;">
+                    <div class="mui-col-xs-6" style="display:flex;">
+                        <label>合计</label>
+                        <textarea rows="2" id="en_amt_z" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-6" style="display:flex;">
+                        <label>大写金额</label>
+                        <textarea rows="2" id="en_amt_zdx" readonly></textarea>
+                    </div>
+                </div>
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>招待人数<i style="color:red;">*</i></label>
+                            <input type="number" id="zdrs" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>单人招待标准<i style="color:red;">*</i></label>
+                            <input type="number" id="zdbz" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>申请金额</label>
+                            <textarea rows="2" id="sqje" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>招待城市<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="zdcity" placeholder="请填写"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>招待地点</label>
+                            <textarea rows="2" id="zddd" placeholder="请填写"></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-12" style="display:flex;">
+                            <label>事项描述及预期实现目标<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="rem" placeholder="请填写"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_zd" style="margin-top:0.5rem;">
+                添加招待费申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+
+    <!--<script type="text/javascript" src="../../../../Scripts/util.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js?123"></script>
+    <script type="text/javascript" src="../../../../Scripts/location.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        //var vconsole = new VConsole();
+
+        mui.init();
+        mui.ready(function () {
+
+            getVersion('\\99业务平台\\03集团费用\\02费用申请', '集团本部差旅费(含招待)申请');
+            getBPMParam();
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

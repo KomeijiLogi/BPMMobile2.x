@@ -31,10 +31,8 @@
         var conf = $.extend({}, defaultConfig, config);   //混合参数
 
         return this.each(function () {
-            //var selector = this.id ? '#' + this.id : (this.className ? getClassSelector(this.className) : this.tagName);
-          
+            //var selector = this.id ? '#' + this.id : (this.className ? getClassSelector(this.className) : this.tagName);          
             //if (conf.isDelegate) {
-
             //    selector = conf.targetEle;
             //}
             var selector = conf.targetEle;
@@ -59,7 +57,7 @@
                     } else {
                         $(self).parent().parent().find('#' + config.proId).val(items[0].text);   //省份name
                         $(self).parent().parent().find('#' + config.proId).data('provinceid', items[0].provinceid);   //省份id
-                        if (conf.citytype) {           .//是否需要显性输出城市类型    
+                        if (conf.citytype) {           //是否需要显性输出城市类型    
                             $(self).parent().parent().find('#' + config.citytype).val(items[1].citytype); //城市type
                         } else {
                             $(self).parent().parent().find('#' + config.cityId).data('citytype', items[1].citytype); //城市type

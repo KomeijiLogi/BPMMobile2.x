@@ -3833,7 +3833,7 @@
    <Process>
     <Name>集团公司员工车辆通行证申请</Name>
     <Path>\\00跨产业集团\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/00KCY/BG001608/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/00KCY/BG001608/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/00KCY/BG001608/FlowAskDetail.html</ViewAskPage>
@@ -3844,6 +3844,87 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于全集团员工车辆通行证申请，统一由各公司办公室发起。</Description>
+  </Process>
+  
+  <!--<Process>
+    <Name>集团本部月度费用预算提报</Name>
+    <Path>\\99业务平台\\03集团费用\\01预算提报</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团本部月度费用预算提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司月度费用预算提报。</Description>
+  </Process>-->
+    
+  <Process>
+    <Name>集团本部招待费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司招待费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司招待费申请。</Description>
+  </Process>
+
+
+
+  <Process>
+    <Name>集团本部差旅费(含招待)申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费(含招待)申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
+  </Process>
+
+  <!--<Process>
+    <Name>集团本部培训费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowTemplate.html</ViewPage>
+    <DisplayName>集团本部培训费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司培训费的申请。</Description>
+  </Process>-->
+  <Process>
+    <Name>集团本部市内交通费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司市内交通费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
   </Process>
   
   <!--<Process>

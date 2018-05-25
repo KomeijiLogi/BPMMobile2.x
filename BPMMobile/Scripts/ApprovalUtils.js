@@ -660,7 +660,9 @@ function showPickerOptimize(picker, el, data) {
 function showPickerDelegate(zpid,zid,data) {
     var picker = new mui.PopPicker();
     picker.setData(data);
+    $(zpid).off('tap');
     $(zpid).on('tap', zid, function () {
+        var self = this;
         picker.show(function (items) {
             self.value = (items[0].text);
         });

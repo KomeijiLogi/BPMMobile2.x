@@ -53,6 +53,7 @@ textarea {
     height: auto;
     overflow: auto;
     font-size: 0.65rem;
+    padding:0rem;
 }
 
 a {

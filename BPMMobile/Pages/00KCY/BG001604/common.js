@@ -286,7 +286,7 @@ function initData(data, flag) {
                    
                  `;
         $("#mxlist").append(li);
-        var fjArrayC = item_c[i].附件;
+        var fjArrayC = item_c[i].fzp;
         fjArrayList.push(fjArrayC);
     }
     console.log(fjArrayList.join(";").split(";"));

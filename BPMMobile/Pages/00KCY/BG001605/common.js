@@ -1,5 +1,5 @@
 ﻿function prepMsg() {
-    test();
+    //test();
     $("#fdate").val(getNowFormatDate(2));
     tapEvent();
     var xml = `<?xml version= "1.0" ?>
