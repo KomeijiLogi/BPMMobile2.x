@@ -166,14 +166,7 @@ function tapEvent() {
                     $("#mxlist_gw").hide();
                     $("#tjmx_gn").show();
                     $("#tjmx_gw").hide();
-                    $(".city_collect").showCityPicker({
-                        targetEle: '.city_collect',           //目标元素
-                        isDelegate: true,       //是否多个子表使用，true为是，false为否
-                        cityId: 'dd_city',              //城市元素id
-                        proId: 'dd_pro',               //省份id  
-                        citytype: 'dqlb',             //城市类型，如果需要显性输出，那么填写对应选择器，如果隐形输出，那么不填即可
-                        isForeign: false         //是否国外，true 为国外，false为国内 
-                    });
+                  
                     break;
                 case '国外':
                     $("#gntitle").hide();
@@ -182,14 +175,7 @@ function tapEvent() {
                     $("#mxlist_gw").show();
                     $("#tjmx_gn").hide();
                     $("#tjmx_gw").show();
-                    $(".state_collect").showCityPicker({
-                        targetEle: '.state_collect',           //目标元素
-                        isDelegate: true,       //是否多个子表使用，true为是，false为否
-                        cityId: 'dd_city',              //城市元素id
-                        proId: 'dd_pro',               //省份id  
-                        citytype: 'dqlb',             //城市类型，如果需要显性输出，那么填写对应选择器，如果隐形输出，那么不填即可
-                        isForeign: true         //是否国外，true 为国外，false为国内 
-                    });
+                    
                     break;
                 case '国外+国内':
                     $("#gntitle").show();
@@ -325,6 +311,30 @@ function tapEvent() {
                  `;
         $("#mxlist_gn").append(li);
     });
-   
-   
+    
+
+    $('.city_collect').on('tap', function () {
+        console.log('111');
+        
+        $(".city_collect").showCityPicker({
+            targetEle: '.city_collect',           //目标元素
+            isDelegate: true,       //是否多个子表使用，true为是，false为否
+            cityId: 'dd_city',              //城市元素id
+            proId: 'dd_pro',               //省份id  
+            citytype: 'dqlb',             //城市类型，如果需要显性输出，那么填写对应选择器，如果隐形输出，那么不填即可
+            isForeign: false         //是否国外，true 为国外，false为国内 
+        });
+
+    });
+    $('.state_collect').on('tap', function () {
+        console.log('222');
+        $(".state_collect").showCityPicker({
+            targetEle: '.state_collect',           //目标元素
+            isDelegate: true,       //是否多个子表使用，true为是，false为否
+            cityId: 'dd_city',              //城市元素id
+            proId: 'dd_pro',               //省份id  
+            citytype: '',             //城市类型，如果需要显性输出，那么填写对应选择器，如果隐形输出，那么不填即可
+            isForeign: true         //是否国外，true 为国外，false为国内 
+        });
+    });
 }

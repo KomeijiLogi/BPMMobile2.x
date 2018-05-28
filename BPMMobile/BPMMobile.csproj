@@ -1383,6 +1383,11 @@
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302007\FlowCreate.html" />
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302007\FlowDoneDetail.html" />
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302007\FlowUndoDetail.html" />
+    <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302008\common.js" />
+    <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302008\FlowAskDetail.html" />
+    <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302008\FlowCreate.html" />
+    <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302008\FlowDoneDetail.html" />
+    <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYSQ990302008\FlowUndoDetail.html" />
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYYS990301002\common.js" />
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYYS990301002\FlowAskDetail.html" />
     <Content Include="Pages\99YeWuPingTai\03JiTuanFeiYong\FYYS990301002\FlowCreate.html" />

@@ -63,14 +63,18 @@ function tapEvent() {
                         </div>
                     </div>
                     <div class="mui-row cutOffLine" style="padding:3vw;">
-                        <div class="mui-col-xs-6" style="display:flex;">
+                        <div class="mui-col-xs-4" style="display:flex;">
                             <label>时空产品代码</label>
                             <textarea id="fskcpdm" placeholder="请填写" rows="2"></textarea>
                         </div>
-                        <div class="mui-col-xs-6" style="display:flex;">
+                        <div class="mui-col-xs-4" style="display:flex;">
                             <label>品名<i style="color:red;">*</i></label>
                             <textarea id="fpm" placeholder="请填写" rows="2"></textarea>
                         </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>单位<i style="color:red;">*</i></label> 
+                            <textarea id="fdw" placeholder="请填写" rows="2"></textarea>  
+                        </div>  
                     </div>
                     <div class="mui-row cutOffLine" style="padding:3vw;">
                         <div class="mui-col-xs-4" style="display:flex;">
@@ -380,14 +384,18 @@ function initData(data, flag) {
                         </div>
                     </div>
                     <div class="mui-row cutOffLine" style="padding:3vw;">
-                        <div class="mui-col-xs-6" style="display:flex;">
+                        <div class="mui-col-xs-4" style="display:flex;">
                             <label>时空产品代码</label>
                             <textarea id="fskcpdm" readonly rows="2">${item_c[i].时空产品代码}</textarea>
                         </div>
-                        <div class="mui-col-xs-6" style="display:flex;">
+                        <div class="mui-col-xs-4" style="display:flex;">
                             <label>品名<i style="color:red;">*</i></label>
                             <textarea id="fpm" readonly rows="2">${item_c[i].品名}</textarea>
                         </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>单位<i style="color:red;">*</i></label> 
+                            <textarea id="fdw" readonly rows="2">${item_c[i].单位}</textarea>  
+                        </div>  
                     </div>
                     <div class="mui-row cutOffLine" style="padding:3vw;">
                         <div class="mui-col-xs-4" style="display:flex;">
@@ -428,7 +436,7 @@ function checkNes() {
 }
 
 class Mx {
-    constructor(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje) {
+    constructor(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje,fdw) {
         this.fpp = fpp;
         this.fsyjx = fsyjx;
         this.fpjhh = fpjhh;
@@ -437,6 +445,7 @@ class Mx {
         this.fsl = fsl;
         this.fygdj = fygdj;
         this.fygje = fygje;
+        this.fdw = fdw;
     }
     check() {
         if (!this.fpp) {
@@ -457,6 +466,10 @@ class Mx {
         }
         if (!this.fygdj) {
             mui.toast('请填写预估单价');
+            return true;
+        }
+        if (!this.fdw) {
+            mui.toast('请填写单位');
             return true;
         }
         return false;
@@ -506,8 +519,9 @@ function Save() {
         var fsl = $(this).find("#fsl").val();
         var fygdj = $(this).find("#fygdj").val();
         var fygje = $(this).find("#fygje").val();
+        var fdw = $(this).find("#fdw").val();
 
-        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje);
+        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje,fdw);
         if (mx.check()) {
             mxflag = !mxflag;
             return;
@@ -566,6 +580,7 @@ function Save() {
                             <配件货号>${mxlistArr[i].fpjhh}</配件货号>
                             <时空产品代码>${mxlistArr[i].fskcpdm}</时空产品代码>
                             <品名>${mxlistArr[i].fpm}</品名>
+                            <单位>${mxlistArr[i].fdw}</单位>
                             <数量>${mxlistArr[i].fsl}</数量>
                             <预估单价>${mxlistArr[i].fygdj}</预估单价>
                             <预估金额>${mxlistArr[i].fygje}</预估金额>
@@ -581,7 +596,6 @@ function Save() {
 
         }
     });
-
 
 
 }
@@ -631,8 +645,9 @@ function reSave() {
         var fsl = $(this).find("#fsl").val();
         var fygdj = $(this).find("#fygdj").val();
         var fygje = $(this).find("#fygje").val();
+        var fdw = $(this).find("#fdw").val();
 
-        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje);
+        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje,fdw);
         if (mx.check()) {
             mxflag = !mxflag;
             return;
@@ -682,6 +697,7 @@ function reSave() {
                             <配件货号>${mxlistArr[i].fpjhh}</配件货号>
                             <时空产品代码>${mxlistArr[i].fskcpdm}</时空产品代码>
                             <品名>${mxlistArr[i].fpm}</品名>
+                                 <单位>${mxlistArr[i].fdw}</单位>
                             <数量>${mxlistArr[i].fsl}</数量>
                             <预估单价>${mxlistArr[i].fygdj}</预估单价>
                             <预估金额>${mxlistArr[i].fygje}</预估金额>
@@ -749,8 +765,9 @@ function AgreeOrConSign() {
         var fsl = $(this).find("#fsl").val();
         var fygdj = $(this).find("#fygdj").val();
         var fygje = $(this).find("#fygje").val();
+        var fdw = $(this).find("#fdw").val();
 
-        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje);
+        var mx = new Mx(fpp, fsyjx, fpjhh, fskcpdm, fpm, fsl, fygdj, fygje, fdw);
      
         mxlistArr.push(mx);
     });
@@ -862,6 +879,7 @@ function AgreeOrConSign() {
                             <配件货号>${mxlistArr[i].fpjhh}</配件货号>
                             <时空产品代码>${mxlistArr[i].fskcpdm}</时空产品代码>
                             <品名>${mxlistArr[i].fpm}</品名>
+                                <单位>${mxlistArr[i].fdw}</单位>
                             <数量>${mxlistArr[i].fsl}</数量>
                             <预估单价>${mxlistArr[i].fygdj}</预估单价>
                             <预估金额>${mxlistArr[i].fygje}</预估金额>
@@ -924,6 +942,7 @@ function AgreeOrConSign() {
                             <配件货号>${mxlistArr[i].fpjhh}</配件货号>
                             <时空产品代码>${mxlistArr[i].fskcpdm}</时空产品代码>
                             <品名>${mxlistArr[i].fpm}</品名>
+                                <单位>${mxlistArr[i].fdw}</单位>
                             <数量>${mxlistArr[i].fsl}</数量>
                             <预估单价>${mxlistArr[i].fygdj}</预估单价>
                             <预估金额>${mxlistArr[i].fygje}</预估金额>

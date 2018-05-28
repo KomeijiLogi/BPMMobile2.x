@@ -181,6 +181,19 @@ function calcTotal() {
      
     });
     $("#feiyje").val(feiyje);
+    var keyongys = parseFloat($("#keyongys").val());
+    var feiyje = parseFloat($("#feiyje").val());
+    var amt_yy = parseFloat($("#amt_yy").val());
+    if (keyongys > feiyje) {
+        $("#feiyongsx").val('计划内');
+        $("#chaoysqk").val('未超支');
+    } else {
+        $("#feiyongsx").val('计划外');
+        var p = formartNumber((amt_yy - keyongys + feiyje) / (keyongys == 0 ? 1 : keyongys) * 100);
+        if (p > 100) {
+            p = 100;
+        }
+        $("#chaoysqk").val(p);
     $("#feiydx").val(atoc(feiyje));
 }
 

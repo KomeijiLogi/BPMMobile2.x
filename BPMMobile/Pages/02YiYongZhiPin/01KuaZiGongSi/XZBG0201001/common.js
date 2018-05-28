@@ -75,6 +75,7 @@ function initData(data, flag) {
     $("#flxfs").val(item.联系方式);
     $("#fsycs").val(item.使用份数);
     $("#fnr").val(item.内容及用途);
+    $("#fgzgs").val(item.公章公司);
     if (item.附件 != null && item.附件 != "") {
         var fjtmp = (String)(item.附件);
 

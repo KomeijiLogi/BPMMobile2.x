@@ -3880,7 +3880,7 @@
 
 
 
-  <Process>
+  <!--<Process>
     <Name>集团本部差旅费(含招待)申请</Name>
     <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
     <CanCreate>True</CanCreate>
@@ -3894,7 +3894,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
-  </Process>
+  </Process>-->
 
   <!--<Process>
     <Name>集团本部培训费申请</Name>
@@ -3911,6 +3911,7 @@
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司培训费的申请。</Description>
   </Process>-->
+  
   <Process>
     <Name>集团本部市内交通费申请</Name>
     <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
@@ -3926,6 +3927,23 @@
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
   </Process>
+  
+  <Process>
+    <Name>集团本部管理学院培训费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowTemplate.html</ViewPage>
+    <DisplayName>集团本部管理学院培训费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于管理学院培训费申请。</Description>
+  </Process>
+  
   
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>
