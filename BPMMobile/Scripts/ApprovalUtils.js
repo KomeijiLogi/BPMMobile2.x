@@ -1359,7 +1359,7 @@ function getPseronInfoByopenId(selecPersonOpenIdArr) {
 
 //将null转换成空字符
 function changeNullToEmpty(value) {
-    if (value == null) {
+    if (value == null || value=='null') {
         value = '';
     }
     return value;

@@ -83,12 +83,12 @@
             <div class="mui-input-group" style="">
                 <div class="mui-input-row mui-checkbox cutOffLine" style="padding:3vw;">
                     <label>培训费申请</label>
-                    <input type="checkbox" name="ffyxm" id="fpxfbx" readonly checked value="1" />
+                    <input type="checkbox" name="ffyxm" id="fpxfbx" readonly disabled  />
 
                 </div>
                 <div class="mui-input-row mui-checkbox cutOffLine" style="padding:3vw;">
                     <label>其他费用申请</label>
-                    <input type="checkbox" name="ffyxm" id="fqtfbx" readonly value="0" />
+                    <input type="checkbox" name="ffyxm" id="fqtfbx" readonly disabled  />
 
                 </div>
             </div>
@@ -103,10 +103,13 @@
                 </div>
             </div>
             <div id="jkcard" style="display:none;">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>借款申请</label>
+                </div>
                 <div class="mui-row cutOffLine" style="padding:3vw;">
                     <div class="mui-col-xs-4" style="display:flex;">
                         <label>借款金额</label>
-                        <input type="number" id="jkje" readonly/>
+                        <input type="number" id="jkje" readonly />
                     </div>
                     <div class="mui-col-xs-4" style="display:flex;">
                         <label>大写金额</label>
@@ -206,7 +209,13 @@
                         <textarea rows="2" id="hjdx" readonly></textarea>
                     </div>
                 </div>
-               
+                <div id="mxlist">
+
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;display:none;">
+                    添加其他费用申请明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
             </div>
             <div class="mui-input-row" id="csd">
                 <label>加签</label>

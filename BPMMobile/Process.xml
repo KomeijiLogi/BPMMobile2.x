@@ -3937,12 +3937,46 @@
     <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowAskDetail.html</ViewAskPage>
     <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowDoneDetail.html</ViewDonePage>
     <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowTemplate.html</ViewPage>
-    <DisplayName>集团本部管理学院培训费申请</DisplayName>
+    <DisplayName>集团公司管理学院培训费申请</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于管理学院培训费申请。</Description>
   </Process>
+  
+  <Process>
+    <Name>集团本部车辆费用申请(行政办公室)</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司车辆费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司车辆费用申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>集团本部其他费用申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司其他费用申请。</Description>
+  </Process>
+  
+  
   
   
   <!--<Process>

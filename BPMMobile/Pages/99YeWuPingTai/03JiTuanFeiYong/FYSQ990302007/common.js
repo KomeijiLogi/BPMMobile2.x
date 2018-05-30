@@ -75,9 +75,7 @@ function searcHbudget() {
         } else {
             $("#feiyongsx").val('计划外');
             var p = formartNumber(( budgetData.amt_yy - budgetData.amt) / (budgetData.amt == 0 ? 1 : budgetData.amt) * 100);
-            if (p > 100) {
-                p = 100;
-            }
+           
             $("#chaoysqk").val(p);
         }
     }).fail(function (e) {
@@ -194,7 +192,8 @@ function calcTotal() {
             p = 100;
         }
         $("#chaoysqk").val(p);
-    $("#feiydx").val(atoc(feiyje));
+        $("#feiydx").val(atoc(feiyje));
+    }
 }
 
 
@@ -211,12 +210,13 @@ function deleteItem(context) {
 
 var item = null;
 var item_c = [];
+
 function initData(data, flag) {
     item = data.FormDataSet.fysq_snjt_m[0];
     if (flag) {
-        $("#taskId").val(item.lscode);
+        $("#taskId").val(item.TaskID);
         $("#stepId").val(stepId);
-        $("#fbillno").val(item.fbillno);
+        $("#fbillno").val(item.lscode);
     }
     $("#comp_name").val(item.comp_name);
     $("#dept_no").val(item.dept_no);
@@ -302,24 +302,25 @@ class Mx {
     check() {
         if (!this.sqdate) {
             mui.toast('请选择日期');
-            return;
+            return true;
         }
         if (!this.chufd) {
             mui.toast('请填写出发地');
-            return;
+            return true;
         }
         if (!this.mudd) {
             mui.toast('请填写目的地');
-            return;
+            return true;
         }
         if (!this.jiaotgj) {
             mui.toast('请选择交通工具');
-            return;
+            return true;
         }
         if (!this.shenqje) {
             mui.toast('请填写申请金额');
-            return;
+            return true;
         }
+        return false;
     }
 }
 
@@ -548,79 +549,79 @@ function hasRead() {
     });
 }
 
-function AgreeOrConSign() {
-    var pid = $("#stepId").val();
-    var fbillno = $("#fbillno").val();
-    var comment = $("#signSuggest").val();
-    var nodeName = $("#nodeName").val();
-    console.log('-------主表---------');
-    console.log(item);
-    console.log('-------子表---------');
-    console.log(item_c);
+    function AgreeOrConSign() {
+        var pid = $("#stepId").val();
+        var fbillno = $("#fbillno").val();
+        var comment = $("#signSuggest").val();
+        var nodeName = $("#nodeName").val();
+        console.log('-------主表---------');
+        console.log(item);
+        console.log('-------子表---------');
+        console.log(item_c);
 
-    var consignFlag = false;
-    var consignUserId = new Array();
-    var consignRoutingType;
-    var consignReturnType;
+        var consignFlag = false;
+        var consignUserId = new Array();
+        var consignRoutingType;
+        var consignReturnType;
 
-    var consignUserStr;
+        var consignUserStr;
 
-    //加签if分支
-    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
-        consignFlag = true;
+        //加签if分支
+        if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+            consignFlag = true;
 
-        if ($('#sxsl').hasClass('mui-selected')) {
-            consignRoutingType = 'Serial';
+            if ($('#sxsl').hasClass('mui-selected')) {
+                consignRoutingType = 'Serial';
 
-        } else if ($('#pxsl').hasClass('mui-selected')) {
-            consignRoutingType = 'Parallel';
+            } else if ($('#pxsl').hasClass('mui-selected')) {
+                consignRoutingType = 'Parallel';
+            }
+
+            if ($('#hdbjdl').hasClass('mui-selected')) {
+                consignReturnType = 'Return';
+            } else if ($('#jrxjdl').hasClass('mui-selected')) {
+                consignReturnType = 'Forward';
+            }
+
+
+            var consignAjax = $.ajax({
+                type: "POST",
+                url: "/api/bpm/PostAccount",
+                data: { "ids": consignOpenIdArr },
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                }
+            }).done(function (data, status) {
+                //alert(status);
+                if (status == "success") {
+
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        consignUserId.push(data.data[i].phone);
+                    }
+                    $('#consignUser').val(consignUserId);
+                    consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                    for (var i = 0; i < consignUserStr.length; i++) {
+                        consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                    }
+                    consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+                }
+            }).fail(function () {
+
+            });
+        } else {
+
+
         }
 
-        if ($('#hdbjdl').hasClass('mui-selected')) {
-            consignReturnType = 'Return';
-        } else if ($('#jrxjdl').hasClass('mui-selected')) {
-            consignReturnType = 'Forward';
-        }
-
-
-        var consignAjax = $.ajax({
-            type: "POST",
-            url: "/api/bpm/PostAccount",
-            data: { "ids": consignOpenIdArr },
-            beforeSend: function (XHR) {
-                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-
-            }
-        }).done(function (data, status) {
-            //alert(status);
-            if (status == "success") {
-
-
-                for (var i = 0; i < data.data.length; i++) {
-                    consignUserId.push(data.data[i].phone);
-                }
-                $('#consignUser').val(consignUserId);
-                consignUserStr = (String)($('#consignUser').val()).split(",");
-
-                for (var i = 0; i < consignUserStr.length; i++) {
-                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
-                }
-                consignUserStr = '[' + consignUserStr.toString() + ']';
-
-
-
-            }
-        }).fail(function () {
-
-        });
-    } else {
-
-
-    }
-
-    if (consignFlag) {
-        consignAjax.then(function () {
-            var xml = `<?xml version="1.0"?>
+        if (consignFlag) {
+            consignAjax.then(function () {
+                var xml = `<?xml version="1.0"?>
                      <XForm>
                      <Header>
                      <Method>Process</Method>
@@ -636,6 +637,63 @@ function AgreeOrConSign() {
                      <Context>{&quot;Routing&quot;:{}}</Context>
                      </Header>
                      <FormData>`;
+                xml += `
+                       <fysq_snjt_m>
+                            <lscode>${item.lscode}</lscode>
+                            <comp_name>${item.comp_name}</comp_name>
+                            <leadtitle>${item.leadtitle}</leadtitle>
+                            <dept_no>${item.dept_no}</dept_no>
+                            <dept_name>${item.dept_name}</dept_name>
+                            <user_no>${item.user_no}</user_no>
+                            <user_name>${item.user_name}</user_name>
+                            <yueys>${item.yueys}</yueys>
+                            <keyongys>${item.keyongys}</keyongys>
+                            <sqdate>${item.sqdate}</sqdate>
+                            <feiyongsx>${item.feiyongsx}</feiyongsx>
+                            <chaoysqk>${item.chaoysqk}</chaoysqk>
+                            <feiyje>${item.feiyje}</feiyje>
+                            <feiydx>${item.feiydx}</feiydx>
+                        </fysq_snjt_m>
+                    `;
+                for (var i = 0; i < item_c.length; i++) {
+                    xml += `
+                           <fysq_snjt_t>
+                                <RelationRowGuid>${i + 1}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
+                                <sqdate>${item_c[i].sqdate}</sqdate>
+                                <chufd>${item_c[i].chufd}</chufd>
+                                <mudd>${item_c[i].mudd}</mudd>
+                                <jiaotgj>${item_c[i].jiaotgj}</jiaotgj>
+                                <shenqje>${item_c[i].shenqje}</shenqje>
+                                <remark>${item_c[i].remark}</remark>
+                            </fysq_snjt_t>
+                       `;
+                }
+                xml += `
+                       </FormData>
+                    </XForm>
+                   `;
+                PostXml(xml);
+            })
+        } else {
+            var xml = `<?xml version="1.0"?>
+                   <XForm>
+                   <Header>
+                   <Method>Process</Method>
+                   <PID>${pid}</PID>
+                   <Action>同意</Action>
+                   <Comment>${comment}</Comment>
+
+                    <UrlParams></UrlParams>
+                    <ConsignEnabled>false</ConsignEnabled>
+                    <ConsignUsers>[]</ConsignUsers>
+                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                    <ConsignReturnType>Return</ConsignReturnType>
+
+                  <InviteIndicateUsers>[]</InviteIndicateUsers>
+                  <Context>{&quot;Routing&quot;:{}}</Context>
+                  </Header>
+                  <FormData>`;
             xml += `
                        <fysq_snjt_m>
                             <lscode>${item.lscode}</lscode>
@@ -657,7 +715,7 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c.length; i++) {
                 xml += `
                            <fysq_snjt_t>
-                                <RelationRowGuid>${i+1}</RelationRowGuid>
+                                <RelationRowGuid>${i + 1}</RelationRowGuid>
                                 <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
                                 <sqdate>${item_c[i].sqdate}</sqdate>
                                 <chufd>${item_c[i].chufd}</chufd>
@@ -673,63 +731,7 @@ function AgreeOrConSign() {
                     </XForm>
                    `;
             PostXml(xml);
-        })
-    } else {
-        var xml = `<?xml version="1.0"?>
-                   <XForm>
-                   <Header>
-                   <Method>Process</Method>
-                   <PID>${pid}</PID>
-                   <Action>同意</Action>
-                   <Comment>${comment}</Comment>
 
-                    <UrlParams></UrlParams>
-                    <ConsignEnabled>false</ConsignEnabled>
-                    <ConsignUsers>[]</ConsignUsers>
-                    <ConsignRoutingType>Parallel</ConsignRoutingType>
-                    <ConsignReturnType>Return</ConsignReturnType>
-
-                  <InviteIndicateUsers>[]</InviteIndicateUsers>
-                  <Context>{&quot;Routing&quot;:{}}</Context>
-                  </Header>
-                  <FormData>`;
-        xml += `
-                       <fysq_snjt_m>
-                            <lscode>${item.lscode}</lscode>
-                            <comp_name>${item.comp_name}</comp_name>
-                            <leadtitle>${item.leadtitle}</leadtitle>
-                            <dept_no>${item.dept_no}</dept_no>
-                            <dept_name>${item.dept_name}</dept_name>
-                            <user_no>${item.user_no}</user_no>
-                            <user_name>${item.user_name}</user_name>
-                            <yueys>${item.yueys}</yueys>
-                            <keyongys>${item.keyongys}</keyongys>
-                            <sqdate>${item.sqdate}</sqdate>
-                            <feiyongsx>${item.feiyongsx}</feiyongsx>
-                            <chaoysqk>${item.chaoysqk}</chaoysqk>
-                            <feiyje>${item.feiyje}</feiyje>
-                            <feiydx>${item.feiydx}</feiydx>
-                        </fysq_snjt_m>
-                    `;
-        for (var i = 0; i < item_c.length; i++) {
-            xml += `
-                           <fysq_snjt_t>
-                                <RelationRowGuid>${i + 1}</RelationRowGuid>
-                                <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
-                                <sqdate>${item_c[i].sqdate}</sqdate>
-                                <chufd>${item_c[i].chufd}</chufd>
-                                <mudd>${item_c[i].mudd}</mudd>
-                                <jiaotgj>${item_c[i].jiaotgj}</jiaotgj>
-                                <shenqje>${item_c[i].shenqje}</shenqje>
-                                <remark>${item_c[i].remark}</remark>
-                            </fysq_snjt_t>
-                       `;
         }
-        xml += `
-                       </FormData>
-                    </XForm>
-                   `;
-        PostXml(xml);
-
-    }
+    
 }

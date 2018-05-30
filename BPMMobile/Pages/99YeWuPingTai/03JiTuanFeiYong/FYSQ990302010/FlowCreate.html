@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="集团本部管理学院培训费申请" />
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>公司名称</label>
+                    <textarea rows="2" id="comp_name" readonly placeholder="请选择"></textarea>
+                </div>
+                <input type="hidden" id="if_verify" readonly />
+                <input type="hidden" id="leadtitle" readonly />
+                <input type="hidden" id="dept_no" readonly />
+                <input type="hidden" id="user_no" readonly />
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>部门名称</label>
+                    <textarea rows="2" id="dept_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="user_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请日期</label>
+                    <textarea rows="2" id="sqdate" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>是否借款</label>
+                    <textarea rows="2" id="shifoujk" readonly placeholder="请选择">否</textarea>
+                </div>
+                <div class="mui-col-xs-9" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="beizhu" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div id="jkcard" style="display:none;">
+                <div class="mui-row cutOffLine" style="padding:3vw;">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>单号</label>
+                        <textarea rows="2" id="jiekdh" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>借款金额</label>
+                        <input type="number" id="jiekje" placeholder="请填写" style="height:0;" />
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>大写金额</label>
+                        <textarea rows="2" id="jiekjedx" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine" style="padding:3vw;">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>借款事由</label>
+                        <textarea rows="4" id="jiekremark" placeholder="请填写"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>其他费用申请明细</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>合计</label>
+                    <textarea rows="2" id="feiyje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>大写</label>
+                    <textarea rows="2" id="feiydx" readonly></textarea>
+                </div>
+            </div>
+            <div id="mxlist">
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>费用项目</label>
+                            <textarea rows="2" id="feiyxm" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>月度预算</label>
+                            <input type="hidden" id="feiyxmcode" readonly/>
+                            <textarea rows="2" id="yuedysje" readonly></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>可用预算</label>
+                            <textarea rows="2" id="keyysje" readonly></textarea>
+                        </div>
+                        <input type="hidden" id="amt_yy" readonly/>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>费用属性</label>
+                            <textarea rows="2" id="feiysx" readonly></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>申请金额</label>
+                            <input id="shenqje" type="number" placeholder="请填写" style="height:0;"/>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>超预算情况%</label>
+                            <textarea rows="2" id="chaoysqk" readonly></textarea>
+                        </div>
+                       
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-12" style="display:flex;">
+                            <label>事件描述及预期实现目标<i style="color:red;">*</i></label>
+                            <textarea rows="4" id="remark" placeholder="请填写"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加其他费用申请明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <!--<script type="text/javascript" src="../../../../Scripts/util.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js?123"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        //var vconsole = new VConsole();
+
+        mui.init();
+        mui.ready(function () {
+
+            getVersion('\\99业务平台\\03集团费用\\02费用申请', '集团本部其他费用申请');
+            getBPMParam();
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>
