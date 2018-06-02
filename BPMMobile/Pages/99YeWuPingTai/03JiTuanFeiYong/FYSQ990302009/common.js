@@ -75,9 +75,7 @@ function searcHbudget() {
         } else {
             $("#feiyongsx").val('预算外');
             var p = formartNumber((budgetData.amt_yy - budgetData.amt) / (budgetData.amt == 0 ? 1 : budgetData.amt) * 100);
-            if (p > 100) {
-                p = 100;
-            }
+            
             $("#chaoysqk").val(p);
         }
 

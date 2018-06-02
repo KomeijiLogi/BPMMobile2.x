@@ -33,6 +33,16 @@
     color: white;
     background-color: #51FFFF;
 }
+
+.title {
+    background-color: #5191FD;
+    color:whitesmoke;
+    text-align:center;
+    height:7.5vw;
+
+}
+
+
 #signbody {
     display: none;
 }

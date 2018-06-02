@@ -30,36 +30,7 @@ window.onload = function () {
         };
 
     } else if (String(window.location.href).match('UndoDetail') != null) {
-        //var url = window.location.href;
-        //var taskId;
-        //var stepId;
-        //if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
-        //    taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
-        //    if (url.split("pid=")[1].indexOf("ticket") != -1) {
-        //        stepId = url.split("pid=")[1];
-        //        stepId = stepId.split("&ticket")[0];
-        //        var ticket = url.split("=")[3];
-        //        localStorage.setItem('ticket', ticket);
-        //    } else {
-        //        stepId = url.split("pid=")[1];
-        //    }
-        //}
-        //console.log(taskId);
-        //$.ajax({
-        //    type: "get",
-        //    url: "/api/bpm/GetTaskData",
-        //    data: { 'taskId': taskId },
-
-        //    beforeSend: function (XHR) {
-        //        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-        //    }
-        //}).done(function (data) {
-        //    console.log('隐藏按钮');
-        //    if (data.Steps[0].Finished) {
-        //        $("#approvalD").hide();
-        //    }
-        //}).fail(function (e) {
-        //});
+         
     }
 
    

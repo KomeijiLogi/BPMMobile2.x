@@ -3896,7 +3896,7 @@
     <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
   </Process>-->
 
-  <!--<Process>
+  <Process>
     <Name>集团本部培训费申请</Name>
     <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
     <CanCreate>True</CanCreate>
@@ -3910,7 +3910,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司培训费的申请。</Description>
-  </Process>-->
+  </Process>
   
   <Process>
     <Name>集团本部市内交通费申请</Name>

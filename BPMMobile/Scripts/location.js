@@ -18,11 +18,11 @@
     var defaultConfig = {
         
          targetEle: '',           //目标元素
-         isDelegate: false,       //是否多个子表使用，true为是，false为否
          cityId: '',              //城市元素id
          proId: '',               //省份id  
          citytype:'',             //城市类型，如果需要显性输出，那么填写对应选择器，如果隐形输出，那么不填即可
-         isForeign: false         //是否国外，true 为国外，false为国内 
+         isForeign: false,         //是否国外，true 为国外，false为国内 
+         isMixin: false            //是否混合国内外数据  
     };
     //拼装数组信息
     function assembledController() {
@@ -31,15 +31,19 @@
     assembledController.prototype = {
         init: function (conf) {
             this.conf = conf;  //传递参数配置
-            if (conf.isForeign) {
-                this.getState();
-            } else {
-                this.getProvince();
-
+            if (conf.isMixin) {
+                this.getAll();
                 this.getCity();
+
+            } else {
+                if (conf.isForeign) {
+                    this.getState();
+                } else {
+                    this.getProvince();
+                    this.getCity();
+                }
             }
-
-
+           
 
         },
         getCity: function () {             //获取城市信息
@@ -79,6 +83,7 @@
                     }
                     cityData.push(citys);
                 }
+                
                 //console.log('-----------cityData-----------');
                 //console.log(cityData);
 
@@ -214,7 +219,52 @@
             }).fail(function (e) {
 
             });
+        },
+
+        //获取国内与国外信息
+        getAll: function () {
+            var xml = `<?xml version= "1.0" ?>
+                                 <Requests>
+                                 <Params>
+                                 <DataSource>BPM_EXPENSE</DataSource>
+                                 <ID>erpcloud_查询国内外</ID>
+                                 <Type>1</Type>
+                                 <Method>GetUserDataProcedure</Method>
+                                 <ProcedureName>erpcloud_查询国内外</ProcedureName>
+                                 <Filter></Filter>
+                                 </Params>
+                                 </Requests>
+                               `;
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                console.log(provideData);
+                var pDatas = provideData.Tables[0].Rows;
+                for (var i = 0; i < pDatas.length; i++) {
+                    var pro = {
+                        flag: pDatas[i].flag,
+                        id: pDatas[i].id,
+                        provinceid: pDatas[i].provinceid,
+                        text: pDatas[i].provincename,
+                        children: []
+                    }
+                    provinceData.push(pro);
+                }
+                //console.log('-----------provinceData-----------');
+                //console.log(provinceData);
+
+            }).fail(function (e) {
+                console.log(e);
+            });
         }
+
     }
 
     //主函数

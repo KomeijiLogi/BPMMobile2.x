@@ -1585,6 +1585,7 @@
     <Content Include="Scripts\calendar-selector.js" />
     <Content Include="Scripts\city.data.js" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\component.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
