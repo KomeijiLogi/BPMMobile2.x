@@ -236,3 +236,6 @@ li {
     border-collapse: collapse;
     flex-direction:column;
 }
+.padding{
+    padding:3vw;
+}

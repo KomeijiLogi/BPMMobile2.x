@@ -19,18 +19,50 @@
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
             <div class="mui-row cutOffLine" style="padding:3vw;">
-                <div class="mui-col-xs-3" style="display:flex;">
-
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>公司名称</label>
+                    <textarea rows="2" id="comp_name" readonly></textarea>
                 </div>
-                <div class="mui-col-xs-3" style="display:flex;">
-
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>部门</label>
+                    <input type="hidden" id="dept_no" readonly />
+                    <textarea rows="2" id="dept_name" readonly></textarea>
                 </div>
-                <div class="mui-col-xs-3" style="display:flex;">
-
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>提报人</label>
+                    <input type="hidden" id="user_leadtitle" readonly />
+                    <textarea rows="2" id="usr_name" readonly></textarea>
+                    <input type="hidden" id="usr_no" readonly />
                 </div>
-                <div class="mui-col-xs-3" style="display:flex;">
 
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>年度</label>
+                    <textarea rows="2" id="nian" readonly placeholder="请选择"></textarea>
+                    <input type="hidden" id="if_bm" readonly />
                 </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>月份</label>
+                    <textarea rows="2" id="yue" readonly placeholder="请选择"></textarea>
+                    <input type="hidden" id="if_cz" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>提报日期</label>
+                    <textarea rows="2" id="rq" readonly placeholder="请选择"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="rem" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>提报明细</label>
+            </div>
+            <div id="list">
+
             </div>
 
         </form>

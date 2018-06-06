@@ -3675,7 +3675,7 @@
     <Description>适用于洁丽康公司销售部门的月计划提报，由销售部门发起。</Description>
   </Process>
     
-    <Process>
+    <!--<Process>
     <Name>洁丽康公司月销售任务完成情况分析提报</Name>
     <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
     <CanCreate>True</CanCreate>
@@ -3689,7 +3689,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>未完成</Group>
     <Description>适用于洁丽康公司销售部门的月销售任务完成情况分析提报，由销售部门发起。</Description>
-  </Process>
+  </Process>-->
     
     
     
@@ -3975,9 +3975,133 @@
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司其他费用申请。</Description>
   </Process>
+
+  <Process>
+    <Name>集团本部通讯费用报销_新</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司通讯费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司通讯费用报销申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>集团本部差旅费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费用报销。</Description>
+  </Process>
+   <Process>
+    <Name>集团本部招待费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司招待费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司招待费报销。</Description>
+  </Process>
+  <Process>
+    <Name>集团本部差旅费(含招待)报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费(含招待)报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)报销。</Description>
+  </Process>
+
+  <Process>
+    <Name>集团本部培训费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司培训费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司培训费报销。</Description>
+  </Process>
+  
+<Process>
+    <Name>集团本部管理学院培训费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司管理学院培训费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于管理学院培训费报销。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部市内交通费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司市内交通费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司市内交通费报销。</Description>
+  </Process>
   
   
-  
+  <Process>
+    <Name>集团本部车辆费用报销(行政办公室)</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司车辆费用报销(行政办公室)</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司车辆费用报销。</Description>
+  </Process>
   
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>
