@@ -129,6 +129,10 @@ function tapEvent() {
         {
             value: '',
             text: '威海威高国际医疗投资控股有限公司'
+        },
+        {
+            value: '',
+            text: '威海火炬高技术产业开发区威高管理学院职业培训学校'
         }
     ];
     showPicker('comp_name', comp_name_data);
@@ -337,4 +341,124 @@ function tapEvent() {
             isForeign: true         //是否国外，true 为国外，false为国内 
         });
     });
+}
+
+
+var item = null;
+var item_c1 = [];
+var item_c3 = [];
+var item_c2 = [];
+function initData(data, flag) {
+    item = data.FormDataSet.fysq_travelentertain_m[0];
+
+    item_c1 = data.FormDataSet.fysq_travelentertain_t1;
+
+    item_c3 = data.FormDataSet.fysq_travelentertain_t3;
+
+    item_c2 = data.FormDataSet.fysq_travelentertain_t2;
+
+
+}
+
+function nodeControllerExp(nodeName) {
+    if (String(nodeName).match('开始') != null) {
+        mui.alert('请移步网页端处理');
+    }
+}
+
+
+function Save() {
+
+}
+
+function reSave() {
+
+}
+function hasRead() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = '';
+    var btnArray = ['取消', '确定'];
+    mui.prompt('请选填知会意见', '可以不填', '知会意见', btnArray, function (e) {
+        if (e.index == 1) {
+            comment = e.value;
+            var xml = `<?xml version="1.0"?>
+                           <XForm>
+                             <Header>
+                               <Method>InformSubmit</Method>
+                               <PID>${pid}</PID>
+                               <Comment>${comment}</Comment>
+                             </Header>
+                           </XForm>
+              `;
+            PostXml(xml);
+        }
+    });
+}
+function AgreeOrConSign() {
+    var pid = $("#stepId").val();
+    var fbillno = $("#fbillno").val();
+    var comment = $("#signSuggest").val();
+    var nodeName = $("#nodeName").val();
+
+    var consignFlag = false;
+    var consignUserId = new Array();
+    var consignRoutingType;
+    var consignReturnType;
+
+    var consignUserStr;
+
+    //加签if分支
+    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+        consignFlag = true;
+
+        if ($('#sxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Serial';
+
+        } else if ($('#pxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Parallel';
+        }
+
+        if ($('#hdbjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Return';
+        } else if ($('#jrxjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Forward';
+        }
+
+
+        var consignAjax = $.ajax({
+            type: "POST",
+            url: "/api/bpm/PostAccount",
+            data: { "ids": consignOpenIdArr },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+            }
+        }).done(function (data, status) {
+            //alert(status);
+            if (status == "success") {
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    consignUserId.push(data.data[i].phone);
+                }
+                $('#consignUser').val(consignUserId);
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+            }
+        }).fail(function () {
+
+        });
+    } else {
+
+
+    }
+
 }

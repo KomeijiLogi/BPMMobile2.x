@@ -19,7 +19,86 @@
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
             <div class="mui-row cutOffLine padding">
                 <div class="mui-col-xs-4" style="display:flex;">
+                    <label>公司名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="comp_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>部门名称</label>
+                    <textarea rows="2" id="dept_name" readonly></textarea>
+                    <input type="hidden" id="dept_no" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="user_name" readonly></textarea>
+                    <input type="hidden" id="leadtitle" readonly />
+                    <input type="hidden" id="user_no" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>车辆费申请单</label>
+                    <textarea rows="2" id="chlsqdcode" readonly></textarea>
+                    <input type="hidden" id="chlsqd" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请金额</label>
+                    <textarea rows="2" id="sqje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>核销日期</label>
+                    <textarea rows="2" id="sqdate" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>借款金额</label>
+                    <textarea rows="2" id="jkje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>超申请情况%</label>
+                    <textarea rows="2" id="chsqqk" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>是否作废</label>
+                    <textarea rows="2" id="is_cj" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>费用报销明细</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>合计</label>
+                    <textarea rows="2" id="bxje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>大写</label>
+                    <textarea rows="2" id="bxjedx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>单据数</label>
+                    <textarea rows="2" id="sfdj" readonly></textarea>
+                </div>
+            </div>
+            <div id="mxlist">
 
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list">
+
+                    </div>
                 </div>
             </div>
 

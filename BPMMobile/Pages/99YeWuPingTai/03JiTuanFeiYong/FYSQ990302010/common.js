@@ -94,6 +94,10 @@ function tapEvent() {
         {
             value: '',
             text: '威海威高国际医疗投资控股有限公司'
+        },
+        {
+            value: '',
+            text: '威海火炬高技术产业开发区威高管理学院职业培训学校'
         }
     ];
     showPicker('comp_name', fgsmcdata);
