@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>推荐人<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="ftjr" readonly></textarea>
+                    <input type="hidden" id="ftjrno" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>联系电话<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="flxdh" placeholder="请填写"></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>邮箱<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="femail" placeholder="请填写"></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>所属集团<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fssjt" class="choseGr" placeholder="请选择" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>所属公司<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fssgs" class="choseGr" placeholder="请选择" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>填表人</label>
+                    <textarea rows="2" id="ftbr" readonly></textarea>
+                    <input type="hidden" id="ftbrno" readonly/>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>推荐日期</label>
+                    <textarea rows="2" id="ftjrq" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>信息/产品名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fcpmc" placeholder="请填写"></textarea>
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>信息编号</label>
+                    <textarea rows="2" id="fxxbh" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>信息类型</label>
+                    <textarea rows="2" id="fxxlx" placeholder="请选择" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>样品数量</label>
+                    <textarea rows="2" id="fypsl" placeholder="请填写"></textarea>
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>信息/产品说明<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fcpsm" placeholder="请填写"></textarea>
+                </div>
+            </div>
+
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list">
+
+                    </div>
+                </div>
+            </div>
+            <div id="fysinfo_card" style="display:none;">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>预审信息</label>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>是否有评估价值<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fif_pgjz" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>评估期限</label>
+                        <textarea rows="2" id="fpgqx" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>截止日期</label>
+                        <textarea rows="2" id="fjzrq" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>预审说明</label>
+                        <textarea rows="2" id="fyssm" readonly></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div id="fxxsh_card" style="display:none;">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>信息审核</label>
+                </div>
+                <div id="xxlist">
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估单位(集团)<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fpgdw_jt" readonly></textarea>
+                                <input type="hidden" id="fpgdw_jt_id" readonly value="" />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>产业集团研发负责人</label>
+                                <textarea rows="2" id="fcyjtyffzr" readonly></textarea>
+                                <input type="hidden" id="fcyjtyffzrno" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>是否有评估价值<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fif_pgjz_xx" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>意见说明</label>
+                                <textarea rows="2" id="fyjsm" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_xx" style="margin-top:0.5rem;display:none;">
+                    添加信息审核
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+            <div id="fxxpg_card" style="display:none;">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>信息评估</label>
+                </div>
+                <div id="pglist">
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估单位(子公司)<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fpgdw_zgs" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估人</label>
+                                <textarea rows="2" id="fpgr" readonly></textarea>
+                                <input type="hidden" id="fpgrno" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估结论<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fpgjl" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>意见说明</label>
+                                <textarea rows="2" id="fyjsm_xxpg" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_pg" style="margin-top:0.5rem;display:none;">
+                    添加信息评估
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+
+
+            </div>
+            <div id="fpsxx_card" style="display:none;">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>评审信息</label>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>结论</label>
+                        <textarea rows="2" id="fjl" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>评审日期</label>
+                        <textarea rows="2" id="fpsrq" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>备注</label>
+                        <textarea rows="2" id="fbeizhu" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>调研对象</label>
+                        <textarea rows="2" id="fdydx" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>负责人</label>
+                        <textarea rows="2" id="ffzr" readonly></textarea>
+                        <input type="hidden" id="ffzrno" readonly/>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>调研范围</label>
+                        <textarea rows="2" id="fdyfw" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <input type="hidden" id="fssjt_id" readonly value="1"/>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        //var vconsole = new VConsole();
+        mui.init();
+        mui.ready(function () {
+            getVersion('\\00跨产业集团\\17_研发技术', '集团公司新产品研发信息推荐申请');
+            getBPMParam();
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

@@ -3727,7 +3727,22 @@
     <Description>适用于洁丽康公司客户的申请。</Description>
   </Process>
   
-  
+  <Process>
+<Name>洁丽康公司销售订单申请</Name>
+<Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+<CanCreate>True</CanCreate>
+<CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</CreatePage>
+<ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowUndoDetail.html</ViewUndoPage>
+<ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowAskDetail.html</ViewAskPage>
+<ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowDoneDetail.html</ViewDonePage>
+<ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</ViewPage>
+<DisplayName>洁丽康公司销售订单申请</DisplayName>
+<Css></Css>
+<Icon>../../../../Content/images/5.png</Icon>
+<Group>办公管理</Group>
+<Description>适用于洁丽康公司销售订单的申请，由销售人员发起</Description>
+</Process>
+
   
   
     
@@ -3846,10 +3861,11 @@
     <Description>适用于全集团员工车辆通行证申请，统一由各公司办公室发起。</Description>
   </Process>
   
-  <!--<Process>
+  
+  <Process>
     <Name>集团本部月度费用预算提报</Name>
     <Path>\\99业务平台\\03集团费用\\01预算提报</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowAskDetail.html</ViewAskPage>
@@ -3860,8 +3876,23 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司月度费用预算提报。</Description>
-  </Process>-->
-    
+  </Process>
+   <Process>
+    <Name>集团本部差旅费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费用申请。</Description>
+  </Process>
+  
   <Process>
     <Name>集团本部招待费申请</Name>
     <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
@@ -4133,6 +4164,40 @@
     <Group>办公管理</Group>
     <Description>适用于集团本部高管车辆费用报销。</Description>
   </Process>
+  
+  
+  <Process>
+    <Name>集团公司新产品研发信息推荐申请</Name>
+    <Path>\\00跨产业集团\\17_研发技术</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/YF0017004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/YF0017004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/YF0017004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/YF0017004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/YF0017004/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司新产品研发信息推荐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团新产品研发信息推荐的申请。</Description>
+  </Process>
+  
+   <!--<Process>
+    <Name>集团公司研发产成品信息提报</Name>
+    <Path>\\00跨产业集团\\17_研发技术</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/YF0017005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/YF0017005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/YF0017005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/YF0017005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/YF0017005/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司研发产成品信息提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团新产品研发信息推荐的申请。</Description>
+  </Process>-->
+  
   
   <!--<Process>
     <Name>洁丽康公司其他费用报销</Name>

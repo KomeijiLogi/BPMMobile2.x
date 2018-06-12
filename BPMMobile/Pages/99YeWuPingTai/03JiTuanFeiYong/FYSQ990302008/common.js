@@ -450,7 +450,7 @@ function initData(data, flag) {
 
     item_c = data.FormDataSet.fysq_peixunf_t;
     for (var i = 0; i < item_c.length; i++) {
-        itemidArr.push(itemidArr[i]);
+        itemidArr.push(item_c[i].itemid);
         var li = `<div id="mx">
                     <div class="mui-input-row itemtitle">
                         <label>明细列表项</label>
@@ -718,15 +718,18 @@ function Save() {
                 </fysq_peixunf_t>
                        `;
             } else {
-                xml += `
+                for (var i = 0; i < mxlistArr.length; i++) {
+                    xml += `
                    <fysq_peixunf_t>
-                        <RelationRowGuid>${i+1}</RelationRowGuid>
+                        <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys></RowPrimaryKeys>
                         <fyxmmc>${mxlistArr[i].fyxmmc}</fyxmmc>
                         <sqje>${mxlistArr[i].sqje}</sqje>
                         <beizhusm>${mxlistArr[i].beizhusm}</beizhusm>
                     </fysq_peixunf_t>
                        `;
+                }
+
             }
             xml += `
                        </FormData>
@@ -926,7 +929,8 @@ function reSave() {
                 </fysq_peixunf_t>
                        `;
             } else {
-                xml += `
+                for (var i = 0; i < mxlistArr.length; i++) {
+                    xml += `
                    <fysq_peixunf_t>
                         <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys></RowPrimaryKeys>
@@ -935,6 +939,8 @@ function reSave() {
                         <beizhusm>${mxlistArr[i].beizhusm}</beizhusm>
                     </fysq_peixunf_t>
                        `;
+                }
+
             }
             xml += `
                        </FormData>
@@ -1156,7 +1162,8 @@ function AgreeOrConSign() {
                 </fysq_peixunf_t>
                        `;
             } else {
-                xml += `
+                for (var i = 0; i < mxlistArr.length; i++) {
+                    xml += `
                    <fysq_peixunf_t>
                         <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
@@ -1165,6 +1172,8 @@ function AgreeOrConSign() {
                         <beizhusm>${mxlistArr[i].beizhusm}</beizhusm>
                     </fysq_peixunf_t>
                        `;
+                }
+
             }
             xml += `
                        </FormData>
@@ -1247,7 +1256,8 @@ function AgreeOrConSign() {
                 </fysq_peixunf_t>
                        `;
         } else {
-            xml += `
+            for (var i = 0; i < mxlistArr.length; i++) {
+                xml += `
                    <fysq_peixunf_t>
                         <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
@@ -1256,11 +1266,14 @@ function AgreeOrConSign() {
                         <beizhusm>${mxlistArr[i].beizhusm}</beizhusm>
                     </fysq_peixunf_t>
                        `;
+            }
+            
         }
         xml += `
                        </FormData>
                     </XForm>
                    `;
+        //console.log(xml);
         PostXml(xml);
     }
 }

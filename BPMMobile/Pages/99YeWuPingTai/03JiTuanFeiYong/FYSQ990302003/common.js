@@ -381,6 +381,8 @@ function initData(data, flag) {
 
     $("#if_verify").val(item.if_verify);
     $("#if_bx").val(item.if_bx);
+
+  
     $("#fyqf").val(item.fyqf);
     $("#fyqr").val(item.fyqr);
     $("#fphone").val(item.fphone);
@@ -399,6 +401,7 @@ function initData(data, flag) {
     $("#amt_sn").val(item.amt_sn);
     $("#amt_qt").val(item.amt_qt);
     $("#amt_zmx").val(item.amt_zmx);
+
 
     $("#amt_z").val(item.amt_z);
     $("#amt_zdx").val(item.amt_zdx);
@@ -716,6 +719,7 @@ function AgreeOrConSign() {
 			
             <if_verify>${item.if_verify}</if_verify>
             <if_bx>${item.if_bx}</if_bx>
+            
             <fyqf>${item.fyqf}</fyqf>
             <fyqr>${item.fyqr}</fyqr>
             <fphone>${item.fphone}</fphone>

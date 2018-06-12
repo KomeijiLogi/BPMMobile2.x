@@ -116,6 +116,15 @@
                 <label for="fzzzw_name">转正后职位</label>
                 <input type="text" id="fzzzw_name" name="fzzzw_name" readonly="readonly" />
             </div>
+            <div class="mui-input-row">
+                <label>职务层级</label>
+                <textarea rows="2" id="fzhiwulevel" readonly></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>分管领导</label>
+                <textarea rows="2" id="ffgld" readonly></textarea>
+                <input type="hidden" id="ffgldid" readonly />
+            </div>
             <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
                 <div class="border border-t upload-img" style="top:0rem;">
                     <!--上传图片-->
@@ -348,7 +357,9 @@
                 $("#fzzzw_no").val(item.fzzzw_no);
                 $("#foper").val(item.foper);
                 $("#fdepid").val(item.fdepid);
-
+                $("#fzhiwulevel").val(item.fzhiwulevel);
+                $("#ffgld").val(item.ffgld);
+                $("#ffgldid").val(item.ffgldid);
                 if (item.fattach != null && item.fattach != "") {
                     var fjtmp = (String)(item.fattach);
 
