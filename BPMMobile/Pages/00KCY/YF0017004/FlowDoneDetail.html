@@ -87,7 +87,7 @@
                         <label class="label">附件</label>
                         <span class="tips" id="imageCount"><!--已添加0张--></span>
                         <!--上传图片按钮  -->
-                        <span class="upload-addbtn">
+                        <span class="upload-addbtn" style="display:none;">
                             <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
 
                         </span>
@@ -124,39 +124,12 @@
                 </div>
 
             </div>
-            <div id="fxxsh_card" style="display:none;">
+            <div id="fxxsh_card" style="display:block;">
                 <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
                     <label>信息审核</label>
                 </div>
                 <div id="xxlist">
-                    <div id="mx">
-                        <div class="mui-input-row itemtitle">
-                            <label>明细列表项</label>
-                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估单位(集团)<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgdw_jt" readonly></textarea>
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>产业集团研发负责人</label>
-                                <textarea rows="2" id="fcyjtyffzr" readonly></textarea>
-                                <input type="hidden" id="fcyjtyffzrno" readonly />
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>是否有评估价值<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fif_pgjz_xx" readonly></textarea>
-                            </div>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-12" style="display:flex;">
-                                <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm" readonly></textarea>
-                            </div>
-                        </div>
-                    </div>
-
+                 
                 </div>
                 <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_xx" style="margin-top:0.5rem;display:none;">
                     添加信息审核
@@ -168,33 +141,7 @@
                     <label>信息评估</label>
                 </div>
                 <div id="pglist">
-                    <div id="mx">
-                        <div class="mui-input-row itemtitle">
-                            <label>明细列表项</label>
-                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估单位(子公司)<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgdw_zgs" readonly></textarea>
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估人</label>
-                                <textarea rows="2" id="fpgr" readonly></textarea>
-                                <input type="hidden" id="fpgrno" readonly />
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估结论<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgjl" readonly></textarea>
-                            </div>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-12" style="display:flex;">
-                                <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm_xxpg" readonly></textarea>
-                            </div>
-                        </div>
-                    </div>
+                
 
                 </div>
                 <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_pg" style="margin-top:0.5rem;display:none;">

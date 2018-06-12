@@ -128,33 +128,7 @@
                     <label>信息审核</label>
                 </div>
                 <div id="xxlist">
-                    <div id="mx">
-                        <div class="mui-input-row itemtitle">
-                            <label>明细列表项</label>
-                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估单位(集团)<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgdw_jt" readonly></textarea>
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>产业集团研发负责人</label>
-                                <textarea rows="2" id="fcyjtyffzr" readonly></textarea>
-                                <input type="hidden" id="fcyjtyffzrno" readonly />
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>是否有评估价值<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fif_pgjz_xx" readonly></textarea>
-                            </div>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-12" style="display:flex;">
-                                <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm" readonly></textarea>
-                            </div>
-                        </div>
-                    </div>
+                
 
                 </div>
                 <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_xx" style="margin-top:0.5rem;display:none;">
@@ -167,40 +141,13 @@
                     <label>信息评估</label>
                 </div>
                 <div id="pglist">
-                    <div id="mx">
-                        <div class="mui-input-row itemtitle">
-                            <label>明细列表项</label>
-                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估单位(子公司)<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgdw_zgs" readonly></textarea>
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估人</label>
-                                <textarea rows="2" id="fpgr" readonly></textarea>
-                                <input type="hidden" id="fpgrno" readonly />
-                            </div>
-                            <div class="mui-col-xs-4" style="display:flex;">
-                                <label>评估结论<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgjl" readonly></textarea>
-                            </div>
-                        </div>
-                        <div class="mui-row cutOffLine padding">
-                            <div class="mui-col-xs-12" style="display:flex;">
-                                <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm_xxpg" readonly></textarea>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                 </div>
                 <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_pg" style="margin-top:0.5rem;display:none;">
                     添加信息评估
                     <span class="mui-icon mui-icon-plusempty"></span>
                 </a>
-
 
             </div>
             <div id="fpsxx_card" style="display:none;">
@@ -238,6 +185,8 @@
                 </div>
             </div>
             <input type="hidden" id="fssjt_id" readonly />
+           
+            
             <div class="mui-input-row" id="csd">
                 <label>加签</label>
                 <div class="mui-switch mui-switch-blue" id="csswitch">
@@ -305,7 +254,7 @@
         </div>
         <div class="mui-btn-row" id="approvalD">
             &nbsp;&nbsp;
-            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirmOpt()">同意</button>&nbsp;&nbsp;&nbsp;
             <button class="mui-btn mui-btn-danger" type="button" style="width:40%" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
 
         </div>

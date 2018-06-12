@@ -126,7 +126,7 @@ function tapEvent() {
                         var pio = provideData.Tables[0].Rows[0];
                         console.info(pio);
                         $("#ftjr").val(pio.NAME);
-                        $("#ftjrno").val(pio.PHONE);
+                        $("#ftjrno").val(pio.EMPLID);
                     }).fail(function (e) {
                         console.log(e);
                     });
@@ -403,7 +403,7 @@ function tapEvent_first() {
     $('body').on('tap', '#fcyjtyffzr', function () {
         var _self = this;
         var opidArr = [];
-        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function () {
+        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
 
             if (String(Object.prototype.toString.call(result)).match('String') != null) {
                 result = JSON.parse(result);
@@ -456,7 +456,7 @@ function tapEvent_first() {
                         var pio = provideData.Tables[0].Rows[0];
                         console.info(pio);
                         $(_self).val(pio.NAME);
-                        $(_self).parent().find("#fcyjtyffzrno").val(pio.PHONE);
+                        $(_self).parent().find("#fcyjtyffzrno").val(pio.EMPLID);
 
 
 
@@ -493,6 +493,7 @@ function tapEvent_first() {
                             <div class="mui-col-xs-4" style="display:flex;">
                                 <label>是否有评估价值<i style="color:red;">*</i></label>
                                 <textarea rows="2" id="fif_pgjz_xx" readonly></textarea>
+ <input type="hidden" id="fshrq_xx" readonly value="${getNowFormatDate(2)}"/>
                             </div>
                         </div>
                         <div class="mui-row cutOffLine padding">
@@ -560,9 +561,9 @@ function initComp() {
         });
        
 
-        console.log(iiA);
+       
         var picker = new mui.PopPicker();
-        picker.setData(iiA);
+        picker.setData(iiN);
         $("body").on('tap', '#fpgdw_zgs', function () {
             var _self = this;
             var keyword = $('body').find("#fpgdw_jt").val();
@@ -584,7 +585,7 @@ function tapEvent_preparation() {
     $("body").on('tap', '#fpgr', function () {
         var _self = this;
         var opidArr = [];
-        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function () {
+        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
 
             if (String(Object.prototype.toString.call(result)).match('String') != null) {
                 result = JSON.parse(result);
@@ -637,7 +638,7 @@ function tapEvent_preparation() {
                         var pio = provideData.Tables[0].Rows[0];
                         console.info(pio);
                         $(_self).val(pio.NAME);
-                        $(_self).parent().find("#fpgrno").val(pio.PHONE);
+                        $(_self).parent().find("#fpgrno").val(pio.EMPLID);
 
 
                     }).fail(function (e) {
@@ -671,7 +672,7 @@ function tapEvent_Information_audit() {
     $('body').on('tap', '#fif_pgjz_xx', function () {
         var _self = this;
         picker_if.show(function (items) {
-            $(self).val(items[0].text);
+            $(_self).val(items[0].text);
         });
     });
 
@@ -681,7 +682,7 @@ function tapEvent_Information_audit() {
     $('body').on('tap', '#fpgr', function () {
         var _self = this;
         var opidArr = [];
-        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function () {
+        XuntongJSBridge.call('selectPerson', { 'pType': '1' }, function (result) {
 
             if (String(Object.prototype.toString.call(result)).match('String') != null) {
                 result = JSON.parse(result);
@@ -734,7 +735,7 @@ function tapEvent_Information_audit() {
                         var pio = provideData.Tables[0].Rows[0];
                         console.info(pio);
                         $(_self).val(pio.NAME);
-                        $(_self).parent().find("#fpgrno").val(pio.PHONE);
+                        $(_self).parent().find("#fpgrno").val(pio.EMPLID);
 
 
 
@@ -750,7 +751,39 @@ function tapEvent_Information_audit() {
         });
     });
 
+    $("#tjmx_pg").on('tap', function () {
+        var li = `
+ <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估单位(子公司)<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fpgdw_zgs" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估人</label>
+                                <textarea rows="2" id="fpgr" readonly></textarea>
+                                <input type="hidden" id="fpgrno" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>评估结论<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fpgjl" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>意见说明</label>
+                                <textarea rows="2" id="fyjsm_xxpg" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
 
+                 `;
+        $("#pglist").append(li);
+    });
 
 }
 //信息评估
@@ -787,7 +820,8 @@ function tapEvent_Information_Evaluation() {
 
 }
 
-
+var itemidArr1 = [];
+var itemidArr2 = [];
 function initData(data, flag) {
     var item = data.FormDataSet.新产品信息推荐_主表[0];
     if (flag) {
@@ -925,6 +959,7 @@ function initData(data, flag) {
     $("#fif_pgjz").val(item.是否有评估价值);
     $("#fpgqx").val(item.评估期限);
     $("#fjzrq").val(FormatterTimeYMS(item.截止日期));
+   
     $("#fyssm").val(item.预审说明);
     $("#fjl").val(item.评审结论);
     $("#fpsrq").val(FormatterTimeYMS(item.评审日期));
@@ -934,7 +969,7 @@ function initData(data, flag) {
     var item_c = data.FormDataSet.新产品信息推荐_审核;
 
     for (var i = 0; i < item_c.length; i++) {
-
+        itemidArr1.push(item_c[i].itemid);
         var li = `
                   <div id="mx">
                         <div class="mui-input-row itemtitle">
@@ -954,14 +989,15 @@ function initData(data, flag) {
                             </div>
                             <div class="mui-col-xs-4" style="display:flex;">
                                 <label>是否有评估价值<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fif_pgjz_xx" readonly>${item_c[i].是否有评估价值}</textarea>
+                                <textarea rows="2" id="fif_pgjz_xx" readonly>${changeNullToEmpty(item_c[i].是否有评估价值)}</textarea>
                                 <input type="hidden" id="fshrq_xx" readonly value="${FormatterTimeYMS(item_c[i].审核日期)}"/>
+
                             </div>
                         </div>
                         <div class="mui-row cutOffLine padding">
                             <div class="mui-col-xs-12" style="display:flex;">
                                 <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm" readonly>${item_c[i].审核说明}</textarea>
+                                <textarea rows="2" id="fyjsm" readonly>${changeNullToEmpty(item_c[i].审核说明)}</textarea>
                             </div>
                         </div>
                     </div>
@@ -972,6 +1008,7 @@ function initData(data, flag) {
 
     var item_c2 = data.FormDataSet.新产品信息推荐_评估;
     for (var i = 0; i < item_c2.length; i++) {
+        itemidArr2.push(item_c2[i].itemid);
         var li = `
                   <div id="mx">
                         <div class="mui-input-row itemtitle">
@@ -990,13 +1027,13 @@ function initData(data, flag) {
                             </div>
                             <div class="mui-col-xs-4" style="display:flex;">
                                 <label>评估结论<i style="color:red;">*</i></label>
-                                <textarea rows="2" id="fpgjl" readonly>${item_c2[i].评估意见}</textarea>
+                                <textarea rows="2" id="fpgjl" readonly>${changeNullToEmpty(item_c2[i].评估意见)}</textarea>
                             </div>
                         </div>
                         <div class="mui-row cutOffLine padding">
                             <div class="mui-col-xs-12" style="display:flex;">
                                 <label>意见说明</label>
-                                <textarea rows="2" id="fyjsm_xxpg" readonly>${item_c2[i].评估说明}</textarea>
+                                <textarea rows="2" id="fyjsm_xxpg" readonly>${changeNullToEmpty(item_c2[i].评估说明)}</textarea>
                             </div>
                         </div>
                     </div>
@@ -1020,31 +1057,128 @@ function nodeControllerExp(NodeName) {
         $("#fysinfo_card").show();
         tapEvent_first();
         $("#fyssm").removeAttr('readonly');
-        $("#fjzrq").val('').attr('placeholder', '请选择');
+       
         $("#fif_pgjz").attr('placeholder', '请选择');
         $("#fpgqx").attr('placeholder', '请选择');
     } else if (String(NodeName).match('信息审核') != null) {
-
+        $("#fysinfo_card").show();
+        $("#fxxpg_card").show();
+        $("#fxxsh_card").show();
+        $("#tjmx_pg").show();
+        tapEvent_Information_audit();
+        $("#xxlist").find("#fyjsm").each(function () {
+            $(this).removeAttr('readonly');
+        });
     } else if (String(NodeName).match('信息评估') != null) {
-
+        $("#fysinfo_card").show();
+        $("#fxxpg_card").show();
+        $("#fxxsh_card").show();
+        $("#pglist").find("#mx").each(function () {
+            $(this).find("#fpgjl").attr('placeholder', '请选择');
+            $(this).find("#fyjsm_xxpg").removeAttr('readonly');
+        });
+        tapEvent_Information_Evaluation();
     }
 
 
 }
 
 function checkNes() {
+    var nodeName = $("#nodeName").val();
+    if (String(nodeName).match('初审') != null) {
+        if (!$("#fif_pgjz").val()) {
+            mui.toast('请选择是否有评估价值');
+            return false;
+        }
+        var checkflag = true;
+        if ($("#fif_pgjz").val() == '是') {
+            $("#xxlist").find("#mx").each(function () {
+                if (!$(this).find("#fpgdw_jt").val()) {
+                    mui.toast('请选择评估单位');
+                    checkflag = false;
+                    return;
+                }
+                if (!$(this).find("#fcyjtyffzr").val()) {
+                    mui.toast('请选择产业集团研发负责人');
+                    checkflag = false;
+                    return;
+                }
+            });
+        }
+        return checkflag;
+        
+    } else if (String(nodeName).match('预审') != null) {
+        if (!$("#fif_pgjz").val()) {
+            mui.toast('请选择是否有评估价值');
+            return false;
+        }
+        var checkflag = true;
+        if ($("#fif_pgjz").val()=='是'){
+            $("#xxlist").find("#mx").each(function () {
+                if (!$(this).find("#fpgdw_jt").val()) {
+                    mui.toast('请选择评估单位');
+                    checkflag = false;
+                    return;
+                }
+                if (!$(this).find("#fcyjtyffzr").val()) {
+                    mui.toast('请选择产业集团研发负责人');
+                    checkflag = false;
+                    return;
+                }
+            });
+        }
+      
+        return checkflag;
+
+    } else if (String(nodeName).match('信息审核') != null) {
+        var checkflag = true;
+        $("#xxlist").find("#mx").each(function () {
+            if (!$(this).find("#fif_pgjz_xx").val()) {
+                mui.toast('请选择是否有评估价值');
+                checkflag = false;
+                return;
+            }
+        });
+        $("#pglist").find("#mx").each(function () {
+            if (!$(this).find("#fpgdw_zgs").val()) {
+                mui.toast('请选择评估单位');
+                checkflag = false;
+                return;
+            }
+            if (!$(this).find("#fpgr").val()) {
+                mui.toast('请选择评估人');
+                checkflag = false;
+                return;
+            }
+        });
+
+        return checkflag;
+
+    } else if (String(nodeName).match('信息评估') != null) {
+        var checkflag = true;
+        $("#pglist").find("#mx").each(function () {
+            if (!$(this).find("#fpgjl").val()) {
+                mui.toast('请选择评估结论');
+                checkflag = false;
+                return;
+            }
+           
+        });
+        return checkflag;
+    }
 
     return true;
 }
 
 class XXinfo{
-    constructor(fpgdw_jt, fpgdw_jt_id, fcyjtyffzr, fcyjtyffzrno, fif_pgjz_xx, fyjsm) {
+    constructor(fpgdw_jt, fpgdw_jt_id, fcyjtyffzr, fcyjtyffzrno, fif_pgjz_xx, fyjsm, fshrq_xx) {
         this.fpgdw_jt = fpgdw_jt;
         this.fpgdw_jt_id = fpgdw_jt_id;
         this.fcyjtyffzr = fcyjtyffzr;
         this.fcyjtyffzrno = fcyjtyffzrno;
         this.fif_pgjz_xx = fif_pgjz_xx;
         this.fyjsm = fyjsm;
+        this.fshrq_xx = fshrq_xx;
     }
 }
 
@@ -1248,18 +1382,375 @@ function AgreeOrConSign() {
         var fcyjtyffzrno = $(this).find("#fcyjtyffzrno").val();
         var fif_pgjz_xx = $(this).find("#fif_pgjz_xx").val();
         var fyjsm = $(this).find("#fyjsm").val();
+        var fshrq_xx = $(this).find("#fshrq_xx").val();
 
-        var mx = new XXinfo(fpgdw_jt, fpgdw_jt_id, fcyjtyffzr, fcyjtyffzrno, fif_pgjz_xx, fyjsm);
+        var mx = new XXinfo(fpgdw_jt, fpgdw_jt_id, fcyjtyffzr, fcyjtyffzrno, fif_pgjz_xx, fyjsm, fshrq_xx);
         mxlistArr1.push(mx);
     });
 
     //--信息评估包含的字段
     var mxlistArr2 = [];
     $("#pglist").find("#mx").each(function () {
-
+        var fpgdw_zgs = $(this).find("#fpgdw_zgs").val();
+        var fpgr = $(this).find("#fpgr").val();
+        var fpgrno = $(this).find("#fpgrno").val();
+        var fpgjl = $(this).find("#fpgjl").val();
+        var fyjsm_xxpg = $(this).find("#fyjsm_xxpg").val();
 
         var mx = new PGinfo(fpgdw_zgs, fpgr, fpgrno, fpgjl, fyjsm_xxpg);
         mxlistArr2.push(mx);
     });
 
+    //--评审信息
+    var fjl = $("#fjl").val();
+    var fpsrq = $("#fpsrq").val();
+    var fbeizhu = $("#fbeizhu").val();
+    var fdydx = $("#fdydx").val();
+    var ffzr = $("#ffzr").val();
+    var ffzrno = $("#ffzrno").val();
+
+    var consignFlag = false;
+    var consignUserId = new Array();
+    var consignRoutingType;
+    var consignReturnType;
+
+    var consignUserStr;
+
+    //加签if分支
+    if (($('#signPer').val() != null) && ($('#signPer').val() != '')) {
+        consignFlag = true;
+
+        if ($('#sxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Serial';
+
+        } else if ($('#pxsl').hasClass('mui-selected')) {
+            consignRoutingType = 'Parallel';
+        }
+
+        if ($('#hdbjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Return';
+        } else if ($('#jrxjdl').hasClass('mui-selected')) {
+            consignReturnType = 'Forward';
+        }
+
+
+        var consignAjax = $.ajax({
+            type: "POST",
+            url: "/api/bpm/PostAccount",
+            data: { "ids": consignOpenIdArr },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+            }
+        }).done(function (data, status) {
+            //alert(status);
+            if (status == "success") {
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    consignUserId.push(data.data[i].phone);
+                }
+                $('#consignUser').val(consignUserId);
+                consignUserStr = (String)($('#consignUser').val()).split(",");
+
+                for (var i = 0; i < consignUserStr.length; i++) {
+                    consignUserStr[i] = '&quot;' + consignUserStr[i] + '&quot;';
+                }
+                consignUserStr = '[' + consignUserStr.toString() + ']';
+
+
+
+            }
+        }).fail(function () {
+
+        });
+    } else {
+
+
+    }
+
+
+
+    var xml = ``;
+    if (consignFlag){
+        consignAjax.then(function () {
+            xml += `<?xml version="1.0"?>
+                     <XForm>
+                     <Header>
+                     <Method>Process</Method>
+                     <PID>${pid}</PID>
+                     <Action>通过</Action>
+                     <Comment>${comment}</Comment>
+            
+                     <ConsignEnabled>true</ConsignEnabled>
+                     <ConsignUsers>${consignUserStr}</ConsignUsers>
+                     <ConsignRoutingType>${consignRoutingType}</ConsignRoutingType>
+                     <ConsignReturnType>${consignReturnType}</ConsignReturnType>
+                     <InviteIndicateUsers>[]</InviteIndicateUsers>
+                     <Context>{&quot;Routing&quot;:{}}</Context>
+                     </Header>
+                     <FormData>
+
+                    `;
+            xml += `
+                       <新产品信息推荐_主表>
+            <推荐人>${ftjr}</推荐人>
+            <推荐人ID>${ftjrno}</推荐人ID>
+            <联系电话>${flxdh}</联系电话>
+            <邮箱>${femail}</邮箱>
+            <所属集团>${fssjt}</所属集团>
+            <所属公司>${fssgs}</所属公司>
+            <填表人>${ftbr}</填表人>
+            <推荐日期>${ftjrq}</推荐日期>
+            <信息名称>${fcpmc}</信息名称>
+            <信息编号>${fxxbh}</信息编号>
+            <信息类型>${fxxlx}</信息类型>
+            <样品数量>${fypsl}</样品数量>
+            <信息说明>${fcpsm}</信息说明>
+            <附件>${fjArray.join(";")}</附件>
+            <是否有评估价值>${fif_pgjz}</是否有评估价值>
+            <评估期限>${fpgqx}</评估期限>
+            <截止日期>${fjzrq}</截止日期>
+            <预审说明>${fyssm}</预审说明>
+            <评审结论>${fjl}</评审结论>
+            <评审日期>${changeNullToEmpty(fpsrq)}</评审日期>
+            <备注>${fbeizhu}</备注>
+            <所属集团ID>${fssjt_id}</所属集团ID>
+        </新产品信息推荐_主表>
+                   `;
+
+           
+
+            if (String(nodeName).match('初审') != null || String(nodeName).match('预审') != null) {
+                for (var i = 0; i < mxlistArr1.length; i++) {
+                    xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys></RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+                }
+                xml += `
+ <新产品信息推荐_评估>
+        </新产品信息推荐_评估>
+                       `;
+
+            } else if (String(nodeName).match('信息审核') != null) {
+                for (var i = 0; i < mxlistArr1.length; i++) {
+                    xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+                }
+                for (var i = 0; i < mxlistArr2.length; i++) {
+                    xml += `
+                              <新产品信息推荐_评估>
+                                <RelationRowGuid>${mxlistArr1.length+i+1}</RelationRowGuid>
+                                <RowPrimaryKeys></RowPrimaryKeys>
+                                <序号>${i + 1}</序号>
+                                <评估单位>${mxlistArr2[i].fpgdw_zgs}</评估单位>
+                                <评估人>${mxlistArr2[i].fpgr}</评估人>
+                                <评估人ID>${mxlistArr2[i].fpgrno}</评估人ID>
+                                <评估意见></评估意见>
+                                <评估说明></评估说明>
+                            </新产品信息推荐_评估>
+                           `;
+                }
+            } else {
+                for (var i = 0; i < mxlistArr1.length; i++) {
+                    xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+                }
+                for (var i = 0; i < mxlistArr2.length; i++) {
+                    xml += `
+                              <新产品信息推荐_评估>
+                                <RelationRowGuid>${mxlistArr1.length + i + 1}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
+                                <序号>${i + 1}</序号>
+                                <评估单位>${mxlistArr2[i].fpgdw_zgs}</评估单位>
+                                <评估人>${mxlistArr2[i].fpgr}</评估人>
+                                <评估人ID>${mxlistArr2[i].fpgrno}</评估人ID>
+                                <评估意见>${mxlistArr2[i].fpgjl}</评估意见>
+                                <评估说明>${mxlistArr2[i].fyjsm_xxpg}</评估说明>
+                            </新产品信息推荐_评估>
+                           `;
+                }
+            }
+            xml += `
+                       </FormData>
+                    </XForm>
+                   `;
+            PostXml(xml);
+        });
+    } else {
+        xml += `<?xml version="1.0"?>
+                   <XForm>
+                   <Header>
+                   <Method>Process</Method>
+                   <PID>${pid}</PID>
+                   <Action>通过</Action>
+                   <Comment>${comment}</Comment>
+
+                    <UrlParams></UrlParams>
+                    <ConsignEnabled>false</ConsignEnabled>
+                    <ConsignUsers>[]</ConsignUsers>
+                    <ConsignRoutingType>Parallel</ConsignRoutingType>
+                    <ConsignReturnType>Return</ConsignReturnType>
+
+                  <InviteIndicateUsers>[]</InviteIndicateUsers>
+                  <Context>{&quot;Routing&quot;:{}}</Context>
+                  </Header>
+                  <FormData>
+               `;
+        xml += `
+                       <新产品信息推荐_主表>
+            <推荐人>${ftjr}</推荐人>
+            <推荐人ID>${ftjrno}</推荐人ID>
+            <联系电话>${flxdh}</联系电话>
+            <邮箱>${femail}</邮箱>
+            <所属集团>${fssjt}</所属集团>
+            <所属公司>${fssgs}</所属公司>
+            <填表人>${ftbr}</填表人>
+            <推荐日期>${ftjrq}</推荐日期>
+            <信息名称>${fcpmc}</信息名称>
+            <信息编号>${fxxbh}</信息编号>
+            <信息类型>${fxxlx}</信息类型>
+            <样品数量>${fypsl}</样品数量>
+            <信息说明>${fcpsm}</信息说明>
+            <附件>${fjArray.join(";")}</附件>
+            <是否有评估价值>${fif_pgjz}</是否有评估价值>
+            <评估期限>${fpgqx}</评估期限>
+            <截止日期>${fjzrq}</截止日期>
+            <预审说明>${fyssm}</预审说明>
+            <评审结论>${fjl}</评审结论>
+            <评审日期>${changeNullToEmpty(fpsrq)}</评审日期 >
+            <备注>${fbeizhu}</备注>
+            <所属集团ID>${fssjt_id}</所属集团ID>
+        </新产品信息推荐_主表>
+                   `;
+
+        if (String(nodeName).match('初审') != null || String(nodeName).match('预审') != null) {
+            for (var i = 0; i < mxlistArr1.length; i++) {
+                xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys></RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+            }
+            xml += `
+ <新产品信息推荐_评估>
+        </新产品信息推荐_评估>
+                       `;
+
+        } else if (String(nodeName).match('信息审核') != null) {
+            for (var i = 0; i < mxlistArr1.length; i++) {
+                xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+            }
+            for (var i = 0; i < mxlistArr2.length; i++) {
+                xml += `
+                              <新产品信息推荐_评估>
+                                <RelationRowGuid>${mxlistArr1.length + i + 1}</RelationRowGuid>
+                                <RowPrimaryKeys></RowPrimaryKeys>
+                                <序号>${i + 1}</序号>
+                                <评估单位>${mxlistArr2[i].fpgdw_zgs}</评估单位>
+                                <评估人>${mxlistArr2[i].fpgr}</评估人>
+                                <评估人ID>${mxlistArr2[i].fpgrno}</评估人ID>
+                                <评估意见></评估意见>
+                                <评估说明></评估说明>
+                            </新产品信息推荐_评估>
+                           `;
+            }
+        } else {
+            for (var i = 0; i < mxlistArr1.length; i++) {
+                xml += `
+      <新产品信息推荐_审核>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr1[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <评估单位>${mxlistArr1[i].fpgdw_jt}</评估单位>
+            <评估单位ID>${mxlistArr1[i].fpgdw_jt_id}</评估单位ID>
+            <审核人>${mxlistArr1[i].fcyjtyffzr}</审核人>
+            <审核人ID>${mxlistArr1[i].fcyjtyffzrno}</审核人ID>
+            <是否有评估价值>${mxlistArr1[i].fif_pgjz_xx}</是否有评估价值>
+            <审核日期>${mxlistArr1[i].fshrq_xx}</审核日期>
+            <审核说明>${mxlistArr1[i].fyjsm}</审核说明>
+        </新产品信息推荐_审核>
+                        `;
+            }
+            for (var i = 0; i < mxlistArr2.length; i++) {
+                xml += `
+                              <新产品信息推荐_评估>
+                                <RelationRowGuid>${mxlistArr1.length + i + 1}</RelationRowGuid>
+                                <RowPrimaryKeys>itemid=${itemidArr2[i]}</RowPrimaryKeys>
+                                <序号>${i + 1}</序号>
+                                <评估单位>${mxlistArr2[i].fpgdw_zgs}</评估单位>
+                                <评估人>${mxlistArr2[i].fpgr}</评估人>
+                                <评估人ID>${mxlistArr2[i].fpgrno}</评估人ID>
+                                <评估意见>${mxlistArr2[i].fpgjl}</评估意见>
+                                <评估说明>${mxlistArr2[i].fyjsm_xxpg}</评估说明>
+                            </新产品信息推荐_评估>
+                           `;
+            }
+        }
+        xml += `
+                       </FormData>
+                    </XForm>
+                   `;
+        console.log(xml);
+        PostXml(xml);
+    }
+
 }
+
