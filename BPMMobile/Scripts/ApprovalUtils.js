@@ -55,6 +55,7 @@ function PostXml(xml) {
 
           
             console.log(data);
+           
             if (data.Recipients) {
                 if (data.Recipients[0] != null) {
                     if (data.Recipients[0].Recipient.DisplayName != null) {

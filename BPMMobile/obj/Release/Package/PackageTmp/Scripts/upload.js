@@ -97,7 +97,6 @@
             //拼装dom节点
             var checkResult = this.checkPic();
             if (!this.cfg.isFile) {
-
                 //检测图片是否合格
                 if (!checkResult.flag) {
                     this.cfg.onCheckError.call(this, checkResult.msg);

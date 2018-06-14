@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>公司名称</label>
+                    <textarea rows="2" id="comp_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>部门名称</label>
+                    <textarea rows="2" id="dept_name" readonly></textarea>
+                    <input type="hidden" id="dept_no" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>报销人</label>
+                    <textarea rows="2" id="user_name" readonly></textarea>
+                    <input type="hidden" id="user_leadtitle" readonly />
+                    <input type="hidden" id="user_no" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>报销日期</label>
+                    <textarea rows="2" id="sqdate" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>培训费申请单<i style="color:red;">*</i></label>
+                    <input type="hidden" id="px_ifcl" readonly />
+                    <textarea rows="2" id="sqcode" readonly></textarea>
+                    <input type="hidden" id="sqtaskid" readonly />
+                    <input type="hidden" id="chailvlb" readonly />
+                    <input type="hidden" id="px_bxje" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>培训类别</label>
+                    <textarea rows="2" id="px_lb" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>总报销金额</label>
+                    <textarea rows="2" id="px_zbxje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>大写金额</label>
+                    <textarea rows="2" id="px_zbxjedx" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>差旅费申请金额</label>
+                    <textarea rows="2" id="sqje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>差旅费超申请（%）</label>
+                    <textarea rows="2" id="chaosqqk" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>超标准情况（%）</label>
+                    <textarea rows="2" id="chaobzqk" readonly></textarea>
+                </div>
+
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>培训费申请金额</label>
+                    <textarea rows="2" id="px_sqje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>培训费超申请（%）</label>
+                    <textarea rows="2" id="px_csqje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>借款金额</label>
+                    <textarea rows="2" id="jkje" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="rem" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>是否作废</label>
+                    <textarea rows="2" id="if_cj" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>内部讲师外出学习</label>
+                    <textarea rows="2" id="fnbjswcxx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>	受训人</label>
+                    <textarea rows="2" id="fsxr" readonly></textarea>
+                    <input type="hidden" id="fsxrno" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>受训人职务级别</label>
+                    <textarea rows="2" id="fsxrlevel" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>培训费报销明细</label>
+            </div>
+            <div id="mxlist1">
+
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>培训差旅费报销明细</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费报销合计</label>
+                    <textarea rows="2" id="fyhjbz" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>大写金额</label>
+                    <textarea rows="2" id="fyhjdx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅费标准合计</label>
+                    <textarea rows="2" id="fybz" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>单据数</label>
+                    <textarea rows="2" id="djsl" readonly></textarea>
+                </div>
+            </div>
+            <div id="mxlist2">
+
+            </div>
+
+
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

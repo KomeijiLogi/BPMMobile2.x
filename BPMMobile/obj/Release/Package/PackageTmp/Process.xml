@@ -66,11 +66,11 @@
     <Name>集团本部信息化推进部周工作汇报</Name>
     <Path>\\01威高集团总部\\00集团本部\\16_行政办公</Path>
     <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/WeeklyFlow/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/WeeklyFlow/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/WeeklyFlow/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/WeeklyFlow/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/WeeklyFlow/FlowCreate.html</ViewPage>
+    <CreatePage>/Pages/WeeklyFlow2/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/WeeklyFlow2/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/WeeklyFlow2/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/WeeklyFlow2/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/WeeklyFlow2/FlowCreate.html</ViewPage>
     <DisplayName>集团本部信息化推进部周工作汇报</DisplayName>
     <Css></Css>
     <Icon>../../Content/images/5.png</Icon>
@@ -3369,7 +3369,7 @@
   </Process>
 
 
- <!--<Process>
+ <Process>
     <Name>集团公司食堂临时就餐申请</Name>
     <Path>\\00跨产业集团\\07_后勤服务</Path>
     <CanCreate>True</CanCreate>
@@ -3383,7 +3383,7 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用全集团员工临时就餐的申请，申请人与所属办公室文员电话沟通就餐事宜，统一由办公室文员发起，集团本部各部门自行发起。</Description>
-  </Process>-->
+  </Process>
 
    <Process>
     <Name>集团公司食堂临时就餐汇总</Name>
@@ -3431,24 +3431,812 @@
     <Group>办公管理</Group>
     <Description>适用于全集团员工节假日就餐的汇总核对，统一由后勤服务总公司各食堂管理员发起。</Description>
   </Process>
-  
-  <!--
-<Process>
-    <Name>建设公司物资采购申请//废弃</Name>
-    <Path>\\01威高集团总部\\06建设公司\\CG采购</Path>
+  <Process>
+    <Name>集团公司员工加班就餐提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
     <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/01WeGoHQ/06JianSheGongSi/CG0703001/FlowCreate.html</ViewPage>
-    <DisplayName>建设公司物资采购申请</DisplayName>
+    <CreatePage>/Pages/00KCY/HQ000705/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000705/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000705/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000705/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000705/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工加班就餐提报</DisplayName>
     <Css></Css>
     <Icon>../../../../Content/images/5.png</Icon>
-    <Group>财务管理</Group>
-    <Description>建设公司物资采购申请</Description>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的提报，统一由分子公司车间主任发起。</Description>
+  </Process>
+  <Process>
+    <Name>集团公司员工加班就餐汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000706/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000706/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000706/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000706/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000706/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工加班就餐汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
+  </Process>
+  
+ <Process>
+    <Name>集团公司员工节假日乘坐班车人数提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000707/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000707/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000707/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000707/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000707/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工节假日乘坐班车人数提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工加班就餐的账务处理，月末统一由后勤服务总公司食堂管理员汇总发起。</Description>
+  </Process>
+  
+<Process>
+    <Name>集团公司员工月末乘坐班车线路提报</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000708/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000708/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000708/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000708/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000708/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工月末乘坐班车线路提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工月末乘坐班车路线调整提报，统一由各子公司办公室文员发起。</Description>
+  </Process>
+  <Process>
+    <Name>集团公司员工班车租赁申请</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000709/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000709/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000709/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000709/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000709/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工班车租赁申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工班车租赁申请，统一由各子公司办公室文员发起。</Description>
+  </Process>
+  <Process>
+    <Name>集团公司员工班车租赁汇总</Name>
+    <Path>\\00跨产业集团\\07_后勤服务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/HQ000710/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/HQ000710/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/HQ000710/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/HQ000710/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/HQ000710/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工班车租赁汇总</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威高集团员工班车租赁的账务处理，月末统一由后勤服务总公司班车管理员汇总发起。</Description>
   </Process>
 
--->
+  
+  
+
+    
+
+  <Process>
+    <Name>洁丽康公司个人借款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司个人借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司个人借款的申请，由下属各部门发起。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司汇款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司汇款申请，由下属各部门发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司其他费用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司非差旅费的申请。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司员工试用期转正申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工试用期转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工试用期转正的申请，由申请本人发起。</Description>
+  </Process>
+
+<Process>
+    <Name>洁丽康公司员工参保申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工参保申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工缴纳保险的申请，由申请本人发起。</Description>
+  </Process>
+<Process>
+    <Name>洁丽康公司员工合同续签申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工合同续签申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请，由人事专员发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司员工证明申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工证明申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请。</Description>
+  </Process>
+  
+    
+  <Process>
+    <Name>洁丽康公司销售日报提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售日报提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售部门的日报提报，由销售部门发起。</Description>
+  </Process>
+    
+  <Process>
+    <Name>洁丽康公司销售月计划提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售月计划提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售部门的月计划提报，由销售部门发起。</Description>
+  </Process>
+    
+    <Process>
+    <Name>洁丽康公司月销售任务完成情况分析提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司月销售任务完成情况分析</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>todo</Group>
+    <Description>适用于洁丽康公司销售部门的月销售任务完成情况分析提报，由销售部门发起。</Description>
+  </Process>
+    
+    
+    
+    
+  <Process>
+    <Name>洁丽康公司排产申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司排产申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司排产的申请，由销售部门发起。</Description>
+  </Process>
+    
+    
+   <Process>
+    <Name>洁丽康公司客户申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司客户申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司客户的申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>洁丽康公司销售订单申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</ViewPage>
+    <DisplayName>洁丽康公司销售订单申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售订单的申请，由销售人员发起</Description>
+  </Process>
+
+ 
+  
+   <Process>
+    <Name>洁丽康公司产品借用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司产品借用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司产品借用申请。</Description>
+  </Process>
+  
+  
+  
+    
+  <Process>
+    <Name>医学检验公司设备维修申请</Name>
+    <Path>\\08医疗商业集团\\02医学检验公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903002/FlowTemplate.html</ViewPage>
+    <DisplayName>医学检验公司设备维修申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于医学检验公司设备维修的申请，由维修业务管理员发起。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>医学检验公司维修配件申请</Name>
+    <Path>\\08医疗商业集团\\02医学检验公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/09YiLiaoShangYe/03YiXueJianYan/SCYX0903003/FlowTemplate.html</ViewPage>
+    <DisplayName>医学检验公司维修配件申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于医学检验公司维修配件的申请，由设备工程师发起。</Description>
+  </Process>
+
+  
+  <Process>
+    <Name>集团公司行管人员工作牌申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001604/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001604/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001604/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001604/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001604/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司行管人员工作牌申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团行管人员工作牌申请办理，统一由各公司、集团各部门相关业务负责人发起。</Description>
+  </Process>
+
+  
+<Process>
+    <Name>集团公司员工入职宿舍、餐卡办理申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001605/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001605/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001605/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001605/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001605/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工入职宿舍、餐卡办理申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工入职时宿舍、餐卡办理申请，统一由各子公司人事专员发起。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团公司离职员工宿舍、餐卡清理提报</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001606/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001606/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001606/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001606/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001606/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司离职员工宿舍、餐卡清理提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工离职时宿舍、餐卡清理的提报，统一由各车间主任发起。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团公司员工免费生日蛋糕申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001607/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001607/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001607/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001607/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001607/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工免费生日蛋糕申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工免费生日蛋糕申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>集团公司员工车辆通行证申请</Name>
+    <Path>\\00跨产业集团\\16_行政办公</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/00KCY/BG001608/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/BG001608/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/BG001608/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/BG001608/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/BG001608/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司员工车辆通行证申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团员工车辆通行证申请，统一由各公司办公室发起。</Description>
+  </Process>
+  
+  
+  <Process>
+    <Name>集团本部月度费用预算提报</Name>
+    <Path>\\99业务平台\\03集团费用\\01预算提报</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYYS990301002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团本部月度费用预算提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司月度费用预算提报。</Description>
+  </Process>
+   <Process>
+    <Name>集团本部差旅费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302001/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费用申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部招待费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司招待费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司招待费申请。</Description>
+  </Process>
+
+
+
+  <Process>
+    <Name>集团本部差旅费(含招待)申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302003/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费(含招待)申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
+  </Process>
+
+  <Process>
+    <Name>集团本部培训费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302004/FlowTemplate.html</ViewPage>
+    <DisplayName>集团本部培训费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司培训费的申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部市内交通费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302007/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司市内交通费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)的申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部管理学院培训费申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302008/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司管理学院培训费申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于管理学院培训费申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部车辆费用申请(行政办公室)</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302009/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司车辆费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司车辆费用申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>集团本部其他费用申请</Name>
+    <Path>\\99业务平台\\03集团费用\\02费用申请</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYSQ990302010/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司其他费用申请。</Description>
+  </Process>
+
+  <Process>
+    <Name>集团本部通讯费用报销_新</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303011/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司通讯费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司通讯费用报销申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>集团本部差旅费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303001/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费用报销。</Description>
+  </Process>
+   <Process>
+    <Name>集团本部招待费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303002/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司招待费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司招待费报销。</Description>
+  </Process>
+  <Process>
+    <Name>集团本部差旅费(含招待)报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303003/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司差旅费(含招待)报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司差旅费(含招待)报销。</Description>
+  </Process>
+
+  <Process>
+    <Name>集团本部培训费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303005/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司培训费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司培训费报销。</Description>
+  </Process>
+  
+<Process>
+    <Name>集团本部管理学院培训费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303006/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司管理学院培训费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于管理学院培训费报销。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部市内交通费报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303007/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司市内交通费报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司市内交通费报销。</Description>
+  </Process>
+  
+  
+  <Process>
+    <Name>集团本部车辆费用报销(行政办公室)</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303008/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司车辆费用报销(行政办公室)</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司车辆费用报销。</Description>
+  </Process>
+  
+  <Process>
+    <Name>集团本部其他费用报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303009/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司其他费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部各部门、财务公司、证券公司其他费用报销。</Description>
+  </Process>
+  <Process>
+    <Name>集团本部车辆费用报销</Name>
+    <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303010/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303010/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303010/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303010/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/99YeWuPingTai/03JiTuanFeiYong/FYBX990303010/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司车辆费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于集团本部高管车辆费用报销。</Description>
+  </Process>
+  
+  
+  <Process>
+    <Name>集团公司新产品研发信息推荐申请</Name>
+    <Path>\\00跨产业集团\\17_研发技术</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/YF0017004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/YF0017004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/YF0017004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/YF0017004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/YF0017004/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司新产品研发信息推荐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团新产品研发信息推荐的申请。</Description>
+  </Process>
+  
+  
+   
+  
+  
+   <!--<Process>
+    <Name>集团公司研发产成品信息提报</Name>
+    <Path>\\00跨产业集团\\17_研发技术</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/00KCY/YF0017005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/00KCY/YF0017005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/00KCY/YF0017005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/00KCY/YF0017005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/00KCY/YF0017005/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司研发产成品信息提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团新产品研发信息推荐的申请。</Description>
+  </Process>-->
+  
+  
+  <!--<Process>
+    <Name>洁丽康公司其他费用报销</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209006/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司其他费用报销</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司非差旅费的报销。</Description>
+  </Process>-->
+  
+ 
 
 </ProcessList>

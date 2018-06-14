@@ -1,72 +1,4 @@
-﻿//var dom = new Proxy({}, {
-//    get: function get(target, property) {
-//        return function () {
-//            var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-//            var el = document.createElement(property);
-//            var _iteratorNormalCompletion = true;
-//            var _didIteratorError = false;
-//            var _iteratorError = undefined;
-
-//            try {
-//                for (var _iterator = Object.keys(attrs)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-//                    var prop = _step.value;
-
-//                    el.setAttribute(prop, attrs[prop]);
-//                }
-//            } catch (err) {
-//                _didIteratorError = true;
-//                _iteratorError = err;
-//            } finally {
-//                try {
-//                    if (!_iteratorNormalCompletion && _iterator.return) {
-//                        _iterator.return();
-//                    }
-//                } finally {
-//                    if (_didIteratorError) {
-//                        throw _iteratorError;
-//                    }
-//                }
-//            }
-
-//            for (var _len = arguments.length, children = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-//                children[_key - 1] = arguments[_key];
-//            }
-
-//            var _iteratorNormalCompletion2 = true;
-//            var _didIteratorError2 = false;
-//            var _iteratorError2 = undefined;
-
-//            try {
-//                for (var _iterator2 = children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-//                    var child = _step2.value;
-
-//                    if (typeof child === 'string') {
-//                        child = document.createTextNode(child);
-//                    }
-//                    el.appendChild(child);
-//                }
-//            } catch (err) {
-//                _didIteratorError2 = true;
-//                _iteratorError2 = err;
-//            } finally {
-//                try {
-//                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-//                        _iterator2.return();
-//                    }
-//                } finally {
-//                    if (_didIteratorError2) {
-//                        throw _iteratorError2;
-//                    }
-//                }
-//            }
-
-//            return el;
-//        };
-//    }
-//});
-
-
+﻿
 
 var _init = {
 
@@ -568,5 +500,17 @@ function nodeControllerExp(NodeName) {
 }
 //共享任务扩展
 function nodeShareExt(ShareNode) {
+    if (ShareNode == '流程被共享') {
+        $("#approvalD").empty();
+        var li = '';
+        li = li + '    &nbsp;&nbsp;';
+        li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickupbt" onclick="PickupShareTaskExt()">从共享任务中取出</button>';
+        $("#approvalD").append(li);
+    } else if (ShareNode == '流程被取出') {
+        var li = '';
+        li = li + '    &nbsp;&nbsp;';
+        li = li + '   <button class="mui-btn mui-btn-green roundbt" type="button" style="width:100%" id="pickbackbt" onclick="PutbackShareTaskExt()">放回共享任务</button>';
+        $("#approvalD").append(li);
 
+    }
 }

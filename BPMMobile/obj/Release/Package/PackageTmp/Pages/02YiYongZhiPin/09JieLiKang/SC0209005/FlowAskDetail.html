@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>填写人</label>
+                <input type="text" id="fname" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>填写日期</label>
+                <input type="date" id="fdate" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>渠道类型<i style="color:red;">*</i></label>
+                <input type="text" id="fqdlx" readonly />
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>基本资料</label>
+            </div>
+
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>客户名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhmc" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>客户编码<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>客户分类<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhfl" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>组织机构代码<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fjgdm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>税务登记号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fswdjh" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>法人代表<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="ffrdb" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>开票类型<i style="color:red;">*</i></label>
+                    <input type="text" id="ffplx" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>税率<i style="color:red;">*</i></label>
+                    <input type="text" id="fsl" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>床位数<i style="color:red;">*</i></label>
+                    <input type="number" id="fcws" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>地址<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fdz" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>销售资料</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>部门编码<i style="color:red;">*</i></label>
+                    <textarea id="fbmbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>部门名称<i style="color:red;">*</i></label>
+                    <textarea id="fbmmc" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>销售员编码<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fxsybm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>销售员名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fxsymc" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>财务资料</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>财务组织编码</label>
+                    <textarea rows="2" id="fzzbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>财务组织名称</label>
+                    <textarea rows="2" id="fzzmc" readonly></textarea>
+                </div>
+            </div>
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+         mui.init();
+
+         mui.ready(function () {
+             _init._preAskOrDone();
+
+         });
+    </script>
+</body>
+</html>

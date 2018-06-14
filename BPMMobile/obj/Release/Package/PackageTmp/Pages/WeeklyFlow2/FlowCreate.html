@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>员工姓名</label>
+                <input type="text" id="fname" readonly />
+                <input type="hidden" id="fno" />
+            </div>
+            <div class="mui-input-row" style="display:block !important;">
+                <label>部门</label>
+                <input type="text" id="fdept" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>工作周</label>
+                <input type="text" id="fweek" readonly />
+            </div>
+            <div class="mui-row itemtitle"style="height:10vw;text-align:center;padding-top:2vw;">
+                <label>主要工作事项描述<i style="color:red;">*</i></label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <textarea rows="5" id="fgznr" placeholder="请填写主要工作事项描述"></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle" style="height:10vw;text-align:center;padding-top:2vw;">
+                <label>存在主要问题及改进措施</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <textarea rows="5" id="fczwt" placeholder="请填写存在主要问题及改进措施"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>部门经理评价</label>
+                    <textarea rows="2" id="fpj_bmjl" readonly placeholder="请填写"></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>考核等级<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhdj_bmjl" readonly  placeholder="请选择"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>总监评价</label>
+                    <textarea rows="2" id="fpj_zj" readonly  placeholder="请填写"></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>考核等级<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhdj_zj" readonly  placeholder="请选择"></textarea>
+                </div>
+            </div>
+
+            <input type="hidden" id="fmonth" readonly />
+            <input type="hidden" id="fyear" readonly />
+            <input type="hidden" id="fcfbj" readonly />
+            
+            <input type="hidden" id="fksdate" readonly />
+            <input type="hidden" id="fjsdate" readonly />
+            <input type="hidden" id="ftbdate" readonly />
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js?111"></script>
+    <script>
+
+
+        //var vconsole = new VConsole();
+        //console.log(navigator.userAgent);
+
+        mui.init();
+
+        mui.ready(function () {
+
+
+            getVersion('\\01威高集团总部\\00集团本部\\16_行政办公', '集团本部信息化推进部周工作汇报');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

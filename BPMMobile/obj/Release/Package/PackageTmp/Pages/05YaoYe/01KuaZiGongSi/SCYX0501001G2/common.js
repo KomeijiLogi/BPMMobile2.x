@@ -223,6 +223,46 @@ var menuWrapperClassList2 = menuWrapper2.classList;
 
 
 function tapEvent() {
+    //库存组织
+    var fkcorgdata = [
+        {
+            value: '01.05.05.01', 
+            text:'注射器分公司'
+        },
+        {
+            value: '01.05.08.16',
+            text: '医疗器械经营'
+        },
+        {
+            value: '01.05.16',
+            text: '肾科公司'
+        },
+        {
+            value: '01.05.17',
+            text: '内镜公司'
+        },
+        {
+            value: '01.05.18',
+            text: '感控公司'
+        }
+
+    ];
+    var element22 = document.getElementById('fkcorg');
+
+    var picker22 = new mui.PopPicker();
+
+    picker22.setData(fkcorgdata);
+
+    element22.addEventListener('tap', function () {
+
+        picker22.show(function (items) {
+            $("#fkhmc").data('fkzcc', items[0].value)
+
+            element22.value = items[0].text;
+        });
+
+    }, false);
+
     //所属区域
 
     var fqydata = [
@@ -1029,7 +1069,7 @@ function getProcedureMsg(pd_flag) {
 
 
 
-
+var ckjsflag = false;
 
 //计算发货子表
 function calcPriceShip(context) {
@@ -1054,14 +1094,44 @@ function calcPriceShip(context) {
     }
 
     var ffh_je = ffh_dj * fsjfhsl;
-    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fzl / fsjfhsl).toFixed(6);
+    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fsjfhsl / fzl).toFixed(6);
 
     $("#ffh_je_menu").val(ffh_je);
     $("#ffh_js_menu").val(ffh_js);
+    if (Math.floor(ffh_js) != ffh_js) {
+        //mui.toast('填写申请数量不正确，请为装量的整数倍');
+        ckjsflag = true;
+    }
 
     //calcTotalShip();
 
 }
+function calcChangeShip(context) {
+    var ffh_dj = parseFloat($(context).parent().parent().parent().find("#ffh_dj").val()).toFixed(6);
+    var ffh_sl = parseFloat($(context).parent().parent().parent().find("#ffh_sl").val());
+    var fsjfhsl = parseFloat($(context).parent().parent().parent().find("#fsjfhsl").val());
+    var fzl = parseFloat($(context).parent().parent().parent().find("#fzl").val());
+
+    if (!ffh_dj) {
+        ffh_dj = 0.000000;
+    }
+    if (!ffh_sl) {
+        ffh_sl = 0;
+    }
+    if (!fsjfhsl) {
+        fsjfhsl = 0;
+    }
+    if (!fzl) {
+        fzl = 0;
+    }
+
+    var ffh_je = ffh_dj * fsjfhsl;
+    var ffh_js = fsjfhsl == 0 ? fzl : parseFloat(fsjfhsl / fzl).toFixed(6);
+    console.log(ffh_js);
+    $(context).parent().parent().parent().find("#ffh_je").val(ffh_je);
+    $(context).parent().parent().parent().find("#ffh_js").val(ffh_js);
+}
+
 
 //计算发货总计
 function calcTotalShip() {
@@ -1127,6 +1197,21 @@ function calcPriceBill(context) {
 
     //calcTotalBill();
 }
+function calcChangeBill(context) {
+    var ffp_dj = parseFloat($(context).parent().parent().parent().find("#ffp_dj").val()).toFixed(6);
+    var ffp_sl = parseFloat($(context).parent().parent().parent().find("#ffp_sl").val());
+
+    if (!ffp_dj) {
+        ffp_dj = 0.000000;
+    }
+    if (!ffp_sl) {
+        ffp_sl = 0;
+    }
+
+    var ffp_je = ffp_dj * ffp_sl;
+    $(context).parent().parent().parent().find("#ffp_je").val(ffp_je);
+
+}
 
 //计算发票总计
 function calcTotalBill() {
@@ -1146,8 +1231,8 @@ function calcTotalBill() {
         }
         ffp_sl_total += value;
     });
-    $("#fhj_fpsl").val(ffp_dj_total);
-    $("#fhj_fpje").val(ffp_sl_total);
+    $("#fhj_fpsl").val(ffp_sl_total);
+    $("#fhj_fpje").val(ffp_dj_total);
 }
 //重写删除功能
 function deleteItem(context) {
@@ -1177,7 +1262,8 @@ function initData(data, flag) {
     $("#fsqrq").val(FormatterTimeYMS(item_a.fsqrq));
     $("#fsqlx").val(item_a.fsqlx);
     $("#fkhmc").val(item_a.fkhmc);
-    $("#fkhmc").data('fkzcc', item_a.fkzcc);
+    
+    $("#fkhmc").data('fkzcc', item_a.fkczz);
     $("#fkhmc").data('fkhbm', item_a.fkhbm);
     //$("#fzjsj").val(item_a.fzjsj);
     $("#fzjsj").data('fxszg', item_a.fxszg);
@@ -1205,6 +1291,29 @@ function initData(data, flag) {
 
     $("#fckdh").val(item_a.fckdh);
 
+
+    switch (item_a.fkczz) {
+        case '01.05.05.01':
+            $("#fkcorg").val('注射器分公司');
+            break;
+        case '01.05.08.16':
+
+            $("#fkcorg").val('医疗器械经营');
+            break;
+        case '01.05.16':
+            $("#fkcorg").val('肾科公司');
+            break;
+        case '01.05.17':
+            $("#fkcorg").val('内镜公司');
+            break;
+        case '01.05.18':
+            $("#fkcorg").val('感控公司');
+            break;
+        default:
+            break;
+    }
+
+
     //发货部分
     $("#fhj_fhsl").val(item_a.fhj_fhsl);
     $("#fsjfhsltotal").val(item_a.fsjfhsltotal);
@@ -1217,26 +1326,30 @@ function initData(data, flag) {
         var li = `
            <div class="mui-card" id="mx">
               <div class="mui-input-row itemtitle">
-                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                   <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                    <label></label>    
                    <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
               </div>
-              <div class="mui-row cutOffLine">
-                  <div class="mui-col-xs-4" style="display:flex;">
-                       <label>物料编码</label>
-                       <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${item_b1[i].ffh_wlbm }</textarea>
-                  </div>   
-                   <div class="mui-col-xs-4" style="display:flex;">
-                         <label>物料名称</label> 
-                        <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称">${item_b1[i].ffh_wlmc}</textarea>
-                  </div> 
-                  <div class="mui-col-xs-4" style="display:flex;">
-                        <label>规格型号</label>
-                        <textarea id="fggxh" name="fggxh" readonly placeholder="规格型号" >${item_b1[i].ffh_ggxh}</textarea>
-                  </div> 
-               
 
-              </div> 
+             <div class="mui-table-view-cell mui-collapse">
+                   <a class="mui-navigate-right" href="#" style="font-size:30px;">            
+                        <div class="mui-row">
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                 
+                                   <textarea id="fwlbm" name="fwlbm" readonly placeholder="物料编码">${item_b1[i].ffh_wlbm }</textarea>
+                              </div>   
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                     
+                                    <textarea id="fwlmc" name="fwlmc" readonly placeholder="物料名称">${item_b1[i].ffh_wlmc}</textarea>
+                              </div> 
+                              <div class="mui-col-xs-4" style="display:flex;">
+                                   
+                                    <textarea id="fggxh" name="fggxh" readonly placeholder="规格型号" >${item_b1[i].ffh_ggxh}</textarea>
+                              </div> 
+               
+                  </div> 
+               </a> 
+             <div class="mui-collapse-content">
               <div class="mui-row cutOffLine">
                   <div class="mui-col-xs-4" style="display:flex;">
                        <label>单位</label>
@@ -1280,6 +1393,7 @@ function initData(data, flag) {
                   </div>
                 
               </div>  
+             </div> 
            </div>  
          `;
         $("#mxlist_fh").prepend(li);   
@@ -1304,25 +1418,29 @@ function initData(data, flag) {
         var li = `
                 <div class="mui-card" id="mx">
                   <div class="mui-input-row itemtitle">
-                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                       <span class="mui-icon mui-icon-close mui-pull-left" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                        <label></label>    
                        <span class="mui-icon mui-icon-arrowright mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;"></span>
                   </div>
-                  <div class="mui-row cutOffLine">
+                 <div class="mui-table-view-cell mui-collapse">
+                   <a class="mui-navigate-right" href="#" style="font-size:30px;">            
+                        <div class="mui-row">
                        <div class="mui-col-xs-4" style="display:flex;">
-                          <label>物料名称</label>
+                          
                          <textarea id="ffp_wlmc" name="ffp_wlmc" readonly placeholder="物料名称" >${item_b2[i].ffp_wlmc}</textarea>
                        </div>
                         <div class="mui-col-xs-4" style="display:flex;">
-                            <label>规格型号</label>
+                           
                            <textarea id="ffp_ggxh" name="ffp_ggxh" readonly placeholder="规格型号" >${item_b2[i].ffp_ggxh}</textarea>  
                        </div>
                       <div class="mui-col-xs-4" style="display:flex;">
-                            <label>包装形式</label>
+                          
                             <input type="text" id="ffp_bzxs" name="ffp_bzxs" readonly placeholder="包装形式" value="${item_b2[i].ffp_bzxs}"  />
                        </div>
                       
                   </div>  
+                   </a>
+                    <div class="mui-collapse-content">
                   <div class="mui-row cutOffLine">
                        <div class="mui-col-xs-3" style="display:flex;">
                             <label>单位</label>
@@ -1341,6 +1459,7 @@ function initData(data, flag) {
                           <input type="number" id="ffp_je" name="ffp_je" readonly placeholder="含税金额" value="${item_b2[i].ffp_je}"/>
                        </div>
                       
+                  </div>
                   </div>
                 </div>  
                  `;
@@ -1375,6 +1494,23 @@ function nodeControllerExp(NodeName) {
         }
         $("#fsh_dz,#fsh_name,#fsh_tel,#fdhrq,#fdqqk,#ffh_bz").removeAttr('readonly');
         $("#fsj_name,#fsj_tel,#fyjdz,#fhrqks,#fhrqjs,#ffp_bz").removeAttr('readonly');
+
+        $("#mxlist_fh").find("#ffh_dj").each(function () {
+            $(this).removeAttr('readonly');
+            $(this).on('input', function () {
+
+                calcChangeShip(this);
+                calcTotalShip();
+            });
+        });
+        $("#mxlist_fp").find("#ffp_dj").each(function () {
+            $(this).removeAttr('readonly');
+            $(this).on('input', function () {
+
+                calcChangeBill(this);
+                calcTotalShip();
+            });
+        });
         //商务专员
     } else if ((String(NodeName).match(/\d+/g) == null && String(NodeName).match('商务') != null) || String(NodeName).match('（营销一区）1') != null) {
 
@@ -1385,7 +1521,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
         //核算专员
@@ -1395,7 +1531,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
         //发票专员
@@ -1434,7 +1570,7 @@ function nodeControllerExp(NodeName) {
 
         $("#mxlist_fh").find("input[type='number']").on('input', function () {
 
-            calcPriceShip(this);
+            calcChangeShip(this);
         });
 
 
@@ -1590,6 +1726,10 @@ function SaveAsDraft() {
     });
 
     var ffp_bz = $("#ffp_bz").val();
+    if (ckjsflag) {
+        mui.alert('发货子表件数不正确，应为整数,保存范本失败');
+        return;
+    }
 
     var btnArry = ["取消", "确定"];
     mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
@@ -1843,7 +1983,10 @@ function UpdateDraft() {
 
 
     var DraftGuid = $("#DraftGuid").val();
-
+    if (ckjsflag) {
+        mui.alert('发货子表件数不正确，应为整数,更新范本失败');
+        return;
+    }
     var btnArry = ["取消", "确定"];
     mui.confirm('保存范本，是否确定？', '范本保存提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -2169,6 +2312,11 @@ function Save() {
 
 
     }
+
+    //if (ckjsflag) {
+    //    mui.alert('发货子表件数不正确，应为整数,提交失败');
+    //    return;
+    //}
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {

@@ -115,6 +115,15 @@
                 <label for="fzzzw_name">转正后职位</label>
                 <input type="text" id="fzzzw_name" name="fzzzw_name" readonly="readonly" />
             </div>
+            <div class="mui-input-row">
+                <label>职务层级</label>
+                <textarea rows="2" id="fzhiwulevel" readonly></textarea>
+            </div>
+            <div class="mui-input-row">
+                <label>分管领导</label>
+                <textarea rows="2" id="ffgld" readonly></textarea>
+                <input type="hidden" id="ffgldid" readonly/>
+            </div>
             <div class="mui-input-row" style="height:3.5rem;overflow:scroll;" id="uploaddiv">
                 <div class="border border-t upload-img" style="top:0rem;">
                     <!--上传图片-->
@@ -141,6 +150,7 @@
             <input type="hidden" id="fzzzw_no" name="fzzzw_no" />
             <input type="hidden" id="foper" name="foper" />
             <input type="hidden" id="fdepid" name="fdepid" />
+            
 
             <div class="mui-input-row" id="csd">
                 <label>加签</label>
@@ -521,6 +531,9 @@
                 $("#foper").val(item.foper);
                 $("#fdepid").val(item.fdepid);
 
+                $("#fzhiwulevel").val(item.fzhiwulevel);
+                $("#ffgld").val(item.ffgld);
+                $("#ffgldid").val(item.ffgldid);
                 if (item.fattach != null && item.fattach != "") {
                     var fjtmp = (String)(item.fattach);
 
@@ -995,6 +1008,10 @@
             var foper = $("#foper").val();
             var fdepid = $("#fdepid").val();
 
+
+            var fzhiwulevel = $("#fzhiwulevel").val();
+            var ffgld = $("#ffgld").val();
+            var ffgldid = $("#ffgldid").val();
             if (!fsbjg) {
                 mui.toast('请填写社保所在机构');
                 return;
@@ -1052,6 +1069,10 @@
                     xml = xml + '     <fsbny>' + fsbny + '</fsbny>';
                     xml = xml + '     <fzzdate>' + fzzdate + '</fzzdate>';
                     xml = xml + '     <fzzzw_name>' + fzzzw_name + '</fzzzw_name>';
+                    xml += `  <fzhiwulevel>${fzhiwulevel}</fzhiwulevel>
+                                        <ffgld>${ffgld}</ffgld>
+                                        <ffgldid>${ffgldid}</ffgldid>
+                              `;
                     if (fjArray.length != 0) {
                         xml = xml + '       <fattach>' + fjArray.toString().replace(",", ";") + '</fattach>';
                     } else {
@@ -1209,6 +1230,9 @@
             var fzzzw_no = $("#fzzzw_no").val();
             var foper = $("#foper").val();
             var fdepid = $("#fdepid").val();
+            var fzhiwulevel = $("#fzhiwulevel").val();
+            var ffgld = $("#ffgld").val();
+            var ffgldid = $("#ffgldid").val();
             var consignFlag = false;
             var consignUserId = new Array();
             var consignRoutingType;
@@ -1305,6 +1329,10 @@
                         xml = xml + '     <fsbny>' + fsbny + '</fsbny>';
                         xml = xml + '     <fzzdate>' + fzzdate + '</fzzdate>';
                         xml = xml + '     <fzzzw_name>' + fzzzw_name + '</fzzzw_name>';
+                        xml += `  <fzhiwulevel>${fzhiwulevel}</fzhiwulevel>
+                                        <ffgld>${ffgld}</ffgld>
+                                        <ffgldid>${ffgldid}</ffgldid>
+                              `;
                         if (fjArray.length != 0) {
                             xml = xml + '       <fattach>' + fjArray.toString().replace(",", ";") + '</fattach>';
                         } else {
@@ -1373,6 +1401,10 @@
                 xml = xml + '     <fsbny>' + fsbny + '</fsbny>';
                 xml = xml + '     <fzzdate>' + fzzdate + '</fzzdate>';
                 xml = xml + '     <fzzzw_name>' + fzzzw_name + '</fzzzw_name>';
+                xml += `  <fzhiwulevel>${fzhiwulevel}</fzhiwulevel>
+                                        <ffgld>${ffgld}</ffgld>
+                                        <ffgldid>${ffgldid}</ffgldid>
+                              `;
                 if (fjArray.length != 0) {
                     xml = xml + '       <fattach>' + fjArray.toString().replace(",", ";") + '</fattach>';
                 } else {

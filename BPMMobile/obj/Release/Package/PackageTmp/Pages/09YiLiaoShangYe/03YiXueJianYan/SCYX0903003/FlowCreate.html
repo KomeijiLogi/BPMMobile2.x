@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <div class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" id="fname" readonly />
+                <input type="hidden" id="fno" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>申请部门</label>
+                <input type="text" id="fdept" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期</label>
+                <input type="date" id="fdate" readonly />
+            </div>
+            <div class="mui-input-row">
+                <label>设备维修申请</label>
+                <input type="text" id="fsbwxsq" readonly placeholder="请选择" />
+                <input type="hidden" id="fsbwxsq_taskid" readonly />
+            </div>
+            <div class="mui-row itemtitle cutOffLine" style="text-align:center;">
+                <div class="mui-col-xs-12">
+                    <label>客户信息</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>客户名称<i style="color:red;">*</i></label>
+                    <input type="text" id="fkhmc" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>科室<i style="color:red;">*</i></label>
+                    <input type="text" id="fks" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>客户经理<i style="color:red;">*</i></label>
+                    <input type="text" id="fkhjl" readonly placeholder="请选择" />
+                    <input type="hidden" id="fkhjl_no" readonly />
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>用途<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fyt" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle cutOffLine" style="text-align:center;">
+                <div class="mui-col-xs-12">
+                    <label>配件明细</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>合计</label>
+                    <input type="text" id="fhj" readonly />
+                </div>
+            </div>
+            <div id="mxlist">
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-left:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;margin-right:3vw;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        <label>维修收费表</label>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>品牌<i style="color:red;">*</i></label>
+                            <textarea id="fpp" placeholder="请填写" rows="2"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>适用机型<i style="color:red;">*</i></label>
+                            <textarea id="fsyjx" placeholder="请填写" rows="2"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>配件货号</label>
+                            <textarea id="fpjhh" placeholder="请填写" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>时空产品代码</label>
+                            <textarea id="fskcpdm" placeholder="请填写" rows="2"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>品名<i style="color:red;">*</i></label>
+                            <textarea id="fpm" placeholder="请填写" rows="2"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>单位<i style="color:red;">*</i></label>
+                            <textarea id="fdw" placeholder="请填写" rows="2"></textarea>
+                        </div> 
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>数量<i style="color:red;">*</i></label>
+                            <input type="number" id="fsl" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>预估单价<i style="color:red;">*</i></label>
+                            <input type="number" id="fygdj" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>预估金额</label>
+                            <input type="number" id="fygje" placeholder="请填写" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                添加配件明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+        </div>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist"></ul>
+            </div>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js?1"></script>
+    <script>
+
+        //var vconsole = new VConsole();
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\08医疗商业集团\\02医学检验公司\\13_市场营销', '医学检验公司维修配件申请');
+            getBPMParam();
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

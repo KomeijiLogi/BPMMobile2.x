@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-input-row">
+                <label>申请人</label>
+                <input type="text" id="fname" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label>申请部门<i style="color:red;">*</i></label>
+                <input type="text" id="fdept" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label>申请日期<i style="color:red;">*</i></label>
+                <input type="date" id="fdate" readonly/>
+            </div>
+            <div class="mui-input-row">
+                <label>是否借款</label>
+                <input type="hidden" id="fif_jk" readonly value="否"/>
+                <div class="mui-switch mui-switch-blue mui-switch-mini" id="fif_jkd">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </div>
+            <div id="fjkcard" style="display:none;">
+                <div class="mui-card">
+                    <div class="mui-row cutOffLine" style="padding:2vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款金额<i style="color:red;">*</i></label>
+                            <input type="number" id="fjkje" placeholder="请填写"/>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款金额大写</label>
+                            <input type="text" id="fjkje_dx" readonly/>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款单号</label>
+                            <input type="text" id="fjkdh" readonly />
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:2vw;">
+                        <div class="mui-col-xs-12" style="display:flex;">
+                            <label>借款用途<i style="color:red;">*</i></label>
+                            <textarea rows="3" id="fjkyt" placeholder="请填写"></textarea> 
+                        </div>
+                    </div>
+                    <div class="mui-input-row cutOffLine" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                        <div class="border border-t upload-img" style="top:0rem;">
+                            <!--上传图片-->
+                            <div class="clearfix upload-btn" id="children-bg">
+                                <label class="label">附件</label>
+                                <span class="tips" id="imageCount"><!--已添加0张--></span>
+                                <!--上传图片按钮  -->
+                                <span class="upload-addbtn">
+                                    <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                                </span>
+
+                            </div>
+                            <div class="upload-img-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row itemtitle2" style="padding:2vw;">
+                <div class="mui-col-xs-12" style="text-align:center;">
+                    <label>支出计划明细</label>
+                </div>
+               
+            </div>
+            <div class="mui-row cutOffLine">
+                <div class="mui-col-xs-6" style="padding:1vw;">
+                    <label>合计金额</label>
+                    <input type="number" id="fhj_je" readonly/>
+                </div>
+                <div class="mui-col-xs-6" style="padding:1vw;">
+                    <label>合计大写</label>
+                    <input type="text" id="fhj_je_dx" readonly/>
+                </div>
+            </div>
+            <div id="mxlist">
+
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                支出计划明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a> 
+            <input type="hidden" id="fno" placeholder="申请人工号" />
+            <input type="hidden" id="fbmjl" placeholder="部门经理" />
+            <input type="hidden" id="ffgld" placeholder="分管领导" />
+            <input type="hidden" id="fcwshr" placeholder="财务审核人" />
+            <input type="hidden" id="fspr" placeholder="总经理" />
+            <input type="hidden" id="ps" placeholder="PS岗位"/>
+            <input type="hidden" id="fsqrzw" placeholder="申请人职位"/>
+            
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理', '洁丽康公司其他费用申请');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

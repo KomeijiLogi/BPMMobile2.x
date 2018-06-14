@@ -30,36 +30,7 @@ window.onload = function () {
         };
 
     } else if (String(window.location.href).match('UndoDetail') != null) {
-        //var url = window.location.href;
-        //var taskId;
-        //var stepId;
-        //if (url != null && url.indexOf("tid") != -1 && url.indexOf("pid") != -1) {
-        //    taskId = url.substring(url.indexOf("=") + 1, url.indexOf("&"));
-        //    if (url.split("pid=")[1].indexOf("ticket") != -1) {
-        //        stepId = url.split("pid=")[1];
-        //        stepId = stepId.split("&ticket")[0];
-        //        var ticket = url.split("=")[3];
-        //        localStorage.setItem('ticket', ticket);
-        //    } else {
-        //        stepId = url.split("pid=")[1];
-        //    }
-        //}
-        //console.log(taskId);
-        //$.ajax({
-        //    type: "get",
-        //    url: "/api/bpm/GetTaskData",
-        //    data: { 'taskId': taskId },
-
-        //    beforeSend: function (XHR) {
-        //        XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
-        //    }
-        //}).done(function (data) {
-        //    console.log('隐藏按钮');
-        //    if (data.Steps[0].Finished) {
-        //        $("#approvalD").hide();
-        //    }
-        //}).fail(function (e) {
-        //});
+         
     }
 
    
@@ -84,6 +55,7 @@ function PostXml(xml) {
 
           
             console.log(data);
+           
             if (data.Recipients) {
                 if (data.Recipients[0] != null) {
                     if (data.Recipients[0].Recipient.DisplayName != null) {
@@ -99,19 +71,37 @@ function PostXml(xml) {
                 } else {
                     mui.toast("流程审批结束");
                 }
-                if (String(xml).indexOf("提交") != -1) {
+                if (String(navigator.userAgent).match('cloudhub') == null) {
+                    if (String(xml).indexOf("提交") != -1) {
 
-                   setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                        setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                    } else {
+
+                        setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                    }
                 } else {
+                    //mui.alert("操作成功,点击确定关闭页面", '提示信息', function () {
+                    //    XuntongJSBridge.call('close');
+                    //});
+                    if (String(xml).indexOf("提交") != -1) {
 
-                    setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                        setTimeout("window.location.href = '/Pages/index.html?ticket=" + localStorage.getItem('ticket') + "'", 2000);
+                    } else {
+
+                        setTimeout("window.location.href = '/Pages/UndoFlow.html'", 2000);
+                    }
                 }
+
+               
             } else {
                 $("button").removeAttr('disabled');
                 switch (data.BPMExceptionType) {
+                    case 3:
+                        mui.alert('参数类型不正确');
+                        break;
                     case 4244:
                         //缺少对应处理人状态码
-                        mui.alert(data.Param0+'缺少对应处理人');
+                        mui.alert('<'+data.Param0+'>缺少对应处理人');
                         break;  
                     case 4225:
                         //xml拼写错误状态码
@@ -120,9 +110,11 @@ function PostXml(xml) {
                     case 4457:
                         //重复提交异常状态码
                         break;
-
+                    case 4525:
+                        mui.alert('<'+data.Param0 + '>没有满足条件的处理人,<br/>' + data.Param1 + '已禁用');
+                        break;
                     default:
-                        mui.alert("提交失败!请稍后重试");
+                        mui.alert("操作失败!请稍后重试,<br/>error code:" + data.BPMExceptionType + '<br/>' + data.Param0);
                         break;
                 }
 
@@ -637,6 +629,18 @@ function showPickerOptimize(picker, el, data) {
 }
 
 
+function showPickerDelegate(zpid,zid,data) {
+    var picker = new mui.PopPicker();
+    picker.setData(data);
+    $(zpid).off('tap');
+    $(zpid).on('tap', zid, function () {
+        var self = this;
+        picker.show(function (items) {
+            self.value = (items[0].text);
+        });
+    });
+}
+
 //打开加签
 
 function openSignPer() {
@@ -720,6 +724,16 @@ function showConfirm() {
     $("#signd").css("display", "block");
 
 }
+//优化确认审批的操作
+function showConfirmOpt() {
+    if (checkNes()) {   //校验必填项，校验成功后显示
+        $("#wrapper").css("display", "none");
+        $("#signd").css("display", "block");
+    } else {
+        window.event.preventDefault();
+    }
+}
+
 function cancelConfirm() {
 
     $("#wrapper").css("display", "block");
@@ -1317,7 +1331,7 @@ function getPseronInfoByopenId(selecPersonOpenIdArr) {
 
 //将null转换成空字符
 function changeNullToEmpty(value) {
-    if (value == null) {
+    if (value == null || value=='null') {
         value = '';
     }
     return value;
@@ -1370,4 +1384,119 @@ function localeLan(str) {
     }
     console.log(localeStr);
     return localeStr;
+}
+
+
+//解决键盘遮挡编辑区域的问题
+window.addEventListener('resize', function () {
+    if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+        window.setTimeout(function () {
+            if ('scrollIntoView' in document.activeElement) {
+                document.activeElement.scrollIntoView();
+            } else {
+                document.activeElement.scrollIntoViewIfNeeded();
+            }
+        }, 0);
+    }
+
+});
+
+
+function showDtPicker(el) {
+    var opts = { "type": "date", "beginYear": new Date().getFullYear()-1, "endYear": new Date().getFullYear()+3 };
+    var picker = new mui.DtPicker(opts);
+
+    $(el).on('tap', function () {
+
+        picker.show(function (rs) {
+            
+            $(el).val(rs.text);
+
+            //picker.dispose();
+        });
+    });
+    
+    
+}
+
+//拼装dom
+function AssembledDom(fileExt, url, id) {
+    var li = ``;
+    var picext = ['png', 'jpg', 'bmp'];
+    //pic
+    //if (String(fileExt).match('png') != null || String(fileExt).match('jpg') != null || String(fileExt).match('bmp') != null) {
+    if (picext.includes(String(fileExt))) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                      <div class="img-wrap smallimg imgdiv" id="${id}"><img src="${url}"/></div>
+                  </div>
+              </div>  
+             `;
+        //excel
+    } else if (String(fileExt).match('xls') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/xlsx@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //word
+    } else if (String(fileExt).match('doc') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/docx@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //ppt
+    } else if (String(fileExt).match('ppt') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/ppt@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //pdf
+    } else if (String(fileExt).match('pdf') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/pdf@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //zip
+    } else if (String(fileExt).match('zip') != null || String(fileExt).match('7z') != null || String(fileExt).match('rar') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/zip@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //txt
+    } else if (String(fileExt).match('txt') != null) {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/txt@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+        //other
+    } else {
+        li = `
+              <div class="pic-preview smallyulan success">
+                  <div class="del none" style="opacity:1;z-index:999;display:none;"onclick="delPicture(this)">x</div>
+                     <div class="img-wrap smallimg imgdiv" id="${id}"><img src="../../../../Content/images/unkown@2x.png"/></div>
+                  </div>
+              </div>  
+             `;
+    }
+
+    return li;
 }

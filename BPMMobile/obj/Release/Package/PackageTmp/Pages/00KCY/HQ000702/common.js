@@ -115,7 +115,7 @@ function tapEvent() {
                         <label>明细列表项</label>
                         <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                     </div>
-                     <div class="mui-row" style="padding:1vw;">
+                     <div class="mui-row cutOffLine" style="padding:1vw;">
                          <div class="mui-col-xs-6" style="display:flex;">
                              <label>申请人</label>
                              <input type="text" id="fsqr" placeholder="请填写"/> 
@@ -126,14 +126,14 @@ function tapEvent() {
                          </div>
                           
                      </div> 
-                      <div class="mui-row" style="padding:1vw;">
+                      <div class="mui-row cutOffLine" style="padding:1vw;">
                           <div class="mui-col-xs-12" style="display:flex;">
                               <label>就餐时间</label>
                               <input type="datetime-local" id="fjc_rq"/>
                          </div> 
                       </div>
                        
-                     <div class="mui-row" style="padding:1vw;">
+                     <div class="mui-row cutOffLine" style="padding:1vw;">
                          <div class="mui-col-xs-3" style="display:flex;">
                              <label>餐别</label>
                              <input type="text" id="fcb" placeholder="请填写"/>  
@@ -210,7 +210,7 @@ function initData(data, flag) {
                         <label>明细列表项</label>
                         <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                     </div>
-                     <div class="mui-row" style="padding:1vw;">
+                     <div class="mui-row cutOffLine" style="padding:1vw;">
                          <div class="mui-col-xs-6" style="display:flex;">
                              <label>申请人</label>
                              <input type="text" id="fsqr" readonly value="${item_c[i].fsqr}"/> 
@@ -221,14 +221,14 @@ function initData(data, flag) {
                          </div>
                           
                      </div> 
-                      <div class="mui-row" style="padding:1vw;">
+                      <div class="mui-row cutOffLine" style="padding:1vw;">
                           <div class="mui-col-xs-12" style="display:flex;">
                               <label>就餐时间</label>
                               <input type="datetime-local" id="fjc_rq" readonly value="${item_c[i].fjc_rq}"/>
                          </div> 
                       </div>
                        
-                     <div class="mui-row" style="padding:1vw;">
+                     <div class="mui-row cutOffLine" style="padding:1vw;">
                          <div class="mui-col-xs-3" style="display:flex;">
                              <label>餐别</label>
                              <input type="text" id="fcb" readonly value="${item_c[i].fcb}"/>  

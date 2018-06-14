@@ -788,7 +788,7 @@ namespace BPMMobile.Controllers
         /// 发起 审批 加签 流程
         /// </summary>
         /// <param name=""></param>
-        public IHttpActionResult PostProcess([FromBody]string xml )
+        public IHttpActionResult PostProcess([FromBody]String xml)
         {
             ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             try
@@ -797,6 +797,7 @@ namespace BPMMobile.Controllers
                 using (BPMConnection cn = new BPMConnection())
                 {
                     cn.WebOpen();
+                  
                     byte[] bs = System.Text.Encoding.UTF8.GetBytes(xml);
                     MemoryStream xlmStream = new MemoryStream(bs);
                     PostResult result = BPMProcess.Post(cn, xlmStream);
@@ -810,6 +811,34 @@ namespace BPMMobile.Controllers
             }
            
         }
+
+        public IHttpActionResult PostProcessBPM(ProcessXml xml)
+        {
+            ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+            try
+            {
+                PrepareBPMEnv();
+                using (BPMConnection cn = new BPMConnection())
+                {
+                    cn.WebOpen();
+
+                    byte[] bs = System.Text.Encoding.UTF8.GetBytes(xml.xml);
+                    MemoryStream xlmStream = new MemoryStream(bs);
+                    PostResult result = BPMProcess.Post(cn, xlmStream);
+                    return Json(result);
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                log.Error("error:" + e);
+                return Json(e);
+            }
+
+
+        }
+
         /// <summary>
         /// 退回
         /// </summary>
@@ -1684,5 +1713,8 @@ namespace BPMMobile.Controllers
         public bool afterBind { get; set; }
         public string op { get; set; }
     }
-
+    public class ProcessXml
+    {
+        public string xml { get; set; }
+    }
 }

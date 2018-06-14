@@ -3,6 +3,12 @@
     background-color: white;
     height: 100%;
     overflow: auto;
+  
+}
+.mui-content::after {
+    /**开启硬件加速**/
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 .itemborder {
     /*margin-top:0.4rem;*/
@@ -23,6 +29,19 @@
     color: white;
     background-color: #FD8A21;
 }
+.itemtitle3 {
+    color: white;
+    background-color: #51FFFF;
+}
+
+.title {
+    background-color: #5191FD;
+    color:whitesmoke;
+    text-align:center;
+    height:7.5vw;
+
+}
+
 
 #signbody {
     display: none;
@@ -44,6 +63,7 @@ textarea {
     height: auto;
     overflow: auto;
     font-size: 0.65rem;
+    padding:0rem;
 }
 
 a {
@@ -215,4 +235,7 @@ li {
     border-bottom: 1px solid #a7a7a7;
     border-collapse: collapse;
     flex-direction:column;
+}
+.padding{
+    padding:3vw;
 }

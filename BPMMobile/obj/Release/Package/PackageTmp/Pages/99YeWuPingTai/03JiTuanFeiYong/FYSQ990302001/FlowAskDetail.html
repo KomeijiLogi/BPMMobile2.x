@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>公司名称</label>
+                    <textarea rows="2" id="comp_name" readonly></textarea>
+                    <input type="hidden" id="dept_no" readonly />
+                    <input type="hidden" id="user_leadtitle" readonly />
+                    <input type="hidden" id="user_no" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>部门名称</label>
+                    <textarea rows="2" id="dept_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="user_name" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请日期</label>
+                    <textarea rows="2" id="sqdate" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>月度预算金额</label>
+                    <textarea rows="2" id="yueys" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>可用预算金额</label>
+                    <textarea rows="2" id="keyongys" readonly></textarea>
+                    <input type="hidden" id="yiyongys" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用属性</label>
+                    <textarea rows="2" id="feiyongsx" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>超预算情况%</label>
+                    <textarea rows="2" id="chaoysqk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>差旅类别</label>
+                    <textarea rows="2" id="chailvlb" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>是否借款</label>
+                    <textarea rows="2" id="shifoujk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="beizhu" readonly></textarea>
+                </div>
+            </div>
+            <div id="fjkcard" style="display:none;">
+                <div class="">
+                    <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                        <label>借款申请单</label>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款金额</label>
+                            <input type="number" id="jkje" readonly />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>大写金额</label>
+                            <input type="text" id="jkjedx" readonly />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款单号</label>
+                            <input type="text" id="jkcode" readonly />
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine" style="padding:3vw;">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借款事由</label>
+                            <textarea rows="2" id="jkrem" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>国内出差明细</label>
+            </div>
+            <div id="mxlist_gn">
+
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>国外出差明细</label>
+            </div>
+            <div id="mxlist_gw">
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-3" style="display:flex;">
+                        <label>邀请方</label>
+                        <textarea rows="2" id="fyqf" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-3" style="display:flex;">
+                        <label>邀请人</label>
+                        <textarea rows="2" id="fyqr" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-3" style="display:flex;">
+                        <label>电话</label>
+                        <textarea rows="2" id="fphone" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-3" style="display:flex;">
+                        <label>传真</label>
+                        <textarea rows="2" id="fcz" readonly></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>差旅费申请明细</label>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用项目</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>有效天数</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>分项标准<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请金额</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>长途交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_ct" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>住宿费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs_yxts" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs_fxbz" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zs" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>餐费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf_yxts" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf_fxbz" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_cf" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>市内交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn_yxts" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn_fxbz" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_sn" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>其他差旅费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_qt" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-3" style="display:flex;">
+
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>合计金额</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_zmx" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="amt_z" readonly />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>大写金额</label>
+                    <textarea rows="2" id="amt_zdx" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>超标准情况（%）</label>
+                    <textarea rows="2" id="chaobzqk" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine" style="padding:3vw;">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>出差任务内容<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="chuchairw" readonly></textarea>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+        mui.init();
+
+        mui.ready(function () {
+            _init._preAskOrDone();
+
+        });
+    </script>
+</body>
+</html>

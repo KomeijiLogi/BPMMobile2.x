@@ -81,6 +81,10 @@
                 <input type="text" id="fyrylb" name="fyrylb" readonly="readonly" />
             </div>
             <div class="mui-input-row">
+                <label>拟调整岗位职务层级</label>
+                <input type="text" id="fjb" readonly/>
+            </div>
+            <div class="mui-input-row">
                 <label for="ftzsy">调整事由<i style="color:red;">*</i></label>
                 <textarea id="ftzsy" name="ftzsy" rows="2" readonly="readonly"></textarea>
             </div>           
@@ -427,6 +431,8 @@
                 $("#fyrylb").val(item.人员类别);
                 $("#ftzsy").val(item.调整理由);
                 $("#fdept_num").val(item.部门编码);
+
+                $("#fjb").val(item.拟调整岗位职务层级);
 
 
                 if (item.附件 != null && item.附件 != "") {

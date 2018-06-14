@@ -21,6 +21,7 @@
             height: 100%;
             overflow: auto;
             font-family: 'Microsoft YaHei';
+            cursor: pointer;
         }
 
         label {
@@ -135,11 +136,12 @@
                         mui('#wrapper').pullRefresh().endPullupToRefresh(true);
                     } else {
                         console.log(data);
-
+                        
                         for (var i = 0; i < data.drafts.length; i++){
+                            
                             var li = '<li class="mui-table-view-cell" id="touchArea">';
 
-                            li = li + '   <a href="' + data.drafts[i].ViewPage + '?DraftGuid=' + data.drafts[i].DraftGuid + '&version=' + data.drafts[i].Version + '">';
+                            li = li + '   <a href="' + data.drafts[i].ViewPage + '?DraftGuid=' + data.drafts[i].DraftGuid + '&version=' + data.drafts[i].Version + '&timestamp=' + new Date().getTime() + '">';
 
 
 
@@ -149,7 +151,7 @@
                             li = li + '        <img class="mui-pull-left" src="' + data.drafts[i].Icon + '" style="width:2rem;height:2rem;">';
 
                             li = li + '           <h4 class="mui-ellipsis-2" style="font-size:0.7rem;font-weight:500;padding-left:0.5rem;">';
-                            li = li + '             ' + data.drafts[i].DisplayName + '<p class="mui-pull-right" style="color:#00a0ea;">草稿</p>';
+                            li = li + '             ' + data.drafts[i].DisplayName + '<p class="mui-pull-right" style="color:#00a0ea;"></p>';
                             li = li + '           </h4>';
                             //li = li + '            <label class="mui-pull-left" style="padding-left:0.5rem;color:#d91d47;">' + title + '</label>';
                             li = li + '            <p class="mui-pull-right">' + FormatterTime(data.drafts[i].CreateDate) + '</p>';
