@@ -364,10 +364,11 @@
                         <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
                         <input type="text" id="fkhmc" name="fkhmc" readonly data-fkhbm="" data-fkzcc="" />
                     </div>
-                    <div class="mui-input-row">
+                    <div class="mui-input-row" style="display:none;">
                         <label>库存组织</label>
                         <input type="text" id="fkcorg" name="fkcorg" readonly />
                     </div>
+
                     <div class="mui-input-row" id="csd">
                         <label>加签</label>
                         <div class="mui-switch mui-switch-blue" id="csswitch">
@@ -446,11 +447,11 @@
                     <div class="">
                         <div class="mui-input-row">
                             <label for="fzjsj">直接上级<i style="color:red;">*</i></label>
-                            <input type="text" id="fzjsj" name="fzjsj" readonly  data-fxszg="" />
+                            <input type="text" id="fzjsj" name="fzjsj" readonly data-fxszg="" />
                         </div>
                         <div class="mui-input-row">
                             <label for="fsh_dz">收货地址<i style="color:red;">*</i></label>
-                            <input type="text" id="fsh_dz" name="fsh_dz" readonly/>
+                            <input type="text" id="fsh_dz" name="fsh_dz" readonly />
                         </div>
                         <div class="mui-input-row">
                             <label for="fsh_name">收货人<i style="color:red;">*</i></label>
@@ -472,7 +473,7 @@
                             <label for="fdqqk">当前欠款</label>
                             <input type="number" id="fdqqk" name="fdqqk" placeholder="请填写当前欠款" class="saveCanChange" />
                         </div>
-                        <div class="mui-input-row" >
+                        <div class="mui-input-row">
                             <label for="fcsxq">超授信期<i style="color:red;">*</i></label>
                             <input type="hidden" id="fcsxq" name="fcsxq" readonly />
                             <div class="mui-switch mui-switch-blue mui-disabled" id="fcsxqd">
@@ -480,13 +481,47 @@
                             </div>
                         </div>
 
-                        <div class="mui-input-row" >
+                        <div class="mui-input-row">
                             <label for="fckdh">EAS出库单号<i style="color:red;">*</i></label>
                             <input type="text" id="fckdh" name="fckdh" readonly />
                         </div>
                         <div class="mui-input-row" style="height:auto;">
                             <label for="ffh_bz">备注</label>
                             <textarea rows="3" id="ffh_bz" name="ffh_bz" readonly class="saveCanChange"></textarea>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>收款条件</label>
+                                <textarea rows="2" id="f_sktj" readonly></textarea>
+                                <input type="hidden" id="f_sktj_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>库存组织</label>
+                                <textarea rows="2" id="f_kczz" readonly></textarea>
+                                <input type="hidden" id="f_kczz_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>仓库名称</label>
+                                <textarea rows="2" id="f_ckmc" readonly></textarea>
+                                <input type="hidden" id="f_ckbm" readonly />
+                                <input type="hidden" id="f_mchz" readonly />
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销售组织</label>
+                                <textarea rows="2" id="f_xszz" readonly></textarea>
+                                <input type="hidden" id="f_xszz_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销售员</label>
+                                <textarea rows="2" id="f_xsy" readonly></textarea>
+                                <input type="hidden" id="f_xsy_no" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销往医院<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="f_xwyy" readonly class="saveCanChange"></textarea>
+                            </div>
                         </div>
                     </div>
                     <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fh" style="margin-top:0.5rem;display:none;">
@@ -532,11 +567,15 @@
                                 </div>
                                 <div class="mui-input-row">
                                     <label for="fsjfhsl_menu">实际发货数量</label>
-                                    <input type="number" id="fsjfhsl_menu" name="fsjfhsl_menu" readonly placeholder="实际发货数量"  />
+                                    <input type="number" id="fsjfhsl_menu" name="fsjfhsl_menu" readonly placeholder="实际发货数量" />
+                                </div>
+                                <div class="mui-input-row">
+                                    <label>套系<i style="color:red;">*</i></label>
+                                    <input type="text" id="f_tx_menu" readonly placeholder="请选择套系" />
                                 </div>
                                 <div class="mui-input-row">
                                     <label for="ffh_je_menu">含税金额</label>
-                                    <input type="number" id="ffh_je_menu" name="ffh_je_menu" readonly  />
+                                    <input type="number" id="ffh_je_menu" name="ffh_je_menu" readonly />
                                 </div>
                                 <div class="mui-input-row">
                                     <label for="ffh_js_menu">件数</label>

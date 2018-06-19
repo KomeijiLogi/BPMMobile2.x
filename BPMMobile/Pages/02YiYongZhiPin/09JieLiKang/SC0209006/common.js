@@ -43,6 +43,42 @@ function tapEvent() {
 
 
     inquireMat();
+    $("#tjmx").on('tap', () => {
+
+        var li = `
+ <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>物料编码<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fwlbm" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>物料名称</label>
+                            <textarea rows="2" id="fwlmc" readonly></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>规格型号</label>
+                            <textarea rows="2" id="fggxh" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>计量单位</label>
+                            <textarea rows="2" id="fjldw" readonly></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>借用数量</label>
+                            <input type="number" id="fjysl" placeholder="请填写" style="padding:0;" />
+                        </div>
+                    </div>
+                </div>
+                   `;
+        $("#mxlist").append(li);
+    });
 }
 
 //查询可借用的物料
@@ -137,7 +173,7 @@ function initData(data, flag) {
 
     var item_c = data.FormDataSet.洁丽康公司_产品借用申请_子表1;
     for (var i = 0; i < item_c.length; i++) {
-
+        itemidArr.push(item_c[i].itemid);
         var li = `
                <div id="mx">
                     <div class="mui-input-row itemtitle">
@@ -501,7 +537,7 @@ function AgreeOrConSign() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
-                    <TaskID></TaskID>
+                    <TaskID>${$("#taskId").val()}</TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;
             for (var i = 0; i < mxlistArr.length; i++) {
@@ -551,7 +587,7 @@ function AgreeOrConSign() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
-                    <TaskID></TaskID>
+                    <TaskID>${$("#taskId").val()}</TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;
         for (var i = 0; i < mxlistArr.length; i++) {
@@ -573,6 +609,7 @@ function AgreeOrConSign() {
                        </FormData>
                     </XForm>
                    `;
+        console.log(xml);
         PostXml(xml);
 
     }

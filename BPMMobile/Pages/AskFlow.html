@@ -49,7 +49,10 @@
 
         </div>
     </div>
+    <!--<script type="text/javascript" src="../Scripts/vconsole.min.js"></script>-->
+
     <script>
+       // var vconsole = new VConsole();
         mui.init({
 
             pullRefresh: {
@@ -272,7 +275,9 @@
                     if (XMLHttpRequest.status == "401") {
                         mui.alert('授权过期，请重新打开页面');;
                     } else if (XMLHttpRequest.status == "500") {
-                        mui.alert('服务器内部错误');
+                        //mui.alert('服务器内部错误' + XMLHttpRequest);
+                        console.log(XMLHttpRequest);
+                        mui.alert(XMLHttpRequest);
                     }
                 });
 

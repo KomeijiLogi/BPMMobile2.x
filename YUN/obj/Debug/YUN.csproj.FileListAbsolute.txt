@@ -75,5 +75,5 @@ D:\Documents\BPMMobile\YUN\bin\Debug\YUN.pdb
 D:\Documents\BPMMobile\YUN\obj\Debug\YUN.csproj.CoreCompileInputs.cache
 D:\Documents\BPMMobile\YUN\obj\Debug\YUN.dll
 D:\Documents\BPMMobile\YUN\obj\Debug\YUN.pdb
-D:\Documents\BPMMobile\YUN\obj\Debug\YUN.csprojResolveAssemblyReference.cache
 D:\Documents\BPMMobile\YUN\obj\Debug\YUN.csproj.CopyComplete
+D:\Documents\BPMMobile\YUN\obj\Debug\YUN.csprojAssemblyReference.cache

@@ -363,7 +363,7 @@
                         <label for="fkhmc">客户名称<i style="color:red;">*</i></label>
                         <input type="text" id="fkhmc" name="fkhmc" readonly data-fkhbm="" data-fkzcc="" />
                     </div>
-                    <div class="mui-input-row">
+                    <div class="mui-input-row" style="display:none;">
                         <label>库存组织</label>
                         <input type="text" id="fkcorg" name="fkcorg" readonly />
                     </div>
@@ -412,7 +412,7 @@
                             <label for="fdqqk">当前欠款</label>
                             <input type="number" id="fdqqk" name="fdqqk" readonly class="saveCanChange" />
                         </div>
-                        <div class="mui-input-row" >
+                        <div class="mui-input-row">
                             <label for="fcsxq">超授信期<i style="color:red;">*</i></label>
                             <input type="hidden" id="fcsxq" name="fcsxq" readonly />
                             <div class="mui-switch mui-switch-blue mui-disabled" id="fcsxqd">
@@ -427,6 +427,40 @@
                         <div class="mui-input-row" style="height:auto;">
                             <label for="ffh_bz">备注</label>
                             <textarea rows="3" id="ffh_bz" name="ffh_bz" readonly class="saveCanChange"></textarea>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>收款条件</label>
+                                <textarea rows="2" id="f_sktj" readonly></textarea>
+                                <input type="hidden" id="f_sktj_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>库存组织</label>
+                                <textarea rows="2" id="f_kczz" readonly></textarea>
+                                <input type="hidden" id="f_kczz_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>仓库名称</label>
+                                <textarea rows="2" id="f_ckmc" readonly></textarea>
+                                <input type="hidden" id="f_ckbm" readonly />
+                                <input type="hidden" id="f_mchz" readonly />
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销售组织</label>
+                                <textarea rows="2" id="f_xszz" readonly></textarea>
+                                <input type="hidden" id="f_xszz_bm" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销售员</label>
+                                <textarea rows="2" id="f_xsy" readonly></textarea>
+                                <input type="hidden" id="f_xsy_no" readonly />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>销往医院<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="f_xwyy" readonly class="saveCanChange"></textarea>
+                            </div>
                         </div>
                     </div>
                     <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_fh" style="margin-top:0.5rem;display:none;">

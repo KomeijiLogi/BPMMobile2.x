@@ -1500,17 +1500,26 @@ namespace BPMMobile.Controllers
                     var mobileProcess = GetMobileProcess();
                     foreach (var p in mobileProcess)
                     {
-                        int rowcount = 0;
-                        var list = cn.GetHistoryTasks(
-                            HistoryTaskType.MyRequest, p.Path,
-                            "ProcessName='" + p.Name + "'",
-                            "",
-                            "",
-                            0,
-                            int.MaxValue,
-                            out rowcount);
+                        try
+                        {
+                            int rowcount = 0;
+                            var list = cn.GetHistoryTasks(
+                                HistoryTaskType.MyRequest, p.Path,
+                                "ProcessName='" + p.Name + "'",
+                                "",
+                                "",
+                                0,
+                                int.MaxValue,
+                                out rowcount);
 
-                        tasks.Append(list);
+                            tasks.Append(list);
+                        }
+                        catch(Exception e)
+                        {
+                            log.Error("error:", e);
+                           
+                        }
+                       
                     }
                     //int rowcount = 0;
                     //var list = cn.GetHistoryTasks(

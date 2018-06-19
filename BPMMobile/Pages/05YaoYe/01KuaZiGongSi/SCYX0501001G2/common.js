@@ -559,7 +559,10 @@ function tapEvent() {
             mui.toast('请填写申请数量');
             return;
         }
-       
+        if (!$("#f_tx_menu").val()) {
+            mui.toast('请选择套系');
+            return;
+        }
 
         //弹出层输入数据绑定生成子表并添加到头部，始终保持头部是最新加的
        
@@ -622,6 +625,10 @@ function tapEvent() {
 
                           </div> 
                            <div class="mui-row cutOffLine"  >
+                               <div class="mui-col-xs-4" style="display:flex;">
+                                   <label>套系</label>
+                                   <input type="text" id="f_tx" readonly placeholder="套系" value="${$("#f_tx_menu").val()}"/>
+                                </div>
                               <div class="mui-col-xs-4" style="display:flex;">
                                  <label>含税金额</label> 
                                  <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${$("#ffh_je_menu").val()}" />
@@ -663,7 +670,7 @@ function tapEvent() {
         $("#fsjfhsl_menu").val($(e.target).parent().parent().find("#fsjfhsl").val());
         $("#ffh_je_menu").val($(e.target).parent().parent().find("#ffh_je").val());
         $("#ffh_js_menu").val($(e.target).parent().parent().find("#ffh_js").val());
-
+        $("#f_tx_menu").val($(e.target).parent().parent().find("#f_tx").val())
         $(e.target).parent().parent().remove();
         calcTotalBill();
     });
@@ -777,6 +784,55 @@ function tapEvent() {
         prepIndexedList();
     });
 
+    //套系
+    var f_tx_data = [
+        {
+            value: '',
+            text:'A液+B粉'
+        },
+        {
+            value: '',
+            text: 'A液+B干粉桶'
+        },
+        {
+            value: '',
+            text: 'A液+B干粉袋'
+        },
+        {
+            value: '',
+            text: 'A液+B液'
+        },
+        {
+            value: '',
+            text: 'A粉+B粉'
+        },
+        {
+            value: '',
+            text: 'A粉+B干粉桶'
+        },
+        {
+            value: '',
+            text: 'A粉+B干粉袋'
+        },
+        {
+            value: '',
+            text: '非配套'
+        },
+    ];
+    var picker_tx = new mui.PopPicker();
+    picker_tx.setData(f_tx_data);
+    $('body').on('tap', '#f_tx_menu', function () {
+        var _self = this;
+        picker_tx.show(function (items) {
+            $(_self).val(items[0].text);
+        });
+    });
+    $('body').on('tap', '#f_tx', function () {
+        var _self = this;
+        picker_tx.show(function (items) {
+            $(_self).val(items[0].text);
+        });
+    });
 }
 function toggleMenu() {
     if (busying) {
@@ -885,6 +941,7 @@ function checkEvent() {
                     fxszz: $(box).data('fxszz'),
                     fxszzbm: $(box).data('fxszzbm')
                 }
+                console.log(checkEl);
                 checkedElementsCust.push(checkEl);
             } else if (check_event_flag == 1) {
                 //发货
@@ -922,6 +979,14 @@ function checkEvent() {
             $("#fkhmc").val(checkedElementsCust[0].fkhmc);
             $("#fkhmc").data('fkhbm', checkedElementsCust[0].fkhbm);
             $("#fsh_dz").val(checkedElementsCust[0].fdz);
+            $("#f_xsy").val(checkedElementsCust[0].fywy);
+            $("#f_xsy_no").val(checkedElementsCust[0].fywybm);
+            $("#f_xszz").val(checkedElementsCust[0].fxszz);
+            $("#f_xszz_bm").val(checkedElementsCust[0].fxszzbm);
+            //名称后缀
+            var bmstr = checkedElementsCust[0].fkhbm;
+            $("#f_mchz").val(bmstr.charAt(bmstr.length - 1));
+            searchAbout();
         } else if (check_event_flag == 1) {
             $("#fwlbm_menu").val(checkedElementsTrad[0].fwlbm);
             $("#fwlmc_menu").val(checkedElementsTrad[0].fwlmc);
@@ -941,6 +1006,130 @@ function checkEvent() {
     $("#datalist").empty();
 }
 
+//根据客户编码查询相关信息
+function searchAbout() {
+    var fkhbm = $("#fkhmc").data('fkhbm');
+    console.log(fkhbm);
+    var xml = `<?xml version= "1.0" ?>
+                                 <Requests>
+                                 <Params>
+                                 <DataSource>BPM_WEGO</DataSource>
+                                 <ID>erpcloud_药业集团发货申请基础</ID>
+                                 <Type>1</Type>
+                                 <Method>GetUserDataProcedure</Method>
+                                 <ProcedureName>erpcloud_药业集团发货申请基础</ProcedureName>
+                                 <Filter><fkhbm>${fkhbm}</fkhbm></Filter>
+                                 </Params>
+                                 </Requests>
+                               `;
+    $.ajax({
+        type: "POST",
+        url: "/api/bpm/DataProvider",
+        data: { '': xml },
+
+        beforeSend: function (XHR) {
+            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        }
+    }).done((data) =>{
+        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+        var pData = provideData.Tables[0].Rows;
+        console.info(pData);
+        $("#f_sktj").val(pData[0].收款条件);
+        $("#f_sktj_bm").val(pData[0].收款条件编码);
+    }).fail((e) => {
+        console.log(e);
+    });
+
+    var xml = `<?xml version= "1.0" ?>
+                                 <Requests>
+                                 <Params>
+                                 <DataSource>BPM_WEGO</DataSource>
+                                 <ID>erpcloud_查询药业集团发货_基础数据表2</ID>
+                                 <Type>1</Type>
+                                 <Method>GetUserDataProcedure</Method>
+                                 <ProcedureName>erpcloud_查询药业集团发货_基础数据表2</ProcedureName>
+                                 <Filter><名称后缀>${$("#f_mchz").val()}</名称后缀></Filter>
+                                 </Params>
+                                 </Requests>
+              `;
+    $.ajax({
+        type: "POST",
+        url: "/api/bpm/DataProvider",
+        data: { '': xml },
+
+        beforeSend: function (XHR) {
+            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        }
+    }).done((data) => {
+        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+        var pData = provideData.Tables[0].Rows;
+        console.info(pData);
+        $("#f_kczz").val(pData[0].库存组织);
+        $("#f_kczz_bm").val(pData[0].库存组织编码);
+
+    }).fail((e) => {
+
+        }).then(() => {
+            var f_kczz = $("#f_kczz").val();
+            console.log(f_kczz);
+            var xml = `<?xml version= "1.0" ?>
+                                 <Requests>
+                                 <Params>
+                                 <DataSource>BPM_WEGO</DataSource>
+                                 <ID>erpcloud_查询药业集团发货_基础数据表</ID>
+                                 <Type>1</Type>
+                                 <Method>GetUserDataProcedure</Method>
+                                 <ProcedureName>erpcloud_查询药业集团发货_基础数据表</ProcedureName>
+                                 <Filter><库存组织>${f_kczz}</库存组织></Filter>
+                                 </Params>
+                                 </Requests>
+                               `;
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done((data) => {
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                var pData = provideData.Tables[0].Rows;
+                //console.info(pData);
+                pData = pData.map((val, i, arr) => {
+                    var obj = {
+                        value: pData[i].仓库编码,
+                        text: pData[i].仓库名称,
+                        库存组织编码: pData[i].库存组织编码,
+                        库存组织: pData[i].库存组织,
+                        名称后缀: pData[i].名称后缀,
+                        仓库名称: pData[i].仓库名称,
+                        仓库编码: pData[i].仓库编码,
+                    };
+                    return obj;
+                });
+                console.log(pData);
+                var picker = new mui.PopPicker();
+                picker.setData(pData);
+                $('body').on('tap', '#f_ckmc', function () {
+                    var _self = this;
+                    picker.show(function (items) {
+                        $(_self).val(items[0].text);
+                        $("#f_ckbm").val(items[0].仓库编码);
+
+                    });
+
+                });
+            }).fail((e) => {
+                console.log(e);
+            });
+
+        });
+
+   
+
+
+}
 
 //通过存储过程获取对应资料 
 function getProcedureMsg(pd_flag) {
@@ -1292,6 +1481,8 @@ function initData(data, flag) {
     $("#fckdh").val(item_a.fckdh);
 
 
+
+
     switch (item_a.fkczz) {
         case '01.05.05.01':
             $("#fkcorg").val('注射器分公司');
@@ -1320,6 +1511,19 @@ function initData(data, flag) {
     $("#fhj_fhje").val(item_a.fhj_fhje);
     $("#fhj_fhjs").val(item_a.fhj_fhjs);
     $("#ffh_bz").val(item_a.ffh_bz);
+    $("#f_sktj").val(item_a.收款条件);
+    $("#f_sktj_bm").val(item_a.收款条件编码);
+    $("#f_kczz").val(item_a.库存组织);
+    $("#f_kczz_bm").val(item_a.库存组织编码);
+    $("#f_ckmc").val(item_a.仓库名称);
+    $("#f_ckbm").val(item_a.仓库编码);
+    $("#f_mchz").val(item_a.名称后缀);
+    $("#f_xszz").val(item_a.销售组织);
+    $("#f_xszz_bm").val(item_a.销售组织编码);
+    $("#f_xsy").val(item_a.业务员);
+    $("#f_xsy_no").val(item_a.业务员工号);
+    $("#f_xwyy").val(item_a.销往医院);
+
     var item_b1 = data.FormDataSet.BPM_WGYYFHFPSQ_B1;
     for (var i = 0; i < item_b1.length; i++) {
         itemidArr1.push(item_b1[i].itemid);
@@ -1383,11 +1587,15 @@ function initData(data, flag) {
                 
               </div> 
                <div class="mui-row cutOffLine">
-                  <div class="mui-col-xs-6" style="display:flex;">
+                  <div class="mui-col-xs-4" style="display:flex;">
+                      <label>套系</label>
+                      <input type="text" id="f_tx" readonly placeholder="套系" value="${item_b1[i].套系}"/> 
+                  </div>
+                  <div class="mui-col-xs-4" style="display:flex;">
                        <label>含税金额</label>
                        <input type="number" id="ffh_je" name="ffh_je" readonly placeholder="含税金额" value="${item_b1[i].ffh_je}" />
                   </div>
-                  <div class="mui-col-xs-6" style="display:flex;">
+                  <div class="mui-col-xs-4" style="display:flex;">
                        <label>件数</label>
                        <input type="number" id="ffh_js" name="ffh_js" readonly placeholder="件数" value="${item_b1[i].ffh_js}" />
                   </div>
@@ -1610,7 +1818,7 @@ function initTemplateData() {
 
 
 class MxItem_trad {
-    constructor(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js) {
+    constructor(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js,f_tx) {
         this.fwlbm = fwlbm;
         this.fwlmc = fwlmc;
         this.fggxh = fggxh;
@@ -1623,6 +1831,7 @@ class MxItem_trad {
         this.fsjfhsl = fsjfhsl;
         this.ffh_je = ffh_je;
         this.ffh_js = ffh_js;
+        this.f_tx = f_tx;
     }
 }
 class MxItem_bill {
@@ -1664,6 +1873,28 @@ function SaveAsDraft() {
     var fhj_fhje = $("#fhj_fhje").val();
     var fhj_fhjs = $("#fhj_fhjs").val();
 
+    /*添加字段*/
+    var f_sktj = $("#f_sktj").val();
+    var f_sktj_bm = $("#f_sktj_bm").val();
+    var f_kczz = $("#f_kczz").val();
+    var f_kczz_bm = $("#f_kczz_bm").val();
+    var f_ckmc = $("#f_ckmc").val();
+    var f_ckbm = $("#f_ckbm").val();
+    var f_mchz = $("#f_mchz").val();
+    var f_xszz = $("#f_xszz").val();
+    var f_xszz_bm = $("#f_xszz_bm").val();
+    var f_xsy = $("#f_xsy").val();
+    var f_xsy_no = $("#f_xsy_no").val();
+    var f_xwyy = $("#f_xwyy").val();
+
+
+
+
+
+
+
+
+
     var mxflag = false;
     var mxlistArrShip = new Array();
     $("#mxlist_fh").find("#mx").each(function () {
@@ -1683,10 +1914,10 @@ function SaveAsDraft() {
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
         var ffh_js = $(this).find("#ffh_js").val();
+        var f_tx = $(this).find("#f_tx").val();
 
 
-
-        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js, f_tx);
         mxlistArrShip.push(mx);
     });
 
@@ -1769,6 +2000,20 @@ function SaveAsDraft() {
                         <fdqqk>${fdqqk}</fdqqk>
                         <fcsxq>${fcsxq}</fcsxq>
                         <fckdh>${fckdh}</fckdh>
+
+           <收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
+
                         <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
                         <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
                         <fhj_fhje>${fhj_fhje}</fhj_fhje>
@@ -1805,6 +2050,7 @@ function SaveAsDraft() {
                                 <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
                                 <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
                                 <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <套系>${mxlistArrShip[i].f_tx}</套系>
                                 <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
                                 <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -1826,6 +2072,7 @@ function SaveAsDraft() {
                                 <ffh_dj></ffh_dj>
                                 <ffh_sl></ffh_sl>
                                 <fsjfhsl></fsjfhsl>
+                                 <套系></套系>
                                 <ffh_je></ffh_je>
                                 <ffh_js></ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -1918,6 +2165,21 @@ function UpdateDraft() {
     var fhj_fhje = $("#fhj_fhje").val();
     var fhj_fhjs = $("#fhj_fhjs").val();
 
+    /*添加字段*/
+    var f_sktj = $("#f_sktj").val();
+    var f_sktj_bm = $("#f_sktj_bm").val();
+    var f_kczz = $("#f_kczz").val();
+    var f_kczz_bm = $("#f_kczz_bm").val();
+    var f_ckmc = $("#f_ckmc").val();
+    var f_ckbm = $("#f_ckbm").val();
+    var f_mchz = $("#f_mchz").val();
+    var f_xszz = $("#f_xszz").val();
+    var f_xszz_bm = $("#f_xszz_bm").val();
+    var f_xsy = $("#f_xsy").val();
+    var f_xsy_no = $("#f_xsy_no").val();
+    var f_xwyy = $("#f_xwyy").val();
+
+
     var mxflag = false;
     var mxlistArrShip = new Array();
     $("#mxlist_fh").find("#mx").each(function () {
@@ -1937,10 +2199,10 @@ function UpdateDraft() {
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
         var ffh_js = $(this).find("#ffh_js").val();
+        var f_tx = $(this).find("#f_tx").val();
 
 
-
-        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js, f_tx);
         mxlistArrShip.push(mx);
     });
 
@@ -1974,7 +2236,7 @@ function UpdateDraft() {
         var ffp_dj = $(this).find("#ffp_dj").val();
         var ffp_sl = $(this).find("#ffp_sl").val();
         var ffp_je = $(this).find("#ffp_je").val();
-
+        
         var mx = new MxItem_bill(ffp_wlmc, ffp_ggxh, ffp_dw, ffp_bzxs, ffp_dj, ffp_sl, ffp_je);
         mxlistArrBill.push(mx);
     });
@@ -2028,6 +2290,18 @@ function UpdateDraft() {
                         <fdqqk>${fdqqk}</fdqqk>
                         <fcsxq>${fcsxq}</fcsxq>
                         <fckdh>${fckdh}</fckdh>
+            <收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
                         <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
                         <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
                         <fhj_fhje>${fhj_fhje}</fhj_fhje>
@@ -2064,6 +2338,7 @@ function UpdateDraft() {
                                 <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
                                 <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
                                 <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <套系>${mxlistArrShip[i].f_tx}</套系>
                                 <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
                                 <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2085,6 +2360,7 @@ function UpdateDraft() {
                                 <ffh_dj></ffh_dj>
                                 <ffh_sl></ffh_sl>
                                 <fsjfhsl></fsjfhsl>
+                                <套系></套系>
                                 <ffh_je></ffh_je>
                                 <ffh_js></ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2177,6 +2453,20 @@ function Save() {
     var fhj_fhje = $("#fhj_fhje").val();
     var fhj_fhjs = $("#fhj_fhjs").val();
 
+    /*添加字段*/
+    var f_sktj = $("#f_sktj").val();
+    var f_sktj_bm = $("#f_sktj_bm").val();
+    var f_kczz = $("#f_kczz").val();
+    var f_kczz_bm = $("#f_kczz_bm").val();
+    var f_ckmc = $("#f_ckmc").val();
+    var f_ckbm = $("#f_ckbm").val();
+    var f_mchz = $("#f_mchz").val();
+    var f_xszz = $("#f_xszz").val();
+    var f_xszz_bm = $("#f_xszz_bm").val();
+    var f_xsy = $("#f_xsy").val();
+    var f_xsy_no = $("#f_xsy_no").val();
+    var f_xwyy = $("#f_xwyy").val();
+
     var mxflag = false;
     var mxlistArrShip = new Array();
     $("#mxlist_fh").find("#mx").each(function () {
@@ -2196,10 +2486,10 @@ function Save() {
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
         var ffh_js = $(this).find("#ffh_js").val();
-
+        var f_tx = $(this).find("#f_tx").val();
       
 
-        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js, f_tx);
         mxlistArrShip.push(mx);
     });
 
@@ -2282,7 +2572,14 @@ function Save() {
             mui.toast('请选择客户类型');
             return;
         }
-
+        if (!f_ckmc) {
+            mui.toast('请选择仓库');
+            return;
+        }
+        if (!f_xwyy) {
+            mui.toast('请填写往销医院');
+            return;
+        }
     }
     if (String(fsqlx).match('发票') != null) {
         if (!ffplb) {
@@ -2353,6 +2650,18 @@ function Save() {
                         <fdqqk>${fdqqk}</fdqqk>
                         <fcsxq>${fcsxq}</fcsxq>
                         <fckdh>${fckdh}</fckdh>
+            <收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
                         <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
                         <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
                         <fhj_fhje>${fhj_fhje}</fhj_fhje>
@@ -2389,6 +2698,7 @@ function Save() {
                                 <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
                                 <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
                                 <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <套系>${mxlistArrShip[i].f_tx}</套系>
                                 <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
                                 <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2410,6 +2720,7 @@ function Save() {
                                 <ffh_dj></ffh_dj>
                                 <ffh_sl></ffh_sl>
                                 <fsjfhsl></fsjfhsl>
+                                <套系></套系>
                                 <ffh_je></ffh_je>
                                 <ffh_js></ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2484,6 +2795,19 @@ function reSave() {
     var fsjfhsltotal = $("#fsjfhsltotal").val();
     var fhj_fhje = $("#fhj_fhje").val();
     var fhj_fhjs = $("#fhj_fhjs").val();
+    /*添加字段*/
+    var f_sktj = $("#f_sktj").val();
+    var f_sktj_bm = $("#f_sktj_bm").val();
+    var f_kczz = $("#f_kczz").val();
+    var f_kczz_bm = $("#f_kczz_bm").val();
+    var f_ckmc = $("#f_ckmc").val();
+    var f_ckbm = $("#f_ckbm").val();
+    var f_mchz = $("#f_mchz").val();
+    var f_xszz = $("#f_xszz").val();
+    var f_xszz_bm = $("#f_xszz_bm").val();
+    var f_xsy = $("#f_xsy").val();
+    var f_xsy_no = $("#f_xsy_no").val();
+    var f_xwyy = $("#f_xwyy").val();
 
     var mxflag = false;
     var mxlistArrShip = new Array();
@@ -2504,10 +2828,10 @@ function reSave() {
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
         var ffh_js = $(this).find("#ffh_js").val();
+        var f_tx = $(this).find("#f_tx").val();
 
 
-
-        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js, f_tx);
         mxlistArrShip.push(mx);
     });
 
@@ -2590,7 +2914,14 @@ function reSave() {
             mui.toast('请选择客户类型');
             return;
         }
-
+        if (!f_ckmc) {
+            mui.toast('请选择仓库');
+            return;
+        }
+        if (!f_xwyy) {
+            mui.toast('请填写往销医院');
+            return;
+        }
     }
     if (String(fsqlx).match('发票') != null) {
         if (!ffplb) {
@@ -2652,6 +2983,18 @@ function reSave() {
                         <fdqqk>${fdqqk}</fdqqk>
                         <fcsxq>${fcsxq}</fcsxq>
                         <fckdh>${fckdh}</fckdh>
+            <收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
                         <fhj_fhsl>${fhj_fhsl}</fhj_fhsl>
                         <fsjfhsltotal>${fsjfhsltotal}</fsjfhsltotal>
                         <fhj_fhje>${fhj_fhje}</fhj_fhje>
@@ -2688,6 +3031,7 @@ function reSave() {
                                 <ffh_dj>${mxlistArrShip[i].ffh_dj}</ffh_dj>
                                 <ffh_sl>${mxlistArrShip[i].ffh_sl}</ffh_sl>
                                 <fsjfhsl>${mxlistArrShip[i].fsjfhsl}</fsjfhsl>
+                                <套系>${mxlistArrShip[i].f_tx}</套系>
                                 <ffh_je>${mxlistArrShip[i].ffh_je}</ffh_je>
                                 <ffh_js>${parseInt(mxlistArrShip[i].ffh_js)}</ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2709,6 +3053,7 @@ function reSave() {
                                 <ffh_dj></ffh_dj>
                                 <ffh_sl></ffh_sl>
                                 <fsjfhsl></fsjfhsl>
+                                <套系></套系>
                                 <ffh_je></ffh_je>
                                 <ffh_js></ffh_js>
                            </BPM_WGYYFHFPSQ_B1>
@@ -2809,6 +3154,20 @@ function AgreeOrConSign() {
     var fsjfhsltotal = $("#fsjfhsltotal").val();
     var fhj_fhje = $("#fhj_fhje").val();
     var fhj_fhjs = $("#fhj_fhjs").val();
+    /*添加字段*/
+    var f_sktj = $("#f_sktj").val();
+    var f_sktj_bm = $("#f_sktj_bm").val();
+    var f_kczz = $("#f_kczz").val();
+    var f_kczz_bm = $("#f_kczz_bm").val();
+    var f_ckmc = $("#f_ckmc").val();
+    var f_ckbm = $("#f_ckbm").val();
+    var f_mchz = $("#f_mchz").val();
+    var f_xszz = $("#f_xszz").val();
+    var f_xszz_bm = $("#f_xszz_bm").val();
+    var f_xsy = $("#f_xsy").val();
+    var f_xsy_no = $("#f_xsy_no").val();
+    var f_xwyy = $("#f_xwyy").val();
+
 
     var mxflag = false;
     var mxlistArrShip = new Array();
@@ -2829,10 +3188,10 @@ function AgreeOrConSign() {
         var fsjfhsl = $(this).find("#fsjfhsl").val();
         var ffh_je = $(this).find("#ffh_je").val();
         var ffh_js = $(this).find("#ffh_js").val();
+        var f_tx = $(this).find("#f_tx").val();
 
 
-
-        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js);
+        var mx = new MxItem_trad(fwlbm, fwlmc, fggxh, fdw, fdwbm, fzl, ffh_bzxs, ffh_dj, ffh_sl, fsjfhsl, ffh_je, ffh_js, f_tx);
         mxlistArrShip.push(mx);
     });
 
@@ -3014,6 +3373,20 @@ function AgreeOrConSign() {
             xml += '   <fdqqk>' + fdqqk + '</fdqqk>';
             xml += '   <fcsxq>' + fcsxq + '</fcsxq>';
             xml += '  <fckdh>' + fckdh + '</fckdh>';
+            xml += `
+<收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
+ `;
             xml += '  <fhj_fhsl>' + fhj_fhsl + '</fhj_fhsl>';
             xml += '   <fsjfhsltotal>' + fsjfhsltotal + '</fsjfhsltotal>';
             xml += '   <fhj_fhje>' + fhj_fhje + '</fhj_fhje>';
@@ -3048,6 +3421,7 @@ function AgreeOrConSign() {
                     xml += ' <ffh_dj>' + mxlistArrShip[i].ffh_dj + '</ffh_dj>';
                     xml += ' <ffh_sl>' + mxlistArrShip[i].ffh_sl + '</ffh_sl>';
                     xml += ' <fsjfhsl>' + mxlistArrShip[i].fsjfhsl + '</fsjfhsl>';
+                    xml += ' <套系>' + mxlistArrShip[i].f_tx + '</套系>';
                     xml += '  <ffh_je>' + mxlistArrShip[i].ffh_je + '</ffh_je>';
                     xml += '  <ffh_js>' + parseInt(mxlistArrShip[i].ffh_js) + '</ffh_js>';
                     xml += ' </BPM_WGYYFHFPSQ_B1>';
@@ -3067,6 +3441,7 @@ function AgreeOrConSign() {
                 xml += ' <ffh_dj></ffh_dj>';
                 xml += ' <ffh_sl></ffh_sl>';
                 xml += ' <fsjfhsl></fsjfhsl>';
+                xml += ' <套系></套系>';
                 xml += '  <ffh_je></ffh_je>';
                 xml += '  <ffh_js></ffh_js>';
                 xml += ' </BPM_WGYYFHFPSQ_B1>';
@@ -3150,6 +3525,20 @@ function AgreeOrConSign() {
         xml += '   <fdqqk>' + fdqqk + '</fdqqk>';
         xml += '   <fcsxq>' + fcsxq + '</fcsxq>';
         xml += '  <fckdh>' + fckdh + '</fckdh>';
+        xml += `
+<收款条件>${f_sktj}</收款条件>
+            <收款条件编码>${f_sktj_bm}</收款条件编码>
+            <名称后缀>${f_mchz}</名称后缀>
+            <库存组织>${f_kczz}</库存组织>
+            <库存组织编码>${f_kczz_bm}</库存组织编码>
+            <仓库名称>${f_ckmc}</仓库名称>
+            <仓库编码>${f_ckbm}</仓库编码>
+            <销售组织编码>${f_xszz_bm}</销售组织编码>
+            <销售组织>${f_xszz}</销售组织>
+            <业务员工号>${f_xsy_no}</业务员工号>
+            <业务员>${f_xsy}</业务员>
+            <销往医院>${f_xwyy}</销往医院>
+ `;
         xml += '  <fhj_fhsl>' + fhj_fhsl + '</fhj_fhsl>';
         xml += '   <fsjfhsltotal>' + fsjfhsltotal + '</fsjfhsltotal>';
         xml += '   <fhj_fhje>' + fhj_fhje + '</fhj_fhje>';
@@ -3184,6 +3573,7 @@ function AgreeOrConSign() {
                 xml += ' <ffh_dj>' + mxlistArrShip[i].ffh_dj + '</ffh_dj>';
                 xml += ' <ffh_sl>' + mxlistArrShip[i].ffh_sl + '</ffh_sl>';
                 xml += ' <fsjfhsl>' + mxlistArrShip[i].fsjfhsl + '</fsjfhsl>';
+                xml += ' <套系>' + mxlistArrShip[i].f_tx + '</套系>';
                 xml += '  <ffh_je>' + mxlistArrShip[i].ffh_je + '</ffh_je>';
                 xml += '  <ffh_js>' + parseInt(mxlistArrShip[i].ffh_js) + '</ffh_js>';
                 xml += ' </BPM_WGYYFHFPSQ_B1>';
@@ -3203,6 +3593,7 @@ function AgreeOrConSign() {
             xml += ' <ffh_dj></ffh_dj>';
             xml += ' <ffh_sl></ffh_sl>';
             xml += ' <fsjfhsl></fsjfhsl>';
+            xml += ' <套系></套系>';
             xml += '  <ffh_je></ffh_je>';
             xml += '  <ffh_js></ffh_js>';
             xml += ' </BPM_WGYYFHFPSQ_B1>';

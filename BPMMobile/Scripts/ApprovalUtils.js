@@ -409,10 +409,10 @@ function getBPMParam() {
         },
         success: function (data, status) {
             if (status == "success") {
-                //console.log(data);
+                console.log(data);
                 BPMOU = data.Position[0].FullName;
                 accountBPM = data.BPMUser.Account;
-                console.log(accountBPM);
+                //console.log(accountBPM);
 
                 return BPMOU;
             } else {

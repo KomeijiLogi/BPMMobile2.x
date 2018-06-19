@@ -33,6 +33,12 @@ namespace BPMMobile
                     user = new GenericPrincipal(identity, new string[0]);
                 }
             }
+            else if (null != headerValue && headerValue.Scheme == "WGCUS")
+            {
+                GenericIdentity identity = new GenericIdentity(headerValue.Parameter);
+                user = new GenericPrincipal(identity, new string[0]);
+            }
+
             context.Principal = user;
            // return Task<object>(null);
         }

@@ -548,7 +548,6 @@ E:\BPMMobile-master\BPMMobile-master\BPMMobile\BPMMobile\obj\Debug\zh-CHS\BPMMob
 E:\BPMMobile-master\BPMMobile-master\BPMMobile\BPMMobile\obj\Debug\zh-CHT\BPMMobile.resources.dll
 E:\BPMMobile-master\BPMMobile-master\BPMMobile\BPMMobile\obj\Debug\BPMMobile.dll
 E:\BPMMobile-master\BPMMobile-master\BPMMobile\BPMMobile\obj\Debug\BPMMobile.pdb
-D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.csprojResolveAssemblyReference.cache
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.GlobalResources.Language.resources
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.GlobalResources.MyBPM.resources
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.GlobalResources.YZSoft.YZModules.resources
@@ -690,3 +689,4 @@ D:\Documents\BPMMobile\BPMMobile\obj\Debug\zh-CHT\BPMMobile.resources.dll
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.dll
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.pdb
 D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.csproj.CopyComplete
+D:\Documents\BPMMobile\BPMMobile\obj\Debug\BPMMobile.csprojAssemblyReference.cache

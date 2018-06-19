@@ -3761,6 +3761,21 @@
     <Description>适用于洁丽康公司产品借用申请。</Description>
   </Process>
   
+  <Process>
+    <Name>洁丽康公司产品试用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司产品借用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司产品借用申请。</Description>
+  </Process>
   
   
     
@@ -4201,7 +4216,23 @@
   </Process>
   
   
+   <Process>
+    <Name>海盛公司售后领料申请</Name>
+    <Path>\\03医用制品集团\\04海盛设备公司\\11_生产管理</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/SC0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/SC0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/SC0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/SC0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/SC0204001/FlowTemplate.html</ViewPage>
+    <DisplayName>集团公司新产品研发信息推荐申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于全集团新产品研发信息推荐的申请。</Description>
+  </Process>
    
+  
   
   
    <!--<Process>

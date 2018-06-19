@@ -1006,6 +1006,11 @@
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\CG0204001\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\CG0204001\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\CG0204001\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\SC0204001\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\SC0204001\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\SC0204001\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\SC0204001\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\SC0204001\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\XS0204001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\XS0204001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\XS0204001\FlowCreate.html" />
@@ -1142,6 +1147,11 @@
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209006\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209006\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209006\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\FlowCreate.html" />
@@ -1163,6 +1173,11 @@
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\FlowCreate.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\FlowDoneDetail.html" />
     <Content Include="Pages\05YaoYe\01KuaZiGongSi\SCYX0501001\FlowUndoDetail.html" />
+    <Content Include="Pages\05YaoYe\02BaoLing\XZBG0502001\common.js" />
+    <Content Include="Pages\05YaoYe\02BaoLing\XZBG0502001\FlowAskDetail.html" />
+    <Content Include="Pages\05YaoYe\02BaoLing\XZBG0502001\FlowCreate.html" />
+    <Content Include="Pages\05YaoYe\02BaoLing\XZBG0502001\FlowDoneDetail.html" />
+    <Content Include="Pages\05YaoYe\02BaoLing\XZBG0502001\FlowUndoDetail.html" />
     <Content Include="Pages\06ShengWuKeJi\02JieLiKang\BG0602004\common.js" />
     <Content Include="Pages\06ShengWuKeJi\02JieLiKang\BG0602004\FlowAskDetail.html" />
     <Content Include="Pages\06ShengWuKeJi\02JieLiKang\BG0602004\FlowCreate.html" />
@@ -1719,7 +1734,6 @@
     <Folder Include="Pages\03GuKeCaiLiao\01KuaZiGongSi\" />
     <Folder Include="Pages\04XueYeJingHua\" />
     <Folder Include="Pages\05YaoYe\00YaoYeBenBu\" />
-    <Folder Include="Pages\05YaoYe\02BaoLing\" />
     <Folder Include="Pages\06ShengWuKeJi\00ShengWuKeJiBenBu\" />
     <Folder Include="Pages\06ShengWuKeJi\01KuaZiGongSi\" />
     <Folder Include="Pages\07FangDiChan\03JianCai\" />
