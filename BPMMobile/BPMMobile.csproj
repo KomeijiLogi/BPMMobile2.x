@@ -1152,6 +1152,11 @@
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209009\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209010\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209010\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209010\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209010\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SC0209010\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\09JieLiKang\SCYX0209001\FlowCreate.html" />

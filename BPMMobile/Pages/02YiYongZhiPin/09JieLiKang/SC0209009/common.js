@@ -524,7 +524,19 @@ function initData(data, flag) {
     }
 }
 
+function nodeControllerExp(NodeName) {
+    if (String(NodeName).match('开始') != null) {
+        tapEvent();
+        $("#flxdh,#fkhmc,#fkhdh,#fshrxm,#fshdz,#fshrdh,#fbz").removeAttr('readonly');
+        uploadOpt();
+        $('.upload-addbtn').show();
+        $("#mxlist").find('span').each(function () {
+            $(this).show();
+        });
+        $("#tjmx").show();
+    }
 
+}
 
 class Mx {
     constructor(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz, fjldwbm) {

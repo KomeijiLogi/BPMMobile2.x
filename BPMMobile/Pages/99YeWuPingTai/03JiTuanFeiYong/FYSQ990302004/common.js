@@ -1336,24 +1336,24 @@ function reSave() {
                             <if_bx>${if_bx}</if_bx>
                             <px_amt>${px_amt}</px_amt>
                             <px_kechengzy>${px_kechengzy}</px_kechengzy>
-                            <amt_ct>${amt_ct}</amt_ct>
-                            <amt_zs_yxts>${amt_zs_yxts}</amt_zs_yxts>
-                            <amt_zs_fxbz>${amt_zs_fxbz}</amt_zs_fxbz>
-                            <amt_zs>${amt_zs}</amt_zs>
+                             <amt_ct>${changeNullToEmpty(amt_ct)}</amt_ct>
+                            <amt_zs_yxts>${changeNullToEmpty(amt_zs_yxts)}</amt_zs_yxts>
+                            <amt_zs_fxbz>${changeNullToEmpty(amt_zs_fxbz)}</amt_zs_fxbz>
+                            <amt_zs>${changeNullToEmpty(amt_zs)}</amt_zs>
                             <chaobzqk>${chaobzqk}</chaobzqk>
-                            <amt_cf_yxts>${amt_cf_yxts}</amt_cf_yxts>
-                            <amt_cf_fxbz>${amt_cf_fxbz}</amt_cf_fxbz>
-                            <amt_cf>${amt_cf}</amt_cf>
-                            <amt_sn_yxts>${amt_sn_yxts}</amt_sn_yxts>
-                            <amt_sn_fxbz>${amt_sn_fxbz}</amt_sn_fxbz>
-                            <amt_sn>${amt_sn}</amt_sn>
+                            <amt_cf_yxts>${changeNullToEmpty(amt_cf_yxts)}</amt_cf_yxts>
+                            <amt_cf_fxbz>${changeNullToEmpty(amt_cf_fxbz)}</amt_cf_fxbz>
+                            <amt_cf>${changeNullToEmpty(amt_cf)}</amt_cf>
+                            <amt_sn_yxts>${changeNullToEmpty(amt_sn_yxts)}</amt_sn_yxts>
+                            <amt_sn_fxbz>${changeNullToEmpty(amt_sn_fxbz)}</amt_sn_fxbz>
+                            <amt_sn>${changeNullToEmpty(amt_sn)}</amt_sn>
                             <px_niqudecc>${px_niqudecc}</px_niqudecc>
-                            <amt_qt>${amt_qt}</amt_qt>
-                            <amt_zmx>${amt_zmx}</amt_zmx>
-                            <amt_z2>${amt_z2}</amt_z2>
-                            <amt_z>${amt_z}</amt_z>
-                            <amt_zdx>${amt_zdx}</amt_zdx>
-                            <jkje>${jkje}</jkje>
+                            <amt_qt>${changeNullToEmpty(amt_qt)}</amt_qt>
+                            <amt_zmx>${changeNullToEmpty(amt_zmx)}</amt_zmx>
+                            <amt_z2>${changeNullToEmpty(amt_z2)}</amt_z2>
+                            <amt_z>${changeNullToEmpty(amt_z)}</amt_z>
+                            <amt_zdx>${changeNullToEmpty(amt_zdx)}</amt_zdx>
+                            <jkje>${changeNullToEmpty(jkje)}</jkje>
                             <jkjedx>${jkjedx}</jkjedx>
                             <jkcode>${jkcode}</jkcode>
                             <jkrem>${jkrem}</jkrem>
@@ -1650,24 +1650,24 @@ function AgreeOrConSign() {
                             <if_bx>${if_bx}</if_bx>
                             <px_amt>${px_amt}</px_amt>
                             <px_kechengzy>${px_kechengzy}</px_kechengzy>
-                            <amt_ct>${amt_ct}</amt_ct>
-                            <amt_zs_yxts>${amt_zs_yxts}</amt_zs_yxts>
-                            <amt_zs_fxbz>${amt_zs_fxbz}</amt_zs_fxbz>
-                            <amt_zs>${amt_zs}</amt_zs>
+                            <amt_ct>${changeNullToEmpty(amt_ct)}</amt_ct>
+                            <amt_zs_yxts>${changeNullToEmpty(amt_zs_yxts)}</amt_zs_yxts>
+                            <amt_zs_fxbz>${changeNullToEmpty(amt_zs_fxbz)}</amt_zs_fxbz>
+                            <amt_zs>${changeNullToEmpty(amt_zs)}</amt_zs>
                             <chaobzqk>${chaobzqk}</chaobzqk>
-                            <amt_cf_yxts>${amt_cf_yxts}</amt_cf_yxts>
-                            <amt_cf_fxbz>${amt_cf_fxbz}</amt_cf_fxbz>
-                            <amt_cf>${amt_cf}</amt_cf>
-                            <amt_sn_yxts>${amt_sn_yxts}</amt_sn_yxts>
-                            <amt_sn_fxbz>${amt_sn_fxbz}</amt_sn_fxbz>
-                            <amt_sn>${amt_sn}</amt_sn>
+                            <amt_cf_yxts>${changeNullToEmpty(amt_cf_yxts)}</amt_cf_yxts>
+                            <amt_cf_fxbz>${changeNullToEmpty(amt_cf_fxbz)}</amt_cf_fxbz>
+                            <amt_cf>${changeNullToEmpty(amt_cf)}</amt_cf>
+                            <amt_sn_yxts>${changeNullToEmpty(amt_sn_yxts)}</amt_sn_yxts>
+                            <amt_sn_fxbz>${changeNullToEmpty(amt_sn_fxbz)}</amt_sn_fxbz>
+                            <amt_sn>${changeNullToEmpty(amt_sn)}</amt_sn>
                             <px_niqudecc>${px_niqudecc}</px_niqudecc>
-                            <amt_qt>${amt_qt}</amt_qt>
-                            <amt_zmx>${amt_zmx}</amt_zmx>
-                            <amt_z2>${amt_z2}</amt_z2>
-                            <amt_z>${amt_z}</amt_z>
-                            <amt_zdx>${amt_zdx}</amt_zdx>
-                            <jkje>${jkje}</jkje>
+                            <amt_qt>${changeNullToEmpty(amt_qt)}</amt_qt>
+                            <amt_zmx>${changeNullToEmpty(amt_zmx)}</amt_zmx>
+                            <amt_z2>${changeNullToEmpty(amt_z2)}</amt_z2>
+                            <amt_z>${changeNullToEmpty(amt_z)}</amt_z>
+                            <amt_zdx>${changeNullToEmpty(amt_zdx)}</amt_zdx>
+                            <jkje>${changeNullToEmpty(jkje)}</jkje>
                             <jkjedx>${jkjedx}</jkjedx>
                             <jkcode>${jkcode}</jkcode>
                             <jkrem>${jkrem}</jkrem>
@@ -1786,24 +1786,24 @@ function AgreeOrConSign() {
                             <if_bx>${if_bx}</if_bx>
                             <px_amt>${px_amt}</px_amt>
                             <px_kechengzy>${px_kechengzy}</px_kechengzy>
-                            <amt_ct>${amt_ct}</amt_ct>
-                            <amt_zs_yxts>${amt_zs_yxts}</amt_zs_yxts>
-                            <amt_zs_fxbz>${amt_zs_fxbz}</amt_zs_fxbz>
-                            <amt_zs>${amt_zs}</amt_zs>
+                            <amt_ct>${changeNullToEmpty(amt_ct)}</amt_ct>
+                            <amt_zs_yxts>${changeNullToEmpty(amt_zs_yxts)}</amt_zs_yxts>
+                            <amt_zs_fxbz>${changeNullToEmpty(amt_zs_fxbz)}</amt_zs_fxbz>
+                            <amt_zs>${changeNullToEmpty(amt_zs)}</amt_zs>
                             <chaobzqk>${chaobzqk}</chaobzqk>
-                            <amt_cf_yxts>${amt_cf_yxts}</amt_cf_yxts>
-                            <amt_cf_fxbz>${amt_cf_fxbz}</amt_cf_fxbz>
-                            <amt_cf>${amt_cf}</amt_cf>
-                            <amt_sn_yxts>${amt_sn_yxts}</amt_sn_yxts>
-                            <amt_sn_fxbz>${amt_sn_fxbz}</amt_sn_fxbz>
-                            <amt_sn>${amt_sn}</amt_sn>
+                            <amt_cf_yxts>${changeNullToEmpty(amt_cf_yxts)}</amt_cf_yxts>
+                            <amt_cf_fxbz>${changeNullToEmpty(amt_cf_fxbz)}</amt_cf_fxbz>
+                            <amt_cf>${changeNullToEmpty(amt_cf)}</amt_cf>
+                            <amt_sn_yxts>${changeNullToEmpty(amt_sn_yxts)}</amt_sn_yxts>
+                            <amt_sn_fxbz>${changeNullToEmpty(amt_sn_fxbz)}</amt_sn_fxbz>
+                            <amt_sn>${changeNullToEmpty(amt_sn)}</amt_sn>
                             <px_niqudecc>${px_niqudecc}</px_niqudecc>
-                            <amt_qt>${amt_qt}</amt_qt>
-                            <amt_zmx>${amt_zmx}</amt_zmx>
-                            <amt_z2>${amt_z2}</amt_z2>
-                            <amt_z>${amt_z}</amt_z>
-                            <amt_zdx>${amt_zdx}</amt_zdx>
-                            <jkje>${jkje}</jkje>
+                            <amt_qt>${changeNullToEmpty(amt_qt)}</amt_qt>
+                            <amt_zmx>${changeNullToEmpty(amt_zmx)}</amt_zmx>
+                            <amt_z2>${changeNullToEmpty(amt_z2)}</amt_z2>
+                            <amt_z>${changeNullToEmpty(amt_z)}</amt_z>
+                            <amt_zdx>${changeNullToEmpty(amt_zdx)}</amt_zdx>
+                            <jkje>${changeNullToEmpty(jkje)}</jkje>
                             <jkjedx>${jkjedx}</jkjedx>
                             <jkcode>${jkcode}</jkcode>
                             <jkrem>${jkrem}</jkrem>

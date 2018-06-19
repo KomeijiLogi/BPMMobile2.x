@@ -724,23 +724,23 @@ function AgreeOrConSign() {
             <fyqr>${item.fyqr}</fyqr>
             <fphone>${item.fphone}</fphone>
             <fcz>${item.fcz}</fcz>
-            <amt_ct>${item.amt_ct}</amt_ct>
+           <amt_ct>${changeNullToEmpty(item.amt_ct)}</amt_ct>
             <chuchairw>${item.chuchairw}</chuchairw>
-            <amt_zs_yxts>${item.amt_zs_yxts}</amt_zs_yxts>
-            <amt_zs_fxbz>${item.amt_zs_fxbz}</amt_zs_fxbz>
-            <amt_zs>${item.amt_zs}</amt_zs>
+            <amt_zs_yxts>${changeNullToEmpty(item.amt_zs_yxts)}</amt_zs_yxts>
+            <amt_zs_fxbz>${changeNullToEmpty(item.amt_zs_fxbz)}</amt_zs_fxbz>
+            <amt_zs>${changeNullToEmpty(item.amt_zs)}</amt_zs>
             <chaobzqk>${item.chaobzqk}</chaobzqk>
-            <amt_cf_yxts>${item.amt_cf_yxts}</amt_cf_yxts>
-            <amt_cf_fxbz>${item.amt_cf_fxbz}</amt_cf_fxbz>
-            <amt_cf>${item.amt_cf}</amt_cf>
-            <amt_sn_yxts>${item.amt_sn_yxts}</amt_sn_yxts>
-            <amt_sn_fxbz>${item.amt_sn_fxbz}</amt_sn_fxbz>
-            <amt_sn>${item.amt_sn}</amt_sn>
+            <amt_cf_yxts>${changeNullToEmpty(item.amt_cf_yxts)}</amt_cf_yxts>
+            <amt_cf_fxbz>${changeNullToEmpty(item.amt_cf_fxbz)}</amt_cf_fxbz>
+            <amt_cf>${changeNullToEmpty(item.amt_cf)}</amt_cf>
+            <amt_sn_yxts>${changeNullToEmpty(item.amt_sn_yxts)}</amt_sn_yxts>
+            <amt_sn_fxbz>${changeNullToEmpty(item.amt_sn_fxbz)}</amt_sn_fxbz>
+            <amt_sn>${changeNullToEmpty(item.amt_sn)}</amt_sn>
             <amt_qt>${changeNullToEmpty(item.amt_qt)}</amt_qt>
-            <amt_zmx>${item.amt_zmx}</amt_zmx>
-            <amt_z>${item.amt_z}</amt_z>
+            <amt_zmx>${changeNullToEmpty(item.amt_zmx)}</amt_zmx>
+            <amt_z>${changeNullToEmpty(item.amt_z)}</amt_z>
             <amt_zdx>${item.amt_zdx}</amt_zdx>
-            <en_amt_z>${item.en_amt_z}</en_amt_z>
+            <en_amt_z>${changeNullToEmpty(item.en_amt_z)}</en_amt_z>
             <en_amt_zdx>${item.en_amt_zdx}</en_amt_zdx>
 			
             <jkje>${changeNullToEmpty(item.jkje)}</jkje>
@@ -858,23 +858,23 @@ function AgreeOrConSign() {
             <fyqr>${item.fyqr}</fyqr>
             <fphone>${item.fphone}</fphone>
             <fcz>${item.fcz}</fcz>
-            <amt_ct>${item.amt_ct}</amt_ct>
+            <amt_ct>${changeNullToEmpty(item.amt_ct)}</amt_ct>
             <chuchairw>${item.chuchairw}</chuchairw>
-            <amt_zs_yxts>${item.amt_zs_yxts}</amt_zs_yxts>
-            <amt_zs_fxbz>${item.amt_zs_fxbz}</amt_zs_fxbz>
-            <amt_zs>${item.amt_zs}</amt_zs>
+            <amt_zs_yxts>${changeNullToEmpty(item.amt_zs_yxts)}</amt_zs_yxts>
+            <amt_zs_fxbz>${changeNullToEmpty(item.amt_zs_fxbz)}</amt_zs_fxbz>
+            <amt_zs>${changeNullToEmpty(item.amt_zs)}</amt_zs>
             <chaobzqk>${item.chaobzqk}</chaobzqk>
-            <amt_cf_yxts>${item.amt_cf_yxts}</amt_cf_yxts>
-            <amt_cf_fxbz>${item.amt_cf_fxbz}</amt_cf_fxbz>
-            <amt_cf>${item.amt_cf}</amt_cf>
-            <amt_sn_yxts>${item.amt_sn_yxts}</amt_sn_yxts>
-            <amt_sn_fxbz>${item.amt_sn_fxbz}</amt_sn_fxbz>
-            <amt_sn>${item.amt_sn}</amt_sn>
+            <amt_cf_yxts>${changeNullToEmpty(item.amt_cf_yxts)}</amt_cf_yxts>
+            <amt_cf_fxbz>${changeNullToEmpty(item.amt_cf_fxbz)}</amt_cf_fxbz>
+            <amt_cf>${changeNullToEmpty(item.amt_cf)}</amt_cf>
+            <amt_sn_yxts>${changeNullToEmpty(item.amt_sn_yxts)}</amt_sn_yxts>
+            <amt_sn_fxbz>${changeNullToEmpty(item.amt_sn_fxbz)}</amt_sn_fxbz>
+            <amt_sn>${changeNullToEmpty(item.amt_sn)}</amt_sn>
             <amt_qt>${changeNullToEmpty(item.amt_qt)}</amt_qt>
-            <amt_zmx>${item.amt_zmx}</amt_zmx>
-            <amt_z>${item.amt_z}</amt_z>
+            <amt_zmx>${changeNullToEmpty(item.amt_zmx)}</amt_zmx>
+            <amt_z>${changeNullToEmpty(item.amt_z)}</amt_z>
             <amt_zdx>${item.amt_zdx}</amt_zdx>
-            <en_amt_z>${item.en_amt_z}</en_amt_z>
+            <en_amt_z>${changeNullToEmpty(item.en_amt_z)}</en_amt_z>
             <en_amt_zdx>${item.en_amt_zdx}</en_amt_zdx>
 
             <jkje>${changeNullToEmpty(item.jkje)}</jkje >
