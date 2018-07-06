@@ -19,11 +19,148 @@
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
 
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>报销人<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fbxr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>报销人部门<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fbxrbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>报销日期<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fbxrq" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>费用支出计划申请单<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsqd" readonly placeholder="请选择"></textarea>
+                    <input type="hidden" id="fsqd_tid" readonly />
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>借款金额</label>
+                    <textarea rows="2" id="fjkje" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>附件单据数<i style="color:red;">*</i></label>
+                    <input type="number" id="fdjs" placeholder="请填写" />
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>费用期间</label>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fksrq" readonly placeholder="请选择开始时间"></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fjsrq" readonly placeholder="请选择结束时间"></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>报销明细</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>金额合计</label>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fhj" readonly>0.00</textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fhj_dx" readonly>整</textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>财务核定金额合计</label>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fhdhj" readonly>0.00</textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <textarea rows="2" id="fhdhj_dx" readonly>整</textarea>
+                </div>
+            </div>
+            <div id="mxlist">
+
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>费用项目<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="ffyxm" placeholder="请填写"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>金额<i style="color:red;">*</i></label>
+                            <input type="number" id="fje" placeholder="请填写" />
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>财务核定金额<i style="color:red;">*</i></label>
+                            <input type="number" id="fshje" readonly />
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-12" style="display:flex;">
+                            <label>费用事由<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="ffysy" readonly placeholder="请选择"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                报销明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+
+
+            <input type="hidden" id="fsqrzw" readonly />
+            <input type="hidden" id="fbxrgh" readonly />
+            <input type="hidden" id="fbmjl" readonly />
+            <input type="hidden" id="ffgld" readonly />
+            <input type="hidden" id="fcwshr" readonly />
+            <input type="hidden" id="fzjl" readonly />
+            <input type="hidden" id="ps" readonly />
+
+
         </form>
         <div class="mui-btn-row" id="SaveD">
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
         </div>
     </div>
+
+    <div id="selector" style="display:none;">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">选择列表</h1>
+            <a id='done' class="mui-btn mui-btn-link mui-pull-right mui-btn-blue mui-disabled">完成</a>
+        </header>
+        <div class="mui-indexed-list" id="list" style="top:2rem;">
+
+            <div class="mui-indexed-list-search mui-input-row mui-search">
+                <input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+            </div>
+            <div class="mui-indexed-list-bar" style="display:none;">
+
+            </div>
+            <div class="mui-indexed-list-alert"></div>
+            <div class="mui-indexed-list-inner">
+                <div class="mui-indexed-list-empty-alert">没有数据</div>
+                <ul class="mui-table-view" id="datalist"></ul>
+            </div>
+        </div>
+    </div>
+
+
+
     <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
     <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
     <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>

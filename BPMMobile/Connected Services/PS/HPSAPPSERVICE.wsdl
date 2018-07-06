@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy" xmlns:tns="http://xmlns.oracle.com/Enterprise/HCM/services/HPSAPPSERVICE.1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HPSAPPREQUEST.V1="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPSERVICEDOCS.HPSAPPSERVICEDOC.V1" xmlns:HPSAPPGPRESPONSE.V1="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPGPRESPONSE.V1" name="HPSAPPSERVICE.1" targetNamespace="http://xmlns.oracle.com/Enterprise/HCM/services/HPSAPPSERVICE.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:UsagePolicy wsdl:Required="true" />
+  <plnk:partnerLinkType name="HPSAPPSERVICE_PartnerLinkType">
+    <plnk:role name="HPSAPPSERVICE_Provider">
+      <plnk:portType name="tns:HPSAPPSERVICE_PortType" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="HPSAPPREQUEST.V1.xsd" namespace="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPSERVICEDOCS.HPSAPPSERVICEDOC.V1" />
+    </xsd:schema>
+    <xsd:schema xmlns="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPGPRESPONSE.V1" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPGPRESPONSE.V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="HPSAPPGPRESPONSE" type="HPSAPPGPRESPONSE.V1:HPSAPPGPRESPONSE_TypeShape" />
+      <xsd:complexType name="HPSAPPGPRESPONSE_TypeShape">
+        <xsd:sequence>
+          <xsd:element name="FieldTypes" type="HPSAPPGPRESPONSE.V1:FieldTypes_TypeShape" />
+          <xsd:element name="MsgData" type="HPSAPPGPRESPONSE.V1:MsgData_TypeShape" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypes_TypeShape">
+        <xsd:all>
+          <xsd:element name="HPS_SS_GP2_VW" type="HPSAPPGPRESPONSE.V1:FieldTypesHPS_SS_GP2_VW_TypeShape" />
+          <xsd:element name="PSCAMA" type="HPSAPPGPRESPONSE.V1:FieldTypesPSCAMA_TypeShape" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesHPS_SS_GP2_VW_TypeShape">
+        <xsd:sequence>
+          <xsd:element name="EMPLID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element name="EMPL_RCD" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element name="CAL_RUN_ID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element name="GP_PAYGROUP" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element name="CAL_ID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element name="ORIG_CAL_RUN_ID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element name="RSLT_SEG_NUM" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="NAME" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="DESCR100" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="POSITION_NBR_DESCR" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="CAL_PRD_ID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_001" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_002" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_003" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_004" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_005" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_006" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_007" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_008" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_009" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_010" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_011" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_012" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_013" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_014" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_015" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_016" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+        </xsd:sequence>
+        <xsd:attribute fixed="R" name="class" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesPSCAMA_TypeShape">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LANGUAGE_CD" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="AUDIT_ACTN" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="BASE_LANGUAGE_CD" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="MSG_SEQ_FLG" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="PROCESS_INSTANCE" type="HPSAPPGPRESPONSE.V1:FieldTypesNumberFieldType" />
+          <xsd:element minOccurs="0" name="PUBLISH_RULE_ID" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+          <xsd:element minOccurs="0" name="MSGNODENAME" type="HPSAPPGPRESPONSE.V1:FieldTypesCharFieldType" />
+        </xsd:sequence>
+        <xsd:attribute fixed="R" name="class" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesCharFieldType">
+        <xsd:attribute fixed="CHAR" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesNumberFieldType">
+        <xsd:attribute fixed="NUMBER" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesDateFieldType">
+        <xsd:attribute fixed="DATE" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesTimeFieldType">
+        <xsd:attribute fixed="TIME" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesDateTimeFieldType">
+        <xsd:attribute fixed="DATETIME" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="FieldTypesImageRefFieldType">
+        <xsd:attribute fixed="IMAGEREFERENCE" name="type" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="MsgData_TypeShape">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Transaction" type="HPSAPPGPRESPONSE.V1:Transaction_TypeShape" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Transaction_TypeShape">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="HPS_SS_GP2_VW" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP2_VWMsgDataRecord_TypeShape" />
+          <xsd:element name="PSCAMA" type="HPSAPPGPRESPONSE.V1:PSCAMAMsgDataRecord_TypeShape" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP2_VWMsgDataRecord_TypeShape">
+        <xsd:sequence>
+          <xsd:element name="EMPLID" type="HPSAPPGPRESPONSE.V1:EMPLID_TypeShape" />
+          <xsd:element name="EMPL_RCD" type="HPSAPPGPRESPONSE.V1:EMPL_RCD_TypeShape" />
+          <xsd:element name="CAL_RUN_ID" type="HPSAPPGPRESPONSE.V1:CAL_RUN_ID_TypeShape" />
+          <xsd:element name="GP_PAYGROUP" type="HPSAPPGPRESPONSE.V1:GP_PAYGROUP_TypeShape" />
+          <xsd:element name="CAL_ID" type="HPSAPPGPRESPONSE.V1:CAL_ID_TypeShape" />
+          <xsd:element name="ORIG_CAL_RUN_ID" type="HPSAPPGPRESPONSE.V1:ORIG_CAL_RUN_ID_TypeShape" />
+          <xsd:element name="RSLT_SEG_NUM" type="HPSAPPGPRESPONSE.V1:RSLT_SEG_NUM_TypeShape" />
+          <xsd:element minOccurs="0" name="NAME" type="HPSAPPGPRESPONSE.V1:NAME_TypeShape" />
+          <xsd:element minOccurs="0" name="DESCR100" type="HPSAPPGPRESPONSE.V1:DESCR100_TypeShape" />
+          <xsd:element minOccurs="0" name="POSITION_NBR_DESCR" type="HPSAPPGPRESPONSE.V1:POSITION_NBR_DESCR_TypeShape" />
+          <xsd:element minOccurs="0" name="CAL_PRD_ID" type="HPSAPPGPRESPONSE.V1:CAL_PRD_ID_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_001" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_001_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_002" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_002_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_003" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_003_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_004" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_004_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_005" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_005_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_006" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_006_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_007" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_007_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_008" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_008_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_009" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_009_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_010" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_010_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_011" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_011_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_012" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_012_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_013" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_013_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_014" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_014_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_015" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_015_TypeShape" />
+          <xsd:element minOccurs="0" name="HPS_SS_GP_016" type="HPSAPPGPRESPONSE.V1:HPS_SS_GP_016_TypeShape" />
+        </xsd:sequence>
+        <xsd:attribute fixed="R" name="class" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="EMPLID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:EMPLID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="EMPL_RCD_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:EMPL_RCD_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="CAL_RUN_ID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:CAL_RUN_ID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="GP_PAYGROUP_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:GP_PAYGROUP_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="CAL_ID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:CAL_ID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="ORIG_CAL_RUN_ID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:ORIG_CAL_RUN_ID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="RSLT_SEG_NUM_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:RSLT_SEG_NUM_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="NAME_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:NAME_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="DESCR100_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:DESCR100_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="POSITION_NBR_DESCR_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:POSITION_NBR_DESCR_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="CAL_PRD_ID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:CAL_PRD_ID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_001_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_001_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_002_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_002_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_003_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_003_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_004_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_004_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_005_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_005_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_006_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_006_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_007_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_007_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_008_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_008_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_009_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_009_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_010_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_010_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_011_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_011_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_012_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_012_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_013_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_013_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_014_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_014_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_015_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_015_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="HPS_SS_GP_016_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:HPS_SS_GP_016_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="EMPLID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Employee ID</xsd:documentation>
+          <xsd:documentation>EMPLID is a character of length 11. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="11" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EMPL_RCD_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>EMPL_RCD is a number of length 3 with a decimal position of 0</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:integer">
+          <xsd:totalDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CAL_RUN_ID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Calendar Run Id</xsd:documentation>
+          <xsd:documentation>CAL_RUN_ID is a character of length 18. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="GP_PAYGROUP_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Global Payroll pay group</xsd:documentation>
+          <xsd:documentation>GP_PAYGROUP is a character of length 10. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CAL_ID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>calendar id</xsd:documentation>
+          <xsd:documentation>CAL_ID is a character of length 18. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ORIG_CAL_RUN_ID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Original Calendar Group ID    </xsd:documentation>
+          <xsd:documentation>ORIG_CAL_RUN_ID is a character of length 18. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="RSLT_SEG_NUM_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Result Segment Number</xsd:documentation>
+          <xsd:documentation>RSLT_SEG_NUM is a number of length 4 with a decimal position of 0</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:integer">
+          <xsd:totalDigits value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NAME_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Name</xsd:documentation>
+          <xsd:documentation>NAME is a character of length 50. Allows NAME format eg. Name1,Name2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value=".*(,).*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DESCR100_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Length 100 Description</xsd:documentation>
+          <xsd:documentation>DESCR100 is a character of length 100. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="POSITION_NBR_DESCR_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Position Number</xsd:documentation>
+          <xsd:documentation>POSITION_NBR_DESCR is a character of length 30</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+          <xsd:whiteSpace value="preserve" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CAL_PRD_ID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Calendar Period ID</xsd:documentation>
+          <xsd:documentation>CAL_PRD_ID is a character of length 10. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_001_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_001 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_002_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_002 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_003_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_003 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_004_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_004 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_005_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_005 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_006_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_006 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_007_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_007 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_008_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_008 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_009_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_009 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_010_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_010 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_011_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_011 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_012_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_012 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_013_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_013 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_014_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_014 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_015_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_015 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HPS_SS_GP_016_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>HPS_SS_GP_016 is a number of length 14 with a decimal position of 2</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+          <xsd:totalDigits value="14" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="PSCAMAMsgDataRecord_TypeShape">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LANGUAGE_CD" type="HPSAPPGPRESPONSE.V1:LANGUAGE_CD_TypeShape" />
+          <xsd:element minOccurs="0" name="AUDIT_ACTN" type="HPSAPPGPRESPONSE.V1:AUDIT_ACTN_TypeShape" />
+          <xsd:element minOccurs="0" name="BASE_LANGUAGE_CD" type="HPSAPPGPRESPONSE.V1:BASE_LANGUAGE_CD_TypeShape" />
+          <xsd:element minOccurs="0" name="MSG_SEQ_FLG" type="HPSAPPGPRESPONSE.V1:MSG_SEQ_FLG_TypeShape" />
+          <xsd:element minOccurs="0" name="PROCESS_INSTANCE" type="HPSAPPGPRESPONSE.V1:PROCESS_INSTANCE_TypeShape" />
+          <xsd:element minOccurs="0" name="PUBLISH_RULE_ID" type="HPSAPPGPRESPONSE.V1:PUBLISH_RULE_ID_TypeShape" />
+          <xsd:element minOccurs="0" name="MSGNODENAME" type="HPSAPPGPRESPONSE.V1:MSGNODENAME_TypeShape" />
+        </xsd:sequence>
+        <xsd:attribute fixed="R" name="class" type="xsd:string" use="required" />
+      </xsd:complexType>
+      <xsd:complexType name="LANGUAGE_CD_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:LANGUAGE_CD_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="AUDIT_ACTN_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:AUDIT_ACTN_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="BASE_LANGUAGE_CD_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:BASE_LANGUAGE_CD_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="MSG_SEQ_FLG_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:MSG_SEQ_FLG_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="PROCESS_INSTANCE_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:PROCESS_INSTANCE_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="PUBLISH_RULE_ID_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:PUBLISH_RULE_ID_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="MSGNODENAME_TypeShape">
+        <xsd:simpleContent>
+          <xsd:extension base="HPSAPPGPRESPONSE.V1:MSGNODENAME_TypeDef">
+            <xsd:attribute name="IsChanged" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="LANGUAGE_CD_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Language Code</xsd:documentation>
+          <xsd:documentation>LANGUAGE_CD is a character of length 3. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:whiteSpace value="preserve" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AUDIT_ACTN_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Audit Action Code for Application Messages.  This tells the subscriber whether the row has been added, changed, or deleted.</xsd:documentation>
+          <xsd:documentation>AUDIT_ACTN is a character of length 1. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:whiteSpace value="preserve" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="BASE_LANGUAGE_CD_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>BASE_LANGUAGE_CD is a character of length 3. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="MSG_SEQ_FLG_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>MSG_SEQ_FLG is a character of length 1. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PROCESS_INSTANCE_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Process Instance</xsd:documentation>
+          <xsd:documentation>PROCESS_INSTANCE is a number of length 10 with a decimal position of 0</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:integer">
+          <xsd:totalDigits value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PUBLISH_RULE_ID_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Publish Rule ID</xsd:documentation>
+          <xsd:documentation>PUBLISH_RULE_ID is a character of length 30. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="MSGNODENAME_TypeDef">
+        <xsd:annotation>
+          <xsd:documentation>Application Message Node Name.  Name of the Application Message Node Definition.</xsd:documentation>
+          <xsd:documentation>MSGNODENAME is a character of length 30. Allows Uppercase characters including numbers</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+          <xsd:whiteSpace value="preserve" />
+          <xsd:pattern value="([A-Z]|[0-9]|\p{Z}|\p{P}|\p{Lu})*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HPSAPPREQUEST.V1">
+    <wsdl:documentation>Autogenerated Message</wsdl:documentation>
+    <wsdl:part name="parameter" element="HPSAPPREQUEST.V1:HPSAPPSERVICEDOC" />
+  </wsdl:message>
+  <wsdl:message name="HPSAPPGPRESPONSE.V1">
+    <wsdl:part name="parameter" element="HPSAPPGPRESPONSE.V1:HPSAPPGPRESPONSE" />
+  </wsdl:message>
+  <wsdl:portType name="HPSAPPSERVICE_PortType">
+    <wsdl:operation name="HPSAPPGPSERVICEOPERATION">
+      <wsdl:documentation>ps薪资信息接口</wsdl:documentation>
+      <wsdl:input name="HPSAPPREQUEST.V1" message="tns:HPSAPPREQUEST.V1" />
+      <wsdl:output name="HPSAPPGPRESPONSE.V1" message="tns:HPSAPPGPRESPONSE.V1" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HPSAPPSERVICE_Binding" type="tns:HPSAPPSERVICE_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HPSAPPGPSERVICEOPERATION">
+      <soap:operation soapAction="HPSAPPGPSERVICEOPERATION.V1" style="document" />
+      <wsp:Policy wsu:Id="UsernameTokenSecurityPolicyPasswordOptional" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <wsp:ExactlyOne>
+          <wsp:All>
+            <wsse:SecurityToken wsp:Usage="wsp:Required" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+              <wsse:TokenType>wsse:UserNameToken</wsse:TokenType>
+              <Claims>
+                <SubjectName MatchType="wsse:Exact" />
+                <UsePassword wsp:Usage="wsp:Optional" />
+              </Claims>
+            </wsse:SecurityToken>
+          </wsp:All>
+        </wsp:ExactlyOne>
+      </wsp:Policy>
+      <wsdl:input name="HPSAPPREQUEST.V1">
+        <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="HPSAPPGPRESPONSE.V1">
+        <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HPSAPPSERVICE">
+    <wsdl:documentation>app服务</wsdl:documentation>
+    <wsdl:port name="HPSAPPSERVICE_Port" binding="tns:HPSAPPSERVICE_Binding">
+      <soap:address location="http://172.16.7.70/PSIGW/PeopleSoftServiceListeningConnector" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

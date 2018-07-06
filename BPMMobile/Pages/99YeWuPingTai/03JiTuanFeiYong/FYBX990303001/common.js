@@ -387,8 +387,8 @@ function AgreeOrConSign() {
             <sqdate>${item.sqdate}</sqdate>
             <sqcode>${item.sqcode}</sqcode>
             <sqtaskid>${item.sqtaskid}</sqtaskid>
-            <sqje>${item.sqje}</sqje>
-            <jkje>${item.jkje}</jkje>
+          <sqje>${changeNullToEmpty(item.sqje)}</sqje>
+            <jkje>${changeNullToEmpty(item.jkje)}</jkje>
             <chaosqqk>${item.chaosqqk}</chaosqqk>
             <chaobzqk>${item.chaobzqk}</chaobzqk>
             <chailvlb>${item.chailvlb}</chailvlb>
@@ -406,28 +406,28 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c.length; i++) {
                 xml += `
                          <fybx_travel_t>
-            <RelationRowGuid>${i+1}</RelationRowGuid>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
-            <cfdate>${item_c[i].cfdate}</cfdate>
-            <dddate>${item_c[i].dddate}</dddate>
-            <cfdpro>${item_c[i].cfdpro}</cfdpro>
-            <cfdcity>${item_c[i].cfdcity}</cfdcity>
-            <cfdproid>${item_c[i].cfdproid}</cfdproid>
-            <mddpro>${item_c[i].mddpro}</mddpro>
-            <mddcity>${item_c[i].mddcity}</mddcity>
-            <mddproid>${item_c[i].mddproid}</mddproid>
-            <jtgj>${item_c[i].jtgj}</jtgj>
-            <rs>${item_c[i].rs}</rs>
-            <ccfy>${item_c[i].ccfy}</ccfy>
-            <ts>${item_c[i].ts}</ts>
-            <bz_zsf>${item_c[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c[i].zsf}</zsf>
-            <bz_cf>${item_c[i].bz_cf}</bz_cf>
-            <cf>${item_c[i].cf}</cf>
-            <bz_snjtf>${item_c[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c[i].snjtf}</snjtf>
-            <qt>${item_c[i].qt}</qt>
-            <rem>${item_c[i].rem}</rem>
+            <cfdate>${changeNullToEmpty(item_c[i].cfdate)}</cfdate >
+            <dddate>${changeNullToEmpty(item_c[i].dddate)}</dddate>
+            <cfdpro>${changeNullToEmpty(item_c[i].cfdpro)}</cfdpro>
+            <cfdcity>${changeNullToEmpty(item_c[i].cfdcity)}</cfdcity>
+            <cfdproid>${changeNullToEmpty(item_c[i].cfdproid)}</cfdproid>
+            <mddpro>${changeNullToEmpty(item_c[i].mddpro)}</mddpro>
+            <mddcity>${changeNullToEmpty(item_c[i].mddcity)}</mddcity>
+            <mddproid>${changeNullToEmpty(item_c[i].mddproid)}</mddproid>
+            <jtgj>${changeNullToEmpty(item_c[i].jtgj)}</jtgj>
+            <rs>${changeNullToEmpty(item_c[i].rs)}</rs>
+            <ccfy>${changeNullToEmpty(item_c[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c[i].qt)}</qt>
+            <rem>${changeNullToEmpty(item_c[i].rem)}</rem>
         </fybx_travel_t>
                        `;
             }
@@ -468,15 +468,15 @@ function AgreeOrConSign() {
             <sqdate>${item.sqdate}</sqdate>
             <sqcode>${item.sqcode}</sqcode>
             <sqtaskid>${item.sqtaskid}</sqtaskid>
-            <sqje>${item.sqje}</sqje>
-            <jkje>${item.jkje}</jkje>
+            <sqje>${changeNullToEmpty(item.sqje)}</sqje>
+            <jkje>${changeNullToEmpty(item.jkje)}</jkje>
             <chaosqqk>${item.chaosqqk}</chaosqqk>
             <chaobzqk>${item.chaobzqk}</chaobzqk>
             <chailvlb>${item.chailvlb}</chailvlb>
             <if_cj>${item.if_cj}</if_cj>
             <rem>${item.rem}</rem>
             <fyhj>${item.fyhj}</fyhj>
-            <fyhjbz>${item.fyhjbz}</fyhjbz>
+            <fyhjbz>${changeNullToEmpty(item.fyhjbz)}</fyhjbz>
             <fyhjdx>${item.fyhjdx}</fyhjdx>
             <fybz>${item.fybz}</fybz>
             <djsl>${item.djsl}</djsl>
@@ -489,26 +489,26 @@ function AgreeOrConSign() {
                          <fybx_travel_t>
             <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
-            <cfdate>${item_c[i].cfdate}</cfdate>
-            <dddate>${item_c[i].dddate}</dddate>
-            <cfdpro>${item_c[i].cfdpro}</cfdpro>
-            <cfdcity>${item_c[i].cfdcity}</cfdcity>
-            <cfdproid>${item_c[i].cfdproid}</cfdproid>
-            <mddpro>${item_c[i].mddpro}</mddpro>
-            <mddcity>${item_c[i].mddcity}</mddcity>
-            <mddproid>${item_c[i].mddproid}</mddproid>
-            <jtgj>${item_c[i].jtgj}</jtgj>
-            <rs>${item_c[i].rs}</rs>
-            <ccfy>${item_c[i].ccfy}</ccfy>
-            <ts>${item_c[i].ts}</ts>
-            <bz_zsf>${item_c[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c[i].zsf}</zsf>
-            <bz_cf>${item_c[i].bz_cf}</bz_cf>
-            <cf>${item_c[i].cf}</cf>
-            <bz_snjtf>${item_c[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c[i].snjtf}</snjtf>
-            <qt>${item_c[i].qt}</qt>
-            <rem>${item_c[i].rem}</rem>
+            <cfdate>${changeNullToEmpty(item_c[i].cfdate)}</cfdate >
+            <dddate>${changeNullToEmpty(item_c[i].dddate)}</dddate>
+            <cfdpro>${changeNullToEmpty(item_c[i].cfdpro)}</cfdpro>
+            <cfdcity>${changeNullToEmpty(item_c[i].cfdcity)}</cfdcity>
+            <cfdproid>${changeNullToEmpty(item_c[i].cfdproid)}</cfdproid>
+            <mddpro>${changeNullToEmpty(item_c[i].mddpro)}</mddpro>
+            <mddcity>${changeNullToEmpty(item_c[i].mddcity)}</mddcity>
+            <mddproid>${changeNullToEmpty(item_c[i].mddproid)}</mddproid>
+            <jtgj>${changeNullToEmpty(item_c[i].jtgj)}</jtgj>
+            <rs>${changeNullToEmpty(item_c[i].rs)}</rs>
+            <ccfy>${changeNullToEmpty(item_c[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c[i].qt)}</qt>
+            <rem>${changeNullToEmpty(item_c[i].rem)}</rem>
         </fybx_travel_t>
                        `;
         }

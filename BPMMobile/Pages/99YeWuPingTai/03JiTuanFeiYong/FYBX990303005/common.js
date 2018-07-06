@@ -466,8 +466,8 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c1.length; i++) {
                 xml += `
                   <fybx_travel_train_t2>
-                        <px_sqje>${item_c1[i].px_sqje}</px_sqje>
-                        <px_bxje>${item_c1[i].px_bxje}</px_bxje>
+                        <px_sqje>${changeNullToEmpty(item_c1[i].px_sqje)}</px_sqje>
+                        <px_bxje>${changeNullToEmpty(item_c1[i].px_bxje)}</px_bxje>
                         <px_bxjedx>${item_c1[i].px_bxjedx}</px_bxjedx>
                         <px_djzs>${item_c1[i].px_djzs}</px_djzs>
                         <px_chx>${item_c1[i].px_chx}</px_chx>
@@ -488,16 +488,16 @@ function AgreeOrConSign() {
             <mddcity>${item_c2[i].mddcity}</mddcity>
             <mddproid>${item_c2[i].mddproid}</mddproid>
             <jtgj>${item_c2[i].jtgj}</jtgj>
-            <rs>${item_c2[i].rs}</rs>
-            <ccfy>${item_c2[i].ccfy}</ccfy>
-            <ts>${item_c2[i].ts}</ts>
-            <bz_zsf>${item_c2[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c2[i].zsf}</zsf>
-            <bz_cf>${item_c2[i].bz_cf}</bz_cf>
-            <cf>${item_c2[i].cf}</cf>
-            <bz_snjtf>${item_c2[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c2[i].snjtf}</snjtf>
-            <qt>${item_c2[i].qt}</qt>
+            <rs>${changeNullToEmpty(item_c2[i].rs)}</rs >
+            <ccfy>${changeNullToEmpty(item_c2[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c2[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c2[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c2[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c2[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c2[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c2[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c2[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c2[i].qt)}</qt>
             <rem>${item_c2[i].rem}</rem>
         </fybx_travel_train_t>
                         `;
@@ -507,6 +507,7 @@ function AgreeOrConSign() {
                        </FormData>
                     </XForm>
                    `;
+            // console.log(xml);
             PostXml(xml);
         })
     } else {
@@ -572,8 +573,8 @@ function AgreeOrConSign() {
         for (var i = 0; i < item_c1.length; i++) {
             xml += `
                   <fybx_travel_train_t2>
-                        <px_sqje>${item_c1[i].px_sqje}</px_sqje>
-                        <px_bxje>${item_c1[i].px_bxje}</px_bxje>
+                        <px_sqje>${changeNullToEmpty(item_c1[i].px_sqje)}</px_sqje>
+                        <px_bxje>${changeNullToEmpty(item_c1[i].px_bxje)}</px_bxje>
                         <px_bxjedx>${item_c1[i].px_bxjedx}</px_bxjedx>
                         <px_djzs>${item_c1[i].px_djzs}</px_djzs>
                         <px_chx>${item_c1[i].px_chx}</px_chx>
@@ -594,16 +595,16 @@ function AgreeOrConSign() {
             <mddcity>${item_c2[i].mddcity}</mddcity>
             <mddproid>${item_c2[i].mddproid}</mddproid>
             <jtgj>${item_c2[i].jtgj}</jtgj>
-            <rs>${item_c2[i].rs}</rs>
-            <ccfy>${item_c2[i].ccfy}</ccfy>
-            <ts>${item_c2[i].ts}</ts>
-            <bz_zsf>${item_c2[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c2[i].zsf}</zsf>
-            <bz_cf>${item_c2[i].bz_cf}</bz_cf>
-            <cf>${item_c2[i].cf}</cf>
-            <bz_snjtf>${item_c2[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c2[i].snjtf}</snjtf>
-            <qt>${item_c2[i].qt}</qt>
+            <rs>${changeNullToEmpty(item_c2[i].rs)}</rs >
+            <ccfy>${changeNullToEmpty(item_c2[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c2[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c2[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c2[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c2[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c2[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c2[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c2[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c2[i].qt)}</qt>
             <rem>${item_c2[i].rem}</rem>
         </fybx_travel_train_t>
                         `;

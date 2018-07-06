@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPSERVICEDOCS.HPSAPPSERVICEDOC.V1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Enterprise/Tools/schemas/HPSAPPSERVICEDOCS.HPSAPPSERVICEDOC.V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="HPSAPPSERVICEDOC" type="HPSAPPSERVICEDOC_TypeShape" />
+  <xsd:complexType name="HPSAPPSERVICEDOC_TypeShape">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="EMPLID" type="EMPLID_TypeDef" />
+      <xsd:element minOccurs="0" name="CAL_PRD_ID" type="CAL_PRD_ID_TypeDef" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="EMPLID_TypeDef">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="11" />
+      <xsd:whiteSpace value="preserve" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CAL_PRD_ID_TypeDef">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="10" />
+      <xsd:whiteSpace value="preserve" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

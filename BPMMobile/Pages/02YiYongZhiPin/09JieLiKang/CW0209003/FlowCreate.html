@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="fsqr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请部门<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsqbm" readonly></textarea>
+
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请日期<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsqrq" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>是否借款<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fif_jk" readonly>否</textarea>
+                </div>
+            </div>
+            <div id="fjkcard" style="display:none;">
+                <div class="mui-row cutOffLine itemtitle3 padding">
+                    <div class="mui-col-xs-12" style="text-align:center;">
+                        <label>借款单</label>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>借款金额<i style="color:red;">*</i></label>
+                        <input type="number" id="fjkje" placeholder="请填写" />
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>借款金额大写<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fjkje_dx" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>借款单号</label>
+                        <textarea rows="2" id="fjkdh" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>借款用途</label>
+                        <textarea rows="2" id="fjkyt" placeholder="请填写"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine itemtitle3 padding">
+                <div class="mui-col-xs-12" style="text-align:center;">
+                    <label>出差明细</label>
+                </div>
+            </div>
+            <div id="mxlist">
+                <div id="mx">
+                    <div class="mui-input-row itemtitle">
+                        <label>明细列表项</label>
+                        <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差开始日期<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fksrq" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差结束日期<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fjsrq" readonly placeholder="请选择"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>交通工具<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fjtgj" readonly placeholder="请选择"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差地点<i style="color:red;">*</i></label>
+                            <textarea rows="2" id="fccdd_pro" readonly placeholder="请选择省"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <textarea rows="2" id="fccdd_city" placeholder="请填写市"></textarea>
+                        </div>
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差人数<i style="color:red;">*</i></label>
+                            <input type="number" id="fccrs" placeholder="请填写" />
+                        </div>
+                    </div>
+                    <div class="mui-row cutOffLine padding">
+                        <div class="mui-col-xs-4" style="display:flex;">
+                            <label>出差天数<i style="color:red;">*</i></label>
+                            <input type="number" id="fccts" placeholder="请填写" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;">
+                出差明细
+                <span class="mui-icon mui-icon-plusempty"></span>
+            </a>
+            <div class="mui-row cutOffLine itemtitle3 padding">
+                <div class="mui-col-xs-12" style="text-align:center;">
+                    <label>支出计划明细</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>序号</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用项目</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>有效天数<i style="color:red;">*</i></label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请金额<i style="color:red;">*</i></label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>1</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>长途交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fts_ctjtf" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fje_ctjtf" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>2</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>住宿费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fts_zsf" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fje_zsf" placeholder="请填写" />
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>3</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>餐费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fts_cf" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fje_cf" placeholder="请填写" />
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>4</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>市内交通费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fts_snjtf" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fje_snjtf" placeholder="请填写" />
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>5</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>其他差旅费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fts_qt" placeholder="请填写" />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fje_qt" placeholder="请填写" />
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>出差任务内容<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fccrw" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>预期完成目标<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fyqmb" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>合计金额</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea id="fhj" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>合计金额大写</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea id="fhj_dx" readonly></textarea>
+                </div>
+            </div>
+            <input type="hidden" id="fsqrno" />
+            <input type="hidden" id="fbmjl" />
+            <input type="hidden" id="ffgld"/>
+            <input type="hidden" id="fcwshr"/>
+            <input type="hidden" id="fspr"/>
+            <input type="hidden" id="fsqrzw"/>
+            <input type="hidden" id="ps"/>
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理', '洁丽康公司差旅费申请');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

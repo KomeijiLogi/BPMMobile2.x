@@ -144,7 +144,9 @@
     <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
     <script type="text/javascript" src="../Scripts/ApprovalUtils.js"></script>
     <!--<script type="text/javascript" src="../Scripts/vue.min.js"></script>-->
+    <!--<script type="text/javascript" src="../Scripts/vconsole.min.js"></script>-->
     <script>
+        //var vconsole = new VConsole();
 
           mui.init();
 
@@ -288,6 +290,8 @@
                          mui.alert('授权过期，请重新打开页面');;
                      } else if (XMLHttpRequest.status == "500") {
                          mui.alert('服务器内部错误');
+                         //mui.alert(JSON.parse(XMLHttpRequest));
+                         console.log(XMLHttpRequest);
                      }
                  },
                  complete: function () {

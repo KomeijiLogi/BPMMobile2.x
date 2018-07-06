@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="fsqr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请部门</label>
+                    <textarea rows="2" id="fsqbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请日期</label>
+                    <textarea rows="2" id="fsqrq" readonly></textarea>
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>是否常规合同<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fif_cght" readonly placeholder="请选择"></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>渠道类型<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fqdlx" readonly placeholder="请选择"></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>销售合同信息</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>合同名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fhtmc" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>合同编号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fhtbh" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>客户名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhmc" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>客户负责区域<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkhfzqy" placeholder="请填写"></textarea>
+                </div>
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>提报人<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="ftbr" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">合同附件<i style="color:red;">*</i></label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>备注</label>
+                    <textarea rows="2" id="fbz" placeholder="请填写"></textarea>
+                </div>
+            </div>
+            <input type="hidden" id="fxsbjl" readonly />
+            <input type="hidden" id="fzpjthtshr" readonly />
+            <input type="hidden" id="fxszj" readonly />
+            <input type="hidden" id="fzjl" readonly />
+        </form>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+
+        mui.init();
+
+        mui.ready(function () {
+
+            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\05_法律事务', '洁丽康公司销售合同评审');
+            getBPMParam();
+
+            _init._preCreate();
+
+        });
+
+    </script>
+</body>
+</html>

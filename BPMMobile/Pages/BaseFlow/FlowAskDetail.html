@@ -262,7 +262,8 @@
             'items': [
                 { 'text': '知会', 'callBackId': 'callback1' },
                 {'text':'重新发起','callBackId':'callback2'} ,
-                { 'text': '刷新', 'callBackId': 'callback3' } 
+                { 'text': '刷新', 'callBackId': 'callback3' },
+                { 'text': '撤销', 'callBackId': 'callback4' },
             ],
             'menuList': [
               'openWithBrowser'
@@ -368,6 +369,46 @@
                 } else if (callBackId == 'callback3') {
                     window.location.reload();
                     
+                } else if (callBackId == 'callback4') {
+                    //撤销操作
+                    var comments;
+                    var btnArray = ['取消', '确定'];
+                    mui.prompt('请输入原因：', '', '撤销理由', btnArray, function (e) {
+                        if (e.index == 1) {
+                            comments = e.value;
+
+
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/api/bpm/Abort",
+                                data: { 'taskID': $("#taskId").val(), 'comments': comments },
+                                beforeSend: function (XHR) {
+                                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+
+                                },
+                                success: function (data, status) {
+
+                                    if (status == "success") {
+
+                                        mui.toast("操作成功");
+                                        setTimeout(" window.location.href = '/Pages/AskFlow.html'", 2000);
+                                    } else {
+                                        mui.toast("操作失败,请稍后重试");
+                                    }
+                                },
+                                error: function (e) {
+                                    console.log(e);
+
+                                },
+                                complete: function () { }
+
+                            });
+                        } else {
+
+                        }
+                    }, 'div');
+
                 }
             }
 

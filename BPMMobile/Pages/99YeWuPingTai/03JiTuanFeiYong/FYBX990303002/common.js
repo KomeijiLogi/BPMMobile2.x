@@ -365,8 +365,8 @@ function AgreeOrConSign() {
             <user_leadtitle>${item.user_leadtitle}</user_leadtitle>
             <sqcode>${item.sqcode}</sqcode>
             <sqtaskid>${item.sqtaskid}</sqtaskid>
-            <sqje>${item.sqje}</sqje>
-            <jkje>${item.jkje}</jkje>
+            <sqje>${changeNullToEmpty(item.sqje)}</sqje>
+            <jkje>${changeNullToEmpty(item.jkje)}</jkje>
             <zdfs>${item.zdfs}</zdfs>
             <chaosqqk>${item.chaosqqk}</chaosqqk>
             <rem>${item.rem}</rem>
@@ -383,11 +383,11 @@ function AgreeOrConSign() {
                       <fybx_entertain_t1>
             <RelationRowGuid>${i+1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c1[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c1[i].zdrs}</zdrs>
-            <zdbz>${item_c1[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c1[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c1[i].zdbz)}</zdbz>
             <zdcity>${item_c1[i].zdcity}</zdcity>
             <zddd>${item_c1[i].zddd}</zddd>
-            <sqje>${item_c1[i].sqje}</sqje>
+            <sqje>${changeNullToEmpty(item_c1[i].sqje)}</sqje>
             <rem>${item_c1[i].rem}</rem>
         </fybx_entertain_t1>
                        `;
@@ -397,11 +397,11 @@ function AgreeOrConSign() {
                        <fybx_entertain_t2>
             <RelationRowGuid>${item_c1.length+i+1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c2[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c2[i].zdrs}</zdrs>
-            <zdbz>${item_c2[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c2[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c2[i].zdbz)}</zdbz>
             <zdcity>${item_c2[i].zdcity}</zdcity>
             <zddd>${item_c2[i].zddd}</zddd>
-            <bxje>${item_c2[i].bxje}</bxje>
+            <bxje>${changeNullToEmpty(item_c2[i].bxje)}</bxje>
             <rem>${item_c2[i].rem}</rem>
         </fybx_entertain_t2>
                        `;
@@ -444,8 +444,8 @@ function AgreeOrConSign() {
             <user_leadtitle>${item.user_leadtitle}</user_leadtitle>
             <sqcode>${item.sqcode}</sqcode>
             <sqtaskid>${item.sqtaskid}</sqtaskid>
-            <sqje>${item.sqje}</sqje>
-            <jkje>${item.jkje}</jkje>
+            <sqje>${changeNullToEmpty(item.sqje)}</sqje>
+            <jkje>${changeNullToEmpty(item.jkje)}</jkje>
             <zdfs>${item.zdfs}</zdfs>
             <chaosqqk>${item.chaosqqk}</chaosqqk>
             <rem>${item.rem}</rem>
@@ -462,11 +462,11 @@ function AgreeOrConSign() {
                       <fybx_entertain_t1>
             <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c1[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c1[i].zdrs}</zdrs>
-            <zdbz>${item_c1[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c1[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c1[i].zdbz)}</zdbz>
             <zdcity>${item_c1[i].zdcity}</zdcity>
             <zddd>${item_c1[i].zddd}</zddd>
-            <sqje>${item_c1[i].sqje}</sqje>
+            <sqje>${changeNullToEmpty(item_c1[i].sqje)}</sqje>
             <rem>${item_c1[i].rem}</rem>
         </fybx_entertain_t1>
                        `;
@@ -476,11 +476,11 @@ function AgreeOrConSign() {
                        <fybx_entertain_t2>
             <RelationRowGuid>${item_c1.length + i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c2[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c2[i].zdrs}</zdrs>
-            <zdbz>${item_c2[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c2[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c2[i].zdbz)}</zdbz>
             <zdcity>${item_c2[i].zdcity}</zdcity>
             <zddd>${item_c2[i].zddd}</zddd>
-            <bxje>${item_c2[i].bxje}</bxje>
+            <bxje>${changeNullToEmpty(item_c2[i].bxje)}</bxje>
             <rem>${item_c2[i].rem}</rem>
         </fybx_entertain_t2>
                        `;

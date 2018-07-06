@@ -14,7 +14,7 @@ function initData(data, flag) {
         $("#fbillno").val(item.BPM单据编码);
     }
     $("#fsqdbm").val(item.申请单编码);
-    $("#fxqlx").val(item.需求类型);
+    //$("#fxqlx").val(item.需求类型);
     $("#fgdbm").val(item.工单编码);
     $("#fsbbm").val(item.设备编码);
     $("#fsbmc").val(item.设备名称);
@@ -65,7 +65,11 @@ function initData(data, flag) {
                                <label>是否收费</label>
                                <textarea rows="2" id="fsfsf" readonly>${item_c[i].是否收费}</textarea>
                            </div>
-                           <div class="mui-col-xs-6" style="display:flex;">
+                            <div class="mui-col-xs-3" style="display:flex;">
+                                <label>需求类型</label>
+                                <textarea rows="2" id="fxqlx" readonly>${item_c[i].需求类型}</textarea>   
+                            </div>
+                           <div class="mui-col-xs-3" style="display:flex;">
                                <label>备注</label>
                                <textarea rows="2" id="fbz" readonly>${item_c[i].备注}</textarea>
                            </div>
@@ -199,7 +203,7 @@ function AgreeOrConSign() {
         <海盛公司_售后领料申请单_主表>
             <BPM单据编码>${item.BPM单据编码}</BPM单据编码>
             <申请单编码>${item.申请单编码}</申请单编码>
-            <需求类型>${item.需求类型}</需求类型>
+           
             <工单编号>${item.工单编号}</工单编号>
             <设备编码>${item.设备编码}</设备编码>
             <设备名称>${item.设备名称}</设备名称>
@@ -226,6 +230,7 @@ function AgreeOrConSign() {
             <计量单位>${item_c[i].计量单位}</计量单位>
             <数量>${item_c[i].数量}</数量>
             <是否收费>${item_c[i].是否收费}</是否收费>
+             <需求类型>${item_c[i].需求类型}</需求类型>
             <备注>${item_c[i].备注}</备注>
         </海盛公司_售后领料申请单_子表>
                        `;
@@ -287,6 +292,7 @@ function AgreeOrConSign() {
             <计量单位>${item_c[i].计量单位}</计量单位>
             <数量>${item_c[i].数量}</数量>
             <是否收费>${item_c[i].是否收费}</是否收费>
+ <需求类型>${item_c[i].需求类型}</需求类型>
             <备注>${item_c[i].备注}</备注>
         </海盛公司_售后领料申请单_子表>
                        `;

@@ -925,6 +925,49 @@ function AgreeOrConSign() {
     var comment = $("#signSuggest").val();
     var nodeName = $("#nodeName").val();
 
+    var ftxr = $("#ftxr").val();
+    var ftxrq = $("#ftxrq").val();
+    var flxdh = $("#flxdh").val();
+    var fkhmc = $("#fkhmc").val();
+    var fkhdh = $("#fkhdh").val();
+    var fshrxm = $("#fshrxm").val();
+    var fshdz = $("#fshdz").val();
+    var fshrdh = $("#fshrdh").val();
+    var fxsy = $("#fxsy").val();
+    var fxsyno = $("#fxsyno").val();
+    var fxszz = $("#fxszz").val();
+    var fxszzbm = $("#fxszzbm").val();
+    var fqyjl = $("#fqyjl").val();
+    var fqyjlno = $("#fqyjlno").val();
+    var fbmbm = $("#fbmbm").val();
+    var fkczzbm = $("#fkczzbm").val();
+    var fcbzxbm = $("#fcbzxbm").val();
+    var fllrbm = $("#fllrbm").val();
+    var fywlxbm = $("#fywlxbm").val();
+    var fbgrbm = $("#fbgrbm").val();
+    var fckbm = $("#fckbm").val();
+    var fcgybm = $("#fcgybm").val();
+    var fgxlxbm = $("#fgxlxbm").val();
+    var fswlxbm = $("#fswlxbm").val();
+    var flllxbm = $("#flllxbm").val();
+
+   
+    var mxflag = false;
+    var mxlistArr = [];
+    $("#mxlist").find("#mx").each(function () {
+        var fwlbm = $(this).find("#fwlbm").val();
+        var fwlmc = $(this).find("#fwlmc").val();
+        var fggxh = $(this).find("#fggxh").val();
+        var fjldw = $(this).find("#fjldw").val();
+        var fsl = $(this).find("#fsl").val();
+        var fysxm = $(this).find("#fysxm").val();
+        var fsylb = $(this).find("#fsylb").val();
+        var fbz = $(this).find("#fbz").val();
+        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz);
+      
+        mxlistArr.push(mx);
+    });
+   
 
     var consignFlag = false;
     var consignUserId = new Array();

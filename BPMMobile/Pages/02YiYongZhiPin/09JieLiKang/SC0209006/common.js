@@ -170,7 +170,7 @@ function initData(data, flag) {
     $("#fsqbm").val(item.申请部门);
     $("#fsqdate").val(FormatterTimeYMS(item.申请日期));
     $("#fjyyt").val((item.借用用途));
-
+    $("#fshdz").val(item.送货地址);
     var item_c = data.FormDataSet.洁丽康公司_产品借用申请_子表1;
     for (var i = 0; i < item_c.length; i++) {
         itemidArr.push(item_c[i].itemid);
@@ -216,7 +216,8 @@ function initData(data, flag) {
 
 function nodeControllerExp(NodeName) {
     if (String(NodeName).match('开始') != null) {
-        tapEvent();      
+        tapEvent();
+        $("#fshdz,#fjyyt").removeAttr('readonly');
     }
 
 }
@@ -244,7 +245,15 @@ function Save() {
     var fsqbm = $("#fsqbm").val();
     var fsqdate = $("#fsqdate").val();
     var fjyyt = $("#fjyyt").val();
-
+    var fshdz = $("#fshdz").val();
+    if (!fjyyt) {
+        mui.toast('请填写借用用途');
+        return;
+    }
+    if (!fshdz) {
+        mui.toast('请填写送货地址');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = [];
     $("#mxlist").find("#mx").each(function () {
@@ -296,6 +305,7 @@ function Save() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
+                    <送货地址>${fshdz}</送货地址>
                     <TaskID></TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;
@@ -334,7 +344,15 @@ function reSave() {
     var fsqbm = $("#fsqbm").val();
     var fsqdate = $("#fsqdate").val();
     var fjyyt = $("#fjyyt").val();
-
+    var fshdz = $("#fshdz").val();
+    if (!fjyyt) {
+        mui.toast('请填写借用用途');
+        return;
+    }
+    if (!fshdz) {
+        mui.toast('请填写送货地址');
+        return;
+    }
     var mxflag = false;
     var mxlistArr = [];
     $("#mxlist").find("#mx").each(function () {
@@ -376,7 +394,8 @@ function reSave() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
-                    <TaskID></TaskID>
+                  <送货地址>${fshdz}</送货地址>
+                    <TaskID>${$("#taskId").val()}</TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;
             for (var i = 0; i < mxlistArr.length; i++) {
@@ -439,7 +458,7 @@ function AgreeOrConSign() {
     var fsqbm = $("#fsqbm").val();
     var fsqdate = $("#fsqdate").val();
     var fjyyt = $("#fjyyt").val();
-
+    var fshdz = $("#fshdz").val();
     var mxflag = false;
     var mxlistArr = [];
     $("#mxlist").find("#mx").each(function () {
@@ -537,6 +556,7 @@ function AgreeOrConSign() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
+ <送货地址>${fshdz}</送货地址>
                     <TaskID>${$("#taskId").val()}</TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;
@@ -587,6 +607,7 @@ function AgreeOrConSign() {
                     <申请部门>${fsqbm}</申请部门>
                     <申请日期>${fsqdate}</申请日期>
                     <借用用途>${fjyyt}</借用用途>
+ <送货地址>${fshdz}</送货地址>
                     <TaskID>${$("#taskId").val()}</TaskID>
                 </洁丽康公司_产品借用申请_主表>
                       `;

@@ -23,7 +23,7 @@ using System.Reflection;
 using System.Text;
 using BPM.Client.Data.Common;
 using BPM.Data.Common;
-
+using BPMMobile.PS;
 
 namespace BPMMobile.Controllers
 {
@@ -79,7 +79,15 @@ namespace BPMMobile.Controllers
             List<Process> myProcesses = new List<Process>();
             using (BPMConnection cn = new BPMConnection())
             {
-                cn.WebOpen();
+                try
+                {
+                    cn.WebOpen();
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+               
 
                 BPMProcessCollection processes = new BPMProcessCollection();
                 var mobileProcess = GetMobileProcess();
@@ -867,6 +875,22 @@ namespace BPMMobile.Controllers
             }
            
         }
+       /// <summary>
+       /// 撤销
+       /// </summary>
+       /// <returns></returns>
+       [HttpPost]
+        public IHttpActionResult Abort(AbortModel model)
+        {
+            PrepareBPMEnv();
+            using (BPMConnection cn = new BPMConnection())
+            {
+                cn.WebOpen();
+                BPMTask.Abort(cn, model.taskID, model.comments);
+                return Json("ok");
+            }
+
+        }
 
         /// <summary>
         /// 退回某步
@@ -1649,11 +1673,40 @@ namespace BPMMobile.Controllers
             }
             return tasks;
         }
+
+        /// <summary> 
+        /// 获取PS薪酬 
+        /// </summary> 
+        /// <param name="stepID"></param> 
+        /// <returns></returns> 
+        [HttpPost]
+        public IHttpActionResult PostPSSal([FromBody]PSparam psParam)
+        {
+            var PSClient = new HPSAPPSERVICE_PortTypeClient();
+            HPSAPPSERVICEDOC_TypeShape doc = new HPSAPPSERVICEDOC_TypeShape();
+            doc.CAL_PRD_ID = psParam.datetime;
+            doc.EMPLID = psParam.personNumber;
+            BPMMobile.PS.HPSAPPGPRESPONSE_TypeShape psRet;
+            try
+            {
+                psRet = PSClient.HPSAPPGPSERVICEOPERATION(doc);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+         
+            return Json(new { data = psRet });
+
+        }
+
     }
+
 
     
 
-   
+
+
     /// <summary>
     /// 流程Model,从Process.xml读入 
     /// </summary>
@@ -1725,5 +1778,20 @@ namespace BPMMobile.Controllers
     public class ProcessXml
     {
         public string xml { get; set; }
+    }
+
+    public class PSparam
+    {
+
+        public string datetime { get; set; }
+
+        public string personNumber { get; set; }
+    }
+    public class AbortModel
+    {
+        public int taskID { get; set; }
+        public string comments { get; set; }
+
+
     }
 }

@@ -510,7 +510,7 @@
                     li = li + '    </div>';
                     li = li + '    <div class="mui-input-row">';
                     li = li + '       <label for="fcze">出资额<i style="color:red;">*</i></label>';
-                    li = li + '       <input type="number" id="fcze" name="fcze" readonly="readonly" value="' + item_b1[i].fcze + '"/>';
+                    li = li + '       <input type="text" id="fcze" name="fcze" readonly="readonly" value="' + item_b1[i].fcze + '"/>';
                     li = li + '    </div>';
                     li = li + '    <div class="mui-input-row">';
                     li = li + '       <label for="fczbl">出资比例<i style="color:red;">*</i></label>';
@@ -965,7 +965,7 @@
         }
 
 
-        function mxItem(fname, fczfs, fcze, fczbl, fzjsj) {
+        function mxItem(fname, fczfs, fcze, fczbl, fzjsj,flag) {
 
             var mx = new Object;
             mx.fname = fname;
@@ -973,26 +973,29 @@
             mx.fcze = fcze;
             mx.fczbl = fczbl;
             mx.fzjsj = fzjsj;
-            if (!fname) {
-                mui.toast('请填写股东名称');
-                return null;
+            if (flag) {
+                if (!fname) {
+                    mui.toast('请填写股东名称');
+                    return null;
+                }
+                if (!fczfs) {
+                    mui.toast('请填写出资方式');
+                    return null;
+                }
+                if (!fcze) {
+                    mui.toast('请填写出资额');
+                    return null;
+                }
+                if (!fczbl) {
+                    mui.toast('请填写出资比例');
+                    return null;
+                }
+                if (!fzjsj) {
+                    mui.toast('请填写资金到位时间');
+                    return null;
+                }
             }
-            if (!fczfs) {
-                mui.toast('请填写出资方式');
-                return null;
-            }
-            if (!fcze) {
-                mui.toast('请填写出资额');
-                return null;
-            }
-            if (!fczbl) {
-                mui.toast('请填写出资比例');
-                return null;
-            }
-            if (!fzjsj) {
-                mui.toast('请填写资金到位时间');
-                return null;
-            }
+         
             return mx;
         }
 
@@ -1120,7 +1123,7 @@
                     var fzjsj = $(this).find("#fzjsj").val();
 
 
-                    var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj);
+                    var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj, true);
                     mxlistArr_bg.push(mx);
 
                 });
@@ -1266,8 +1269,8 @@
                 var fczbl = $(this).find("#fczbl").val();
                 var fzjsj = $(this).find("#fzjsj").val();
 
-                
-                var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj);
+
+                var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj, false);
                 mxlistArr.push(mx);
 
             });
@@ -1282,7 +1285,7 @@
                     var fzjsj = $(this).find("#fzjsj").val();
 
 
-                    var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj);
+                    var mx = mxItem(fname, fczfs, fcze, fczbl, fzjsj, false);
                     mxlistArr_bg.push(mx);
 
                 });

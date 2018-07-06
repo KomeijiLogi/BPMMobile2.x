@@ -99,6 +99,9 @@ function PostXml(xml) {
                     case 3:
                         mui.alert('参数类型不正确');
                         break;
+                    case 4213:
+                        mui.alert("操作失败!请稍后重试,<br/>error code:" + data.BPMExceptionType + '<br/><' +data.Param0 + '>值不合法<br/>' + data.Param1);
+                        break;
                     case 4244:
                         //缺少对应处理人状态码
                         mui.alert('<'+data.Param0+'>缺少对应处理人');
@@ -109,6 +112,10 @@ function PostXml(xml) {
                         break;    
                     case 4457:
                         //重复提交异常状态码
+                        break;
+                    case 4461:
+                        //流程表单版本不一致
+                        mui.alert('操作失败!移动端表单与BPM网页端表单版本不一致,<br/>请等待前端工程师更新');
                         break;
                     case 4525:
                         mui.alert('<'+data.Param0 + '>没有满足条件的处理人,<br/>' + data.Param1 + '已禁用');

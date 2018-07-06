@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="fsqr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请部门<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsqbm" readonly></textarea>
+                </div>
+
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>申请日期<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fsqrq" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>不合格品信息</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>不合格品来源<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fly" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>产品名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fcpmc" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>规格型号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fggxh" readonly></textarea>
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>材质<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fcz" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>生产批号<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fscph" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>工序</label>
+                    <textarea rows="2" id="fgx" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>操作者</label>
+                    <textarea rows="2" id="fczz" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>不合格数量<i style="color:red;">*</i></label>
+                    <input type="number" id="fsl" readonly style="padding-left:0;" />
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>不合格描述<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fms" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
+
+            <div class="mui-row  padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>评审部门<i style="color:red;">*</i></label>
+                </div>
+
+            </div>
+            <div class="mui-row  padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>研发</label>
+                        <input name="checkbox" value="研发" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>技术</label>
+                        <input name="checkbox" value="技术" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>质量</label>
+                        <input name="checkbox" value="质量" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>采购</label>
+                        <input name="checkbox" value="采购" type="checkbox" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row  padding">
+
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>机加工</label>
+                        <input name="checkbox" value="机加工" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>磁力研磨</label>
+                        <input name="checkbox" value="磁力研磨" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>激光打标</label>
+                        <input name="checkbox" value="激光打标" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>喷砂酸蚀</label>
+                        <input name="checkbox" value="喷砂酸蚀" type="checkbox" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>粗洗</label>
+                        <input name="checkbox" value="粗洗" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>精洗</label>
+                        <input name="checkbox" value="精洗" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>内包装</label>
+                        <input name="checkbox" value="内包装" type="checkbox" disabled>
+                    </div>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>外包装</label>
+                        <input name="checkbox" value="外包装" type="checkbox" disabled>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <div class="mui-input-row mui-checkbox mui-left">
+                        <label>后处理</label>
+                        <input name="checkbox" value="后处理" type="checkbox" disabled>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="reason">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>不合格品信息</label>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>原因分析<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fyyfx" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="influence">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>影响</label>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>影响对象</label>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>影响程度描述</label>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>风险是否可接受</label>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>对功能</label>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fmx_gn" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fif_gn" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>对病人</label>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fmx_br" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fif_br" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <label>对医生</label>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fmx_ys" readonly></textarea>
+                    </div>
+                    <div class="mui-col-xs-4" style="display:flex;">
+                        <textarea rows="2" id="fif_ys" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deal">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>处置信息</label>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>处置判定<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fczpd" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>处置备注<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fczbz" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>是否采取纠正预防措施<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fif_jzcs" readonly></textarea>
+                    </div>
+                </div>
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>不采取纠正措施原因<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fyy" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="taskId1" readonly />
+            <input type="hidden" id="taskId2" readonly />
+            <input type="hidden" id="yanfajingli" readonly />
+            <input type="hidden" id="jishuyingli" readonly />
+            <input type="hidden" id="shengchanjingli" readonly />
+            <input type="hidden" id="zhiliangjingli" readonly />
+            <input type="hidden" id="jishuzongjian" readonly />
+            <input type="hidden" id="frq_zj" readonly />
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+         mui.init();
+
+         mui.ready(function () {
+             _init._preAskOrDone();
+
+         });
+    </script>
+</body>
+</html>

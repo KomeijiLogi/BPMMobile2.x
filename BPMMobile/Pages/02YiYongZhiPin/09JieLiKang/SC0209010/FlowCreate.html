@@ -52,7 +52,7 @@
                 </div>
                 <div class="mui-col-xs-4" style="display:flex;">
                     <label>经办人<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fjbr" placeholder="请填写"></textarea>
+                    <textarea rows="2" id="fjbr" readonly></textarea>
                 </div>
             </div>
             <div class="mui-row cutOffLine padding">
@@ -144,8 +144,8 @@
                         <label class="label">会议总结<i style="color:red;">*</i></label>
                         <span class="tips" id="imageCount"><!--已添加0张--></span>
                         <!--上传图片按钮  -->
-                        <span class="upload-addbtn">
-                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        <span class="upload-addbtn" style="display:none;">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file1" style="opacity:0;">
                         </span>
 
                     </div>
@@ -156,8 +156,8 @@
             <input type="hidden" id="fjbrno" readonly />
             <input type="hidden" id="fbmfzr" readonly />
             <input type="hidden" id="fbmfgld" readonly />
-            <input type="hidden" id="fcwshr" readonly/>
-            <input type="hidden" id="fspr" readonly/>
+            <input type="hidden" id="fcwshr" readonly />
+            <input type="hidden" id="fspr" readonly />
         </div>
         <div class="mui-btn-row" id="SaveD">
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
@@ -173,7 +173,7 @@
     <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
     <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
     <script type="text/javascript" src="../../../../Scripts/util.js"></script>
-    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
     <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
     <script type="text/javascript" src="../../../../Scripts/common.js"></script>
     <script type="text/javascript" src="common.js?111"></script>

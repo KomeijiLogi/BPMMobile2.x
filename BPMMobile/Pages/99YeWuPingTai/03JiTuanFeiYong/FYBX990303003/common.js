@@ -461,7 +461,7 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c1.length; i++) {
                 xml += `
                        <fybx_travelentertain_t1>
-            <RelationRowGuid>${i+1}</RelationRowGuid>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c1[i].itemid}</RowPrimaryKeys>
             <cfdate>${item_c1[i].cfdate}</cfdate>
             <dddate>${item_c1[i].dddate}</dddate>
@@ -472,16 +472,16 @@ function AgreeOrConSign() {
             <mddcity>${item_c1[i].mddcity}</mddcity>
             <mddproid>${item_c1[i].mddproid}</mddproid>
             <jtgj>${item_c1[i].jtgj}</jtgj>
-            <rs>${item_c1[i].rs}</rs>
-            <ccfy>${item_c1[i].ccfy}</ccfy>
-            <ts>${item_c1[i].ts}</ts>
-            <bz_zsf>${item_c1[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c1[i].zsf}</zsf>
-            <bz_cf>${item_c1[i].bz_cf}</bz_cf>
-            <cf>${item_c1[i].cf}</cf>
-            <bz_snjtf>${item_c1[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c1[i].snjtf}</snjtf>
-            <qt>${item_c1[i].qt}</qt>
+            <rs>${changeNullToEmpty(item_c1[i].rs)}</rs>
+            <ccfy>${changeNullToEmpty(item_c1[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c1[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c1[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c1[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c1[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c1[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c1[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c1[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c1[i].qt)}</qt>
             <rem>${item_c1[i].rem}</rem>
         </fybx_travelentertain_t1>
                        `;
@@ -491,11 +491,11 @@ function AgreeOrConSign() {
                            <fybx_travelentertain_t2>
             <RelationRowGuid>${item_c1.length + i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c2[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c2[i].zdrs}</zdrs>
-            <zdbz>${item_c2[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c2[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c2[i].zdbz)}</zdbz>
             <zdcity>${item_c2[i].zdcity}</zdcity>
             <zddd>${item_c2[i].zddd}</zddd>
-            <bxje>${item_c2[i].bxje}</bxje>
+            <bxje>${changeNullToEmpty(item_c2[i].bxje)}</bxje>
             <rem>${item_c2[i].rem}</rem>
         </fybx_travelentertain_t2>
                        
@@ -575,16 +575,16 @@ function AgreeOrConSign() {
             <mddcity>${item_c1[i].mddcity}</mddcity>
             <mddproid>${item_c1[i].mddproid}</mddproid>
             <jtgj>${item_c1[i].jtgj}</jtgj>
-            <rs>${item_c1[i].rs}</rs>
-            <ccfy>${item_c1[i].ccfy}</ccfy>
-            <ts>${item_c1[i].ts}</ts>
-            <bz_zsf>${item_c1[i].bz_zsf}</bz_zsf>
-            <zsf>${item_c1[i].zsf}</zsf>
-            <bz_cf>${item_c1[i].bz_cf}</bz_cf>
-            <cf>${item_c1[i].cf}</cf>
-            <bz_snjtf>${item_c1[i].bz_snjtf}</bz_snjtf>
-            <snjtf>${item_c1[i].snjtf}</snjtf>
-            <qt>${item_c1[i].qt}</qt>
+            <rs>${changeNullToEmpty(item_c1[i].rs)}</rs>
+            <ccfy>${changeNullToEmpty(item_c1[i].ccfy)}</ccfy>
+            <ts>${changeNullToEmpty(item_c1[i].ts)}</ts>
+            <bz_zsf>${changeNullToEmpty(item_c1[i].bz_zsf)}</bz_zsf>
+            <zsf>${changeNullToEmpty(item_c1[i].zsf)}</zsf>
+            <bz_cf>${changeNullToEmpty(item_c1[i].bz_cf)}</bz_cf>
+            <cf>${changeNullToEmpty(item_c1[i].cf)}</cf>
+            <bz_snjtf>${changeNullToEmpty(item_c1[i].bz_snjtf)}</bz_snjtf>
+            <snjtf>${changeNullToEmpty(item_c1[i].snjtf)}</snjtf>
+            <qt>${changeNullToEmpty(item_c1[i].qt)}</qt>
             <rem>${item_c1[i].rem}</rem>
         </fybx_travelentertain_t1>
                        `;
@@ -594,11 +594,11 @@ function AgreeOrConSign() {
                            <fybx_travelentertain_t2>
             <RelationRowGuid>${item_c1.length + i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c2[i].itemid}</RowPrimaryKeys>
-            <zdrs>${item_c2[i].zdrs}</zdrs>
-            <zdbz>${item_c2[i].zdbz}</zdbz>
+            <zdrs>${changeNullToEmpty(item_c2[i].zdrs)}</zdrs>
+            <zdbz>${changeNullToEmpty(item_c2[i].zdbz)}</zdbz>
             <zdcity>${item_c2[i].zdcity}</zdcity>
             <zddd>${item_c2[i].zddd}</zddd>
-            <bxje>${item_c2[i].bxje}</bxje>
+            <bxje>${changeNullToEmpty(item_c2[i].bxje)}</bxje>
             <rem>${item_c2[i].rem}</rem>
         </fybx_travelentertain_t2>
                        

@@ -103,6 +103,7 @@
                     <div class="clearfix upload-btn" id="children-bg">
                         <label class="label">会议申请及底层文件<i style="color:red;">*</i></label>
                         <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <input type="hidden" id="fj_info_ids1" name="fj_info_ids" readonly value="" />
                         <!--上传图片按钮  -->
                         <span class="upload-addbtn" style="display:none;">
                             <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
@@ -137,12 +138,13 @@
                     </div>
                 </div>
             </div>
-            <div class="mui-input-row" style="height:7rem;overflow:scroll;display:none;" id="uploaddiv2">
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv2">
                 <div class="border border-t upload-img" style="top:0rem;">
                     <!--上传图片-->
                     <div class="clearfix upload-btn" id="children-bg">
                         <label class="label">会议总结<i style="color:red;">*</i></label>
                         <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <input type="hidden" id="fj_info_ids2" name="fj_info_ids" readonly value="" />
                         <!--上传图片按钮  -->
                         <span class="upload-addbtn" style="display:none;">
                             <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
@@ -227,7 +229,7 @@
         </div>
         <div class="mui-btn-row" id="approvalD">
             &nbsp;&nbsp;
-            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirm()">同意</button>&nbsp;&nbsp;&nbsp;
+            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirmOpt()">同意</button>&nbsp;&nbsp;&nbsp;
             <button class="mui-btn mui-btn-danger" type="button" style="width:40%" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
 
         </div>
@@ -270,7 +272,7 @@
     <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
     <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
     <script type="text/javascript" src="../../../../Scripts/util.js"></script>
-    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
     <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
     <script type="text/javascript" src="../../../../Scripts/common.js"></script>
     <script type="text/javascript" src="common.js"></script>
