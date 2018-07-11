@@ -166,6 +166,30 @@ function tapEvent() {
         $("#selector").show();
     });
 
+    var fif_data = [
+        {
+            value: '',
+            text:'是'
+        },
+        {
+            value: '',
+            text:'否'
+        }
+    ];
+    var picker_fif = new mui.PopPicker();
+    picker_fif.setData(fif_data);
+
+    $("#fif_kp").on('tap', function () {
+        var _self = this;
+        picker_fif.show(function (items) {
+            $(_self).val(items[0].text);
+
+
+        });
+    });
+
+
+    
 
 }
 
