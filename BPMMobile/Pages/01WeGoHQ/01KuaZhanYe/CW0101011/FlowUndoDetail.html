@@ -718,6 +718,9 @@
                                 $(".imgdiv").off('tap');
                                 $(".imgdiv").on('tap', function () {
                                     console.log($(this)[0].id);
+                                    if (String(navigator.userAgent).match('cloudhub') != null) {
+                                        window.open(attachArray[$(this)[0].id].downurl);
+                                    }
                                     XuntongJSBridge.call('showFile', {
                                         'fileName': attachArray[$(this)[0].id].name,
                                         'fileExt': attachArray[$(this)[0].id].type,
@@ -836,6 +839,9 @@
                         $(".imgdiv1").off('tap');
                         $(".imgdiv1").on('tap', function () {
                             console.log($(this)[0].id);
+                            if (String(navigator.userAgent).match('cloudhub') != null) {
+                                window.open(attachArray[$(this)[0].id].downurl);
+                            }
                             XuntongJSBridge.call('showFile', {
                                 'fileName': attachArray1[$(this)[0].id].name,
                                 'fileExt': attachArray1[$(this)[0].id].type,
@@ -953,6 +959,9 @@
                         $(".imgdiv2").off('tap');
                         $(".imgdiv2").on('tap', function () {
                             console.log($(this)[0].id);
+                            if (String(navigator.userAgent).match('cloudhub') != null) {
+                                window.open(attachArray2[$(this)[0].id].downurl);
+                            }
                             XuntongJSBridge.call('showFile', {
                                 'fileName': attachArray2[$(this)[0].id].name,
                                 'fileExt': attachArray2[$(this)[0].id].type,

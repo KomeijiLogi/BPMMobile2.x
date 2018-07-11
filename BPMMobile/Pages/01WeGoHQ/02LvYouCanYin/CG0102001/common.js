@@ -152,6 +152,9 @@ function initData(data, flag) {
                     watch();
                     $(".imgdiv").on('tap', function () {
                         console.log($(this)[0].id);
+                        if (String(navigator.userAgent).match('cloudhub') != null) {
+                            window.open(attachArray[$(this)[0].id].downurl);
+                        }
                         XuntongJSBridge.call('showFile', {
                             'fileName': attachArray[$(this)[0].id].name,
                             'fileExt': attachArray[$(this)[0].id].type,

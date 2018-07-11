@@ -252,6 +252,9 @@ function initData(data, flag) {
                 for (var i = 0; i < fjArrayObjCollections.length; i++){
                     if (String(fjArrayObjCollections[i].FileID).match(fileid) != null) {
                         console.log(fjArrayObjCollections[i]);
+                        if (String(navigator.userAgent).match('cloudhub') != null) {
+                            window.open(fjArrayObjCollections[i].DownloadUrl);
+                        }
                         XuntongJSBridge.call('showFile', {
                             'fileName': fjArrayObjCollections[i].Name,
                             'fileExt': fjArrayObjCollections[i].Ext,
