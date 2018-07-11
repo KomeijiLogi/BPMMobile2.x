@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <link rel="stylesheet" href="../../../../Content/mui.min.css" />
     <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
     <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.indexedlist.css" />
     <link rel="stylesheet" href="../../../../Content/upload.css" />
     <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
-    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
-    <meta charset="utf-8" />
     <title></title>
+    <meta charset="utf-8" />
 </head>
 <body>
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
@@ -45,7 +46,7 @@
             <div class="mui-row cutOffLine padding">
                 <div class="mui-col-xs-6" style="display:flex;">
                     <label>客户<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fkh" readonly></textarea>
+                    <textarea rows="2" id="fkh" readonly placeholder="请选择"></textarea>
                 </div>
                 <div class="mui-col-xs-6" style="display:flex;">
                     <label>销售员</label>
@@ -56,26 +57,27 @@
             <div class="mui-row cutOffLine padding">
                 <div class="mui-col-xs-12" style="display:flex;">
                     <label>退货原因<i style="color:red;">*</i></label>
-                    <textarea rows="2" id="fthyy" readonly></textarea>
+                    <textarea rows="2" id="fthyy" placeholder="请填写"></textarea>
                 </div>
             </div>
 
-            <div id="card1" style="display:none;">
+            <div id="card1">
                 <div class="mui-row cutOffLine padding">
                     <div class="mui-col-xs-6" style="display:flex;">
                         <label>换货发货时间<i style="color:red;">*</i></label>
-                        <textarea rows="2" id="fhhfhsj" readonly></textarea>
+                        <textarea rows="2" id="fhhfhsj" readonly placeholder="请填写"></textarea>
                     </div>
                     <div class="mui-col-xs-6" style="display:flex;">
                         <label>提前发货原因<i style="color:red;">*</i></label>
-                        <textarea rows="2" id="ftqfhyy" readonly></textarea>
+                        <textarea rows="2" id="ftqfhyy" placeholder="请填写"></textarea>
                     </div>
+
                 </div>
 
                 <div class="mui-row cutOffLine padding">
                     <div class="mui-col-xs-12" style="display:flex;">
                         <label>送货地址<i style="color:red;">*</i></label>
-                        <textarea rows="2" id="fshdz" readonly></textarea>
+                        <textarea rows="2" id="fshdz" placeholder="请填写"></textarea>
                     </div>
                 </div>
                 <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
@@ -85,7 +87,7 @@
                             <label class="label">附件</label>
                             <span class="tips" id="imageCount"><!--已添加0张--></span>
                             <!--上传图片按钮  -->
-                            <span class="upload-addbtn" style="display:none;">
+                            <span class="upload-addbtn">
                                 <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
                             </span>
 
@@ -94,40 +96,113 @@
                     </div>
                 </div>
 
-
-
             </div>
 
-            <div id="card2" style="display:none;">
+            <div id="card2">
                 <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
                     <label>退货明细</label>
                 </div>
                 <div id="mxlist_th">
-
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>物料编码<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fwlbm" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料名称</label>
+                                <textarea rows="2" id="fwlmc" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>规格型号</label>
+                                <textarea id="fggxh" readonly rows="2"></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>计量单位</label>
+                                <textarea id="fjldw" readonly rows="2"></textarea>
+                                <input type="hidden" id="fjldwbm" readonly />
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>数量<i style="color:red;">*</i></label>
+                                <input type="number" id="fsl" placeholder="请填写" />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>生产批号<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fscph" placeholder="请填写"></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>产品序列号<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fcpxlh" placeholder="请填写"></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>包装是否完好<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fif_bz" readonly placeholder="请选择"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_th" style="margin-top:0.5rem;display:none;">
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_th" style="margin-top:0.5rem;">
                     退货明细
                     <span class="mui-icon mui-icon-plusempty"></span>
                 </a>
             </div>
-            <div id="card3" style="display:none;">
+            <div id="card3">
                 <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
                     <label>换货明细</label>
                 </div>
                 <div id="mxlist_hh">
-
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料编码<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fwlbm" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料名称</label>
+                                <textarea rows="2" id="fwlmc" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>规格型号</label>
+                                <textarea rows="2" id="fggxh" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>计量单位</label>
+                                <textarea rows="2" id="fjldw" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>数量<i style="color:red;">*</i></label>
+                                <input type="number" id="fsl" placeholder="请填写" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_hh" style="margin-top:0.5rem;display:none;">
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_hh" style="margin-top:0.5rem;">
                     换货明细
                     <span class="mui-icon mui-icon-plusempty"></span>
                 </a>
             </div>
 
-            <input type="hidden" id="fywlx" readonly value="客户" />
+            <input type="hidden" id="fywlx" readonly value="业务员备货" />
             <input type="hidden" id="fxszzbm" readonly />
-            <input type="hidden" id="fkhbm" readonly />
-            <input type="hidden" id="fxsybm" readonly />
+            <input type="hidden" id="fkhbm" readonly value="业务员备货"/>
+            <input type="hidden" id="fxsybm" readonly value="业务员备货"/>
             <input type="hidden" id="fkczzbm" readonly value="01.06.05" />
             <input type="hidden" id="fbmbm" readonly />
             <input type="hidden" id="fcbzxbm" readonly />
@@ -136,10 +211,11 @@
             <input type="hidden" id="fswlxbm1" readonly value="836退" />
             <input type="hidden" id="fswlxbm2" readonly value="029" />
             <input type="hidden" id="flllxbm" readonly value="issueType0029" />
-            <input type="hidden" id="fbgrbm" readonly />
+            <input type="hidden" id="fbgrbm" readonly value="00030378" />
             <input type="hidden" id="fckbm" readonly value="JLK07" />
-            <input type="hidden" id="fcgybm" readonly />
-            <input type="hidden" id="fgxlxbm" readonly />
+            <input type="hidden" id="fcgybm" readonly value="00030378" />
+            <input type="hidden" id="fgxlxbm" readonly value="002" />
+
 
             <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
                 <label>审核信息</label>
@@ -176,134 +252,40 @@
                 </div>
             </div>
 
-            <div class="mui-input-row" id="csd">
-                <label>加签</label>
-                <div class="mui-switch mui-switch-blue" id="csswitch">
-                    <div class="mui-switch-handle"></div>
-                </div>
-            </div>
-            <div id="signbody">
-                <div class="mui-input-row" id="signPerDiv">
-                    <label>加签人</label>
-                    <span class="mui-navigate-right"></span>
-                    <input name="signPer" id="signPer" value="" readonly="readonly" placeholder="请选择加签人" />
-                </div>
-                <div class="mui-input-row adl">
-                    <label>加签模式</label>
-                </div>
-                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
-                    <ul class="mui-table-view mui-table-view-radio">
-                        <li class="mui-table-view-cell mui-selected" id="sxsl">
-                            <a class="mui-navigate-right" id="sxsa">
-                                顺序加签
-                            </a>
-                        </li>
-                        <li class="mui-table-view-cell" id="pxsl">
-                            <a class="mui-navigate-right" id="pxsa">
-                                平行加签
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mui-input-row adl">
-                    <label>加签回转</label>
-                </div>
-                <div class="mui-input-row" id="signModeDiv" style="height:5.25rem;">
-                    <ul class="mui-table-view mui-table-view-radio">
-                        <li class="mui-table-view-cell mui-selected" id="hdbjdl">
-                            <a class="mui-navigate-right" id="hdbjda">
-                                回到本节点
-                            </a>
-                        </li>
-                        <li class="mui-table-view-cell" id="jrxjdl">
-                            <a class="mui-navigate-right" id="jrxjda">
-                                进入下一节点
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
         </form>
-        <div class="mui-table-view" style="margin-bottom:3rem;">
-            <div class="mui-table-view-cell  mui-collapse mui-active">
-                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
-                    历史签核意见
-                </a>
-                <div class="mui-collapse-content">
-                    <!--流程列表-->
-                    <div class="list">
-                        <ul id="signff"></ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="mui-btn-row" id="createD">
-            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="reSave()">提交</button>
-        </div>
-        <div class="mui-btn-row" id="approvalD">
-            &nbsp;&nbsp;
-            <button class="mui-btn mui-btn-primary" type="button" style="width:40%" id="agreebt" onclick="showConfirmOpt()">同意</button>&nbsp;&nbsp;&nbsp;
-            <button class="mui-btn mui-btn-danger" type="button" style="width:40%" id="disagreebt" onclick="reject()">拒绝</button>&nbsp;&nbsp;&nbsp;
-
-        </div>
-        <div class="mui-btn-row" id="readD">
-            <button class="mui-btn mui-btn-primary" type="button" id="readbt" onclick="hasRead()">已阅</button>
+        <div class="mui-btn-row" id="SaveD">
+            <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
         </div>
     </div>
-    <input value="" id="stepId" name="stepId" type="hidden" />
-    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
-    <input type="hidden" id="processName" name="processName" value="" />
-    <input type="hidden" id="noticeUser" name="noticeUser" value="" />
-    <input type="hidden" id="noticeOpenId" name="noticeOpenId" value="" />
-    <input type="hidden" id="taskId" name="taskId" value="" />
-    <input type="hidden" id="myPhone" name="myPhone" value="" />
-    <input type="hidden" id="consignUser" name="consignUser" value="" />
-    <input type="hidden" id="consignOpenId" name="consignOpenId" value="" />
-    <input type="hidden" id="fbillno" name="fbillno" value="" />
-    <input type="hidden" id="nodeName" name="nodeName" value="" />
-    <div id="signd" style="display:none;">
-        <div class="mui-input-row" id="ssd">
-            <label>签核意见</label>
-            <textarea rows="8" id="signSuggest" placeholder="请输入签核意见"></textarea>
-        </div>
-        <div class="mui-btn-row mui-text-center" style="margin-top:1rem;">
-            <button class="mui-btn mui-btn-primary" type="button" onclick="AgreeOrConSign()">确定</button>&nbsp;&nbsp;
-            <button class="mui-btn mui-btn-danger" type="button" onclick="cancelConfirm()">取消</button>
-        </div>
-    </div>
-
-
-
-
+    <!--<script type="text/javascript" src="../../../Scripts/vconsole.min.js"></script>-->
     <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
     <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
-    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
     <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.indexedlist.js"></script>
     <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
     <script type="text/javascript" src="../../../../Scripts/util.js"></script>
-    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
     <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
     <script type="text/javascript" src="../../../../Scripts/common.js"></script>
     <script type="text/javascript" src="common.js"></script>
     <script>
 
-        //console.log(navigator.userAgent);
+
         mui.init();
 
         mui.ready(function () {
+
+            getVersion('\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销', '洁丽康公司业务员备货退换货申请');
             getBPMParam();
 
-            $('#signPerDiv').click(function () {
-                openSignPer();
+            _init._preCreate();
 
-            });
-            _init._preUndo();
         });
+
     </script>
 </body>
 </html>

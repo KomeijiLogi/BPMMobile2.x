@@ -25,7 +25,7 @@
         $("#fxsry").val(item.销售人员);
         $("#fxsqy").val(item.销售区域);
 
-
+        $("#fno").val(item.销售人员工号);
     }).fail(function (e) {
 
     });
@@ -156,6 +156,8 @@ function initData(data, flag) {
     $("#fxsqy").val(item.销售区域);
     $("#ftxrq").val(FormatterTimeYMS(item.填写日期));
     $("#fmonth").val(item.月);
+   
+
     var item_b1 = data.FormDataSet.洁丽康公司_销售月计划_子表1;
     for (var i = 0; i < item_b1.length; i++) {
         itemidArr1.push(item_b1[i].itemid);
@@ -273,6 +275,10 @@ class Mx_Jh{
             mui.toast('请填写回款计划');
             return true;
         }
+        if (!this.fkfjh) {
+            mui.toast('请填写新客户开发计划');
+            return true;
+        }
         return false;
     }
 }
@@ -312,6 +318,7 @@ function Save() {
         mui.toast('请选择月份');
         return;
     }
+   
     var mxflag = false;
     var mxlistArr1 = [];
     var mxlistArr2 = [];
@@ -429,6 +436,7 @@ function reSave() {
         mui.toast('请选择月份');
         return;
     }
+   
     var mxflag = false;
     var mxlistArr1 = [];
     var mxlistArr2 = [];
@@ -556,7 +564,7 @@ function AgreeOrConSign() {
     var fxsqy = $("#fxsqy").val();
     var ftxrq = $("#ftxrq").val();
     var fmonth = $("#fmonth").val();
-   
+  
     var mxflag = false;
     var mxlistArr1 = [];
     var mxlistArr2 = [];

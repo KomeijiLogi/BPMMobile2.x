@@ -3529,405 +3529,7 @@
 
     
 
-  <Process>
-    <Name>洁丽康公司个人借款申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司个人借款申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司个人借款的申请，由下属各部门发起。</Description>
-  </Process>
 
-
-  <Process>
-    <Name>洁丽康公司汇款申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司汇款申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司汇款申请，由下属各部门发起。</Description>
-  </Process>
-
-  <Process>
-    <Name>洁丽康公司其他费用申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司其他费用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司非差旅费的申请。</Description>
-  </Process>
-
-
-  <Process>
-    <Name>洁丽康公司员工试用期转正申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司员工试用期转正申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司员工试用期转正的申请，由申请本人发起。</Description>
-  </Process>
-
-<Process>
-    <Name>洁丽康公司员工参保申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司员工参保申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司员工缴纳保险的申请，由申请本人发起。</Description>
-  </Process>
-<Process>
-    <Name>洁丽康公司员工合同续签申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司员工合同续签申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司员工证明的申请，由人事专员发起。</Description>
-  </Process>
-
-  <Process>
-    <Name>洁丽康公司员工证明申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司员工证明申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司员工证明的申请。</Description>
-  </Process>
-  
-    
-  <Process>
-    <Name>洁丽康公司销售日报提报</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司销售日报提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司销售部门的日报提报，由销售部门发起。</Description>
-  </Process>
-    
-  <Process>
-    <Name>洁丽康公司销售月计划提报</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司销售月计划提报</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司销售部门的月计划提报，由销售部门发起。</Description>
-  </Process>
-    
-    <Process>
-    <Name>洁丽康公司月销售任务完成情况分析提报</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司月销售任务完成情况分析</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>todo</Group>
-    <Description>适用于洁丽康公司销售部门的月销售任务完成情况分析提报，由销售部门发起。</Description>
-  </Process>
-    
-    
-    
-    
-  <Process>
-    <Name>洁丽康公司排产申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司排产申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司排产的申请，由销售部门发起。</Description>
-  </Process>
-    
-    
-   <Process>
-    <Name>洁丽康公司客户申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司客户申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司客户的申请。</Description>
-  </Process>
-  
-  <Process>
-    <Name>洁丽康公司销售订单申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</ViewPage>
-    <DisplayName>洁丽康公司销售订单申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司销售订单的申请，由销售人员发起</Description>
-  </Process>
-
- 
-  
-   <Process>
-    <Name>洁丽康公司产品借用申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司产品借用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司产品借用申请。</Description>
-  </Process>
-  
-  <Process>
-    <Name>洁丽康公司产品试用申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司产品借用申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司产品借用申请。</Description>
-  </Process>
-  
-  
-  
-   <Process>
-    <Name>洁丽康公司会议(活动)申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司会议(活动)申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司会议活动的申请，由销售人员或市场部发起。</Description>
-  </Process>
-  
-  
-    <Process>
-    <Name>洁丽康公司内部工作联络申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司内部工作联络申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司内部工作联络的申请。</Description>
-  </Process>
-    
-  <Process>
-    <Name>洁丽康公司名片申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司名片申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司名片申请。</Description>
-  </Process>
-    
- 
-   <Process>
-    <Name>洁丽康公司盖章申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司盖章申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司盖公章和合同章的申请。</Description>
-  </Process>
-  
-    <Process>
-    <Name>洁丽康公司机票预定申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司机票预定申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司机票预定的申请。</Description>
-  </Process>
-  
-   <Process>
-    <Name>洁丽康公司销售合同评审</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\05_法律事务</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司销售合同评审</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司销售合同的申请，由销售部发起。</Description>
-  </Process>
-  
-    <Process>
-    <Name>洁丽康公司研发产品初样试制申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\17_研发技术</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司研发产品初样试制申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司研发产品初样试制的申请。</Description>
-  </Process>
-  
-    <Process>
-    <Name>洁丽康公司原材料让步接收申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\19_质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司原材料让步接收申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司原材料让步接收的申请，由采购部门发起。</Description>
-  </Process>
-
-  <Process>
-    <Name>洁丽康公司不合格品评审和处置申请</Name>
-    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\19_质量管理</Path>
-    <CanCreate>True</CanCreate>
-    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowCreate.html</CreatePage>
-    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowUndoDetail.html</ViewUndoPage>
-    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowAskDetail.html</ViewAskPage>
-    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowDoneDetail.html</ViewDonePage>
-    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowTemplate.html</ViewPage>
-    <DisplayName>洁丽康公司不合格品评审和处置申请</DisplayName>
-    <Css></Css>
-    <Icon>../../../../Content/images/5.png</Icon>
-    <Group>办公管理</Group>
-    <Description>适用于洁丽康公司不合格品评审和处置的申请，由质量部门发起。</Description>
-  </Process>
-  
-  
-  
-  
   <Process>
     <Name>医学检验公司设备维修申请</Name>
     <Path>\\08医疗商业集团\\02医学检验公司\\13_市场营销</Path>
@@ -4334,6 +3936,7 @@
     <Group>办公管理</Group>
     <Description>适用于集团本部各部门、财务公司、证券公司其他费用报销。</Description>
   </Process>
+  
   <Process>
     <Name>集团本部车辆费用报销</Name>
     <Path>\\99业务平台\\03集团费用\\03费用报销</Path>
@@ -4402,6 +4005,404 @@
     <Group>办公管理</Group>
     <Description>适用于全集团新产品研发信息推荐的申请。</Description>
   </Process>-->
+  
+    <Process>
+    <Name>洁丽康公司个人借款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司个人借款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司个人借款的申请，由下属各部门发起。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司汇款申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司汇款申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司汇款申请，由下属各部门发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司其他费用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\03_财务管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/CW0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司其他费用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司非差旅费的申请。</Description>
+  </Process>
+
+
+  <Process>
+    <Name>洁丽康公司员工试用期转正申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工试用期转正申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工试用期转正的申请，由申请本人发起。</Description>
+  </Process>
+
+<Process>
+    <Name>洁丽康公司员工参保申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工参保申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工缴纳保险的申请，由申请本人发起。</Description>
+  </Process>
+<Process>
+    <Name>洁丽康公司员工合同续签申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工合同续签申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请，由人事专员发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司员工证明申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\10_人力资源</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/RL0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司员工证明申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司员工证明的申请。</Description>
+  </Process>
+  
+    
+  <Process>
+    <Name>洁丽康公司销售日报提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售日报提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售部门的日报提报，由销售部门发起。</Description>
+  </Process>
+    
+  <Process>
+    <Name>洁丽康公司销售月计划提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售月计划提报</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售部门的月计划提报，由销售部门发起。</Description>
+  </Process>
+    
+    <Process>
+    <Name>洁丽康公司月销售任务完成情况分析提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司月销售任务完成情况分析</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>todo</Group>
+    <Description>适用于洁丽康公司销售部门的月销售任务完成情况分析提报，由销售部门发起。</Description>
+  </Process>
+    
+    
+    
+    
+  <Process>
+    <Name>洁丽康公司排产申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司排产申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司排产的申请，由销售部门发起。</Description>
+  </Process>
+    
+    
+   <Process>
+    <Name>洁丽康公司客户申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司客户申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司客户的申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>洁丽康公司销售订单申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SCYX0209001/FlowCreate.html</ViewPage>
+    <DisplayName>洁丽康公司销售订单申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售订单的申请，由销售人员发起</Description>
+  </Process>
+
+ 
+  
+   <Process>
+    <Name>洁丽康公司产品借用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209006/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司产品借用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司产品借用申请。</Description>
+  </Process>
+  
+  <Process>
+    <Name>洁丽康公司产品试用申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209009/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司产品试用申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司产品试用申请。</Description>
+  </Process>
+  
+  
+  
+   <Process>
+    <Name>洁丽康公司会议(活动)申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209010/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司会议(活动)申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司会议活动的申请，由销售人员或市场部发起。</Description>
+  </Process>
+  
+  
+    <Process>
+    <Name>洁丽康公司内部工作联络申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209003/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司内部工作联络申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司内部工作联络的申请。</Description>
+  </Process>
+    
+  <Process>
+    <Name>洁丽康公司名片申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209004/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司名片申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司名片申请。</Description>
+  </Process>
+    
+ 
+   <Process>
+    <Name>洁丽康公司盖章申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209005/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司盖章申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司盖公章和合同章的申请。</Description>
+  </Process>
+  
+    <Process>
+    <Name>洁丽康公司机票预定申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\16_行政办公</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/BG0209006/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司机票预定申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司机票预定的申请。</Description>
+  </Process>
+  
+   <Process>
+    <Name>洁丽康公司销售合同评审</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\05_法律事务</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/FL0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售合同的申请，由销售部发起。</Description>
+  </Process>
+  
+    <Process>
+    <Name>洁丽康公司研发产品初样试制申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\17_研发技术</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/YF0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司研发产品初样试制申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司研发产品初样试制的申请。</Description>
+  </Process>
+  
+    <Process>
+    <Name>洁丽康公司原材料让步接收申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209001/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司原材料让步接收申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司原材料让步接收的申请，由采购部门发起。</Description>
+  </Process>
+
+  <Process>
+    <Name>洁丽康公司不合格品评审和处置申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\19_质量管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/ZL0209002/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司不合格品评审和处置申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司不合格品评审和处置的申请，由质量部门发起。</Description>
+  </Process>
+  
+  
   
   
   <Process>
@@ -4473,7 +4474,7 @@
    <Process>
     <Name>洁丽康公司销售退换货申请</Name>
     <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
-    <CanCreate>True</CanCreate>
+    <CanCreate>False</CanCreate>
     <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209007/FlowCreate.html</CreatePage>
     <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209007/FlowUndoDetail.html</ViewUndoPage>
     <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209007/FlowAskDetail.html</ViewAskPage>
@@ -4485,8 +4486,57 @@
     <Group>办公管理</Group>
     <Description>适用于洁丽康公司销售退换货的申请，由销售人员发起。</Description>
   </Process>
+
+  <Process>
+    <Name>洁丽康公司业务员备货退换货申请</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209008/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209008/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209008/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209008/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209008/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司业务员备货退换货申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售退换货的申请，由销售人员发起。</Description>
+  </Process>
   
   
-   
+  
+  
+ <Process>
+    <Name>洁丽康公司销售预测提报</Name>
+    <Path>\\03医用制品集团\\09洁丽康生物材料公司\\13_市场营销</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209011/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209011/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209011/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209011/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/09JieLiKang/SC0209011/FlowTemplate.html</ViewPage>
+    <DisplayName>洁丽康公司销售预测</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于洁丽康公司销售预测提报，由销售人员发起。</Description>
+  </Process>
+     
+  <!--<Process>
+    <Name>爱普公司原材料采购申请</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\02_采购管理</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APCG0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APCG0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APCG0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APCG0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APCG0204001/FlowTemplate.html</ViewPage>
+    <DisplayName>爱普公司原材料采购申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于爱普公司原材料采购申请。</Description>
+  </Process>-->
+  
 
 </ProcessList>

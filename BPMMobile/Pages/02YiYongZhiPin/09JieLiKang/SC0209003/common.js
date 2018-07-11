@@ -186,7 +186,7 @@ function nodeControllerExp(NodeName) {
 
 function checkNes() {
     var nodeName = $("#nodeName").val();
-    if (String(nodeName).match('提交人') != null) {
+    if (String(nodeName).match('销售人员') != null) {
         if (!$("#fyyfx1").val() && (parseFloat($("#fwcl_xse").val())< 100)) {
             mui.toast('请填写销售额任务未完成原因分析');
             return false;
@@ -195,7 +195,7 @@ function checkNes() {
             mui.toast('请填写回款任务未完成原因分析');
             return false;
         }
-    }
+    } 
     return true;
 }
 function Save() {

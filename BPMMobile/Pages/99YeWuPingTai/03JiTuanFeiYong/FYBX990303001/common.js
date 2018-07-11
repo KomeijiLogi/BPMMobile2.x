@@ -398,7 +398,7 @@ function AgreeOrConSign() {
             <fyhjbz>${item.fyhjbz}</fyhjbz>
             <fyhjdx>${item.fyhjdx}</fyhjdx>
             <fybz>${item.fybz}</fybz>
-            <djsl>${item.djsl}</djsl>
+           <djsl>${changeNullToEmpty(item.djsl)}</djsl>
             <att>${item.att}</att>
         </fybx_travel_m>
 
@@ -479,7 +479,7 @@ function AgreeOrConSign() {
             <fyhjbz>${changeNullToEmpty(item.fyhjbz)}</fyhjbz>
             <fyhjdx>${item.fyhjdx}</fyhjdx>
             <fybz>${item.fybz}</fybz>
-            <djsl>${item.djsl}</djsl>
+            <djsl>${changeNullToEmpty(item.djsl)}</djsl>
             <att>${item.att}</att>
         </fybx_travel_m>
 

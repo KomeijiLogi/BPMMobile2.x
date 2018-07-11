@@ -1174,7 +1174,7 @@ function AgreeOrConSign() {
     var nodeName = $("#nodeName").val();
     if (nodeName=="订单执行岗"){
         Action = "完成";
-    }else if(nodeName=="财务部审核人"){
+    }else if(nodeName=="财务部审核岗"){
         Action = "到账";
     }
     

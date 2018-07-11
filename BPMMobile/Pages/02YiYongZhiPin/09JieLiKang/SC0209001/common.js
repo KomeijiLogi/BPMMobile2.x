@@ -170,6 +170,8 @@ function tapEvent() {
     });
 
     showDtPicker('ftxrq');
+
+    showDtPicker('fdate');
 }
 
 class Mx {

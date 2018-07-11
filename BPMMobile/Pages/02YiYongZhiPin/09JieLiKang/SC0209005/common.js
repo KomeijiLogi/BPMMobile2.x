@@ -110,10 +110,7 @@ function tapEvent() {
     showPicker('ffplx', ffplxdata);
 
     var fsldata = [
-        {
-            value: '',
-            text:'0.00'
-        },
+      
         {
             value: '',
             text:'16.00'
@@ -461,6 +458,12 @@ function Save() {
     var fxsymc = $("#fxsymc").val();
     var fzzbm = $("#fzzbm").val();
     var fzzmc = $("#fzzmc").val();
+    if (!fdz) {
+        mui.toast('请填写地址');
+        return;
+    }
+
+
     if (!fqdlx) {
         mui.toast('请选择渠道类型');
         return;

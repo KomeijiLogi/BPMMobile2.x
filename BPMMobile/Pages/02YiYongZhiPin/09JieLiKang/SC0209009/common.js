@@ -397,7 +397,7 @@ function initData(data, flag) {
                             <textarea rows="2" id="fsylb" readonly >${item_c[i].试用类别}</textarea>
                         </div>
                         <div class="mui-col-xs-8" style="display:flex;">
-                            <label>备注</label>
+                            <label>备注<i style="color:red;">*</i></label>
                             <textarea rows="2" id="fbz" readonly>${item_c[i].备注}</textarea>
                         </div>
                     </div>
@@ -551,7 +551,7 @@ class Mx {
         this.fjldwbm = fjldwbm;
     }
     check() {
-        if (this.fwlbm) {
+        if (!this.fwlbm) {
             mui.toast('请选择物料');
             return true;
         }
@@ -565,6 +565,10 @@ class Mx {
         }
         if (!this.fsylb) {
             mui.toast('请选择试用类别');
+            return true;
+        }
+        if (!this.fbz) {
+            mui.toast('请填写备注');
             return true;
         }
         return false;
@@ -624,10 +628,7 @@ function Save() {
         mui.toast('请选择销售组织');
         return;
     }
-    if (!fqyjl) {
-        mui.toast('请选择区域经理');
-        return;
-    }
+ 
 
     var mxflag = false;
     var mxlistArr = [];
@@ -792,11 +793,7 @@ function reSave() {
         mui.toast('请选择销售组织');
         return;
     }
-    if (!fqyjl) {
-        mui.toast('请选择区域经理');
-        return;
-    }
-
+  
     var mxflag = false;
     var mxlistArr = [];
     $("#mxlist").find("#mx").each(function () {

@@ -1,17 +1,19 @@
 ﻿function prepMsg() {
-    $("#ftxrq").val(getNowFormatDate(2));
+
+     $("#ftxrq").val(getNowFormatDate(2));
     tapEvent();
     uploadOpt();
     var xml = `<?xml version= "1.0" ?>
                   <Requests>
                       <Params>
                       <Method>GetFormPostData</Method>
-                      <ProcessName>洁丽康公司销售退换货申请</ProcessName>
+                      <ProcessName>洁丽康公司业务员备货退换货申请</ProcessName>
                       <ProcessVersion>${version}</ProcessVersion>
                       <Owner></Owner>
                       </Params>   
                   </Requests>
               `;
+
     $.ajax({
         type: "POST",
         url: "/api/bpm/DataProvider",
@@ -124,13 +126,10 @@ function tapEvent() {
     });
 
     var fsqlx_data = [
+       
         {
             value: '',
-            text:'退货'
-        },
-        {
-            value: '',
-            text:'退换货'
+            text: '退换货'
         }
     ];
 
@@ -158,22 +157,18 @@ function tapEvent() {
     var fhhfhsj_data = [
         {
             value: '',
-            text:'公司收到退回产品后发出'
+            text: '公司收到退回产品后发出'
         },
         {
             value: '',
-            text:'提前发货'
+            text: '提前发货'
         }
     ];
 
     showPicker('fhhfhsj', fhhfhsj_data);
 
-
 }
 
-function searchInfo() {
-
-}
 
 
 var itemidArr1 = [];
@@ -332,16 +327,7 @@ function initData(data, flag) {
     $("#fcgybm").val(item.仓管员编码);
     $("#fgxlxbm").val(item.更新类型编码);
 
-    if (item.申请类型=='退货'){
-
-        $("#card1").hide();
-        $("#card2").show();
-    } else if (item.申请类型 == '退换货') {
-        $("#card1").show();
-        $("#card2").show();
-        $("#card3").show();
-
-    }
+   
 
     var item_c1 = data.FormDataSet.洁丽康公司_销售退货申请_子表1;
     for (var i = 0; i < item_c1.length; i++) {
@@ -439,7 +425,8 @@ function initData(data, flag) {
 
 
 }
-action = '同意';
+
+
 function nodeControllerExp(NodeName) {
 
     var currentno = '';
@@ -457,47 +444,53 @@ function nodeControllerExp(NodeName) {
 
     });
 
-    
+
+
+
+
+
 
     if (String(NodeName).match('开始') != null) {
 
-        tapEvent();    
+        tapEvent();
         mui.alert('请移步网页端处理');
 
     } else if (String(NodeName).match('退换货审核岗') != null) {
         var fshjb_data = [
             {
                 value: '',
-                text:'正常'
+                text: '正常'
             },
             {
                 value: '',
-                text:'总监'
+                text: '总监'
             },
             {
                 value: '',
-                text:'总经理'
+                text: '总经理'
             }
         ];
 
         showPicker('fshjb', fshjb_data);
-        $("#fshbz").removeAttr('readonly').attr('placeholder','请填写');
+        $("#fshbz").removeAttr('readonly');
 
 
     } else if (String(NodeName).match('订单执行岗') != null) {
         action = '请检和制单';
-        $("#fxsbbz").removeAttr('readonly').attr('placeholder', '请填写');
+        $("#fxsbbz").removeAttr('readonly');
 
     } else if (String(NodeName).match('质检员') != null) {
         action = '检验完成';
-        $("#fjybz").removeAttr('readonly').attr('placeholder', '请填写');
+        $("#fjybz").removeAttr('readonly');
 
     } 
 
+
 }
+
+
 function checkNes() {
     var nodeName = $("#nodeName").val();
-    console.log(nodeName);
     if (String(nodeName).match('退换货审核岗') != null) {
         if (!$("#fshjb").val()) {
             mui.toast('请填写审核级别');
@@ -521,10 +514,8 @@ function checkNes() {
             return false;
         }
     }
-    
+
     return true;
-
-
 }
 
 
@@ -587,14 +578,6 @@ class Mx2 {
         return false;
     }
 }
-
-
-
-
-
-
-
-
 
 function Save() {
 
@@ -764,7 +747,7 @@ function AgreeOrConSign() {
                      <Header>
                      <Method>Process</Method>
                      <PID>${pid}</PID>
-                     <Action>${action}</Action>
+                     <Action>同意</Action>
                      <Comment>${comment}</Comment>
             
                      <ConsignEnabled>true</ConsignEnabled>
@@ -859,7 +842,7 @@ function AgreeOrConSign() {
                    <Header>
                    <Method>Process</Method>
                    <PID>${pid}</PID>
-                   <Action>${action}</Action>
+                   <Action>同意</Action>
                    <Comment>${comment}</Comment>
 
                     <UrlParams></UrlParams>

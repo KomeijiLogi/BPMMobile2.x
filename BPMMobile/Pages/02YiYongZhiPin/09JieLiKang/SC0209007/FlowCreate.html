@@ -43,6 +43,215 @@
                 <label>退货基本信息</label>
             </div>
 
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>客户<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fkh" readonly placeholder="请选择"></textarea>
+                </div>
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>销售员</label>
+                    <textarea rows="2" id="fxsy" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>退货原因<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fthyy" placeholder="请填写"></textarea>
+                </div>
+            </div>
+
+            <div id="card1">
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-6" style="display:flex;">
+                        <label>换货发货时间<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fhhfhsj" readonly placeholder="请填写"></textarea>
+                    </div>
+                    <div class="mui-col-xs-6" style="display:flex;">
+                        <label>提前发货原因<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="ftqfhyy" placeholder="请填写"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="mui-row cutOffLine padding">
+                    <div class="mui-col-xs-12" style="display:flex;">
+                        <label>送货地址<i style="color:red;">*</i></label>
+                        <textarea rows="2" id="fshdz" placeholder="请填写"></textarea>
+                    </div>
+                </div>
+                <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                    <div class="border border-t upload-img" style="top:0rem;">
+                        <!--上传图片-->
+                        <div class="clearfix upload-btn" id="children-bg">
+                            <label class="label">附件</label>
+                            <span class="tips" id="imageCount"><!--已添加0张--></span>
+                            <!--上传图片按钮  -->
+                            <span class="upload-addbtn">
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                            </span>
+
+                        </div>
+                        <div class="upload-img-list"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="card2">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>退货明细</label>
+                </div>
+                <div id="mxlist_th">
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>物料编码<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fwlbm" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料名称</label>
+                                <textarea rows="2" id="fwlmc" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>规格型号</label>
+                                <textarea id="fggxh" readonly rows="2"></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>计量单位</label>
+                                <textarea id="fjldw" readonly rows="2"></textarea>
+                                <input type="hidden" id="fjldwbm" readonly/>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>数量<i style="color:red;">*</i></label>
+                                <input type="number" id="fsl" placeholder="请填写" />
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>生产批号<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fscph" placeholder="请填写"></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>产品序列号<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fcpxlh" placeholder="请填写"></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-12" style="display:flex;">
+                                <label>包装是否完好<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fif_bz" readonly placeholder="请选择"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_th" style="margin-top:0.5rem;">
+                    退货明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+            <div id="card3">
+                <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                    <label>换货明细</label>
+                </div>
+                <div id="mxlist_hh">
+                    <div id="mx">
+                        <div class="mui-input-row itemtitle">
+                            <label>明细列表项</label>
+                            <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料编码<i style="color:red;">*</i></label>
+                                <textarea rows="2" id="fwlbm" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>物料名称</label>
+                                <textarea rows="2" id="fwlmc" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>规格型号</label>
+                                <textarea rows="2" id="fggxh" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="mui-row cutOffLine padding">
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>计量单位</label>
+                                <textarea rows="2" id="fjldw" readonly></textarea>
+                            </div>
+                            <div class="mui-col-xs-4" style="display:flex;">
+                                <label>数量<i style="color:red;">*</i></label>
+                                <input type="number" id="fsl" placeholder="请填写" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx_hh" style="margin-top:0.5rem;">
+                    换货明细
+                    <span class="mui-icon mui-icon-plusempty"></span>
+                </a>
+            </div>
+
+            <input type="hidden" id="fywlx" readonly value="客户" />
+            <input type="hidden" id="fxszzbm" readonly />
+            <input type="hidden" id="fkhbm" readonly />
+            <input type="hidden" id="fxsybm" readonly />
+            <input type="hidden" id="fkczzbm" readonly value="01.06.05" />
+            <input type="hidden" id="fbmbm" readonly />
+            <input type="hidden" id="fcbzxbm" readonly />
+            <input type="hidden" id="fllrbm" readonly />
+            <input type="hidden" id="fywlxbm" readonly value="510" />
+            <input type="hidden" id="fswlxbm1" readonly value="836退" />
+            <input type="hidden" id="fswlxbm2" readonly value="029" />
+            <input type="hidden" id="flllxbm" readonly value="issueType0029" />
+            <input type="hidden" id="fbgrbm" readonly value="00030378"/>
+            <input type="hidden" id="fckbm" readonly value="JLK07" />
+            <input type="hidden" id="fcgybm" readonly value="00030378"/>
+            <input type="hidden" id="fgxlxbm" readonly value="002"/>
+
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>审核信息</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>审核级别<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fshjb" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-8" style="display:flex;">
+                    <label>审核备注<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fshbz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>质量信息</label>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>检验备注<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fjybz" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>销售部信息</label>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>销售部备注</label>
+                    <textarea rows="2" id="fxsbbz" readonly></textarea>
+                </div>
+            </div>
+
 
         </form>
         <div class="mui-btn-row" id="SaveD">

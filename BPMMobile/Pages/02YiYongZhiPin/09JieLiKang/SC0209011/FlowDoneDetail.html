@@ -17,33 +17,45 @@
 <body>
     <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
         <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
-            <div class="mui-input-row">
-                <label>提报人</label>
-                <input type="text" id="fname" readonly />
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>提报人</label>
+                    <textarea rows="2" id="ftbr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>提报部门</label>
+                    <textarea rows="2" id="ftbbm" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-4" style="display:flex;">
+                    <label>提报日期</label>
+                    <textarea rows="2" id="frq" readonly></textarea>
+                </div>
             </div>
-            <div class="mui-input-row">
-                <label>提报日期</label>
-                <input type="date" id="fdate" readonly />
-            </div>
-            <div class="mui-input-row">
-                <label>所属公司</label>
-                <input type="text" id="fssgs" readonly />
-            </div>
-            <div class="mui-input-row">
-                <label>联系电话<i style="color:red;">*</i></label>
-                <input type="tel" id="flxdh" readonly />
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>摘要</label>
+                    <textarea rows="2" id="fzy" readonly></textarea>
+                </div>
             </div>
 
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>说明</label>
+                    <textarea rows="2" id="fsm" readonly>预测时间范围：提报日期的后三个月预计需求</textarea>
+                </div>
+            </div>
             <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
-                <label>工作牌申请明细表</label>
+                <label>预测明细</label>
             </div>
             <div id="mxlist">
 
             </div>
             <a class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="tjmx" style="margin-top:0.5rem;display:none;">
-                添加工作牌申请明细表
+                借用明细
                 <span class="mui-icon mui-icon-plusempty"></span>
             </a>
+
         </form>
 
         <div class="mui-table-view" style="margin-bottom:1rem;">
@@ -77,7 +89,7 @@
     <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
     <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
     <script type="text/javascript" src="../../../../Scripts/util.js"></script>
-    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/uploadOpt.js"></script>
     <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
     <script type="text/javascript" src="../../../../Scripts/common.js"></script>
     <script type="text/javascript" src="common.js"></script>
