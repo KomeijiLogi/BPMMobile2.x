@@ -277,7 +277,7 @@ function initCodeMsg() {
     });
 }
 
-
+var fjArray2 = [];
 function initData(data, flag) {
 
     var item = data.FormDataSet.洁丽康公司_客户申请_主表[0];
@@ -305,6 +305,7 @@ function initData(data, flag) {
     $("#fxsymc").val(item.销售员名称);
     $("#fzzbm").val(item.财务组织编码);
     $("#fzzmc").val(item.财务组织名称);
+    $("#fif_kp").val(item.是否需要开票);
 
     if (item.附件) {
         var fjtmp = (String)(item.附件);
@@ -409,6 +410,109 @@ function initData(data, flag) {
     }
 
 
+    if (item.开票信息附件) {
+        var fjtmp = (String)(item.开票信息附件);
+        fjArray2 = fjtmp.split(";");
+        $.ajax({
+            type: 'POST',
+            url: '/api/bpm/GetAttachmentsInfo',
+            data: { 'fileIds': fjArray },
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+            }
+        }).done((data) => {
+
+            console.log(data);
+
+            for (var i = 0; i < data.length; i++) {
+
+                var name = data[i].Name;
+                var type = (data[i].Ext).replace(".", "");
+                var size = String(data[i].Size);
+
+                var time = String(data[i].LastUpdate).replace("T", " ");
+                var downurl = baseDownloadUrl + data[i].FileID;
+
+                var attach = attachItem(name, type, size, time, downurl);
+                attachArray.push(attach);
+
+                var li = '<div class="pic-preview smallyulan success">';
+                li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                //类型判断 
+                if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                    //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="'+baseDownloadUrl + data[i].FileID + '"><img src="'+baseDownloadUrl + data[i].FileID + '"/></a></div>';
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '" ><img src="' + baseDownloadUrl + data[i].FileID + '"/></div>';
+
+                } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                } else {
+                    li = li + '    <div class="img-wrap smallimg imgdiv2" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                }
+
+                li = li + ' </div>';
+                li = li + '</div>';
+                $(".upload-img-list2").append(li);
+
+
+                $(".imgdiv2").each(function () {
+
+                    $(this).parent().find(".del.none").hide();
+
+                });
+
+
+
+
+            }
+            watch();
+            $(".imgdiv2").on('tap', function () {
+                console.log($(this)[0].id);
+                if (String(navigator.userAgent).match('cloudhub') != null) {
+                    window.open(attachArray[$(this)[0].id].downurl);
+                }
+                XuntongJSBridge.call('showFile', {
+                    'fileName': attachArray[$(this)[0].id].name,
+                    'fileExt': attachArray[$(this)[0].id].type,
+                    'fileTime': attachArray[$(this)[0].id].time,
+                    'fileSize': attachArray[$(this)[0].id].size,
+                    'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                }, function (result) {
+                    //alert(JSON.stringify(result));
+                });
+            });
+
+
+
+        }).fail((e) => {
+            console.log(e);
+        });
+
+    }
+
 
 
 
@@ -461,6 +565,7 @@ function Save() {
     var fxsymc = $("#fxsymc").val();
     var fzzbm = $("#fzzbm").val();
     var fzzmc = $("#fzzmc").val();
+    var fif_kp = $("#fif_kp").val();
     if (!fdz) {
         mui.toast('请填写地址');
         return;
@@ -607,6 +712,8 @@ function Save() {
                             <床位数>${fcws}</床位数>
                             <地址>${fdz}</地址>
                             <附件>${fjArray.join(";")}</附件>
+             <是否需要开票>${fif_kp}</是否需要开票>
+            <开票信息附件>${fjArray2.join(";")}</开票信息附件>
                             <部门编码>${fbmbm}</部门编码>
                             <部门名称>${fbmmc}</部门名称>
                             <销售员编码>${fxsybm}</销售员编码>
@@ -647,6 +754,7 @@ function reSave() {
     var fxsymc = $("#fxsymc").val();
     var fzzbm = $("#fzzbm").val();
     var fzzmc = $("#fzzmc").val();
+    var fif_kp = $("#fif_kp").val();
     if (!fqdlx) {
         mui.toast('请选择渠道类型');
         return;
@@ -778,6 +886,8 @@ function reSave() {
                             <床位数>${fcws}</床位数>
                             <地址>${fdz}</地址>
                             <附件>${fjArray.join(";")}</附件>
+    <是否需要开票>${fif_kp}</是否需要开票>
+            <开票信息附件>${fjArray2.join(";")}</开票信息附件>
                             <部门编码>${fbmbm}</部门编码>
                             <部门名称>${fbmmc}</部门名称>
                             <销售员编码>${fxsybm}</销售员编码>
@@ -840,7 +950,7 @@ function AgreeOrConSign() {
     var fxsymc = $("#fxsymc").val();
     var fzzbm = $("#fzzbm").val();
     var fzzmc = $("#fzzmc").val();
-
+    var fif_kp = $("#fif_kp").val();
     var consignFlag = false;
     var consignUserId = new Array();
     var consignRoutingType;
@@ -936,6 +1046,8 @@ function AgreeOrConSign() {
                             <床位数>${fcws}</床位数>
                             <地址>${fdz}</地址>
                             <附件>${fjArray.join(";")}</附件>
+    <是否需要开票>${fif_kp}</是否需要开票>
+            <开票信息附件>${fjArray2.join(";")}</开票信息附件>
                             <部门编码>${fbmbm}</部门编码>
                             <部门名称>${fbmmc}</部门名称>
                             <销售员编码>${fxsybm}</销售员编码>
@@ -985,6 +1097,8 @@ function AgreeOrConSign() {
                             <床位数>${fcws}</床位数>
                             <地址>${fdz}</地址>
                             <附件>${fjArray.join(";")}</附件>
+    <是否需要开票>${fif_kp}</是否需要开票>
+            <开票信息附件>${fjArray2.join(";")}</开票信息附件>
                             <部门编码>${fbmbm}</部门编码>
                             <部门名称>${fbmmc}</部门名称>
                             <销售员编码>${fxsybm}</销售员编码>
