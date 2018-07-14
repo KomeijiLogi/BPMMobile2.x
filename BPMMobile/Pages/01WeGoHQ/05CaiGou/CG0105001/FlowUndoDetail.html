@@ -373,6 +373,7 @@
             }).done(function (data) {
                 console.log(data);
                 var item = data.FormDataSet.BPM_WZCG_A[0];
+
                 $("#fbillno").val(item.fbillno);
                 $("#taskId").val(item.TaskID);
                 $("#stepId").val(stepId);
@@ -522,12 +523,10 @@
                                         $(this).parent().find(".del.none").hide();
 
                                     });
-
-                                    watch();
-
+                                    
 
                                 }
-
+                                watch();
                                 $(".imgdiv").on('tap', function () {
                                     console.log($(this)[0].id);
                                     if (String(navigator.userAgent).match('cloudhub') != null) {
@@ -656,9 +655,19 @@
                     $("#csd").css("display", "none");
 
                 } else {
-                    if (typeof (NodeName) != "undefined") {
-                        $("#approvalD").css("display", "block");
+                    $("#approvalD").css("display", "block");
+                    //if (typeof (NodeName) != "undefined") {
+                    //    $("#approvalD").css("display", "block");
+                    //}
+                     
+                    if (typeof (NodeName) == 'undefined') {
+                        //mui.alert('undefined');
+                        setInterval(() => {
+                            window.location.reload();
+                        }, 3000);
+
                     }
+                  
                 }
             }).fail(function (e) {
 
@@ -990,6 +999,7 @@
 
                 xml = xml + ' </FormData>';
                 xml = xml + '</XForm>';
+                console.log(xml);
                 PostXml(xml);
 
             }

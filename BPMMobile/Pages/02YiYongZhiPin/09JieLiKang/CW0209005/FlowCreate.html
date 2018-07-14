@@ -50,13 +50,13 @@
                         </div>
                         <div class="mui-col-xs-4" style="display:flex;">
                             <label>借款单号</label>
-                            <input type="text" id="fjkdh" readonly />
+                            <input type="text" id="fjkdh" readonly value="自动生成"/>
                         </div>
                     </div>
                     <div class="mui-row cutOffLine" style="padding:2vw;">
                         <div class="mui-col-xs-12" style="display:flex;">
                             <label>借款用途<i style="color:red;">*</i></label>
-                            <textarea rows="3" id="fjkyt" placeholder="请填写"></textarea> 
+                            <textarea rows="3" id="fjkyt" placeholder="请填写">业务费借款</textarea> 
                         </div>
                     </div>
                     <div class="mui-input-row cutOffLine" style="height:7rem;overflow:scroll;" id="uploaddiv">
@@ -106,6 +106,7 @@
             <input type="hidden" id="fspr" placeholder="总经理" />
             <input type="hidden" id="ps" placeholder="PS岗位"/>
             <input type="hidden" id="fsqrzw" placeholder="申请人职位"/>
+            <input type="hidden" id="flczt" placeholder="流程状态"/>
             
         </form>
         <div class="mui-btn-row" id="SaveD">

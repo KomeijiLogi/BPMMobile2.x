@@ -50,7 +50,7 @@ function tapEvent() {
                         </div>
                         <div class="mui-col-xs-3" style="display:flex;">
                             <label>部门<i style="color:red;">*</i></label>
-                            <textarea rows="2" id="fbm" readonly></textarea>
+                            <textarea rows="2" id="fbm" ></textarea>
                         </div>
                         <div class="mui-col-xs-3" style="display:flex;">
                             <label>职位<i style="color:red;">*</i></label>
@@ -137,7 +137,7 @@ function tapEvent() {
                         var pio = provideData.Tables[0].Rows[0];
                         console.info(pio);
                         $(_self).val(pio.NAME);
-                        $(_self).parents('#mx').val(pio.fdeptname);
+                        
                      
                     }).fail(function (e) {
 
@@ -150,6 +150,7 @@ function tapEvent() {
         });
     });
 }
+
 var item = null;
 var item_c = [];
 function initData(data, flag) {
@@ -234,6 +235,10 @@ class Mx {
     check() {
         if (!this.fsqr) {
             mui.toast('请选择申请人');
+            return true;
+        }
+        if (!this.fbm) {
+            mui.toast('请填写部门');
             return true;
         }
         if (!this.fzw) {

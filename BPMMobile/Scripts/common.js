@@ -458,6 +458,7 @@ function nodeController(data) {
             if (stepId.indexOf(data.Steps[i].StepID) != -1) {
 
                 NodeName = data.Steps[i].NodeName;
+
                 if (data.Steps[i].Share && !data.Steps[i].OwnerAccount ){
                     ShareNode = '流程被共享';
                 } else if (data.Steps[i].Share && data.Steps[i].OwnerAccount) {
@@ -479,9 +480,25 @@ function nodeController(data) {
         $("#csd").css("display", "none");
 
     } else {
-        if (typeof (NodeName) != "undefined") {
-            $("#approvalD").css("display", "block");
+
+        $("#approvalD").css("display", "block");
+        //if (typeof (NodeName) != "undefined") {
+        //    $("#approvalD").css("display", "block");
+        //} else {
+            
+        //}
+        if (typeof (NodeName) == 'undefined') {
+            setInterval(() => {
+                window.location.reload();
+            }, 3000);
         }
+
+
+
+
+        
+
+
     }
     nodeControllerExp(NodeName);   //节点处理扩展
     nodeShareExt(ShareNode);       //共享任务扩展

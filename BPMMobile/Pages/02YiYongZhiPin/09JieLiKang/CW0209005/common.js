@@ -25,7 +25,8 @@
         $("#fname").val(item.申请人);
         $("#fdept").val(item.申请部门);
         $("#fno").val(item.申请人工号);
-        $("#ps").val(item.PS职位);
+        $("#fsqrzw").val(item.申请人职位);
+       
     }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
         if (XMLHttpRequest.status == "401") {
             mui.alert('授权过期，请重新打开页面');;
@@ -33,7 +34,40 @@
             mui.alert('服务器内部错误');
         }
 
-    });
+        }).then((data) => {
+           // console.log(data);
+            var fno = $("#fno").val();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>PS</DataSource>';
+            xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+            xml = xml + '        <Filter>';
+            xml = xml + '            <fno>' + fno + '</fno>';
+            xml = xml + '        </Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+                
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                //console.log(provideData);
+                var pInfo = provideData.Tables[0].Rows[0];
+                $("#ps").val(pInfo.zhiwei);
+            }).fail(function (e) {
+
+            });
+        });
 }
 
 function tapEvent() {
@@ -65,15 +99,19 @@ function tapEvent() {
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>   
                        <div class="mui-row cutOffLine" style="padding:2vw;">
-                            <div class="mui-col-xs-4" style="display:flex;">
+                            <div class="mui-col-xs-3" style="display:flex;">
                                <label>申请金额(元)<i style="color:red;">*</i></label>
                               <input type="number" id="fsqje" placeholder="待填"/>    
                             </div> 
-                             <div class="mui-col-xs-4" style="display:flex;">
+                             <div class="mui-col-xs-3" style="display:flex;">
                                <label>费用事由<i style="color:red;">*</i></label>
                                <textarea rows="2" id="ffysy" placeholder="待填"></textarea> 
                             </div> 
-                             <div class="mui-col-xs-4" style="display:flex;">
+                          <div class="mui-col-xs-3" style="display:flex;">
+                               <label>事由说明<i style="color:red;">*</i></label>
+                               <textarea rows="2" id="fsysm" placeholder="待填"></textarea> 
+                            </div> 
+                             <div class="mui-col-xs-3" style="display:flex;">
                                 <label>预期完成目标<i style="color:red;">*</i></label>
                                  <textarea rows="2" id="fyqwcmb" placeholder="待填"></textarea> 
                             </div> 
@@ -83,7 +121,7 @@ function tapEvent() {
                   `;
         $("#mxlist").append(li);
     });
-    $("#mxlist").on('input', '#fsqje', () => {
+    $("#mxlist").on('input', 'input[type="number"]', () => {
         //console.log(this);
         calcTotal();
     });
@@ -91,7 +129,7 @@ function tapEvent() {
 
 function calcTotal() {
     var fhj_je = 0;
-    $("#mxlist").find("#fje").each(function () {
+    $("#mxlist").find("#fsqje").each(function () {
         var fje = parseFloat($(this).val());
         fje = isNaN(fje) ? 0 : fje;
         fhj_je += fje;
@@ -228,6 +266,7 @@ function initData(data, flag) {
     $("#fspr").val(item.总经理);
     $("#ps").val(item.PS岗位);
     $("#fsqrzw").val(item.申请人职位);
+    $("#flczt").val(item.流程状态);
     var item_c = data.FormDataSet.洁丽康公司_费用支出计划申请_子表1;
     for (var i = 0; i < item_c.length; i++) {
         itemidArr.push(item_c[i].itemid);
@@ -238,15 +277,19 @@ function initData(data, flag) {
                             <span class="mui-icon mui-icon-close mui-pull-right" style="margin-right:0.6rem;border-width:0.1rem;border-radius:1.2rem;margin-top:0.2rem;display:none;" id="deleteProduct" onclick="deleteItem(this)"></span>
                         </div>   
                        <div class="mui-row cutOffLine" style="padding:2vw;">
-                            <div class="mui-col-xs-4" style="display:flex;">
+                            <div class="mui-col-xs-3" style="display:flex;">
                                <label>申请金额(元)<i style="color:red;">*</i></label>
                               <input type="number" id="fsqje" readonly value="${item_c[i].申请金额}"/>    
                             </div> 
-                             <div class="mui-col-xs-4" style="display:flex;">
+                             <div class="mui-col-xs-3" style="display:flex;">
                                <label>费用事由<i style="color:red;">*</i></label>
                                <textarea rows="2" id="ffysy" readonly>${item_c[i].费用事由}</textarea> 
                             </div> 
-                             <div class="mui-col-xs-4" style="display:flex;">
+                            <div class="mui-col-xs-3" style="display:flex;">
+                               <label>事由说明<i style="color:red;">*</i></label>
+                               <textarea rows="2" id="fsysm" readonly>${item_c[i].事由说明}</textarea> 
+                            </div> 
+                             <div class="mui-col-xs-3" style="display:flex;">
                                 <label>预期完成目标<i style="color:red;">*</i></label>
                                  <textarea rows="2" id="fyqwcmb" readonly>${item_c[i].预期完成目标}</textarea> 
                             </div> 
@@ -274,9 +317,10 @@ function nodeControllerExp(NodeName) {
 }
 class Mx {
 
-    constructor(fsqje, ffysy, fyqwcmb) {
+    constructor(fsqje, ffysy,fsysm, fyqwcmb) {
         this.fsqje = fsqje;
         this.ffysy = ffysy;
+        this.fsysm = fsysm;
         this.fyqwcmb = fyqwcmb;
     }
     check() {
@@ -286,6 +330,10 @@ class Mx {
         }
         if (!this.ffysy) {
             mui.toast('请填写费用事由');
+            return true;
+        }
+        if (!this.fsysm) {
+            mui.toast('请填写事由说明');
             return true;
         }
         if (!this.fyqwcmb) {
@@ -316,7 +364,7 @@ function Save() {
     var fspr = $("#fspr").val();
     var ps = $("#ps").val();
     var fsqrzw = $("#fsqrzw").val();
-
+    var flczt= $("#flczt").val();
     if (String(fif_jk) == '是') {
         if (!fjkje) {
             mui.toast('请填写借款金额');
@@ -334,9 +382,9 @@ function Save() {
         var fsqje = $(this).find("#fsqje").val();
         var ffysy = $(this).find("#ffysy").val();
         var fyqwcmb = $(this).find("#fyqwcmb").val();
+        var fsysm = $(this).find("#fsysm").val();
 
-
-        var mx = new Mx(fsqje, ffysy, fyqwcmb);
+        var mx = new Mx(fsqje, ffysy, fsysm, fyqwcmb);
         if (mx.check()) {
             mxflag = true;
             return;
@@ -354,7 +402,7 @@ function Save() {
                         <XForm>
                             <Header>
                                 <Method>Post</Method>
-                                <ProcessName>洁丽康公司汇款申请</ProcessName>
+                                <ProcessName>洁丽康公司其他费用申请</ProcessName>
                                 <ProcessVersion>${version}</ProcessVersion>
                                 <DraftGuid></DraftGuid>
                                 <OwnerMemberFullName>${BPMOU}</OwnerMemberFullName>
@@ -392,12 +440,27 @@ function Save() {
                         <财务审核人></财务审核人>
                         <总经理></总经理>
                         <PS职位>${ps}</PS职位>
+       <流程状态></流程状态>
                     </洁丽康公司_费用支出计划申请_主表>
                    `;
+            for (var i = 0; i < mxlistArr.length; i++) {
+                xml += `
+ <洁丽康公司_费用支出计划申请_子表1>
+            <RelationRowGuid>${i+1}</RelationRowGuid>
+            <RowPrimaryKeys></RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <申请金额>${mxlistArr[i].fsqje}</申请金额>
+            <费用事由>${mxlistArr[i].ffysy}</费用事由>
+            <事由说明>${mxlistArr[i].fsysm}</事由说明>
+            <预期完成目标>${mxlistArr[i].fyqwcmb}</预期完成目标>
+        </洁丽康公司_费用支出计划申请_子表1>
+                         `;
+            }
             xml += `
                        </FormData>
                     </XForm>
                    `;
+            console.log(xml);
             PostXml(xml);
         }
     });
@@ -425,7 +488,7 @@ function reSave() {
     var fspr = $("#fspr").val();
     var ps = $("#ps").val();
     var fsqrzw = $("#fsqrzw").val();
-
+    var flczt = $("#flczt").val();
     if (String(fif_jk) == '是') {
         if (!fjkje) {
             mui.toast('请填写借款金额');
@@ -442,9 +505,9 @@ function reSave() {
         var fsqje = $(this).find("#fsqje").val();
         var ffysy = $(this).find("#ffysy").val();
         var fyqwcmb = $(this).find("#fyqwcmb").val();
+        var fsysm = $(this).find("#fsysm").val();
 
-
-        var mx = new Mx(fsqje, ffysy, fyqwcmb);
+        var mx = new Mx(fsqje, ffysy, fsysm, fyqwcmb);
         if (mx.check()) {
             mxflag = true;
             return;
@@ -490,8 +553,22 @@ function reSave() {
                         <财务审核人>${fcwshr}</财务审核人>
                         <总经理>${fspr}</总经理>
                         <PS职位>${ps}</PS职位>
+       <流程状态></流程状态>
                     </洁丽康公司_费用支出计划申请_主表>
                    `;
+            for (var i = 0; i < mxlistArr.length; i++) {
+                xml += `
+ <洁丽康公司_费用支出计划申请_子表1>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys></RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <申请金额>${mxlistArr[i].fsqje}</申请金额>
+            <费用事由>${mxlistArr[i].ffysy}</费用事由>
+            <事由说明>${mxlistArr[i].fsysm}</事由说明>
+            <预期完成目标>${mxlistArr[i].fyqwcmb}</预期完成目标>
+        </洁丽康公司_费用支出计划申请_子表1>
+                         `;
+            }
             xml += `
                        </FormData>
                     </XForm>
@@ -548,7 +625,7 @@ function AgreeOrConSign() {
     var ps = $("#ps").val();
     var fsqrzw = $("#fsqrzw").val();
  
-
+    var flczt = $("#flczt").val();
     var mxflag = false;
     var mxlistArr = [];
     $("#mxlist").find("#mx").each(function () {
@@ -556,8 +633,8 @@ function AgreeOrConSign() {
         var ffysy = $(this).find("#ffysy").val();
         var fyqwcmb = $(this).find("#fyqwcmb").val();
 
-
-        var mx = new Mx(fsqje, ffysy, fyqwcmb);
+        var fsysm = $(this).find("#fsysm").val();
+        var mx = new Mx(fsqje, ffysy, fsysm, fyqwcmb);
       
         mxlistArr.push(mx);
     });
@@ -623,6 +700,7 @@ function AgreeOrConSign() {
     }
 
 
+
     if (consignFlag) {
         consignAjax.then(function () {
             var xml = `<?xml version="1.0"?>
@@ -663,8 +741,22 @@ function AgreeOrConSign() {
                         <财务审核人>${fcwshr}</财务审核人>
                         <总经理>${fspr}</总经理>
                         <PS职位>${ps}</PS职位>
+       <流程状态>${flczt}</流程状态>
                     </洁丽康公司_费用支出计划申请_主表>
                    `;
+            for (var i = 0; i < mxlistArr.length; i++) {
+                xml += `
+ <洁丽康公司_费用支出计划申请_子表1>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <申请金额>${mxlistArr[i].fsqje}</申请金额>
+            <费用事由>${mxlistArr[i].ffysy}</费用事由>
+            <事由说明>${mxlistArr[i].fsysm}</事由说明>
+            <预期完成目标>${mxlistArr[i].fyqwcmb}</预期完成目标>
+        </洁丽康公司_费用支出计划申请_子表1>
+                         `;
+            }
             xml += `
                        </FormData>
                     </XForm>
@@ -712,8 +804,22 @@ function AgreeOrConSign() {
                         <财务审核人>${fcwshr}</财务审核人>
                         <总经理>${fspr}</总经理>
                         <PS职位>${ps}</PS职位>
+       <流程状态>${flczt}</流程状态>
                     </洁丽康公司_费用支出计划申请_主表>
                    `;
+        for (var i = 0; i < mxlistArr.length; i++) {
+            xml += `
+ <洁丽康公司_费用支出计划申请_子表1>
+            <RelationRowGuid>${i + 1}</RelationRowGuid>
+            <RowPrimaryKeys>itemid=${itemidArr[i]}</RowPrimaryKeys>
+            <序号>${i + 1}</序号>
+            <申请金额>${mxlistArr[i].fsqje}</申请金额>
+            <费用事由>${mxlistArr[i].ffysy}</费用事由>
+            <事由说明>${mxlistArr[i].fsysm}</事由说明>
+            <预期完成目标>${mxlistArr[i].fyqwcmb}</预期完成目标>
+        </洁丽康公司_费用支出计划申请_子表1>
+                         `;
+        }
         xml += `
                        </FormData>
                     </XForm>

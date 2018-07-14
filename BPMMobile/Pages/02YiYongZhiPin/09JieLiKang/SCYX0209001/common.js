@@ -144,12 +144,13 @@ function tapEvent_header(){
     });
 
     //客户名称点击事件添加子表
+    /*
     $('#区域经理').on('tap', function (e) {
         var zeptoId = "#区域经理";
         var isMulti = false;
         GetPer(zeptoId,isMulti);
     });
-
+    */
 
     //添加明细按钮
     $('#tjmx').on('tap', function (e) {
@@ -169,21 +170,20 @@ function tapEvent_header(){
     });
 
 
-/*
-    //是否借款
-    mui('#fif_jk').each(function () {
-        this.addEventListener('toggle', function (event) {
-            if (event.detail.isActive == 'true' || event.detail.isActive == true) {
-                $("#shifoujk").val('是');
-                $("#fjkcard").show();
-            } else {
-                $("#shifoujk").val('否');
-                $("#fjkcard").hide();
-            }
-
+    /*
+        //是否借款
+        mui('#fif_jk').each(function () {
+            this.addEventListener('toggle', function (event) {
+                if (event.detail.isActive == 'true' || event.detail.isActive == true) {
+                    $("#shifoujk").val('是');
+                    $("#fjkcard").show();
+                } else {
+                    $("#shifoujk").val('否');
+                    $("#fjkcard").hide();
+                }
+            });
         });
-    });
-    */
+        */
 }
 
 //订单审核岗--抬头点击事件
@@ -264,9 +264,15 @@ function tapEvent_detail() {
         
         //鼠标失去焦点事件--input number字段格式化
         $(this).find("input[type='number']").on('blur', function (event) {
-            var fmoney = Number($(this).val()).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
-            $(this).val(fmoney);//格式化金额字段
-            //$("#jkjedx").val(fcapital);
+            //console.log(this.id);
+            if (this.id=="数量"){
+                var fmoney = Number($(this).val()).toLocaleString('zh', { minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false });
+                $(this).val(fmoney);//格式化金额字段
+            }else{
+                var fmoney = Number($(this).val()).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+                $(this).val(fmoney);//格式化金额字段
+                //$("#jkjedx").val(fcapital);
+            }
         });
 
         //输入事件
@@ -275,7 +281,7 @@ function tapEvent_detail() {
             var fsl = $(this).parent().parent().find("#数量").val();
 
             var fthsdj = Number(fhsdj).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
-            var ftsl = Number(fsl).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
+            var ftsl = Number(fsl).toLocaleString('zh', { minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false });
 
             var ftjshj = Number(fthsdj*ftsl).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false });
 
@@ -305,7 +311,7 @@ function Calculate() {
         fjszj= fjszj+Number($(this).find("#价税合计").val());
     });
 
-    $("#数量总计").val(Number(fslzj).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false }));    
+    $("#数量总计").val(Number(fslzj).toLocaleString('zh', { minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: false }));    
     $("#价税总计").val(Number(fjszj).toLocaleString('zh', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: false }));    
 }
 
@@ -396,7 +402,7 @@ function deleteItem(context) {
             $("#mxlist").find('#mx').each(function () {
                 flag_maxrow = flag_maxrow + 1;
                 $(this).find("#rowno").val(flag_maxrow);
-                 });
+            });
             //console.log(flag_maxrow);
         }
     });
@@ -586,24 +592,24 @@ function initData(data, flag) {
 
     }).done(function(data){
         //console.log(data);
-    if (data.length == 0) {
-        //console.log('返回结果为空');
-    }
-    for (var i = 0; i < data.length; i++){
-        //请求返回到的附件信息
-        var obj = {
-            'Ext': String(data[i].Ext).replace(".", ""),
-            'FileID': data[i].FileID,
-            'LParam1': data[i].LParam1,
-            'LastUpdate': String(data[i].LastUpdate).replace("T", " "),
-            'MimeType': data[i].MimeType,
-            'Name': data[i].Name,
-            'OwnerAccount': data[i].OwnerAccount,
-            'Size': String(data[i].Size),
-            'DownloadUrl': baseDownloadUrl + data[i].FileID
+        if (data.length == 0) {
+            //console.log('返回结果为空');
         }
-        fjArrayObjCollections.push(obj);
-    }
+        for (var i = 0; i < data.length; i++){
+            //请求返回到的附件信息
+            var obj = {
+                'Ext': String(data[i].Ext).replace(".", ""),
+                'FileID': data[i].FileID,
+                'LParam1': data[i].LParam1,
+                'LastUpdate': String(data[i].LastUpdate).replace("T", " "),
+                'MimeType': data[i].MimeType,
+                'Name': data[i].Name,
+                'OwnerAccount': data[i].OwnerAccount,
+                'Size': String(data[i].Size),
+                'DownloadUrl': baseDownloadUrl + data[i].FileID
+            }
+            fjArrayObjCollections.push(obj);
+        }
         
 
     }).fail(function(e){
@@ -615,44 +621,44 @@ function initData(data, flag) {
             
             var fjInfoIds = $(this).val();
             //console.log(fjInfoIds);
-        for (var i = 0; i < fjArrayObjCollections.length; i++){
-            if (String(fjInfoIds).match(fjArrayObjCollections[i].FileID) != null) {
-                //console.log(fjArrayObjCollections[i]);
-                var li = '';
-                if (String(fjArrayObjCollections[i].Ext).match('png') != null || String(fjArrayObjCollections[i].Ext).match('jpg') != null || String(fjArrayObjCollections[i].Ext).match('jpg') != null) {
-                    li = AssembledDom(fjArrayObjCollections[i].Ext, baseDownloadUrl + fjArrayObjCollections[i].FileID, fjArrayObjCollections[i].FileID);
-                } else {
-                    li = AssembledDom(fjArrayObjCollections[i].Ext, '', fjArrayObjCollections[i].FileID);
+            for (var i = 0; i < fjArrayObjCollections.length; i++){
+                if (String(fjInfoIds).match(fjArrayObjCollections[i].FileID) != null) {
+                    //console.log(fjArrayObjCollections[i]);
+                    var li = '';
+                    if (String(fjArrayObjCollections[i].Ext).match('png') != null || String(fjArrayObjCollections[i].Ext).match('jpg') != null || String(fjArrayObjCollections[i].Ext).match('jpg') != null) {
+                        li = AssembledDom(fjArrayObjCollections[i].Ext, baseDownloadUrl + fjArrayObjCollections[i].FileID, fjArrayObjCollections[i].FileID);
+                    } else {
+                        li = AssembledDom(fjArrayObjCollections[i].Ext, '', fjArrayObjCollections[i].FileID);
+                    }
+                    $(this).parent().parent().parent().find("#imglist").append(li);
                 }
-                $(this).parent().parent().parent().find("#imglist").append(li);
             }
-        }
-    });
+        });
     
         //附件点击事件
-    $(".imgdiv").each(function () {
-      $(this).on('tap', function () {
-        //console.log($(this).attr('id'));
-        var fileid = $(this).attr('id');
-        for (var i = 0; i < fjArrayObjCollections.length; i++){
-            if (String(fjArrayObjCollections[i].FileID).match(fileid) != null) {
-                //console.log(fjArrayObjCollections[i]);
-                XuntongJSBridge.call('showFile', {
-                    'fileName': fjArrayObjCollections[i].Name,
-                    'fileExt': fjArrayObjCollections[i].Ext,
-                    'fileTime': fjArrayObjCollections[i].LastUpdate,
-                    'fileSize': fjArrayObjCollections[i].Size,
-                    'fileDownloadUrl': fjArrayObjCollections[i].DownloadUrl
-                }, function (result) {
-                    //alert(JSON.stringify(result));
-                   });
-             }
-         }
-      });
+        $(".imgdiv").each(function () {
+            $(this).on('tap', function () {
+                //console.log($(this).attr('id'));
+                var fileid = $(this).attr('id');
+                for (var i = 0; i < fjArrayObjCollections.length; i++){
+                    if (String(fjArrayObjCollections[i].FileID).match(fileid) != null) {
+                        //console.log(fjArrayObjCollections[i]);
+                        XuntongJSBridge.call('showFile', {
+                            'fileName': fjArrayObjCollections[i].Name,
+                            'fileExt': fjArrayObjCollections[i].Ext,
+                            'fileTime': fjArrayObjCollections[i].LastUpdate,
+                            'fileSize': fjArrayObjCollections[i].Size,
+                            'fileDownloadUrl': fjArrayObjCollections[i].DownloadUrl
+                        }, function (result) {
+                            //alert(JSON.stringify(result));
+                        });
+                    }
+                }
+            });
 
-     });
+        });
 
-});
+    });
 
 
     //初始化待办、已办、已申请表单信息
@@ -771,7 +777,7 @@ function nodeControllerExp(NodeName) {
 
         $("#联系电话").attr('placeholder', '请填写联系电话');//提示
         $("#销售组织名称").attr('placeholder', '请选择销售组织');//提示
-        $("#区域经理").attr('placeholder', '请选择区域经理');//提示
+       // $("#区域经理").attr('placeholder', '请选择区域经理');//提示
         $("#客户名称").attr('placeholder', '请选择客户名称');//提示
         $("#送货地址").attr('placeholder', '请填写送货地址');//提示
         $("#摘要").attr('placeholder', '请填写摘要');//提示
@@ -812,39 +818,39 @@ function nodeControllerExp(NodeName) {
 
 //json字符串对象生成及明细表必输项检查
 function mxItem(fwlbm, fwlmc, fggxh, fdwmc, fdwbm, fsl,fhsdj,fjshj,fbz) {        
-        var mx = Object.create({
-            fwlbm: fwlbm,
-            fwlmc: fwlmc,
-            fggxh: fggxh,
-            fdwmc: fdwmc,
-            fdwbm: fdwbm,
-            fsl: fsl,
-            fhsdj: fhsdj,
-            fjshj: fjshj,
-            fbz: fbz,
+    var mx = Object.create({
+        fwlbm: fwlbm,
+        fwlmc: fwlmc,
+        fggxh: fggxh,
+        fdwmc: fdwmc,
+        fdwbm: fdwbm,
+        fsl: fsl,
+        fhsdj: fhsdj,
+        fjshj: fjshj,
+        fbz: fbz,
 
-            _check: function () {
+        _check: function () {
                 
-                if (!fwlbm) {
-                    mui.toast('请选择物料编码');
-                    return null;
-                }
-                if (!fsl) {
-                    mui.toast('请输入数量');
-                    return null;
-                }
-                if (!fhsdj) {
-                    mui.toast('请输入实际含税单价');
-                    return null;
-                }
-
-                return mx;
+            if (!fwlbm) {
+                mui.toast('请选择物料编码');
+                return null;
+            }
+            if (!fsl) {
+                mui.toast('请输入数量');
+                return null;
+            }
+            if (!fhsdj) {
+                mui.toast('请输入实际含税单价');
+                return null;
             }
 
-        });
+            return mx;
+        }
 
-        return mx._check();
-    }
+    });
+
+    return mx._check();
+}
 
 
 
@@ -858,10 +864,10 @@ function check(Method, Action, nodeName, fzzmc,fjlmc,fkhmc,fshdz,fif_sx,fsxjb,fj
             mui.toast('请选择销售组织');
             return false;
         }
-        if (!fjlmc) {
+        /*if (!fjlmc) {
             mui.toast('请选择区域经理');
             return false;
-        }
+        }*/
         if (!fkhmc) {
             mui.toast('请选择客户名称');
             return false;
@@ -1085,7 +1091,7 @@ function check_xml(Method, Action, flag_switch, consignUserStr, consignRoutingTy
     //xml = xml + '               <附件>' + fjArray.join(';') + '</附件>';
     xml = xml + '           </洁丽康公司_销售订单申请_主表>';
 
- //明细表
+    //明细表
     for (var i = 0; i < mxlistArr.length; i++) {
         xml = xml + ' <洁丽康公司_销售订单申请_子表1>';
         xml = xml + '  <RelationRowGuid>' + (i + 1) + '</RelationRowGuid>';
@@ -1347,78 +1353,78 @@ function getProcedureMsg() {
     //console.log(xml);
 
     //调用bpm存储过程  
-        $.ajax({
-            type: "POST",
-            url: "/api/bpm/DataProvider",
-            data: { '': xml },
+    $.ajax({
+        type: "POST",
+        url: "/api/bpm/DataProvider",
+        data: { '': xml },
 
-            beforeSend: function (XHR) {
-                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        beforeSend: function (XHR) {
+            XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+        }
+
+    }).done(function (data) {
+        //存储过程数据展示
+        var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+        var itemData = provideData.Tables[0].Rows;
+        //console.log(itemData);
+
+        $("#datalist").empty();//清除之前数据           
+        if (flag_name == 'fxszz') {//销售组织子表
+            for (var i = 0; i < itemData.length; i++) {
+                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                li += '<input type="radio" name="radio" ';
+                li += 'data-fzzbm="' + itemData[i].销售组织编码 + '"';
+                li += 'data-fzzmc="' + itemData[i].销售组织名称 + '"';
+                li += 'data-fzbm="' + itemData[i].销售组编码 + '"';
+                li += 'data-fzmc="' + itemData[i].销售组名称 + '"';
+                li += '/>销售组织:' + itemData[i].销售组织编码 + '[' + itemData[i].销售组织名称+ ']'+' || '+'销售组:' + itemData[i].销售组编码 + '[' + itemData[i].销售组名称+ ']';
+                li += '</li>';
+
+                $("#datalist").append(li);
             }
+        }
+        else if(flag_name == 'fkhmc'){//客户名称子表
+            for (var i = 0; i < itemData.length; i++) {
+                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                li += '<input type="radio" name="radio" ';
+                li += 'data-fkhbm="' + itemData[i].客户编码 + '"';
+                li += 'data-fkhmc="' + itemData[i].客户名称 + '"';
+                li += 'data-fzzmc="' + itemData[i].销售组织名称 + '"';
+                li += 'data-fvsl="' + itemData[i].税率 + '"';
+                li += 'data-fqdmc="' + itemData[i].渠道类型 + '"';
+                li += 'data-ftjbm="' + itemData[i].收款条件编码 + '"';
+                li += 'data-ftjmc="' + itemData[i].收款条件名称 + '"';
 
-        }).done(function (data) {
-            //存储过程数据展示
-            var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
-            var itemData = provideData.Tables[0].Rows;
-            //console.log(itemData);
+                li += '/>客户:' + itemData[i].客户编码 + '[' + itemData[i].客户名称+ ']'+' || '+'销售组织:' +'['+ itemData[i].销售组织名称 + ']';
+                li += '</li>';
 
-            $("#datalist").empty();//清除之前数据           
-            if (flag_name == 'fxszz') {//销售组织子表
-                for (var i = 0; i < itemData.length; i++) {
-                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                    li += '<input type="radio" name="radio" ';
-                    li += 'data-fzzbm="' + itemData[i].销售组织编码 + '"';
-                    li += 'data-fzzmc="' + itemData[i].销售组织名称 + '"';
-                    li += 'data-fzbm="' + itemData[i].销售组编码 + '"';
-                    li += 'data-fzmc="' + itemData[i].销售组名称 + '"';
-                    li += '/>销售组织:' + itemData[i].销售组织编码 + '[' + itemData[i].销售组织名称+ ']'+' || '+'销售组:' + itemData[i].销售组编码 + '[' + itemData[i].销售组名称+ ']';
-                    li += '</li>';
-
-                    $("#datalist").append(li);
-                }
+                $("#datalist").append(li);
             }
-            else if(flag_name == 'fkhmc'){//客户名称子表
-                for (var i = 0; i < itemData.length; i++) {
-                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                    li += '<input type="radio" name="radio" ';
-                    li += 'data-fkhbm="' + itemData[i].客户编码 + '"';
-                    li += 'data-fkhmc="' + itemData[i].客户名称 + '"';
-                    li += 'data-fzzmc="' + itemData[i].销售组织名称 + '"';
-                    li += 'data-fvsl="' + itemData[i].税率 + '"';
-                    li += 'data-fqdmc="' + itemData[i].渠道类型 + '"';
-                    li += 'data-ftjbm="' + itemData[i].收款条件编码 + '"';
-                    li += 'data-ftjmc="' + itemData[i].收款条件名称 + '"';
+        }
+        else if(flag_name == 'fwlbm'){//物料编码子表
+            for (var i = 0; i < itemData.length; i++) {
+                var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
+                li += '<input type="radio" name="radio" ';
+                li += 'data-fwlbm="' + itemData[i].物料编码 + '"';
+                li += 'data-fwlmc="' + itemData[i].物料名称 + '"';
+                li += 'data-fggxh="' + itemData[i].规格型号 + '"';
+                li += 'data-fdwbm="' + itemData[i].基本计量单位编码 + '"';
+                li += 'data-fdwmc="' + itemData[i].基本计量单位名称 + '"';
+                li += 'data-fbz="' + itemData[i].备注 + '"';
+                li += '/>物料:' + itemData[i].物料编码 + '[' + itemData[i].物料名称+ ']'+' || '+'规格型号:' + itemData[i].规格型号 +' || '+'备注:' + itemData[i].备注;
+                li += '</li>';
 
-                    li += '/>客户:' + itemData[i].客户编码 + '[' + itemData[i].客户名称+ ']'+' || '+'销售组织:' +'['+ itemData[i].销售组织名称 + ']';
-                    li += '</li>';
-
-                    $("#datalist").append(li);
-                }
+                $("#datalist").append(li);
             }
-            else if(flag_name == 'fwlbm'){//物料编码子表
-                for (var i = 0; i < itemData.length; i++) {
-                    var li = '<li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">';
-                    li += '<input type="radio" name="radio" ';
-                    li += 'data-fwlbm="' + itemData[i].物料编码 + '"';
-                    li += 'data-fwlmc="' + itemData[i].物料名称 + '"';
-                    li += 'data-fggxh="' + itemData[i].规格型号 + '"';
-                    li += 'data-fdwbm="' + itemData[i].基本计量单位编码 + '"';
-                    li += 'data-fdwmc="' + itemData[i].基本计量单位名称 + '"';
-                    li += 'data-fbz="' + itemData[i].备注 + '"';
-                    li += '/>物料:' + itemData[i].物料编码 + '[' + itemData[i].物料名称+ ']'+' || '+'规格型号:' + itemData[i].规格型号 +' || '+'备注:' + itemData[i].备注;
-                    li += '</li>';
+        }
 
-                    $("#datalist").append(li);
-                }
-            }
+    }).fail(function (error) {
 
-        }).fail(function (error) {
+    }).then(function (data) {
+        //创建索引列表
+        prepIndexedList();
 
-        }).then(function (data) {
-            //创建索引列表
-            prepIndexedList();
-
-        });
+    });
 
 }
 
@@ -1468,10 +1474,10 @@ function checkEvent() {
            
             if (flag_name == 'fxszz') { //销售组织子表
                 var checkEl = {
-                fzzbm: $(box).data('fzzbm'),
-                fzzmc: $(box).data('fzzmc'),
-                fzbm: $(box).data('fzbm'),
-                fzmc: $(box).data('fzmc')
+                    fzzbm: $(box).data('fzzbm'),
+                    fzzmc: $(box).data('fzzmc'),
+                    fzbm: $(box).data('fzbm'),
+                    fzmc: $(box).data('fzmc')
                 };
                 checkedElements.push(checkEl);
             } 
@@ -1550,7 +1556,3 @@ function checkEvent() {
 
     }
 }
-
-
-
-

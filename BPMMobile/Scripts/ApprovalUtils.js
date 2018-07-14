@@ -432,6 +432,15 @@ function getBPMParam() {
         },
 
         complete: function () {
+            //console.log('', $('#myPhone'));
+            if ($('#myPhone').length!=0) {
+                if ($('#myPhone').val() == "") {
+                    var myPhone = String(BPMOU).split("/");
+                    $('#myPhone').val(String(myPhone[myPhone.length - 1]));
+                    console.log($('#myPhone').val());
+                }
+            }
+           
             return BPMOU;
         }
 

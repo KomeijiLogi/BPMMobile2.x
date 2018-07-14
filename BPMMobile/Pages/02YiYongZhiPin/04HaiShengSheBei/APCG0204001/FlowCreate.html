@@ -25,11 +25,15 @@
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
                     <label>订单类型</label>
-                    <textarea rows="2" id="fddlx" readonly></textarea>
+                    <textarea rows="2" id="fddlx" readonly placeholder="请选择"></textarea>
                 </div>
                 <div class="mui-col-xs-3" style="display:flex;">
                     <label>提报日期</label>
                     <textarea rows="2" id="ftbrq" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>订单编号</label>
+                    <textarea rows="2" id="fddbh" placeholder="请填写"></textarea>
                 </div>
             </div>
 
@@ -40,11 +44,11 @@
                 </div>
                 <div class="mui-col-xs-4" style="display:flex;">
                     <label>要求交期</label>
-                    <textarea rows="2" id="fyqjq" readonly></textarea>
+                    <textarea rows="2" id="fyqjq" readonly placeholder="请选择"></textarea>
                 </div>
                 <div class="mui-col-xs-4" style="display:flex;">
                     <label>订单类别</label>
-                    <textarea rows="2" id="fddlx" readonly placeholder="请选择"></textarea>
+                    <textarea rows="2" id="fddlb" readonly placeholder="请选择"></textarea>
                 </div>
             </div>
 
@@ -55,11 +59,27 @@
                 </div>
             </div>
 
+            <div class="mui-input-row" style="height:7rem;overflow:scroll;" id="uploaddiv">
+                <div class="border border-t upload-img" style="top:0rem;">
+                    <!--上传图片-->
+                    <div class="clearfix upload-btn" id="children-bg">
+                        <label class="label">附件</label>
+                        <span class="tips" id="imageCount"><!--已添加0张--></span>
+                        <!--上传图片按钮  -->
+                        <span class="upload-addbtn">
+                            <input type="file" accept="image/jpeg,image/jpg,image/png,image/jp2,image/bmp" id="file" style="opacity:0;">
+                        </span>
+
+                    </div>
+                    <div class="upload-img-list"></div>
+                </div>
+            </div>
         </form>
         <div class="mui-btn-row" id="SaveD">
             <button class="mui-btn mui-btn-primary" type="button" id="commitbt" onclick="Save()">提交</button>
         </div>
     </div>
+  
     <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
     <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
     <script type="text/javascript" src="../../../../Scripts/mui.js"></script>

@@ -159,6 +159,8 @@ function initData(data, flag) {
     }
 
 
+
+
     if (item.附件 != null && item.附件 != "") {
         var fjtmp = (String)(item.附件);
 
@@ -305,6 +307,19 @@ function Save() {
     var ffileid = $("#ffileid").val();
     var fsprno = $("#fsprno").val();
     var fsprxm = $("#fsprxm").val();
+    if (!fyzlx) {
+        mui.toast('请选择印章类型');
+        return;
+
+    }
+    if (!ffs) {
+        mui.toast('请填写份数');
+        return;
+    }
+    if (!fgzsl) {
+        mui.toast('请填写盖章数量');
+        return;
+    }
     if (fyzlx == '公章') {
 
         if (!fwjmc) {
@@ -402,6 +417,18 @@ function reSave() {
     var ffileid = $("#ffileid").val();
     var fsprno = $("#fsprno").val();
     var fsprxm = $("#fsprxm").val();
+    if (!fyzlx) {
+        mui.toast('请选择印章类型');
+        return;
+    }
+    if (!ffs) {
+        mui.toast('请填写份数');
+        return;
+    }
+    if (!fgzsl) {
+        mui.toast('请填写盖章数量');
+        return;
+    }
     if (fyzlx == '公章') {
 
         if (!fwjmc) {

@@ -4522,14 +4522,28 @@
     <Description>适用于洁丽康公司销售预测提报，由销售人员发起。</Description>
   </Process>
      
+  <Process>
+    <Name>集团总部合同评审(新)</Name>
+    <Path>\\01威高集团总部\\01跨子公司\\05_法律事务</Path>
+    <CanCreate>False</CanCreate>
+    <CreatePage>/Pages/01WeGoHQ/01KuaZhanYe/BG0101005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/01WeGoHQ/01KuaZhanYe/BG0101005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/01WeGoHQ/01KuaZhanYe/BG0101005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/01WeGoHQ/01KuaZhanYe/BG0101005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/01WeGoHQ/01KuaZhanYe/BG0101005/FlowTemplate.html</ViewPage>
+    <DisplayName>集团总部合同评审</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于威高集团本部各部门及集团总部直属子公司合同评审，目前暂仅用于采购公司、高创中心、电子工程公司、威海卫大厦。</Description>
+  </Process>
   
   
   
   
   
   
-  
-  <!--<Process>
+  <Process>
     <Name>爱普公司原材料采购申请</Name>
     <Path>\\03医用制品集团\\05富森医用材料公司\\02_采购管理</Path>
     <CanCreate>True</CanCreate>
@@ -4543,7 +4557,25 @@
     <Icon>../../../../Content/images/5.png</Icon>
     <Group>办公管理</Group>
     <Description>适用于爱普公司原材料采购申请。</Description>
-  </Process>-->
+  </Process>
+
+  <Process>
+    <Name>爱普公司样品申请</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204001/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204001/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204001/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204001/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204001/FlowTemplate.html</ViewPage>
+    <DisplayName>爱普公司样品申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于爱普公司样品申请。</Description>
+  </Process>
+
   
+    
 
 </ProcessList>

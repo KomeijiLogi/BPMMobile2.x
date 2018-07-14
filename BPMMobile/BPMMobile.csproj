@@ -511,6 +511,11 @@
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101004\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101004\FlowDoneDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101004\FlowUndoDetail.html" />
+    <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101005\common.js" />
+    <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101005\FlowAskDetail.html" />
+    <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101005\FlowCreate.html" />
+    <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101005\FlowDoneDetail.html" />
+    <Content Include="Pages\01WeGoHQ\01KuaZhanYe\BG0101005\FlowUndoDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\CG0101006\FlowAskDetail.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\CG0101006\FlowCreate.html" />
     <Content Include="Pages\01WeGoHQ\01KuaZhanYe\CG0101006\FlowDoneDetail.html" />
@@ -1025,6 +1030,11 @@
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APCG0204001\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APCG0204001\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APCG0204001\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204001\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204001\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204001\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204001\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204001\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\FlowCreate.html" />
