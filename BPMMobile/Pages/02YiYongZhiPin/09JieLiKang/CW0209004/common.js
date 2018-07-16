@@ -92,7 +92,33 @@ function prepMsg() {
         });
 }
 
+function calcT_Mx() {
+    var fhj = 0;
+    $("#mxlist_mx").find("#mx").each(function () {
+        var fccf = isNaN(parseFloat($(this).find("#fccf").val())) ? 0 : parseFloat($(this).find("#fccf").val());
+        var fje_zsf = isNaN(parseFloat($(this).find("#fje_zsf").val())) ? 0 : parseFloat ($(this).find("#fje_zsf").val());
+        var fje_cf = isNaN(parseFloat($(this).find("#fje_cf").val())) ? 0 : parseFloat($(this).find("#fje_cf").val());
+        var fje_snjtf = isNaN(parseFloat($(this).find("#fje_snjtf").val())) ? 0 : parseFloat($(this).find("#fje_snjtf").val());
+        var fje_qt = isNaN(parseFloat($(this).find("#fje_qt").val())) ? 0 : parseFloat($(this).find("#fje_qt").val());
+        fhj = fccf + fje_zsf + fje_cf + fje_snjtf + fje_qt;
 
+    });
+
+    $("#fhj_mx").val(fhj);
+
+}
+
+function calcT_Hj() {
+    var fhj = 0;
+    $("#mxlist_hz").find('#mx').each(function () {
+        var _self = this;
+        var fje = isNaN(parseFloat($(_self).find("#fje").val())) ? 0 : parseFloat($(_self).find("#fje").val());
+        fhj += fje-0;
+    });
+    $("#fhj_hz").val(fhj);
+    $("#fhj_dx_hz").val(atoc(fhj));
+
+}
 function tapEvent() {
 
     var optDate = { "type": "date" };
@@ -361,39 +387,13 @@ function prepIndexedList() {
     tapEvent();
 }
 
-function calcT_Mx() {
-    var fhj = 0;
-    $("#mxlist_mx").find("#mx").each(function () {
-        var fccf = isNaN($(this).find("#fccf").val()) ? 0 : isNaN($(this).find("#fccf").val());
-        var fje_zsf = isNaN($(this).find("#fje_zsf").val()) ? 0 : isNaN($(this).find("#fje_zsf").val());
-        var fje_cf = isNaN($(this).find("#fje_cf").val()) ? 0 : isNaN($(this).find("#fje_cf").val());
-        var fje_snjtf = isNaN($(this).find("#fje_snjtf").val()) ? 0 : isNaN($(this).find("#fje_snjtf").val());
-        var fje_qt = isNaN($(this).find("#fje_qt").val()) ? 0 : isNaN($(this).find("#fje_qt").val());
-        fhj = fccf + fje_zsf + fje_cf + fje_snjtf + fje_qt;
-       
-    });
 
-    $("#fhj_mx").val(fhj);
-
-}
-
-function calcT_Hj() {
-    var fhj = 0;
-    $("#mxlist_hz").find('#mx').each(function () {
-        var _self = this;
-        var fje = isNaN($(_self).find("#fje").val()) ? 0 : isNaN($(_self).find("#fje").val());
-        fhj += fje;
-    });
-    $("#fhj_hz").val(fhj);
-    $("#fhj_dx_hz").val(atoc(fhj));
-
-}
 
 function calcT() {
 
     var fhj = 0;
     $("#mxlist_hz").find("#mx").each(function () {
-        var fhdje = isNaN($(this).find("#fhdje").val()) ? 0 : isNaN($(this).find("#fhdje").val());
+        var fhdje = isNaN(parseFloat($(this).find("#fhdje").val())) ? 0 : parseFloat($(this).find("#fhdje").val());
         fhj += fhdje;
 
     });

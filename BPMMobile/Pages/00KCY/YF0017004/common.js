@@ -2,7 +2,7 @@
     $("#ftjrq").val(getNowFormatDate(2));
     tapEvent();
     tapEvent_preparation();
-    upload();
+    uploadOpt();
     var xml = `<?xml version= "1.0" ?>
                   <Requests>
                       <Params>
@@ -1047,6 +1047,11 @@ function initData(data, flag) {
 
 function nodeControllerExp(NodeName) {
     if (String(NodeName).match('开始') != null) {
+        uploadOpt();
+        $('.upload-addbtn').show();
+        tapEvent();
+        $("#flxdh,#femail,#fssjt,#fssgs,#fcpmc,#fypsl,#fcpsm").removeAttr('readonly');
+        
 
     } else if (String(NodeName).match('初审') != null){
 
