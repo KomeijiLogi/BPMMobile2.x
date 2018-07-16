@@ -380,8 +380,8 @@ function AgreeOrConSign() {
             <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c1[i].itemid}</RowPrimaryKeys>
             <fyxmmc>${item_c1[i].fyxmmc}</fyxmmc>
-            <sqje>${item_c1[i].sqje}</sqje>
-            <bxje>${item_c1[i].bxje}</bxje>
+            <sqje>${changeNullToEmpty(item_c1[i].sqje)}</sqje>
+            <bxje>${changeNullToEmpty(item_c1[i].bxje)}</bxje>
             <beizhusm>${item_c1[i].beizhusm}</beizhusm>
         </fybx_peixunf_t>
                         `;
@@ -461,15 +461,14 @@ function AgreeOrConSign() {
             <scdj>${item.scdj}</scdj>
         </fybx_peixunf_m>
                     `;
-
         for (var i = 0; i < item_c1.length; i++) {
             xml += `
       <fybx_peixunf_t>
             <RelationRowGuid>${i + 1}</RelationRowGuid>
             <RowPrimaryKeys>itemid=${item_c1[i].itemid}</RowPrimaryKeys>
             <fyxmmc>${item_c1[i].fyxmmc}</fyxmmc>
-            <sqje>${item_c1[i].sqje}</sqje>
-            <bxje>${item_c1[i].bxje}</bxje>
+            <sqje>${changeNullToEmpty(item_c1[i].sqje)}</sqje>
+            <bxje>${changeNullToEmpty(item_c1[i].bxje)}</bxje>
             <beizhusm>${item_c1[i].beizhusm}</beizhusm>
         </fybx_peixunf_t>
                         `;

@@ -703,20 +703,20 @@ function AgreeOrConSign() {
             <可用预算>${fkyyyje}</可用预算>
             <已用预算>${fyyysje}</已用预算>
             <费用属性>${ffysx}</费用属性>
-            <金额a>${fm_a}</金额a>
-            <金额b>${fm_b}</金额b>
+            <金额a>${changeNullToEmpty( fm_a)}</金额a >
+            <金额b>${changeNullToEmpty(fm_b)}</金额b>
             <超预算情况>${fcysqk}</超预算情况>
-            <月度报销标准>${fybxbz}</月度报销标准>
-            <年度报销标准>${fndbxbz}</年度报销标准>
-            <年>${fbxnd}</年>
+            <月度报销标准>${changeNullToEmpty(fybxbz)}</月度报销标准>
+            <年度报销标准>${changeNullToEmpty(fndbxbz)}</年度报销标准>
+            <年>${changeNullToEmpty(fbxnd)}</年>
             <职务>${fzwu}</职务>
             <已报销金额>${fbnljybx}</已报销金额>
             <备注>${fbz}</备注>
             <职务级别>${fzwjb}</职务级别>
-            <申请月数>${fsqys}</申请月数>
+            <申请月数>${changeNullToEmpty(fsqys)}</申请月数>
             <手机号码>${fsjhm}</手机号码>
-            <报销标准>${fbxbz}</报销标准>
-            <报销金额>${fbcbxje}</报销金额>
+            <报销标准>${changeNullToEmpty(fbxbz)}</报销标准>
+            <报销金额>${changeNullToEmpty(fbcbxje)}</报销金额>
             <超标准情况>${fcbz}</超标准情况>
             <报销金额大写>${fdxje}</报销金额大写>
             <时间区间>${fsqrq}</时间区间>
@@ -764,20 +764,20 @@ function AgreeOrConSign() {
             <可用预算>${fkyyyje}</可用预算>
             <已用预算>${fyyysje}</已用预算>
             <费用属性>${ffysx}</费用属性>
-            <金额a>${fm_a}</金额a>
-            <金额b>${fm_b}</金额b>
+            <金额a>${changeNullToEmpty(fm_a)}</金额a >
+            <金额b>${changeNullToEmpty(fm_b)}</金额b>
             <超预算情况>${fcysqk}</超预算情况>
-            <月度报销标准>${fybxbz}</月度报销标准>
-            <年度报销标准>${fndbxbz}</年度报销标准>
-            <年>${fbxnd}</年>
+            <月度报销标准>${changeNullToEmpty(fybxbz)}</月度报销标准>
+            <年度报销标准>${changeNullToEmpty(fndbxbz)}</年度报销标准>
+            <年>${changeNullToEmpty(fbxnd)}</年>
             <职务>${fzwu}</职务>
             <已报销金额>${fbnljybx}</已报销金额>
             <备注>${fbz}</备注>
             <职务级别>${fzwjb}</职务级别>
-            <申请月数>${fsqys}</申请月数>
+            <申请月数>${changeNullToEmpty(fsqys)}</申请月数>
             <手机号码>${fsjhm}</手机号码>
-            <报销标准>${fbxbz}</报销标准>
-            <报销金额>${fbcbxje}</报销金额>
+            <报销标准>${changeNullToEmpty(fbxbz)}</报销标准>
+            <报销金额>${changeNullToEmpty(fbcbxje)}</报销金额>
             <超标准情况>${fcbz}</超标准情况>
             <报销金额大写>${fdxje}</报销金额大写>
             <时间区间>${fsqrq}</时间区间>

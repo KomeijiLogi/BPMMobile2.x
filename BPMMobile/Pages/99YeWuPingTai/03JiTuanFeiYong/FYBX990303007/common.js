@@ -335,11 +335,11 @@ function AgreeOrConSign() {
             <user_no>${item.user_no}</user_no>
             <feiysqdcode>${item.feiysqdcode}</feiysqdcode>
             <feiysqd>${item.feiysqd}</feiysqd>
-            <sqje>${item.sqje}</sqje>
+            <sqje>${changeNullToEmpty(item.sqje)}</sqje>
             <sqdate>${item.sqdate}</sqdate>
             <chsqqk>${item.chsqqk}</chsqqk>
             <is_cj>${item.is_cj}</is_cj>
-            <bxje>${item.bxje}</bxje>
+            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
             <bxjedx>${item.bxjedx}</bxjedx>
          `;
             //xml += `<sfdj>${item.sfdj}</sfdj>
@@ -356,8 +356,8 @@ function AgreeOrConSign() {
                             <chufd>${item_c1[i].chufd}</chufd>
                             <mudd>${item_c1[i].mudd}</mudd>
                             <jiaotgj>${item_c1[i].jiaotgj}</jiaotgj>
-                            <shenqje>${item_c1[i].shenqje}</shenqje>
-                            <baoxje>${item_c1[i].baoxje}</baoxje>
+                            <shenqje>${changeNullToEmpty(item_c1[i].shenqje)}</shenqje >
+                            <baoxje>${changeNullToEmpty(item_c1[i].baoxje)}</baoxje>
                             <remark>${item_c1[i].remark}</remark>
                         </fybx_snjt_t>
                          `;
@@ -401,15 +401,15 @@ function AgreeOrConSign() {
             <user_no>${item.user_no}</user_no>
             <feiysqdcode>${item.feiysqdcode}</feiysqdcode>
             <feiysqd>${item.feiysqd}</feiysqd>
-            <sqje>${item.sqje}</sqje>
+            <sqje>${changeNullToEmpty(item.sqje)}</sqje>
             <sqdate>${item.sqdate}</sqdate>
             <chsqqk>${item.chsqqk}</chsqqk>
             <is_cj>${item.is_cj}</is_cj>
-            <bxje>${item.bxje}</bxje>
+            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
             <bxjedx>${item.bxjedx}</bxjedx>
          `;
         //xml += `<sfdj>${item.sfdj}</sfdj>
-        //     <attach>${item.attach}</attach> `;
+        // <attach>${item.attach}</attach> `;
 
         xml += ` </fybx_snjt_m>  
                       `;
@@ -422,8 +422,8 @@ function AgreeOrConSign() {
                             <chufd>${item_c1[i].chufd}</chufd>
                             <mudd>${item_c1[i].mudd}</mudd>
                             <jiaotgj>${item_c1[i].jiaotgj}</jiaotgj>
-                            <shenqje>${item_c1[i].shenqje}</shenqje>
-                            <baoxje>${item_c1[i].baoxje}</baoxje>
+                            <shenqje>${changeNullToEmpty(item_c1[i].shenqje)}</shenqje >
+                            <baoxje>${changeNullToEmpty(item_c1[i].baoxje)}</baoxje>
                             <remark>${item_c1[i].remark}</remark>
                         </fybx_snjt_t>
                          `;

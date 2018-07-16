@@ -312,7 +312,7 @@ function AgreeOrConSign() {
             <jkje>${item.jkje}</jkje>
             <chsqqk>${item.chsqqk}</chsqqk>
             <is_cj>${item.is_cj}</is_cj>
-            <bxje>${item.bxje}</bxje>
+            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
             <bxjedx>${item.bxjedx}</bxjedx>
             <sfdj>${item.sfdj}</sfdj>
             <attach>${item.attach}</attach>
@@ -322,11 +322,11 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c.length; i++) {
                 xml += `
                        <fybx_car_t>
-                        <RelationRowGuid>${i+1}</RelationRowGuid>
+                        <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
                         <feiylx>${item_c[i].feiylx}</feiylx>
-                        <feiysqje>${item_c[i].feiysqje}</feiysqje>
-                        <feiybxje>${item_c[i].feiybxje}</feiybxje>
+                        <feiysqje>${changeNullToEmpty(item_c[i].feiysqje)}</feiysqje>
+                        <feiybxje>${changeNullToEmpty(item_c[i].feiybxje)}</feiybxje>
                         <chephm>${item_c[i].chephm}</chephm>
                     </fybx_car_t>
            `;
@@ -374,7 +374,7 @@ function AgreeOrConSign() {
             <jkje>${item.jkje}</jkje>
             <chsqqk>${item.chsqqk}</chsqqk>
             <is_cj>${item.is_cj}</is_cj>
-            <bxje>${item.bxje}</bxje>
+            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
             <bxjedx>${item.bxjedx}</bxjedx>
             <sfdj>${item.sfdj}</sfdj>
             <attach>${item.attach}</attach>
@@ -387,8 +387,8 @@ function AgreeOrConSign() {
                         <RelationRowGuid>${i + 1}</RelationRowGuid>
                         <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
                         <feiylx>${item_c[i].feiylx}</feiylx>
-                        <feiysqje>${item_c[i].feiysqje}</feiysqje>
-                        <feiybxje>${item_c[i].feiybxje}</feiybxje>
+                        <feiysqje>${changeNullToEmpty(item_c[i].feiysqje)}</feiysqje>
+                        <feiybxje>${changeNullToEmpty(item_c[i].feiybxje)}</feiybxje>
                         <chephm>${item_c[i].chephm}</chephm>
                     </fybx_car_t>
            `;

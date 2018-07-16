@@ -199,9 +199,9 @@ function prepIndexedList() {
             }
         });
         if (checkedValues.length > 0) {
-            $("#fsqd").val(checkedValues[checkedValues.length - 1].fbillno);
-            $("#fsqd_tid").val(checkedValues[checkedValues.length - 1].ftid);
-            $("#fjkje").val(checkedValues[checkedValues.length - 1].flm);
+            $("#fsqd").val(checkedObjs[checkedObjs.length - 1].fbillno);
+            $("#fsqd_tid").val(checkedObjs[checkedObjs.length - 1].ftid);
+            $("#fjkje").val(checkedObjs[checkedObjs.length - 1].flm);
             $("#selector").hide();
             $("#wrapper").show();
 

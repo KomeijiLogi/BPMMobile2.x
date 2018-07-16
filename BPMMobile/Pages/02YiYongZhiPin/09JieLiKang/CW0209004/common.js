@@ -1,4 +1,6 @@
-﻿function prepMsg() {
+﻿
+var fcflag = false;
+function prepMsg() {
 
     uploadOpt();
   
@@ -36,6 +38,57 @@
             }
         }).then(() => {
             searchCard();
+
+            var fno = $("#fbxrno").val();
+
+            var xml = `<?xml version= "1.0" ?>
+                         <Requests>
+                          <Params>
+                            <DataSource>PS</DataSource>
+                            <ID>erpcloud_公用_获取个人信息</ID>
+                            <Type>1</Type>
+                            <Method>GetUserDataProcedure</Method>
+                            <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>
+                            <Filter>
+                              <fno>${fno}</fno>
+                            </Filter>
+                            </Params>
+                           </Requests>
+                      `;
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                //console.log(provideData);
+                var pInfo = provideData.Tables[0].Rows[0];
+                console.log(pInfo);
+                $("#ps").val(pInfo.zhiwei);
+                var ps = pInfo.zhiwei;
+               
+                var pinStr = '业务员,区域经理,销售主管,大区经理,销售总监,市场,培训';
+
+                var pinStrArr = ['业务员', '区域经理', '销售主管', '大区经理', '销售总监', '市场', '培训'];
+
+                pinStrArr.map((val, u, arr) => {
+                    if (val.match(ps)!= null || ps.match(val) != null) {
+                        //console.log('1111');
+                        fcflag = true;
+                    }
+
+                })
+              
+
+
+            }).fail(function (e) {
+
+            });
         });
 }
 
@@ -910,6 +963,8 @@ class Mx_hz {
 }
 
 function Save() {
+
+
     var fbxr = $("#fbxr").val();
     var fbxrbm = $("#fbxrbm").val();
     var fbxrq = $("#fbxrq").val();
@@ -933,10 +988,16 @@ function Save() {
     var fbxrzw = $("#fbxrzw").val();
     var ps = $("#ps").val();
 
-    if (!fsqdh) {
-        mui.toast('请选择申请单');
-        return;
+    if (!fcflag) {
+        //如果不是对应那些职位的，申请单必选
+        if (!fsqdh) {
+            mui.toast('请选择申请单');
+            return;
+        }
     }
+
+
+   
     if (!ffyqj_ks) {
         mui.toast('请选择费用开始期间');
         return;

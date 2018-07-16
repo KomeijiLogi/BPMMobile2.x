@@ -1,7 +1,7 @@
 ﻿function prepMsg() {
-    $("#fdate,#ftxrq").val(getNowFormatDate(2));
-     tapEvent();
-
+    $("#fdate1,#ftxrq").val(getNowFormatDate(2));
+    tapEvent();
+  
      var xml = `<?xml version= "1.0" ?>
                   <Requests>
                       <Params>
@@ -27,7 +27,7 @@
          $("#fxsqy").val(item.销售区域);
          $("#fno").val(item.销售人员工号);
      }).fail(function (e) {
-
+        
      });
 }
 
@@ -169,9 +169,11 @@ function tapEvent() {
 
     });
 
-    showDtPicker('ftxrq');
+    showDtPicker('#ftxrq');
 
-    showDtPicker('fdate');
+    showDtPicker('#fdate1');
+
+   
 }
 
 class Mx {
@@ -244,7 +246,7 @@ function initData(data, flag) {
     $("#fxsry").val(item.销售人员);
     $("#fxsqy").val(item.销售区域);
     $("#ftxrq").val(FormatterTimeYMS(item.填写日期));
-    $("#fdate").val(FormatterTimeYMS(item.日期));
+    $("#fdate1").val(FormatterTimeYMS(item.日期));
     $("#fno").val(item.销售人员工号);
 
     var item_c = data.FormDataSet.洁丽康公司_销售日报_子表1;
@@ -330,7 +332,7 @@ function Save() {
     var fno = $("#fno").val();
     var fxsqy = $("#fxsqy").val();
     var ftxrq = $("#ftxrq").val();
-    var fdate = $("#fdate").val();
+    var fdate = $("#fdate1").val();
 
 
     var mxflag = false;
@@ -425,7 +427,7 @@ function reSave() {
     var fno = $("#fno").val();
     var fxsqy = $("#fxsqy").val();
     var ftxrq = $("#ftxrq").val();
-    var fdate = $("#fdate").val();
+    var fdate = $("#fdate1").val();
 
 
     var mxflag = false;
@@ -535,7 +537,7 @@ function AgreeOrConSign() {
     var fno = $("#fno").val();
     var fxsqy = $("#fxsqy").val();
     var ftxrq = $("#ftxrq").val();
-    var fdate = $("#fdate").val();
+    var fdate = $("#fdate1").val();
 
 
     var mxflag = false;

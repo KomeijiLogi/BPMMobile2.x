@@ -763,6 +763,9 @@ function deleteItem(context) {
     mui.confirm('确认删除？', '', btnArray, function (e) {
         if (e.index == 1) {
             $(context).parent().parent().remove();
+            if (typeof calcTotal === "function"){
+                calcTotal();
+            }
         }
     });
 

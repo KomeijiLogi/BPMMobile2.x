@@ -227,6 +227,7 @@ function initSaleOrg() {
             var _self = this;
             picker.show(function (items) {
                 $(_self).val(items[0].text);
+                $("#fxszzbm").val(items[0].value);
             });
 
         });
@@ -306,7 +307,7 @@ function initMater() {
                 $(_self).parents('#mx').find("#fggxh").val(items[0].规格型号);
                 $(_self).parents('#mx').find("#fjldw").val(items[0].基本计量单位名称);
                 $(_self).parents('#mx').find("#fjldwbm").val(items[0].基本计量单位编码);
-
+              
             });
         });
 
@@ -602,6 +603,8 @@ function Save() {
     var fgxlxbm = $("#fgxlxbm").val();
     var fswlxbm = $("#fswlxbm").val();
     var flllxbm = $("#flllxbm").val();
+    var fbz = $("#fbz").val();
+
 
 
     if (!fkhmc) {
@@ -641,7 +644,8 @@ function Save() {
         var fysxm = $(this).find("#fysxm").val();
         var fsylb = $(this).find("#fsylb").val();
         var fbz = $(this).find("#fbz").val();
-        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz);
+        var fjldwbm = $(this).find("#fjldwbm").val();
+        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz, fjldwbm);
         if (mx.check()) {
             mxflag = true;
             return;
@@ -767,7 +771,7 @@ function reSave() {
     var fgxlxbm = $("#fgxlxbm").val();
     var fswlxbm = $("#fswlxbm").val();
     var flllxbm = $("#flllxbm").val();
-
+    var fbz = $("#fbz").val();
 
     if (!fkhmc) {
         mui.toast('请填写客户名称');
@@ -805,7 +809,8 @@ function reSave() {
         var fysxm = $(this).find("#fysxm").val();
         var fsylb = $(this).find("#fsylb").val();
         var fbz = $(this).find("#fbz").val();
-        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz);
+        var fjldwbm = $(this).find("#fjldwbm").val();
+        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz, fjldwbm);
         if (mx.check()) {
             mxflag = true;
             return;
@@ -947,7 +952,7 @@ function AgreeOrConSign() {
     var fgxlxbm = $("#fgxlxbm").val();
     var fswlxbm = $("#fswlxbm").val();
     var flllxbm = $("#flllxbm").val();
-
+    var fbz = $("#fbz").val();
    
     var mxflag = false;
     var mxlistArr = [];
@@ -960,7 +965,8 @@ function AgreeOrConSign() {
         var fysxm = $(this).find("#fysxm").val();
         var fsylb = $(this).find("#fsylb").val();
         var fbz = $(this).find("#fbz").val();
-        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz);
+        var fjldwbm = $(this).find("#fjldwbm").val();
+        var mx = new Mx(fwlbm, fwlmc, fggxh, fjldw, fsl, fysxm, fsylb, fbz, fjldwbm);
       
         mxlistArr.push(mx);
     });

@@ -28,7 +28,7 @@
         var item = provideData.Tables[0].Rows[0];
         $("#fsqr").val(item.申请人);
         $("#fsqbm").val(item.申请部门);
-
+        $("#fsqrno").val(item.申请人工号);
 
        
     }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
@@ -38,7 +38,44 @@
             mui.alert('服务器内部错误');
         }
 
-    });
+        }).then(() => {
+            var fno = $("#fsqrno").val();
+
+            var xml = `<?xml version= "1.0" ?>
+                         <Requests>
+                          <Params>
+                            <DataSource>PS</DataSource>
+                            <ID>erpcloud_公用_获取个人信息</ID>
+                            <Type>1</Type>
+                            <Method>GetUserDataProcedure</Method>
+                            <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>
+                            <Filter>
+                              <fno>${fno}</fno>
+                            </Filter>
+                            </Params>
+                           </Requests>
+                      `;
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                //console.log(provideData);
+                var pInfo = provideData.Tables[0].Rows[0];
+                console.log(pInfo);
+                $("#ps").val(pInfo.zhiwei);
+
+
+            }).fail(function (e) {
+
+            });
+        });
 }
 
 function tapEvent() {
@@ -546,7 +583,7 @@ function Save() {
             <财务审核人></财务审核人>
             <审批人></审批人>
             <申请人职位></申请人职位>
-            <PS职位>软件开发工程师</PS职位>
+            <PS职位>${ps}</PS职位>
         </洁丽康公司_差旅费支出计划申请_主表>
                      `;
             for (var i = 0; i < mxlistArr.length; i++) {
@@ -730,7 +767,7 @@ function reSave() {
             <财务审核人></财务审核人>
             <审批人></审批人>
             <申请人职位></申请人职位>
-            <PS职位>软件开发工程师</PS职位>
+            <PS职位>${ps}</PS职位>
         </洁丽康公司_差旅费支出计划申请_主表>
                      `;
             for (var i = 0; i < mxlistArr.length; i++) {

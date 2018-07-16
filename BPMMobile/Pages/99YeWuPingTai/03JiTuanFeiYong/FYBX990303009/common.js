@@ -315,9 +315,9 @@ function AgreeOrConSign() {
                             <fysqd>${item.fysqd}</fysqd>
                             <sqje>${item.sqje}</sqje>
                             <sqdate>${item.sqdate}</sqdate>
-                            <jkje>${changeNullToEmpty(item.jkje)}</jkje>
+                            <jkje>${changeNullToEmpty(item.jkje)}</jkje >
                             <is_cj>${item.is_cj}</is_cj>
-                            <bxje>${item.bxje}</bxje>
+                            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
                             <bxjedx>${item.bxjedx}</bxjedx>
                             <sfdj>${item.sfdj}</sfdj>
                             <attach>${item.attach}</attach>
@@ -326,14 +326,14 @@ function AgreeOrConSign() {
             for (var i = 0; i < item_c.length; i++) {
                 xml += `
                          <fybx_qtfy_t>
-            <RelationRowGuid>${i + 1}</RelationRowGuid>
-            <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
-            <feiylx>${item_c[i].feiylx}</feiylx>
-            <feiysqje>${item_c[i].feiysqje}</feiysqje>
-            <feiybxje>${item_c[i].feiybxje}</feiybxje>
-            <chaosqqk>${item_c[i].chaosqqk}</chaosqqk>
-            <remark>${item_c[i].remark}</remark>
-        </fybx_qtfy_t>
+                            <RelationRowGuid>${i + 1}</RelationRowGuid>
+                            <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
+                            <feiylx>${item_c[i].feiylx}</feiylx>
+                            <feiysqje>${changeNullToEmpty(item_c[i].feiysqje)}</feiysqje>
+                            <feiybxje>${changeNullToEmpty(item_c[i].feiybxje)}</feiybxje>
+                            <chaosqqk>${item_c[i].chaosqqk}</chaosqqk>
+                            <remark>${item_c[i].remark}</remark>
+                        </fybx_qtfy_t>
                         `;
             }
             xml += `
@@ -377,7 +377,7 @@ function AgreeOrConSign() {
                             <sqdate>${item.sqdate}</sqdate>
                             <jkje>${changeNullToEmpty(item.jkje)}</jkje >
                             <is_cj>${item.is_cj}</is_cj>
-                            <bxje>${item.bxje}</bxje>
+                            <bxje>${changeNullToEmpty(item.bxje)}</bxje>
                             <bxjedx>${item.bxjedx}</bxjedx>
                             <sfdj>${item.sfdj}</sfdj>
                             <attach>${item.attach}</attach>
@@ -389,8 +389,8 @@ function AgreeOrConSign() {
                             <RelationRowGuid>${i + 1}</RelationRowGuid>
                             <RowPrimaryKeys>itemid=${item_c[i].itemid}</RowPrimaryKeys>
                             <feiylx>${item_c[i].feiylx}</feiylx>
-                            <feiysqje>${item_c[i].feiysqje}</feiysqje>
-                            <feiybxje>${item_c[i].feiybxje}</feiybxje>
+                            <feiysqje>${changeNullToEmpty(item_c[i].feiysqje)}</feiysqje>
+                            <feiybxje>${changeNullToEmpty(item_c[i].feiybxje)}</feiybxje>
                             <chaosqqk>${item_c[i].chaosqqk}</chaosqqk>
                             <remark>${item_c[i].remark}</remark>
                         </fybx_qtfy_t>

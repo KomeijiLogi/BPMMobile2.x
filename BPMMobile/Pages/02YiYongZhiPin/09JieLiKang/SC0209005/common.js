@@ -30,7 +30,8 @@
 
     }).fail(function (e) {
 
-    }).then(function () {
+        }).then(function () {
+           
         initCodeMsg();
     });
 
@@ -164,6 +165,8 @@ function tapEvent() {
     $("#fbmbm,#fbmmc").on('tap', () => {
         $("#wrapper").hide();
         $("#selector").show();
+      
+      
     });
 
     var fif_data = [
