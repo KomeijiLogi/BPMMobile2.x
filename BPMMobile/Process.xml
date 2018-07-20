@@ -4608,6 +4608,7 @@
     <Description>适用于爱普公司销售价格特批申请。</Description>
   </Process>
   
+  
      <Process>
     <Name>爱普公司业务费特批申请</Name>
     <Path>\\03医用制品集团\\05富森医用材料公司\\13_市场营销</Path>
@@ -4623,5 +4624,39 @@
     <Group>办公管理</Group>
     <Description>适用于爱普公司业务费特批申请。</Description>
   </Process>
+ <Process>
+    <Name>爱普公司市场活动申请</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204005/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204005/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204005/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204005/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204005/FlowTemplate.html</ViewPage>
+    <DisplayName>爱普公司市场活动申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于爱普公司市场活动申请。</Description>
+  </Process>
 
+  
+   <Process>
+    <Name>爱普公司销售管理事务申请</Name>
+    <Path>\\03医用制品集团\\05富森医用材料公司\\13_市场营销</Path>
+    <CanCreate>True</CanCreate>
+    <CreatePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204006/FlowCreate.html</CreatePage>
+    <ViewUndoPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204006/FlowUndoDetail.html</ViewUndoPage>
+    <ViewAskPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204006/FlowAskDetail.html</ViewAskPage>
+    <ViewDonePage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204006/FlowDoneDetail.html</ViewDonePage>
+    <ViewPage>/Pages/02YiYongZhiPin/04HaiShengSheBei/APSC0204006/FlowTemplate.html</ViewPage>
+    <DisplayName>爱普公司销售管理事务申请</DisplayName>
+    <Css></Css>
+    <Icon>../../../../Content/images/5.png</Icon>
+    <Group>办公管理</Group>
+    <Description>适用于爱普公司销售管理事务申请。</Description>
+  </Process>
+
+  
+ 
 </ProcessList>

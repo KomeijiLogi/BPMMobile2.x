@@ -1050,6 +1050,16 @@
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204004\FlowCreate.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204004\FlowDoneDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204004\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204005\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204005\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204005\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204005\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204005\FlowUndoDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204006\common.js" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204006\FlowAskDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204006\FlowCreate.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204006\FlowDoneDetail.html" />
+    <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\APSC0204006\FlowUndoDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\common.js" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\FlowAskDetail.html" />
     <Content Include="Pages\02YiYongZhiPin\04HaiShengSheBei\BG0204001\FlowCreate.html" />

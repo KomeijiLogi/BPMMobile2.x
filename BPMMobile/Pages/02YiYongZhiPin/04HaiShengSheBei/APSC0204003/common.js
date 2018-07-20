@@ -109,6 +109,8 @@ function calcTotal() {
 
     });
 
+    $("#fgsxj_total").val(fgsxj_total);
+    $("#fsqdj_total").val(fsqdj_total);
 }
 
 
@@ -131,7 +133,124 @@ function initData(data, flag) {
     $("#fxscp").val(item.销售产品);
     $("#fpsyy").val(item.配送医院);
     $("#fsqly").val(item.申请理由);
+    if (item.附件 != null && item.附件 != "") {
+        var fjtmp = (String)(item.附件);
 
+        fjArray = fjtmp.split(";");
+
+
+        //console.log("fjArray:" + fjArray);
+
+        //请求附件详细信息
+        $.ajax({
+            type: 'POST',
+            url: '/api/bpm/GetAttachmentsInfo',
+            //dataType:'json',
+            data: { 'fileIds': fjArray },
+
+            beforeSend: function (XHR) {
+                XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+            },
+            success: function (data, status) {
+                if (status == "success") {
+
+                    console.log(data);
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        var name = data[i].Name;
+                        var type = (data[i].Ext).replace(".", "");
+                        var size = String(data[i].Size);
+
+                        var time = String(data[i].LastUpdate).replace("T", " ");
+                        var downurl = baseDownloadUrl + data[i].FileID;
+
+                        var attach = attachItem(name, type, size, time, downurl);
+                        attachArray.push(attach);
+
+                        var li = '<div class="pic-preview smallyulan success">';
+                        li = li + ' <div class="del none" style="opacity:1;z-index:999;"onclick="delPicture(this)">x</div>';
+
+                        //类型判断 
+                        if ((data[i].Ext).indexOf("png") != -1 || (data[i].Ext).indexOf("jpg") != -1 || (data[i].Ext).indexOf("bmp") != -1) {
+
+                            //li = li + '    <div class="img-wrap smallimg" id="simg" ><a href="'+baseDownloadUrl + data[i].FileID + '"><img src="'+baseDownloadUrl + data[i].FileID + '"/></a></div>';
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '" ><img src="' + baseDownloadUrl + data[i].FileID + '"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("xls") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/xlsx@2x.png"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("doc") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/docx@2x.png"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("ppt") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/ppt@2x.png"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("pdf") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/pdf@2x.png"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("zip") != -1 || (data[i].Ext).indexOf("rar") != -1 || (data[i].Ext).indexOf("7z") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/zip@2x.png"/></div>';
+
+                        } else if ((data[i].Ext).indexOf("txt") != -1) {
+
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/txt@2x.png"/></div>';
+
+                        } else {
+                            li = li + '    <div class="img-wrap smallimg imgdiv" id="' + i + '"><img src="../../Content/images/unkown@2x.png"/></div>';
+                        }
+
+                        li = li + ' </div>';
+                        li = li + '</div>';
+                        $(".upload-img-list").append(li);
+
+
+                        $(".imgdiv").each(function () {
+
+                            $(this).parent().find(".del.none").hide();
+
+                        });
+
+
+
+
+                    }
+                    watch();
+                    $(".imgdiv").on('tap', function () {
+                        console.log($(this)[0].id);
+                        console.log(navigator.userAgent);
+                        if (String(navigator.userAgent).match('cloudhub') != null) {
+                            window.open(attachArray[$(this)[0].id].downurl);
+                        }
+                        XuntongJSBridge.call('showFile', {
+                            'fileName': attachArray[$(this)[0].id].name,
+                            'fileExt': attachArray[$(this)[0].id].type,
+                            'fileTime': attachArray[$(this)[0].id].time,
+                            'fileSize': attachArray[$(this)[0].id].size,
+                            'fileDownloadUrl': attachArray[$(this)[0].id].downurl
+                        }, function (result) {
+                            //alert(JSON.stringify(result));
+                        });
+                    });
+
+
+                }
+
+            }, error: function (e) {
+                console.log(e);
+
+            }, complete: function () {
+
+            }
+
+        });
+
+    }
     var item_c = data.FormDataSet.爱普公司_价格特批申请_子表;
     for (var i = 0; i < item_c.length; i++) {
         itemidArr.push(item_c[i].itemid);
@@ -521,6 +640,7 @@ function AgreeOrConSign() {
         var mx = new Mx(fcpbm, fcpmc, fggxh, fgsxj, fsqdj, fbz);
         mxlistArr.push(mx);
     });
+
 
     var consignFlag = false;
     var consignUserId = new Array();

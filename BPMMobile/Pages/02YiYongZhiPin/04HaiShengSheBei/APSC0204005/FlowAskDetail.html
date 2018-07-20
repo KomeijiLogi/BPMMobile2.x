@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../../Content/mui.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.picker.min.css" />
+    <link rel="stylesheet" href="../../../../Content/mui.poppicker.css" />
+    <link rel="stylesheet" href="../../../../Content/upload.css" />
+    <link rel="stylesheet" href="../../../../Content/ApprovalUtils.css" />
+    <link rel="stylesheet" href="../../../../Content/DoneOrMyApproval.css" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="mui-content" style="background-color:white;z-index:2;" id="wrapper">
+        <form class="mui-input-group" style="left:0rem;right:0rem;margin-bottom:1rem;padding-bottom:4rem;">
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>活动信息</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>活动名称<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fhdmc" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>申请人</label>
+                    <textarea rows="2" id="fsqr" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>活动时间</label>
+                    <textarea rows="2" id="fhdsj" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>活动性质</label>
+                    <textarea rows="2" id="fhdxz" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>参会人员结构</label>
+                    <textarea rows="2" id="fchryjg" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>参会人数</label>
+                    <input type="number" id="fchrs" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>主办单位</label>
+                    <textarea rows="2" id="fzbdw" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>承办单位</label>
+                    <textarea rows="2" id="fcbdw" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>活动地点</label>
+                    <textarea rows="2" id="fhddd" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>讲课人员</label>
+                    <textarea rows="2" id="fjkry" readonly></textarea>
+                </div>
+                <div class="mui-col-xs-6" style="display:flex;">
+                    <label>公司参加人员</label>
+                    <textarea rows="2" id="fgscjry" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>目的<i style="color:red;">*</i></label>
+                    <textarea rows="2" id="fmd" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row itemtitle3" style="height:10vw;text-align:center;padding-top:3vw;">
+                <label>活动费用明细</label>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>序号</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用明细</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>金额（元）</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>备注（明细）</label>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>1</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>展位费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fzwf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fzwf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>2</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>讲师费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fjsf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fjsf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>3</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>赞助费（对公）</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fzzf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fzzf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>4</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>会务费（易拉宝、背景板、车辆等）</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fhwf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fhwf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>5</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>宴请费（含酒水费）</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fyqf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fyqf_bz" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>6</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>礼品费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="flpf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="flpf_bz" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>7</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>茶歇费</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fcxf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fcxf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>8</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>其它费用</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fqtf" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fqtf_bz" readonly></textarea>
+                </div>
+            </div>
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label></label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <label>费用合计</label>
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <input type="number" id="fhj" readonly />
+                </div>
+                <div class="mui-col-xs-3" style="display:flex;">
+                    <textarea rows="2" id="fhj_dz" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="mui-row cutOffLine padding">
+                <div class="mui-col-xs-12" style="display:flex;">
+                    <label>所需物品</label>
+                    <textarea rows="4" id="fsxwp" readonly></textarea>
+                </div>
+            </div>
+        </form>
+
+        <div class="mui-table-view" style="margin-bottom:1rem;">
+            <div class="mui-table-view-cell  mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#" style="background-color:#00a0ea;color:white;font-size:0.75rem;">
+                    历史签核意见
+                </a>
+                <div class="mui-collapse-content">
+                    <!--流程列表-->
+                    <div class="list">
+                        <ul id="signff"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input value="" id="stepId" name="stepId" type="hidden" />
+    <input type="hidden" id="flowPerId" name="flowPerId" value="" />
+    <input type="hidden" id="processName" name="processName" value="" />
+    <input type="hidden" id="noticePer" name="noticePer" value="" />
+    <input type="hidden" id="taskId" name="taskId" value="" />
+
+
+    <script type="text/javascript" src="../../../../Scripts/baidu-statistics.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.js"></script>
+    <!--<script src="http://yun.kingdee.com/res/js/qingjs.js"></script>-->
+    <script type="text/javascript" src="http://wb.weigaoholding.com:8090/res/js/qingjs.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.poppicker.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/ApprovalUtils.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/util.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/upload.detail.js"></script>
+    <script type="text/javascript" src="../../../../Scripts/common.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+
+         mui.init();
+
+         mui.ready(function () {
+             _init._preAskOrDone();
+
+         });
+    </script>
+</body>
+</html>

@@ -832,7 +832,7 @@ function initData(data, flag) {
     $("#ftjr").val(item.推荐人);
     $("#ftjrno").val(item.推荐人ID);
     $("#flxdh").val(item.联系电话);
-    $("#femail").val(item.邮箱);
+    //"#femail").val(item.邮箱);
     $("#fssjt").val(item.所属集团);
     $("#fssgs").val(item.所属公司);
     $("#ftbr").val(item.填表人);
@@ -1228,11 +1228,7 @@ function Save() {
         return;
     }
 
-    if (!femail) {
-        mui.toast('请填写邮箱');
-        return;
-    }
-
+   
     if (!fssjt) {
         mui.toast('请选择所属集团');
         return;
@@ -1253,12 +1249,7 @@ function Save() {
         mui.toast('请选择信息类型');
         return;
     }
-    if (!fypsl) {
-        mui.toast('请选择样品数量');
-        return;
-    }
-
-
+   
 
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
@@ -1287,7 +1278,7 @@ function Save() {
             <推荐人>${ftjr}</推荐人>
             <推荐人ID>${ftjrno}</推荐人ID>
             <联系电话>${flxdh}</联系电话>
-            <邮箱>${femail}</邮箱>
+            
             <所属集团>${fssjt}</所属集团>
             <所属公司>${fssgs}</所属公司>
             <填表人>${ftbr}</填表人>
@@ -1505,7 +1496,7 @@ function AgreeOrConSign() {
             <推荐人>${ftjr}</推荐人>
             <推荐人ID>${ftjrno}</推荐人ID>
             <联系电话>${flxdh}</联系电话>
-            <邮箱>${femail}</邮箱>
+            
             <所属集团>${fssjt}</所属集团>
             <所属公司>${fssgs}</所属公司>
             <填表人>${ftbr}</填表人>
@@ -1645,7 +1636,7 @@ function AgreeOrConSign() {
             <推荐人>${ftjr}</推荐人>
             <推荐人ID>${ftjrno}</推荐人ID>
             <联系电话>${flxdh}</联系电话>
-            <邮箱>${femail}</邮箱>
+          
             <所属集团>${fssjt}</所属集团>
             <所属公司>${fssgs}</所属公司>
             <填表人>${ftbr}</填表人>
