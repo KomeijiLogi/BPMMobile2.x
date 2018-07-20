@@ -91,15 +91,16 @@ function calcTotal() {
     var fywf_total = 0;
 
     $("#mxlist").find("#mx").each(function () {
-
+        var _self = this;
         var fxsdj = parseFloat($(this).find("#fxsdj").val());
-        var fywf = parseFloat($(this).find("#fywf").val());
-
+        var fywf = parseFloat($(this).find("#fwyf").val());
+      
         fxsdj = isNaN(fxsdj) ? 0 : fxsdj;
         fywf = isNaN(fywf) ? 0 : fywf;
-
+       
         fxsdj_total += fxsdj;
         fywf_total += fywf;
+       
 
     });
 

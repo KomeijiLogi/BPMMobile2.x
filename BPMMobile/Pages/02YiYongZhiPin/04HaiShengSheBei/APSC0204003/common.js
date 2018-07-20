@@ -93,8 +93,8 @@ function tapEvent() {
 
 function calcTotal() {
 
-    var fgsxj_total = $("#fgsxj_total").val();
-    var fsqdj_total = $("#fsqdj_total").val();
+    var fgsxj_total = 0;
+    var fsqdj_total = 0;
 
     $("#mxlist").find("#mx").each(function () {
 

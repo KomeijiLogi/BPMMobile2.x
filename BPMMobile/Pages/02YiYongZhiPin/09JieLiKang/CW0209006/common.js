@@ -37,7 +37,37 @@
 
         }).then(function () {
             searchCard();
-           
+            var fno = $("#fbxrgh").val();
+            var xml = '<?xml version= "1.0" ?>';
+            xml = xml + '      <Requests>';
+            xml = xml + '     <Params>';
+            xml = xml + '         <DataSource>PS</DataSource>';
+            xml = xml + '         <ID>erpcloud_公用_获取个人信息</ID>';
+            xml = xml + '         <Type>1</Type>';
+            xml = xml + '        <Method>GetUserDataProcedure</Method>';
+            xml = xml + '        <ProcedureName>erpcloud_公用_获取个人信息</ProcedureName>';
+            xml = xml + '        <Filter>';
+            xml = xml + '            <fno>' + fno + '</fno>';
+            xml = xml + '        </Filter>';
+            xml = xml + '      </Params>';
+            xml = xml + '   </Requests>';
+            $.ajax({
+                type: "POST",
+                url: "/api/bpm/DataProvider",
+                data: { '': xml },
+
+                beforeSend: function (XHR) {
+                    XHR.setRequestHeader('Authorization', 'Basic ' + localStorage.getItem('ticket'));
+                }
+            }).done(function (data) {
+
+                var provideData = JSON.parse(unescape(data.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1')));
+                //console.log(provideData);
+                var pInfo = provideData.Tables[0].Rows[0];
+                $("#ps").val(pInfo.zhiwei);
+            }).fail(function (e) {
+
+            });
         });
 }
 
@@ -475,7 +505,13 @@ function Save() {
         }
         mxlistArr.push(mx);
     });
-
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
+    if (mxflag) {
+        return;
+    }
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {
@@ -605,6 +641,15 @@ function reSave() {
         }
         mxlistArr.push(mx);
     });
+
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
+    if (mxflag) {
+        return;
+    }
+
     var btnArry = ["取消", "确定"];
     mui.confirm('即将提交，是否确定？', '提交确认提醒', btnArry, function (e) {
         if (e.index == 1) {

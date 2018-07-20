@@ -391,6 +391,10 @@ function Save() {
         }
         mxlistArr.push(mx);
     });
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
     if (mxflag) {
         return;
     }
@@ -514,6 +518,10 @@ function reSave() {
         }
         mxlistArr.push(mx);
     });
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
     if (mxflag) {
         return;
     }

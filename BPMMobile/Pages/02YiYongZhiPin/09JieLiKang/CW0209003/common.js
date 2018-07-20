@@ -474,11 +474,11 @@ function Save() {
         return;
     }
     if (!fts_cf) {
-        mui.toast('请填写住宿费天数');
+        mui.toast('请填写餐费天数');
         return;
     }
     if (!fje_cf) {
-        mui.toast('请填写住宿费金额');
+        mui.toast('请填写餐费金额');
         return;
     }
     if (!fts_snjtf) {
@@ -523,6 +523,11 @@ function Save() {
         }
         mxlistArr.push(mx);
     });
+
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
 
     if (mxflag) {
         return;
@@ -715,7 +720,10 @@ function reSave() {
         }
         mxlistArr.push(mx);
     });
-
+    if (mxlistArr.length == 0) {
+        mui.toast('子表长度不能为0');
+        return;
+    }
     if (mxflag) {
         return;
     }
